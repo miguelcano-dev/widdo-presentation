@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo - The Platform for Sports Clubs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #15803d;
+            --primary-light: #22c55e;
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --text-subtle: rgba(255, 255, 255, 0.5);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Red Hat Display', sans-serif;
+            background: #000;
+            color: var(--text-white);
+            line-height: 1.6;
+            cursor: none;
+        }
+
+        /* ===== PRESENTATION CONTAINER ===== */
+        #presentation {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        #slide-wrapper {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            transform-origin: center center;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            background: var(--bg-dark);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ===== NAVIGATION UI ===== */
+        #progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.4s ease;
+            z-index: 1000;
+        }
+
+        #slide-counter {
+            position: fixed;
+            bottom: 12px;
+            right: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.3);
+            z-index: 1000;
+            font-family: 'Red Hat Display', sans-serif;
+        }
+
+        #nav-hint {
+            position: fixed;
+            bottom: 12px;
+            left: 20px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.2);
+            z-index: 1000;
+            font-family: 'Red Hat Display', sans-serif;
+            transition: opacity 0.5s;
+        }
+
+        /* Click areas */
+        #click-prev, #click-next {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            z-index: 100;
+            cursor: pointer;
+        }
+        #click-prev { left: 0; width: 25%; cursor: w-resize; }
+        #click-next { right: 0; width: 75%; cursor: e-resize; }
+
+        /* ===== SLIDE STYLES ===== */
+        .bg-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.25) 0%, var(--bg-dark) 50%, var(--bg-dark) 100%);
+        }
+
+        .bg-blur-1 {
+            position: absolute; top: -150px; left: -150px;
+            width: 400px; height: 400px;
+            background: rgba(22, 163, 74, 0.3);
+            border-radius: 50%; filter: blur(120px);
+        }
+
+        .bg-blur-2 {
+            position: absolute; top: 30%; right: -100px;
+            width: 300px; height: 300px;
+            background: rgba(22, 163, 74, 0.2);
+            border-radius: 50%; filter: blur(100px);
+        }
+
+        .bg-blur-3 {
+            position: absolute; bottom: -100px; left: 25%;
+            width: 250px; height: 250px;
+            background: rgba(34, 197, 94, 0.15);
+            border-radius: 50%; filter: blur(80px);
+        }
+
+        .bg-grid {
+            position: absolute; inset: 0; opacity: 0.03;
+            background-image:
+                linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .logo-svg { width: 120px; height: 120px; }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 9999px; padding: 10px 20px;
+            font-size: 14px; color: var(--text-muted);
+        }
+
+        .badge-dot {
+            width: 8px; height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .badge-primary {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--primary); border: none; font-weight: 500;
+        }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 8px; padding: 16px 32px; border-radius: 8px;
+            font-weight: 700; font-size: 16px; text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary); color: white;
+            box-shadow: 0 10px 40px rgba(22, 163, 74, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(22, 163, 74, 0.2);
+            border: 1px solid rgba(22, 163, 74, 0.4);
+            color: white; backdrop-filter: blur(10px);
+        }
+
+        .text-bordered {
+            display: inline-block; border: 2px solid var(--primary);
+            border-radius: 8px; padding: 4px 16px;
+            color: var(--primary); font-weight: 700;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px; padding: 24px;
+        }
+
+        .card-feature {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px; padding: 32px; text-align: center;
+        }
+
+        .icon-box {
+            width: 56px; height: 56px;
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 12px; display: flex;
+            align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .icon-box svg {
+            width: 28px; height: 28px;
+            stroke: var(--primary); fill: none; stroke-width: 2;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px; padding: 40px 32px;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 2px solid var(--primary); transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular'; position: absolute;
+            top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--primary); color: white;
+            padding: 6px 16px; border-radius: 9999px;
+            font-size: 12px; font-weight: 700;
+        }
+
+        .bottom-bar {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 70px; display: flex; align-items: center;
+            justify-content: center; gap: 60px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .bottom-bar span {
+            font-size: 13px; font-weight: 600; letter-spacing: 3px;
+            color: var(--text-subtle); text-transform: uppercase;
+        }
+
+        .social-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 9999px; padding: 10px 20px;
+            font-size: 14px; color: var(--text-muted);
+        }
+
+        .trust-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 9999px; padding: 8px 16px;
+            font-size: 12px; color: var(--text-muted);
+        }
+
+        .trust-badge svg { width: 16px; height: 16px; stroke: var(--primary); fill: none; }
+
+        .metric-box { text-align: center; }
+        .metric-number { font-size: 72px; font-weight: 900; color: var(--primary); line-height: 1; }
+        .metric-label { font-size: 16px; color: var(--text-muted); margin-top: 8px; }
+
+        .check-list { list-style: none; }
+        .check-list li {
+            display: flex; align-items: flex-start; gap: 12px;
+            margin-bottom: 16px; font-size: 15px; color: var(--text-muted);
+        }
+
+        .check-icon {
+            width: 24px; height: 24px; min-width: 24px;
+            background: rgba(22, 163, 74, 0.2); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .check-icon svg { width: 12px; height: 12px; stroke: var(--primary); stroke-width: 3; }
+
+        .role-badge {
+            display: inline-block; background: var(--primary); color: white;
+            padding: 8px 20px; border-radius: 9999px; font-size: 12px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .content { position: relative; z-index: 10; height: 100%; }
+        .text-primary { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<div id="presentation">
+    <div id="slide-wrapper">
+
+    <!-- ==================== SLIDE 1: COVER ==================== -->
+    <div class="slide active">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-blur-3"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px;">
+            <svg class="logo-svg" viewBox="0 0 375 375" style="margin-bottom: 24px;">
+                <circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/>
+                <path fill="#ffffff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z"/>
+                <path fill="#ffffff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z"/>
+                <circle cx="306.8" cy="270" r="9.5" fill="#ffffff"/>
+            </svg>
+
+            <div class="badge" style="margin-bottom: 24px;">
+                <span class="badge-dot"></span>
+                <span>The #1 platform for sports clubs</span>
+            </div>
+
+            <div style="font-size: 28px; margin-bottom: 16px; color: var(--text-muted);">
+                We are <span style="color: var(--primary); font-weight: 800;">WIDDO</span>
+            </div>
+
+            <h1 style="font-size: 56px; font-weight: 800; text-align: center; margin-bottom: 32px; line-height: 1.1;">
+                We Transform the <span class="text-bordered">WORLD</span><br>
+                Through <span class="text-bordered">SPORTS</span>
+            </h1>
+
+            <div style="display: flex; gap: 24px; margin-bottom: 40px;">
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">PLAYERS</span>
+                <span style="color: var(--text-subtle);">|</span>
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">PAYMENTS</span>
+                <span style="color: var(--text-subtle);">|</span>
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">ATTENDANCE</span>
+                <span style="color: var(--text-subtle);">|</span>
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">CALENDAR</span>
+            </div>
+
+            <div style="display: flex; gap: 16px;">
+                <div class="social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/><circle cx="18.5" cy="5.5" r="1.5"/></svg>
+                    @heywiddo
+                </div>
+                <div class="social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    www.widdo.co
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 2: THE PROBLEM ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">The Problem</div>
+
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 16px;">
+                <span class="text-primary">87%</span> of sports clubs<br>
+                shut down within the first 3 years
+            </h2>
+
+            <p style="font-size: 20px; color: var(--text-muted); text-align: center; max-width: 700px; margin-bottom: 48px;">
+                The main reason isn't a lack of players or coaches.<br>
+                It's <strong style="color: white;">operational disorganization</strong>.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; width: 100%; max-width: 1000px;">
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Spreadsheets & Paper</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">Untracked billing, lost data, constant errors</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">WhatsApp Chaos</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">5+ groups, scattered information, lost messages</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Wasted Time</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">Hours spent on admin tasks instead of coaching</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Unprofessional Image</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">No proper system, no formal receipts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 3: THE SOLUTION ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; align-items: center; padding: 80px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">The Solution</div>
+                <h2 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.1;">
+                    Your sports club<br>
+                    <span class="text-primary">without chaos or excuses</span>
+                </h2>
+                <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 32px; max-width: 500px; line-height: 1.7;">
+                    Widdo is the all-in-one platform that automates billing, tracks attendance,
+                    and communicates with parents in a single place. No spreadsheets, no WhatsApp.
+                </p>
+                <div style="display: flex; gap: 16px; margin-bottom: 32px;">
+                    <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> SSL Secured Data</div>
+                    <div class="trust-badge"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> 30-Day Free Trial</div>
+                    <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 24/7 Support</div>
+                </div>
+                <p style="font-size: 14px; color: var(--text-subtle);">No credit card. No commitment. Set up in minutes.</p>
+            </div>
+            <div style="flex: 1; display: flex; justify-content: center;">
+                <div style="width: 100%; max-width: 550px; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/landing-hero.png" alt="Widdo Landing" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 4: WHO WE ARE ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-3"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">Who We Are</div>
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 24px;">
+                Built by <span class="text-primary">athletes</span>,<br>for athletes
+            </h2>
+            <p style="font-size: 18px; color: var(--text-muted); text-align: center; max-width: 700px; margin-bottom: 48px; line-height: 1.7;">
+                We've been players, parents, and coaches. We know firsthand how difficult it is to manage a sports club. We know what works and what doesn't. We built the platform we wish we'd had.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; width: 100%; max-width: 900px;">
+                <div class="card" style="text-align: center;">
+                    <div class="icon-box" style="margin-bottom: 20px;"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Real Experience</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">We understand your problems because we've lived them as players, coaches, and club owners</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-box" style="margin-bottom: 20px;"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Modern Technology</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Web platform accessible from any device, always up to date</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-box" style="margin-bottom: 20px;"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Born in Latin America</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Designed for local clubs with local payment methods and regional needs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 5: MISSION & VISION ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-blur-3"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 80px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Our Mission</div>
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">
+                    Democratizing<br><span class="text-primary">professional</span> management tools
+                </h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Any club, regardless of size, should have access to world-class technology to manage like the big leagues.
+                </p>
+                <ul class="check-list">
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Simplify</strong> - Reduce administrative overhead</div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Professionalize</strong> - Project a serious club image</div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Empower</strong> - Compete like the top clubs</div></li>
+                </ul>
+            </div>
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Our Vision</div>
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">
+                    Become the <span class="text-primary">#1</span><br>sports management platform in LATAM
+                </h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Transform the way sports clubs are managed across all of Latin America.
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="card"><h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Short Term</h4><p style="font-size: 13px; color: var(--text-subtle);">Consolidate presence in Colombia</p></div>
+                    <div class="card"><h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Mid Term</h4><p style="font-size: 13px; color: var(--text-subtle);">Mobile app + Live tournaments</p></div>
+                    <div class="card"><h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Long Term</h4><p style="font-size: 13px; color: var(--text-subtle);">Expand to Mexico and Argentina</p></div>
+                    <div class="card"><h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Innovation</h4><p style="font-size: 13px; color: var(--text-subtle);">WhatsApp integration + AI</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 6: BENEFITS ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Benefits</div>
+                <h2 style="font-size: 42px; font-weight: 800;">Why choose <span class="text-primary">Widdo</span>?</h2>
+            </div>
+            <div style="display: flex; gap: 40px; flex: 1; align-items: center;">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 32px;">
+                    <div class="metric-box"><div class="metric-number">70%</div><div class="metric-label">Monthly time savings<br>on administrative tasks</div></div>
+                    <div class="metric-box"><div class="metric-number">100%</div><div class="metric-label">Real-time visibility<br>of payments and overdue accounts</div></div>
+                    <div class="metric-box"><div class="metric-number">0</div><div class="metric-label">Additional WhatsApp<br>groups needed</div></div>
+                </div>
+                <div style="flex: 2; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Save Time</h4><p style="font-size: 13px; color: var(--text-subtle);">More time for coaching, training, and being with your family</p></div>
+                    <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Full Control</h4><p style="font-size: 13px; color: var(--text-subtle);">Dashboard with real-time metrics from any device</p></div>
+                    <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Unified Communication</h4><p style="font-size: 13px; color: var(--text-subtle);">A single channel for parents, players, and staff</p></div>
+                    <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Professional Image</h4><p style="font-size: 13px; color: var(--text-subtle);">Automated receipts, the look of a top-tier club</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 7: FEATURES ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Features</div>
+                <h2 style="font-size: 42px; font-weight: 800;">Everything you need to <span class="text-primary">manage</span> your club</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1;">
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Manage Members</h4><p style="font-size: 12px; color: var(--text-subtle);">Players, coaches, parents. All centralized with documents and medical records.</p></div>
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Automate Payments</h4><p style="font-size: 12px; color: var(--text-subtle);">Collect fees automatically. Multiple payment methods. Digital receipts.</p></div>
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Organize Events</h4><p style="font-size: 12px; color: var(--text-subtle);">Practices, games, and activities. Attendance confirmation built in.</p></div>
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Communicate Seamlessly</h4><p style="font-size: 12px; color: var(--text-subtle);">Announcements and reminders to teams, parents, or the entire club instantly.</p></div>
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Manage Documents</h4><p style="font-size: 12px; color: var(--text-subtle);">IDs, insurance, contracts. Everything organized and securely accessible.</p></div>
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Track Attendance</h4><p style="font-size: 12px; color: var(--text-subtle);">Digital check-in, QR code. Statistics by player and category.</p></div>
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Analyze Metrics</h4><p style="font-size: 12px; color: var(--text-subtle);">Executive dashboard with attendance, payment, and growth statistics.</p></div>
+                <div class="card-feature"><div class="icon-box"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4 style="font-weight: 700; margin-bottom: 8px;">Automate Workflows</h4><p style="font-size: 12px; color: var(--text-subtle);">Automatic reminders, payment notifications, smart workflows.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 8: MY CLUB ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Your Club</div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">Complete <span class="text-primary">control</span><br>of your club</h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">All your club's information in one place. Full profile, venues, contacts, and custom settings.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Professional profile</strong><br><span style="font-size: 13px;">Logo, description, social media</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Multiple venues</strong><br><span style="font-size: 13px;">Fields, locations with Google Maps</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">General information</strong><br><span style="font-size: 13px;">Sports, founding date, status</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Contact & location</strong><br><span style="font-size: 13px;">Phone, email, full address</span></div></li>
+                </ul>
+            </div>
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/control-club.png" alt="My Club" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 9: PLAYERS ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Module</div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">Player<br><span class="text-primary">Management</span></h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">Everything about your athletes in one place. Complete database, organized documents, full history.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Complete database</strong><br><span style="font-size: 13px;">Personal data, medical records, emergency contacts</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Digital documents</strong><br><span style="font-size: 13px;">IDs, insurance, contracts, all organized</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Age-based categories</strong><br><span style="font-size: 13px;">Automatic assignment, smart filters</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Full history</strong><br><span style="font-size: 13px;">Physical measurements, attendance, payments</span></div></li>
+                </ul>
+            </div>
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/gestion-jugadores.png" alt="Player Management" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 10: PAYMENTS ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/gestion-pagos.png" alt="Payment Management" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Module</div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">Payment<br><span class="text-primary">Management</span></h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">Forget spreadsheets and lost payments. A complete billing system with integrated payment gateway.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Configurable charges</strong><br><span style="font-size: 13px;">Monthly fees, registrations, uniforms</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Discounts & scholarships</strong><br><span style="font-size: 13px;">Sibling discounts, installments, promotions</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Automatic receipts</strong><br><span style="font-size: 13px;">Professional PDF sent via email</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Integrated gateway</strong><br><span style="font-size: 13px;">Wompi: PSE, Nequi, credit cards</span></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 11: ATTENDANCE ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Module</div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">Attendance<br><span class="text-primary">Tracking</span></h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">Know who shows up, who's absent, and why. Digital records with real-time statistics and QR code check-in.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Digital check-in</strong><br><span style="font-size: 13px;">Quick registration from phone or tablet</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">QR code</strong><br><span style="font-size: 13px;">Players scan on arrival</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Real-time statistics</strong><br><span style="font-size: 13px;">Percentage by player and category</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Automatic reports</strong><br><span style="font-size: 13px;">Export to Excel, send to parents</span></div></li>
+                </ul>
+            </div>
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/control-asistencia.png" alt="Attendance" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 12: CALENDAR ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/calendario.png" alt="Calendar" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Module</div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">Centralized<br><span class="text-primary">Calendar</span></h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">One place for practices, games, and events. Everyone synced, everyone informed.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Recurring practices</strong><br><span style="font-size: 13px;">Set up once, repeats automatically</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Games & tournaments</strong><br><span style="font-size: 13px;">Date, time, location, opponent</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">RSVP confirmation</strong><br><span style="font-size: 13px;">Players and parents confirm attendance</span></div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Automatic notifications</strong><br><span style="font-size: 13px;">Reminders before each event</span></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 13: ROLES ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Role System</div>
+                <h2 style="font-size: 42px; font-weight: 800;">One system, <span class="text-primary">multiple views</span></h2>
+                <p style="color: var(--text-muted); margin-top: 12px;">Each person sees exactly what they need. Nothing more, nothing less.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; flex: 1;">
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;"><div><div style="width: 60px; height: 60px; background: rgba(22, 163, 74, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 8a3 3 0 0 0-3-3h-8a3 3 0 0 0-3 3v13h14z"/></svg></div><h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Owner</h4></div><p style="font-size: 12px; color: var(--text-subtle);">Full control, finances, executive reports, settings</p></div>
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;"><div><div style="width: 60px; height: 60px; background: rgba(8, 145, 178, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div><h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Coach</h4></div><p style="font-size: 12px; color: var(--text-subtle);">Their categories, attendance, assigned players</p></div>
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;"><div><div style="width: 60px; height: 60px; background: rgba(124, 58, 237, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Player</h4></div><p style="font-size: 12px; color: var(--text-subtle);">Their profile, calendar, personal payments</p></div>
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;"><div><div style="width: 60px; height: 60px; background: rgba(219, 39, 119, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Parent</h4></div><p style="font-size: 12px; color: var(--text-subtle);">Child's profile, payments, direct communication</p></div>
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;"><div><div style="width: 60px; height: 60px; background: rgba(100, 116, 139, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Accountant</h4></div><p style="font-size: 12px; color: var(--text-subtle);">Financial reports, payment reconciliation</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 14: OWNER ROLE ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="role-badge" style="margin-bottom: 24px; background: #16a34a;">Role: Owner</div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">Complete <span class="text-primary">control</span><br>of your club</h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">Executive dashboard with all the key metrics. Make informed decisions in seconds.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Dashboard with KPIs</strong> - Revenue, overdue accounts, attendance, growth</div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Staff management</strong> - Invite coaches, assign permissions</div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Financial reports</strong> - Revenue by month, category, concept</div></li>
+                    <li><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Full configuration</strong> - Logo, colors, categories, pricing</div></li>
+                </ul>
+            </div>
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/dashboard-propietario.png" alt="Owner Dashboard" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 15: COACH ROLE ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/rol-entrenador.png" alt="Coach Dashboard" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+            <div style="flex: 1;">
+                <div class="role-badge" style="margin-bottom: 24px; background: #0891b2;">Role: Coach</div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">Focus on<br><span style="color: #0891b2;">coaching</span></h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">Everything you need to manage your team. No paperwork, no hassle.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">My categories</strong> - Only sees their assigned players</div></li>
+                    <li><div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Take attendance</strong> - In seconds from their phone</div></li>
+                    <li><div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">View calendar</strong> - Their sessions and games</div></li>
+                    <li><div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Player profiles</strong> - Relevant info for training</div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 16: PLAYER/PARENT ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div style="display: flex; gap: 12px; margin-bottom: 24px;"><div class="role-badge" style="background: #7c3aed;">Player</div><div class="role-badge" style="background: #db2777;">Parent</div></div>
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">All the info<br><span style="color: #7c3aed;">in one place</span></h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">Easy access to profiles, payments, calendar, and communication. No searching through chats or asking around.</p>
+                <ul class="check-list">
+                    <li><div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">My profile / Child's profile</strong> - Data, photo, documents</div></li>
+                    <li><div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">My payments</strong> - Account status, history, receipts</div></li>
+                    <li><div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Calendar</strong> - Upcoming practices and games</div></li>
+                    <li><div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong style="color: white;">Confirm attendance</strong> - One tap to RSVP for events</div></li>
+                </ul>
+            </div>
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);"><img src="presentacion-assets/rol-padre.png" alt="Parent Dashboard" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 17: MULTI-SPORT ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">Multi-Sport</div>
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 24px;">For <span class="text-primary">every</span> sport</h2>
+            <p style="font-size: 18px; color: var(--text-muted); text-align: center; max-width: 600px; margin-bottom: 48px;">No matter what sport you coach, Widdo adapts to your specific needs.</p>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; width: 100%; max-width: 800px;">
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#9917;</div><h4 style="font-weight: 700;">Soccer</h4></div>
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#127936;</div><h4 style="font-weight: 700;">Basketball</h4></div>
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#127952;</div><h4 style="font-weight: 700;">Volleyball</h4></div>
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#9976;&#65039;</div><h4 style="font-weight: 700;">Skating</h4></div>
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#127946;</div><h4 style="font-weight: 700;">Swimming</h4></div>
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#127934;</div><h4 style="font-weight: 700;">Tennis</h4></div>
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#129355;</div><h4 style="font-weight: 700;">Martial Arts</h4></div>
+                <div class="card" style="text-align: center; padding: 32px 24px;"><div style="font-size: 48px; margin-bottom: 12px;">&#10133;</div><h4 style="font-weight: 700;">And more...</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 18: PRICING ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; flex-direction: column; padding: 50px 60px;">
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div class="badge badge-primary" style="margin-bottom: 12px;">Plans</div>
+                <h2 style="font-size: 36px; font-weight: 800;"><span class="text-primary">Transparent</span> pricing</h2>
+                <p style="color: var(--text-muted); margin-top: 8px; font-size: 14px;">Choose the plan that fits best. Upgrade or cancel anytime.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; flex: 1; align-items: center; max-width: 900px; margin: 0 auto; width: 100%;">
+                <div class="pricing-card" style="padding: 24px;">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Basic</h3>
+                    <p style="font-size: 12px; color: var(--text-subtle); margin-bottom: 16px;">Ideal for small clubs</p>
+                    <div style="margin-bottom: 16px;"><span style="font-size: 32px; font-weight: 900;">$69,000</span> <span style="color: var(--text-subtle); font-size: 14px;">COP/mo</span></div>
+                    <ul class="check-list" style="margin-bottom: 16px; font-size: 13px;">
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Up to 80 members</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Payment integration</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Email support</li>
+                    </ul>
+                    <div class="btn btn-outline" style="width: 100%; text-align: center; padding: 10px 16px; font-size: 13px;">Choose Basic</div>
+                </div>
+                <div class="pricing-card featured" style="padding: 24px;">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Pro</h3>
+                    <p style="font-size: 12px; color: var(--text-subtle); margin-bottom: 16px;">For growing clubs</p>
+                    <div style="margin-bottom: 16px;"><span style="font-size: 32px; font-weight: 900;">$129,000</span> <span style="color: var(--text-subtle); font-size: 14px;">COP/mo</span></div>
+                    <ul class="check-list" style="margin-bottom: 16px; font-size: 13px;">
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Up to 200 members</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Advanced reports</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Priority support</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Communication module</li>
+                    </ul>
+                    <div class="btn btn-primary" style="width: 100%; text-align: center; padding: 10px 16px; font-size: 13px;">Choose Pro</div>
+                </div>
+                <div class="pricing-card" style="padding: 24px;">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Enterprise</h3>
+                    <p style="font-size: 12px; color: var(--text-subtle); margin-bottom: 16px;">For large clubs</p>
+                    <div style="margin-bottom: 16px;"><span style="font-size: 24px; font-weight: 900;">Custom</span></div>
+                    <ul class="check-list" style="margin-bottom: 16px; font-size: 13px;">
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Unlimited members</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>API access</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Premium 24/7 support</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Custom branding</li>
+                    </ul>
+                    <div class="btn btn-outline" style="width: 100%; text-align: center; padding: 10px 16px; font-size: 13px;">Contact Us</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <p style="color: var(--text-subtle); font-size: 13px; margin-bottom: 8px;">No lock-in contracts. Cancel anytime.</p>
+                <p style="color: var(--primary); font-size: 14px; font-weight: 600;">Pay annually and save 17% on all plans</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 19: COMPARISON ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Comparison</div>
+                <h2 style="font-size: 42px; font-weight: 800;">Your club <span class="text-primary">before</span> vs <span class="text-primary">after</span></h2>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; flex: 1; max-width: 900px; margin: 0 auto; width: 100%; border-radius: 20px; overflow: hidden;">
+                <div style="background: rgba(255, 255, 255, 0.03); padding: 40px;">
+                    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 32px; text-align: center; color: #ef4444;">Without Widdo</h3>
+                    <ul style="list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);"><span style="color: #ef4444; font-size: 18px;">&#10007;</span> Spreadsheets with errors and lost data</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);"><span style="color: #ef4444; font-size: 18px;">&#10007;</span> 5+ chaotic WhatsApp groups</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);"><span style="color: #ef4444; font-size: 18px;">&#10007;</span> Lost payments and overdue accounts</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);"><span style="color: #ef4444; font-size: 18px;">&#10007;</span> Paper attendance lists</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);"><span style="color: #ef4444; font-size: 18px;">&#10007;</span> Unprofessional image</li>
+                        <li style="display: flex; align-items: center; gap: 12px; color: var(--text-muted);"><span style="color: #ef4444; font-size: 18px;">&#10007;</span> Hours wasted on administration</li>
+                    </ul>
+                </div>
+                <div style="background: var(--primary); padding: 40px;">
+                    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 32px; text-align: center; color: white;">With Widdo</h3>
+                    <ul style="list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);"><span style="color: white; font-size: 18px;">&#10003;</span> Automated and organized system</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);"><span style="color: white; font-size: 18px;">&#10003;</span> 1 unified communication channel</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);"><span style="color: white; font-size: 18px;">&#10003;</span> Tracked payments with reminders</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);"><span style="color: white; font-size: 18px;">&#10003;</span> Digital attendance with analytics</li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);"><span style="color: white; font-size: 18px;">&#10003;</span> First-class professional club</li>
+                        <li style="display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.9);"><span style="color: white; font-size: 18px;">&#10003;</span> 70% less admin time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 20: GETTING STARTED ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">Get Started</div>
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 48px;"><span class="text-primary">4 steps</span> to transform your club</h2>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; width: 100%; max-width: 1000px; position: relative;">
+                <div style="position: absolute; top: 50px; left: 100px; right: 100px; height: 2px; background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary)); opacity: 0.3;"></div>
+                <div style="text-align: center; position: relative;"><div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">1</div><h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Sign Up</h4><p style="font-size: 14px; color: var(--text-subtle);">Free at www.widdo.co<br>in under 2 minutes</p></div>
+                <div style="text-align: center; position: relative;"><div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">2</div><h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Create Your Club</h4><p style="font-size: 14px; color: var(--text-subtle);">Logo, categories, pricing,<br>and basic setup</p></div>
+                <div style="text-align: center; position: relative;"><div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">3</div><h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Invite Your Team</h4><p style="font-size: 14px; color: var(--text-subtle);">Coaches, players, and<br>parents get instant access</p></div>
+                <div style="text-align: center; position: relative;"><div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">4</div><h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">You're Set!</h4><p style="font-size: 14px; color: var(--text-subtle);">Start managing<br>like a pro</p></div>
+            </div>
+            <div style="margin-top: 48px; display: flex; gap: 16px;">
+                <div class="trust-badge"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> No credit card</div>
+                <div class="trust-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> No commitment</div>
+                <div class="trust-badge"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Set up in minutes</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 21: CONTACT ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; padding: 80px; gap: 80px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Contact</div>
+                <h2 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.1;">Get in<br><span class="text-primary">touch</span></h2>
+                <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.7;">Have questions? Want a personalized demo?<br>We're here to help you transform your club.</p>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></div><div><p style="font-weight: 700; font-size: 18px;">WhatsApp</p><p style="color: var(--text-subtle); font-size: 14px;">+57 313 218 2812</p></div></div>
+                    <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><p style="font-weight: 700; font-size: 18px;">Email</p><p style="color: var(--text-subtle); font-size: 14px;">hey@widdo.co</p></div></div>
+                    <div style="display: flex; align-items: center; gap: 16px;"><div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><p style="font-weight: 700; font-size: 18px;">Web</p><p style="color: var(--text-subtle); font-size: 14px;">www.widdo.co</p></div></div>
+                </div>
+            </div>
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center;">
+                    <svg width="160" height="160" viewBox="0 0 375 375" style="margin-bottom: 32px;"><circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/><path fill="#ffffff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z"/><path fill="#ffffff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z"/><circle cx="306.8" cy="270" r="9.5" fill="#ffffff"/></svg>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#16a34a"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/><circle cx="18.5" cy="5.5" r="1.5"/></svg><p style="font-size: 20px; font-weight: 700;">@heywiddo</p></div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="#16a34a"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><p style="font-size: 20px; font-weight: 700;">heywiddo</p></div>
+                    </div>
+                    <p style="color: var(--text-subtle); margin-top: 16px;">Follow us on social media</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 22: CLOSING ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div><div class="bg-blur-1"></div><div class="bg-blur-2"></div><div class="bg-blur-3"></div><div class="bg-grid"></div>
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+            <svg width="140" height="140" viewBox="0 0 375 375" style="margin-bottom: 32px;"><circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/><path fill="#ffffff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z"/><path fill="#ffffff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z"/><circle cx="306.8" cy="270" r="9.5" fill="#ffffff"/></svg>
+            <h2 style="font-size: 56px; font-weight: 800; margin-bottom: 24px;">Thank you for your <span class="text-primary">attention</span></h2>
+            <p style="font-size: 24px; color: var(--text-muted); margin-bottom: 48px;">"We Transform the <span class="text-bordered" style="font-size: 24px;">WORLD</span> Through <span class="text-bordered" style="font-size: 24px;">SPORTS</span>"</p>
+            <div style="display: flex; gap: 16px; margin-bottom: 32px;">
+                <a href="#" class="btn btn-primary">Start Free</a>
+                <a href="#" class="btn btn-outline">Request a Demo</a>
+            </div>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
+                <div class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/><circle cx="18.5" cy="5.5" r="1.5"/></svg> @heywiddo</div>
+                <div class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> heywiddo</div>
+                <div class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> www.widdo.co</div>
+            </div>
+        </div>
+        <div class="bottom-bar"><span>PLAYERS</span><span>PAYMENTS</span><span>ATTENDANCE</span><span>CALENDAR</span></div>
+    </div>
+
+    </div><!-- /slide-wrapper -->
+</div><!-- /presentation -->
+
+<!-- Navigation UI -->
+<div id="progress-bar"></div>
+<div id="slide-counter"></div>
+<div id="nav-hint">Use arrow keys or click to navigate</div>
+<div id="click-prev"></div>
+<div id="click-next"></div>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    const wrapper = document.getElementById('slide-wrapper');
+    const progressBar = document.getElementById('progress-bar');
+    const counter = document.getElementById('slide-counter');
+    const hint = document.getElementById('nav-hint');
+    let current = 0;
+
+    function scalePresentation() {
+        const scaleX = window.innerWidth / 1280;
+        const scaleY = window.innerHeight / 720;
+        const scale = Math.min(scaleX, scaleY);
+        wrapper.style.transform = 'scale(' + scale + ')';
+    }
+
+    function goTo(index) {
+        if (index < 0 || index >= total) return;
+        slides[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+        progressBar.style.width = ((current + 1) / total * 100) + '%';
+        counter.textContent = (current + 1) + ' / ' + total;
+
+        if (current > 0 && hint.style.opacity !== '0') {
+            hint.style.opacity = '0';
+        }
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+        switch(e.key) {
+            case 'ArrowRight': case 'ArrowDown': case ' ': case 'PageDown':
+                e.preventDefault(); next(); break;
+            case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+                e.preventDefault(); prev(); break;
+            case 'Home': e.preventDefault(); goTo(0); break;
+            case 'End': e.preventDefault(); goTo(total - 1); break;
+        }
+    });
+
+    // Click areas
+    document.getElementById('click-next').addEventListener('click', next);
+    document.getElementById('click-prev').addEventListener('click', prev);
+
+    // Touch swipe
+    let touchStartX = 0;
+    document.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', function(e) {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); }
+    });
+
+    // Init
+    scalePresentation();
+    window.addEventListener('resize', scalePresentation);
+    goTo(0);
+})();
+</script>
+
+</body>
+</html>

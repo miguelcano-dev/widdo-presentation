@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo - Presentación para Clubes Deportivos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #15803d;
+            --primary-light: #22c55e;
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --text-subtle: rgba(255, 255, 255, 0.5);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            background: #1a1a1a;
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-dark);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            page-break-after: always;
+        }
+
+        /* Elementos decorativos de fondo */
+        .bg-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.25) 0%, var(--bg-dark) 50%, var(--bg-dark) 100%);
+        }
+
+        .bg-blur-1 {
+            position: absolute;
+            top: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: rgba(22, 163, 74, 0.3);
+            border-radius: 50%;
+            filter: blur(120px);
+        }
+
+        .bg-blur-2 {
+            position: absolute;
+            top: 30%;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(22, 163, 74, 0.2);
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .bg-blur-3 {
+            position: absolute;
+            bottom: -100px;
+            left: 25%;
+            width: 250px;
+            height: 250px;
+            background: rgba(34, 197, 94, 0.15);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .bg-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Logo SVG */
+        .logo-svg {
+            width: 120px;
+            height: 120px;
+        }
+
+        .logo-svg-small {
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Badge pill */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 9999px;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .badge-primary {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--primary);
+            border: none;
+            font-weight: 500;
+        }
+
+        /* Botones estilo Widdo */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 40px rgba(22, 163, 74, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(22, 163, 74, 0.2);
+            border: 1px solid rgba(22, 163, 74, 0.4);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Texto con borde verde */
+        .text-bordered {
+            display: inline-block;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 4px 16px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .card-feature {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .card-feature:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(22, 163, 74, 0.3);
+        }
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .icon-box svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--primary);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Pricing cards */
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 40px 32px;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Más popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Bottom bar con pilares */
+        .bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .bottom-bar span {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--text-subtle);
+            text-transform: uppercase;
+        }
+
+        /* Social links */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 9999px;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Trust badges */
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 9999px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .trust-badge svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--primary);
+            fill: none;
+        }
+
+        /* Metric box */
+        .metric-box {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .metric-label {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* Check list */
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            background: rgba(22, 163, 74, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--primary);
+            stroke-width: 3;
+        }
+
+        /* Role badge */
+        .role-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Screenshot placeholder */
+        .screenshot-area {
+            background: rgba(22, 163, 74, 0.1);
+            border: 2px dashed rgba(22, 163, 74, 0.3);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-subtle);
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Utility classes */
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+        }
+
+        .text-primary { color: var(--primary); }
+        .text-white { color: var(--text-white); }
+        .text-muted { color: var(--text-muted); }
+        .text-subtle { color: var(--text-subtle); }
+
+        .font-bold { font-weight: 700; }
+        .font-extrabold { font-weight: 800; }
+        .font-black { font-weight: 900; }
+
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+
+        /* Print styles */
+        @media print {
+            body { background: white; }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Export instructions */
+        .export-box {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #222;
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .export-box h3 {
+            color: var(--primary);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .export-box ol {
+            margin-left: 20px;
+            color: var(--text-muted);
+            line-height: 2;
+        }
+
+        .export-box code {
+            background: rgba(22, 163, 74, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--primary);
+        }
+    @media print {
+            @page {
+                size: 1280px 720px landscape;
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                background: none;
+            }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== SLIDE 1: PORTADA ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-blur-3"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px;">
+            <!-- Logo -->
+            <svg class="logo-svg" viewBox="0 0 375 375" style="margin-bottom: 24px;">
+                <circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/>
+                <path fill="#ffffff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z"/>
+                <path fill="#ffffff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z"/>
+                <circle cx="306.8" cy="270" r="9.5" fill="#ffffff"/>
+            </svg>
+
+            <!-- Badge -->
+            <div class="badge" style="margin-bottom: 24px;">
+                <span class="badge-dot"></span>
+                <span>Plataforma #1 para clubes deportivos</span>
+            </div>
+
+            <!-- Título -->
+            <div style="font-size: 28px; margin-bottom: 16px; color: var(--text-muted);">
+                Somos <span style="color: var(--primary); font-weight: 800;">WIDDO</span>
+            </div>
+
+            <h1 style="font-size: 56px; font-weight: 800; text-align: center; margin-bottom: 32px; line-height: 1.1;">
+                Trasformamos el <span class="text-bordered">MUNDO</span><br>
+                por medio del <span class="text-bordered">DEPORTE</span>
+            </h1>
+
+            <!-- Pilares -->
+            <div style="display: flex; gap: 24px; margin-bottom: 40px;">
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">JUGADORES</span>
+                <span style="color: var(--text-subtle);">|</span>
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">PAGOS</span>
+                <span style="color: var(--text-subtle);">|</span>
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">ASISTENCIA</span>
+                <span style="color: var(--text-subtle);">|</span>
+                <span style="font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle);">CALENDARIO</span>
+            </div>
+
+            <!-- Social links -->
+            <div style="display: flex; gap: 16px;">
+                <div class="social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/><circle cx="18.5" cy="5.5" r="1.5"/></svg>
+                    @heywiddo
+                </div>
+                <div class="social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    www.widdo.co
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 2: EL PROBLEMA ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">El Problema</div>
+
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 16px;">
+                El <span class="text-primary">87%</span> de los clubes deportivos<br>
+                cierran en los primeros 3 años
+            </h2>
+
+            <p style="font-size: 20px; color: var(--text-muted); text-align: center; max-width: 700px; margin-bottom: 48px;">
+                La razón principal no es falta de jugadores o entrenadores.<br>
+                Es <strong style="color: white;">desorganización operativa</strong>.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; width: 100%; max-width: 1000px;">
+                <div class="card-feature">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Excel y Papel</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">Cobros sin control, datos perdidos, errores constantes</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Caos WhatsApp</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">5+ grupos, información dispersa, mensajes perdidos</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Tiempo Perdido</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">Horas en tareas administrativas en lugar de entrenar</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Imagen Amateur</h4>
+                    <p style="font-size: 13px; color: var(--text-subtle);">Sin sistema profesional, sin comprobantes formales</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 3: LA SOLUCIÓN ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; align-items: center; padding: 80px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">La Solución</div>
+
+                <h2 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.1;">
+                    Tu club deportivo<br>
+                    <span class="text-primary">sin caos ni excusas</span>
+                </h2>
+
+                <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 32px; max-width: 500px; line-height: 1.7;">
+                    Widdo es la plataforma todo-en-uno que automatiza cobros, controla asistencias
+                    y comunica con padres en un solo lugar. Sin Excel, sin WhatsApp.
+                </p>
+
+                <div style="display: flex; gap: 16px; margin-bottom: 32px;">
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Datos seguros SSL
+                    </div>
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        30 días gratis
+                    </div>
+                    <div class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Soporte 24/7
+                    </div>
+                </div>
+
+                <p style="font-size: 14px; color: var(--text-subtle);">
+                    Sin tarjeta. Sin compromiso. Configuración en minutos.
+                </p>
+            </div>
+
+            <div style="flex: 1; display: flex; justify-content: center;">
+                <div style="width: 100%; max-width: 550px; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/landing-hero.png" alt="Widdo Landing" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 4: QUIÉNES SOMOS ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-3"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">Quiénes Somos</div>
+
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 24px;">
+                Hecho por <span class="text-primary">deportistas</span>,<br>
+                para deportistas
+            </h2>
+
+            <p style="font-size: 18px; color: var(--text-muted); text-align: center; max-width: 700px; margin-bottom: 48px; line-height: 1.7;">
+                Hemos sido jugadores, padres y entrenadores. Conocemos de primera mano lo difícil que es gestionar un club deportivo. Sabemos lo que funciona y lo que no. Creamos la plataforma que nos hubiera gustado tener.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; width: 100%; max-width: 900px;">
+                <div class="card" style="text-align: center;">
+                    <div class="icon-box" style="margin-bottom: 20px;">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Experiencia Real</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Entendemos tus problemas porque los vivimos como jugadores, entrenadores y dueños de clubes</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-box" style="margin-bottom: 20px;">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Tecnología Moderna</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Plataforma web accesible desde cualquier dispositivo, siempre actualizada</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-box" style="margin-bottom: 20px;">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">100% Colombiano</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Diseñado para clubes locales con pagos en COP, PSE, Nequi y más</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 5: MISIÓN Y VISIÓN ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-blur-3"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 80px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Nuestra Misión</div>
+
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">
+                    Democratizar las herramientas<br>
+                    <span class="text-primary">profesionales</span> de gestión
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Que cualquier club, sin importar su tamaño, pueda tener acceso a
+                    tecnología de primera para administrarse como los grandes.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Simplificar</strong> - Reducir tiempo administrativo</div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Profesionalizar</strong> - Imagen de club serio</div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Empoderar</strong> - Competir como los grandes</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Nuestra Visión</div>
+
+                <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px; line-height: 1.2;">
+                    Ser la plataforma <span class="text-primary">#1</span><br>
+                    de gestión deportiva en LATAM
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Transformar la forma en que los clubes deportivos se administran
+                    en toda América Latina.
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="card">
+                        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Corto Plazo</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">Consolidar presencia en Colombia</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Mediano Plazo</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">App móvil + Torneos en vivo</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Largo Plazo</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">Expansión México y Argentina</p>
+                    </div>
+                    <div class="card">
+                        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 8px;">Innovación</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">Integración WhatsApp + IA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 6: BENEFICIOS ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Beneficios</div>
+                <h2 style="font-size: 42px; font-weight: 800;">¿Por qué elegir <span class="text-primary">Widdo</span>?</h2>
+            </div>
+
+            <div style="display: flex; gap: 40px; flex: 1; align-items: center;">
+                <!-- Métricas -->
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 32px;">
+                    <div class="metric-box">
+                        <div class="metric-number">70%</div>
+                        <div class="metric-label">Ahorro de tiempo mensual<br>en tareas administrativas</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-number">100%</div>
+                        <div class="metric-label">Visibilidad de pagos<br>y morosos en tiempo real</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-number">0</div>
+                        <div class="metric-label">Grupos de WhatsApp<br>adicionales necesarios</div>
+                    </div>
+                </div>
+
+                <!-- Cards de beneficios -->
+                <div style="flex: 2; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    <div class="card-feature">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; margin-bottom: 8px;">Ahorra Tiempo</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">Más tiempo para entrenar, capacitarte y estar con tu familia</p>
+                    </div>
+                    <div class="card-feature">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; margin-bottom: 8px;">Control Total</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">Dashboard con métricas en tiempo real desde cualquier dispositivo</p>
+                    </div>
+                    <div class="card-feature">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; margin-bottom: 8px;">Comunicación Unificada</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">Un solo canal para padres, jugadores y staff</p>
+                    </div>
+                    <div class="card-feature">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; margin-bottom: 8px;">Imagen Profesional</h4>
+                        <p style="font-size: 13px; color: var(--text-subtle);">Comprobantes automáticos, aspecto de club de primera</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 7: FUNCIONALIDADES ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Funcionalidades</div>
+                <h2 style="font-size: 42px; font-weight: 800;">Todo lo que necesitas para <span class="text-primary">gestionar</span> tu club</h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; flex: 1;">
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Gestiona Miembros</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Jugadores, entrenadores, padres. Todo centralizado con documentos y datos médicos.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Automatiza Pagos</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Cobra cuotas automáticamente. PSE, Nequi, tarjetas. Comprobantes digitales.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Organiza Eventos</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Entrenamientos, partidos y actividades. Confirmación de asistencia.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Comunica sin Límites</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Avisos y recordatorios a equipos, padres o todo el club instantáneamente.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Gestiona Documentos</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Cédulas, EPS, contratos. Todo organizado y accesible de forma segura.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Control de Asistencia</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Check-in digital, código QR. Estadísticas por jugador y categoría.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Analiza Métricas</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Dashboard ejecutivo con estadísticas de asistencia, pagos y crecimiento.</p>
+                </div>
+                <div class="card-feature">
+                    <div class="icon-box"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                    <h4 style="font-weight: 700; margin-bottom: 8px;">Automatiza Tareas</h4>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Recordatorios automáticos, notificaciones de pago, flujos inteligentes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 7B: MI CLUB - CONTROL TOTAL ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Tu Club</div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Control <span class="text-primary">total</span><br>de tu club
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Toda la información de tu club en un solo lugar. Perfil completo,
+                    sedes, contactos y configuración personalizada.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Perfil profesional</strong><br><span style="font-size: 13px;">Logo, descripción, redes sociales</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Múltiples sedes</strong><br><span style="font-size: 13px;">Canchas, ubicaciones con Google Maps</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Información general</strong><br><span style="font-size: 13px;">Deportes, fecha de fundación, estado</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Contacto y ubicación</strong><br><span style="font-size: 13px;">Teléfono, email, dirección completa</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/control-club.png" alt="Mi Club - Control Total" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 8: MÓDULO JUGADORES ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Módulo</div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Gestión de<br><span class="text-primary">Jugadores</span>
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Todo sobre tus deportistas en un solo lugar. Base de datos completa,
+                    documentos organizados, historial completo.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Base de datos completa</strong><br><span style="font-size: 13px;">Datos personales, médicos, contactos de emergencia</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Documentos digitales</strong><br><span style="font-size: 13px;">Cédula, EPS, contratos, todo organizado</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Categorías por edad</strong><br><span style="font-size: 13px;">Asignación automática, filtros inteligentes</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Historial completo</strong><br><span style="font-size: 13px;">Mediciones físicas, asistencia, pagos</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/gestion-jugadores.png" alt="Gestión de Jugadores" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 9: MÓDULO PAGOS ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/gestion-pagos.png" alt="Gestión de Pagos" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Módulo</div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Control de<br><span class="text-primary">Pagos</span>
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Olvídate del Excel y los cobros perdidos. Sistema completo de facturación
+                    con pasarela de pagos integrada.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Cobros configurables</strong><br><span style="font-size: 13px;">Mensualidades, inscripciones, uniformes</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Descuentos y becas</strong><br><span style="font-size: 13px;">Hermanos, pagos diferidos, promociones</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Comprobantes automáticos</strong><br><span style="font-size: 13px;">PDF profesional enviado por email</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Pasarela integrada</strong><br><span style="font-size: 13px;">Wompi: PSE, Nequi, tarjetas de crédito</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 10: MÓDULO ASISTENCIA ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Módulo</div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Control de<br><span class="text-primary">Asistencia</span>
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Sabe quién viene, quién falta y por qué. Registro digital con
+                    estadísticas en tiempo real y código QR.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Check-in digital</strong><br><span style="font-size: 13px;">Registro rápido desde celular o tablet</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Código QR</strong><br><span style="font-size: 13px;">Los jugadores escanean al llegar</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Estadísticas en tiempo real</strong><br><span style="font-size: 13px;">Porcentaje por jugador y categoría</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Reportes automáticos</strong><br><span style="font-size: 13px;">Exporta a Excel, envía a padres</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/control-asistencia.png" alt="Control de Asistencia" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 11: MÓDULO CALENDARIO ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/calendario.png" alt="Calendario Centralizado" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Módulo</div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Calendario<br><span class="text-primary">Centralizado</span>
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Un solo lugar para entrenamientos, partidos y eventos.
+                    Todos sincronizados, todos informados.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Entrenamientos recurrentes</strong><br><span style="font-size: 13px;">Configura una vez, se repite automático</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Partidos y torneos</strong><br><span style="font-size: 13px;">Fecha, hora, ubicación, rival</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Confirmación de asistencia</strong><br><span style="font-size: 13px;">Jugadores y padres confirman</span></div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Notificaciones automáticas</strong><br><span style="font-size: 13px;">Recordatorios antes de cada evento</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 12: ROLES DEL SISTEMA ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Sistema de Roles</div>
+                <h2 style="font-size: 42px; font-weight: 800;">Un sistema, <span class="text-primary">múltiples vistas</span></h2>
+                <p style="color: var(--text-muted); margin-top: 12px;">Cada persona ve exactamente lo que necesita. Nada más, nada menos.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; flex: 1;">
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="width: 60px; height: 60px; background: rgba(22, 163, 74, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v1a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 8a3 3 0 0 0-3-3h-8a3 3 0 0 0-3 3v13h14z"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Propietario</h4>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Control total, finanzas, reportes ejecutivos, configuración</p>
+                </div>
+
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="width: 60px; height: 60px; background: rgba(8, 145, 178, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Entrenador</h4>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Sus categorías, asistencia, jugadores asignados</p>
+                </div>
+
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="width: 60px; height: 60px; background: rgba(124, 58, 237, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Jugador</h4>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Su perfil, calendario, pagos personales</p>
+                </div>
+
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="width: 60px; height: 60px; background: rgba(219, 39, 119, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Padre</h4>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Perfil del hijo, pagos, comunicación directa</p>
+                </div>
+
+                <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="width: 60px; height: 60px; background: rgba(100, 116, 139, 0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        </div>
+                        <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Contador</h4>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-subtle);">Reportes financieros, conciliación de pagos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 13: ROL PROPIETARIO ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div class="role-badge" style="margin-bottom: 24px; background: #16a34a;">Rol: Propietario</div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Control <span class="text-primary">total</span><br>de tu club
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Dashboard ejecutivo con todas las métricas importantes.
+                    Toma decisiones informadas en segundos.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Dashboard con KPIs</strong> - Ingresos, morosos, asistencia, crecimiento</div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Gestión de staff</strong> - Invita entrenadores, asigna permisos</div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Reportes financieros</strong> - Ingresos por mes, categoría, concepto</div>
+                    </li>
+                    <li>
+                        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Configuración completa</strong> - Logo, colores, categorías, precios</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/dashboard-propietario.png" alt="Dashboard del Propietario" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 14: ROL ENTRENADOR ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/rol-entrenador.png" alt="Dashboard del Entrenador" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+
+            <div style="flex: 1;">
+                <div class="role-badge" style="margin-bottom: 24px; background: #0891b2;">Rol: Entrenador</div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Enfócate en<br><span style="color: #0891b2;">entrenar</span>
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Todo lo que necesitas para gestionar tu categoría.
+                    Sin papeles, sin complicaciones.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Mis categorías</strong> - Solo ve los jugadores que le corresponden</div>
+                    </li>
+                    <li>
+                        <div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Pasar asistencia</strong> - En segundos desde el celular</div>
+                    </li>
+                    <li>
+                        <div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Ver calendario</strong> - Sus sesiones y partidos</div>
+                    </li>
+                    <li>
+                        <div class="check-icon" style="background: rgba(8, 145, 178, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #0891b2;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Perfil de jugadores</strong> - Info relevante para entrenar</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 15: ROL JUGADOR/PADRE ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 60px;">
+            <div style="flex: 1;">
+                <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                    <div class="role-badge" style="background: #7c3aed;">Jugador</div>
+                    <div class="role-badge" style="background: #db2777;">Padre</div>
+                </div>
+
+                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 24px;">
+                    Toda la info<br><span style="color: #7c3aed;">en un lugar</span>
+                </h2>
+
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.7;">
+                    Acceso fácil a perfil, pagos, calendario y comunicación.
+                    Sin buscar en chats ni preguntar.
+                </p>
+
+                <ul class="check-list">
+                    <li>
+                        <div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Mi perfil / Perfil del hijo</strong> - Datos, foto, documentos</div>
+                    </li>
+                    <li>
+                        <div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Mis pagos</strong> - Estado de cuenta, historial, comprobantes</div>
+                    </li>
+                    <li>
+                        <div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Calendario</strong> - Entrenamientos y partidos próximos</div>
+                    </li>
+                    <li>
+                        <div class="check-icon" style="background: rgba(124, 58, 237, 0.2);"><svg viewBox="0 0 24 24" style="stroke: #7c3aed;"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <div><strong style="color: white;">Confirmar asistencia</strong> - Un tap para confirmar eventos</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div style="flex: 1.2; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="presentacion-assets/rol-padre.png" alt="Dashboard del Padre" style="width: 100%; height: auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 16: MULTI-DEPORTE ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">Multi-Deporte</div>
+
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 24px;">
+                Para <span class="text-primary">todos</span> los deportes
+            </h2>
+
+            <p style="font-size: 18px; color: var(--text-muted); text-align: center; max-width: 600px; margin-bottom: 48px;">
+                No importa qué deporte enseñes, Widdo se adapta a tus necesidades específicas.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; width: 100%; max-width: 800px;">
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">⚽</div>
+                    <h4 style="font-weight: 700;">Fútbol</h4>
+                </div>
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🏀</div>
+                    <h4 style="font-weight: 700;">Baloncesto</h4>
+                </div>
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🏐</div>
+                    <h4 style="font-weight: 700;">Voleibol</h4>
+                </div>
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">⛸️</div>
+                    <h4 style="font-weight: 700;">Patinaje</h4>
+                </div>
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🏊</div>
+                    <h4 style="font-weight: 700;">Natación</h4>
+                </div>
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🎾</div>
+                    <h4 style="font-weight: 700;">Tenis</h4>
+                </div>
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🥋</div>
+                    <h4 style="font-weight: 700;">Artes Marciales</h4>
+                </div>
+                <div class="card" style="text-align: center; padding: 32px 24px;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">➕</div>
+                    <h4 style="font-weight: 700;">Y más...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 17: PRECIOS ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; padding: 50px 60px;">
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div class="badge badge-primary" style="margin-bottom: 12px;">Planes</div>
+                <h2 style="font-size: 36px; font-weight: 800;">Precios <span class="text-primary">transparentes</span></h2>
+                <p style="color: var(--text-muted); margin-top: 8px; font-size: 14px;">Elige el plan que mejor se adapte. Cambia o cancela cuando quieras.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; flex: 1; align-items: center; max-width: 900px; margin: 0 auto; width: 100%;">
+                <!-- Plan Básico -->
+                <div class="pricing-card" style="padding: 24px;">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Básico</h3>
+                    <p style="font-size: 12px; color: var(--text-subtle); margin-bottom: 16px;">Ideal para clubes pequeños</p>
+                    <div style="margin-bottom: 16px;">
+                        <span style="font-size: 32px; font-weight: 900;">$69.000</span>
+                        <span style="color: var(--text-subtle); font-size: 14px;">/mes</span>
+                    </div>
+                    <ul class="check-list" style="margin-bottom: 16px; font-size: 13px;">
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Hasta 80 miembros</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Integración de pagos</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Soporte por email</li>
+                    </ul>
+                    <div class="btn btn-outline" style="width: 100%; text-align: center; padding: 10px 16px; font-size: 13px;">Elegir Básico</div>
+                </div>
+
+                <!-- Plan Pro (Featured) -->
+                <div class="pricing-card featured" style="padding: 24px;">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Pro</h3>
+                    <p style="font-size: 12px; color: var(--text-subtle); margin-bottom: 16px;">Para clubes en crecimiento</p>
+                    <div style="margin-bottom: 16px;">
+                        <span style="font-size: 32px; font-weight: 900;">$129.000</span>
+                        <span style="color: var(--text-subtle); font-size: 14px;">/mes</span>
+                    </div>
+                    <ul class="check-list" style="margin-bottom: 16px; font-size: 13px;">
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Hasta 200 miembros</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Reportes avanzados</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Soporte prioritario</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Módulo comunicación</li>
+                    </ul>
+                    <div class="btn btn-primary" style="width: 100%; text-align: center; padding: 10px 16px; font-size: 13px;">Elegir Pro</div>
+                </div>
+
+                <!-- Plan Enterprise -->
+                <div class="pricing-card" style="padding: 24px;">
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 4px;">Enterprise</h3>
+                    <p style="font-size: 12px; color: var(--text-subtle); margin-bottom: 16px;">Para clubes grandes</p>
+                    <div style="margin-bottom: 16px;">
+                        <span style="font-size: 24px; font-weight: 900;">Personalizado</span>
+                    </div>
+                    <ul class="check-list" style="margin-bottom: 16px; font-size: 13px;">
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Miembros ilimitados</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Acceso API</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Soporte premium 24/7</li>
+                        <li><div class="check-icon" style="width: 18px; height: 18px;"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Marca personalizada</li>
+                    </ul>
+                    <div class="btn btn-outline" style="width: 100%; text-align: center; padding: 10px 16px; font-size: 13px;">Contactar</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <p style="color: var(--text-subtle); font-size: 13px; margin-bottom: 8px;">
+                    Sin contratos de permanencia. Cancela cuando quieras.
+                </p>
+                <p style="color: var(--primary); font-size: 14px; font-weight: 600;">
+                    💰 Paga anual y ahorra 17% en todos los planes
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 18: COMPARATIVA ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; padding: 60px 80px;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="badge badge-primary" style="margin-bottom: 16px;">Comparativa</div>
+                <h2 style="font-size: 42px; font-weight: 800;">Tu club <span class="text-primary">antes</span> vs <span class="text-primary">después</span></h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; flex: 1; max-width: 900px; margin: 0 auto; width: 100%; border-radius: 20px; overflow: hidden;">
+                <!-- Sin Widdo -->
+                <div style="background: rgba(255, 255, 255, 0.03); padding: 40px;">
+                    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 32px; text-align: center; color: #ef4444;">Sin Widdo</h3>
+                    <ul style="list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);">
+                            <span style="color: #ef4444; font-size: 18px;">✗</span>
+                            Excel con errores y datos perdidos
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);">
+                            <span style="color: #ef4444; font-size: 18px;">✗</span>
+                            5+ grupos de WhatsApp caóticos
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);">
+                            <span style="color: #ef4444; font-size: 18px;">✗</span>
+                            Cobros perdidos y morosos
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);">
+                            <span style="color: #ef4444; font-size: 18px;">✗</span>
+                            Listas de asistencia en papel
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: var(--text-muted);">
+                            <span style="color: #ef4444; font-size: 18px;">✗</span>
+                            Imagen amateur
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; color: var(--text-muted);">
+                            <span style="color: #ef4444; font-size: 18px;">✗</span>
+                            Horas perdidas en administración
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Con Widdo -->
+                <div style="background: var(--primary); padding: 40px;">
+                    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 32px; text-align: center; color: white;">Con Widdo</h3>
+                    <ul style="list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);">
+                            <span style="color: white; font-size: 18px;">✓</span>
+                            Sistema automático y organizado
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);">
+                            <span style="color: white; font-size: 18px;">✓</span>
+                            1 canal de comunicación unificado
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);">
+                            <span style="color: white; font-size: 18px;">✓</span>
+                            Pagos rastreados y recordatorios
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);">
+                            <span style="color: white; font-size: 18px;">✓</span>
+                            Asistencia digital con estadísticas
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: rgba(255,255,255,0.9);">
+                            <span style="color: white; font-size: 18px;">✓</span>
+                            Club profesional de primera
+                        </li>
+                        <li style="display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.9);">
+                            <span style="color: white; font-size: 18px;">✓</span>
+                            70% menos tiempo administrativo
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 19: CÓMO EMPEZAR ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px;">
+            <div class="badge badge-primary" style="margin-bottom: 24px;">Empieza Hoy</div>
+
+            <h2 style="font-size: 48px; font-weight: 800; text-align: center; margin-bottom: 48px;">
+                <span class="text-primary">4 pasos</span> para transformar tu club
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; width: 100%; max-width: 1000px; position: relative;">
+                <!-- Línea conectora -->
+                <div style="position: absolute; top: 50px; left: 100px; right: 100px; height: 2px; background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary)); opacity: 0.3;"></div>
+
+                <div style="text-align: center; position: relative;">
+                    <div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">1</div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Regístrate</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Gratis en www.widdo.co<br>en menos de 2 minutos</p>
+                </div>
+
+                <div style="text-align: center; position: relative;">
+                    <div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">2</div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Crea tu Club</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Logo, categorías, precios<br>y configuración básica</p>
+                </div>
+
+                <div style="text-align: center; position: relative;">
+                    <div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">3</div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">Invita al Equipo</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Entrenadores, jugadores<br>y padres reciben acceso</p>
+                </div>
+
+                <div style="text-align: center; position: relative;">
+                    <div style="width: 100px; height: 100px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; margin: 0 auto 20px; color: white;">4</div>
+                    <h4 style="font-weight: 700; font-size: 18px; margin-bottom: 8px;">¡Listo!</h4>
+                    <p style="font-size: 14px; color: var(--text-subtle);">Comienza a gestionar<br>profesionalmente</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 48px; display: flex; gap: 16px;">
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Sin tarjeta
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Sin compromiso
+                </div>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    Configuración en minutos
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 20: CONTACTO ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; padding: 80px; gap: 80px;">
+            <div style="flex: 1;">
+                <div class="badge badge-primary" style="margin-bottom: 24px;">Contacto</div>
+
+                <h2 style="font-size: 48px; font-weight: 800; margin-bottom: 24px; line-height: 1.1;">
+                    Ponte en<br><span class="text-primary">contacto</span>
+                </h2>
+
+                <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.7;">
+                    ¿Tienes dudas? ¿Quieres una demo personalizada?<br>
+                    Estamos aquí para ayudarte a transformar tu club.
+                </p>
+
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+                        </div>
+                        <div>
+                            <p style="font-weight: 700; font-size: 18px;">WhatsApp</p>
+                            <p style="color: var(--text-subtle); font-size: 14px;">+57 313 218 2812</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <p style="font-weight: 700; font-size: 18px;">Email</p>
+                            <p style="color: var(--text-subtle); font-size: 14px;">hey@widdo.co</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <div>
+                            <p style="font-weight: 700; font-size: 18px;">Web</p>
+                            <p style="color: var(--text-subtle); font-size: 14px;">www.widdo.co</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center;">
+                    <svg width="160" height="160" viewBox="0 0 375 375" style="margin-bottom: 32px;">
+                        <circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/>
+                        <path fill="#ffffff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z"/>
+                        <path fill="#ffffff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z"/>
+                        <circle cx="306.8" cy="270" r="9.5" fill="#ffffff"/>
+                    </svg>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#16a34a"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/><circle cx="18.5" cy="5.5" r="1.5"/></svg>
+                            <p style="font-size: 20px; font-weight: 700;">@heywiddo</p>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#16a34a"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                            <p style="font-size: 20px; font-weight: 700;">heywiddo</p>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-subtle); margin-top: 16px;">Síguenos en redes sociales</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 21: CIERRE ==================== -->
+    <div class="slide">
+        <div class="bg-gradient"></div>
+        <div class="bg-blur-1"></div>
+        <div class="bg-blur-2"></div>
+        <div class="bg-blur-3"></div>
+        <div class="bg-grid"></div>
+
+        <div class="content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+            <!-- Logo -->
+            <svg width="140" height="140" viewBox="0 0 375 375" style="margin-bottom: 32px;">
+                <circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/>
+                <path fill="#ffffff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z"/>
+                <path fill="#ffffff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z"/>
+                <circle cx="306.8" cy="270" r="9.5" fill="#ffffff"/>
+            </svg>
+
+            <h2 style="font-size: 56px; font-weight: 800; margin-bottom: 24px;">
+                Gracias por tu <span class="text-primary">atención</span>
+            </h2>
+
+            <p style="font-size: 24px; color: var(--text-muted); margin-bottom: 48px;">
+                "Trasformamos el <span class="text-bordered" style="font-size: 24px;">MUNDO</span> por medio del <span class="text-bordered" style="font-size: 24px;">DEPORTE</span>"
+            </p>
+
+            <div style="display: flex; gap: 16px; margin-bottom: 32px;">
+                <a href="#" class="btn btn-primary">Empieza Gratis</a>
+                <a href="#" class="btn btn-outline">Solicita Demo</a>
+            </div>
+
+            <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;">
+                <div class="social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/><circle cx="12" cy="12" r="3.5"/><circle cx="18.5" cy="5.5" r="1.5"/></svg>
+                    @heywiddo
+                </div>
+                <div class="social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    heywiddo
+                </div>
+                <div class="social-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    www.widdo.co
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            <span>JUGADORES</span>
+            <span>PAGOS</span>
+            <span>ASISTENCIA</span>
+            <span>CALENDARIO</span>
+        </div>
+    </div>
+
+</body>
+</html>
