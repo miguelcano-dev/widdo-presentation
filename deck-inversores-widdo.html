@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo - Investor Deck 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #15803d;
+            --primary-light: #22c55e;
+            --bg-dark: #18181b;
+            --bg-card: #27272a;
+            --text-white: #fafafa;
+            --text-muted: rgba(250, 250, 250, 0.7);
+            --text-subtle: rgba(250, 250, 250, 0.45);
+            --border-subtle: rgba(250, 250, 250, 0.1);
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            background: #09090b;
+            color: var(--text-white);
+            line-height: 1.5;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-dark);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            page-break-after: always;
+        }
+
+        .bg-gradient { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%); }
+        .bg-gradient-right { position: absolute; inset: 0; background: linear-gradient(225deg, rgba(22, 163, 74, 0.1) 0%, var(--bg-dark) 60%); }
+        .bg-gradient-center { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(22, 163, 74, 0.08) 0%, var(--bg-dark) 70%); }
+
+        .bg-blur-1 { position: absolute; top: -150px; left: -150px; width: 400px; height: 400px; background: rgba(22, 163, 74, 0.18); border-radius: 50%; filter: blur(120px); }
+        .bg-blur-2 { position: absolute; bottom: -100px; right: -100px; width: 300px; height: 300px; background: rgba(22, 163, 74, 0.12); border-radius: 50%; filter: blur(100px); }
+        .bg-blur-3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: rgba(22, 163, 74, 0.06); border-radius: 50%; filter: blur(120px); }
+
+        .bg-grid { position: absolute; inset: 0; opacity: 0.03; background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px; }
+
+        .content { position: relative; z-index: 10; padding: 60px 80px; height: 100%; display: flex; flex-direction: column; }
+        .content-centered { justify-content: center; align-items: center; text-align: center; }
+
+        .logo-svg { width: 80px; height: 80px; }
+        .logo-svg-sm { width: 40px; height: 40px; }
+
+        /* Typography */
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: var(--text-subtle); z-index: 20; }
+        .confidential { position: absolute; bottom: 20px; left: 30px; font-size: 10px; color: var(--text-subtle); z-index: 20; letter-spacing: 2px; text-transform: uppercase; }
+
+        h1 { font-size: 48px; font-weight: 900; line-height: 1.1; }
+        h2 { font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+        h3 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+        h4 { font-size: 18px; font-weight: 700; }
+
+        .text-green { color: var(--primary); }
+        .text-muted { color: var(--text-muted); }
+        .text-subtle { color: var(--text-subtle); }
+        .text-sm { font-size: 14px; }
+        .text-xs { font-size: 12px; }
+        .text-lg { font-size: 20px; }
+
+        .subtitle { font-size: 20px; color: var(--text-muted); font-weight: 400; line-height: 1.5; max-width: 800px; }
+
+        .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(22, 163, 74, 0.1); border: 1px solid rgba(22, 163, 74, 0.3); border-radius: 9999px; padding: 8px 20px; font-size: 13px; color: var(--primary); font-weight: 600; }
+        .badge-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+        .badge-neutral { background: rgba(255,255,255,0.05); border-color: var(--border-subtle); color: var(--text-muted); }
+
+        /* Cards */
+        .card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; }
+        .card-highlight { border-color: rgba(22, 163, 74, 0.3); background: rgba(22, 163, 74, 0.05); }
+
+        .metric-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 28px; text-align: center; }
+        .metric-value { font-size: 42px; font-weight: 900; color: var(--primary); line-height: 1; }
+        .metric-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; font-weight: 500; }
+        .metric-delta { font-size: 12px; color: var(--primary-light); margin-top: 4px; font-weight: 600; }
+
+        /* Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .flex-between { display: flex; align-items: center; justify-content: space-between; }
+        .gap-12 { gap: 12px; }
+        .gap-16 { gap: 16px; }
+        .gap-24 { gap: 24px; }
+        .gap-32 { gap: 32px; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .mt-24 { margin-top: 24px; }
+        .mt-32 { margin-top: 32px; }
+        .mt-40 { margin-top: 40px; }
+        .mb-8 { margin-bottom: 8px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-24 { margin-bottom: 24px; }
+        .flex-1 { flex: 1; }
+
+        /* Bottom bar */
+        .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; display: flex; align-items: center; justify-content: center; gap: 40px; border-top: 1px solid var(--border-subtle); z-index: 20; }
+        .bottom-bar span { font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle); text-transform: uppercase; }
+
+        /* Progress bar */
+        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary); border-radius: 3px; }
+
+        /* Table */
+        .table-simple { width: 100%; border-collapse: collapse; }
+        .table-simple th { text-align: left; font-size: 11px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); }
+        .table-simple td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+
+        /* Pricing */
+        .pricing-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 32px 24px; text-align: center; }
+        .pricing-card.featured { border: 2px solid var(--primary); background: linear-gradient(135deg, #27272a 0%, #18181b 100%); position: relative; }
+        .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 16px; border-radius: 9999px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+        .price { font-size: 36px; font-weight: 900; }
+        .price-period { font-size: 14px; color: var(--text-subtle); }
+
+        /* Timeline */
+        .timeline-item { display: flex; gap: 16px; padding: 12px 0; }
+        .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--primary); margin-top: 4px; flex-shrink: 0; }
+        .timeline-dot.future { background: rgba(255,255,255,0.2); border: 2px solid var(--primary); }
+        .timeline-dot.current { background: var(--primary); box-shadow: 0 0 12px rgba(22, 163, 74, 0.5); }
+
+        /* Icon box */
+        .icon-box { width: 48px; height: 48px; background: rgba(22, 163, 74, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon-box svg { width: 24px; height: 24px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .icon-box-blue { background: rgba(59, 130, 246, 0.1); }
+        .icon-box-blue svg { stroke: var(--accent-blue); }
+        .icon-box-purple { background: rgba(139, 92, 246, 0.1); }
+        .icon-box-purple svg { stroke: var(--accent-purple); }
+        .icon-box-orange { background: rgba(249, 115, 22, 0.1); }
+        .icon-box-orange svg { stroke: var(--accent-orange); }
+
+        /* Divider */
+        .divider { width: 60px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+        /* Bullet list */
+        .bullet-list { list-style: none; }
+        .bullet-list li { padding: 6px 0; font-size: 15px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; }
+        .bullet-list li::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+        .bullet-list-sm li { font-size: 13px; padding: 4px 0; }
+
+        /* Check list */
+        .check-list { list-style: none; }
+        .check-list li { padding: 5px 0; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+        .check-icon { color: var(--primary); font-weight: 700; font-size: 16px; }
+
+        /* Funnel */
+        .funnel-step { display: flex; align-items: center; gap: 16px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; }
+        .funnel-number { font-size: 28px; font-weight: 900; color: var(--primary); width: 40px; }
+
+        /* Comparison */
+        .vs-label { background: var(--accent-red); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+        .widdo-label { background: var(--primary); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- SLIDE 1: COVER -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div style="margin-bottom: 24px;">
+            <img src="widdo-logo.svg" style="width: 80px; height: 80px;" alt="Widdo">
+        </div>
+        <div class="badge" style="margin-bottom: 32px;">
+            <span class="badge-dot"></span>
+            Ronda Pre-Seed &middot; Febrero 2026
+        </div>
+        <h1 style="font-size: 56px; margin-bottom: 16px;">
+            Widdo
+        </h1>
+        <p class="subtitle" style="font-size: 24px; max-width: 700px; margin-bottom: 32px;">
+            Cada jugador. Cada deporte.<br><span class="text-green" style="font-weight: 700;">Una plataforma.</span>
+        </p>
+        <p style="font-size: 16px; color: var(--text-subtle);">
+            SaaS B2B &middot; Multi-deporte &middot; Clubes, Ligas y Torneos &middot; LATAM + Global
+        </p>
+    </div>
+    <div class="bottom-bar">
+        <span>Gestión</span>
+        <span>Pagos</span>
+        <span>Asistencia</span>
+        <span>Torneos</span>
+        <span>Comunicación</span>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">1</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 2: EL PROBLEMA -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> El Problema</div>
+        <h2 style="font-size: 34px; margin-bottom: 8px;">El deporte no tiene datos unificados.<br><span class="text-green">Sin datos, no puedes medir. Sin medir, no puedes crecer.</span></h2>
+        <p class="text-muted text-lg mt-8 mb-24" style="max-width: 800px;">+200,000 clubes deportivos en LATAM gestionan todo con WhatsApp y Excel. Cada club es una isla de datos. El jugador pierde su historial cuando cambia de club o deporte. Y el deporte, sin importar el nivel, merece verse profesional.</p>
+
+        <div class="grid-3 mt-16">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 8px;">🏝️</div>
+                <h4 style="margin-bottom: 8px;">Cada club es una isla</h4>
+                <p class="text-sm text-muted">Datos fragmentados en cuadernos, hojas de cálculo y chats. No hay una fuente de verdad. No se comparten datos entre clubes, ligas ni deportes.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 8px;">📉</div>
+                <h4 style="margin-bottom: 8px;">No puedes medir lo que no gestionas</h4>
+                <p class="text-sm text-muted">Sin datos de asistencia, pagos ni rendimiento, los directores toman decisiones a ciegas. No saben por qué pierden jugadores ni dinero.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 8px;">🎯</div>
+                <h4 style="margin-bottom: 8px;">El deporte merece verse profesional</h4>
+                <p class="text-sm text-muted">Un club amateur gestionado con Excel se ve amateur. Los padres, jugadores y patrocinadores esperan una experiencia profesional sin importar el nivel.</p>
+            </div>
+        </div>
+
+        <div class="mt-24" style="text-align: center;">
+            <div class="card-highlight card" style="display: inline-flex; gap: 40px; padding: 16px 40px;">
+                <div><span style="font-size: 28px; font-weight: 900; color: var(--accent-orange);">92%</span><br><span class="text-xs text-muted">Clubes sin software</span></div>
+                <div><span style="font-size: 28px; font-weight: 900; color: var(--accent-red);">0</span><br><span class="text-xs text-muted">Datos portátiles del jugador</span></div>
+                <div><span style="font-size: 28px; font-weight: 900; color: var(--accent-purple);">$2.8B</span><br><span class="text-xs text-muted">Mercado sin líder en LATAM</span></div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">2</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 3: LA SOLUCIÓN -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> La Solución</div>
+        <h2 style="font-size: 34px;">Widdo centraliza <span class="text-green">toda la operación</span><br>de cualquier club deportivo en una plataforma</h2>
+        <p class="text-muted mt-8 mb-24">Multi-deporte. Cada rol tiene su experiencia: el director ve finanzas, el entrenador gestiona asistencia, el padre paga desde el celular. Y el perfil del jugador lo sigue a donde vaya.</p>
+
+        <div class="grid-2" style="gap: 16px;">
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                    <h4>Gestión de Jugadores</h4>
+                    <p class="text-sm text-muted">Matrícula digital, documentos, categorías, historial completo. Cumplimiento normativo automático.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                <div class="icon-box icon-box-blue">
+                    <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><rect x="2" y="2" width="20" height="20" rx="2"/></svg>
+                </div>
+                <div>
+                    <h4>Cobros y Pagos</h4>
+                    <p class="text-sm text-muted">Cobros automáticos, descuentos familiares, recordatorios de mora, reportes financieros en tiempo real.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                <div class="icon-box icon-box-purple">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                    <h4>Calendario y Eventos</h4>
+                    <p class="text-sm text-muted">Sesiones de entrenamiento, partidos, reuniones. Invitaciones, confirmaciones y recordatorios automáticos.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                <div class="icon-box icon-box-orange">
+                    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <div>
+                    <h4>Control de Asistencia</h4>
+                    <p class="text-sm text-muted">Registro digital por sesión, métricas de asistencia por jugador, alertas de inasistencia al padre.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(22,163,74,0.06); border-radius: 12px; border: 1px solid rgba(22,163,74,0.2);">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                    <h4 class="text-green">Perfil Deportivo Portátil</h4>
+                    <p class="text-sm text-muted">La hoja de vida del jugador vive en Widdo. Si cambia de club o de deporte, su historial, documentos y estadísticas lo siguen.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                <div class="icon-box icon-box-blue">
+                    <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                </div>
+                <div>
+                    <h4>6 Dashboards por Rol</h4>
+                    <p class="text-sm text-muted">Director, entrenador, contador, jugador, padre y super admin. Cada uno ve lo que necesita, nada más.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">3</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 4: LA PIRÁMIDE DEL DEPORTE -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-center"></div>
+    <div class="bg-blur-3"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div class="badge mb-16"><span class="badge-dot"></span> La Visión</div>
+        <h2 style="font-size: 34px; margin-bottom: 32px;">Widdo mapea <span class="text-green">toda la pirámide</span><br>del deporte</h2>
+
+        <!-- Pirámide visual -->
+        <div style="position: relative; width: 700px; margin: 0 auto;">
+            <!-- Nivel 4: Federaciones -->
+            <div style="display: flex; justify-content: center; margin-bottom: 8px;">
+                <div style="background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 12px; padding: 12px 32px; text-align: center; width: 260px;">
+                    <p style="font-size: 11px; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Federaciones</p>
+                    <p class="text-xs text-muted">Ven todo el ecosistema. Datos para decisiones.</p>
+                </div>
+            </div>
+            <!-- Nivel 3: Ligas -->
+            <div style="display: flex; justify-content: center; margin-bottom: 8px;">
+                <div style="background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 12px; padding: 12px 32px; text-align: center; width: 400px;">
+                    <p style="font-size: 11px; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Ligas Deportivas</p>
+                    <p class="text-xs text-muted">Gestionan clubes afiliados, torneos, sanciones, transferencias.</p>
+                </div>
+            </div>
+            <!-- Nivel 2: Clubes -->
+            <div style="display: flex; justify-content: center; margin-bottom: 8px;">
+                <div style="background: rgba(22, 163, 74, 0.15); border: 1px solid rgba(22, 163, 74, 0.4); border-radius: 12px; padding: 12px 32px; text-align: center; width: 540px;">
+                    <p style="font-size: 11px; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Clubes y Academias</p>
+                    <p class="text-xs text-muted">Gestión integral: jugadores, cobros, asistencia, comunicación.</p>
+                </div>
+            </div>
+            <!-- Nivel 1: Jugadores/Padres -->
+            <div style="display: flex; justify-content: center;">
+                <div style="background: rgba(249, 115, 22, 0.15); border: 1px solid rgba(249, 115, 22, 0.4); border-radius: 12px; padding: 12px 32px; text-align: center; width: 680px;">
+                    <p style="font-size: 11px; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Jugadores / Padres / Familias</p>
+                    <p class="text-xs text-muted">Perfil deportivo portátil. Historial que los sigue a cualquier club o deporte.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 16px 32px; max-width: 650px;">
+                <p class="text-sm"><strong class="text-green">Los datos fluyen de abajo hacia arriba.</strong> Una federación puede ver cuántos jugadores hay, dónde están, quiénes destacan. Todo conectado. El deporte, sin importar el nivel, crece cuando se gestiona con datos.</p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">4</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 5: PRODUCTO - SCREENSHOTS -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-center"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="flex-between mb-16">
+            <div>
+                <div class="badge mb-8"><span class="badge-dot"></span> Producto en Producción</div>
+                <h2 style="font-size: 30px;">Plataforma web completa, <span class="text-green">funcionando hoy</span></h2>
+            </div>
+            <div style="text-align: right;">
+                <p class="text-sm text-muted">widdo.co</p>
+                <p class="text-sm text-muted">api.widdo.co</p>
+            </div>
+        </div>
+        <div class="grid-3" style="flex: 1; gap: 12px;">
+            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 200px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+                    <img src="presentacion-assets/dashboard-propietario.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Dashboard<br>Propietario</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Dashboard del Director</p>
+                    <p class="text-xs text-muted">KPIs, cobros, asistencia, alertas</p>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 200px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+                    <img src="presentacion-assets/gestion-jugadores.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Gestión<br>Jugadores</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Gestión de Jugadores</p>
+                    <p class="text-xs text-muted">CRUD completo, filtros, exportación</p>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 200px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+                    <img src="presentacion-assets/gestion-pagos.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Gestión<br>Pagos</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Sistema de Pagos</p>
+                    <p class="text-xs text-muted">Cobros, descuentos, reportes</p>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 200px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+                    <img src="presentacion-assets/calendario.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Calendario</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Calendario de Eventos</p>
+                    <p class="text-xs text-muted">Entrenamientos, partidos, reuniones</p>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 200px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+                    <img src="presentacion-assets/control-asistencia.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Control<br>Asistencia</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Control de Asistencia</p>
+                    <p class="text-xs text-muted">Por sesión, categoría, jugador</p>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 200px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+                    <img src="presentacion-assets/rol-padre.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Vista<br>Padre</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Portal de Padres</p>
+                    <p class="text-xs text-muted">Pagos, asistencia hijos, documentos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">5</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 6: TRACCIÓN - MÉTRICAS REALES -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Tracción &middot; Pre-revenue con Product-Market Fit</div>
+        <h2 style="font-size: 34px; margin-bottom: 4px;">Crecimiento <span class="text-green">100% orgánico</span></h2>
+        <p class="text-muted mb-24">14 clubes usando Widdo diariamente sin inversión en marketing. Fase de validación completada. Monetización próxima.</p>
+
+        <div class="grid-4" style="margin-bottom: 32px;">
+            <div class="metric-card">
+                <div class="metric-value">14</div>
+                <div class="metric-label">Clubes Activos</div>
+                <div class="metric-delta">+12% crecimiento</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">217</div>
+                <div class="metric-label">Jugadores Registrados</div>
+                <div class="metric-delta">~15.5 por club</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">419</div>
+                <div class="metric-label">Usuarios Totales</div>
+                <div class="metric-delta">Directores + padres + jugadores</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" style="color: var(--accent-orange);">3</div>
+                <div class="metric-label">Clubes Nuevos</div>
+                <div class="metric-delta">Solo este mes (Feb 2026)</div>
+            </div>
+        </div>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div class="card">
+                <h4 class="mb-8">Por qué importan estos números</h4>
+                <ul class="bullet-list bullet-list-sm">
+                    <li><strong>CAC = $0</strong> &mdash; Todos los clubes llegaron sin pauta ni outbound</li>
+                    <li><strong>Multi-usuario por club</strong> &mdash; Cada club trae ~30 usuarios (director, entrenadores, padres, jugadores)</li>
+                    <li><strong>0% churn</strong> &mdash; Ningún club se ha ido. El dato vive en Widdo</li>
+                    <li><strong>Efecto red</strong> &mdash; Los padres de un club recomiendan a otros clubes</li>
+                </ul>
+            </div>
+            <div class="card card-highlight">
+                <h4 class="mb-8 text-green">Señales de product-market fit</h4>
+                <ul class="bullet-list bullet-list-sm">
+                    <li>Directores <strong>piden funcionalidades</strong> activamente</li>
+                    <li>Clubes <strong>refieren a otros clubes</strong> sin incentivo</li>
+                    <li>Adopción inmediata &mdash; <strong>onboarding en &lt;24h</strong></li>
+                    <li>Usuarios activos diariamente (entrenadores pasan asistencia)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">6</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 7: MERCADO -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Tamaño de Mercado</div>
+        <h2 style="font-size: 34px; margin-bottom: 24px;">Mercado de <span class="text-green">$2.8B</span> en LATAM,<br>fragmentado y desatendido</h2>
+
+        <div class="grid-3 mb-24" style="gap: 24px;">
+            <div class="card" style="text-align: center; border-color: rgba(139, 92, 246, 0.3);">
+                <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">TAM</p>
+                <div style="font-size: 42px; font-weight: 900; color: var(--accent-purple);">$2.8B</div>
+                <p class="text-sm text-muted mt-8">Sports club management software global. +500K organizaciones deportivas en LATAM.</p>
+            </div>
+            <div class="card" style="text-align: center; border-color: rgba(59, 130, 246, 0.3);">
+                <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">SAM</p>
+                <div style="font-size: 42px; font-weight: 900; color: var(--accent-blue);">$340M</div>
+                <p class="text-sm text-muted mt-8">~200K clubes y academias deportivas en Colombia, México, Argentina, Chile, Ecuador, Perú.</p>
+            </div>
+            <div class="card" style="text-align: center; border-color: rgba(22, 163, 74, 0.3);">
+                <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">SOM</p>
+                <div style="font-size: 42px; font-weight: 900; color: var(--primary);">$8.5M</div>
+                <p class="text-sm text-muted mt-8">5,000 clubes en Colombia (3 años). $140/club/mes promedio.</p>
+            </div>
+        </div>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div>
+                <h4 class="mb-8">Colombia (mercado actual)</h4>
+                <table class="table-simple">
+                    <tr><td>Escuelas y academias deportivas</td><td style="text-align:right; font-weight: 700;">~8,000</td></tr>
+                    <tr><td>Clubes deportivos</td><td style="text-align:right; font-weight: 700;">~15,000</td></tr>
+                    <tr><td>Jugadores registrados en clubes</td><td style="text-align:right; font-weight: 700;">+500,000</td></tr>
+                    <tr><td>Crecimiento anual del sector</td><td style="text-align:right; font-weight: 700; color: var(--primary);">12% YoY</td></tr>
+                </table>
+            </div>
+            <div>
+                <h4 class="mb-8">Expansión LATAM (2027-2028)</h4>
+                <table class="table-simple">
+                    <tr><td>🇲🇽 México</td><td style="text-align:right; font-weight: 700;">~40,000 clubes</td></tr>
+                    <tr><td>🇦🇷 Argentina</td><td style="text-align:right; font-weight: 700;">~25,000 clubes</td></tr>
+                    <tr><td>🇪🇨 Ecuador</td><td style="text-align:right; font-weight: 700;">~8,000 clubes</td></tr>
+                    <tr><td>🇵🇪 Perú</td><td style="text-align:right; font-weight: 700;">~10,000 clubes</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">7</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 8: MODELO DE NEGOCIO -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-3"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Modelo de Negocio</div>
+        <h2 style="font-size: 32px; margin-bottom: 24px;">SaaS por suscripción mensual<br>con <span class="text-green">múltiples fuentes de ingreso</span></h2>
+
+        <div class="grid-3 mb-24" style="gap: 16px;">
+            <div class="pricing-card">
+                <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Básico</p>
+                <div class="price">$49<span class="text-sm text-subtle">K COP</span></div>
+                <p class="text-xs text-subtle mb-16">/mes (~$12 USD)</p>
+                <ul class="check-list" style="text-align: left;">
+                    <li><span class="check-icon">&#10003;</span> Hasta 80 miembros</li>
+                    <li><span class="check-icon">&#10003;</span> 3 entrenadores</li>
+                    <li><span class="check-icon">&#10003;</span> Asistencia y calendario</li>
+                    <li><span class="check-icon">&#10003;</span> Cobros y pagos</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Más Popular</div>
+                <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Pro</p>
+                <div class="price text-green">$129<span class="text-sm text-subtle">K COP</span></div>
+                <p class="text-xs text-subtle mb-16">/mes (~$32 USD)</p>
+                <ul class="check-list" style="text-align: left;">
+                    <li><span class="check-icon">&#10003;</span> Hasta 200 miembros</li>
+                    <li><span class="check-icon">&#10003;</span> Reportes avanzados</li>
+                    <li><span class="check-icon">&#10003;</span> Documentos y legal</li>
+                    <li><span class="check-icon">&#10003;</span> Comunicaciones</li>
+                    <li><span class="check-icon">&#10003;</span> Soporte prioritario</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Enterprise</p>
+                <div class="price">$299<span class="text-sm text-subtle">K COP</span></div>
+                <p class="text-xs text-subtle mb-16">/mes (~$75 USD) &middot; Desde</p>
+                <ul class="check-list" style="text-align: left;">
+                    <li><span class="check-icon">&#10003;</span> Miembros ilimitados</li>
+                    <li><span class="check-icon">&#10003;</span> Torneos y ligas</li>
+                    <li><span class="check-icon">&#10003;</span> API abierta</li>
+                    <li><span class="check-icon">&#10003;</span> Branding personalizado</li>
+                    <li><span class="check-icon">&#10003;</span> Soporte premium 24/7</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid-2" style="gap: 16px;">
+            <div class="card" style="text-align: center; padding: 16px;">
+                <p class="text-xs text-subtle" style="text-transform: uppercase; letter-spacing: 1px;">Fuente principal</p>
+                <h4 class="mt-8">Suscripción SaaS</h4>
+                <p class="text-xs text-muted mt-8">Ingreso recurrente mensual/anual. Descuento 17% por pago anual. <strong>~80% del revenue.</strong></p>
+            </div>
+            <div class="card" style="text-align: center; padding: 16px;">
+                <p class="text-xs text-subtle" style="text-transform: uppercase; letter-spacing: 1px;">Fuente complementaria</p>
+                <h4 class="mt-8">Comisión pagos online</h4>
+                <p class="text-xs text-muted mt-8">Comisión por cada pago procesado entre padres y clubes. <strong>~20% del revenue.</strong></p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">8</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 9: UNIT ECONOMICS -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Unit Economics</div>
+        <h2 style="font-size: 32px; margin-bottom: 24px;">Márgenes de SaaS con <span class="text-green">CAC cercano a $0</span></h2>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <div class="card mb-16">
+                    <h4 class="mb-16">Métricas por Club (proyectadas)</h4>
+                    <table class="table-simple">
+                        <tr><td>ARPC (Revenue por club/mes)</td><td style="text-align:right; font-weight: 700; color: var(--primary);">$32 USD</td></tr>
+                        <tr><td>Costo de servir 1 club</td><td style="text-align:right;">$3.50 USD</td></tr>
+                        <tr><td>Margen bruto</td><td style="text-align:right; font-weight: 700; color: var(--primary);">91%</td></tr>
+                        <tr><td>CAC actual (orgánico)</td><td style="text-align:right; font-weight: 700; color: var(--primary);">$0</td></tr>
+                        <tr><td>CAC proyectado (con marketing)</td><td style="text-align:right;">$30 USD</td></tr>
+                        <tr><td>LTV (24 meses, 0% churn)</td><td style="text-align:right; font-weight: 700;">$768 USD</td></tr>
+                        <tr><td>LTV/CAC ratio</td><td style="text-align:right; font-weight: 700; color: var(--primary);">25x</td></tr>
+                    </table>
+                </div>
+                <div class="card">
+                    <h4 class="mb-8">Infraestructura actual</h4>
+                    <table class="table-simple">
+                        <tr><td>DigitalOcean Droplet (API)</td><td style="text-align:right;">$12/mes</td></tr>
+                        <tr><td>Managed MySQL</td><td style="text-align:right;">$15/mes</td></tr>
+                        <tr><td>Spaces (archivos)</td><td style="text-align:right;">$5/mes</td></tr>
+                        <tr><td>Resend (emails)</td><td style="text-align:right;">$0/mes</td></tr>
+                        <tr><td style="font-weight: 700;">Total infra</td><td style="text-align:right; font-weight: 700; color: var(--primary);">$32/mes</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="card card-highlight" style="margin-bottom: 16px;">
+                    <h4 class="mb-16 text-green">Proyección de Revenue</h4>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div>
+                            <div class="flex-between mb-8">
+                                <span class="text-sm">Q2 2026 &middot; 50 clubes</span>
+                                <span class="text-sm" style="font-weight: 700;">$2,000/mes</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between mb-8">
+                                <span class="text-sm">Q4 2026 &middot; 200 clubes</span>
+                                <span class="text-sm" style="font-weight: 700;">$8,000/mes</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 30%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between mb-8">
+                                <span class="text-sm">Q2 2027 &middot; 500 clubes</span>
+                                <span class="text-sm" style="font-weight: 700;">$20,000/mes</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 55%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between mb-8">
+                                <span class="text-sm">Q4 2027 &middot; 1,500 clubes</span>
+                                <span class="text-sm" style="font-weight: 700;">$60,000/mes</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between mb-8">
+                                <span class="text-sm">2028 &middot; 5,000 clubes (LATAM)</span>
+                                <span class="text-sm" style="font-weight: 700;">$200,000/mes</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding: 16px; text-align: center;">
+                    <p class="text-xs text-subtle" style="text-transform: uppercase; letter-spacing: 1px;">Break-even estimado</p>
+                    <p style="font-size: 24px; font-weight: 800; color: var(--primary); margin-top: 4px;">~80 clubes</p>
+                    <p class="text-xs text-muted">Con equipo de 3 personas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">9</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 10: COMPETENCIA -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-8"><span class="badge-dot"></span> Panorama Competitivo</div>
+        <h2 style="font-size: 28px; margin-bottom: 16px;">No hay un <span class="text-green">Widdo</span> en LATAM.<br>Las alternativas resuelven pedazos del problema.</h2>
+
+        <div style="overflow-x: auto;">
+            <table class="table-simple" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width: 16%;">Funcionalidad</th>
+                        <th style="width: 14%; text-align: center;"><span class="widdo-label">Widdo</span></th>
+                        <th style="width: 14%; text-align: center;">TeamSnap</th>
+                        <th style="width: 14%; text-align: center;">SportsEngine</th>
+                        <th style="width: 14%; text-align: center;">Excel + WhatsApp</th>
+                        <th style="width: 14%; text-align: center;">Software local</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gestión de jugadores</td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--text-subtle);">Parcial</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Cobros y pagos</td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--text-subtle);">Parcial</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--text-subtle);">Parcial</td>
+                    </tr>
+                    <tr>
+                        <td>Control de asistencia</td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    </tr>
+                    <tr>
+                        <td>Portal de padres</td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--text-subtle);">Parcial</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    </tr>
+                    <tr>
+                        <td>Multi-deporte</td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--text-subtle);">Solo USA</td>
+                        <td style="text-align: center; color: var(--primary);">N/A</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    </tr>
+                    <tr>
+                        <td>LATAM (moneda, legal, idioma)</td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    </tr>
+                    <tr>
+                        <td>Precio asequible para LATAM</td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                        <td style="text-align: center; color: var(--text-subtle);">Varía</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perfil portátil del jugador</strong></td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Torneos en tiempo real</strong></td>
+                        <td style="text-align: center; color: var(--primary); font-weight: 700;">Próximo</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--text-subtle);">Parcial</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                        <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-16" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 12px 24px;">
+                <p class="text-sm"><strong class="text-green">Ventaja competitiva clave:</strong> Widdo es el único con perfil deportivo portátil del jugador entre clubes y deportes. Cobra por club (no por usuario), con moneda local y cumplimiento legal LATAM.</p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">10</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 11: ROADMAP -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Roadmap</div>
+        <h2 style="font-size: 32px; margin-bottom: 24px;">De gestión de clubes a <span class="text-green">infraestructura<br>completa del deporte</span></h2>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <div class="timeline-item">
+                    <div class="timeline-dot current"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q1 2026 &middot; AHORA</p>
+                        <h4>App Móvil (React Native)</h4>
+                        <p class="text-sm text-muted">En desarrollo activo, próxima a lanzar. Asistencia desde cancha, pagos desde el celular, push notifications nativas.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot current"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q1 2026 &middot; EN CURSO</p>
+                        <h4>Ligas Deportivas</h4>
+                        <p class="text-sm text-muted">Nuevo vertical: Liga de Baloncesto de Antioquia ya en proceso de integración. Gestión de clubes afiliados, sanciones, transferencias.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q2 2026</p>
+                        <h4>Plataforma de Torneos</h4>
+                        <p class="text-sm text-muted">Fixture automático, planilla en tiempo real, tabla de posiciones, estadísticas por jugador. Multi-deporte.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q3 2026</p>
+                        <h4>Agente IA Integrado</h4>
+                        <p class="text-sm text-muted">Asistente conversacional para directores: "Muéstrame los jugadores que deben más de 2 meses." Reportes por voz.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q4 2026</p>
+                        <h4>Federaciones + Multi-idioma</h4>
+                        <p class="text-sm text-muted">Plataforma para federaciones. Soporte inglés y portugués. Preparar mercado internacional.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">2027</p>
+                        <h4>Expansión LATAM + USA</h4>
+                        <p class="text-sm text-muted">México, Argentina, Ecuador, Brasil, USA. Pasarelas de pago locales por país. Stripe para mercado internacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16" style="text-align: center;">
+            <div class="card" style="display: inline-flex; gap: 32px; padding: 12px 32px;">
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Backend</p>
+                    <div class="progress-bar mt-8" style="width: 120px;"><div class="progress-fill" style="width: 97%;"></div></div>
+                    <p class="text-xs text-green mt-8">97%</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Frontend</p>
+                    <div class="progress-bar mt-8" style="width: 120px;"><div class="progress-fill" style="width: 85%;"></div></div>
+                    <p class="text-xs text-green mt-8">85%</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Testing</p>
+                    <div class="progress-bar mt-8" style="width: 120px;"><div class="progress-fill" style="width: 100%;"></div></div>
+                    <p class="text-xs text-green mt-8">100%</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Seguridad</p>
+                    <div class="progress-bar mt-8" style="width: 120px;"><div class="progress-fill" style="width: 95%;"></div></div>
+                    <p class="text-xs text-green mt-8">95%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">11</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 12: ¿POR QUÉ AHORA? -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> ¿Por qué ahora?</div>
+        <h2 style="font-size: 34px; margin-bottom: 24px;">La ventana de oportunidad<br>está <span class="text-green">abierta hoy</span></h2>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div class="card" style="padding: 20px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 28px;">📱</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Digitalización de pagos en LATAM</h4>
+                        <p class="text-sm text-muted">Nequi, PSE, Daviplata, Mercado Pago. Por primera vez, cualquier padre puede pagar desde el celular. La infraestructura de pagos digitales está lista.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 28px;">🏃</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Boom post-pandemia en deporte organizado</h4>
+                        <p class="text-sm text-muted">Los padres priorizan actividad física para sus hijos. El número de clubes y academias deportivas creció +12% anual desde 2022.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 28px;">🎯</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Padres exigen profesionalismo</h4>
+                        <p class="text-sm text-muted">Los padres de hoy comparan la experiencia de un club con la de cualquier app. Esperan transparencia, pagos digitales y comunicación profesional.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 20px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 28px;">🏆</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Sin competidor dominante en LATAM</h4>
+                        <p class="text-sm text-muted">TeamSnap y SportsEngine no operan en la región. No hay un ganador establecido. El primero en consolidar la pirámide deportiva en LATAM gana.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 16px 32px;">
+                <p class="text-sm"><strong class="text-green">Timing perfecto:</strong> Infraestructura de pagos lista + demanda creciente + cero competencia regional = oportunidad de first-mover.</p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">12</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 13: ECOSISTEMA WIDDO -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div class="badge mb-16"><span class="badge-dot"></span> Ecosistema de Productos</div>
+        <h2 style="font-size: 34px; margin-bottom: 32px;">Una plataforma.<br><span class="text-green">Tres productos.</span></h2>
+
+        <div class="grid-3" style="gap: 24px; max-width: 900px;">
+            <div class="card" style="padding: 28px; text-align: center; border-color: rgba(22, 163, 74, 0.4);">
+                <div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏟️</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px;" class="text-green">Widdo</h3>
+                <p class="text-xs text-subtle mb-16">EN PRODUCCIÓN</p>
+                <p class="text-sm text-muted">Gestión integral de clubes y academias deportivas. Jugadores, cobros, asistencia, comunicación. Multi-deporte.</p>
+            </div>
+            <div class="card" style="padding: 28px; text-align: center; border-color: rgba(59, 130, 246, 0.4);">
+                <div style="width: 56px; height: 56px; background: rgba(59, 130, 246, 0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏆</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px; color: var(--accent-blue);">Widdo Torneos</h3>
+                <p class="text-xs text-subtle mb-16">PRÓXIMO</p>
+                <p class="text-sm text-muted">Plataforma de torneos y competiciones. Fixtures automáticos, planillas en tiempo real, estadísticas, tabla de posiciones.</p>
+            </div>
+            <div class="card" style="padding: 28px; text-align: center; border-color: rgba(139, 92, 246, 0.4);">
+                <div style="width: 56px; height: 56px; background: rgba(139, 92, 246, 0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🎓</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px; color: var(--accent-purple);">Widdo Academy</h3>
+                <p class="text-xs text-subtle mb-16">FUTURO</p>
+                <p class="text-sm text-muted">Centro de aprendizaje de alta calidad para todo el entorno del deporte. Cursos para directores, entrenadores y padres.</p>
+            </div>
+        </div>
+
+        <div class="mt-24" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 16px 32px; max-width: 650px;">
+                <p class="text-sm"><strong class="text-green">Cada producto abre un nuevo mercado</strong> y refuerza los otros. Un club que usa Widdo organiza torneos con Widdo Torneos, y capacita su staff con Widdo Academy.</p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">13</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 14: TECH STACK / MOAT -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Tecnología y Defensibilidad</div>
+        <h2 style="font-size: 32px; margin-bottom: 24px;">Arquitectura de <span class="text-green">producción real</span>,<br>no un prototipo</h2>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <h4 class="mb-16">Stack de producción</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(59,130,246,0.2); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Backend</span>
+                        <span class="text-sm">Laravel 12 + PHP 8.3 + MySQL</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(22,163,74,0.2); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Frontend</span>
+                        <span class="text-sm">React 18 + Vite + Tailwind CSS</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(139,92,246,0.2); color: var(--accent-purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Real-time</span>
+                        <span class="text-sm">Laravel Reverb (WebSockets nativos)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(249,115,22,0.2); color: var(--accent-orange); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Infra</span>
+                        <span class="text-sm">DigitalOcean + CI/CD GitHub Actions</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(22,163,74,0.2); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Pagos</span>
+                        <span class="text-sm">Wompi (CO) + arquitectura multi-gateway</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(59,130,246,0.2); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Testing</span>
+                        <span class="text-sm">Playwright E2E + PHPUnit + Sentry</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-16">Moat (defensibilidad)</h4>
+                <div class="card mb-12" style="border-color: rgba(22,163,74,0.3);">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 24px;">🏅</div>
+                        <div>
+                            <h4 style="font-size: 15px;">Perfil deportivo portátil = lock-in del jugador</h4>
+                            <p class="text-xs text-muted">El jugador mantiene su historial en Widdo aunque cambie de club o deporte. Crea un efecto red único.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-12">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 24px;">🌐</div>
+                        <div>
+                            <h4 style="font-size: 15px;">Efecto red por geografía</h4>
+                            <p class="text-xs text-muted">Padres recomiendan. Ligas locales exigen la misma plataforma. Torneos entre clubes Widdo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-12">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 24px;">🇨🇴</div>
+                        <div>
+                            <h4 style="font-size: 15px;">Localización profunda LATAM</h4>
+                            <p class="text-xs text-muted">COP, EPS, Ley 1581, Nequi/Daviplata/PSE. Un competidor USA necesitaría años para replicar.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 24px;">⚡</div>
+                        <div>
+                            <h4 style="font-size: 15px;">Multi-tenant de producción</h4>
+                            <p class="text-xs text-muted">80+ tablas, 107 modelos, 55+ controllers, 29 services, 18 policies. No es un MVP, es un producto real.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">14</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 15: GO-TO-MARKET -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Estrategia Go-to-Market</div>
+        <h2 style="font-size: 32px; margin-bottom: 24px;">Crecimiento <span class="text-green">bottom-up</span>:<br>cada club es un canal de distribución</h2>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <h4 class="mb-16">Motor de crecimiento actual</h4>
+                <div class="funnel-step">
+                    <div class="funnel-number">1</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Director descubre Widdo (voz a voz)</p>
+                        <p class="text-xs text-muted">Referencia de otro director, búsqueda orgánica, blog SEO</p>
+                    </div>
+                </div>
+                <div class="funnel-step">
+                    <div class="funnel-number">2</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Registro y onboarding (&lt;24h)</p>
+                        <p class="text-xs text-muted">Configura club, sube jugadores, invita entrenadores</p>
+                    </div>
+                </div>
+                <div class="funnel-step">
+                    <div class="funnel-number">3</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Invita padres al portal</p>
+                        <p class="text-xs text-muted">30-50 padres por club ven Widdo. Efecto multiplicador.</p>
+                    </div>
+                </div>
+                <div class="funnel-step">
+                    <div class="funnel-number">4</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Padres refieren a otros clubes</p>
+                        <p class="text-xs text-muted">"El club de mi sobrino también debería usar esto"</p>
+                    </div>
+                </div>
+
+                <div class="card card-highlight mt-16" style="padding: 16px;">
+                    <p class="text-sm"><strong class="text-green">Viral loop natural:</strong> 1 club = ~30 usuarios que conocen la marca. K-factor orgánico medible.</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-16">Canales de adquisición (con inversión)</h4>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">SEO + Content Marketing</h4>
+                            <p class="text-xs text-muted">Blog con 10 artículos SEO publicados. Landing pages verticales.</p>
+                        </div>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">Activo</span>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Programa de referidos</h4>
+                            <p class="text-xs text-muted">1 mes gratis por cada club referido. Wallet de créditos.</p>
+                        </div>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">Q2 2026</span>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px; border-color: rgba(22,163,74,0.3);">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Alianzas con ligas locales</h4>
+                            <p class="text-xs text-muted">Liga de Baloncesto de Antioquia en proceso. Ligas bajan Widdo a todos sus clubes.</p>
+                        </div>
+                        <span class="badge" style="font-size: 11px; padding: 4px 12px;">En curso</span>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Torneos como viralización</h4>
+                            <p class="text-xs text-muted">Clubes no-Widdo participan en torneos Widdo. Ven la plataforma.</p>
+                        </div>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">Q2 2026</span>
+                    </div>
+                </div>
+                <div class="card" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Meta Ads + Google Ads (LATAM)</h4>
+                            <p class="text-xs text-muted">CAC estimado $15-30 USD. LTV/CAC > 20x.</p>
+                        </div>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">2027</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">15</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 16: EQUIPO -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-3"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div class="badge mb-24"><span class="badge-dot"></span> Equipo</div>
+        <h2 style="font-size: 34px; margin-bottom: 32px;">Fundador técnico<br>con <span class="text-green">toda la ejecución</span></h2>
+
+        <div class="card" style="max-width: 600px; width: 100%; padding: 40px; text-align: center;">
+            <div style="width: 80px; height: 80px; background: rgba(22, 163, 74, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 36px;">
+                MA
+            </div>
+            <h3 style="margin-bottom: 4px;">Miguel Angel Cano</h3>
+            <p class="text-green text-sm" style="font-weight: 600; margin-bottom: 16px;">Founder & CTO</p>
+            <p class="text-muted text-sm" style="max-width: 400px; margin: 0 auto;">
+                Desarrollador de software full-stack con 24 años de experiencia. Construyó Widdo de 0 a producción como solo founder. Backend, frontend, infraestructura, CI/CD, seguridad y producto.
+            </p>
+        </div>
+
+        <div class="grid-3 mt-32" style="max-width: 700px; gap: 16px;">
+            <div class="card" style="text-align: center; padding: 16px;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">107</p>
+                <p class="text-xs text-muted">Modelos de datos</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 16px;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">55+</p>
+                <p class="text-xs text-muted">API controllers</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 16px;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">80+</p>
+                <p class="text-xs text-muted">Tablas en producción</p>
+            </div>
+        </div>
+
+        <div class="mt-24">
+            <p class="text-sm text-muted" style="max-width: 500px; margin: 0 auto;">
+                <strong>Contrataciones planeadas con la inversión:</strong><br>
+                1 Growth/Sales (Q2 2026) &middot; 1 Frontend Sr. (Q3 2026) &middot; 1 Customer Success (Q4 2026)
+            </p>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">16</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 17: USO DE FONDOS -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> La Ronda</div>
+        <h2 style="font-size: 34px; margin-bottom: 8px;">Buscamos <span class="text-green">$150K USD</span> Pre-Seed</h2>
+        <p class="text-muted mb-24">Para ir de 14 clubes a 500 en 18 meses y preparar expansión LATAM.</p>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <h4 class="mb-16">Distribución de fondos</h4>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Equipo (salarios)</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">45% &middot; $67.5K</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 45%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Growth lead + Frontend Sr. + Customer Success</p>
+                    </div>
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Producto (desarrollo)</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">25% &middot; $37.5K</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 25%;"></div></div>
+                        <p class="text-xs text-muted mt-4">App móvil, torneos, agente IA</p>
+                    </div>
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Growth y marketing</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">20% &middot; $30K</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+                        <p class="text-xs text-muted mt-4">SEO, contenido, ads, eventos deportivos</p>
+                    </div>
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Infraestructura y operación</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">10% &middot; $15K</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Servidores, herramientas, legal</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-16">Milestones con la inversión</h4>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Mes 6</p>
+                            <h4 style="font-size: 15px;">100 clubes activos</h4>
+                            <p class="text-xs text-muted">MRR: $4,000 USD</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-size: 28px; font-weight: 900; color: var(--primary);">100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Mes 12</p>
+                            <h4 style="font-size: 15px;">300 clubes + App publicada</h4>
+                            <p class="text-xs text-muted">MRR: $12,000 USD. App en iOS/Android.</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-size: 28px; font-weight: 900; color: var(--primary);">300</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Mes 18</p>
+                            <h4 style="font-size: 15px;">500 clubes + 2 países</h4>
+                            <p class="text-xs text-muted">MRR: $20,000 USD. Colombia + México.</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-size: 28px; font-weight: 900; color: var(--primary);">500</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-highlight" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Objetivo Series Seed</p>
+                            <h4 style="font-size: 15px;">Levantar Seed de $500K-$1M</h4>
+                            <p class="text-xs text-muted">Con unit economics validados y 3+ países.</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="font-size: 20px; font-weight: 900; color: var(--primary);">🎯</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">17</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 18: CIERRE -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-blur-3"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div style="margin-bottom: 32px;">
+            <img src="widdo-logo.svg" style="width: 80px; height: 80px;" alt="Widdo">
+        </div>
+
+        <h1 style="font-size: 44px; margin-bottom: 16px;">
+            Donde la historia deportiva<br>de cada jugador <span class="text-green">nunca se pierde</span>
+        </h1>
+
+        <p class="subtitle" style="margin-bottom: 40px; font-size: 18px;">
+            14 clubes creciendo orgánicamente. Producto multi-deporte en producción.<br>
+            App móvil en camino. Ligas y torneos como nuevos verticales. Mercado de $2.8B sin líder.
+        </p>
+
+        <div style="display: flex; gap: 32px; margin-bottom: 48px;">
+            <div class="card" style="padding: 16px 24px; text-align: center;">
+                <div style="font-size: 32px; font-weight: 900; color: var(--primary);">14</div>
+                <div class="text-xs text-muted">Clubes activos</div>
+            </div>
+            <div class="card" style="padding: 16px 24px; text-align: center;">
+                <div style="font-size: 32px; font-weight: 900; color: var(--primary);">419</div>
+                <div class="text-xs text-muted">Usuarios reales</div>
+            </div>
+            <div class="card" style="padding: 16px 24px; text-align: center;">
+                <div style="font-size: 32px; font-weight: 900; color: var(--primary);">$0</div>
+                <div class="text-xs text-muted">CAC actual</div>
+            </div>
+            <div class="card" style="padding: 16px 24px; text-align: center;">
+                <div style="font-size: 32px; font-weight: 900; color: var(--primary);">0%</div>
+                <div class="text-xs text-muted">Churn</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 24px; align-items: center;">
+            <div style="background: var(--primary); padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 16px; color: white;">
+                widdo.co
+            </div>
+            <div style="color: var(--text-muted); font-size: 15px;">
+                Miguel Angel Cano &middot; Founder
+            </div>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <span>Clubes</span>
+        <span>Ligas</span>
+        <span>Torneos</span>
+        <span>Multi-deporte</span>
+        <span>Global</span>
+    </div>
+    <span class="confidential">Confidencial</span>
+    <span class="slide-number">18</span>
+</div>
+
+</body>
+</html>
