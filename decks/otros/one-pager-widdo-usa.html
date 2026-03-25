@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo - One Pager 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #fff;
+            color: #18181b;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            max-height: 11in;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #18181b;
+            color: #fff;
+            padding: 14px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 36px;
+            height: 36px;
+        }
+
+        .header-text h1 {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .header-text p {
+            font-size: 9px;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 10px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .header-right a {
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* ===== TAGLINE BAR ===== */
+        .tagline-bar {
+            background: #16a34a;
+            color: #fff;
+            text-align: center;
+            padding: 6px 32px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            padding: 12px 32px 8px;
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 9.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #16a34a;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e4e4e7;
+        }
+
+        /* ===== PROBLEM + SOLUTION ===== */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .ps-box {
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 10px;
+            line-height: 1.45;
+        }
+
+        .ps-box.problem {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+
+        .ps-box.solution {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
+        .ps-box h3 {
+            font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ps-box ul {
+            margin: 0;
+            padding-left: 14px;
+        }
+
+        .ps-box li {
+            margin-bottom: 1px;
+        }
+
+        /* ===== PLAYER CENTRIC BANNER ===== */
+        .player-banner {
+            background: #18181b;
+            color: #fff;
+            border-radius: 8px;
+            padding: 8px 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .player-banner .icon {
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .player-banner h3 {
+            font-size: 11px;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 1px;
+        }
+
+        .player-banner p {
+            font-size: 9px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+        }
+
+        /* ===== ECOSYSTEM ===== */
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .eco-card {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 8px;
+            padding: 8px 10px;
+        }
+
+        .eco-card.active {
+            border-color: #16a34a;
+            background: rgba(22, 163, 74, 0.03);
+        }
+
+        .eco-top {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 3px;
+        }
+
+        .eco-icon {
+            font-size: 14px;
+        }
+
+        .eco-card h4 {
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .eco-card p {
+            font-size: 8.5px;
+            color: #71717a;
+            line-height: 1.35;
+        }
+
+        .eco-card .revenue-line {
+            font-size: 8px;
+            color: #16a34a;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .eco-badge {
+            display: inline-block;
+            font-size: 7px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+
+        .eco-badge.live { background: #dcfce7; color: #16a34a; }
+        .eco-badge.building { background: #fef3c7; color: #d97706; }
+
+        /* ===== TRACTION + MARKET SIDE BY SIDE ===== */
+        .traction-market {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+
+        .metric-box {
+            background: #18181b;
+            color: #fff;
+            border-radius: 6px;
+            padding: 6px 8px;
+            text-align: center;
+        }
+
+        .metric-box .value {
+            font-size: 18px;
+            font-weight: 900;
+            color: #22c55e;
+            line-height: 1;
+        }
+
+        .metric-box .value.orange {
+            color: #f97316;
+        }
+
+        .metric-box .label {
+            font-size: 7.5px;
+            color: rgba(255,255,255,0.55);
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        .market-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .market-box {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 6px;
+            padding: 6px 8px;
+            text-align: center;
+        }
+
+        .market-box .value {
+            font-size: 16px;
+            font-weight: 900;
+            color: #18181b;
+            line-height: 1.1;
+        }
+
+        .market-box .value.green {
+            color: #16a34a;
+        }
+
+        .market-box .label {
+            font-size: 7.5px;
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+            margin-top: 1px;
+        }
+
+        /* ===== COMPETITION + PRICING SIDE BY SIDE ===== */
+        .comp-pricing {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
+
+        .comp-table th {
+            text-align: left;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #a1a1aa;
+            padding: 3px 5px;
+            border-bottom: 1.5px solid #e4e4e7;
+            font-weight: 700;
+        }
+
+        .comp-table td {
+            padding: 3.5px 5px;
+            border-bottom: 1px solid #f4f4f5;
+        }
+
+        .comp-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comp-table .widdo-row {
+            background: rgba(22, 163, 74, 0.06);
+            font-weight: 700;
+        }
+
+        .comp-table .widdo-row td {
+            color: #16a34a;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+        }
+
+        .price-card {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 8px;
+            padding: 8px 6px;
+            text-align: center;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border-color: #16a34a;
+            background: rgba(22, 163, 74, 0.03);
+        }
+
+        .price-card .plan-name {
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #71717a;
+        }
+
+        .price-card .price {
+            font-size: 20px;
+            font-weight: 900;
+            color: #18181b;
+            line-height: 1.2;
+        }
+
+        .price-card .price span {
+            font-size: 9px;
+            font-weight: 500;
+            color: #a1a1aa;
+        }
+
+        .price-card .plan-desc {
+            font-size: 8px;
+            color: #71717a;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #16a34a;
+            color: #fff;
+            font-size: 6.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 1.5px 8px;
+            border-radius: 99px;
+            white-space: nowrap;
+        }
+
+        .zero-fees {
+            text-align: center;
+            font-size: 8.5px;
+            color: #16a34a;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* ===== REVENUE MODEL ===== */
+        .revenue-strip {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .rev-chip {
+            background: #f4f4f5;
+            border-radius: 4px;
+            padding: 3px 8px;
+            font-size: 8px;
+            font-weight: 600;
+            color: #3f3f46;
+        }
+
+        .rev-chip.primary {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        /* ===== TEAM ===== */
+        .team-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .team-card {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .team-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #18181b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 900;
+            color: #22c55e;
+            flex-shrink: 0;
+        }
+
+        .team-info h4 {
+            font-size: 10px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .team-info .role {
+            font-size: 8px;
+            color: #16a34a;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .team-info p {
+            font-size: 8px;
+            color: #71717a;
+            line-height: 1.35;
+            margin-top: 1px;
+        }
+
+        /* ===== GTM ===== */
+        .gtm-row {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px;
+            align-items: stretch;
+        }
+
+        .gtm-step {
+            flex: 1;
+            background: #fafafa;
+            border: 1px solid #e4e4e7;
+            border-radius: 6px;
+            padding: 5px 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .gtm-step h5 {
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #16a34a;
+            margin-bottom: 1px;
+        }
+
+        .gtm-step p {
+            font-size: 8px;
+            color: #52525b;
+            line-height: 1.3;
+        }
+
+        .gtm-arrow {
+            display: flex;
+            align-items: center;
+            color: #d4d4d8;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #18181b;
+            color: #fff;
+            padding: 8px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-left strong {
+            color: #22c55e;
+            font-weight: 700;
+        }
+
+        .footer-center {
+            text-align: center;
+        }
+
+        .footer-center a {
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .footer-center p {
+            font-size: 9px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-right {
+            text-align: right;
+            font-size: 8px;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body { margin: 0; padding: 0; }
+            .page { margin: 0; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-left">
+            <img src="widdo-logo.svg" class="header-logo" alt="Widdo">
+            <div class="header-text">
+                <h1>Widdo</h1>
+                <p>The Player-Centric Sports Platform</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://widdo.co">widdo.co</a><br>
+            <span>hey@widdo.co</span>
+        </div>
+    </div>
+
+    <!-- TAGLINE -->
+    <div class="tagline-bar">
+        The player's profile lives in Widdo forever &mdash; every sport, every age, every role, one platform.
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- PROBLEM + SOLUTION -->
+        <div class="problem-solution">
+            <div class="ps-box problem">
+                <h3>The Problem</h3>
+                <ul>
+                    <li>300K+ youth sports orgs in the US &mdash; <strong>73% use spreadsheets &amp; WhatsApp</strong></li>
+                    <li>Parents juggle 5+ apps and never know what's going on</li>
+                    <li>Player data disappears when they switch clubs</li>
+                    <li>No verified stats for college recruiting &mdash; NCSA charges families $4K/yr</li>
+                    <li>US camps cost $1,500&ndash;$5,000. LATAM families lack credit cards. No flexible payment options</li>
+                </ul>
+            </div>
+            <div class="ps-box solution">
+                <h3>Widdo Solves It</h3>
+                <ul>
+                    <li><strong>One platform</strong> for clubs, tournaments, payments &amp; families</li>
+                    <li>Player profile is <strong>permanent and portable</strong> across clubs</li>
+                    <li><strong>Multi-role:</strong> be owner, coach, player &amp; parent in different clubs</li>
+                    <li><strong>Verified Stats</strong> with Transparency Score &mdash; free for athletes</li>
+                    <li><strong>Built-in BNPL</strong> &mdash; Klarna/Affirm in US; Addi, Kueski, Pagaleve in LATAM via dLocal. Camp gets paid in full. Zero risk for Widdo</li>
+                    <li><strong>Multi-language</strong> (EN/ES, Portuguese ready) &mdash; built for global markets</li>
+                    <li><strong>AI assistant</strong> for coaches, owners &amp; parents &mdash; nobody else has this</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PLAYER-CENTRIC BANNER -->
+        <div class="player-banner">
+            <div class="icon">&#9733;</div>
+            <div>
+                <h3>Player-Centric, Not Club-Centric</h3>
+                <p>Unlike TeamSnap or SportsEngine, the player is the center &mdash; not the club. A player's verified stats, history, and College-Ready Profile stay in Widdo forever. If they switch clubs, their data follows them. Think <strong>LinkedIn for athletes</strong>.</p>
+            </div>
+        </div>
+
+        <!-- ECOSYSTEM -->
+        <div class="section-title">The Widdo Ecosystem &mdash; 3 Verticals, 1 Network</div>
+        <div class="ecosystem-grid">
+            <div class="eco-card active">
+                <div class="eco-top">
+                    <div class="eco-icon">&#127967;</div>
+                    <h4>Widdo Clubs</h4>
+                    <span class="eco-badge live">Live</span>
+                </div>
+                <p>Complete club management: players, payments, attendance, families, coaches, categories, calendar, reports. Any sport, any age.</p>
+                <div class="revenue-line">$99&ndash;$349/mo per club</div>
+            </div>
+            <div class="eco-card active">
+                <div class="eco-top">
+                    <div class="eco-icon">&#127942;</div>
+                    <h4>Widdo Tournaments</h4>
+                    <span class="eco-badge live">Live</span>
+                </div>
+                <p>Tournament creation, AI-powered brackets &amp; scheduling, live scoring, public standings, verified stats. 1 tournament = 2,000+ new users.</p>
+                <div class="revenue-line">5% registration + 3% gate + BNPL fees</div>
+            </div>
+            <div class="eco-card">
+                <div class="eco-top">
+                    <div class="eco-icon">&#127891;</div>
+                    <h4>Widdo Academy</h4>
+                    <span class="eco-badge building">2026</span>
+                </div>
+                <p>Sports education marketplace. Coaching certifications, nutrition, club management. Experts monetize knowledge, coaches level up.</p>
+                <div class="revenue-line">$9.99/mo premium + course fees</div>
+            </div>
+        </div>
+
+        <!-- TRACTION + MARKET -->
+        <div class="traction-market">
+            <div>
+                <div class="section-title">Traction &mdash; All Organic, $0 Ad Spend</div>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="value">17+</div>
+                        <div class="label">Clubs (CO + US)</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="value">1,050+</div>
+                        <div class="label">Total Users</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="value">550+</div>
+                        <div class="label">Athletes</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="value" style="color: #f97316;">0%</div>
+                        <div class="label">Churn Rate</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="value">$0</div>
+                        <div class="label">CAC</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="value">82%</div>
+                        <div class="label">Gross Margin</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="section-title">Market Opportunity</div>
+                <div class="market-grid">
+                    <div class="market-box">
+                        <div class="value">$10.2B</div>
+                        <div class="label">TAM &mdash; US Youth Sports Software</div>
+                    </div>
+                    <div class="market-box">
+                        <div class="value">$3.7B</div>
+                        <div class="label">SAM &mdash; Clubs + Tournaments</div>
+                    </div>
+                    <div class="market-box">
+                        <div class="value green">300K+</div>
+                        <div class="label">Youth Sports Orgs in US</div>
+                    </div>
+                    <div class="market-box">
+                        <div class="value green">73%</div>
+                        <div class="label">No Paid Software Yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPETITION + PRICING -->
+        <div class="comp-pricing">
+            <div>
+                <div class="section-title">vs. Competition (200 players, real cost/yr)</div>
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Real Cost/yr</th>
+                            <th>AI</th>
+                            <th>BNPL</th>
+                            <th>Tournaments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TeamSnap</td>
+                            <td><strong>$4,800+</strong></td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                            <td>Basic</td>
+                        </tr>
+                        <tr>
+                            <td>SportsEngine</td>
+                            <td><strong>$3,650+</strong></td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                            <td>Partial</td>
+                        </tr>
+                        <tr>
+                            <td>Jersey Watch</td>
+                            <td><strong>$3,650+</strong></td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                        </tr>
+                        <tr>
+                            <td>Crossbar</td>
+                            <td><strong>$995 + fees</strong></td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                            <td>&#10003;</td>
+                        </tr>
+                        <tr class="widdo-row">
+                            <td><strong>Widdo</strong></td>
+                            <td><strong>$1,188 flat</strong></td>
+                            <td>&#10003;</td>
+                            <td>&#10003;</td>
+                            <td>&#10003; Full</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <div class="section-title">Pricing (USA) &mdash; Flat, Zero Platform Fees</div>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <div class="plan-name">Starter</div>
+                        <div class="price">$99<span>/mo</span></div>
+                        <div class="plan-desc">&lt;50 athletes</div>
+                    </div>
+                    <div class="price-card featured">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="plan-name">Pro</div>
+                        <div class="price">$199<span>/mo</span></div>
+                        <div class="plan-desc">50&ndash;200 athletes</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="plan-name">Club+</div>
+                        <div class="price">$349<span>/mo</span></div>
+                        <div class="plan-desc">200+ / leagues</div>
+                    </div>
+                </div>
+                <div class="zero-fees">$0 platform fees &mdash; only Stripe processing (2.9%)</div>
+            </div>
+        </div>
+
+        <!-- REVENUE MODEL + BNPL -->
+        <div class="section-title">Revenue Streams &amp; BNPL &mdash; Making Sports Accessible</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
+            <div>
+                <div style="display: flex; flex-direction: column; gap: 3px; margin-bottom: 4px;">
+                    <div style="display: flex; justify-content: space-between; background: #dcfce7; border-radius: 4px; padding: 3px 8px; font-size: 8px;">
+                        <strong style="color: #166534;">Club Subscriptions</strong>
+                        <span style="color: #166534;">$99&ndash;$349/mo recurring</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; background: #dcfce7; border-radius: 4px; padding: 3px 8px; font-size: 8px;">
+                        <strong style="color: #166534;">Tournament Commissions</strong>
+                        <span style="color: #166534;">5% registration + 3% gate</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; background: #dcfce7; border-radius: 4px; padding: 3px 8px; font-size: 8px;">
+                        <strong style="color: #166534;">BNPL Fees</strong>
+                        <span style="color: #166534;">~4% application fee (~100% margin)</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                    <span class="rev-chip">Gate Admission</span>
+                    <span class="rev-chip">Premium Listing</span>
+                    <span class="rev-chip">Scout $99/mo</span>
+                    <span class="rev-chip">Verified Profile</span>
+                </div>
+            </div>
+            <div style="font-size: 7.5px; color: #3f3f46; line-height: 1.4; border: 1.5px solid #e4e4e7; border-radius: 6px; padding: 6px 8px;">
+                <div style="font-weight: 800; color: #16a34a; font-size: 8px; margin-bottom: 2px;">HOW BNPL WORKS &mdash; Example: Orlando Camp $2,900</div>
+                <div style="margin-bottom: 2px;"><strong>&#127482;&#127480; USA:</strong> Klarna/Affirm/Afterpay via Stripe. Family splits $2,900 into installments. Camp receives $2,900 in full.</div>
+                <div style="margin-bottom: 2px;"><strong>&#127758; LATAM:</strong> 80% of families have no credit card. <strong>Addi</strong> (CO), <strong>Kueski</strong> (MX), <strong>Pagaleve</strong> (BR) approve by national ID in 30 sec. Family pays 6 installments in local currency.</div>
+                <div style="margin-bottom: 2px;"><strong>&#128279; dLocal (cross-border):</strong> Converts local currency &rarr; USD via one API (17 countries). Deposits directly to camp&rsquo;s Stripe Connect account. Camp owner receives <strong>$2,900 USD in full</strong>.</div>
+                <div style="color: #16a34a; font-weight: 700;">Widdo earns ~4% application fee via Stripe Connect. Zero credit risk &mdash; BNPL providers assume all risk. Year 1: ~$120K additional revenue.</div>
+            </div>
+        </div>
+
+        <!-- GTM -->
+        <div class="section-title">Go-to-Market &mdash; USA First</div>
+        <div class="gtm-row">
+            <div class="gtm-step">
+                <h5>Sponsor Academies</h5>
+                <p>Free pilots at key academies in Orlando, FL</p>
+            </div>
+            <div class="gtm-arrow">&rarr;</div>
+            <div class="gtm-step">
+                <h5>Tournaments as Engine</h5>
+                <p>1 tournament = 30+ clubs exposed to Widdo = viral loop</p>
+            </div>
+            <div class="gtm-arrow">&rarr;</div>
+            <div class="gtm-step">
+                <h5>Network Effect</h5>
+                <p>Clubs &rarr; Tournaments &rarr; Academy &rarr; More clubs. Each feeds the other</p>
+            </div>
+            <div class="gtm-arrow">&rarr;</div>
+            <div class="gtm-step">
+                <h5>Global from US</h5>
+                <p>Scale to LATAM &amp; Europe from US credibility and playbook</p>
+            </div>
+        </div>
+
+        <!-- TEAM -->
+        <div class="section-title">Team</div>
+        <div class="team-section">
+            <div class="team-card">
+                <div class="team-avatar">MC</div>
+                <div class="team-info">
+                    <h4>Miguel Cano</h4>
+                    <div class="role">Founder &amp; CEO / CTO</div>
+                    <p>25+ years senior full-stack developer for major companies and startups in the US and worldwide. Professional basketball player in Colombia. Athletic scholarship recipient. Sports dad. Built the entire platform solo.</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">AP</div>
+                <div class="team-info">
+                    <h4>Alwin Perez</h4>
+                    <div class="role">Co-founder &amp; Global Business Development</div>
+                    <p>International tattoo artist &amp; world event judge. Basketball player. Lived and built businesses across Argentina, Brazil, Germany &amp; the US. Direct access to pro athletes (NBA, MLB). Previous tech ventures with Miguel.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-left">
+            <strong>Delaware C-Corp</strong> (Stripe Atlas) &middot; Orlando, FL<br>
+            Payments go live April 2026
+        </div>
+        <div class="footer-center">
+            <a href="https://widdo.co">widdo.co</a>
+            <p>hey@widdo.co &middot; March 2026 &middot; Confidential</p>
+        </div>
+        <div class="footer-right">
+            Enterprise-grade platform<br>
+            Laravel 12 + React &middot; AI-powered<br>
+            124 models &middot; 80+ tables &middot; Multi-tenant SaaS
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
