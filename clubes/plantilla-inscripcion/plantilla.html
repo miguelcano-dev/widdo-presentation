@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Proceso de inscripción - {{CLUB_NAME}}</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { background:#04120a; }
+
+  :root{
+    --verde:#2FBF4E;
+    --verde-osc:#0E3B21;
+    --verde-app:#123D26;
+    --morado:#B23BE8;
+    --morado2:#8B2FD6;
+  }
+
+  .canvas{
+    position:relative;
+    width:1600px; height:1990px;
+    overflow:hidden;
+    background:#04120a;
+    font-family:'Avenir Next','Helvetica Neue',Helvetica,Arial,sans-serif;
+    color:#fff;
+  }
+
+  /* ---------- fondo texturizado ---------- */
+  /* fondo pre-horneado (fondo.jpg) — una sola imagen, sin filtros CSS en runtime */
+  .bg{
+    position:absolute; inset:0;
+    width:1600px; height:1990px;
+    object-fit:cover;
+  }
+  .frame{
+    position:absolute; inset:26px;
+    border:2px solid rgba(255,255,255,.13);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .frame:after{
+    content:''; position:absolute; inset:14px;
+    border:1px solid rgba(255,255,255,.07);
+  }
+
+  /* ---------- capa de flechas ---------- */
+  .arrows{ position:absolute; inset:0; width:1600px; height:1990px; pointer-events:none; }
+
+  /* ---------- logo del club ---------- */
+  .club-badge{
+    position:absolute; left:48px; top:52px;
+    width:230px; text-align:center;
+  }
+  .club-badge .plate{
+    width:210px; height:210px; margin:0 auto;
+    border-radius:26px;
+    background:#fff;
+    box-shadow:0 10px 34px rgba(0,0,0,.55);
+    display:flex; align-items:center; justify-content:center;
+    padding:14px;
+  }
+  .club-badge img{ max-width:100%; max-height:100%; object-fit:contain; }
+  .club-badge .cap{
+    margin-top:14px;
+    font-size:15px; font-weight:700; letter-spacing:3px;
+    color:#dfe9e2; text-transform:uppercase;
+  }
+
+  /* ---------- banner del título ---------- */
+  .title{
+    position:absolute; left:268px; top:126px;
+    width:1010px; height:80px;
+    background:linear-gradient(180deg,#3ad45c 0%,#22a844 100%);
+    clip-path:polygon(0 0, 100% 0, 96% 100%, 0 100%);
+    display:flex; align-items:center;
+    box-shadow:0 8px 26px rgba(0,0,0,.45);
+  }
+  .title:before{
+    content:''; position:absolute; left:-16px; top:14px;
+    width:14px; height:52px; background:#1c8f3a;
+  }
+  .title span{
+    font-size:44px; font-weight:800; letter-spacing:.5px;
+    color:#fff; padding-left:44px;
+    text-shadow:0 2px 6px rgba(0,0,0,.25);
+  }
+
+  /* ---------- badges de paso ---------- */
+  .step{
+    position:absolute;
+    width:82px; height:82px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #d359f5, var(--morado) 55%, var(--morado2));
+    box-shadow:0 0 0 5px rgba(255,255,255,.12), 0 8px 22px rgba(0,0,0,.5);
+    display:flex; align-items:center; justify-content:center;
+    font-size:46px; font-weight:800; color:#fff;
+    font-family:'Avenir Next','Helvetica Neue',sans-serif;
+  }
+
+  /* ---------- textos instructivos ---------- */
+  .txt{
+    position:absolute;
+    font-size:25px; line-height:1.34; font-weight:500;
+    color:#f2f7f3;
+  }
+  .txt.c{ text-align:center; }
+  .txt b{ font-weight:800; }
+
+  .felicidades{
+    position:absolute;
+    text-align:center;
+    font-size:40px; font-weight:800; line-height:1.22; color:#fff;
+    text-shadow:0 3px 12px rgba(0,0,0,.5);
+  }
+
+  /* ---------- mockups (tarjetas blancas) ---------- */
+  .mk{
+    position:absolute;
+    background:#fff; border-radius:12px;
+    box-shadow:0 16px 40px rgba(0,0,0,.55);
+    overflow:hidden;
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color:#1d2b23;
+  }
+  .mk .pad{ padding:16px 18px; }
+
+  /* iconos svg monocromo */
+  .i{ display:inline-flex; align-items:center; justify-content:center; line-height:0; }
+  .i svg{ width:1em; height:1em; fill:currentColor; display:block; }
+
+  /* header de la app */
+  .app-head{
+    background:var(--verde-app);
+    padding:12px 14px;
+    display:flex; align-items:center; justify-content:space-between;
+    color:#fff;
+  }
+  .brand{ display:flex; align-items:center; gap:8px; font-size:17px; font-weight:700; }
+  .wmark{
+    width:24px; height:24px; border-radius:7px;
+    background:var(--verde); color:#0b2a16;
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:800;
+  }
+  .club-hd{ display:flex; align-items:center; gap:9px; }
+  .club-hd .cn{ font-size:13px; font-weight:700; text-align:right; line-height:1.15; }
+  .club-hd .cs{ font-size:10px; opacity:.7; text-align:right; }
+  .logo-chip{
+    width:34px; height:34px; border-radius:9px; background:#fff;
+    display:flex; align-items:center; justify-content:center; padding:3px;
+    flex:0 0 auto;
+  }
+  .logo-chip img{ max-width:100%; max-height:100%; object-fit:contain; }
+  .app-sub{
+    background:#eef2ef; margin:10px 12px 0; padding:9px 12px;
+    border-radius:8px; font-size:12.5px; font-weight:600; color:#3a4a41;
+  }
+
+  .h1{ font-size:19px; font-weight:700; }
+  .h2{ font-size:15.5px; font-weight:700; }
+  .sub{ font-size:11px; color:#8b978f; margin-top:2px; }
+  .lbl{ font-size:11.5px; font-weight:600; margin:12px 0 5px; }
+  .lbl i{ color:#e0483c; font-style:normal; }
+  .inp{
+    border:1px solid #dde3df; border-radius:7px;
+    padding:9px 11px; font-size:12px; color:#b3bdb7;
+    display:flex; align-items:center; gap:8px;
+  }
+  .inp.sel:after{ content:'⌄'; margin-left:auto; color:#95a19a; font-size:14px; }
+  .ico{ color:#95a19a; font-size:12px; }
+
+  .dots{ display:flex; gap:10px; justify-content:center; margin:14px 0 4px; }
+  .dot{
+    width:30px; height:30px; border-radius:50%;
+    background:#eef1ef; color:#a9b3ad;
+    display:flex; align-items:center; justify-content:center; font-size:13px;
+  }
+  .dot.on{ background:var(--verde); color:#fff; }
+  .dot.ok{ background:var(--verde); color:#fff; }
+
+  .btn{
+    background:var(--verde); color:#fff;
+    border-radius:8px; padding:11px 0; text-align:center;
+    font-size:13.5px; font-weight:700;
+  }
+  .btn.dark{ background:#132a3f; }
+  .btn.ghost{ background:#fff; color:#3a4a41; border:1px solid #dde3df; }
+  .btn.soft{ background:#a8dfb5; color:#fff; }
+  .btn.orange{ background:#ef7d21; }
+
+  .box{ border:1px solid #e6ebe8; border-radius:9px; padding:12px; }
+  .dash{ border:1.5px dashed #cfd8d3; border-radius:9px; padding:12px; text-align:center; }
+
+  .chk{ display:flex; gap:8px; align-items:flex-start; font-size:10.5px; color:#41504a; margin:7px 0; }
+  .chk .b{ width:12px; height:12px; border:1.5px solid #c3ccc7; border-radius:3px; flex:0 0 auto; margin-top:1px; }
+  .chk i{ color:#e0483c; font-style:normal; }
+  .cap{ font-size:9.5px; letter-spacing:1.2px; font-weight:700; color:#8b978f; margin-top:10px; }
+  .cap.blue{ color:#4a7fd0; }
+
+  .row{ display:flex; gap:10px; }
+  .grow{ flex:1; }
+
+  /* botón grande suelto */
+  .bigbtn{
+    position:absolute;
+    background:var(--verde); color:#fff;
+    border-radius:10px; text-align:center;
+    font-weight:700; box-shadow:0 12px 30px rgba(0,0,0,.5);
+    font-family:'Avenir Next','Helvetica Neue',sans-serif;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <img class="bg" src="fondo.jpg" alt="">
+  <div class="frame"></div>
+
+  <!-- ======== FLECHAS ======== -->
+  <svg class="arrows" viewBox="0 0 1600 1990">
+    <g fill="#ffffff" opacity=".95">{{FLECHAS}}</g>
+  </svg>
+
+  <!-- ======== LOGO CLUB ======== -->
+  <div class="club-badge">
+    <div class="plate"><img src="{{CLUB_LOGO}}" alt="{{CLUB_NAME}}"></div>
+    <div class="cap">{{CLUB_TAGLINE}}</div>
+  </div>
+
+  <!-- ======== TÍTULO ======== -->
+  <div class="title"><span>PROCESO DE INSCRIPCIÓN - WIDDO</span></div>
+
+  <!-- ======== PASO 1 ======== -->
+  <div class="step" style="left:372px; top:258px;">1</div>
+  <div class="txt" style="left:472px; top:262px; width:660px;">
+    Ingresa al enlace enviado por {{CLUB_NAME}} desde WhatsApp. Te llevará a la página web de WIDDO, específicamente al registro del club.
+  </div>
+
+  <!-- MOCKUP: formulario jugador -->
+  <div class="mk" style="left:50px; top:342px; width:400px;">
+    <div class="app-head">
+      <div class="brand"><span class="wmark">W</span> Widdo</div>
+      <div class="club-hd">
+        <div>
+          <div class="cn">{{CLUB_NAME}}</div>
+          <div class="cs">Inscripción en línea</div>
+        </div>
+        <div class="logo-chip"><img src="{{CLUB_LOGO}}" alt=""></div>
+      </div>
+    </div>
+    <div class="app-sub">Inscripciones {{CLUB_NAME}}</div>
+    <div class="pad">
+      <div class="h1">Datos del jugador</div>
+      <div class="sub">Información del deportista a inscribir</div>
+      <div class="dots">
+        <div class="dot on"><span class="i" style="font-size:15px"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zm0 12c4.42 0 8 2.24 8 5v3H4v-3c0-2.76 3.58-5 8-5z"/></svg></span></div>
+        <div class="dot"><span class="i" style="font-size:15px"><svg viewBox="0 0 24 24"><path d="M8 11a4 4 0 110-8 4 4 0 010 8zm8 0a3.5 3.5 0 110-7 3.5 3.5 0 010 7zM8 13c3.3 0 6 1.79 6 4v3H2v-3c0-2.21 2.7-4 6-4zm8 0c3.3 0 6 1.5 6 3.5V20h-6v-3c0-1.5-.8-2.9-2-3.9.6-.07 1.3-.1 2-.1z"/></svg></span></div>
+        <div class="dot"><span class="i" style="font-size:15px"><svg viewBox="0 0 24 24"><path d="M6 2h7l5 5v15H6V2zm7 1.5V8h4.5L13 3.5z"/></svg></span></div>
+        <div class="dot"><span class="i" style="font-size:15px"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z"/></svg></span></div>
+      </div>
+      <div class="lbl">Nombres completos <i>*</i></div>
+      <div class="inp">Ej: Juan Carlos</div>
+      <div class="lbl">Apellidos completos <i>*</i></div>
+      <div class="inp">Ej: Martínez López</div>
+      <div class="lbl">Fecha de nacimiento <i>*</i></div>
+      <div class="inp"><span class="i ico" style="font-size:13px"><svg viewBox="0 0 24 24"><path d="M7 2v2H4v18h16V4h-3V2h-2v2H9V2H7zM6 9h12v11H6V9z"/></svg></span> dd/mm/yyyy</div>
+      <div class="lbl">Género <i>*</i></div>
+      <div class="inp sel">Seleccionar</div>
+    </div>
+  </div>
+
+  <!-- ======== PASO 2 ======== -->
+  <div class="step" style="left:478px; top:392px;">2</div>
+  <div class="txt" style="left:578px; top:388px; width:520px;">
+    Diligencia todos los campos de información requeridos (datos personales) del/la deportista y del acudiente. Ten a la mano el documento de identidad para tomarle foto al reverso y al frontal, recuerda que también puedes tomarle foto directamente desde la aplicación cámara del celular o también te da la opción de tomarla desde la página.
+  </div>
+
+  <!-- MOCKUP: documentos -->
+  <div class="mk" style="left:1160px; top:250px; width:392px;">
+    <div class="pad">
+      <div class="h2">Documentos</div>
+      <div class="sub">Foto y documento de identidad (opcionales)</div>
+      <div class="dots" style="justify-content:flex-start;">
+        <div class="dot ok"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        <div class="dot ok"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        <div class="dot ok"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M6 2h7l5 5v15H6V2zm7 1.5V8h4.5L13 3.5z"/></svg></span></div>
+        <div class="dot"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z"/></svg></span></div>
+        <div class="dot"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M8 2h8v3H8V2zM6 4h1v3h10V4h1v18H6V4z"/></svg></span></div>
+      </div>
+      <div class="box" style="margin-top:12px;">
+        <div style="font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:6px;"><span class="i" style="font-size:13px;color:#5b6a63"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zm0 12c4.42 0 8 2.24 8 5v3H4v-3c0-2.76 3.58-5 8-5z"/></svg></span> Foto del deportista (3x4) <i style="color:#e0483c;font-style:normal;">*</i></div>
+        <div class="row" style="margin-top:10px; align-items:flex-start;">
+          <div class="dash" style="width:96px;height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
+            <span class="i" style="font-size:26px;color:#c3ccc7"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3V4zm2 2v9l4-4 3 3 4-4 3 3V6H5zm3.5 1a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg></span>
+            <div style="font-size:9px;color:#a9b3ad;margin-top:5px;">Sin foto</div>
+            <div style="position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;"><span class="i" style="font-size:11px"><svg viewBox="0 0 24 24"><path d="M9 3l-1.5 2H4v16h16V5h-3.5L15 3H9zm3 5a5 5 0 110 10 5 5 0 010-10z"/></svg></span></div>
+          </div>
+          <div class="grow" style="font-size:10px;color:#5b6a63;line-height:1.7;">
+            <div style="font-size:12px;font-weight:700;color:#1d2b23;">Foto 3x4 <span style="color:#ef7d21;font-size:9px;">*Obligatorio</span></div>
+            <div>• Tamaño: 3x4 cm (tipo documento)</div>
+            <div>• Fondo blanco o claro</div>
+            <div>• Rostro visible y centrado</div>
+            <div>• JPG, PNG (máx. 5MB)</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11.5px;font-weight:700;margin-top:14px;display:flex;align-items:center;gap:6px;"><span class="i" style="font-size:13px;color:#5b6a63"><svg viewBox="0 0 24 24"><path d="M6 2h7l5 5v15H6V2zm7 1.5V8h4.5L13 3.5z"/></svg></span> Tarjeta de Identidad <i style="color:#e0483c;font-style:normal;">*</i></div>
+      <div class="row" style="margin-top:8px;">
+        <div class="grow" style="text-align:center;">
+          <div style="font-size:10px;color:#8b978f;margin-bottom:5px;">Frente</div>
+          <div class="dash" style="padding:0;">
+            <div class="btn" style="border-radius:7px 7px 0 0;font-size:11.5px;padding:9px 0;"><span class="i" style="font-size:12px;vertical-align:-1px"><svg viewBox="0 0 24 24"><path d="M12 3l5 5h-3v6h-4V8H7l5-5zM4 18h16v3H4v-3z"/></svg></span> Subir imagen</div>
+            <div style="padding:9px 0;font-size:11px;color:#5b6a63;"><span class="i" style="font-size:12px;vertical-align:-1px"><svg viewBox="0 0 24 24"><path d="M9 3l-1.5 2H4v16h16V5h-3.5L15 3H9zm3 5a5 5 0 110 10 5 5 0 010-10z"/></svg></span> Tomar foto</div>
+          </div>
+        </div>
+        <div class="grow" style="text-align:center;">
+          <div style="font-size:10px;color:#8b978f;margin-bottom:5px;">Reverso</div>
+          <div class="dash" style="padding:0;">
+            <div class="btn" style="border-radius:7px 7px 0 0;font-size:11.5px;padding:9px 0;"><span class="i" style="font-size:12px;vertical-align:-1px"><svg viewBox="0 0 24 24"><path d="M12 3l5 5h-3v6h-4V8H7l5-5zM4 18h16v3H4v-3z"/></svg></span> Subir imagen</div>
+            <div style="padding:9px 0;font-size:11px;color:#5b6a63;"><span class="i" style="font-size:12px;vertical-align:-1px"><svg viewBox="0 0 24 24"><path d="M9 3l-1.5 2H4v16h16V5h-3.5L15 3H9zm3 5a5 5 0 110 10 5 5 0 010-10z"/></svg></span> Tomar foto</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:9px;color:#a9b3ad;text-align:center;margin-top:9px;">Sube foto clara del documento por ambos lados (JPG, PNG - máx. 2MB)</div>
+    </div>
+  </div>
+
+  <!-- ======== PASO 3 ======== -->
+  <div class="step" style="left:462px; top:660px;">3</div>
+  <div class="txt" style="left:560px; top:664px; width:530px;">
+    Clic en “Leer (obligatorio)” y darle en “He leído y acepto los términos”. Selecciona todas las casillas de autorización de datos. Y dale al botón “Siguiente”.
+  </div>
+
+  <!-- MOCKUP: autorización de datos -->
+  <div class="mk" style="left:505px; top:800px; width:340px;">
+    <div class="pad">
+      <div class="h2">Autorización de datos</div>
+      <div class="sub">Autorización de tratamiento de datos personales</div>
+      <div class="dots" style="justify-content:flex-start;">
+        <div class="dot ok"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        <div class="dot ok"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        <div class="dot ok"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span></div>
+        <div class="dot ok"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z"/></svg></span></div>
+        <div class="dot"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M8 2h8v3H8V2zM6 4h1v3h10V4h1v18H6V4z"/></svg></span></div>
+      </div>
+      <div class="box" style="margin-top:12px;">
+        <div style="font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px;color:#2c6b45;"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z"/></svg></span> Autorización de Tratamiento de Datos</div>
+        <div class="sub">Debe ser completado por el padre, madre o tutor legal</div>
+      </div>
+      <div class="box" style="margin-top:10px;background:#fff8ec;border-color:#f6dfb8;">
+        <div class="row" style="align-items:center;">
+          <div class="grow" style="font-size:11.5px;font-weight:600;color:#7a5a22;">
+            <span class="i" style="font-size:13px;color:#ef7d21;vertical-align:-2px"><svg viewBox="0 0 24 24"><path d="M12 2l11 19H1L12 2zm-1 7v6h2V9h-2zm0 8v2h2v-2h-2z"/></svg></span> Leer términos y condiciones
+          </div>
+          <div class="btn orange" style="padding:9px 14px;font-size:11.5px;"><span class="i" style="font-size:13px;vertical-align:-2px"><svg viewBox="0 0 24 24"><path d="M12 5c5 0 9 4.5 9 7s-4 7-9 7-9-4.5-9-7 4-7 9-7zm0 3a4 4 0 100 8 4 4 0 000-8z"/></svg></span> Leer (obligatorio)</div>
+        </div>
+        <div style="font-size:9.5px;color:#ef7d21;margin-top:8px;">Debe leer los términos antes de continuar</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOCKUP: autorizaciones checkboxes -->
+  <div class="mk" style="left:862px; top:800px; width:318px;">
+    <div class="pad">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="dot ok" style="width:22px;height:22px;font-size:11px;">2</div>
+        <div class="h2" style="font-size:13.5px;">Autorizaciones</div>
+      </div>
+      <div class="cap">OBLIGATORIAS</div>
+      <div class="chk"><div class="b"></div><div>Autorizo la recolección de datos personales <i>*</i></div></div>
+      <div class="chk"><div class="b"></div><div>Autorizo el almacenamiento seguro de los datos <i>*</i></div></div>
+      <div class="chk"><div class="b"></div><div>Autorizo el procesamiento para gestión deportiva <i>*</i></div></div>
+      <div class="cap blue">OPCIONALES</div>
+      <div class="chk"><div class="b"></div><div>Uso de fotografías y videos para fines promocionales</div></div>
+      <div class="chk"><div class="b"></div><div>Tratamiento de datos de salud (EPS, alergias, condiciones)</div></div>
+      <div class="chk"><div class="b"></div><div>Envío de comunicaciones (email, WhatsApp, SMS)</div></div>
+    </div>
+  </div>
+
+  <!-- ======== PASO 4 ======== -->
+  <div class="step" style="left:1322px; top:782px;">4</div>
+  <div class="txt c" style="left:1196px; top:888px; width:356px;">Clic en “Enviar pre-registro”</div>
+  <div class="bigbtn" style="left:1240px; top:926px; width:268px; padding:18px 0; font-size:23px;">Enviar pre-registro</div>
+
+  <!-- MOCKUP: inscripción exitosa -->
+  <div class="mk" style="left:1196px; top:1000px; width:356px;">
+    <div class="pad" style="text-align:center; padding:22px 20px;">
+      <div style="width:52px;height:52px;border-radius:50%;border:2.5px solid var(--verde);color:var(--verde);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;">✓</div>
+      <div class="h1" style="font-size:20px;">Inscripción exitosa</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 14px;">
+        <div class="logo-chip" style="width:38px;height:38px;border:1px solid #e6ebe8;"><img src="{{CLUB_LOGO}}" alt=""></div>
+        <div style="font-size:15px;font-weight:700;">{{CLUB_NAME}}</div>
+      </div>
+      <div style="font-size:12px;color:#41504a;line-height:1.6;">
+        <b>{{JUGADOR}}</b> ha sido inscrito exitosamente.
+      </div>
+      <div style="font-size:11px;color:#8b978f;margin-top:10px;">Categoría sugerida: Intermedio Masculino-{{DEPORTE}}</div>
+      <div style="border-top:1px solid #eef1ef;margin:14px 0;"></div>
+      <div style="font-size:11px;color:#5b6a63;line-height:1.6;">
+        Hemos enviado un correo a<br><b style="color:var(--verde);white-space:nowrap;">{{CLUB_EMAIL}}</b><br>con instrucciones para completar el registro.
+      </div>
+      <div class="btn" style="margin-top:14px;">Completar registro del acudiente</div>
+    </div>
+  </div>
+
+  <!-- ======== PASO 5 ======== -->
+  <div class="step" style="left:580px; top:1112px;">5</div>
+  <div class="txt" style="left:680px; top:1098px; width:420px;">
+    Si diligenciaste todo correctamente te aparecerá “Inscripción exitosa”. El paso siguiente es darle clic en “Completar registro del acudiente”.
+  </div>
+  <div class="bigbtn" style="left:694px; top:1240px; width:446px; padding:17px 0; font-size:19px;">Completar registro del acudiente</div>
+
+  <!-- ======== PASO 6 ======== -->
+  <div class="step" style="left:212px; top:900px;">6</div>
+  <div class="txt c" style="left:96px; top:1000px; width:330px;">Clic en “Aceptar invitación”.</div>
+
+  <!-- MOCKUP: invitación -->
+  <div class="mk" style="left:86px; top:1046px; width:350px;">
+    <div class="pad">
+      <div style="display:flex; gap:11px; align-items:flex-start;">
+        <div class="logo-chip" style="width:42px;height:42px;border:1px solid #e6ebe8;"><img src="{{CLUB_LOGO}}" alt=""></div>
+        <div>
+          <div style="font-size:10.5px;color:var(--verde);font-weight:600;"><span class="i" style="font-size:12px;vertical-align:-2px"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 110 20 10 10 0 010-20zm-1 14.4l7-7L16.6 8 11 13.6 8.4 11 7 12.4l4 4z"/></svg></span> Invitación válida</div>
+          <div style="font-size:16px;font-weight:700;margin-top:2px;">Vinculación como Acudiente</div>
+          <div class="sub">{{CLUB_NAME}}</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="row" style="align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid #f0f3f1;">
+          <div style="width:28px;height:28px;border-radius:7px;background:#eef7f1;display:flex;align-items:center;justify-content:center;color:#3f8f5c;"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v.5l8 5 8-5V6H4zm0 3v9h16V9l-8 5-8-5z"/></svg></span></div>
+          <div><div style="font-size:8.5px;letter-spacing:1px;color:#a9b3ad;font-weight:700;">EMAIL</div><div style="font-size:11.5px;">{{CLUB_EMAIL}}</div></div>
+        </div>
+        <div class="row" style="align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid #f0f3f1;">
+          <div style="width:28px;height:28px;border-radius:7px;background:#eef7f1;display:flex;align-items:center;justify-content:center;color:#3f8f5c;"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 110 10 5 5 0 010-10zm0 12c4.42 0 8 2.24 8 5v3H4v-3c0-2.76 3.58-5 8-5z"/></svg></span></div>
+          <div><div style="font-size:8.5px;letter-spacing:1px;color:#a9b3ad;font-weight:700;">INVITADO POR</div><div style="font-size:12px;">{{CLUB_DUENO}}</div></div>
+        </div>
+        <div class="row" style="align-items:center;gap:11px;padding:9px 0;">
+          <div style="width:28px;height:28px;border-radius:7px;background:#eef7f1;display:flex;align-items:center;justify-content:center;color:#3f8f5c;"><span class="i" style="font-size:14px"><svg viewBox="0 0 24 24"><path d="M8 11a4 4 0 110-8 4 4 0 010 8zm8 0a3.5 3.5 0 110-7 3.5 3.5 0 010 7zM8 13c3.3 0 6 1.79 6 4v3H2v-3c0-2.21 2.7-4 6-4zm8 0c3.3 0 6 1.5 6 3.5V20h-6v-3c0-1.5-.8-2.9-2-3.9.6-.07 1.3-.1 2-.1z"/></svg></span></div>
+          <div><div style="font-size:8.5px;letter-spacing:1px;color:#a9b3ad;font-weight:700;">JUGADOR</div><div style="font-size:12px;">{{JUGADOR}}</div></div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:12px;">
+        <div class="btn ghost grow">Rechazar</div>
+        <div class="btn dark grow">Aceptar invitación</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== PASO 7 ======== -->
+  <div class="step" style="left:452px; top:1330px;">7</div>
+  <div class="txt" style="left:556px; top:1330px; width:560px;">
+    Después de aceptar la invitación el acudiente deberá crear su cuenta. Diligenciar todos los datos correspondientes. Dar clic en “Registrar”.
+  </div>
+  <div class="bigbtn" style="left:712px; top:1452px; width:212px; padding:19px 0; font-size:26px;">Registrar</div>
+
+  <!-- MOCKUP: crear cuenta -->
+  <div class="mk" style="left:76px; top:1400px; width:378px;">
+    <div class="pad">
+      <div class="h1">Crear cuenta</div>
+      <div class="sub">Registro como Padre/Acudiente</div>
+      <div class="row" style="align-items:center;margin:16px 0 4px;">
+        <div style="text-align:center;">
+          <div class="dot on" style="width:26px;height:26px;font-size:12px;margin:0 auto;">1</div>
+          <div style="font-size:9px;color:#5b6a63;margin-top:4px;">Credenciales</div>
+        </div>
+        <div class="grow" style="height:1px;background:#e6ebe8;margin:0 6px 16px;"></div>
+        <div style="text-align:center;">
+          <div class="dot" style="width:26px;height:26px;font-size:12px;margin:0 auto;">2</div>
+          <div style="font-size:9px;color:#a9b3ad;margin-top:4px;">Datos</div>
+        </div>
+        <div class="grow" style="height:1px;background:#e6ebe8;margin:0 6px 16px;"></div>
+        <div style="text-align:center;">
+          <div class="dot" style="width:26px;height:26px;font-size:12px;margin:0 auto;">3</div>
+          <div style="font-size:9px;color:#a9b3ad;margin-top:4px;">Ubicación</div>
+        </div>
+      </div>
+      <div class="box" style="background:#f3f6fd;border-color:#dbe4f7;display:flex;gap:9px;align-items:center;">
+        <div style="width:16px;height:16px;border-radius:4px;background:#4a7fd0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;">✓</div>
+        <div><div style="font-size:9.5px;color:#7d8ea8;">Invitación de</div><div style="font-size:12px;font-weight:700;color:#2f4a7a;">{{CLUB_NAME}}</div></div>
+      </div>
+      <div class="lbl">Email <i>*</i></div>
+      <div class="inp" style="color:#41504a;font-size:11.5px;">{{CLUB_EMAIL}}</div>
+      <div class="lbl">Contraseña <i>*</i></div>
+      <div class="inp">Contraseña <span class="i" style="margin-left:auto;font-size:14px;color:#95a19a"><svg viewBox="0 0 24 24"><path d="M12 5c5 0 9 4.5 9 7s-4 7-9 7-9-4.5-9-7 4-7 9-7zm0 3a4 4 0 100 8 4 4 0 000-8z"/></svg></span></div>
+      <div class="lbl">Confirmar Contraseña <i>*</i></div>
+      <div class="inp">Confirmar Contraseña <span class="i" style="margin-left:auto;font-size:14px;color:#95a19a"><svg viewBox="0 0 24 24"><path d="M12 5c5 0 9 4.5 9 7s-4 7-9 7-9-4.5-9-7 4-7 9-7zm0 3a4 4 0 100 8 4 4 0 000-8z"/></svg></span></div>
+      <div class="chk" style="margin-top:14px;font-size:10.5px;">
+        <div class="b"></div><div>Estoy de acuerdo con las <span style="color:#4a7fd0;">políticas de privacidad y términos</span></div>
+      </div>
+      <div class="btn soft" style="width:120px;margin-left:auto;margin-top:6px;">Siguiente</div>
+    </div>
+  </div>
+
+  <!-- ======== FELICIDADES ======== -->
+  <div class="felicidades" style="left:560px; top:1548px; width:620px;">
+    ¡Felicidades! Ya quedaste<br>registrado en WIDDO
+  </div>
+  <div class="txt c" style="left:496px; top:1668px; width:700px; font-size:23px; line-height:1.4;">
+    Clic en “Comenzar configuración” y listo, ya puedes tener acceso al software de {{CLUB_NAME}}. Cuando se realice todo este proceso, los datos y archivos enviados estarán listos para revisión y confirmación. Tendrás acceso al dashboard de tu hij@ y a todos los eventos del club a realizar. La mensualidad e inscripción, cuando se cancelen en las cuentas mencionadas, se deberá subir el comprobante de pago en WIDDO y también entrará en revisión y confirmación.
+  </div>
+
+  <!-- MOCKUP: bienvenida -->
+  <div class="mk" style="left:1210px; top:1400px; width:342px;">
+    <div style="background:var(--verde-app); padding:16px; text-align:center; color:#fff;">
+      <div class="brand" style="justify-content:center; font-size:14px;"><span class="wmark" style="width:20px;height:20px;font-size:12px;">W</span> Widdo</div>
+      <div class="logo-chip" style="width:52px;height:52px;margin:14px auto 10px;"><img src="{{CLUB_LOGO}}" alt=""></div>
+      <div style="font-size:15px;font-weight:700;">{{CLUB_NAME}}</div>
+      <div style="display:inline-block;margin-top:9px;background:rgba(255,255,255,.16);border-radius:20px;padding:5px 14px;font-size:11px;"><span class="i" style="font-size:12px;vertical-align:-2px"><svg viewBox="0 0 24 24"><path d="M8 11a4 4 0 110-8 4 4 0 010 8zm8 0a3.5 3.5 0 110-7 3.5 3.5 0 010 7zM8 13c3.3 0 6 1.79 6 4v3H2v-3c0-2.21 2.7-4 6-4zm8 0c3.3 0 6 1.5 6 3.5V20h-6v-3c0-1.5-.8-2.9-2-3.9.6-.07 1.3-.1 2-.1z"/></svg></span> Padre/Acudiente</div>
+      <div style="font-size:11px;opacity:.85;margin-top:12px;line-height:1.5;">Gestiona la información de tu hijo y mantente al tanto de sus actividades.</div>
+    </div>
+    <div class="pad" style="text-align:center; padding:20px 18px;">
+      <div class="h2" style="font-size:17px;">¡Hola!</div>
+      <div style="font-size:11.5px;color:#5b6a63;margin-top:8px;line-height:1.55;">Vamos a configurar tu perfil para que puedas aprovechar todas las funcionalidades.</div>
+      <div style="margin:16px 0; font-size:11.5px; color:#41504a; line-height:2.1;">
+        <div><span class="i" style="color:var(--verde);font-size:13px;vertical-align:-2px"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 110 20 10 10 0 010-20zm-1 14.4l7-7L16.6 8 11 13.6 8.4 11 7 12.4l4 4z"/></svg></span> Seguimiento del progreso</div>
+        <div><span class="i" style="color:var(--verde);font-size:13px;vertical-align:-2px"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 110 20 10 10 0 010-20zm-1 14.4l7-7L16.6 8 11 13.6 8.4 11 7 12.4l4 4z"/></svg></span> Gestión de pagos</div>
+        <div><span class="i" style="color:var(--verde);font-size:13px;vertical-align:-2px"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 110 20 10 10 0 010-20zm-1 14.4l7-7L16.6 8 11 13.6 8.4 11 7 12.4l4 4z"/></svg></span> Comunicación directa</div>
+      </div>
+      <div class="btn">Comenzar configuración →</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

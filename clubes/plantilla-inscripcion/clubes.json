@@ -1,0 +1,20 @@
+{
+  "lions": {
+    "nombre": "Lions Ibagué",
+    "logo": "logos/lions-ibague.jpg",
+    "tagline": "· CLUB DEPORTIVO ·",
+    "deporte": "Baloncesto",
+    "email": "tucorreo@gmail.com",
+    "dueno": "Ronald Iván Hernández",
+    "jugador": "Juan Carlos Martínez López"
+  },
+  "corbeaux": {
+    "nombre": "Club Deportivo Corbeaux",
+    "logo": "logos/corbeaux.png",
+    "tagline": "· CLUB DEPORTIVO ·",
+    "deporte": "Volleyball",
+    "email": "tucorreo@gmail.com",
+    "dueno": "Juan Felipe Gómez Díaz",
+    "jugador": "Juan Carlos Martínez López"
+  }
+}

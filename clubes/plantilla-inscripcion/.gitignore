@@ -1,0 +1,5 @@
+# Todo esto se regenera con: node generate-infografia.js
+salida/
+.logos-opt/
+fondo.jpg
+.tmp-*.html
