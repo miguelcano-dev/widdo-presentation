@@ -1,0 +1,2593 @@
+                   NATIONAL
+                COACH SURVEY:
+                 FINAL REPORT
+  PREPARED BY
+  Dawn Anderson-Butcher, Ph.D., LISW-S & Samantha Bates, Ph.D., LSW
+            The Ohio State University LiFEsports Initiative
+
+
+
+
+Anderson-Butcher, D. & Bates, S. (2022). National Coach Survey final report. The Ohio State
+University LiFEsports Initiative, Columbus, OH.
+
+
+         For more information about this report, please contact: Dawn Anderson-Butcher (anderson-
+                       butcher.1@osu.edu) or Samantha Bates (bates.485@osu.edu).
+                                                                                                   1
+
+
+                    National Coach Survey Final Report
+In 2022, LiFEsports at The Ohio State University (OSU), the Aspen Institute’s Project Play
+Initiative, the Susan Crown Exchange, and Nike partnered to conduct the first-ever youth sport
+coach survey of its kind in the United States (U.S.). The goal of the 2022 National Coach Survey
+was to examine youth sport coaches’ backgrounds, experiences, philosophies, behaviors, and
+training histories and interests, while also exploring whether coach training makes a difference in
+relation to improved coaching practices and, ultimately, perceived impact on athletes. Findings
+provide useful information about youth sport coaching in the U.S. and can be used to drive
+improvements in youth sport policy, practice, coach preparation, and training.
+Here, we first review the literature by synthesizing past research and gaps, laying the
+groundwork for the present analysis. Next, we outline the study methods, describing the
+procedures, survey items, and statistical analyses. Results then summarize data on background
+and training histories and interests, confidence in certain coaching behaviors, priority coaching
+philosophies, preparation to work with specific populations, and other variables of interest. We
+then present findings that demonstrate how trained coaches report higher levels of perceived
+coaching effectiveness, perceived impact, and career winning percentages as compared to those
+not trained in specific competencies. Finally, we discuss the overall findings and illuminate ways
+to support youth sport coaches through training, continuing education, and professional
+development.
+                                 Background and Rationale
+Sport engages youth in physical activities that promote health and well-being, encourage social
+interactions that transcend cultures and boundaries, and empower and motivate participants
+(Anderson-Butcher & Bates, 2021). Indeed, research demonstrates the role of youth sport in
+promoting health and mental health outcomes, as well as in reducing youth problem behaviors
+(Eime et al., 2013; Eccles, Barber, Stone & Hunt, 2003; Jones et al., 2017; Pate et al., 2000;
+Spruit et al., 2016; Super et al., 2017). The inherent design of youth sport also requires the
+implicit and explicit use of valuable skills on and off the field. Given mass participation rates and
+universal appeal, the potential for youth sport to impact positive youth development (PYD) is
+vast. However, positive experiences in youth sport often are dependent on non-sport
+components, including interactions with coaches and other social agents (Amorose & Anderson-
+Butcher, 2015; Anderson-Butcher, 2019; Newman et al., 2021; Riley et al., 2017).
+
+Coaches can make or break the youth sport experience. In fact, research demonstrates how
+coaching philosophies that prioritize social and emotional development above performance and
+talent development are critical for PYD (Anderson-Butcher et al., 2018; Côté & Gilbert, 2009;
+Gould et al., 2006, 2007; Holt & Neely, 2011). Requisite knowledge, previous training, past
+histories in coaching, confidence in coaching skills, and having played sport produce high-
+quality coaches (Camiré, 2014; Côté & Gilbert, 2009; Feltz et al., 1999; McDonald et al., 2020).
+Structured coaching strategies that intentionally teach life skills and foster social and emotional
+learning (SEL) produce more favorable outcomes (Anderson-Butcher, 2019; Bean & Forneris,
+2016, 2017; Beni et al., 2017; Camiré et al., 2009; Gould & Carson, 2008; Pierce et al., 2018;
+Turnnidge et al., 2014). Further, coaches who set boundaries, offer consistent and structured
+programming and feedback, set expectations for learning and mastery, and encourage hard work
+and fun are most effective (Anderson-Butcher et al., 2021; Amorose & Weiss, 1998; Beni et al.,
+                                                                                                      2
+
+
+2017; Gould et al., 2012; Haudenhuyse et al., 2014; Holt et al., 2016; Newton et al., 2007;
+Whitley et al., 2019). Also important is the modeling and reinforcing positive behaviors and
+good sportspersonship (Bolter & Weiss, 2008; Feltz et al., 1999; Riley et al., 2017). Yet still,
+some have found success as measured by win/loss records is an indicator of effectiveness
+(Boardley, 2018).
+Although research has begun to distill specific coach characteristics and coaching strategies
+effective for PYD, there are still many gaps in the research. Many studies on youth sport lack
+sufficient descriptions of the methodologies used or are limited in methodological rigor (Coalter,
+2010, 2013; Holt et al., 2016; Whitley et al., 2019). Most coaching studies to date have relatively
+small sample sizes and only explore coaches from one to two sports (often team sports that are
+more high profile; Camiré, 2014). Likewise, research too often focuses on individual-level
+practices (Coakley, 2011; Haudenhuyse et al., 2014; Jones et al., 2017) and psychological
+processes (Coakley, 2011; Jones et al., 2017) and fails to account for social and political
+contexts, competition level, organizational capacities, demographics of participants and varying
+program features (Anderson-Butcher 2019; Coakley, 2011; Coalter, 2010).
+
+Some measurement issues also exist. Most studies treat sport participation as a single variable
+rather than categorizing participation and coaching by types of involvement (Jones et al., 2017).
+Similarly, youth sport research often fails to delineate the types of sports programs offered
+(Clark et al., 2015). Certain coaching strategies also may be more effective for certain groups of
+youth, pointing to the need for individualized strategies for girls, those with disabilities, youth
+from culturally diverse groups, and those living in poverty (Anderson-Butcher et al., 2018;
+Fernandez-Gavira et al., 2017; Schulenkorf et al., 2016). Last, coaching practices, philosophies,
+and strategies may be limited due to barriers such as financial costs, lack of access to facilities
+and safe spaces, transportation, the timing of programs, and funding (Fernandez-Gavira et al.,
+2017; Edwards & Rowe, 2019; Rosso et al., 2016, Skinner et al., 2008; Schulenkorf et al., 2016;
+Spaaij et al., 2016). Indeed, there is a need to explore varying sport contexts and specific
+pedagogical practices to determine the best way to structure sport through intentional coaching
+practices (Spaaij et al., 2016).
+Further, the value of coach training, especially focused on PYD and SEL, is increasingly
+important (Anderson-Butcher et al., 2019; Barnett et al., 1992; Côté & Gilbert, 2009). Twenty
+percent of youth in the United States lack age-appropriate social and/or life skills (Blumberg et
+al., 2008). Recent data from the Centers for Disease Control and Prevention (2021) suggest a
+40% increase in anxiety, depression, and thoughts of self-harm among youth over the past
+decade. Importantly, some research suggests that coach training in PYD and SEL strategies can
+improve youths’ motivation, satisfaction, and continued participation (Falcão et al., 2012;
+Camiré et al., 2020). However, we know that coach participation in training beyond health/safety
+protocols is limited (Anderson-Butcher et al., 2020; Bates & Anderson-Butcher, in review).
+Ensuring coaches are better prepared to address the diverse and multi-faceted needs of youth
+remains a growing priority.
+Given this context, the current study addresses some of these gaps in the literature. We explore
+coaching practices and philosophies among coaches in multiple sports, at different competitive
+levels, from varying backgrounds (i.e., paid vs. unpaid, history in coaching, etc.), of players from
+different genders and ages, and varying perspectives. A few research questions guided this work,
+including: What types of background, history in sport and coaching, coaching philosophies, and
+                                                                                                   3
+
+
+practices do youth sport coaches in the United States bring with them to this important social
+setting? To what extent do they incorporate best practices in coaching effectiveness into their
+coaching practices? Do coaches from different backgrounds and/or sports use similar or different
+coaching strategies when working with youth? Does training and preparation produce more
+confident, effective coaches and, in turn, promote broader impact on youth? Findings will
+address gaps in the youth sport coaching literature and inform efforts to improve the quality of
+youth sport experiences provided by coaches across the United States.
+                                             Method
+The study builds from prior research exploring coaching practices in the State of Ohio.
+Specifically, an initial coach study was completed in 2019 as part of the Aspen Institute’s State
+of Play Central Ohio report. Considerable time was spent here reviewing the literature on
+coaching effectiveness, creating a survey item pool, and exploring the psychometric properties of
+a Coach Survey. Following survey development, 461 coaches from the Central Ohio area
+completed the survey online and findings were used as part of a local youth sport needs
+assessment (Anderson-Butcher et al., 2019).
+This initial work, in turn, was used to drive the development of an Ohio-based coach training
+agenda funded by the Susan Crown Exchange called Coach Beyond. As part of the first year of
+Coach Beyond (2021), over 4,000 Ohio coaches completed the next iteration of the Coach
+Survey, also allowing for the survey to be again tested for reliability and validity and further
+refined in relation to its overall measurement properties. Please note the results of this study
+(Bates & Anderson-Butcher, 2022; Bates et al., in review) are currently driving Ohio-based
+coach training done by LiFEsports in partnership with the Ohio High School Athletic
+Association. This National Coach Survey builds from this initial research in Ohio and strives to
+assess the youth sport coach landscape across the country.
+Procedures
+All study procedures were approved by the OSU Institutional Review Board. Participants were
+recruited via posts on social media and emails sent out to contacts on a comprehensive list of
+coaches, school leaders, and sport administrators from for-profit and non-profit sectors (i.e., club
+teams, public and private schools, clubs, associations, and other sport entities such as parks and
+recreation departments, etc.). Additionally, leaders from sport organizations and athletic
+associations forwarded recruitment scripts along with the survey link through their networks,
+membership databases and distribution lists. Further, the Aspen Institute, Nike, and the Susan
+Crown Exchange, partners in this research, were critical in spreading the word and recruiting
+coaches and organizations. Online data collection using Qualtrics occurred between March and
+October of 2022. All participants provided informed consent for participation.
+No identifiable information was collected on the survey, and therefore data could not be traced back
+to individual respondents during analyses. For every 500 people who completed the survey and
+provided an email address, a random participant was awarded a $50 electronic gift card.
+Organizations with more than 500 coaches completing the survey will eventually receive a summary
+report synthesizing their own data. This served as another incentive for participation.
+                                                                                                    4
+
+
+Measurement
+Items on the survey explored variables such as coach background, history in sport and coaching,
+philosophy, confidence in relation to current practices, and perspectives on sport. Specific
+constructs and respective items of interest included measures of:
+
+       Demographic Characteristics and Background. Several items explored the demographics
+       of coaches, including age, gender, race/ethnicity, employment outside of sport, age, level of
+       education, occupation, licensure/certification status, and roles as coaches. Also, several
+       questions explored varying characteristics of the youth coached, such as their age, gender,
+       and the percent of youth on the team living in poverty. Other items explored characteristics
+       of the sport context, such as the type of sport (i.e., soccer, basketball, etc.), level of
+       competitiveness, whether they coached at a school or in the community, and their level of
+       pay (if any).
+       Coach Training and Preparation. Building from past research by Cote & Gilbert (2014)
+       and Camiré et al. (2014), participation in and desired interest in several different types of
+       training were examined and surveyed. Specifically, participants reported on past coach
+       trainings they had attended and noted their desire for more training in specific areas.
+       Example training areas assessed included those focused on health and safety (i.e., CPR, basic
+       first aid, etc.), traditional coaching practices (i.e., developing sport skills and tactics), PYD
+       (i.e., relationship building, developing life skills), fostering a positive environment (i.e., team
+       cohesion, etc.) and mental wellness (i.e., suicide protocols, linkage to resources). In addition,
+       coaches were asked to report on their perceived preparation to work with specific populations
+       of athletes, such as those with ADD/ADHD, physical disabilities, chronic illness, behavioral
+       problems, etc.
+       Coaching Philosophies. Several items explored coaches’ philosophy of coaching,
+       building from and extending original values and priorities researched previously by
+       Camiré (2014) and Lemyre et al. (2007). Here participants were given a list of 17 items
+       and asked to order them from most to least important. Example values reflecting their
+       philosophies included ones such as winning games/competitions, teaching life skills,
+       creating a sense of belonging, making sure everyone plays, etc.
+       Confidence in Coaching Practices. The Coach Beyond Index (Bates & Anderson-
+       Butcher, 2021) was used to assess coaches’ confidence in various coaching practices,
+       both ones focused on traditional coaching practices and those related to PYD and broader
+       mental wellness. Respondents reported on their different coaching practices during the
+       last season coached. There are five subscales on the Index which assess the following
+       practices: health and safety (i.e., handling injuries, concussions), coaching the X’s and
+       O’s (i.e., traditional coaching practices related to tactics and techniques), teaching life
+       and leadership skills through sport, fostering a positive team environment, and supporting
+       athletes’ mental wellness. Items were measured on a scale of strongly disagree to strongly
+       agree. Coaches were asked to rank from “strongly disagree” to “strongly agree” how
+       confident they were in their abilities in these areas.
+       Motivations for Coaching. Several items on the survey explored participants’
+       motivations for coaching. Specifically, coaches were asked to rate how influential certain
+       factors were in influencing their decisions to coach. Example items include, “I love
+                                                                                                      5
+
+
+       teaching sport,” “I played sports as a child,” “I love working with young people,” and “I
+       am a parent/caregiver of an athlete.”
+       Satisfaction, Stress, Likelihood to Continue, and Winning. Coaches also reflected on
+       their overall coaching experience by indicating how satisfying their coaching experience
+       was, how likely they were to continue coaching in the future, and how stressful the
+       coaching experience was for them. Items were rated on a scale from “not at all” to
+       “extremely.” They also reported on their estimated winning percentage over the course of
+       their careers, last season, and in their primary sport.
+       Perceived Impact. Coaches were asked to share their perceptions related to the impact
+       they have had on their athletes in the setting where they coached their primary sport.
+       Coaches ranked their impact on a scale from 1 to 100 with 1 indicating low impact, 50
+       indicating moderate impact, and 100 indicating high impact. Sport-Related Performance
+       Impact included items reflecting traditional sport outcomes such as developing sport
+       skills and winning championships/games. Youth Development Impact included items
+       such as developing life and leadership skills among their athletes and helping youth
+       persist in educational settings. Also, all eight items were added together to also create an
+       Overall Impact Scale.
+       Other Factors. A few other factors were explored that were of particular interest to our
+       research team. For example, we wanted to better understand coaches’ perceptions of
+       parent/caregiver behaviors in sport. As such, coaches were asked how often did
+       parents/caregivers of athletes on their team praise or criticize their own child, other
+       athletes on the team, and opponents. We also were interested in better understanding how
+       coaches were supported and evaluated. As such, several questions asked whether
+       participants had been evaluated during their last season, and whether the evaluation was
+       helpful in improving their coaching practices. Other items ascertained the degree to
+       which the person they report to provides constructive feedback, supports them in their
+       role as a coach, or uses wins/losses to determine their success as a coach. Last, we also
+       asked coaches to reflect on the degree to which they perceived a need for more sport for
+       targeted groups of youth (i.e., girls, middle school, those with disabilities, etc.), as well as
+       a need for more coaches, in general.
+
+Analyses
+Data from Qualtrics were exported to Microsoft Excel and SPSS, checked for errors, and
+managed for missing data. Please note valid percentages were used throughout the descriptive
+analyses to reflect the percent when missing data are excluded from the calculation. Descriptive
+statistics explored variables of interest across the sample, as well as among different subgroups
+of coaches (i.e., competitiveness level, school, or community, etc.). Follow-up analyses
+exploring significant differences among groups involved basic t-tests, ANOVAs, and
+MANOVAs. Ultimately, analyses were largely descriptive and examined trends across
+subgroups to better understand the overall coaching landscape. Our analyses exploring group
+differences should be interpreted with caution given increased risks for Type I error (i.e., false
+positive).
+                                                                                                    6
+
+
+The main part of this report summarizes key findings of particular relevance to the national
+agenda. The Appendix includes tables summarizing data points across groups and further
+analyses in more detail. In the future, additional analyses will use structural equation modeling
+and other more advanced statistical techniques (i.e., cluster analyses, etc.) to examine further
+relationships among variables concerning coaching practices and perceived outcomes. To
+reference this report, please utilize the following citation:
+
+Anderson-Butcher, D. & Bates, S. (2022). National Coach Survey final report. The
+      LiFEsports Initiative, Columbus, OH.
+
+                                    Coach Demographics
+In total, 10,661 coaches participated in the National Coach Survey. To specifically examine the
+context of youth sport, we removed the 176 coaches who were currently working in collegiate
+settings. Therefore, this report summarizes findings from the 10,485 youth sport coaches who
+participated in the survey. Demographics describing these coaches provide an indication of who
+took the survey, but also provide a snapshot into the backgrounds and characteristics of coaches
+across the U.S. A breakdown of the demographic characteristics of coaches in the sample can be
+found in Appendix A. The following provides an overview of the unique demographic
+characteristics of this sample of coaches.
+
+Gender, Race, and Age
+The sample was largely male (74%) and White Caucasian (79%). The average age of coaches in
+the sample was 45.62 years with 36% of the sample identifying as over 50 years of age.
+
+Years of Coaching Experience
+Study participants coached for an average of 12.95 years. There was a lot of variability in the
+years coached, however, as 31% of coaches reported they coached less than one year; 25%
+reported coaching for 5-10 years; 24% coached for 11-20 years; and 21% coached for 21 or more
+years.
+
+Geographic Location
+Coaches from every state completed the survey, with the largest representation from the three
+states where the high school athletic associations/departments were active in distribution:
+California (17%), Ohio (15%) and Washington (12%). In total, 62% of coaches reported they
+primarily coached youth who lived in their own zip code.
+
+Educational and Occupational Background
+Overall, 77% of coaches reported having a Bachelor’s degree or more advanced degree. Most
+majored in degree pathways such as business, education, engineering, law, liberal
+arts/humanities, social sciences, and leisure/fitness studies. In total, 36% of coaches with an
+undergraduate or graduate degree majored in education, parks/recreation, leisure, and fitness
+studies, or psychology (16% of the full sample).
+
+Employment and Hours of Coaching
+Notably, 83% of coaches reported they were employed outside of coaching. The most common
+occupations outside of coaching reported were those in the business arena, with 21% of the
+                                                                                                    7
+
+
+sample reporting employment in occupations such as Sales, Business/Financial Operations, and
+Management-related occupations. Further, 83% of coaches reported working 35 hours or more a
+week outside of their coaching role in their full-time jobs.
+
+Organizations, Apps, & Affiliations
+Several organizations distributed the survey through their networks and social media, with
+greatest representation from soccer organizations, including US Youth Soccer (n=1256), the U.S.
+Soccer Federation (n=759), and the U.S. Soccer Foundation (n=248). Two high school athletic
+associations (Washington and Ohio) and AAU had nearly 500 coaches each report affiliation,
+and Little League had nearly 1000 coaches complete the survey (n=948). Three sport apps also
+helped share out the survey link, including Team Snap (n=2149) and Arbiter (n=1059).
+
+Sports Coached Throughout Career
+Participants in the sample reported coaching 38 specific sports, with the greatest representation
+from the sports of baseball (33%), basketball (35%), soccer (40%), softball (17%), tackle
+football (16%), track & field (14%), and volleyball (10%). In total, 36% of coaches reported
+coaching only one sport throughout their coaching career, whereas 64% reported coaching two or
+more sports throughout their career. The mean number of sports coached during their career was
+approximately 3 sports (M = 2.73, SD = 2.28).
+
+Roles Held Throughout Coaching Career
+Coaches reported the different roles they had held during their careers. These data demonstrate
+how coaches have histories in different coaching roles, with 65% reporting they had been
+volunteer coaches, 74% reporting they had been assistant coaches, and 79% reporting they had
+been head coaches at one time in their careers. Some also had served in other roles in youth
+sport, such as serving as a Board Member (23%) or acting as a Sport Administrator (14%).
+Notably, 52% of the sample reported that during their coaching career they had a child who was
+an athlete. Overall, percentages are greater than 100% as coaches could select all of the various
+roles they have held during their careers. More information on the multiple roles coaches held
+during their careers can be found in Appendix A.
+
+Settings Coached During Coaching Career
+Coaches also reported on the different settings where they had coached throughout their careers.
+These data demonstrate how coaches often engage in multiple settings and sports systems
+throughout their careers. For example, 62% reported coaching in a school-based setting at one
+point in their career; 56% developmental; 68% recreational; 59% competitive; 13% collegiate;
+6% adapted; and 4% other. To demonstrate the overlap in number of settings coached, we found
+35% of school-based coaches also reported having coached in developmental settings during
+their careers. Further, 41% of coaches who had coached in developmental settings also reported
+coaching in competitive settings during their careers.
+
+Pay and Hours Worked Last Season in Primary Sport
+In relation to pay, 41% of the coaches in the sample were unpaid in their last season coaching
+their primary sport. Further, 33% of coaches were paid under $5,000 and 26% were paid over
+$5,000 in their last season of coaching their primary sport. In relation to hours coached last
+season, 9% worked less than 5 hours/week, 23% coached between 6-10 hours, 17% coached
+                                                                                                  8
+
+
+between 11-15 hours/week, 17% worked between 16-20 hours; and 34% worked more than 20
+hours/week.
+                      Coaches Primary Sport, Role, and Setting
+To understand participants’ level of engagement in youth sport (i.e., sport, role, and setting), we
+asked participants to select their primary sport, coaching role last season, and setting coached
+most often. When exploring primary sport participants coached, these data demonstrate the most
+representation from soccer coaches (24%), baseball (15%), basketball (12%), tackle football
+(6%), and softball (6%). We also asked coaches to rank their sport on a continuum of 1 to 100,
+with 1 representing free play and 100 representing organized sport. Most coaches in this sample
+perceived the last season sport coached as highly organized (Mean = 89.71, SD = 15.57). These
+data suggest that the coaches in this sample primarily coached in highly competitive sporting
+contexts (which is similar to the 59% who report coaching in a competitive setting). Table 1
+overviews participants’ primary sport coached.
+
+Table 1. Primary Sport Coached
+ Sport                Total     %             Sport                             Total       %
+ Badminton              304     3%            Golf                               249        2%
+ Baseball              1559    15%            Gymnastics                          94        1%
+ Basketball            1256    12%            Ice Hockey                         129        1%
+ Biking                 620     6%            Lacrosse                           180        2%
+ Bowling                114     1%            Martial Arts                        35       <1%
+ Boxing                 107     1%            Parkour                             24       <1%
+ Cheerleading           163     2%            Rowing                              26       <1%
+ Cross Country          290     3%            Rugby                               52       <1%
+ Curling                 45    <1%            Sailing                             24       <1%
+ Dance and Step          69    <1%            Soccer                            2500       24%
+ Diving                  41    <1%            Softball                           681        6%
+ Esports                 34    <1%            Street Hockey                       30       <1%
+ Fencing                261     3%            Swimming and Diving                168        2%
+ Field Hockey            51    <1%            Squash                              18       <1%
+ Figure Skating         282     3%            Track & Field                      425        4%
+ Flag Football          175     2%            Tennis                             237        2%
+ Tackle Football        631     6%            Volleyball                         427        4%
+ Free play               38    <1%            Wrestling                          246        2%
+ Frisbee                 30    <1%            Other                              214        2%
+ General Fitness         60    <1%            --                                  --         --
+
+In their last season coached, 42% of the coaches in the sample coached in schools. Of those who
+coached in a school, 86% coached at the high school level, 83% coached in public school
+settings, and 50% of coaches reported being educators at the school. Others coached primarily in
+competitive (29%), recreational (20%), and developmental settings (6%). Notably, 51% of the
+coaches’ teams were selected using tryouts, which again aligns with the level of competition
+often seen in school and competitive club settings. Furthermore, 2/3 of the sample were Head
+Coaches during their last season coached, and most had formal roles (as only 9% identified
+themselves as volunteer coaches). See Table 2.
+                                                                                                9
+
+
+
+
+Table 2. Setting and Role During Last Season
+ Setting Last Season             N     % Role During Last Season   N   %
+ School                        3899 42% Head Coach               5925 66%
+ Developmental (8 or younger) 590 6% Assistant Coach             2066 23%
+ Recreational                  1855 20% Volunteer Coach           824 9%
+ Competitive                   2729 29% Other                     223 2%
+ Adapted                         17 <1%
+ Other                          187 2%
+
+     Team Characteristics (Gender, Age, Race, and Socioeconomic Status)
+In total, 40% of the participants coached male athletes, 27% coached female athletes, 19%
+coached male and female athletes, and 14% coached co-ed teams during their last season.
+Additionally, a majority of the teams were comprised of youth aged 14 to 17 (54%) which aligns
+with the sample composition of competitive and school-based coaches.
+
+Table 3. Gender and Age of Athletes
+ Gender Coached Last Season      N         %     Ages of Athletes on Team      %
+ Male                          3721       40%    Under age 7                  7%
+ Female                        2494       27%    8-13                         35%
+ Equally male and female       1747       19%    14 -17                       54%
+ Co-ed                         1351       14%    18 and older                 3%
+
+Coaches were asked to estimate the racial and socioeconomic backgrounds of athletes on their
+teams by reporting a percentage indicator ranging from 1 to 100 of those who identify as these
+various identities on their teams. Based on these estimates, mean percentages were generated that
+demonstrate a majority of teams were comprised of White athletes (average composition
+reported was 42%) as compared to teams comprised of Black, Indigenous youth of color
+(BIPOC; average composition ranged from 1% to 8% among subgroups). Further, coaches
+reported approximately 20% of athletes or 1 out of 5 identified as youth living in poverty. Living
+in poverty was defined based on perception and all indicators reported above should be
+interpreted with caution. These are estimates based on coach perceptions and not primary data
+collected from athletes or their parents/caregivers.
+
+Table 4. Racial and Socioeconomic Make-Up of the Team (Average %’s reported)
+                              Average % of Athletes                Reported 50% or
+ Racial Background                                    Mean (SD)
+                               on Team Reported                     More of Team is
+ Black/African American                6%             5.88 (13.44)        2%
+ Hispanic/Latino                       8%             7.71 (15.65)        3%
+ Asian/Pacific Islander                3%              3.22 (9.25)        1%
+ White                                42%            41.60 (36.61)       39%
+ Native American or                   <1%              0.84 (5.25)       <1%
+ American Indian
+                                                                                               10
+
+
+ Multiple Races                          3%                  3.41 (11.01)          1%
+ Other                                   1%                  1.05 (12.68)         <1%
+ Socioeconomic                   Average % of Athletes                       Reported 50% or
+                                                              Mean (SD)
+ Background                       on Team Reported                           More of Team is
+ Living in Poverty
+ (Receive free and reduced
+ lunch, experience food or                 20%               19.80 (26.40)          12%
+ housing insecurity, have
+ unmet basic needs)
+
+                                   Motivations to Coach
+The coaches in this sample reported multiple motivations influencing their decision to become a
+coach, with two primary ones involving their love of teaching sport (83%) and desire to stay
+involved in the game (79%). Others related to their desires to teach young people, including how
+they wanted to develop young people in the community (82%) and they love working with
+young people (81%). Many were motivated by their past sport participation, with about 3 out of
+4 reporting they played sports in their childhood. Further, 66% were motivated to coach because
+they were the parent/caregiver of an athlete. Interestingly, 48% were approached by someone
+and asked to serve as a coach, and only 14% reported they coached to make extra money. When
+further exploring motivations related to coaching by levels of pay, coaches paid over $5,000
+tended to be most motivated and influenced by all of the factors. Most salient was the difference
+in being motivated because they "love teaching sport" (64% versus 41%) compared to unpaid
+coaches.
+
+Table 5. Motivations to Coach
+ To what degree did the following influence your                    % Very or Extremely
+ decision to become a coach:                                            Influential
+ I love teaching sport.                                                    83%
+ I wanted to develop young people in my community.                         82%
+ I love working with young people.                                         81%
+ I wanted to stay involved in sport.                                       79%
+ I played sports as a child.                                               78%
+ I played sports in high school.                                           74%
+ I wanted to give back to my community.                                    70%
+ I am the parent/caregiver of an athlete.                                  66%
+ I had great coaches in my life.                                           58%
+ I was approached by someone to serve as a coach.                          48%
+ I played sports in college.                                               46%
+ Coaching is locked upon favorably by my job.                              22%
+ I wanted to make extra money.                                             14%
+ Coaching is required for my job.                                          12%
+                                                                                               11
+
+
+
+
+Table 6. Motivations to Coach by Pay Last Season
+ To what degree did the following influence your                    Pay Last Season
+ decision to become a coach:                                        Paid under     Paid over
+                                                           Unpaid
+                                                                      $4999           $5000
+ Motivations                                                     % Extremely influential
+ I love teaching sport.                                     41%        61%             64%
+ I wanted to develop young people in my community.          41%        54%             49%
+ I love working with young people.                          36%        55%             54%
+ I wanted to stay involved in sport.                        36%        53%             57%
+ I played sports as a child.                                45%        59%             58%
+ I played sports in high school.                            38%        60%             55%
+ I wanted to give back to my community.                     35%        41%             36%
+ I am the parent/caregiver of an athlete.                   64%        37%             34%
+ I had great coaches in my life.                            19%        36%             38%
+ I was approached by someone to serve as a coach.           15%        22%             24%
+ I played sports in college.                                19%        37%             43%
+ Coaching is looked upon favorably by my job.                4%        11%             18%
+ I wanted to make extra money.                               1%         6%             11%
+ Coaching is required for my job.                            2%         5%             16%
+
+There also were differences in motivations to coach based on the level of competition within the
+sporting context. Overall, those coaches at more competitive levels (i.e., defined as those
+working in school and competitive club settings) reported greater motivations to coach across all
+factors (except for in relation to being the parent/caregiver of an athlete; 43% compared to 60%).
+The ones most influential to coaches at competitive levels of sport related to their love of
+teaching sport (58% reported this was extremely influential compared to 40% of
+rec/developmental coaches) and having past histories of sport involvement (55% reported
+playing sports in high school was extremely influential to their decisions to coach compared to
+37% of rec/developmental coaches). Coaches at the developmental/recreational level were more
+highly motivated by being a parent/caregiver of an athlete (60%), because they love teaching
+sport (40%), and because they played sports as a child (46%).
+                                                                                                  12
+
+
+                                  Coaching Behaviors
+All coaches were asked about their ability to engage in various coaching behaviors that support
+the whole athlete in and out of sport. Items were measured on a scale of strongly disagree to
+strongly agree. Items that generated the highest and lowest percentages of coaches reporting they
+felt highly confident (i.e., strongly agree) are reported below. Coaches were asked, “How
+confident are you in your ability to…” Specific breakdowns of confidence items can be found in
+Appendix B.
+
+Table 7. Confidence in Coaching Behaviors
+   5 Most Confident Coaching Behaviors         5 Least Confident Coaching Behaviors
+ 1. Promote good sportspersonship         1. Help athletes navigate the pressures of social
+                                              media
+ 2. Make athletes feel welcome on a team  2. Link athletes to mental health resources
+ 3. Teach basic techniques/skills         3. Refer athletes to supports for unmet basic
+                                              needs
+ 4. Report child abuse and neglect        4. Identify off the field stressors among athletes
+ 5. Create an inclusive environment       5. Reduce performance anxiety among
+                                          athletes
+
+  Coaches reported feeling confident in their ability to
+           promote good sportspersonship
+Overall, coaches were most confident in coaching behaviors related to team culture/climate-
+related competencies, ones such as promoting good sportspersonship (66% reporting highly
+confident), creating an inclusive environment (55%), and making athletes feel welcome on the
+team (65%). They also felt confident in teaching the basic techniques/skills of the sport (63%), as
+well as reporting child abuse and neglect (57%). They were asked to identify the areas of
+coaching where they were least confident. Coaches in this sample were least confident in
+coaching behaviors pertaining to student-athlete mental health, ones such as helping athletes
+navigate the pressures of social media (only 17% feel highly confident), linking athletes to
+mental health (18%), identifying off the field stressors among athletes, (19%), and reducing
+performance anxiety (20%). They also were less confident in their ability to refer athletes to
+supports for basic needs (18%).
+
+
+Only 18% of coaches reported feeling highly confident
+    in their ability to link athletes to mental health
+                          resources
+
+Interestingly, data demonstrate how coaches were confident in their traditional coaching
+behaviors, ones more central to sport coaching. Yet, a majority also demonstrate room for
+growth in their perceptions of these skills. For instance: only 39% reported feeling highly
+confident (i.e., strongly agree) in regard to their ability to handle concussions, 39% in their
+                                                                                                      13
+
+
+ability to detect subtle technical errors, 37% in their ability to prepare for competitions against
+strong competitions, 42% in their ability to provide constructive feedback, and only 35% were
+highly confident in their ability to communicate with athletes when they are underperforming.
+
+Differences by Subgroups
+Differences in coaching behaviors were examined in a myriad of ways, primarily to determine
+differences based on level of competition and among educators vs. non-educators. Table 8
+overviews these findings.
+
+       Level of Competition High vs. Low
+       Coaches reported differences in their confidence levels based on setting and role. Across
+       all subscales assessing confidence in various coaching behaviors, competitive sport
+       coaches (those in schools, clubs, etc.) rated their confidence levels significantly more
+       favorably than those coaching at the recreational/developmental levels (except in the area
+       of fostering a positive environment where the two groups were fairly similar).
+       Educator vs. Non-Educator
+       Similarly, differences in coaching confidence were found among coaches working in
+       school settings (i.e., educators vs. non-educators). Specifically, statistically significant
+       differences were identified in mean scores on subscales measuring coach practices (X's
+       and O's), PYD (i.e., teaching life and leadership through sport), and Supporting Mental
+       Wellness behaviors (i.e., ones assessing mental health-related practices). Scores were
+       more favorable for coaches employed by the school as compared to those not employed
+       by the school.
+                                                                                                                              14
+
+Table 8. Coaching Behaviors by Level of Competition and Role as School-Based Coach
+                                               Level of Competition                   School-Based Coaches
+ Category                              High Level of        Low Level of                                         Overall
+                                        Competition          Competition          Educator      Non-educator
+                                    (School/Competitive) (Rec/Developmental)
+ How confident are you in your
+                                                                             % Strongly agree
+ ability to…
+ Health and Safety Overall
+                                        4.23 (0.70)*           4.01 (0.84)        4.23 (0.69)     4.28 (0.68)   4.17 (0.75)
+ Mean (SD)
+ handle concussions.                       36%                    31%                36%             38%           39%
+ handle injuries.                          42%                    33%                41%             45%           35%
+ Coaching the X's and O's
+                                        4.35 (0.48)*           4.13 (0.50)       4.39 (0.48)*     4.29 (0.46)   4.29 (0.49)
+ Overall Mean (SD)
+ prepare for competitions against
+                                           36%                    23%                45%             36%           37%
+ strong opponents.
+ make strategic decisions in
+                                           52%                    40%                53%             48%           49%
+ pressure situations.
+ maximize team strengths during
+                                           45%                    28%                48%             41%           41%
+ competitions.
+ detect subtle technical errors.           42%                    27%                43%             36%           39%
+ support the diverse needs of
+                                           43%                    36%                46%             40%           41%
+ athletes.
+ communicate with my athletes
+                                           49%                    45%                52%             44%           48%
+ when they are performing well.
+ teach basic techniques/skills.            65%                    56%                65%             63%           63%
+ communicate with my athletes
+                                           38%                    26%                41%             33%           35%
+ when they are underperforming.
+ accurately assess the physical
+                                           37%                    24%                41%             35%           34%
+ conditioning of athletes.
+ set clear expectations for how I
+                                           44%                    25%                50%             38%           39%
+ choose a team.
+ give constructive feedback to
+                                           43%                    36%                44%             39%           42%
+ athletes.
+                                                                                                                               15
+
+
+                                                Level of Competition                   School-Based Coaches
+Category                                High Level of        Low Level of                                         Overall
+                                         Competition          Competition          Educator      Non-educator
+                                     (School/Competitive) (Rec/Developmental)
+How confident are you in your
+                                                                              % Strongly agree
+ability to…
+debrief with athletes after a
+                                            44%                    31%                47%             39%           41%
+competition.
+Teaching Life and Leadership
+                                         4.30 (0.50)*           4.09 (0.54)       4.37 (0.48)*     4.26 (0.49)   4.28 (0.52)
+Skills Overall Mean (SD)
+promote good sportspersonship.              65%                    66%                64%             67%           66%
+effectively motivate athletes.              41%                    34%                44%             36%           39%
+teach life skills through sport.            51%                    33%                55%             49%           47%
+use goal-setting techniques with
+                                            36%                    26%                50%             54%           34%
+athletes.
+develop my athletes into leaders.           32%                    21%                36%             29%           29%
+serve as a mentor to athletes.              51%                    41%                55%             47%           49%
+build confidence among athletes.            44%                    41%                44%             41%           44%
+resolve interpersonal conflicts on
+                                            32%                    26%                35%             28%           31%
+a team.
+ensure athletes on my team are
+                                            36%                    16%                47%             33%           31%
+successful academically.
+Fostering a Positive
+Environment Overall Mean                 4.48 (0.51)            4.48 (0.51)        4.48 (0.51)     4.47 (0.51)   4.49 (0.51)
+(SD)
+create an inclusive environment.            54%                    54%                41%             44%           55%
+make athletes feel welcome on a
+                                            64%                    67%                62%             62%           65%
+team.
+foster positive team dynamics
+                                            46%                    43%                47%             44%           46%
+and cohesion.
+                                                                                                                             16
+
+
+                                              Level of Competition                   School-Based Coaches
+Category                              High Level of        Low Level of                                         Overall
+                                       Competition          Competition          Educator      Non-educator
+                                   (School/Competitive) (Rec/Developmental)
+How confident are you in your
+                                                                            % Strongly agree
+ability to…
+Supporting Mental Wellness
+                                       3.95 (0.57)*           3.75 (0.60)       4.03 (0.55)*     3.91 (0.56)   3.90 (0.59)
+Overall Mean (SD)
+report child abuse and neglect.           59%                    50%                60%             56%           57%
+develop mental toughness among
+                                          35%                    24%                39%             33%           33%
+athletes.
+identify mental health concerns
+                                          26%                    19%                29%             23%           25%
+among athletes.
+help athletes regulate their
+                                          26%                    20%                28%             22%           25%
+emotions.
+refer athletes to supports for
+                                          20%                    13%                25%             17%           18%
+unmet basic needs.
+link athletes to mental health
+                                          19%                    13%                23%             16%           18%
+resources.
+communicate with
+                                          40%                    41%                39%             38%           40%
+parents/caregivers.
+help athletes navigate the
+                                          19%                    11%                23%             17%           17%
+pressures of social media.
+deal with the pressures of
+                                          41%                    33%                40%             39%           39%
+coaching.
+set expectations for our team
+                                          26%                    13%                32%             23%           23%
+related to social media.
+prevent burnout among athletes.           26%                    23%                27%             24%           25%
+identify off the field stressors
+                                          21%                    14%                25%             16%           19%
+among athletes.
+incorporate mental imagery into
+                                          26%                    18%                27%             25%           24%
+training/workouts.
+utilize mindfulness exercises
+                                          23%                    18%                25%             22%           22%
+with athletes.
+                                                                                                                                            17
+
+
+                                                Level of Competition                       School-Based Coaches
+ Category                              High Level of        Low Level of                                                        Overall
+                                        Competition          Competition              Educator         Non-educator
+                                    (School/Competitive) (Rec/Developmental)
+  How confident are you in your
+                                                                                  % Strongly agree
+  ability to…
+  reduce performance anxiety
+                                              20%                      18%                 20%                   19%                   20%
+  among athletes.
+Note. This overall measure called the Coach Beyond Readiness Index consists of 5 subscales: The health and safety subscale consists of 2 items;
+the Coaching the X's and O's subscale consists of 12 items; the Teaching Life and Leadership Through Sport subscale consists of 9 items; the
+Fostering a Positive Team Environment subscale consists of 3 items; and the Supporting Mental Wellness subscale consists of 15 items. Each item
+is measured on a scale of 1 = Strongly disagree and 5 = Strongly agree. Higher scores indicate greater levels of confidence in one's ability.
+Response options ranged from 1 (“strongly disagree”) to 5 ("strongly agree"). *Bold indicates a significant mean difference at p <0.05.
+                                                                                               18
+
+
+Other analyses demonstrate the following differences in coaching behaviors based on various
+sport and coach characteristics:
+       Team vs. Individual Sport Coaches: Overall, coaches of team sports reported
+       significantly higher means scores on three of the five Coach Beyond Index subscales
+       including coaching the X's and O's, teaching life and leadership, and fostering a positive
+       team environment compared to coaches of individual sports. Individual sports included
+       those with individual or dual participants (i.e., Badminton, Biking, Bowling, Boxing,
+       Cross Country, Diving, Fencing, Figure Skating, Golf, Gymnastics, Martial Arts,
+       Parkour, Swimming, Tennis, and Wrestling). Team sports included all other sports in the
+       dataset but excluded free play and general fitness. Notably, differences in mean scores on
+       health and safety and supporting mental wellness were non-significant among these two
+       subgroups.
+       Coaches Evaluated Last Season vs. Not Evaluated Last Season: Coaches who
+       reported they were evaluated last season reported significantly higher mean scores on
+       four of the five Coach Beyond Index subscales, including health and safety, coaching the
+       X's and O's, teaching life and leadership skills, and supporting mental wellness behaviors.
+       Means scores were similar and non-significant on the fostering a positive team
+       environment subscale.
+       Licensed/Certified vs. Not Licensed/Certified: Statistically significant differences were
+       noted in scores on four of the five Coach Beyond Index subscales when comparing
+       coaches who were certified/licensed or not: health and safety, coaching the X's and O's,
+       teaching life and leadership skills, and Supporting Mental Wellness behaviors were all
+       higher among coaches that were licensed/certified compared to those who were not.
+       Male vs. Female Coaches: Overall, female coaches reported significantly higher means
+       scores on three of the five Coach Beyond Index subscales (including teaching life and
+       leadership skills, fostering a positive team environment, and supporting mental wellness
+       behaviors) as compared to male coaches. In contrast, male coaches reported significantly
+       higher mean scores on the coaching the X's and O's subscale as compared to female
+       coaches. There were no significant differences in terms of perceptions of confidence on
+       health and safety-related items.
+       Coaches Identifying as White vs. Coaches Identifying as Black, Indigenous People of
+       Color: Coaches who identified as BIPOC reported significantly higher mean scores on
+       just one of the five Coach Beyond Index subscales: supporting mental wellness
+       behaviors. Mean scores were similar and non-significant on the remaining four subscales
+       including health and safety, coaching the X's and O's, teaching life and leadership skills,
+       and fostering a positive team environment.
+                                                                                               19
+
+
+                                   Coaching Philosophies
+Coaches were given a list of 13 different coaching philosophies and asked to rank their top 3 and
+bottom 3 philosophies. The top coaching philosophies reported by coaches were helping athletes
+learn new life skills (35% rated in top 3) and making sure all athletes have fun (35%). Only 6%
+reported that winning games or competitions was a top priority driving their coaching
+philosophy.
+
+ The top coaching philosophies reported by coaches
+ were helping athletes learn new life skills and making
+                sure athletes have fun
+
+Table 9. Coaching Philosophies
+                                                      % Ranked          % Ranked Philosophy
+           Coaching Philosophies
+                                                  Philosophy in Top 3       in Bottom 3
+                                                                                30%
+                 Making sure all athletes play           29%
+                                                                                  9%
+  Supporting athletes in being healthy and fit           29%
+    Helping athletes learn new sport-specific                                     13%
+                                                         28%
+                                       skills
+                                                                                  10%
+         Helping athletes learn new life skills          35%
+                                                                                  9%
+  Creating a sense of belonging through sport            29%
+                                                                                  62%
+             Winning games or competitions                6%
+ Teaching athletes to set their own goals and                                     13%
+                                                         23%
+                           work toward them
+  Creating opportunities for athletes to learn                                    16%
+                                                         12%
+                          from their mistakes
+                                                                                  13%
+               Making sure athletes have fun             35%
+                                                                                  19%
+                   Teaching the love of sport            29%
+                                                                                  35%
+           Teaching athletes how to play fair             6%
+             Ensuring athletes develop good                                       24%
+                                                         16%
+                            sportspersonship
+      Creating a safe environment to prevent                                      33%
+                                                         23%
+                                     injuries
+                                                                                                  20
+
+
+There were differences in how coaches ranked some of their top and bottom priorities. For
+example, 29% of coaches reported making sure all athletes play as a top priority and another
+30% of the sample put this as a bottom 3. Similarly, 21% ranked creating a safe environment to
+prevent injuries as a top value, whereas 33% put that in the bottom 3. Variability also existed in
+relation to values pertaining to sportspersonship and playing fair. For instance, teaching athletes
+how to play fair was in the bottom 3 for 35% of the coaches, and only mentioned as a top 3 for
+6%. Also, 16% ranked ensuring athletes develop good sportspersonship as a top priority, whereas
+24% reported it as a bottom 3 priority.
+Differences by Subgroups
+
+       By Coach Characteristics (see Table 10): In relation to coaching philosophies, some
+       differences were noted in relation to the prioritization of different values specific to one's
+       coaching practices. A few findings are interesting: Coaches with backgrounds in
+       education and related fields included winning, promoting a sense of belonging, and
+       teaching life skills in their top 5 coaching philosophies at higher levels than those without
+       backgrounds in this area. Coaches employed in schools more often included winning
+       games, teaching life skills, and promoting a sense of belonging in their top 5 coaching
+       philosophies as compared with coaches not employed in schools. Coaches receiving some
+       sort of compensation included winning as higher in prioritization than those not receiving
+       pay. Participants coaching at more competitive levels included life skill development and
+       promoting a sense of belonging in their top 5 more often than those coaching at the
+       recreational/ developmental levels. Coaches who reported they had been evaluated last
+       season more often included developing life skills in their top 5 coaching philosophies as
+       compared to coaches reporting they were not evaluated last season. Female coaches
+       seemed to be more likely to include fostering a sense of belonging in their top 5 as
+       compared to male coaches. No evident differences existed among philosophies across
+       coaches who were certified/licensed and those not certified/licensed, across team and
+       individual sport coaches, and across coaches of different racial/ethnic backgrounds.
+       By Sport Characteristics (see Table 11): Differences in coaching philosophies also
+       varied based on level of competition, type of sport, location, whether coaches had been
+       parents/caregivers, and the demographics of their teams. Notably, a majority of coaches
+       reported teaching the love of sport, helping athletes learn new life skills, and making sure
+       athletes had fun as a value guiding their coaching. In recreational/developmental settings,
+       coaches reported valuing making sure athletes play more so. This also was important to
+       coaches who identified as parents/caregivers and those coaching teams with more than
+       50% of their athletes living in poverty. School-based coaches reported creating a sense of
+       belonging through sport was a value guiding their coaching practices whereas non-
+       school-based coaches reported valuing making sure all athletes play.
+                                                                                                                           21
+
+Table 10. Coaching Philosophies by Coach Characteristics
+ Comparison Groups                           % Ranked Winning Games      % Ranked Teaching      % Ranked Creating a Sense of
+                                             and Competitions in Top 5   Life Skills in Top 5    Belonging Through Sport in
+                                                     Philosophies           Philosophies             Top 5 Philosophies
+                     Degree in Education,
+                                                         15%                    62%                         58%
+ Educational         Fitness, or Psych
+ Background          No Degree or Training
+                                                         10%                    54%                         50%
+                     in Education
+ School-Based        Educator                            17%                    66%                         60%
+ Coaches             Non-Educator                        11%                    60%                         57%
+                     Unpaid                               7%                    46%                         48%
+ Pay Last Season     Paid under $4999                    12%                    63%                         57%
+                     Paid over $5000                     18%                    62%                         52%
+                     Yes                                 11%                    55%                         51%
+ Certified/Licensed
+                     No                                  12%                    55%                         53%
+                     High: School/
+ Level of                                                13%                    60%                         54%
+                     Competitive
+ Competition
+                     Low: Rec/Dev                         7%                    43%                         46%
+                     Team                                12%                    57%                         52%
+ Type of Sport
+                     Individual                           9%                    54%                         50%
+ Evaluated Last      No                                   9%                    51%                         50%
+ Season              Yes                                 14%                    60%                         54%
+                     Female                               8%                    57%                         57%
+ Coach Gender
+                     Male                                13%                    55%                         50%
+ Coach               Identify as BIPOC                   13%                    58%                         51%
+ Race/Ethnicity      Identify as White                   11%                    55%                         52%
+                                                                                          Location
+                                                                                                                                     Type of Sport
+                                                                                                                        Team Sport
+                                                                           School-Based                                                                                         Low: Rec/Dev   Competition Level
+                                                                                                     Individual Sport
+                                                     Non-School Settings                                                                                                                                                            Demographic
+                                                                                                                                                     High: School/Competitive
+
+
+
+
+                                                     2                                               2                                                                          1                                  Making Sure All Athletes Play
+
+
+                                                                                                                                                                                                                   Supporting Athletes in Being Healthy
+                                                                                                                                                                                                                   and Fit
+
+                                                                                                                                                                                                                   Helping Athletes Learn New Sport-
+Coach and Parent of Athlete During Coaching Career
+                                                                                                                                                                                                                                                          Table 11. Coaching Philosophies by Sport Characteristics
+
+
+
+
+                                                                                                                                                                                                                   Specific Skills
+
+
+                                                                           1                                            1                            1                                                             Helping Athletes Learn New Life
+                                                                                                                                                                                                                   Skills
+
+                                                                           3                                                                                                                                       Creating a Sense of Belonging
+                                                                                                                                                                                                                   Through Sport
+
+                                                                                                                                                                                                                   Winning Games or Competitions
+
+
+                                                                                                                                                                                                                   Teaching Athletes to Set their Own
+                                                                                                                                                                                                                   Goals and Work Toward Them
+
+
+                                                                                                                                                                                                                   Creating Opportunities to Learn
+                                                                                                                                                                                                                   from Mistakes
+
+                                                     1                                                                  2                            3                          2                                  Making Sure Athletes Have Fun
+
+                                                     3                     2                         3                  3                            2                          3                                  Teaching the Love of Sport
+
+                                                                                                                                                                                                                   Teaching Athletes How to Play Fair
+
+                                                                                                                                                                                                                   Ensuring Athletes Develop Good
+                                                                                                                                                                                                                   Sportspersonship
+
+                                                                                                     1                                                                                                             Creating a Safe Environment to
+                                                                                                                                                                                                                   Prevent Injuries                                                                                  22
+                                                                                                                                               23
+
+
+     Yes, Parent/Caregiver            3                           2                                             1
+
+     No, Never Parent/Caregiver       2                           1                                                    3
+
+ Coaches of Teams with 50% or More Athletes in Poverty
+
+     Less than 50%                                                2                                             1      3
+
+     50% or More                      2                           1                                                    3
+ Note. Coaches were asked to rank these items 1-13. The coded numbers represent the top 3 philosophies reported by coaches as evidenced by the
+highest % of rankings on for that item. Also, non-school settings represent rec/developmental, competitive, and adapted/other settings combined to
+compare those who are coaching in school-based settings versus those not coaching in school-based settings.
+                                                                                                       24
+
+
+                            Coaching Philosophies and Winning
+Of significance, coaches who emphasized winning games/competitions reported significantly
+higher career winning percentages than those not as focused on this priority. In addition, coaches
+emphasizing teaching life skills reported significantly higher career winning percentages than
+those less focused on this priority. No significant differences in career winning percentage were
+identified on where coaches ranked creating a sense of belonging through sport. See Table 12.
+Table 12. Mean Comparisons of Win Percentage Over Career by Coaching Philosophies
+ Comparison Groups                                                           Overall Career Winning
+                                                                              Percentage Mean (SD)
+ Winning Games and Competitions in Top Yes                                        69.31 (14.88)*
+ 5 Philosophies                                   No                               64.57 (17.56)
+ Teaching Life Skills in Top 5                    Yes                             66.16 (16.58)*
+ Philosophies                                     No                               63.81 (18.15)
+ Creating a Sense of Belonging Through            Yes                              64.98 (17.26)
+ Sport in Top 5 Philosophies                      No                               65.27 (17.41)
+Note. *Indicates a significant difference at p <0.05. Overall career win percentage was measured on a
+scale of 1 to 100 (coaches could drag the bar to indicate the % of games, matches, competitions, etc. won
+over the course of their coaching careers).
+
+                                        Impact on Athletes
+Coaches were asked to share their perceptions of the impact they have had on their athletes in the
+setting where they coach their primary sport. Coaches ranked their impact on each domain on a
+scale from 1 to 100 with 1 indicating low impact, 50 indicating moderate impact, and 100
+indicating high impact.
+Table 13. Coaches Perceived Impact on Athletes
+ Impact on Athletes                            Mean (SD)                 % Reported Moderate to
+                                                                         High Impact (50 or above)
+ Developing life skills                               73.92 (20.81)               84%
+ Acquiring leadership skills                          71.49 (21.42)               81%
+ Securing college scholarships                        38.01 (29.72)               32%
+ Developing sport skills                              82.44 (17.05)               93%
+ Persisting in educational settings                   67.74 (27.05)               73%
+ Developing a continued desire to play sports         78.31 (18.47)               90%
+ Winning championships and games                      58.87 (26.83)               60%
+ Becoming role models in their communities            72.92 (24.51)               80%
+
+
+Coaches overall believed they had made a strong impact on the athletes they coached, with over
+80% believing they had made a difference in the areas of being a role model (80%), developing a
+continued desire to play sports (90%), acquiring leadership skills (81%), developing sport skills
+(93%), and developing life skills (84%). Additionally, 73% reported they helped their athletes
+persist in educational settings. As Table 13 reflects, the coaches in this sample believed they had
+made a difference for the most part in multiple ways.
+                                                                                             25
+
+
+
+Differences by Subgroups (see Table 14)
+
+      In relation to impact, coaches with backgrounds in education and related fields reported
+      significantly higher levels of impact overall and in relation to youth development
+      outcomes than those without backgrounds in education and related fields. Furthermore,
+      educators coaching in schools reported significantly higher levels of overall impact in
+      relation to youth development and sport performance-related outcomes than non-
+      educators coaching school-based sport. Coaches receiving some sort of compensation
+      reported significantly higher levels of overall impact in relation to youth development
+      and sport-related performance outcomes than coaches receiving pay. Interestingly,
+      overall impact on all measures were highest among the highest paid coaches. Coaches
+      who were certified/licensed reported significantly higher levels of overall impact, in
+      relation to PYD outcomes, and in relation to sport-related performance outcomes as
+      compared with coaches not certified/licensed.
+
+      Participants coaching at more competitive levels reported significantly higher levels of
+      overall impact, impact in relation to youth development outcomes, and related to sport-
+      related performance outcomes as compared to those coaching at the recreational/
+      developmental levels. Coaches of team sports reported significantly higher levels of
+      overall impact, impact related to youth development outcomes, and in relation to sport-
+      related performance outcomes (as compared to those coaching individual sports).
+      Coaches reporting having been evaluated last season reporting greater impact on all three
+      indicators (overall, youth development, and sport-related performance) than those
+      coaches reporting they were not evaluated last season. Female coaches reported
+      significantly higher levels of impact on youth development outcomes than male coaches.
+      There were no other differences noted based on gender of the coach. Coaches identifying
+      as BIPOC reported significantly higher levels of overall impact and impact related to
+      youth development outcomes than those identifying as White Caucasian. There was no
+      difference in relation to sport-related performance impacts (see Table 14).
+                                                                                                                                                 26
+
+Table 14. Mean Comparisons of Impact by Subgroups
+ Comparison Groups                                         Overall Impact              Impact on Youth                 Impact on Sport-Related
+                                                              Mean (SD)            Development Mean (SD)                Performance Mean (SD)
+                            Degree in Education,
+                                                            71.71 (13.93)*               76.65 (16.94)*                       74.43 (15.13)
+ Educational                Fitness, or Psych
+ Background                 No Degree or Training in
+                                                             68.04 (16.34)                71.10 (20.20)                      73.51 (016.53)
+                            Education
+ School-Based               Educators                       73. 13 (13.77)*              78.82 (15.88)*                      74.88 (15.22)*
+ Coaches                    No-educators                     68.63 (14.95)                73.43 (18.10)                       73.05 (15.98)
+                            Unpaid                           64.16 (16.98)                65.66 (21.53)                       71.58 (17.30)
+ Pay Last Season            Paid under $4999                71.41 (14.29)*               76.62 (17.02)*                      74.43 (15.53)*
+                            Paid over $5000                72.97 (14.09)**              77.27 (16.46)**                     76.13 (14.90)**
+                            Yes                             69.69 (15.38)*               73.47 (18.76)*                      74.43 (15.63)*
+ Certified/Licensed
+                            No                               68.16 (16.21)                71.39 (20.15)                       72.82 (16.57)
+                            High: School/
+                                                            71.21 (14.57)*               75.63 (17.53)*                      75.08 (15.20)*
+ Level of Competition Competitive
+                            Low: Rec/Dev                     62.19 (17.38)                62.97 (22.07)                       69.74 (18.18)
+                            Team                            69.42 (15.60)*               73.05 (19.61)*                      74.32 (15.95)*
+ Type of Sport
+                            Individual                       67.87 (16.39)                70.94 (19.46)                       72.45 (16.58)
+ Evaluated Last             No                               65.83 (16.38)                68.21 (20.75)                       72.10 (16.61)
+ Season                     Yes                             71.95 (14.52)*               76.52 (17.11)*                      75.27 (15.27)*
+                            Female                           69.71 (15.27)               74.31 (18.67)*                       73.46 (16.41)
+ Coach Gender
+                            Male                             68.91 (15.88)                72.07 (19.51)                       73.96 (15.80)
+                            Identify as BIPOC               70.30 (16.76)*               73.83 (20.53)*                       74.51 (16.98)
+ Coach Race/Ethnicity
+                            Identify as White                68.17 (15.40)                71.64 (19.15)                       73.32 (15.82)
+Note. *Bold indicates a significant difference at p <0.05. The overall impact scale consists of 9 items (all from the survey on coaches’ perceptions
+of their impact on student-athletes sport skill development, positive youth development, and academic success). The youth development impact
+subscale consists of 3 items (impact on the student-athlete developing life skills, acquiring leadership skills, and becoming a role model in their
+community). The sport-related performance impact subscale consists of 3 items (developing sport skills, developing a continued desire to play
+sport, and winning championships/games). Each item was measured on a scale of 1 to 100 (coaches could drag the bar to indicate their impact with
+1 = low impact, 50 = moderate impact, and 100 = high impact). For pay last season variables, *indicates a significant difference among unpaid and
+the under $4999 group and **indicates a significant difference among unpaid and the paid over $5000 group.
+                                                                                                         27
+
+
+                      Coaching Philosophies and Impact on Athletes
+Descriptive analyses also examined differences in how coaches with varying philosophies and
+values perceived their impact on athletes. Specifically, coaches reporting an emphasis in winning
+games/competitions reported significantly higher levels of overall impact and sport-related
+performance outcomes as compared to those not as focused on this priority. Coaches
+emphasizing teaching life skills reported significantly higher levels of overall impact, as well as
+impact on youth development and sport performance-related outcomes as compared to coaches
+less focused on this priority.
+Coaches emphasizing creating a sense of belonging reported significantly higher levels of PYD
+impact than those less focused on this priority. Coaches who did not include creating a sense of
+belonging in their top 5 reported significantly higher levels of sport performance-related
+outcomes. These data demonstrate in some ways the concept of "sport as a double edge sword.”
+In other words, can coaches focus on a caring climate and still win and excel on the field? These
+data suggest coaches not ranking creating a sense of belonging in their top 5 coaching
+philosophies are those more focused on sport skill development (see Table 15).
+Table 15. Mean Comparisons of Impact on Athletes by Coaching Philosophies
+ Comparison Groups                                                                      Impact on Sport-
+                                                                  Impact on Youth
+                                             Overall Impact                                 Related
+                                                                    Development
+                                              Mean (SD)                                   Performance
+                                                                     Mean (SD)
+                                                                                           Mean (SD)
+  Winning Games and           Yes              72.08 (14.36)*        73.88 (17.71)       78.86 (14.54)*
+  Competitions in Top 5
+                              No                68.45 (15.98)        72.14 (19.82)          73.09 (16.27)
+  Philosophies
+  Teaching Life Skills in     Yes              71.04 (14.77)*        76.53 (17.11)*         73.83 (16.02)
+  Top 5 Philosophies          No                66.15 (16.68)        67.09 (21.20)          73.64 (16.39)
+  Creating a Sense of         Yes               68.99 (15.55)        73.48 (19.22)*         72.95 (16.32)
+  Belonging Through
+  Sport in Top 5              No                68.73 (16.14)        71.12 (19.92)         74.59 (16.01)*
+  Philosophies
+Note. *Indicates a significant difference at p <0.05. The overall impact scale consists of 9 items (all from
+the survey on coaches’ perceptions of their impact on student-athletes sport skill development, positive
+youth development, and academic success). The youth development impact subscale consists of 3 items
+(impact on the student-athlete developing life skills, acquiring leadership skills, and becoming a role
+model in their community). The sport-related performance impact subscale consists of 3 items
+(developing sport skills, developing a continued desire to play sport, and winning championships/games).
+Each item was measured on a scale of 1 to 100 (coaches could drag the bar to indicate their impact with 1
+= low impact, 50 = moderate impact, and 100 = high impact).
+                                                                                                        28
+
+
+                               Impact on Athletes and Winning
+Coaches were categorized into 3 groups based on their perceptions of overall impact, as well as
+their impact in relation to their youth development and sport-performance-related impact. In all
+three groups, the coaches in the group who perceived they were most impactful overall, the
+group most impactful in relation to youth development outcomes, and the one rating high levels
+of impact on sport-performance-related outcomes, all reported higher levels of career winning
+percentages than those coaches in the groups reporting less impact in the three areas. See Table
+16.
+
+Table 16. Mean Comparisons of Winning Percentage Over Career by Impact
+ Comparison Groups                           Overall Career Winning
+                                              Percentage Mean (SD)
+                           Low                      54.27 (19.27)                All differences among
+ Overall Impact
+                           Moderate                 65.13 (16.03)               groups are statistically
+ Mean Score
+                           High                    75.05 (14.26)*                      significant.
+                           Low                      56.61 (19.04)                All differences among
+ Youth Development
+                           Moderate                 65.31 (16.18)               groups are statistically
+ Impact Mean Score
+                           High                    73.27 (16.51)*                      significant.
+ Sport-Related             Low                      55.57 (19.95)                All differences among
+ Performance Impact Moderate                        65.22 (16.00)               groups are statistically
+ Mean Score                High                   73. 47 (15.59)*                      significant.
+Note. *Indicates a significant difference at p <0.05. Impact levels were created by identifying coaches one
+standard deviation below (low) and one standard deviation above (high) the mean on each subscale.
+Moderate indicates coaches were within the range of one standard deviation below and above the mean.
+Overall career winning percentage was measured on a scale of 1 to 100 (coaches could drag the bar to
+indicate the % of games, matches, competitions, etc. won over the course of their coaching careers).
+
+                       Impact on Athletes and Coaching Behaviors
+Significant differences were found when comparing scores in relation to coaches’ perceptions of
+impact in three areas: overall impact, youth development impact, and sport-related performance
+impact. Coaches across the board who were the most confident in all coaching practices (i.e.,
+those with moderate and high efficacy), perceived themselves as making more of an impact on
+their athletes overall, in relation to their youth development, and in relation to their sport-related
+performance.
+
+Please note significant differences were identified across all comparisons in regard to coaches of
+moderate efficacy perceiving greater impact on their athletes compared to coaches with low
+efficacy, coaches with high efficacy perceiving greater impact on their athletes compared to
+coaches with moderate efficacy, and coaches with high efficacy perceiving greater impact on
+their athletes compared to coaches with low efficacy (i.e., all comparisons were statistically
+significant). Please use caution when interpreting these findings as multiple comparisons
+increase risks for Type I error.
+                                                                                                        29
+
+
+Table 17. Mean Comparisons of Impact by Coaching Behaviors
+ Comparison Groups                                     Impact On        Sport-Related
+                                      Overall
+                                                         Youth          Performance
+                                    Impact Mean                                                 Note
+                                                      Development       Impact Mean
+                                       (SD)
+                                                       Mean (SD)             (SD)
+                   Low Efficacy     60.27 (18.42)     61.25 (22.44)      66.30 (19.28)
+                   Moderate
+ Health and                         67.61 (15.12)     70.99 (18.83)      72.59 (15.59)
+                   Efficacy
+ Safety
+                                        74.68
+                   High Efficacy                      79.26 (15.53)*    78.36 (16.16)*
+                                      (14.31)*
+                   Low Efficacy     54.74 (17.52)     55.89 (21.60)      60.03 (18.47)
+                   Moderate
+ Coaching the                       68.19 (14.02)     71.65 (17.94)      73.25 (14.67)
+                   Efficacy
+ X’s and O’s
+                                        80.76
+                   High Efficacy                      85.83 (13.98)*    83.77 (12.51)*
+                                      (11.97)*
+                   Low Efficacy     53.12 (16.66)     50.99 (20.78)      62.52 (17.99)
+ Life and
+                   Moderate
+ Leadership                         68.07 (13.75)     71.62 (17.00)      73.01 (15.05)
+                   Efficacy                                                                      All
+ Through
+                                        80.82                                               differences
+ Sport             High Efficacy                      87.35 (12.47)*    82.04 (13.77)*
+                                      (11.82)*                                                among
+                   Low Efficacy     59.71 (16.82)     60.95 (20.37)      65.22 (17.76)      groups are
+ Fostering a       Moderate                                                                 statistically
+                                    66.56 (15.23)     69.52 (19.08)      71.76 (15.14)      significant.
+ Positive Team     Efficacy
+ Environment                            74.82
+                   High Efficacy                      79.71 (17.75)*    78.51 (15.14)*
+                                      (14.73)*
+                   Low Efficacy     55.90 (15.85)     55.71 (20.36)      64.17 (17.50)
+ Supporting        Moderate
+                                    68.81 (14.43)     72.54 (17.97)      73.51 (15.26)
+ Mental            Efficacy
+ Wellness                                80.54
+                   High Efficacy                      86.22 (13.70)*     82.16 (14.24)*
+                                        (12.75)*
+Note. *Indicates a significant difference at p <0.05.Coaching efficacy levels were created by identifying
+coaches one standard deviation below (low) and one standard deviation above (high) the mean on each
+subscale. Moderate indicates coaches were within the range of one standard deviation below and above
+the mean.
+
+                       Stress, Satisfaction, Retention, and Winning
+Several items on the survey assessed items reflecting coach satisfaction. In general, 96% of
+participants reported they were satisfied with their coaching experiences and 95% reported they
+were pretty likely to continue coaching. When asked about how stressful their coaching
+experience was, 69% reported feeling stressed.
+
+Table 18. Perceived Satisfaction, Stress, and Likelihood to Continue
+ Question                                           % Moderately          % Very          % Extremely
+ How satisfying is the coaching
+                                                        19%                 49%                28%
+ experience?
+ How stressful is the coaching
+                                                        50%                 15%                 4%
+ experience?
+                                                                                                  30
+
+
+                                                  % Neutral        % Somewhat        % Extremely
+ How likely are you to continue
+                                                      6%                 24%              65%
+ coaching?
+In addition, 2/3 of the coaches in the sample reported having fairly good winning percentages
+over the course of their career, in their primary sport, and during the last season of coaching their
+primary sport.
+Table 19. Estimated Win Percentages
+ Estimated Win Percentage Over Mean % (SD)
+ Career                                     65%
+ Primary Sport                              67%
+ Last Season in Primary Sport               65%
+
+
+Differences by Subgroups (see Table 20)
+
+       Differences among subgroups existed among coaches in relation to their reported
+       satisfaction, stress, likelihood to continue coaching, and winning percentage over the
+       course of their careers. For example, as evidenced in Table 20, male and female coaches
+       reported comparable levels of satisfaction, stress, and win percentages but differed by
+       11% in their likelihood of continuing coaching. Female coaches reported they were less
+       likely to return as compared to male coaches.
+       Trends did not vary much regarding the gender of the team coached, yet co-ed coaches
+       reported lower levels of satisfaction and reported less likelihood of continuing their
+       coaching as compared to coaches of male and female athletes. Based on level of
+       competition, coaches working in competitive settings reported higher satisfaction levels
+       and a greater likelihood of continuing to coach, but also had higher stress levels as
+       compared to recreational/developmental coaches (13% difference on very or extremely
+       stressful).
+       Differences were mixed across coaches of team sports and individual sports. Coaches of
+       team sports reported higher levels of satisfaction and stress (4-6% difference) compared
+       to coaches of individual sports. Other items did not vary by more than 1-2%. Similar to
+       competition level, school-based coaches reported greater satisfaction, yet higher stress
+       levels compared to coaches working in non-school-based settings. Lastly, coaches
+       working with teams where over 50% of their athletes lived in poverty reported higher
+       stress levels (% difference on very or extremely stressful) and a lower likelihood of
+       returning to coach (4% difference) as compared to coaches with fewer than 50% of the
+       athletes on their teams living in poverty. Levels of satisfaction and winning percentages
+       only varied by 1-3% among this demographic of coaches.
+                                                                                                     31
+
+Table 20. Satisfaction, Stress, and Career Winning Percentage by Coach and Sport Characteristics
+                                  Satisfaction            Stress             Retention     Success
+
+                                                     %                      %
+                                                                 %
+                                                 Coaching is            Somewhat
+                                  % Very or                  Coaching                 Win
+                                                 Moderately,                or
+ Characteristics                  Extremely                  is Very or            Percentage
+                                                  Very, or              Extremely
+                                   Satisfied                 Extremely             as a Coach
+                                                 Extremely               Likely to
+                                                              Stressful
+                                                  Stressful             Continue
+
+ Gender of Coach
+        Male                          79%           69%            19%         88%           65%
+        Female                        75%           73%            22%         77%           65%
+ Gender of Athletes
+        Male                          77%           70%            19%         87%           66%
+        Female                        79%           76%            22%         88%           66%
+        Co-ed                         78%           69%            19%         69%           63%
+ Competition Level
+        Low: Rec/Dev                  72%           56%            10%         89%           62%
+       High: School/                                               23%                       66%
+                                      79%           75%                        88%
+ Competitive
+ Type of Sport
+        Team Sport                    78%           72%            21%         87%           66%
+        Individual Sport              73%           67%            17%         88%           64%
+ Location
+        School-Based                  81%           77%            25%         88%           66%
+        Non-School Setting            75%           64%            15%         89%           64%
+ Athletes Living in Poverty
+        Less than 50% of Team         78%           69%            18%         90%           65%
+        50% or More of Team           75%           77%            27%         86%           66%
+ Pay Last Season
+        Unpaid                        77%           50%            10%         89%           63%
+        Paid Less than $5K            80%           75%            23%         88%           66%
+        Paid More than $5K            75%           80%            29%         88%           67%
+        Overall                      78%            69%            21%         89%           65%
+ Note. Non-school settings represent rec/developmental, competitive, and adapted/other settings
+ combined to compare those who are coaching in school-based settings versus those not coaching in
+ school-based settings.
+                                                                                                      32
+
+
+                                Training History and Interests
+Overall, 76% of coaches reported having completed a training offered by a sport-specific
+national governing body. When asked about the effectiveness of this training in preparing them
+to be a coach: 12% said this training was not effective or slightly effective; 26% said this
+training was somewhat effective; 61% said this training was moderately or extremely effective.
+Appendix B also includes indicators of training participation by organization.
+In addition, all coaches were asked about past coaching training topics they have never
+participated in and their interest in future training topics. Below are the top topics that generated
+the highest and lowest percentages in regard to coaches' training histories (see Table 21). We
+also examined top trainings coaches reported having an interest in participating in (see Table 22).
+Coaches were most interested in trainings focused on coaching tactics and strategy (75%) and
+sport skills and techniques (74%). A large percentage also were interested in those related to
+positive youth development, ones such as relationship building (70%), performance anxiety
+(70%), motivational techniques (70%), and leadership development (69%). These data are
+presented in Table 22.
+
+The entire synthesis of training topics that coaches reported their participation levels and
+interests are overviewed in Table 23. For the most part, coaches in this same had participated
+previously in health & safety-related courses (most likely related to licensing. For instance, 91%
+had participated in CPR and 82% reported participating in trainings focused on child abuse and
+neglect. In general, coaches in this sample also reported interests in attending trainings in
+multiple areas, with more than 50% reporting interest in ones focused on health & safety,
+traditional coaching practices, ones focused on creating a positive environment, and coaching to
+support mental health and broader youth development. Scores were lowest in relation to basic
+health and safety areas, ones where coaches are most likely are required to receive training. Not
+surprisingly, the areas most desired for coach training were focused on traditional coaching
+practices. Yet still, there was still great interest in trainings related to areas such as mental health,
+stress management, performance anxiety, and trauma informed practice. Another area which
+63% reported interest in was time management.
+Table 21. Top Trainings Participated In and Have Never Participated In
+ Top 5 Trainings Coaches       % Have       Top 5 Trainings Coaches                   % Have Never
+   Have Participated In     Participated Have Never Participated In                    Participated
+                                          1. Linkage to Community
+ 1. CPR                         91%                                                         57%
+                                             Resources
+ 2. Basic First Aid             91%       2. Trauma-Informed Practice                       57%
+ 3. Concussion
+                                90%       3. Performance Anxiety                            55%
+    Management
+ 4. General Safety and
+                                89%       4. Stress and Coaching                            54%
+    Injury Prevention
+                                          5. Emotional
+ 5. Physical Health and
+                                86%          Regulation/Working with                        48%
+    Safety
+                                             Parents & Caregivers
+                                                                                        33
+
+
+Table 22. Top 10 Trainings Coaches Are Interested In
+    Top 10 Trainings Coaches are Interested In               % Interested in More
+ 1. Coaching Tactics and Strategy                                    75%
+ 2. Sport Skills and Techniques                                      74%
+ 3. Relationship Building                                            70%
+ 4. Performance Anxiety                                              70%
+ 5. Motivational Techniques                                          70%
+ 6. Leadership Development                                           69%
+ 7. Team Dynamics                                                    67%
+ 8. Mental Health                                                    67%
+ 9. Effective Communication                                          66%
+ 10. Life Skill Development Through Sport                            66%
+
+
+
+Table 23. Coaches Training Backgrounds and Interests
+                                                % Never               % Interested in
+              Training Topic
+                                               Participated               More
+ Health & Safety
+ CPR                                                   9%                  57%
+ Basic First Aid                                       9%                  56%
+ Concussion Management                                 10%                 55%
+ General Safety and Injury Prevention                  11%                 55%
+ Physical Health and Safety                            14%                 54%
+ Child Abuse and Neglect                               18%                 54%
+ COVID-19 Protocols                                    27%                 59%
+ Coaching the X’s and O’s
+ Sport Skills and Techniques                           15%                 74%
+ Coaching Tactics and Strategy                         19%                 75%
+ Effective Communication                               22%                 66%
+ Goal-Setting                                          24%                 64%
+ Life and Leadership through Sport
+                                                                             34
+
+
+                                             % Never       % Interested in
+                Training Topic
+                                            Participated       More
+Health & Safety
+Leadership Development                         20%              69%
+Life Skill Development Through Sport           41%              66%
+Motivational Techniques                        41%              70%
+Conflict Resolution                            38%              61%
+Relationship Building                          37%              70%
+Fostering a Positive Environment
+Team Dynamics                                  38%              67%
+Diversity and Inclusion                        33%              57%
+Coach Beyond…
+Mental Health                                  38%              67%
+Stress Management                              35%              63%
+Performance Anxiety                            55%              70%
+Mental Toughness (i.e., grit, discipline,      44%              59%
+focus)
+Safety on Social Media                         48%              32%
+Emotional Regulation                           48%              54%
+Time Management                                39%              63%
+Suicide Protocols                              45%              54%
+Social-Emotional Learning                      42%              54%
+Linkage to Community Resources                 57%              57%
+Trauma-Informed Practice                       57%              60%
+Stress and Coaching                            54%              57%
+Working with Parents and Caregivers            48%              57%
+Child Development                              40%              57%
+                                                                                              35
+
+
+Differences by Subgroups
+
+      Licensed/Certified vs. Not Licensed/Certified: In general, data demonstrate how
+      coaches with certifications/licenses reported more attendance in different types of
+      training across the board. In general, there was about a 10-15% difference in the
+      percentage differences in all areas. For instance, 66% of coaches with
+      certifications/licenses reported having attended trainings on mental health as compared to
+      55% of those without. This pattern was fairly consistent across all training topics.
+
+      Educators vs. Non-Educators: When exploring training histories relative to whether a
+      school-based coach was an educator, data overall indicated educators reported having
+      attended more trainings in most all areas than non-educators in school-based sport
+      settings. For the most part, there was about a 5-15% difference between the two groups
+      (with educators reporting a higher frequency of involvement in trainings across the
+      board). There were a few topic areas with greater disparities, especially in relation to
+      trainings focused on mental health-related topics. For instance, 71% of educators reported
+      they had been involved in trainings in mental health as compared to only 54% of non-
+      educators (17% difference). Similarly, 68% of educators had received training on suicide
+      protocols as opposed to only 44% of non-educators (24% difference). Additionally, 69%
+      of the educators had been trained in social-emotional learning as compared to only 49%
+      of non-educators (20% difference).
+
+      Level of Competition High vs. Low: Training histories also were examined by level of
+      competition. Participants coaching at more competitive levels reported greater
+      involvement in prior trainings than those at the recreational/developmental levels. Greater
+      differences in training involvement across the two groups were noted when exploring
+      history of trainings related to mental health and leadership, fostering positive
+      environments, and life skill development. There was about a 20% difference between the
+      groups. For instance, 67% of competitive-level coaches reported involvement in past
+      trainings on mental health compared to only 47% of those at the recreational/
+      developmental levels (20% difference). Similarly, 63% of competitive-level coaches had
+      received training in suicide protocols as compared to only 38% of those at the
+      recreational/developmental level. Competitive and recreational/developmental coaches
+      tended to report similar levels of interest in future trainings overall. There were a few
+      areas where there was more than a 10% difference in interest level, with
+      developmental/recreational reporting higher levels of interest: CPR (12% difference),
+      basic first aid (7% difference); diversity and inclusion (6% difference); stress and
+      coaching (7% difference), and child development (6% difference).
+                                                                                                  36
+
+
+                   Training Participation and Coaching Behaviors
+Overwhelmingly, these data demonstrate how coaches who reported having participated in past
+trainings focused on key elements of coaching youth sport had significantly higher perceptions
+of their confidence in all areas measured by the Coach Beyond Index (i.e., coaching behaviors
+reported earlier in the report), including in relation to health & safety practices, coaching the X's
+and O's, teaching life and leadership through sport, fostering a positive team environment, and
+supporting mental wellness than those coaching at the recreational/developmental levels. Caution
+should be noted when interpreting Table 24 as data are cross-sectional and may indicate,
+however, that coaches who seek out training simply may be more confident in their coaching
+practices.
+
+                        Coach Training and Impact on Athletes
+Furthermore, we were interested in exploring whether past experience in trainings (especially
+ones focused on positive youth development) made a difference in coaches’ perceptions of their
+impact in several key areas. Specifically, we explored differences in perceptions of impact by
+whether coaches had received trainings in three areas or not, including ones focused on coaching
+tactics/strategy, life skill development, and social-emotional learning (see Table 25).
+
+Data demonstrate that coaches with past training experience in each of these three areas reported
+higher levels of impact in most all of the areas than those without training experiences. A few
+noteworthy examples included: Coaches with a past history of involvement in training in these
+three areas reported significantly higher levels of impact in relation to developing life and
+leadership skills among their athletes, supporting persistence in educational settings, and having
+their youth become role models in their communities. When exploring impact on sport-related
+outcomes, coaches with past histories of involvement in trainings in these three areas reported
+higher levels of impact in relation to outcomes related to securing scholarships, developing
+sports kills, developing a continued desire to play sports among their athletes, and in winning
+championships and games. Also note that there were no real differences in perceived impact
+when exploring if one training topic mattered more than another. There seemed to be a little
+higher level of impact reported by coaches who received training in relation to life skill
+development and SEL than those in coaching tactics and strategy. In other words, training in
+tactics/strategy scores on impact were a little lower than those for life skill development and
+SEL.
+                                                                                                                                                 37
+
+
+
+Table 24. Mean Comparisons of Confidence Items by Participation in Key Trainings
+ Training Participation                  Health and       Coaching the        Teaching Life and         Fostering a Positive        Supporting
+                                            Safety         X’s and O’s       Leadership through         Team Environment         Mental Wellness
+                                           Overall        Overall Mean       Sport Overall Mean          Overall Mean (SD)        Overall Mean
+                                         Mean (SD)             (SD)                   (SD)                                              (SD)
+                        Never
+ Sport Skills and                         3.90 (0.87)       4.09 (0.52)            4.09 (0.52)               4.42 (0.53)             3.69 (0.59)
+                        Participated
+ Techniques
+                        Have
+                                         4.24 (0.69)*      4.34 (0.45)*           4.29 (0.48)*              4.52 (0.48)*            3.93 (0.57)*
+                        Participated
+                        Never
+ Leadership                               3.95 (0.80)       4.10 (0.47)            4.05 (0.49)               4.40 (0.51)             3.61 (0.55)
+                        Participated
+ Development
+                        Have
+                                         4.25 (0.70)*      4.36 (0.46)*           4.32 (0.48)*              4.53 (0.48)*            3.97 (0.57)*
+                        Participated
+ Life Skill             Never
+                                          4.03 (0.75)       4.17 (0.46)            4.10 (0.47)               4.45 (0.49)             3.66 (0.55)
+ Development            Participated
+ Through Sport          Have
+                                         4.30 (0.70)*      4.40 (0.46)*           4.38 (0.47)*              4.55 (0.48)*            4.06 (0.55)*
+                        Participated
+                        Never
+                                          4.00 (0.76)       4.18 (0.46)            4.10 (0.48)               4.44 (0.50)             3.62 (0.55)
+                        Participated
+ Mental Health
+                        Have
+                                         4.31 (0.69)*      4.39 (0.47)*           4.37 (0.47)*              4.54 (0.48)*            4.07 (0.53)*
+                        Participated
+                        Never
+ Social-emotional                         4.04 (0.75)       4.19 (0.46)            4.12 (0.47)               4.45 (0.49)             3.66 (0.54)
+                        Participated
+ Learning
+                        Have
+                                         4.30 (0.70)*      4.39 (0.47)*           4.37 (0.48)*              4.55 (0.48)*            4.07 (0.55)*
+                        Participated
+Note. *Bold indicates a significant difference at p <0.05. The health and safety subscale consists of 2 items; the Coaching the X’s and O’s subscale
+consists of 12 items; the Teaching Life and Leadership Through Sport subscale consists of 9 items; the Fostering a Positive Team Environment
+subscale consists of 3 items; and the Coach Beyond subscale consists of 15 items. Each item is measured on a scale of 1 = Strongly disagree and 5
+= Strongly agree. Higher scores indicate greater levels of confidence in one’s ability.
+                                                                                                                                                    38
+
+
+Table 25. Impact by Training Participation in Key Areas of Coaching and Positive Youth Development
+                                                                        Past Training Participation
+                              Coaching Tactics and Strategy          Life Skill Development         Social-Emotional Learning
+                                                                                                                                            Overall
+                               % Never           % Have            % Never          % Have          % Never        % Have
+ Impact Question                                                                                                                            Impact
+                              Participated     Participated       Participated    Participated    Participated   Participated
+                                                                % Reported having Moderate to High Impact
+ Developing life skills           82%                 91%            84%              93%             85%             92%                    89%
+ Acquiring leadership
+                                  78%                 89%                81%              91%              82%              91%              87%
+ skills
+ Securing college
+                                  29%                 39%                27%              43%              28%              44%              38%
+ scholarships
+ Developing sport skills          92%                 97%                94%              97%              95%              96%              96%
+ Persisting in educational
+                                  66%                 82%                68%              86%              69%              85%              79%
+ settings
+ Developing a continued
+                                  90%                 94%                92%              95%              92%              95%              93%
+ desire to play sports
+ Winning championships
+                                  59%                 71%                64%              73%              64%              73%              69%
+ and games
+ Becoming role models
+                                  75%                 87%                77%              91%              78%              90%              85%
+ in their communities
+Note. Three items from the training history questions were examined in conjunction with coaches perceived impact on their student athletes. This
+table summarizes coaches prior training participation in these three trainings and their perceived impact on coaching tactics and strategy, life skill
+development, and social-emotional learning.
+                                                                                                39
+
+
+
+               Coach Preparation to Work with Specific Populations
+We also were interested in understanding whether coaches felt prepared to work with targeted
+groups of youth, especially ones with disabilities, mental health concerns, and other challenging
+behaviors. Specifically, coaches were asked, “When coaching your primary sport, how prepared
+do you feel to work with athletes from the following populations…” Overall, when asked about
+how prepared they were to work with athletes from diverse groups, about half of the coaches in
+this sample reported being prepared to work with athletes with ADD/ADHD, intellectual or
+developmental disabilities (45%), physical disabilities (45%), mental health concerns (48%),
+behavioral challenges (57%), those identifying as LGBTQIA+ (51%).
+
+Coaches reported less preparation in working with athletes identifying as refugees/immigrants
+(38%), eating disorders (35%), food insecurity (36%), and those speaking a different language
+(35%). They reported being most prepared to work with athletes who were elite performers
+(84%) and those academically gifted/talented (86%). The following table synthesizes their
+responses (see Table 26).
+
+Table 26. Coach Preparation to Work with Specific Populations of Athletes
+ Preparation                                       % Moderately         % Extremely
+                                                     Prepared             Prepared
+ ADD/ADHD Diagnoses                                    36%                  21%
+ Chronic Illnesses                                     31%                  11%
+ Intellectual or developmental disabilities            30%                  15%
+ Physical disabilities                                 29%                  16%
+ Mental health concerns                                32%                  16%
+ Visual or hearing impairments                         29%                  13%
+ Eating disorders                                      24%                  11%
+ Behavioral challenges (i.e., fighting, conduct
+                                                       36%                  21%
+ issues, lying, etc.)
+ Effects of food insecurity                            24%                  12%
+ Trauma in their home environment                      28%                  14%
+ Athletes that speak a different language than a
+                                                       23%                  12%
+ majority of the team
+ Athletes that identify as refugees/immigrants         23%                  15%
+ Athletes that identify as LGBTQIA+                    29%                  22%
+ Athletes that are a different race/ethnicity than
+                                                       34%                  53%
+ your own
+ Athletes that are elite performers                    37%                  47%
+ Athletes that are academically gifted/talented        34%                  52%
+
+                                    Coaches Perceptions
+Some questions on the survey also inquired about the coaches’ perceptions of parent/caregiver
+behaviors. Coaches were asked, “How often do parents and caregivers on your team…”
+Responses demonstrate coaches were relatively positive when reporting their perspectives of
+parent/caregiver behaviors. For example, 97% of coaches reported parents praise the
+                                                                                                40
+
+
+performance of their own child (as evidenced by sometimes, often, or always responses
+combined) and 96% report they demonstrate support for other athletes. About 9/10 reported the
+parents/caregivers consistently model sportspersonship and express appreciation of their
+coaching. On the other hand, coaches also often reported perceptions of negative
+parent/caregiver behaviors such as criticizing referees and officials (67%), criticizing the
+performance of other athletes (50%), criticizing the performance of their own child (66%), and
+criticizing their coaching performance (33%).
+
+Table 27. Coaches Perceptions of Parents/Caregivers
+ Item                                               % Sometimes          % Often      % Always
+ Praise the performance of their own child.            22%                57%           18%
+ Demonstrate support for other athletes (i.e.,
+                                                       24%                  53%           19%
+ teammates and opponents)
+ Model sportspersonship with other
+                                                       30%                  47%           16%
+ parents/caregivers on opposing teams.
+ Express appreciation for your coaching
+                                                       29%                  43%           18%
+ performance.
+ Criticize the performance of their own child.         48%                  15%           3%
+ Criticize the performance of other athletes (i.e.,
+                                                       33%                  14%           3%
+ teammates or opponents)
+ Criticize your coaching performance.                  20%                  10%           3%
+ Criticize the performance of referees and
+                                                       34%                  25%           8%
+ officials.
+
+                               Licensure and Certifications
+In total, 56% of coaches reported they have a coaching certification or license. When asked to
+what degree this certification or licensure process was effective in preparing them to be a coach:
+   •   12% said their certification/licensure process was not effective or slightly effective
+   •   21% said their certification/licensure process was somewhat effective
+   •   67% said their certification/licensure process was moderately or extremely effective
+
+                        Adminstrative and Supervisory Support
+When prompted to report on perceived administrative and supervisory support as a coach,
+participants reported limited feedback and reinforcement provided by their
+administrators/supervisors. Specifically, only 35% of coaches reported the person they report to
+provides frequent feedback about their performance and 38% report their administrators or
+supervisors helped them evaluate opportunities for growth. Yet still, 72% of coaches in the
+sample report the person they report to supports them in their role as a coach.
+                                                                                                  41
+
+
+Table 28. Perceived Support from Administrators/Supervisors
+ The person I report to…                % Neither agree                              % Strongly
+                                                            % Agree
+                                         nor disagree                                  agree
+ Offers constructive feedback after
+                                             30%             32%                         16%
+ observing my coaching.
+ Provides frequent feedback about my
+                                             33%             23%                         12%
+ coaching.
+ Helps me evaluate my opportunities for
+                                             33%             26%                         12%
+ growth.
+ Supports me in my role as a coach.          18%             37%                         35%
+ Uses wins and losses to determine my
+                                             26%             11%                         7%
+ success as a coach.
+
+
+                            Community Needs and Resources
+Coaches also had the opportunity to reflect on the degree to which they perceived there was a
+need for additional sport opportunities in general and for specific groups of youth. We explored
+these data overall, as well as by geographical region. Please note several coaches felt
+comfortable reporting their zip codes while others did not. Of those who shared their zip codes,
+the following needs were reported as they reflected on their communities. Overall, coaches in
+urban settings reported a greater need for more adapted, collegiate, recreational, and school-
+based sport opportunities in their communities compared to coaches living in rural and suburban
+settings.
+In addition, coaches reported they often did not have all the resources they needed to be
+successful coaching sport. When asked about whether they had 100% of the resources needed to
+coach last season, coaches in urban settings reported the greatest need for supports for uniforms,
+facility space, transportation, funding, administrative support, peer support, safe places to
+practice, and payment/income to coach compared to coaches living in rural and suburban
+settings. Interestingly, coaches in town and rural settings reported the highest level of needs for
+equipment compared to coaches living in urban and suburban settings. Table 31 documents
+needs another way whereby those coaching youth living in poverty reported greater needs on
+every resource, especially regarding uniforms (11% difference), funding (8% difference), and
+equipment (8% difference). Please note, urbanicity domains were defined by the Aspen Institute
+for Project Play Initiative using the National Center for Education Statistics (NCES) Zip Code
+Tabulation Areas (ZCTAs) identified by their data analytics team.
+Table 29. Community Needs Overall and by Urbanicity
+                                                           Urbanicity
+ In my community there is a need for                   Rural                   Town
+                                         City/Urban               Suburban                 Overall
+ sport opportunities for...                             (n =                     (n =
+                                         (n = 1200)               (n=1814)
+                                                       2970)                      21)
+                                                       % Agree or Strongly agree
+ Boys                                       58%         53%          48%         48%        53%
+ Girls                                      68%         65%          62%         76%        65%
+ LGBTQIA+ youth                             60%         46%          49%         47%        50%
+                                                                                                      42
+
+ Children experiencing disabilities           69%         65%           64%           62%       66%
+ Children experiencing food insecurity        60%         50%           49%           48%       52%
+ Preschool youth                              50%         48%           48%           71%       48%
+ Elementary school youth                      63%         59%           57%           76%       59%
+ Middle school youth                          67%         61%           60%           76%       62%
+ High school youth                            63%         58%           56%           66%       58%
+ Young adults                                 69%         67%           62%           86%       66%
+ In my community there is a need for…
+ Adapted sport opportunities                  64%         59%           60%           67%       59%
+ Collegiate sport opportunities               49%         45%           42%           62%       45%
+ Competitive sport opportunities              54%         55%           49%           76%       53%
+ Recreational sport opportunities             64%         62%           59%           76%       62%
+ School-based sport opportunities             61%         54%           54%           62%       56%
+ More coaches in general                      79%         82%           83%           87%       81%
+
+Table 30. Resource Needs by Urbanicity
+                                                       Urbanicity
+ Resource                     City/Urban   Rural                            Town Overall
+                                                     Suburban (n=1814)
+                              (n = 1200) (n = 2970)                        (n = 21)
+                                      % Reported did not have all (<100% resources)
+ Equipment                       77%        78%              74%             80%    77%
+ Uniforms                        64%        62%              60%             62%    62%
+ Facility space                  82%        77%              81%             76%    80%
+ Transportation to games         72%        63%              62%             70%    65%
+ Funding for other team needs    85%        82%              79%             94%    82%
+ Administrative support          78%        73%              72%             79%    74%
+ Peer support                    79%        76%              76%             85%    77%
+ Safe places to practice         63%        52%              53%             43%    55%
+ Payment/income to coach         84%        82%              80%             69%    82%
+
+Table 31. Resource Needs by Team Composition Living in Poverty
+                                    Athletes Living in Poverty
+ Resource                   Less than 50% of         More than 50% of
+                                                                                     Overall
+                             Team Living in            Team Living in
+                                 Poverty                   Poverty
+                                      % Reported did not have all (<100% resources)
+ Equipment                         76%                      82%                        77%
+ Uniforms                          60%                      71%                        62%
+ Facility space                    79%                      81%                        80%
+ Transportation to                 64%                      68%                        65%
+ games
+ Funding for other team            81%                      89%                        82%
+ needs
+ Administrative support            74%                      75%                        74%
+ Peer support                      76%                      80%                        77%
+ Safe places to practice           54%                      59%                        55%
+ Payment/income to                 82%                      85%                        82%
+ coach
+Note. Coaches selected how much of each resource they needed more of last season on a scale of 1 to
+100.
+                                                                                                 43
+
+
+                                      Overall Summary
+This study, the first of its kind in the United States, explored coaches’ backgrounds, experiences,
+philosophies, behaviors, and training histories and interests, thereby creating a better
+understanding of the national coaching landscape. Before making final conclusions, study
+limitations are important to describe. Although over 10,000 coaches completed the survey (a
+number much larger than any other coaching study to date), there were selection effects. There
+was little diversity among the coaches who participated in the study, with the majority of
+participants being male, identifying as White, and reporting coaching at more competitive levels.
+There also were unequal cell sizes throughout the analyses, so differences in groups within this
+cross-sectional study should be interpreted with caution. Furthermore, we largely examined
+descriptive statistics and group differences using t-tests, ANOVAs, and MANOVAs. Although
+multiple comparisons helped to explore trends in these data, findings should be interpreted with
+caution given increased risks for Type I error. Nonetheless, the large sample size does allow for
+differences among coaches across these multiple factors and settings to be explored, providing
+key insights in relation to the status of coaching today. A few are noteworthy and further
+discussed here.
+Opportunities to Increase Coaches Competencies Beyond the X’s and O’s
+Coaches reported varying levels of confidence in relation to their coaching practices and
+behaviors. About 2/3 of the sample felt confident in their ability to engage in traditional coaching
+practices (such as when teaching basic techniques and tactics). Coaches were less confident in
+dealing with the mental aspects of sport (i.e., identifying off-field stressors among athletes,
+referring athletes to supports). For instance, only 29% were confident in their abilities to develop
+athletes into leaders and only 18% reported feeling confident in their ability to address mental
+health concerns. There are ample opportunities for to grow in the effective coaching practices.
+
+       •   Non-educators and those with no background in education or child development.
+           There was variability among coaches in relation to their perceptions of confidence.
+           Specifically, findings demonstrate how educators are better coaches in relation to
+           supporting positive youth development. For instance, 52% of educators reported
+           feeling confident in their ability to teach life skills through sport as compared to 45%
+           of non-educators. However, educators are no longer choosing to coach, with only
+           50% of school-based coaches reporting they were teacher-educators. What has
+           resulted is a coaching field primarily filled by people without backgrounds in
+           education and child development. These coaches need additional competencies to be
+           successful in today’s landscape of youth sport (i.e., 40% increase in mental health
+           symptomology) and for the most part the coaches in this study reported a desire to be
+           better prepared in these areas.
+       •   To work with specific populations/increase access to adapted sport. Furthermore,
+           data indicated that coaches do not feel prepared to work with specific populations of
+           youth, especially those experiencing disabilities or challenging circumstances. For
+           instance, 43% of coaches felt unprepared to work with athletes with behavioral
+           challenges or ADD/ADHD; whereas 55% felt unprepared to work with those with
+           intellectual, developmental, or physical disabilities. Gaps in training coaches to work
+           with athletes with special needs will only continue to marginalize different
+           populations of youth and hinder their ability to access quality sport experiences.
+                                                                                                 44
+
+
+           National priorities around training coaches to adapt sport to best serve these
+           populations emerged as an imminent priority to address in the U.S.
+       •   In areas of youth development, mental wellness, and leadership. Coaches in this
+           study were highly interested in receiving additional training in multiple areas. In
+           addition to wanting training on the X’s and O’s, coaches also identified interest in
+           receiving coach training in areas focused on mental wellness, life skill development,
+           and youth development practices. Coach training in these areas have the potential to
+           leverage sport as a context to promote mental and physical health. At a time when
+           young people are reporting heightened challenges in these areas, providing additional
+           resources, trainings, and supports to coaches can serve as one national intervention
+           strategy that can help reach millions of youth in the U.S. participating in sport.
+
+Need to Decrease Barriers to Coach Education and Training
+As evidenced by data highlighted in the Aspen Institute’s State of Play 2022 report, unpaid
+coaches consistently report less confidence in their coaching behaviors as compared to paid
+coaches, both in relation to traditional coach practices and in areas focused on mental health and
+positive youth development. Similarly, as did community coaches when comparing their
+confidence levels to those working in schools. Community-based and unpaid coaches also were
+far less likely to be evaluated and participate in coach training than their counterparts coaching
+and working in schools. Supporting unpaid coaches that might also be described as those
+volunteering their time and/or ones that receive little to no pay through training and additional
+supports is an increasing priority when considering ways in which to improve youth sport
+contexts. Our report points toward the need to strengthen coach training for volunteers and
+community-based coaches is a growing priority, and strategies are needed to mitigate barriers in
+access (i.e., costs, etc.). These efforts may in turn also improve developmental/recreational sport
+experiences for youth, and perhaps help retain youth participation at more elevated rates.
+
+Coach Training Matters and Demonstrates Impact
+The good news is coach training matters. Results highlighted in this report demonstrate that
+coaches who participated in coach training were significantly more confident in their coaching
+behaviors than those who had not. Findings were particularly strong for coaches trained in youth
+development strategies such as building life skills and supporting mental health. For instance,
+coaches that reported participating in training in areas of youth development reported making a
+significantly greater impact on helping their athletes become role models in their communities
+(91%) as compared to those with no training (77%). Interestingly, coaches who ranked teaching
+life skills as one of their top coaching philosophies also reported higher win percentages over the
+course of their careers compared to coaches that did not share this value. Increasing opportunities
+for coaches at all levels and backgrounds to improve their coaching competencies are needed.
+Our findings suggest training in both traditional sport practices and strategies beyond the X’s and
+O’s may lead to better coaching practices and impacts on youth served through sport.
+
+Insight on Potential Ways to Recruit More Quality Coaches
+Coaches reported a shortage of coaches in their communities, a finding others have noted across
+the country. Participants in this study, however, provided insights in relation to what motivates
+adults to coach. Many coached because their children were athletes, but they also were motivated
+because of their love of teaching sport and desire to develop young people. Nearly 3 out of every
+                                                                                                   45
+
+
+4 coaches played sport as a child. Pipelines that develop youth sport participants into coaches
+may be increasingly successful in recruiting new coaches into the field. Further, identifying
+adults that are looking for ways to give back to their communities and tailoring messages to
+those with time, resources, and a love of sport may help target coach recruitment efforts. Only
+19% of coaches reported someone approached them to coach and this served as a motivator that
+influenced their participation. Perhaps individualizing asks to former athletes and community
+members to coach sport or reframing sport as a way to give back to ones community may be
+effective in recruiting great coaches. Additionally, parents/caregivers are motivated to coach
+their children. Finding ways to make coaching roles more conducive to family lifestyles may
+help engage more of them in their child’s sport experience through coaching.
+
+Coaches Do Not Have Enough Resources or Support
+Overwhelmingly findings in this report suggest coaches do not have all the resources they need
+to be successful. The majority of coaches said they did not have tangible resources (including
+equipment, safe practice facilities, and enough pay to coach last season). With this lens in mind,
+it is admirable the incredible impact coaches in this sample are having on athletes given the
+disparities they reported experiencing. Oversight of and support to youth sport coaches also were
+limited, with nearly half of all coaches surveyed reporting they had never been evaluated and
+room for growth in the feedback and support they receive from administrators and supervisors.
+Even in the case when coaches were evaluated, about half reported the evaluation helped them be
+a better coach. Less than half reported their supervisor gave them constructive and frequent
+feedback and helped evaluate opportunities for growth. One wonders if coaches feel isolated in
+their roles. Perhaps further investments in the administrative functions in sport organizations
+would allow for further support, hands-on teaching, and consultation. The support role within
+sport organizations, many which are non-profits, may be a missing piece to the youth sport
+ecosystem.
+
+Diversify Coaching
+Sport is still dominated by men, and our study sample is reflective of this disproportionality.
+Men still own the coaching space. In our study, men were twice as likely as women to coach the
+opposite gender, as well as report more coaching experiences over the course of their lifetime.
+Men were more likely to report a desire to continue coaching than female coaches. Both men and
+women reported equal rates (12%) among those paid $10,000 or more to coach in their last
+season, and more women (44%) served as paid coaches making $5,000 or less compared to men
+(32%). However, given our sample was comprised predominantly of men, it is difficult to draw
+conclusions about pay inequities and disparities in youth sport based on coach gender. As noted
+elsewhere in research, substantive efforts are needed to equitability support and recruit females
+into coaching and to make coaching more inclusive to retain female coaches.
+
+Intervene to Address Stressors in Youth Sport Environment
+Nearly all coaches in this sample were satisfied with their coaching experiences and reported a
+high likelihood they will continue to coach. However, the majority of coaches (69%) reported
+their coaching experiences were stressful, with 6 out of 10 expressing interest in receiving
+training on stress management in coaching. Parents/caregivers were sources of stress. In fact, 1
+out of every 3 coaches reported parents often criticized their coaching and two thirds said
+parents/caregivers criticize their child’s teammates or opposing players. Nearly half reported
+                                                                                                  46
+
+
+parents/caregivers do not model good sportspersonship when interacting with opposing team’s
+parents. Of note, more negative parenting behaviors were noted by participants coaching in club
+and school settings, ones characterized by more structure and competitiveness. Addressing
+stressors such as inappropriate parent spectator behaviors and building the capacity of coaches to
+set up clear expectations related to culture and climate might help mitigate stressors in the youth
+sport environment.
+
+Limitations. In the end, findings should be interpreted with caution, especially given the sample
+characteristics, risks for Type I error, and cross-sectional nature of the design. The study also
+was descriptive in nature, and only looked at basic trends when exploring differences among
+groups of coaches. Due to the small sample size, there also were limitations due to unequal cell
+sizes across groups. These and other factors should be taken into consideration when exploring
+lessons learned and making recommendations. Nonetheless, this study can be helpful in guiding
+next steps in improving youth sport experiences and coaching preparation. Findings related to
+coaches’ backgrounds, experiences, philosophies, practices, and perspectives can be used to
+guide future efforts across the country to improve youth sport. Important priorities are identified
+such as the need for more sports (especially in urban areas), as well as for those for certain
+groups (i.e., children with disabilities). Findings overall point to several implications for future
+coaching training. Training for coaches at developmental/recreational levels may be important,
+as well as further training designed to promote positive youth development and mental wellness.
+In the end, these findings can help inform future directions in the United States to improve youth
+sport experiences.
+
+Conclusion
+The Aspen Institute, the Susan Crown Exchange, Nike, and The Ohio State University
+LiFEsports Initiative look forward to our continued work to elevate the findings synthesized in
+this report to put forth recommendations that inform the national coaching landscape. The results
+gleaned from these data will benefit youth participating in sport, coaching education and
+training, and guide future policy, funding, and practice recommendations. We would like to
+thank and acknowledge all of the coaches who participated in this survey, as well as
+organizations and entities that helped to share the survey with these participants. Without you
+and your dedication to youth sports, this project would not have been as successful and gathered
+insights from over 10,000 coaches. For more information about the content of this report, please
+contact Dr. Dawn Anderson-Butcher (anderson-butcher.1@osu.edu) or Dr. Samantha Bates
+(bates.485@osu.edu). You may also find other relevant information on The Ohio State
+University LiFEsports Initiative on our website: www.lifesports.osu.edu.
+                                                                                              47
+
+
+                                          References
+Amorose, A. J., & Anderson-Butcher, D. (2007). Autonomy-supportive coaching and self-
+     determined motivation in high school and college athletes: A test of self-
+     determination theory. Psychology of Sport and Exercise, 8(5), 654-670.
+Amorose, A.J., & Weiss, M.R. (1998). Coaching feedback as a source of information about
+     perceptions of ability: A developmental examination. Journal of Sport & Exercise
+     Psychology, 20(4), 395-420.
+
+Anderson-Butcher, D. (2019). Youth sport as a vehicle for social development. Kinesiology
+      Review, 8(30), 180-187.
+
+Anderson-Butcher, D., Amorose, A., Bates, S., Newman, T., Okamoto, K., & Volek, A.
+      (2019). Exploring the influence of program staff and parental support on changes in
+      physical health outcomes during a sport-based positive youth development summer
+      camp. Journal of Coaching Behavior.
+Bates, S. & Anderson-Butcher, D. (2022). State-wide survey of Ohio sport coaches. The
+       LiFEsports Initiative, Columbus, OH.
+Anderson-Butcher, D. & Bates, S. (2021). Social work and youth sport. Child & Adolescent
+   Social Work Journal, 38, 359-365. doi.org/10.1007/s10560-021-00777-6
+Anderson-Butcher, D., Bates, S., Amorose, A., Wade-Mdivanian, R., & Lower-Hoppe, L.
+      (2021). Social-emotional learning interventions in youth sport: What matters in design?
+      Child and Adolescent Social Work Journal, 38, 367-379.
+Anderson-Butcher, D., Martin, E., Paluta, L., & Gould, D. (2018). Patterns of social skill
+      development over-time among clusters of LiFEsports participants. Children and Youth
+      Services Review. 87, 17-25.
+Anderson-Butcher, D., Wade-Mdivanian, R., Atkinson, O., Scheadler, T., & Davis, J. (2019).
+      Youth sport coaches in Central Ohio: Current trends, behaviors, and needs. Columbus,
+      OH: LiFEsports, OSU.
+
+Barber, B.L., Eccles, J.S., & Stone, M.R. (2001). Whatever happened to the jock, the brain, and
+       the princess?: Young adult pathways linked to adolescent activity involvement and social
+       identity. Journal of Adolescent Research, 16(5), 429-455.
+Bates, S., & Anderson-Butcher, D. (in review). Leveraging sport as a context for character
+       development: The benefits for coaches.
+Bean, C., & Forneris, T. (2016). Examining the importance of intentionally structuring the youth
+       sport context to facilitate positive youth development. Journal of Applied Sport
+       Psychology, 28(4), 410-425.
+Bean, C., & Forneris, T. (2017). Is life skill development a by-product of sport participation?
+       Perceptions of youth sport coaches. Journal of Applied Sport Psychology, 29(2), 234-250.
+                                                                                                  48
+
+
+Beni, S., Fletcher, T., & Ní Chróinín, D. (2017). Meaningful experiences in physical education
+       and youth sport: A review of the literature. Quest, 69(3), 291-312.
+Boardley, I.D. (2018). Coaching efficacy research: Learning form the past and looking to the
+       future. International Review of Sport and exercise psychology, 11(1), 214-237.
+Bolter, N., & Weiss, M.R. (2012). Coaching for character: Development of the Sportsmanship
+        Coaching Behaviors Scale (SCBS). Sport, Exercise, and Performance Psychology, 1(2),
+        73-90.
+Camiré, M., Trudel, P., & Forneris, T. (2009). High school athletes’ perspectives on support,
+      negotiation processes, and life skill development. Qualitative Research in Sport and
+      Exercise, 1, 72–88.
+Camiré, M. (2014). Youth development in North American high school sport: Review and
+      recommendations. Quest, 66, 495-511.
+Centers for Disease Control and Prevention (2021). Youth risk behavior survey: Data summary
+       & trends report 2009-2019. Retrieved from
+       https://www.cdc.gov/healthyyouth/data/yrbs/pdf/YRBSDataSummaryTrendsReport2019-
+       508.pdf
+
+Clark, H., Camiré, M., Wade, T., & Cairney, J. (2015). Sport participation and its association
+       with social and psychological factors known to predict substance use and abuse among
+       youth: A scoping review of the literature. International Review of Sport & Exercise
+       Psychology, 8(1), 224-251.
+Coakley, J. (2011). Youth sports: what counts as ‘positive development?” Journal of Sport and
+      Social Issues, 35, 306-324.
+Coalter, F. (2010). The politics of sport-for-development: Limited focus programs and broad
+       gauge problems? International Review for the Sociology of Sport, 45, 295-314.
+Coalter, F. (2013). Sport for development: What game are we playing? London, UK: Routledge.
+Côté, J., & Gilbert, W. (2009). An integrative definition of coaching effectiveness and expertise.
+        International Journal of Sports Science & Coaching, 4(3), 307-323.
+Eccles, J., Barber, B., Stone, M., & Hunt, J. (2003). Extracurricular activities and adolescent
+        development. Journal of Social Issues, 59(4), 865-889.
+Edwards, M. B., & Rowe, K. (2019). Managing sport for health: An introduction to the special
+      issue. Sport Management Review, 22(1), 1-4.
+Eime, R. M., Young, J. A., Harvey, J. T., Charity, M. J., & Payne, W. R. (2013). A systematic
+       review of the psychological and social benefits of participation in sport for children and
+       adolescents: Informing development of a conceptual model of health through sport.
+       International Journal of Behavioral Nutrition and Physical Activity, 10, 1-21.
+Fernandez-Gavira, J., Huete Garcia, A., & Velez-Colon, L. (2017). Vulnerable groups at risk for
+      sport and social exclusion. Journal of Physical Education and Sport, 17(1), 312-326.
+                                                                                                  49
+
+
+Gould, D., & Carson, S. (2008). Life skills development through sport: current status and future
+       directions. International Review of Sport and Exercise Psychology, 1(1), 58-78.
+
+Gould, D., Chung, Y., Smith, P., & White, J. (2006). Future directions in coaching life skills:
+       Understanding high school coaches’ views and needs. Athletic Insight. 8(3), 28-38.
+
+Gould, D., Collins, K., Lauer, L., & Chung, Y. (2007). Coaching life skills through
+       football: A study of award winning high school coaches. Journal of Applied Sport
+       Psychology, 19(1), 16–37.
+Gould, D., Flett, R., & Lauer, L. (2012). The relationship between psychosocial
+       developmental and the sports climate experienced by underserved youth. Psychology of
+       Sport and Exercise, 13(1), 80-87.
+Haudenhuyse, R., Theeboom, M., & Skille, E.A. (2014). Towards understanding the potential of
+      sports-based practices for socially vulnerable youth. Sport in Society, 17(2), 139-156.
+Holt, N. & Neely, K. (2011). Positive youth development through sport: A review. Revista
+       deIberoamericana de Psicología del Ejercicio y el Deporte 6(2), 299-316.
+Holt, N.L., Neely, K.C., Slater, L.G., Camiré, M., Cote, J., Fraser-Thomas, J., MacDonald, D.,
+       Strachan, L., & Tamminen, K.A. (2016). A grounded theory of positive youth
+       development through sport based on results from a qualitative meta-study. International
+       Review of sport and Exercise Psychology, 10(1), 1-49.
+Jones, G. J., Edwards, M. B., Bocarro, J. N., Bunds, K. S., & Smith, J. W. (2017). An integrative
+       review of sport-based youth development literature. Sport in Society, 20, 161-179.
+Lemyre, F., Trudel, P., & Durand-Bush, N. (2007). How youth-sport coaches learn to coach. The
+      Sport Psychologist, 21, 191-209.
+MacDonald, D. J., Camiré, M., Erickson, K., & Santos, F. (2020). Positive youth development
+     related athlete experiences and coach behaviors following a targeted coach education
+     course. International Journal of Sports Science & Coaching, 15(5-6), 621-630.
+Newman, T. J., & Anderson-Butcher, D. (2021). Mechanisms of life skill development and life
+     skill transfer: Interconnections and distinctions. Journal of the Society for Social Work
+     and Research, 12(3), 489-519.
+Newton, M., Fry, M., Watson, D., Gano-Overway, L., Kim, M., Magyar, M., &
+      Guivernau, M. (2007). Psychometric properties of the caring climate scale in a physical
+      activity setting. Revista de Psicologia del Deporte, 16, 67–84.
+Pate, R. R., Trost, S. G., Levin, S., & Dowda, M. (2000). Sports participation and health-related
+       behaviors among US youth. Archives of Pediatrics & Adolescent Medicine, 154(9), 904-
+       911.
+Pierce, S., Erickson, K., & Dinu, R. (2018). Teacher-coaches’ perceptions of life skills
+        transfer from high school sport to the classroom. Journal of Applied Sport Psychology.
+        doi: 10.1080/10413200.2018.1500402
+                                                                                                 50
+
+
+Riley, A., Anderson-Butcher, D., Logan, J., Newman, T. J., & Davis, J. (2017). Staff
+       practices and social skill outcomes in a sport-based youth program. Journal of Applied
+       Sport Psychology, 29(1), 59-74.
+
+Rosso, E. G. F., McGrath, R., Immink, M. A., & May, E. (2016). Sport for development (S4D)
+       as ‘core university business? Modelling university participation in sports-based social
+       development. Asia-Pacific Journal of Public Health, Sport, and Physical Education, 7(1),
+       77-90.
+Schulenkorf, N., Sherry, E., & Rowe, K. (2016). Sport-for-development: An integrated literature
+       review. Journal of Sport Management, 30, 22–39.
+Skinner, J., Zakus, D. H., & Cowell, J. (2008). Development through sport: Building social
+       capital in disadvantaged communities. Sport Management Review, 11, 253-275.
+Spaaij, R., Oxford, S., & Jeanes, R. (2016). Transforming communities through sport? Critical
+        pedagogy and sport for development. Sport, Education, & Society, 21(4), 570-587.
+Spruit, A., Van Vugt, E., van der Put, C., van der Stouwe, T., & Stams, G. J. (2016). Sports
+        participation and juvenile delinquency: A meta-analytic review. Journal of Youth and
+        Adolescence, 45(4), 655-671.
+Super, S., Wentink, C. Q., Verkooijen, K. T., & Koelen, M. A. (2017). Exploring the
+       sports experiences of socially vulnerable youth. Social Inclusion, 5(2), 198-209.
+Turnnidge, J., Côté, J., Hancock, D. J. (2014). Positive youth development from sport to life:
+       Explicit or implicit transfer. Quest, 66(2), 203-217.
+Whitley, M.A., Massey, W.V. Camiré, M., Boutet, M., & Borbee, A. (2019). Sport-based youth
+       development interventions in the United States: A systematic review. BMC Public
+       Health, 19(89), 1-20.
+                                                                                      51
+
+
+                                     Appendix A
+Coach Demographics
+
+Characteristics                                    %     M (SD)     % Female % Male
+Years Coached                                         12.95 (13.12)
+       Less than 5 years                          31%                 11%     20%
+       6 - 10 years                               25%                  6%     19%
+       11 - 20 years                              24%                  6%     18%
+       21+ years                                  21%                  4%     18%
+Age                                                   45.62 (11.30)
+       Under 30                                   10%                  5%      5%
+       30 – 39                                    20%                  6%     14%
+       40 – 49                                    34%                  7%     27%
+       50 – 59                                    25%                  5%     20%
+       60 or older                                11%                  2%      9%
+Race
+       White                                      79%                 21%     58%
+       Black                                       4%                  1%      3%
+       Hispanic/Latino                             7%                  2%      5%
+       Multiple Races                              3%                  1%      2%
+       AAPI /Native American                       3%                  1%      2%
+       Prefer not to answer                        2%                  1%      1%
+       Other                                       1%                 <1%      1%
+Ethnicity
+       Not of Hispanic, Latino, or Spanish origin 76%                 20%     56%
+       Mexican, Mexican American, or Chicano 6%                        1%      5%
+       Puerto Rican                                1%                 <1%     <1%
+       Cuban                                      <1%                 <1%     <1%
+       Prefer not to answer                        7%                  2%      5%
+       Other                                       6%                  1%      5%
+Gender
+       Male                                       74%                   --      --
+       Female                                     25%                   --      --
+       Transgender female                         <1%                   --      --
+       Transgender male                           <1%                   --      --
+       Non-binary                                 <1%                   --      --
+       Self-described                             <1%                   --      --
+                                            st
+Note. 5% of the sample reported they were 1 year coaches.
+                                                                                            52
+
+
+State Breakdowns
+
+State                          Total      % State                             Total     %
+Alabama                          46       1% Montana                            21     <1%
+Alaska                           30      <1% Nebraska                           37     <1%
+Arizona                          75       1% Nevada                             57      1%
+Arkansas                         38      <1% New Hampshire                      14     <1%
+California                     1038      17% New Jersey                        140      2%
+Colorado                        105       2% New Mexico                         19     <1%
+Connecticut                      63      <1% New York                          198      3%
+Delaware                         32      <1% North Carolina                     95      2%
+Florida                         161       2% North Dakota                       10     <1%
+Georgia                         231       4% Ohio                              899     15%
+Hawaii                           20      <1% Oklahoma                           17     <1%
+Idaho                           111       2% Oregon                             96      2%
+Illinois                        117       2% Pennsylvania                      211      3%
+Indiana                          63       1% Rhode Island                       14     <1%
+Iowa                             38      <1% South Carolina                     70      1%
+Kansas                           22      <1% South Dakota                        7     <1%
+Kentucky                         50       1% Tennessee                          48      1%
+Louisiana                        25      <1% Texas                             195      3%
+Maine                            18      <1% Utah                              186      3%
+Maryland/DoC                    121       2% Vermont                            10     <1%
+Massachusetts                    99       2% Virginia                          145      2%
+Michigan                        111       2% Washington                        719     12%
+Minnesota                        63       1% West Virginia                      30     <1%
+Mississippi                       5      <1% Wisconsin                         159      3%
+Missouri                         62       1% Wyoming                             4     <1%
+Note. All %’s are rounded up to nearest whole number.
+
+
+Educational Background
+
+Degree                               %      Degree                                     %
+Less than a high school diploma     <1%     Undergraduate degree                      36%
+High school graduate                 9%     Master’s degree                           33%
+Trade or vocational certificate      4%     Professional or doctoral degree            8%
+Associates degree                    8%     Other                                      2%
+                                                                                   53
+
+
+Undergraduate and Graduate Degrees
+
+Degree                                              % Undergraduate % Graduate Degree
+                                                    Degree (n = 2224)  (n = 2485)
+Agriculture and natural resources                          1%             <1%
+Architecture and related services                          1%             <1%
+Area, ethnic, cultural, gender, and group studies         <1%             <1%
+Biological and biomedical sciences                         3%              2%
+Business                                                  20%             12%
+Communication, journalism, and related programs            5%              1%
+Communications technologies                               <1%             <1%
+Computer and information sciences                          4%              2%
+Education                                                 15%             43%
+Engineering                                                5%              4%
+Engineering technologies                                  <1%             <1%
+English language and literature/letters                    2%              1%
+Family and consumer sciences/human sciences               <1%             <1%
+Foreign languages, literatures, and linguistics            1%             <1%
+Health professions and related programs                    4%              7%
+Homeland security, law enforcement, and                    1%             <1%
+firefighting
+Legal professions and studies                             1%               4%
+Liberal arts and sciences, general studies, and           4%               1%
+humanities
+Mathematics and statistics                                2%               1%
+Military technologies and applied sciences               <1%              <1%
+Multi/interdisciplinary studies                          <1%              <1%
+Parks, recreation, leisure, and fitness studies           4%               2%
+Philosophy and religious studies                         <1%              <1%
+Physical sciences and science technologies                2%               1%
+Psychology                                                4%               3%
+Public administration and social services                 1%               1%
+Social sciences and history                               4%               3%
+Theology and religious vocations                         <1%               1%
+Transportation and materials moving                      <1%              <1%
+Visual and performing arts                                2%              <1%
+Other                                                    11%               8%
+                                                                                             54
+
+
+Occupation
+ Occupation                                  N   % Occupation                           N %
+ Architecture and Engineering               181 4% Installation, Maintenance, and 80 2%
+ Occupations                                          Repair Occupations
+ Arts, Design, Entertainment, Sports,       205 4% Legal Occupations                   119 2%
+ and Media Occupations
+ Building and Grounds Cleaning and           28 <1% Life, Physical, and Social          60 1%
+ Maintenance Occupations                              Science Occupations
+ Business/Financial Operations              340 7% Management                          363 7%
+ Community and Social Service                96 2% Office and Administrative           102 2%
+ Occupations                                          Support Occupations
+ Computer and Mathematical                  227 4% Personal Care and Service            20 <1%
+ Occupations                                          Occupations
+ Construction and Extraction                123 2% Production Occupations               37 1%
+ Occupations
+ Educational Instruction and Library       1584 31% Protective Service Occupations 45 1%
+ Occupations
+ Farming, Fishing, and Forestry              32 <1% Sales and Related Occupations 353 7%
+ Occupations
+ Food Preparation and Serving Related        48 1% Transportation and Material          66 1%
+ Occupations                                          Moving Occupations
+ Healthcare Practitioners and Technical 222 4% Other                                   693 14%
+ Occupations
+ Healthcare Support Occupations              99 2%
+Note. Almost half of the sample chose not to disclose their occupation whether on this question
+or when asked to write in their current job.
+Organizations & Apps
+ Organization              N    Organization                           N
+ AAU                      429   Pop Warner                            105
+ America Scores            91   Special Olympics                      170
+ Boys and Girls Club      172   Up2Us                                  21
+ Coaching Corps           171   US Soccer Federation                  759
+ Girls on the Run          70   US Soccer Foundation                  248
+ I9 Sports                 89   US Youth Soccer                      1256
+ Jr NBA                    83   USA Olympic and Paralympic Committee 96
+ KOA Sports                48   US Sports Camps                        71
+ Laureus Sport for Good    36   USTA                                  144
+ LiFEsports                39   WIAA                                  498
+ Little League            948   YMCA                                  266
+ OHSAA                    627   Other                                1715
+                                                                                              55
+
+
+App        N
+Team Snap 2194
+Arbiter   1059
+Other     1323
+
+
+Sports Coached During Entire Coaching Career
+Sport                          Total % Sport                              Total       %
+Badminton                       512    5% Golf                             676        6%
+Baseball                       3501 33% Gymnastics                         214        2%
+Basketball                     3634 35% Ice Hockey                         326        3%
+Biking                          762    7% Lacrosse                         365        4%
+Bowling                         255    2% Martial Arts                     150        1%
+Boxing                          153    2% Parkour                           35       <1%
+Cheerleading                    330    3% Rowing                            49       <1%
+Cross Country                   712    7% Rugby                            115        1%
+Curling                          61   <1% Sailing                           46       <1%
+Dance and Step                  187    2% Soccer                          4158       40%
+Diving                           95    1% Softball                        1779       17%
+Esports                          97    1% Street Hockey                     91        1%
+Fencing                         313    3% Swimming and Diving              451        4%
+Field Hockey                    123    1% Squash                            30       <1%
+Figure Skating                  324    3% Track & Field                   1417       14%
+Flag Football                  1269 12% Tennis                             555        5%
+Tackle Football                1681 16% Volleyball                        1042       10%
+Free play                       348    3% Wrestling                        585        6%
+Frisbee                         171    2% Other                            476        5%
+General Fitness                 787    8% --                                --         --
+Note. %’s exceed 100% given coaches could select all of the sports they have coached during
+their entire coaching careers.
+
+Roles Held During Entire Coaching Career
+
+                                                Parent/    Sport    Board Other
+Career Roles         N    % Asst. Volunteer AD
+                                               Caregiver Admin. Member
+                                % of Sample Working in Both Roles During Career
+Head Coach          8301 79% 63%    53%     8%    44%       13%       21%     5%
+Assistant Coach     7804 74%        54%     7%    43%       12%       20%     5%
+Volunteer Coach     6792 65%                5%    43%       11%       19%     4%
+Athletic Director
+                    914   9%                             5%         4%        3%        1%
+(AD)
+Parent/Caregiver
+                    5430 52%                                        9%        18%       3%
+of an Athlete
+Sport Admin.        1483 14%                                                  7%        2%
+                                                                                             56
+
+
+Board Member       2393 23%                                                               2%
+Other               652 6%                                                                 --
+Note. %’s exceed 100% given coaches could select all of the roles they have held during their
+coaching careers.
+
+Settings Coached During Entire Coaching Career
+
+Career Settings      N       %         Dev.   Rec. Comp. Collegiate Adapted Other
+                                       % of Sample Working in Both Roles During Career
+School               6544 62%          35%    41%     39%      11%        5%       3%
+Developmental (8 5868
+                               56%            47%        41%          8%        5%        2%
+or younger)
+Recreational         7173 68%                            47%          9%        5%        3%
+Competitive          6176 59%                                        10%        5%        3%
+Collegiate           1313 13%                                                   2%        1%
+Adapted Settings      614       6%                                                        <1%
+Other                 411       4%                                                         --
+Note. %’s exceed 100 given coaches could select all of the settings they have coached in during
+their entire coaching careers.
+
+Pay and Hours Worked Last Season
+ Pay Last Season                  %             Hours Worked Last                 %
+                                                Season Per Week
+ Unpaid position                 41%            Less than 5 hours                 9%
+ Less than $999                   4%            6 to 10 hours                    23%
+ $1,000-$4,999                   30%            11 to 15 hours                   17%
+ $5,000-$9,999                   14%            16 to 20 hours                   17%
+ $10,000-$19,999                  4%            21 to 25 hours                   11%
+ $20,000-$29,999                  2%            26 to 30 hours                    9%
+ $30,000-$39,999                  2%            31 to 35 hours                    4%
+ $40,000-$49,999                  1%            36 to 40 hours                    4%
+ More than $50,000                3%            More than 40 hours                6%
+
+School Follow-Up Questions
+ School Type                                   %
+ Public                                       83%
+ Private                                      14%
+ Charter                                       2%
+ Other                                        <1%
+ School Age                                    %
+ Preschool                                    <1%
+ Elementary school                             2%
+                                                                                              57
+
+
+ Middle school                                10%
+ High school                                  86%
+ Other                                         2%
+ Relationship with School               % of Full Sample      % of School-based
+                                                                  Coaches
+ Administrator                                  1%                  <1%
+ Athletic Director                              4%                   9%
+ Counselor                                      1%                   3%
+ Educator/Teacher                              18%                  50%
+ Extended Family Member of                      1%                   3%
+ Student
+ Interventionist or Student Support            <1%                    1%
+ Specialist
+ Parent/caregiver of student at the             6%                    15%
+ school
+ Paraprofessional                              1%                     3%
+ Social Worker                                <1%                   <1%
+ Volunteer                                     5%                    12%
+ Other                                         7%                    18%
+ Employed by School                     % of Full Sample      % of School-Based
+                                                                   Coaches
+ Employed in one or more roles in            4%                      12%
+ the school
+Note. % exceed 100% given coaches could select more than one role at the school (i.e., athletic
+director and administrator).
+
+
+How Team is Selected
+ How Youth Are Selected for the Team         %
+ Random assignment by league                14%
+ Tryouts for team                           51%
+ Coach draft of athletes                    11%
+ Other                                      24%
+
+
+Ages of Youth on Team
+ Ages of Youth on Team %
+ Under age 7            7%
+ 8-13                  35%
+ 14 -17                54%
+ 18 and older           3%
+                                                                                           58
+
+
+                                      Appendix B
+Coaching Behaviors
+                                     %                                                %
+                             %                                              %
+Category                          Strongly                                         Strongly
+                            Agree                                          Agree
+                                   agreed                                           agreed
+Health and Safety
+handle concussions.         47%     39%      handle injuries.              52%       35%
+Coaching the X’s and O’s
+prepare for competitions
+                                             teach basic
+against strong              50%     37%                                    34%       63%
+                                             techniques/skills.
+opponents.
+                                             communicate with my
+make strategic decisions
+                            44%     49%      athletes when they are        55%       35%
+in pressure situations.
+                                             underperforming.
+                                             accurately assess the
+maximize team strengths
+                            48%     41%      physical conditioning of      55%       34%
+during competitions.
+                                             athletes.
+detect subtle technical                      set clear expectations for
+                            48%     39%                                    39%       39%
+errors.                                      how I choose a team.
+support the diverse                          give constructive
+                            49%     41%                                    54%       42%
+needs of athletes.                           feedback to athletes.
+communicate with my
+                                             debrief with athletes after
+athletes when they are      48%     48%                                    51%       41%
+                                             a competition.
+performing well.
+Teaching Life and Leadership Skills
+promote good                                 serve as a mentor to
+                            32%     66%                                    45%       49%
+sportspersonship.                            athletes.
+effectively motivate                         build confidence among
+                            51%     39%                                    52%       44%
+athletes.                                    athletes.
+teach life skills through                    resolve interpersonal
+                            43%     47%                                    54%       31%
+sport.                                       conflicts on a team.
+                                             ensure athletes on my
+use goal-setting
+                            50%     34%      team are successful           38%       31%
+techniques with athletes.
+                                             academically.
+develop my athletes into
+                            54%     29%
+leaders.
+Fostering a Positive Environment
+create an inclusive                          foster positive team
+                            41%     55%                                    48%       46%
+environment.                                 dynamics and cohesion.
+make athletes feel
+                            32%     65%
+welcome on a team.
+                                                                                           59
+
+
+                                      %                                               %
+                              %                                             %
+Category                           Strongly                                        Strongly
+                             Agree                                         Agree
+                                    agreed                                          agreed
+Coach Beyond…
+report child abuse and                        deal with the pressures of
+                             31%     57%                                   49%       39%
+neglect.                                      coaching.
+develop mental                                set expectations for our
+toughness among              53%     33%      team related to social       35%       23%
+athletes.                                     media.
+identify mental health
+                                              prevent burnout among
+concerns among               44%     25%                                   53%       25%
+                                              athletes.
+athletes.
+help athletes regulate                        identify off the field
+                             57%     25%                                   47%       19%
+their emotions.                               stressors among athletes.
+                                              incorporate mental
+refer athletes to supports
+                             39%     18%      imagery into                 44%       24%
+for unmet basic needs.
+                                              training/workouts.
+link athletes to mental                       utilize mindfulness
+                             36%     18%                                   40%       22%
+health resources.                             exercises with athletes.
+communicate with                              reduce performance
+                             49%     40%                                   55%       20%
+parents/caregivers.                           anxiety among athletes.
+help athletes navigate
+the pressures of social      35%     17%
+media.
+
+
+Training Participation by Organization
+ Organization                      N   %   Organization                   N   %
+ Center for Healing and Justice   118 1% National Alliance for Youth in 388 4%
+ through Sports                           Sport (NAYS)
+ Crash Course                     132 1% Positive Coaching Alliance     1268 12%
+ Doc Wayne                        61 <1% U.S. Center for SafeSport      2366 23%
+ How to Coach Kids                231 2% Up2Us                            52 <1%
+ MOJO Sports                      241 2% United States Center for        437 4%
+                                          Coaching Excellence
+                                          (USCCE)
+ National Federation of State    2348 22% Other                         1082 10%
+ High School Assoications
+ (NFHS)
+
