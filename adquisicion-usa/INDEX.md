@@ -93,6 +93,8 @@
   convertidas en frases de venta.
 - **`TAREAS-REPETITIVAS-RESEARCH.md`** — las tareas que de verdad les duelen a clubes, torneos, coaches y
   familias (research de 4 agentes + Reddit). El mejor material para escribir ganchos.
+- **`ESTRATEGIA-DOLOR-VS-WIDDO.md`** — ese research traducido a plan: qué dolor cubre Widdo y cuál no,
+  por qué se empieza por torneos medianos, en qué orden van los ganchos y qué NO prometer en una demo.
 - **`ANALISIS-COPAFACIL.md`** — teardown de CopaFacil y cómo llegar a sus organizadores.
 - **`ANALISIS-SOFASCORE.md`** — teardown de Sofascore.
 - **`fuentes/coach-survey.txt`** · **`fuentes/parent-survey.txt`** — encuestas fuente en crudo (National Coach
