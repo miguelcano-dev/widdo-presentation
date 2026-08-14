@@ -1,0 +1,314 @@
+<!-- ARCHIVADO 13-ago-2026 — Cost Plus 20% (canonico = Cost+15%) y asume Widdo SAS operativa (la SAS Colombia esta INACTIVA) — sustituido por negocio/legales/transfer-pricing-agreement-final.md (Cost+15%) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Services Agreement — Widdo Inc / Widdo SAS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0A0A0F; color: #E8E8ED; line-height: 1.7; }
+  .draft-banner { background: linear-gradient(135deg, #FF6B35, #E53E3E); color: white; text-align: center; padding: 12px; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; position: sticky; top: 0; z-index: 100; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 60px 80px; }
+  .doc-header { text-align: center; border-bottom: 2px solid #00C853; padding-bottom: 30px; margin-bottom: 40px; }
+  .doc-header h1 { font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+  .doc-header .subtitle { font-size: 16px; color: #00C853; font-weight: 500; }
+  .doc-header .date { font-size: 14px; color: #888; margin-top: 8px; }
+  h2 { font-size: 20px; font-weight: 700; color: #00C853; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #1a1a2e; counter-increment: section; }
+  h2::before { content: counter(section) ". "; }
+  h3 { font-size: 16px; font-weight: 600; color: #FFFFFF; margin: 24px 0 12px; }
+  p { margin-bottom: 14px; color: #ccc; text-align: justify; font-size: 15px; }
+  .fill-in { background: #1a1a2e; border: 1px dashed #00C853; padding: 2px 12px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00C853; }
+  .highlight { color: #00C853; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th { background: #12121A; color: #00C853; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+  td { padding: 10px 12px; border-bottom: 1px solid #1a1a2e; color: #ccc; }
+  ol, ul { margin: 12px 0 12px 24px; color: #ccc; }
+  li { margin-bottom: 8px; font-size: 15px; }
+  .party-block { background: #12121A; border: 1px solid #1a1a2e; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .party-block .label { font-size: 12px; color: #00C853; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+  .party-block .name { font-size: 18px; font-weight: 600; color: #fff; }
+  .party-block .detail { font-size: 14px; color: #999; margin-top: 4px; }
+  .signature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; padding-top: 40px; border-top: 2px solid #1a1a2e; }
+  .sig-party { text-align: center; }
+  .sig-line { border-top: 1px solid #555; margin: 60px 0 8px; padding-top: 8px; }
+  .sig-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .sig-name { font-size: 16px; font-weight: 600; color: #fff; margin-top: 4px; }
+  .sig-title { font-size: 13px; color: #00C853; margin-top: 2px; }
+  .attorney-notes { background: #1a0a00; border: 1px solid #FF6B35; border-radius: 8px; padding: 20px; margin-top: 40px; }
+  .attorney-notes h3 { color: #FF6B35; }
+  .attorney-notes li { color: #FF6B35; font-size: 14px; }
+  .disclaimer { text-align: center; padding: 20px; margin-top: 40px; background: #12121A; border-radius: 8px; font-size: 12px; color: #666; }
+  @media print { body { background: white; color: black; } .draft-banner { background: #ccc; color: black; } h2 { color: #006622; } td, p, li { color: #333; } }
+</style>
+</head>
+<body>
+  <div class="draft-banner">DRAFT — FOR ATTORNEY REVIEW ONLY — NOT LEGAL ADVICE</div>
+
+  <div class="container">
+    <div class="doc-header">
+      <h1>MASTER SERVICES AGREEMENT</h1>
+      <div class="subtitle">Widdo Inc (Client) &larr;&rarr; Widdo SAS (Service Provider)</div>
+      <div class="date">Effective Date: <span class="fill-in">[DATE — upon SAS incorporation]</span></div>
+    </div>
+
+    <p>This Master Services Agreement (the <strong>"Agreement"</strong>) is entered into by and between:</p>
+
+    <div class="party-block">
+      <div class="label">Client</div>
+      <div class="name">Widdo Inc</div>
+      <div class="detail">C Corporation, State of Delaware, USA</div>
+      <div class="detail">EIN: <span class="fill-in">[EIN — Stripe Atlas]</span></div>
+      <div class="detail">Registered Agent: Stripe Atlas, 1209 Orange Street, Wilmington, DE 19801</div>
+      <div class="detail">Bank: Mercury | Contact: MIGUEL ANGEL CANO QUINONEZ, CEO</div>
+    </div>
+
+    <div class="party-block">
+      <div class="label">Service Provider</div>
+      <div class="name">Widdo SAS</div>
+      <div class="detail">Sociedad por Acciones Simplificada, Colombia</div>
+      <div class="detail">NIT: <span class="fill-in">[NIT — pending incorporation]</span> | RST: <span class="fill-in">[RST Registration]</span></div>
+      <div class="detail">100% owned by MIGUEL ANGEL CANO QUINONEZ (related party — controls both entities)</div>
+      <div class="detail">Bank: <span class="fill-in">[Colombian Bank Name and Account]</span></div>
+    </div>
+
+    <h2>Scope of Services</h2>
+
+    <p>The Service Provider shall provide the following services to the Client on an ongoing basis. All services are performed remotely from Colombia unless otherwise agreed.</p>
+
+    <h3>A. Software Development & Engineering</h3>
+    <ul>
+      <li>Full-stack software development (Laravel, React, TypeScript)</li>
+      <li>Database architecture, migrations, and optimization</li>
+      <li>API development and third-party integrations</li>
+      <li>Mobile application development and maintenance (Capacitor)</li>
+      <li>Code review, refactoring, and technical debt reduction</li>
+    </ul>
+
+    <h3>B. Artificial Intelligence Development</h3>
+    <ul>
+      <li>AI agent development and training (chat assistants, onboarding agents)</li>
+      <li>Prompt engineering and LLM integration (Claude, OpenAI)</li>
+      <li>Voice AI development and configuration (ElevenLabs Conversational AI)</li>
+      <li>AI tool creation and system prompt management</li>
+    </ul>
+
+    <h3>C. Platform Operations & DevOps</h3>
+    <ul>
+      <li>Server monitoring, incident response, and uptime management</li>
+      <li>CI/CD pipeline maintenance (GitHub Actions)</li>
+      <li>Infrastructure management (DigitalOcean, Vercel, Redis)</li>
+      <li>Security audits, patching, and vulnerability management</li>
+      <li>Deployment management and rollback procedures</li>
+      <li>Database backups and disaster recovery</li>
+    </ul>
+
+    <h3>D. Product Management & Strategy</h3>
+    <ul>
+      <li>Product roadmap planning and prioritization</li>
+      <li>Feature specification and requirements documentation</li>
+      <li>User research and feedback analysis</li>
+      <li>Competitive analysis and market intelligence</li>
+    </ul>
+
+    <h3>E. Quality Assurance & Testing</h3>
+    <ul>
+      <li>Manual and automated testing (Playwright, PHPUnit)</li>
+      <li>End-to-end testing and regression testing</li>
+      <li>Bug triage, tracking, and resolution</li>
+      <li>Performance testing and optimization</li>
+    </ul>
+
+    <h3>F. Customer Success — LATAM Markets</h3>
+    <ul>
+      <li>Customer onboarding and training for Spanish-speaking clients</li>
+      <li>Technical support and issue resolution</li>
+      <li>Feature request collection and prioritization</li>
+      <li>Account management for Colombia and LATAM clubs</li>
+    </ul>
+
+    <h3>G. Content & Marketing — Spanish Markets</h3>
+    <ul>
+      <li>Marketing content creation in Spanish (social media, blog, email)</li>
+      <li>Localization and translation (English &harr; Spanish &harr; Portuguese)</li>
+      <li>Community management for Spanish-speaking audiences</li>
+      <li>SEO content creation for LATAM markets</li>
+    </ul>
+
+    <h3>H. Data Operations</h3>
+    <ul>
+      <li>Client data migration and onboarding setup</li>
+      <li>Database maintenance and data integrity audits</li>
+      <li>Analytics, reporting, and business intelligence</li>
+    </ul>
+
+    <h2>Pricing & Payment</h2>
+
+    <h3>Pricing Methodology</h3>
+    <p>Services are priced using the <span class="highlight">Cost Plus Method</span>, in compliance with:</p>
+    <ul>
+      <li><strong>USA:</strong> IRC Section 482 (IRS Transfer Pricing Rules)</li>
+      <li><strong>Colombia:</strong> Articles 260-1 to 260-11, Estatuto Tributario</li>
+      <li><strong>International:</strong> OECD Transfer Pricing Guidelines (2022)</li>
+    </ul>
+
+    <p>The monthly service fee is calculated as:</p>
+    <p style="text-align:center; font-size: 18px; padding: 16px; background: #12121A; border-radius: 8px; font-family: 'JetBrains Mono', monospace;">
+      <span class="highlight">Monthly Fee = Total Actual Costs &times; 1.20</span> (Cost Plus 20%)
+    </p>
+
+    <h3>Cost Base Includes</h3>
+    <table>
+      <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Personnel</td><td>Salaries, employer contributions (salud, pensión, ARL, caja), prestaciones sociales</td></tr>
+        <tr><td>Infrastructure</td><td>Cloud hosting (DigitalOcean), email services (Resend), CDN</td></tr>
+        <tr><td>Tools & Licenses</td><td>AI tools (Claude Code), Apple Developer, Google Play, domain, development tools</td></tr>
+        <tr><td>Office & Utilities</td><td>Internet, coworking/office space, equipment depreciation</td></tr>
+        <tr><td>Contractors</td><td>Freelance developers, designers, QA testers hired in Colombia</td></tr>
+        <tr><td>Other Operating Costs</td><td>Bank fees, GMF (4&times;1000), professional services (accountant)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Payment Terms</h3>
+    <ul>
+      <li><strong>Invoicing:</strong> Service Provider issues a detailed monthly invoice by the 5th business day of the following month</li>
+      <li><strong>Payment:</strong> Client pays within 15 calendar days of invoice receipt (Net 15)</li>
+      <li><strong>Method:</strong> International wire transfer (SWIFT) from Mercury (USA) to Service Provider's Colombian bank account</li>
+      <li><strong>Currency:</strong> Invoiced in USD. Converted to COP at the official TRM rate on the date of payment</li>
+      <li><strong>Wire Fees:</strong> Borne by the Client (Widdo Inc)</li>
+    </ul>
+
+    <h3>Invoice Requirements</h3>
+    <p>Each invoice shall include:</p>
+    <ol>
+      <li>Invoice number (sequential)</li>
+      <li>Billing period (month/year)</li>
+      <li>Itemized list of services rendered by category (A through H)</li>
+      <li>Hours worked per category (from time tracking system)</li>
+      <li>Itemized operating costs included in the cost base</li>
+      <li>Subtotal of actual costs</li>
+      <li>20% markup amount</li>
+      <li>Total amount due in USD</li>
+    </ol>
+
+    <h2>Personnel</h2>
+
+    <p>The following key personnel are employed by the Service Provider to deliver services under this Agreement:</p>
+
+    <table>
+      <thead><tr><th>Name</th><th>Role</th><th>Dedication</th><th>Services</th></tr></thead>
+      <tbody>
+        <tr><td><strong>MIGUEL ANGEL CANO QUINONEZ</strong></td><td>CTO / Lead Developer</td><td>Full-time (100%)</td><td>A, B, C, D, E, F, G, H</td></tr>
+        <tr><td><em>Future hires</em></td><td>As needed</td><td>Varies</td><td>Per SOW</td></tr>
+      </tbody>
+    </table>
+
+    <p>Additional personnel may be engaged by the Service Provider as needed. The Client shall be notified of significant changes to the team composition.</p>
+
+    <h2>Time Tracking & Documentation</h2>
+
+    <p>The Service Provider shall maintain accurate records of all work performed, including:</p>
+    <ul>
+      <li><strong>Time tracking:</strong> Daily time entries categorized by service category (A-H), using a system such as Toggl, Clockify, or equivalent</li>
+      <li><strong>Monthly summary:</strong> Hours worked per category, included with each invoice</li>
+      <li><strong>Cost worksheets:</strong> Monthly allocation of operating costs to the cost base</li>
+      <li><strong>Deliverables log:</strong> Summary of features developed, bugs fixed, deployments, and other measurable output</li>
+    </ul>
+
+    <p>Records shall be retained for a minimum of <strong>five (5) years</strong> for tax compliance purposes in both jurisdictions.</p>
+
+    <h2>Intellectual Property</h2>
+
+    <p>All intellectual property created by the Service Provider in the performance of services under this Agreement shall be and remain the exclusive property of the Client (Widdo Inc), as set forth in the <strong>IP Assignment Agreement</strong> executed between the parties.</p>
+
+    <p>This includes, without limitation: source code, designs, databases, documentation, trade secrets, algorithms, AI models and prompts, and any derivative works.</p>
+
+    <h2>Confidentiality</h2>
+
+    <p>Each party agrees to maintain the confidentiality of all proprietary information received from the other party, including but not limited to: business strategies, client data, financial information, technical specifications, pricing, and trade secrets.</p>
+
+    <p>This obligation survives termination of this Agreement for a period of <strong>three (3) years</strong>.</p>
+
+    <h2>Compliance</h2>
+
+    <h3>Transfer Pricing Compliance</h3>
+    <ul>
+      <li>The 20% markup shall be reviewed annually to ensure it remains within the arm's length range for comparable software development services in Latin America</li>
+      <li>A comparable company analysis or benchmarking study shall be conducted if requested by either tax authority</li>
+      <li>The pricing methodology shall be documented in the annual Transfer Pricing report (if thresholds are exceeded)</li>
+    </ul>
+
+    <h3>Tax Compliance</h3>
+    <table>
+      <thead><tr><th>Obligation</th><th>Jurisdiction</th><th>Responsible Party</th></tr></thead>
+      <tbody>
+        <tr><td>RST filing (1.8% on revenue)</td><td>Colombia</td><td>Widdo SAS</td></tr>
+        <tr><td>Payroll taxes (salud, pensión, ARL, caja)</td><td>Colombia</td><td>Widdo SAS</td></tr>
+        <tr><td>GMF (4&times;1000) on bank transactions</td><td>Colombia</td><td>Widdo SAS</td></tr>
+        <tr><td>Form 5471 — NOT required (SAS owned by Miguel, not by C Corp)</td><td>USA</td><td>N/A</td></tr>
+        <tr><td>Deductibility of service fees</td><td>USA</td><td>Widdo Inc</td></tr>
+        <tr><td>Transfer pricing documentation (if thresholds met)</td><td>Both</td><td>Both</td></tr>
+        <tr><td>Export of services declaration (Form 150)</td><td>Colombia</td><td>Widdo SAS</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Term & Termination</h2>
+    <ul>
+      <li><strong>Effective Date:</strong> Upon incorporation of Widdo SAS</li>
+      <li><strong>Term:</strong> One (1) year, automatically renewing for successive one-year periods</li>
+      <li><strong>Termination:</strong> Either party may terminate with ninety (90) days written notice</li>
+      <li><strong>Effect of Termination:</strong> All accrued obligations (unpaid invoices, pending deliverables) survive termination</li>
+    </ul>
+
+    <h2>Dispute Resolution</h2>
+    <p>Any dispute arising under this Agreement shall be resolved first through good-faith negotiation between the parties. If unresolved within thirty (30) days, the dispute shall be submitted to binding arbitration under the rules of the <strong>International Chamber of Commerce (ICC)</strong>, with the seat of arbitration in Miami, Florida.</p>
+
+    <h2>Governing Law</h2>
+    <p>This Agreement shall be governed by the laws of the <strong>State of Delaware, USA</strong>, except that provisions relating to the Service Provider's obligations as a Colombian entity shall be governed by Colombian law.</p>
+
+    <h2>Entire Agreement</h2>
+    <p>This Agreement, together with the Intercompany Transfer Pricing Agreement, the IP Assignment Agreement, and the Founders Agreement, constitutes the entire understanding between the parties with respect to the subject matter hereof. Any amendments must be in writing and signed by authorized representatives of both parties.</p>
+
+    <!-- Signatures -->
+    <div class="signature-block">
+      <div class="sig-party">
+        <div class="sig-label">Client</div>
+        <div class="sig-line"></div>
+        <div class="sig-name">MIGUEL ANGEL CANO QUINONEZ</div>
+        <div class="sig-title">CEO, Widdo Inc</div>
+        <div style="margin-top: 20px; font-size: 13px; color: #888;">Date: _______________</div>
+      </div>
+      <div class="sig-party">
+        <div class="sig-label">Service Provider</div>
+        <div class="sig-line"></div>
+        <div class="sig-name">MIGUEL ANGEL CANO QUINONEZ</div>
+        <div class="sig-title">Representante Legal, Widdo SAS</div>
+        <div style="margin-top: 20px; font-size: 13px; color: #888;">Date: _______________</div>
+      </div>
+    </div>
+
+    <!-- Attorney Notes -->
+    <div class="attorney-notes">
+      <h3>Notes for Attorney Review</h3>
+      <ol>
+        <li>Verify that the same person (Miguel) signing on behalf of both entities is permissible under both Delaware and Colombian law for intercompany agreements</li>
+        <li>Confirm 20% markup is defensible under both IRS Section 482 and Colombian ET 260</li>
+        <li>Review whether the SAS needs a separate board resolution to approve this agreement</li>
+        <li>Assess whether additional safeguards are needed given the related-party nature of the agreement</li>
+        <li>Confirm IVA exclusion for software services exported from Colombia to USA</li>
+        <li>Review Form 5471 filing requirements and deadlines for Widdo Inc</li>
+        <li>Determine if the initial revenue levels trigger Colombian transfer pricing documentation requirements</li>
+        <li>Review arbitration clause — consider whether Colombian courts should have concurrent jurisdiction</li>
+      </ol>
+    </div>
+
+    <div class="disclaimer">
+      <p>This document was prepared as a DRAFT for attorney review. It does not constitute legal advice.<br>
+      A licensed attorney in both USA and Colombian jurisdictions must review and approve this document before execution.<br>
+      Generated March 2026 | Widdo Inc</p>
+    </div>
+  </div>
+</body>
+</html>

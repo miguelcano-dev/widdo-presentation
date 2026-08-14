@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo — Centro de Documentos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0f0f11;
+            --bg-card: #18181b;
+            --bg-hover: #1e1e23;
+            --green: #16a34a;
+            --green-soft: rgba(22, 163, 74, 0.12);
+            --green-border: rgba(22, 163, 74, 0.25);
+            --text: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --text-subtle: #71717a;
+            --border: rgba(255,255,255,0.06);
+            --orange: #f59e0b;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+            --red: #ef4444;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .tagline {
+            color: var(--green);
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .metrics-bar {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 24px 0 48px;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--green);
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: var(--text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: border-color 0.2s;
+        }
+
+        .section:hover {
+            border-color: var(--green-border);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .icon-green { background: var(--green-soft); }
+        .icon-orange { background: rgba(245, 158, 11, 0.12); }
+        .icon-blue { background: rgba(59, 130, 246, 0.12); }
+        .icon-purple { background: rgba(168, 85, 247, 0.12); }
+        .icon-red { background: rgba(239, 68, 68, 0.12); }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 12px;
+            color: var(--text-subtle);
+        }
+
+        .file-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .file-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            transition: background 0.15s;
+            font-size: 14px;
+        }
+
+        .file-link:hover {
+            background: var(--bg-hover);
+        }
+
+        .file-badge {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .badge-html { background: rgba(22, 163, 74, 0.15); color: var(--green); }
+        .badge-pdf { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+        .badge-md { background: rgba(59, 130, 246, 0.15); color: var(--blue); }
+        .badge-json { background: rgba(245, 158, 11, 0.15); color: var(--orange); }
+        .badge-js { background: rgba(168, 85, 247, 0.15); color: var(--purple); }
+
+        .file-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .file-desc {
+            font-size: 11px;
+            color: var(--text-subtle);
+        }
+
+        .separator {
+            height: 1px;
+            background: var(--border);
+            margin: 8px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            color: var(--text-subtle);
+            font-size: 12px;
+        }
+
+        .cmd-box {
+            background: #111;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 12px;
+            color: var(--green);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .cmd-box:hover {
+            border-color: var(--green);
+        }
+
+        .cmd-box::before {
+            content: '$ ';
+            color: var(--text-subtle);
+        }
+
+        .section-wide {
+            grid-column: 1 / -1;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .form-label {
+            font-size: 10px;
+            color: var(--text-subtle);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .form-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 10px;
+            color: var(--text);
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: var(--green);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-subtle);
+            font-weight: 400;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Red Hat Display', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            flex: 1;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-green {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-green:hover:not(:disabled) {
+            background: #15803d;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--green-border);
+            color: var(--green);
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background: var(--green-soft);
+        }
+
+        #dropZone.drag-over {
+            border-color: var(--green);
+            background: var(--green-soft);
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 20px; }
+            .grid { grid-template-columns: 1fr; }
+            .metrics-bar { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="widdo-logo.svg" alt="Widdo">
+        <h1>Widdo — Centro de Documentos</h1>
+        <p>Todo lo que necesitas para el pitch, los decks, y el negocio en un solo lugar.</p>
+        <p class="tagline">Every club. Every tournament. Every athlete.</p>
+    </div>
+
+    <div class="metrics-bar" id="metricsBar">
+        <!-- Filled by JS from metrics.json -->
+    </div>
+
+    <div class="grid">
+
+        <!-- ===== DECKS INVERSORES ===== -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-green">🎯</div>
+                <div>
+                    <div class="section-title">Decks Inversores</div>
+                    <div class="section-subtitle">Presentaciones para levantar capital</div>
+                </div>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="decks/usa/deck-usa-widdo.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Deck USA</div>
+                        <div class="file-desc">Inversores USA — English — Presiona F para fullscreen</div>
+                    </div>
+                </a>
+                <a class="file-link" href="decks/usa/deck-usa-widdo.pdf">
+                    <span class="file-badge badge-pdf">PDF</span>
+                    <div>
+                        <div class="file-name">Deck USA (PDF)</div>
+                        <div class="file-desc">Rasterizado 2x — Para compartir por email</div>
+                    </div>
+                </a>
+                <div class="separator"></div>
+                <a class="file-link" href="decks/latam/deck-latam-widdo.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Deck LATAM / Brazil</div>
+                        <div class="file-desc">Inversores LATAM — English</div>
+                    </div>
+                </a>
+                <a class="file-link" href="decks/latam/deck-latam-widdo.pdf">
+                    <span class="file-badge badge-pdf">PDF</span>
+                    <div>
+                        <div class="file-name">Deck LATAM (PDF)</div>
+                        <div class="file-desc">Para compartir por email</div>
+                    </div>
+                </a>
+                <div class="separator"></div>
+                <a class="file-link" href="decks/espanol/presentacion-widdo.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Presentacion Espanol</div>
+                        <div class="file-desc">Colombia / LATAM — Espanol</div>
+                    </div>
+                </a>
+                <a class="file-link" href="decks/espanol/presentacion-widdo-en.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Presentacion English</div>
+                        <div class="file-desc">General — Fullscreen</div>
+                    </div>
+                </a>
+                <div class="separator"></div>
+                <a class="file-link" href="decks/otros/one-pager-widdo-usa.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">One-Pager USA</div>
+                        <div class="file-desc">Resumen de 1 pagina para enviar rapido</div>
+                    </div>
+                </a>
+                <a class="file-link" href="decks/otros/one-pager-widdo-usa.pdf">
+                    <span class="file-badge badge-pdf">PDF</span>
+                    <div>
+                        <div class="file-name">One-Pager USA (PDF)</div>
+                        <div class="file-desc">Para adjuntar en emails</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== PITCH PREP ===== -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-orange">🎤</div>
+                <div>
+                    <div class="section-title">Preparacion de Pitch</div>
+                    <div class="section-subtitle">Guiones, practica y templates</div>
+                </div>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="negocio/pitch/PITCH-SCRIPT.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Guion del Pitch</div>
+                        <div class="file-desc">Que decir en cada slide + elevator pitches</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/pitch/PITCH-PRACTICE.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Como Practicar</div>
+                        <div class="file-desc">Tecnicas, lenguaje corporal, plan de 7 dias</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/pitch/TOUGH-QUESTIONS.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Preguntas Dificiles</div>
+                        <div class="file-desc">20+ preguntas de inversores con respuestas</div>
+                    </div>
+                </a>
+                <div class="separator"></div>
+                <a class="file-link" href="negocio/pitch/FOLLOW-UP-TEMPLATES.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Templates de Email</div>
+                        <div class="file-desc">Cold, warm, follow-up, updates trimestrales</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/pitch/INVESTOR-TRACKER.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Tracker de Inversores</div>
+                        <div class="file-desc">Pipeline y estado de cada contacto</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/pitch/DATA-ROOM-CHECKLIST.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Data Room Checklist</div>
+                        <div class="file-desc">Documentos necesarios para due diligence</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== NEGOCIO E INVERSION ===== -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-blue">💼</div>
+                <div>
+                    <div class="section-title">Negocio e Inversion</div>
+                    <div class="section-subtitle">Estrategia, legal, mercado</div>
+                </div>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="negocio/STARTUP-GLOSSARY.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Glosario de Startup</div>
+                        <div class="file-desc">60+ terminos con ejemplos Widdo</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/legales/index.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Centro Legal</div>
+                        <div class="file-desc">Founders 70/30, IP Assignment, ToS, Privacy, transfer pricing</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/legales/para-firmar/index.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Para Firmar</div>
+                        <div class="file-desc">Cola de firma — a 13-ago-2026 NADA firmado</div>
+                    </div>
+                </a>
+                <div class="separator"></div>
+                <a class="file-link" href="negocio/MARKET-RESEARCH-USA.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Investigacion de Mercado USA</div>
+                        <div class="file-desc">Fuentes verificadas — NFHS, SFIA, Mordor</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/SFIA-MARKET-DATA.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Datos SFIA Deportivos</div>
+                        <div class="file-desc">Participacion por deporte, adult rec, sports tech</div>
+                    </div>
+                </a>
+                <a class="file-link" href="DATOS_CONTABLES.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Datos Contables</div>
+                        <div class="file-desc">Informacion financiera</div>
+                    </div>
+                </a>
+                <div class="separator"></div>
+                <a class="file-link" href="negocio/RECONCILIACION-CIFRAS.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Reconciliacion de Cifras</div>
+                        <div class="file-desc">Que numero es el bueno cuando dos documentos se contradicen</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/guia-estructura-fiscal.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Guia de Estructura Fiscal</div>
+                        <div class="file-desc">Como funciona la estructura USA/Colombia, explicada para el CEO</div>
+                    </div>
+                </a>
+                <a class="file-link" href="negocio/visa-usa.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Visa USA — Opciones</div>
+                        <div class="file-desc">E-2 Employee, L-1A, comparativa, timeline</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== CLUBES ===== -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-purple">⚽</div>
+                <div>
+                    <div class="section-title">Clubes</div>
+                    <div class="section-subtitle">Fichas de matricula y datos de clubes</div>
+                </div>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="clubes/fichas/ficha-matricula-baqueros.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Ficha Matricula — Baqueros</div>
+                        <div class="file-desc">Formulario de registro de jugadores</div>
+                    </div>
+                </a>
+                <a class="file-link" href="clubes/fichas/ficha-matricula-baqueros.pdf">
+                    <span class="file-badge badge-pdf">PDF</span>
+                    <div>
+                        <div class="file-name">Ficha Matricula (PDF)</div>
+                        <div class="file-desc">Para imprimir — 3 paginas</div>
+                    </div>
+                </a>
+                <a class="file-link" href="clubes/plantilla-inscripcion/plantilla.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Plantilla de Inscripcion (parametrizada)</div>
+                        <div class="file-desc">Infografia por club — lee clubes.json, soporta varios clubes</div>
+                    </div>
+                </a>
+                <a class="file-link" href="clubes/fichas/ficha-registro-widdo.html">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Ficha Registro Widdo</div>
+                        <div class="file-desc">Registro general Widdo</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== DECKS DE VENTAS ===== -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-green">🎯</div>
+                <div>
+                    <div class="section-title">Decks de Ventas (clientes)</div>
+                    <div class="section-subtitle">Para clubes y organizadores de torneos — NO son decks de inversores</div>
+                </div>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="decks/clubes/deck-widdo-clubs-usa.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Deck Widdo Clubs — USA</div>
+                        <div class="file-desc">Presentacion de venta para clubes y academias</div>
+                    </div>
+                </a>
+                <a class="file-link" href="decks/clubes/deck-widdo-clubs-usa.pdf">
+                    <span class="file-badge badge-pdf">PDF</span>
+                    <div>
+                        <div class="file-name">Deck Widdo Clubs (PDF)</div>
+                        <div class="file-desc">Para enviar por correo</div>
+                    </div>
+                </a>
+                <a class="file-link" href="decks/clubes/one-pager-widdo-clubs-usa.pdf">
+                    <span class="file-badge badge-pdf">PDF</span>
+                    <div>
+                        <div class="file-name">One-Pager Clubs — USA</div>
+                        <div class="file-desc">Una pagina para dejar despues de una reunion</div>
+                    </div>
+                </a>
+                <div class="separator"></div>
+                <a class="file-link" href="decks/torneos/deck-widdo-tournaments-usa.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Deck Widdo Tournaments — USA</div>
+                        <div class="file-desc">Presentacion para organizadores de torneos y ligas</div>
+                    </div>
+                </a>
+                <a class="file-link" href="decks/torneos/deck-widdo-tournaments-usa.pdf">
+                    <span class="file-badge badge-pdf">PDF</span>
+                    <div>
+                        <div class="file-name">Deck Tournaments (PDF)</div>
+                        <div class="file-desc">Para enviar por correo</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== ADQUISICION USA ===== -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-red">🚀</div>
+                <div>
+                    <div class="section-title">Adquisicion USA</div>
+                    <div class="section-subtitle">Prospeccion, outreach y gates de lanzamiento</div>
+                </div>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="adquisicion-usa/INDEX.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Indice de Adquisicion</div>
+                        <div class="file-desc">Punto de entrada — que hay y en que orden leerlo</div>
+                    </div>
+                </a>
+                <a class="file-link" href="adquisicion-usa/GATE-0-STRIPE-LIVE.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Gate 0 — Stripe Live</div>
+                        <div class="file-desc">Bloqueador #1 del lanzamiento: pasar Stripe a produccion</div>
+                    </div>
+                </a>
+                <a class="file-link" href="adquisicion-usa/LANZAMIENTO-GO-NOGO.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Lanzamiento — Go / No-Go</div>
+                        <div class="file-desc">Los 5 gates que hay que cerrar antes de vender en USA</div>
+                    </div>
+                </a>
+                <a class="file-link" href="adquisicion-usa/emails/TODOS-LOS-EMAILS.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Emails de Outreach (vigentes)</div>
+                        <div class="file-desc">Copy limpio y actual — sustituye al de negocio/sales/</div>
+                    </div>
+                </a>
+                <a class="file-link" href="adquisicion-usa/00-LISTA-MAESTRA-FLORIDA.md">
+                    <span class="file-badge badge-md">MD</span>
+                    <div>
+                        <div class="file-name">Lista Maestra — Florida</div>
+                        <div class="file-desc">Prospectos verificados con contacto real</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== FINANZAS ===== -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon icon-orange">💰</div>
+                <div>
+                    <div class="section-title">Finanzas</div>
+                    <div class="section-subtitle">Modelos pro-forma y costeo — cifras vivas en metrics.json</div>
+                </div>
+            </div>
+            <div class="file-list">
+                <a class="file-link" href="finanzas/index.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Centro Financiero</div>
+                        <div class="file-desc">Dashboard con todos los documentos financieros</div>
+                    </div>
+                </a>
+                <a class="file-link" href="finanzas/modelo-financiero.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Modelo Financiero</div>
+                        <div class="file-desc">Proyeccion 36 meses (modelo de marzo 2026)</div>
+                    </div>
+                </a>
+                <a class="file-link" href="finanzas/use-of-funds.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Use of Funds</div>
+                        <div class="file-desc">En que se gastaria la ronda (tentativo, no levantada)</div>
+                    </div>
+                </a>
+                <a class="file-link" href="finanzas/aportes-fundador.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">Aportes y Costeo del Fundador</div>
+                        <div class="file-desc">Que ha puesto Miguel y cuanto cuesta operar</div>
+                    </div>
+                </a>
+                <a class="file-link" href="finanzas/iva-pricing-internacional.html" target="_blank">
+                    <span class="file-badge badge-html">HTML</span>
+                    <div>
+                        <div class="file-name">IVA y Pricing Internacional</div>
+                        <div class="file-desc">Como afecta el impuesto al precio por pais</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ===== ACTUALIZAR METRICAS ===== -->
+        <div class="section section-wide" id="updateSection">
+            <div class="section-header">
+                <div class="section-icon icon-red">⚙️</div>
+                <div>
+                    <div class="section-title">Actualizar Metricas</div>
+                    <div class="section-subtitle">Arrastra un pantallazo o edita los numeros directamente</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <!-- LEFT: Screenshot drop + preview -->
+                <div>
+                    <div id="dropZone" style="border: 2px dashed rgba(255,255,255,0.1); border-radius: 12px; padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.2s; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div id="dropContent">
+                            <div style="font-size: 36px; margin-bottom: 12px; opacity: 0.5;">📊</div>
+                            <p style="font-size: 14px; color: var(--text-muted);">Arrastra un pantallazo de tus metricas aqui</p>
+                            <p style="font-size: 11px; color: var(--text-subtle); margin-top: 6px;">O haz click para seleccionar imagen</p>
+                        </div>
+                        <img id="dropPreview" style="display: none; max-width: 100%; border-radius: 8px;" />
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;" />
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-subtle); margin-top: 8px; text-align: center;">
+                        La imagen es solo de referencia visual. Edita los numeros al lado →
+                    </p>
+                </div>
+
+                <!-- RIGHT: Editable metrics form -->
+                <div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                        <div class="form-group">
+                            <label class="form-label">Clubs</label>
+                            <input type="number" id="f_clubs" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">MRR ($)</label>
+                            <input type="number" id="f_mrr" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Churn (%)</label>
+                            <input type="text" id="f_churn" class="form-input" placeholder="0%" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">ARPC ($)</label>
+                            <input type="number" id="f_arpc" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Infra cost ($/mo)</label>
+                            <input type="number" id="f_infra_cost" class="form-input" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">CAC proyectado ($)</label>
+                            <input type="number" id="f_cac_projected" class="form-input" />
+                        </div>
+                    </div>
+
+                    <details style="margin-top: 12px;">
+                        <summary style="font-size: 12px; color: var(--text-subtle); cursor: pointer;">Proyecciones y pricing avanzado</summary>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
+                            <div class="form-group">
+                                <label class="form-label">Pricing Starter ($)</label>
+                                <input type="number" id="f_pricing_starter" class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Pricing Pro ($)</label>
+                                <input type="number" id="f_pricing_pro" class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Pricing Club+ ($)</label>
+                                <input type="number" id="f_pricing_club_plus" class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Break-even clubs</label>
+                                <input type="number" id="f_breakeven_clubs" class="form-input" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Raising ($)</label>
+                                <input type="text" id="f_raising_amount" class="form-input" placeholder="100K" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Valuation ($)</label>
+                                <input type="text" id="f_valuation_premoney" class="form-input" placeholder="750K" />
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- Calculated values preview -->
+                    <div id="calcPreview" style="background: rgba(22,163,74,0.08); border: 1px solid var(--green-border); border-radius: 8px; padding: 12px; margin-top: 12px; display: none;">
+                        <p style="font-size: 11px; color: var(--green); font-weight: 600; margin-bottom: 6px;">VALORES CALCULADOS</p>
+                        <div id="calcValues" style="font-size: 12px; color: var(--text-muted); line-height: 1.8;"></div>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div style="display: flex; gap: 8px; margin-top: 16px;">
+                        <button id="btnUpdate" class="btn btn-green" onclick="updateMetrics(false)">
+                            Actualizar Archivos
+                        </button>
+                        <button id="btnUpdatePdf" class="btn btn-outline" onclick="updateMetrics(true)">
+                            + Generar PDFs
+                        </button>
+                    </div>
+
+                    <!-- Status -->
+                    <div id="status" style="margin-top: 12px; display: none;"></div>
+                </div>
+            </div>
+
+            <!-- Bottom links -->
+            <div style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px;">
+                <div class="file-list" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px;">
+                    <a class="file-link" href="metrics.json">
+                        <span class="file-badge badge-json">JSON</span>
+                        <div><div class="file-name">metrics.json</div></div>
+                    </a>
+                    <a class="file-link" href="decks/README.md">
+                        <span class="file-badge badge-md">MD</span>
+                        <div><div class="file-name">Indice de Decks</div></div>
+                    </a>
+                    <a class="file-link" href="decks/DECK-GUIDE.md">
+                        <span class="file-badge badge-md">MD</span>
+                        <div><div class="file-name">Guia Tecnica</div></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>Widdo &copy; 2026 — Built for the game. From academy to arena.</p>
+    </div>
+
+    <script>
+        // Load metrics.json and display in metrics bar
+        fetch('metrics.json')
+            .then(r => r.json())
+            .then(m => {
+                const bar = document.getElementById('metricsBar');
+                const items = [
+                    { value: m.clubs, label: 'Clubs' },
+                    { value: '$' + m.mrr.toLocaleString(), label: 'MRR' },
+                    { value: '$' + m.arr.toLocaleString(), label: 'ARR' },
+                    { value: m.churn, label: 'Churn' },
+                    { value: m.gross_margin, label: 'Margin' },
+                    { value: m.ltv_cac_ratio, label: 'LTV/CAC' },
+                    { value: '$' + m.raising_amount, label: 'Raising' },
+                ];
+                bar.innerHTML = items.map(i => `
+                    <div class="metric">
+                        <div class="metric-value">${i.value}</div>
+                        <div class="metric-label">${i.label}</div>
+                    </div>
+                `).join('');
+            })
+            .catch(() => {});
+
+        // --- Form auto-population from metrics.json ---
+        fetch('metrics.json')
+            .then(r => r.json())
+            .then(m => {
+                const fields = {
+                    f_clubs: m.clubs,
+                    f_mrr: m.mrr,
+                    f_churn: m.churn,
+                    f_arpc: m.arpc,
+                    f_infra_cost: m.infra_cost,
+                    f_cac_projected: m.cac_projected,
+                    f_pricing_starter: m.pricing_starter,
+                    f_pricing_pro: m.pricing_pro,
+                    f_pricing_club_plus: m.pricing_club_plus,
+                    f_breakeven_clubs: m.breakeven_clubs,
+                    f_raising_amount: m.raising_amount,
+                    f_valuation_premoney: m.valuation_premoney,
+                };
+                Object.keys(fields).forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.value = fields[id];
+                });
+                updateCalcPreview();
+            })
+            .catch(() => {});
+
+        // --- Live calculation preview ---
+        function updateCalcPreview() {
+            const clubs = parseInt(document.getElementById('f_clubs').value) || 0;
+            const mrr = parseInt(document.getElementById('f_mrr').value) || 0;
+            const arpc = parseInt(document.getElementById('f_arpc').value) || 0;
+            const infra = parseInt(document.getElementById('f_infra_cost').value) || 0;
+            const cac = parseInt(document.getElementById('f_cac_projected').value) || 0;
+
+            const arr = mrr * 12;
+            const costPerClub = clubs > 0 ? Math.max(Math.round(infra / clubs), 4) : 4;
+            const margin = arpc > 0 ? Math.round(((arpc - costPerClub) / arpc) * 100) : 0;
+            const ltv = arpc * 24;
+            const ltvCac = cac > 0 ? Math.round(ltv / cac) : '∞';
+
+            const preview = document.getElementById('calcPreview');
+            const values = document.getElementById('calcValues');
+            preview.style.display = 'block';
+            values.innerHTML = `
+                <b>ARR:</b> $${arr.toLocaleString()} &nbsp;|&nbsp;
+                <b>Cost/Club:</b> $${costPerClub} &nbsp;|&nbsp;
+                <b>Margin:</b> ${margin}% &nbsp;|&nbsp;
+                <b>LTV:</b> $${ltv.toLocaleString()} &nbsp;|&nbsp;
+                <b>LTV/CAC:</b> ${ltvCac}${typeof ltvCac === 'number' ? 'x' : ''}
+            `;
+        }
+
+        // Attach live calc to all form inputs
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', updateCalcPreview);
+        });
+
+        // --- Drag & Drop ---
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const dropPreview = document.getElementById('dropPreview');
+        const dropContent = document.getElementById('dropContent');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                showPreview(file);
+            }
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files[0]) {
+                showPreview(fileInput.files[0]);
+            }
+        });
+
+        function showPreview(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                dropPreview.src = e.target.result;
+                dropPreview.style.display = 'block';
+                dropContent.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // --- Update Metrics via API ---
+        async function updateMetrics(withPdf) {
+            const btnUpdate = document.getElementById('btnUpdate');
+            const btnUpdatePdf = document.getElementById('btnUpdatePdf');
+            const status = document.getElementById('status');
+
+            // Disable buttons
+            btnUpdate.disabled = true;
+            btnUpdatePdf.disabled = true;
+
+            status.style.display = 'block';
+            status.innerHTML = `<p style="font-size: 13px; color: var(--orange);">
+                ${withPdf ? '⏳ Actualizando archivos + generando PDFs... (puede tomar 1-2 min)' : '⏳ Actualizando archivos...'}
+            </p>`;
+
+            try {
+                // Build metrics object from form
+                const metrics = {
+                    clubs: parseInt(document.getElementById('f_clubs').value) || 0,
+                    mrr: parseInt(document.getElementById('f_mrr').value) || 0,
+                    churn: document.getElementById('f_churn').value || '0%',
+                    arpc: parseInt(document.getElementById('f_arpc').value) || 0,
+                    infra_cost: parseInt(document.getElementById('f_infra_cost').value) || 0,
+                    cac_projected: parseInt(document.getElementById('f_cac_projected').value) || 0,
+                    pricing_starter: parseInt(document.getElementById('f_pricing_starter').value) || 0,
+                    pricing_pro: parseInt(document.getElementById('f_pricing_pro').value) || 0,
+                    pricing_club_plus: parseInt(document.getElementById('f_pricing_club_plus').value) || 0,
+                    breakeven_clubs: parseInt(document.getElementById('f_breakeven_clubs').value) || 0,
+                    raising_amount: document.getElementById('f_raising_amount').value || '100K',
+                    valuation_premoney: document.getElementById('f_valuation_premoney').value || '750K',
+                };
+
+                // Step 1: Update metrics.json + files
+                const res1 = await fetch('/api/update-metrics', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(metrics),
+                });
+                const data1 = await res1.json();
+
+                if (!data1.success) {
+                    throw new Error(data1.error || 'Error actualizando archivos');
+                }
+
+                // Step 2: Generate PDFs if requested
+                if (withPdf) {
+                    status.innerHTML = `<p style="font-size: 13px; color: var(--orange);">⏳ Generando PDFs... esto toma ~1-2 min</p>`;
+
+                    const res2 = await fetch('/api/generate-pdfs', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+                    const data2 = await res2.json();
+
+                    if (!data2.success) {
+                        throw new Error(data2.error || 'Error generando PDFs');
+                    }
+                }
+
+                status.innerHTML = `<p style="font-size: 13px; color: var(--green);">
+                    ✓ ${withPdf ? 'Archivos actualizados + PDFs generados' : 'Archivos actualizados'} correctamente
+                </p>`;
+
+                // Refresh metrics bar
+                setTimeout(() => location.reload(), 1500);
+
+            } catch (err) {
+                status.innerHTML = `<p style="font-size: 13px; color: var(--red);">
+                    ✗ Error: ${err.message}
+                </p>
+                <p style="font-size: 11px; color: var(--text-subtle); margin-top: 4px;">
+                    Asegurate de que el servidor esta corriendo: <code>node server.js</code>
+                </p>`;
+            } finally {
+                btnUpdate.disabled = false;
+                btnUpdatePdf.disabled = false;
+            }
+        }
+    </script>
+
+</body>
+</html>

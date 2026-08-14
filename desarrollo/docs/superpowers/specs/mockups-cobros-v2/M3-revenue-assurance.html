@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M3 · Revenue Assurance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#16a34a;
+    --green-50:#f0fdf4; --green-200:#bbf7d0; --green-300:#86efac; --green-700:#15803d;
+    --amber-50:#fffbeb; --amber-200:#fde68a; --amber-700:#b45309;
+    --red-50:#fef2f2; --red-200:#fecaca; --red-700:#b91c1c;
+    --blue-50:#eff6ff; --blue-200:#bfdbfe; --blue-700:#1d4ed8;
+    --gray-50:#f9fafb; --gray-100:#f3f4f6; --gray-200:#e5e7eb; --gray-400:#9ca3af; --gray-600:#4b5563; --gray-900:#111827;
+    --radius:.5rem;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Red Hat Display',system-ui,sans-serif;background:var(--gray-100);color:var(--gray-900);padding:24px;font-size:14px}
+  .page{max-width:900px;margin:0 auto;display:grid;gap:14px}
+  .card{background:#fff;border:1px solid var(--gray-200);border-radius:calc(var(--radius)*1.5);padding:18px 20px}
+  .top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  h1{font-size:18px;font-weight:800}
+  .sub{color:var(--gray-400);font-size:12px;margin-top:2px}
+  .filters{display:flex;gap:8px}
+  .selq{border:1px solid var(--gray-200);border-radius:var(--radius);padding:8px 14px;background:#fff;font:inherit;font-size:13px;color:var(--gray-600)}
+  .alert{display:flex;align-items:center;gap:10px;background:var(--amber-50);border:1px solid var(--amber-200);border-radius:calc(var(--radius)*1.5);padding:12px 16px;font-size:13px;color:var(--amber-700)}
+  .alert a{margin-left:auto;font-weight:700;color:var(--amber-700);white-space:nowrap}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .tile{background:#fff;border:1px solid var(--gray-200);border-radius:calc(var(--radius)*1.5);padding:16px 18px}
+  .tile .k{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+  .tile .v{font-size:22px;font-weight:800;margin-top:4px;letter-spacing:-.01em}
+  .tile .d{font-size:11.5px;color:var(--gray-600);margin-top:3px}
+  .tile.bad{border-color:var(--red-200)}
+  .tile.bad .v{color:var(--red-700)}
+  h2{font-size:13.5px;font-weight:800;margin-bottom:2px}
+  .base{font-size:11px;color:var(--gray-400);margin-bottom:14px}
+  .frow{display:grid;grid-template-columns:150px 1fr 150px;align-items:center;gap:12px;margin-bottom:10px}
+  .frow .lbl{font-size:12.5px;color:var(--gray-600);text-align:right;font-weight:500}
+  .track{height:26px;background:var(--gray-50);border-radius:6px;overflow:hidden}
+  .fill{height:100%;border-radius:6px 4px 4px 6px}
+  .frow .val{font-size:13px;font-weight:800}
+  .frow .val small{display:block;font-weight:400;color:var(--gray-400);font-size:11px}
+  .gapnote{display:grid;grid-template-columns:150px 1fr;gap:12px;margin:-4px 0 10px}
+  .gapnote span{grid-column:2;font-size:11.5px;font-weight:500}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{text-align:left;padding:8px 10px;color:var(--gray-400);font-size:11px;text-transform:uppercase;letter-spacing:.03em;border-bottom:1px solid var(--gray-200);font-weight:700}
+  td{padding:9px 10px;border-bottom:1px solid var(--gray-100)}
+  tr:hover td{background:var(--gray-50)}
+  tfoot td{font-weight:800;border-top:2px solid var(--gray-200);background:var(--gray-50)}
+  .chip{font-size:11px;font-weight:700;border-radius:6px;padding:2px 9px;white-space:nowrap}
+  .chip.red{background:var(--red-50);color:var(--red-700)}
+  .chip.amber{background:var(--amber-50);color:var(--amber-700)}
+  .chip.blue{background:var(--blue-50);color:var(--blue-700)}
+  .act{font-size:12px;font-weight:700;color:var(--green-700);white-space:nowrap;text-decoration:none}
+  .r{text-align:right}
+  .note{font-size:11px;color:var(--gray-400)}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <div>
+      <h1>Revenue Assurance</h1>
+      <div class="sub">Corporación Deportiva Familia Aba · lo que deberías facturar vs lo que facturas vs lo que recaudas</div>
+    </div>
+    <div class="filters">
+      <select class="selq"><option>Julio 2026</option><option>Junio 2026</option></select>
+      <select class="selq"><option>Todas las categorías</option></select>
+    </div>
+  </div>
+
+  <div class="alert">⚠️ <span><b>5 jugadores</b> activos no tienen ninguna cuota vigente este mes.</span><a href="#tabla">Ver quiénes ↓</a></div>
+
+  <div class="tiles">
+    <div class="tile bad"><div class="k">Fuga del mes</div><div class="v">$ 1.140.000</div><div class="d">6,7% de lo que deberías facturar</div></div>
+    <div class="tile"><div class="k">Tasa de recaudo</div><div class="v">66%</div><div class="d">$ 10.490.000 de $ 15.930.000</div></div>
+    <div class="tile"><div class="k">DSO</div><div class="v">12 días</div><div class="d">promedio entre vencimiento y pago</div></div>
+    <div class="tile"><div class="k">ARPU</div><div class="v">$ 137.000</div><div class="d">facturado por jugador este mes</div></div>
+  </div>
+
+  <div class="card">
+    <h2>El embudo del mes</h2>
+    <div class="base">Base devengo · julio 2026 · solo cuotas de entrenamiento (mensualidades + trimestres)</div>
+
+    <div class="frow">
+      <div class="lbl">Debería facturarse</div>
+      <div class="track"><div class="fill" style="width:100%;background:var(--green-300)"></div></div>
+      <div class="val">$ 17.070.000<small>121 jugadores con cuota esperada</small></div>
+    </div>
+    <div class="gapnote"><span style="color:var(--red-700)">↓ fuga: $ 1.140.000 — 3 sin cuota + 2 trimestres vencidos (tabla ↓)</span></div>
+
+    <div class="frow">
+      <div class="lbl">Facturado</div>
+      <div class="track"><div class="fill" style="width:93%;background:var(--primary);opacity:.75"></div></div>
+      <div class="val">$ 15.930.000<small>116 cobros: 89 × $140.000 + 25 × $110.000 + 2 trimestres × $360.000</small></div>
+    </div>
+    <div class="gapnote"><span style="color:var(--amber-700)">↓ por cobrar: $ 5.440.000 — 41 pagos pendientes (31 de $140.000 + 10 de $110.000)</span></div>
+
+    <div class="frow" style="margin-bottom:0">
+      <div class="lbl">Recaudado</div>
+      <div class="track"><div class="fill" style="width:61%;background:var(--green-700)"></div></div>
+      <div class="val">$ 10.490.000<small>75 pagos: 58 × $140.000 + 15 × $110.000 + 2 × $360.000</small></div>
+    </div>
+  </div>
+
+  <div class="card" id="tabla">
+    <h2>Cobertura de cobro · quién no tiene cuota vigente</h2>
+    <div class="base">Jugadores activos con categoría y sin cuota cubriendo julio. Excluye exentos y pago por sesión. La suma es exactamente la fuga.</div>
+    <table>
+      <tr><th>Jugador</th><th>Categoría</th><th>Modalidad</th><th>Último cobro</th><th>Motivo</th><th class="r">Esperado</th><th></th></tr>
+      <tr>
+        <td>Antonia Aristizábal</td><td>Sub 15 F</td><td class="note">sin definir</td><td>Matrícula · mar 2026</td>
+        <td><span class="chip red">Nunca facturado</span></td><td class="r">$ 140.000</td><td><a class="act" href="#">Generar cuota →</a></td>
+      </tr>
+      <tr>
+        <td>Helen Murillo</td><td>Sub 15-16 F</td><td class="note">sin definir</td><td>Mensualidad · feb 2026</td>
+        <td><span class="chip amber">Cancelado sin reemplazo</span></td><td class="r">$ 140.000</td><td><a class="act" href="#">Definir modalidad →</a></td>
+      </tr>
+      <tr>
+        <td>Emmanuel Aguirre</td><td>Sub 17-18</td><td>Trimestral</td><td>Trimestre · venció 30 jun</td>
+        <td><span class="chip amber">Periodo vencido hace 31 días</span></td><td class="r">$ 360.000</td><td><a class="act" href="#">Renovar trimestre →</a></td>
+      </tr>
+      <tr>
+        <td>Mariana Ruiz</td><td>Sub 15-16 F</td><td>Trimestral</td><td>Trimestre · venció 30 jun</td>
+        <td><span class="chip amber">Periodo vencido hace 31 días</span></td><td class="r">$ 360.000</td><td><a class="act" href="#">Renovar trimestre →</a></td>
+      </tr>
+      <tr>
+        <td>Juan Nuevo Pérez</td><td>Sub 14 M</td><td class="note">sin definir</td><td class="note">—</td>
+        <td><span class="chip blue">Sin modalidad</span></td><td class="r">$ 140.000</td><td><a class="act" href="#">Definir modalidad →</a></td>
+      </tr>
+      <tfoot><tr><td colspan="5">Fuga total del mes</td><td class="r">$ 1.140.000</td><td></td></tr></tfoot>
+    </table>
+    <p class="note" style="margin-top:10px">Estas anomalías también llegan al brief diario. Un jugador sin cuota ya no se ve "al día".</p>
+  </div>
+
+  <div class="card">
+    <h2>Cómo cuadra todo</h2>
+    <div class="base" style="margin-bottom:8px">La verificación que cualquier contadora puede hacer:</div>
+    <table>
+      <tr><td>Facturado (116 cobros)</td><td class="r">$ 15.930.000</td></tr>
+      <tr><td>+ Fuga (5 jugadores de la tabla)</td><td class="r">$ 1.140.000</td></tr>
+      <tr><td><b>= Debería facturarse</b></td><td class="r"><b>$ 17.070.000</b></td></tr>
+      <tr><td>Recaudado (75 pagos)</td><td class="r">$ 10.490.000</td></tr>
+      <tr><td>+ Por cobrar (41 pendientes)</td><td class="r">$ 5.440.000</td></tr>
+      <tr><td><b>= Facturado</b></td><td class="r"><b>$ 15.930.000</b></td></tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

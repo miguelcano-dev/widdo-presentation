@@ -1,0 +1,3469 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+---
+
+## 📋 REGLA DE DOCUMENTACIÓN
+
+**IMPORTANTE:** Mantener la documentación simple y consolidada.
+
+### 📁 Estructura de Documentación del Proyecto:
+
+#### Nivel Raíz (`/`):
+- **`README.md`** - Punto de entrada general del proyecto
+
+#### Backend (`/saas_sport/`):
+- **`CLAUDE.md`** (este archivo) - Documentación completa del **BACKEND**
+- **`PERMISSIONS.md`** - Solo para permisos RBAC
+- **`TESTING_STRATEGY.md`** - Solo para estrategia de testing
+- **`README.md`** - Laravel README original
+
+#### Frontend (`/frontend/`):
+- **`CLAUDE.md`** - Documentación completa del **FRONTEND**
+- **`TESTING_ROUTES.md`** - Solo para guías de testing XSS
+- **`README.md`** - React/Vite README
+
+### ❌ NO Crear:
+- Múltiples archivos .md con información duplicada
+- ROADMAP.md, STATUS.md, PENDING.md separados
+- Archivos .md temporales de análisis
+
+### 📝 Regla de Oro:
+- **Trabajando en BACKEND** → Documenta en `saas_sport/CLAUDE.md`
+- **Trabajando en FRONTEND** → Documenta en `frontend/CLAUDE.md`
+- **Info general del proyecto** → Actualiza `README.md` raíz
+- **Si CLAUDE.md crece mucho** → Reorganiza secciones, NO crees archivos nuevos
+- **Un solo lugar por repositorio = Menos confusión**
+
+---
+
+## ⚠️ IMPORTANTE: Reglas de Commits
+
+**NUNCA incluir en los mensajes de commit:**
+- "🤖 Generated with [Claude Code](https://claude.com/claude-code)"
+- "Co-Authored-By: Claude <noreply@anthropic.com>"
+
+Los commits deben ser limpios, concisos y profesionales sin referencias a herramientas de IA.
+
+---
+
+## 🚨 REGLA INVIOLABLE: Base de Datos en Producción
+
+**PROHIBIDO EN PRODUCCIÓN (sin confirmación explícita del usuario):**
+- ❌ `php artisan migrate:fresh`
+- ❌ `php artisan migrate:refresh`
+- ❌ `php artisan migrate:reset`
+- ❌ `php artisan db:seed` (puede crear duplicados)
+- ❌ Cualquier comando que modifique o elimine datos
+
+**PERMITIDO EN PRODUCCIÓN:**
+- ✅ `php artisan tinker` (solo consultas SELECT)
+- ✅ `php artisan migrate` (solo para nuevas migraciones, con --force)
+- ✅ Comandos de solo lectura
+
+**EN LOCAL:**
+- Solo ejecutar seeds o migraciones destructivas si el usuario lo confirma explícitamente
+- Preguntar antes de ejecutar cualquier comando que modifique datos
+
+**REGLA DE ORO:** Ante la duda, PREGUNTAR antes de ejecutar. Nunca asumir que está bien modificar la base de datos.
+
+---
+
+## 📊 Estado del Proyecto
+
+**Última actualización:** 16 de Julio de 2026
+**Estado General:** ✅ EN PRODUCCIÓN (api.widdo.co). MVP completo; torneos, suscripciones y pagos multi-gateway live.
+
+### Stack Actual (fuente: `composer.json`):
+- **Laravel** `^12.0` · **PHP** `^8.2` · **Sanctum** `^4.0` · **Spatie Permission** `^6.20`
+- **Reverb** `^1.7` (WebSockets tiempo real — reemplazó Soketi/Pusher)
+- **Stripe** `^19.4` (suscripciones) · **Gotenberg** `^2.21` (PDF, reemplazó DomPDF) · **Sentry** `^4.20` (errores) · **PhpSpreadsheet** `^5.4` (Excel)
+
+### Progreso por Componente:
+- **Backend:** ✅ producción (torneos, suscripciones, pagos, notificaciones tiempo real)
+- **Frontend:** ✅ producción (dashboards, torneos UI, checkout suscripción)
+- **Testing:** ✅ Suite backend PHPUnit + E2E Playwright (clubes + torneos + público)
+- **Seguridad:** ✅ hardening + RBAC + multi-tenant + auditoría de suscripciones
+- **App móvil:** React Native/Expo en repo `mobile/` (PAUSADA, TestFlight build #3)
+
+### Fases Completadas:
+- ✅ FASE 1: Guardar progreso (100%)
+- ✅ FASE 2: Sistema de documentos backend (100%)
+- ✅ FASE 3: Formularios de jugadores React (95%)
+- ✅ FASE 4: Sistema de pagos frontend (90%)
+- ✅ FASE 5: Calendario de eventos (98%) - Imágenes y video añadidos
+- ✅ FASE 6: Sistema de documentos frontend (100%)
+- ✅ FASE 7: Testing y ajustes finales (100%)
+- ✅ FASE 8: Mejoras de seguridad (95%)
+- ✅ FASE 9: Notificaciones automáticas (95%) - Jobs con validaciones de seguridad completas
+- 🔄 FASE 10: Reportes avanzados (parcial — PhpSpreadsheet/Excel disponible, faltan gráficos)
+- ✅ FASE 11: Sistema de Torneos (100%) - Motor 6 formatos + capa pública + live scoring, EN PRODUCCIÓN (jul 2026)
+- ✅ FASE 12: Laravel 12 + Sistema de Módulos (100%) - Migrado a L12 y gating por plan implementado
+- ✅ Estandarización de nombres de tablas (100%) - Febrero 2026
+- ✅ Suscripciones + Pagos multi-gateway (Wompi/MercadoPago/Stripe) + dunning - EN PRODUCCIÓN (jul 2026)
+- ✅ Notificaciones tiempo real con Laravel Reverb (reemplazó Soketi) - EN PRODUCCIÓN
+
+---
+
+## 🗃️ Estandarización de Nombres de Tablas (Febrero 2026)
+
+### Resumen del Cambio
+
+Se estandarizaron **todas** las tablas para seguir el patrón `pla_club_teams_*`, eliminando inconsistencias y consolidando tablas duplicadas.
+
+### Migraciones Creadas (Ejecutar en ORDEN)
+
+| # | Migración | Tablas Afectadas |
+|---|-----------|------------------|
+| 1 | `2026_02_03_000001_standardize_table_names_phase1` | data_consents, consent_templates, legal_documents, files, data_treatment_authorizations |
+| 2 | `2026_02_03_000002_standardize_table_names_phase2` | player_documents, enrollment_links y pivot tables |
+| 3 | `2026_02_03_000003_standardize_table_names_phase3` | tournaments (todas), subscriptions, webhook_events |
+| 4 | `2026_02_03_000004_standardize_table_names_phase4` | events (todas), notifications, locations |
+| 5 | `2026_02_03_000005_standardize_table_names_phase5` | expenses, late_fee_tiers, player_measurements (con consolidación) |
+
+### Tablas Renombradas (28 tablas)
+
+```
+FASE 1:
+data_consents                          → pla_club_teams_data_consents
+pla_club_consent_templates             → pla_club_teams_consent_templates
+pla_club_legal_documents               → pla_club_teams_legal_documents
+pla_club_legal_documents_history       → pla_club_teams_legal_documents_history
+pla_club_files                         → pla_club_teams_files
+pla_club_file_folders                  → pla_club_teams_file_folders
+pla_data_treatment_authorizations      → pla_club_teams_data_treatment_authorizations
+
+FASE 2:
+pla_player_documents                   → pla_club_teams_player_documents
+public_enrollment_links                → pla_club_teams_enrollment_links
+public_enrollment_link_categories      → pla_club_teams_enrollment_link_categories
+public_enrollment_link_charges         → pla_club_teams_enrollment_link_charges
+public_enrollment_link_club_charges    → pla_club_teams_enrollment_link_club_charges
+
+FASE 3:
+pla_tournaments                        → pla_club_teams_tournaments
+pla_tournament_categories              → pla_club_teams_tournament_categories
+pla_tournament_players                 → pla_club_teams_tournament_players
+pla_tournament_player_documents        → pla_club_teams_tournament_player_documents
+pla_tournament_required_documents      → pla_club_teams_tournament_required_documents
+pla_tournament_required_fields         → pla_club_teams_tournament_required_fields
+pla_tournament_staff                   → pla_club_teams_tournament_staff
+pla_subscriptions                      → pla_club_teams_subscriptions
+pla_subscription_invoices              → pla_club_teams_subscription_invoices
+pla_webhook_events                     → pla_club_teams_webhook_events
+
+FASE 4:
+pla_events                             → pla_club_teams_events
+pla_event_participants                 → pla_club_teams_event_participants
+pla_event_notifications                → pla_club_teams_event_notifications
+pla_event_attendance                   → pla_club_teams_event_attendance
+pla_event_categories (pivot)           → pla_club_teams_event_categories
+pla_notifications                      → pla_club_teams_notifications
+pla_locations                          → pla_club_teams_event_locations
+
+FASE 5 (corrección singular/plural + consolidación):
+pla_club_team_expenses                 → pla_club_teams_expenses
+pla_club_team_expense_categories       → pla_club_teams_expense_categories
+pla_club_team_late_fee_tiers           → pla_club_teams_late_fee_tiers
+player_measurements                    → pla_club_teams_player_measurements_history (consolidado)
+```
+
+### Tablas Consolidadas
+
+| Tabla Antigua | Tabla Nueva | Acción |
+|---------------|-------------|--------|
+| `player_measurements` | `pla_club_teams_player_measurements_history` | Datos migrados, tabla original eliminada |
+
+### Modelos Actualizados (27 modelos)
+
+Todos los modelos tienen actualizado su `protected $table`:
+
+```php
+// FASE 1
+DataConsent::$table              = 'pla_club_teams_data_consents'
+PlaClubConsentTemplate::$table   = 'pla_club_teams_consent_templates'
+PlaClubLegalDocument::$table     = 'pla_club_teams_legal_documents'
+PlaClubFile::$table              = 'pla_club_teams_files'
+PlaClubFileFolder::$table        = 'pla_club_teams_file_folders'
+PlaDataTreatmentAuthorization    = 'pla_club_teams_data_treatment_authorizations'
+
+// FASE 2
+PlaPlayerDocument::$table        = 'pla_club_teams_player_documents'
+PublicEnrollmentLink::$table     = 'pla_club_teams_enrollment_links'
+PublicEnrollmentLinkCharge       = 'pla_club_teams_enrollment_link_charges'
+
+// FASE 3
+PlaTournament::$table            = 'pla_club_teams_tournaments'
+PlaTournamentCategory            = 'pla_club_teams_tournament_categories'
+PlaTournamentPlayer              = 'pla_club_teams_tournament_players'
+PlaTournamentPlayerDocument      = 'pla_club_teams_tournament_player_documents'
+PlaTournamentRequiredDocument    = 'pla_club_teams_tournament_required_documents'
+PlaTournamentRequiredField       = 'pla_club_teams_tournament_required_fields'
+PlaTournamentStaff               = 'pla_club_teams_tournament_staff'
+PlaSubscription                  = 'pla_club_teams_subscriptions'
+PlaSubscriptionInvoice           = 'pla_club_teams_subscription_invoices'
+PlaWebhookEvent                  = 'pla_club_teams_webhook_events'
+
+// FASE 4
+PlaEvent::$table                 = 'pla_club_teams_events'
+PlaEventParticipant              = 'pla_club_teams_event_participants'
+PlaEventNotification             = 'pla_club_teams_event_notifications'
+PlaEventAttendance               = 'pla_club_teams_event_attendance'
+PlaNotification                  = 'pla_club_teams_notifications'
+PlaLocation                      = 'pla_club_teams_event_locations'
+
+// FASE 5
+PlaClubTeamExpense               = 'pla_club_teams_expenses'
+PlaClubTeamExpenseCategory       = 'pla_club_teams_expense_categories'
+PlaClubTeamLateFeeTier           = 'pla_club_teams_late_fee_tiers'
+PlayerMeasurement                = 'pla_club_teams_player_measurements_history'
+```
+
+### Archivos de Código Actualizados
+
+| Archivo | Cambio |
+|---------|--------|
+| `QueryLogServiceProvider.php` | Tabla sensible actualizada |
+| `SimpleDashboardController.php` | Query de documentos actualizada |
+| `EventService.php` | Joins de participantes actualizados |
+| `UserRoleManagementController.php` | Queries de participantes actualizadas |
+| `PlaEvent.php` | Pivot table de categorías actualizado |
+| `PublicEnrollmentLink.php` | Pivot tables actualizados |
+
+### Producción: DigitalOcean Managed MySQL
+
+La base de datos en producción es **DigitalOcean Managed MySQL** con:
+- **Backups automáticos diarios** (retención 7 días)
+- **Point-in-Time Recovery (PITR)** - restaurar a cualquier segundo de los últimos 7 días
+- **No se necesita mysqldump manual** - DigitalOcean se encarga
+
+### Comandos para Producción
+
+```bash
+ssh root@167.71.88.31
+cd /var/www/widdo
+
+# 1. Anotar la hora exacta ANTES de migrar (para PITR si se necesita)
+date -u  # Ejemplo: 2026-02-03 15:30:00 UTC
+
+# 2. Activar modo mantenimiento
+php artisan down --message="Actualizando base de datos, volvemos pronto"
+
+# 3. Pull de los cambios
+git pull origin main
+
+# 4. Ejecutar migraciones (en orden automático por timestamp)
+php artisan migrate --force
+
+# 5. Limpiar y reconstruir caches
+php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan view:clear
+php artisan config:cache && php artisan route:cache && php artisan view:cache
+
+# 6. Reiniciar workers
+php artisan queue:restart
+supervisorctl restart widdo-worker:*
+
+# 7. Desactivar modo mantenimiento
+php artisan up
+
+# 8. Verificar
+curl -s https://api.widdo.co/api/health | jq '.status'
+```
+
+### Plan de Rollback
+
+**Opcion A: Rollback de migraciones (preferido si la migración fue parcial)**
+```bash
+php artisan down
+php artisan migrate:rollback --step=5
+git checkout HEAD~1
+php artisan config:cache && php artisan route:cache
+php artisan up
+```
+
+**Opcion B: Restaurar con PITR de DigitalOcean (si la data se corrompió)**
+1. Ir a DigitalOcean → Databases → widdo-db → Backups
+2. Seleccionar "Restore to a point in time"
+3. Usar la hora anotada en el paso 1 (antes de migrar)
+4. DigitalOcean restaura la BD al segundo exacto
+5. Revertir código: `git checkout HEAD~1`
+6. `php artisan up`
+
+**Nota:** PITR restaura toda la BD al estado exacto de ese momento, no se pierde nada.
+
+### Verificación Post-Migración
+
+```bash
+# Verificar que las tablas nuevas existen
+php artisan tinker --execute="
+DB::select('SHOW TABLES LIKE \"pla_club_teams_%\"');
+"
+
+# Verificar conteo de registros en tablas críticas
+php artisan tinker --execute="
+echo 'Events: ' . DB::table('pla_club_teams_events')->count() . PHP_EOL;
+echo 'Participants: ' . DB::table('pla_club_teams_event_participants')->count() . PHP_EOL;
+echo 'Player docs: ' . DB::table('pla_club_teams_player_documents')->count() . PHP_EOL;
+"
+```
+
+---
+
+## 🚀 FASE 12: Migración Laravel 12 + Sistema de Módulos
+
+**Estado:** ✅ COMPLETADO (jul 2026) — Laravel 12 en producción y sistema de módulos/gating por plan implementado.
+**Nota:** El diseño de abajo se conserva como referencia histórica; ver el estado real de suscripciones/gating en la memoria del proyecto y en `frontend` (`SubscriptionContext`, `MenuList.jsx`).
+
+### Objetivo
+Implementar sistema de módulos dinámicos por club con validación en 3 capas, permitiendo planes de suscripción con diferentes funcionalidades.
+
+### 1. Sistema de Módulos por Club
+
+#### Base de Datos
+```sql
+-- Agregar a pla_subscription_plans
+ALTER TABLE pla_subscription_plans ADD COLUMN modules_included JSON;
+-- Ejemplo: ["players", "trainers", "calendar", "payments", "documents"]
+
+-- Nueva tabla para overrides del Super Admin
+CREATE TABLE club_module_settings (
+    id BIGINT PRIMARY KEY,
+    club_id BIGINT NOT NULL,
+    module_key VARCHAR(50) NOT NULL,  -- "payments", "tournaments", etc.
+    enabled BOOLEAN DEFAULT true,
+    enabled_by BIGINT,                 -- user_id del Super Admin
+    enabled_at TIMESTAMP,
+    expires_at TIMESTAMP NULL,         -- Para pruebas temporales
+    notes TEXT,
+    UNIQUE(club_id, module_key)
+);
+```
+
+#### Módulos Disponibles
+| Key | Nombre | Plan Gratis | Plan Básico | Plan Pro |
+|-----|--------|-------------|-------------|----------|
+| `players` | Jugadores | ✅ | ✅ | ✅ |
+| `trainers` | Entrenadores | ✅ | ✅ | ✅ |
+| `categories` | Categorías | ❌ | ✅ | ✅ |
+| `calendar` | Calendario | ✅ | ✅ | ✅ |
+| `attendance` | Asistencia | ✅ | ✅ | ✅ |
+| `payments` | Pagos | ❌ | ✅ | ✅ |
+| `charges` | Cobros | ❌ | ✅ | ✅ |
+| `discounts` | Descuentos | ❌ | ❌ | ✅ |
+| `documents` | Documentos | ❌ | ❌ | ✅ |
+| `reports` | Reportes | ❌ | ❌ | ✅ |
+| `tournaments` | Torneos | ❌ | ❌ | ✅ |
+| `notifications` | Notificaciones | ❌ | ✅ | ✅ |
+
+#### Backend - Middleware
+```php
+// app/Http/Middleware/CheckModuleAccess.php
+public function handle($request, $next, $module)
+{
+    $club = $request->user()->currentClub;
+
+    if (!$club->hasModule($module)) {
+        return response()->json([
+            'error' => 'module_not_enabled',
+            'message' => 'Este módulo no está disponible en tu plan',
+            'module' => $module,
+            'upgrade_url' => '/subscription/plans'
+        ], 403);
+    }
+
+    return $next($request);
+}
+```
+
+#### Backend - Método en PlaClubTeam
+```php
+public function hasModule(string $moduleKey): bool
+{
+    // 1. Verificar override manual del Super Admin
+    $override = $this->moduleSettings()->where('module_key', $moduleKey)->first();
+    if ($override) {
+        // Verificar si no ha expirado
+        if ($override->expires_at && $override->expires_at < now()) {
+            return false;
+        }
+        return $override->enabled;
+    }
+
+    // 2. Verificar módulos del plan de suscripción
+    $plan = $this->subscription?->plan;
+    if ($plan && in_array($moduleKey, $plan->modules_included ?? [])) {
+        return true;
+    }
+
+    return false;
+}
+
+public function getEnabledModules(): array
+{
+    // Retorna array de módulos habilitados para el sidebar
+}
+```
+
+### 2. Validación en 3 Capas
+
+| Capa | Implementación | Acción |
+|------|----------------|--------|
+| **Frontend Sidebar** | `MenuList.jsx` filtra por `club.enabled_modules` | No muestra opciones |
+| **Frontend Guard** | `ModuleGuard.jsx` verifica antes de renderizar | Redirige a "Upgrade" |
+| **Backend Middleware** | `CheckModuleAccess` en rutas | Retorna 403 |
+
+### 3. Configuración de Notificaciones por Club
+
+#### Campos nuevos en `pla_club_teams`
+```sql
+-- Control global
+notifications_enabled BOOLEAN DEFAULT true,
+email_notifications_enabled BOOLEAN DEFAULT true,
+push_notifications_enabled BOOLEAN DEFAULT true,
+in_app_notifications_enabled BOOLEAN DEFAULT true,
+
+-- Horario de no molestar
+quiet_hours_start TIME DEFAULT '21:00',
+quiet_hours_end TIME DEFAULT '08:00',
+
+-- Recordatorios de entrenamientos
+training_reminder_enabled BOOLEAN DEFAULT true,
+training_reminder_hours_before INT DEFAULT 12,
+
+-- Recordatorios de eventos
+event_reminder_enabled BOOLEAN DEFAULT true,
+event_reminder_hours_before INT DEFAULT 24,
+event_second_reminder_hours INT DEFAULT 2,
+
+-- Cumpleaños
+birthday_notifications_enabled BOOLEAN DEFAULT true,
+```
+
+### 4. Páginas Nuevas
+
+#### Super Admin
+- `/admin/clubs/{id}/modules` - Gestionar módulos por club
+- `/admin/feature-flags` - Flags globales de la plataforma
+
+#### Owner del Club
+- `/home/notification-settings` - Configuración de notificaciones
+
+### 5. Frontend - Sidebar Dinámico
+
+```javascript
+// MenuList.jsx
+const enabledModules = club?.enabled_modules || [];
+
+const filteredMenu = menuItems.filter(item => {
+  if (!item.moduleKey) return true; // Items sin módulo siempre visibles
+  return enabledModules.includes(item.moduleKey);
+});
+```
+
+### 6. Tareas de Implementación
+
+- [ ] Migración: Agregar `modules_included` a `pla_subscription_plans`
+- [ ] Migración: Crear tabla `club_module_settings`
+- [ ] Migración: Agregar campos de notificaciones a `pla_club_teams`
+- [ ] Backend: Crear middleware `CheckModuleAccess`
+- [ ] Backend: Método `hasModule()` en `PlaClubTeam`
+- [ ] Backend: Endpoint `/api/clubs/{id}/modules` para Super Admin
+- [ ] Backend: Actualizar Jobs de notificaciones para respetar config del club
+- [ ] Frontend: `ModuleGuard.jsx` componente
+- [ ] Frontend: Actualizar `MenuList.jsx` para filtrar por módulos
+- [ ] Frontend: Página `/admin/clubs/{id}/modules`
+- [ ] Frontend: Página `/home/notification-settings`
+- [ ] Testing: Tests de acceso por módulo
+- [ ] Configurar planes existentes con módulos
+
+---
+
+## 🔧 Migraciones de Datos Únicas (One-Time Commands)
+
+### Actualizar Permisos del Admin (Enero 2026)
+
+**Estado:** ✅ COMPLETADO - 25 de Enero de 2026
+**Resultado:** 8 clubes actualizados, 40 permisos creados
+
+El rol de Administrador fue actualizado al modelo "Segundo al Mando".
+
+**Cambios aplicados:**
+| Módulo | Permiso | Antes | Ahora |
+|--------|---------|-------|-------|
+| club | update | ❌ | ✅ |
+| trainers | create | ❌ | ✅ |
+| trainers | update | ❌ | ✅ |
+| locations | create | ❌ | ✅ |
+| locations | update | ❌ | ✅ |
+| reports | export | ❌ | ✅ |
+| settings | view | ❌ | ✅ |
+
+**Comando (para referencia futura):**
+```bash
+php artisan permissions:update-admin [--dry-run] [--reset]
+```
+
+---
+
+## 🎯 Cambios Recientes
+
+### 29 de Enero de 2026
+
+**Sistema de Descuentos Centralizado en Pagos:**
+
+Se implementó un sistema centralizado para el cálculo de descuentos en pagos, asegurando que todos los flujos utilicen la misma lógica.
+
+**Backend - ChargeService como única fuente de verdad:**
+- ✅ `ChargeService::calculatePaymentAmount()` - Método público para calcular descuentos
+- ✅ `ChargeService::calculateAmountForPayment()` - Helper que retorna:
+  - `original_amount`: Monto original del cobro
+  - `discount_amount`: Monto del descuento aplicado
+  - `discount_id`: ID del descuento (si aplica)
+  - `discount_name`: Nombre del descuento
+  - `discount_percentage`: Porcentaje del descuento
+  - `family_discount_percentage`: Descuento familiar (si aplica)
+  - `final_amount`: Monto final a pagar
+  - `is_exempt`: Si el jugador está exento
+  - `currency`: Moneda del cobro
+
+**Nuevo Endpoint API:**
+```
+GET /api/pla_club_teams/{clubId}/players/{playerId}/charges/{chargeId}/calculate-amount
+```
+
+**Flujos que usan el sistema centralizado:**
+| Flujo | Archivo | Método |
+|-------|---------|--------|
+| Crear pago manual | `PlaClubTeamPaymentController` | `store()` |
+| Cambiar concepto de pago | `PlaClubTeamPaymentController` | `storeInstallment()` |
+| Generar pagos automáticos | `GenerateMonthlyPayments` | Job |
+| Crear pago desde frontend | `RegisterPaymentDialog.jsx` | `calculatePaymentAmount()` |
+
+**Frontend - RegisterPaymentDialog.jsx:**
+- ✅ Carga automática de descuentos al seleccionar jugador/cobro
+- ✅ Muestra caja informativa verde con detalles del descuento
+- ✅ Precio original tachado + nuevo precio con descuento
+- ✅ Validaciones usan monto con descuento aplicado
+- ✅ Cambio de tipo de pago (parcial→total) usa monto con descuento
+
+**Tipos de descuentos soportados:**
+1. **Descuento por cobro**: Descuentos asociados al tipo de cobro
+2. **Descuento por jugador**: Descuentos asignados directamente al jugador
+3. **Descuento familiar**: Descuento automático por número de hijos en el club
+4. **Exención**: Jugador exento del cobro (100% descuento)
+
+**Archivos modificados:**
+- `app/Services/ChargeService.php` - Lógica centralizada
+- `app/Http/Controllers/PlaClubTeamPaymentController.php` - Usa ChargeService
+- `routes/api.php` - Nuevo endpoint
+- `frontend/src/services/apiService.js` - Nueva función `calculatePaymentAmount()`
+- `frontend/src/components/payments/RegisterPaymentDialog.jsx` - UI de descuentos
+
+---
+
+### 24 de Enero de 2026
+
+**Sistema de Eventos - Multimedia:**
+- ✅ **Imágenes en eventos**: Subida de imágenes (flyers, promociones) a eventos
+  - Desarrollo: `storage/app/public/clubs/{club_id}/event-images/`
+  - Producción: DigitalOcean Spaces (`spaces-public`) con URLs permanentes
+  - Validación: max 5MB, formatos jpg/png/webp/gif
+  - Optimización automática vía `ImageOptimizationService`
+- ✅ **Video URL**: Soporte para links de YouTube y Vimeo
+  - Conversión automática a formato embed
+  - Regex para YouTube: `youtube.com/watch?v=`, `youtu.be/`, `youtube.com/embed/`
+  - Regex para Vimeo: `vimeo.com/video/`, `vimeo.com/`
+- ✅ **Accessor en PlaEvent**: `image_url` y `embed_video_url`
+- ✅ **Endpoints**: `POST /api/events/{id}/image`, `DELETE /api/events/{id}/image`
+
+**Sistema de Eventos - Invitaciones:**
+- ✅ **InvitationTargetSelector**: Selector de destinatarios por categoría, edad o búsqueda
+- ✅ **SendEventInvitations Job**: Envío asíncrono de emails de invitación
+- ✅ **EventInvitationMail**: Template de email para invitaciones
+- ✅ **Tipo 'special_activity'**: Nuevo tipo de evento agregado
+
+### 25 de Enero de 2026
+
+**Sistema de Notificaciones de Eventos - Validaciones de Seguridad:**
+- ✅ **Validación de rol activo en club**: No enviar notificaciones si el usuario no ha aceptado la invitación al club
+- ✅ **Validación de usuario activo**: Verificar `users.status = 'ACT'` antes de enviar
+- ✅ **Validación de evento no cancelado**: No enviar si `event.status = 'cancelled'`
+- ✅ **Validación de no duplicados**: Verificar `notified_at IS NULL` para evitar reenvíos
+- ✅ **Validación de preferencias**: Respetar configuración de notificaciones del usuario
+- ✅ **Logging mejorado**: Registro detallado de razones por las que se omiten participantes
+
+**Jobs Actualizados (Sistema Completo de Notificaciones):**
+| Job | Archivo | Descripción |
+|-----|---------|-------------|
+| `SendEventInvitations` | `app/Jobs/SendEventInvitations.php` | Envío de invitaciones a eventos |
+| `SendEventReminders` | `app/Jobs/SendEventReminders.php` | Recordatorios 24h antes con deduplicación |
+| `SendEventReminderJob` | `app/Jobs/SendEventReminderJob.php` | Recordatorio individual vía PlaNotification |
+| `SendEventRemindersJob` | `app/Jobs/SendEventRemindersJob.php` | Recordatorios batch (24h y 2h antes) |
+| `SendPaymentReminders` | `app/Jobs/SendPaymentReminders.php` | Recordatorios de pagos (pre-vencimiento, vencimiento, mora) |
+| `SendBirthdayNotifications` | `app/Jobs/SendBirthdayNotifications.php` | Notificaciones de cumpleaños a jugadores, entrenadores y propietarios |
+| `SendTrainingRemindersJob` | `app/Jobs/SendTrainingRemindersJob.php` | Recordatorios de entrenamientos |
+| `ApplyLateFees` | `app/Jobs/ApplyLateFees.php` | Aplicación de mora a pagos vencidos |
+
+**Query de Validación Implementada:**
+```php
+// Método agregado a todos los Jobs de eventos
+private function userHasActiveClubRole(int $userId, int $clubId): bool
+{
+    return UserClubRole::where('user_id', $userId)
+        ->where('club_id', $clubId)
+        ->where('status', 'ACT')
+        ->exists();
+}
+```
+
+**Flujo de Validación:**
+```
+Participante en evento
+        ↓
+¿Usuario existe y tiene email? → NO → Skip
+        ↓ SI
+¿Usuario activo (status=ACT)? → NO → Skip
+        ↓ SI
+¿Rol activo en club (user_club_roles.status=ACT)? → NO → Skip
+        ↓ SI
+¿Notificaciones habilitadas? → NO → Skip
+        ↓ SI
+✅ Enviar notificación
+```
+
+**Correcciones y Mejoras Adicionales:**
+- ✅ **Kernel.php Fix**: Corregida sintaxis inválida `::class::method()` → `app(Class::class)->method()`
+- ✅ **SendPaymentReminders**:
+  - Agregado método `canReceiveNotification()` con todas las validaciones
+  - Corregidos nombres de columnas en `parent_child_relationships`: `child_id` → `child_user_id`, `parent_id` → `parent_user_id`
+  - Validación de autorización: solo padres con `authorization_status = 'authorized'`
+- ✅ **SendBirthdayNotifications**:
+  - Agregado método `canReceiveNotification()` con validación de rol activo
+  - Logging mejorado con contador de `$skipped`
+  - Validación de preferencias tipo `club_news`
+- ✅ **SendEventReminders**:
+  - Deduplicación vía `PlaEventNotification` (evita envío duplicado en 12h)
+  - Registro de notificaciones enviadas con `notification_type = 'reminder_24h'`
+
+**Scheduler Configurado (Kernel.php):**
+| Horario | Comando/Job | Descripción |
+|---------|-------------|-------------|
+| Diario | `sanctum:prune-expired` | Limpia tokens expirados |
+| 1º mes 6:00 | `app:generate-monthly-payments` | Genera pagos mensuales |
+| 7:00 | `ApplyLateFees` | Aplica mora a pagos vencidos |
+| 7:00 | `SendBirthdayNotifications` | Envía felicitaciones de cumpleaños |
+| 8:00 | `SendPaymentReminders` | Recordatorios de pagos |
+| 9:00 | `SendEventReminders` | Recordatorios de eventos 24h |
+| 19:00 | `SendTrainingRemindersJob` | Recordatorios de entrenamientos |
+| Cada hora | `events:process-reminders` | Procesa eventos próximos |
+| Cada 5 min | `reminders:send-due` | Envía recordatorios pendientes |
+| Cada min | `queue:work --queue=notifications` | Procesa cola de notificaciones |
+| Dom 3:00 | Cleanup | Limpia notificaciones antiguas (30 días) |
+
+**Sistema de Torneos (Base):**
+- ✅ **Modelos creados**:
+  - `PlaTournament`: Torneo principal con presupuesto, ubicación, fechas
+  - `PlaTournamentCategory`: Categorías con flexibilidad de edad
+  - `PlaTournamentPlayer`: Jugadores inscritos con documentos
+  - `PlaTournamentStaff`: Staff del torneo
+  - `PlaTournamentRequiredDocument`: Documentos requeridos
+  - `PlaTournamentRequiredField`: Campos requeridos configurables
+- ✅ **PlaTournamentController**: CRUD completo de torneos
+- ✅ **Migraciones**: 10 migraciones para sistema de torneos
+
+**Sistema de Categorías:**
+- ✅ **Modo de categoría**: `category_mode` en `pla_club_teams_sports`
+  - `age`: Solo por edad (default)
+  - `level`: Solo por nivel
+  - `age_and_level`: Ambos criterios
+- ✅ **Soporte de niveles**: Campos `level` y `level_order` en categorías
+
+**Sistema de Pagos:**
+- ✅ **Late Fee Tiers**: Niveles de mora configurables por club
+  - Modelo: `PlaClubTeamLateFeeTier`
+  - Controller: `PlaClubTeamLateFeeTierController`
+  - Campos: días de retraso, porcentaje o monto fijo
+- ✅ **External Invoice Code**: Campo para código de factura externa en installments
+
+**Club:**
+- ✅ **TikTok**: Campo `tiktok` agregado a `pla_club_teams`
+
+**Infraestructura:**
+- ✅ **Jobs table**: Migración para tabla de colas (`php artisan queue:table`)
+- ✅ **ImageProxyController**: Proxy para imágenes externas
+
+**Frontend (EventsCalendar):**
+- ✅ **Modal rediseñado**: Estilo minimalista con tonos esmeralda/verde
+- ✅ **Visualización de media**: Imagen y video embebido en modal de evento
+- ✅ **Botón editar**: Icono Pencil para editar eventos
+- ✅ **Ordenamiento**: Eventos ordenados por hora de inicio
+
+**Fix: "Todo el club" Participantes (24 Enero 2026):**
+- ✅ **Bug corregido**: `InvitationTargetSelector` ahora auto-selecciona todos los miembros
+  - El componente inicializaba con `mode='all'` pero `selectedMembers=[]`
+  - Fix: Al cargar miembros en modo 'all', se seleccionan automáticamente
+  - Respeta participantes existentes al editar eventos
+
+**Notificaciones en Tiempo Real (25 Enero 2026):**
+
+> ⚠️ **DESACTUALIZADO:** el tiempo real migró de **Soketi/Pusher** a **Laravel Reverb** (`laravel/reverb ^1.7`). La config vigente (canales, eventos, variables `.env` `REVERB_*`) está en `desarrollo/CLAUDE.md` → sección "Laravel Reverb". Lo de abajo (BROADCAST_DRIVER=pusher, Soketi) es histórico.
+
+
+- ✅ **Soketi WebSocket Server**: Servidor Pusher-compatible self-hosted
+- ✅ **Backend Broadcasting**: Laravel Broadcast con eventos NotificationCreated y NotificationRead
+- ✅ **Frontend Laravel Echo**: Suscripción a canales privados por usuario
+- ✅ **Real-time Hook**: `useRealtimeNotifications` para sincronización instantánea
+- ✅ **Fallback Polling**: Reduced de 30s a 2min cuando WebSocket está conectado
+
+**Archivos creados/modificados:**
+| Archivo | Descripción |
+|---------|-------------|
+| `docker-compose.soketi.yml` | Configuración Docker para Soketi |
+| `app/Events/NotificationCreated.php` | Evento broadcast para nuevas notificaciones |
+| `app/Events/NotificationRead.php` | Evento broadcast para marcar como leída |
+| `frontend/src/services/echo.js` | Servicio Laravel Echo |
+| `frontend/src/hooks/useRealtimeNotifications.js` | Hook para WebSocket |
+
+**Configuración requerida (.env backend):**
+```env
+BROADCAST_DRIVER=pusher
+PUSHER_APP_ID=widdo-app
+PUSHER_APP_KEY=widdo-key
+PUSHER_APP_SECRET=widdo-secret-change-this
+PUSHER_HOST=127.0.0.1
+PUSHER_PORT=6001
+PUSHER_SCHEME=http
+PUSHER_APP_CLUSTER=mt1
+```
+
+**Iniciar Soketi (desarrollo):**
+```bash
+cd saas_sport
+docker-compose -f docker-compose.soketi.yml up -d
+```
+
+---
+
+### 🔒 Auditoría de Seguridad y Optimización (25 Enero 2026)
+
+Se realizó una auditoría completa del sistema identificando y corrigiendo problemas en 4 áreas principales:
+
+#### **ÁREA 1: Seguridad Multi-Tenant (Crítico) ✅ CORREGIDO**
+
+**Problema identificado:** 15 modelos sin protección `ProtectedModel` trait, permitiendo potencial acceso cross-tenant.
+
+**Modelos corregidos (añadido `ProtectedModel` trait):**
+| Modelo | Archivo |
+|--------|---------|
+| `PlaClubTeamCategory` | `app/Models/PlaClubTeamCategory.php` |
+| `PlaClubTeamCharge` | `app/Models/PlaClubTeamCharge.php` |
+| `PlaClubTeamDiscount` | `app/Models/PlaClubTeamDiscount.php` |
+| `PlaClubTeamLocation` | `app/Models/PlaClubTeamLocation.php` |
+| `PlaClubTeamPayment` | `app/Models/PlaClubTeamPayment.php` |
+| `PlaClubTeamPaymentInstallment` | `app/Models/PlaClubTeamPaymentInstallment.php` |
+| `PlaClubTeamPaymentMethod` | `app/Models/PlaClubTeamPaymentMethod.php` |
+| `PlaClubTeamPlayer` | `app/Models/PlaClubTeamPlayer.php` |
+| `PlaClubTeamSession` | `app/Models/PlaClubTeamSession.php` |
+| `PlaClubTeamSessionAttendance` | `app/Models/PlaClubTeamSessionAttendance.php` |
+| `PlaClubTeamSportPosition` | `app/Models/PlaClubTeamSportPosition.php` |
+| `PlaClubTeamTrainer` | `app/Models/PlaClubTeamTrainer.php` |
+| `PlaEvent` | `app/Models/PlaEvent.php` |
+| `PlaPlayerDocument` | `app/Models/PlaPlayerDocument.php` |
+| `PlaPlayerInvitation` | `app/Models/PlaPlayerInvitation.php` |
+| `PlaSubscription` | `app/Models/PlaSubscription.php` |
+| `PlaSubscriptionInvoice` | `app/Models/PlaSubscriptionInvoice.php` |
+
+**Total:** 17 modelos corregidos. Todos los modelos con `club_id` ahora tienen aislamiento automático por club.
+
+---
+
+#### **ÁREA 2: Integridad de Datos ✅ CORREGIDO**
+
+**Problema 2.1: FK incorrecta en discount_player**
+- **Tabla:** `pla_club_teams_discount_player`
+- **Error:** `player_id` apuntaba a tabla `users` en lugar de `pla_club_teams_players`
+- **Migración:** `2026_01_25_100001_fix_discount_player_fk.php`
+- **Estado:** ✅ Aplicada
+
+**Problema 2.2: Webhooks sin idempotencia**
+- **Riesgo:** Webhooks duplicados podían procesar pagos múltiples veces
+- **Solución:** Índice único en `(gateway_id, external_event_id)` + índice en `reference`
+- **Migración:** `2026_01_25_100002_add_idempotency_to_webhook_events.php`
+- **Estado:** ✅ Aplicada
+
+**Problema 2.3: Modelo PlaWebhookEvent desactualizado**
+- **Error:** Usaba `gateway` en lugar de `gateway_id`, faltaban campos
+- **Corrección:** Actualizado `fillable` con todos los campos reales de la tabla
+- **Estado:** ✅ Corregido
+
+**Problema 2.4: Eager loading incorrecto en sesiones**
+- **Archivo:** `app/Http/Controllers/PlaClubTeamSessionController.php`
+- **Error:** `attendances.player.user` (player no tiene relación user directa)
+- **Corrección:** `attendances.player:id,name,lastname,profile_photo_path`
+- **Estado:** ✅ Corregido
+
+---
+
+#### **ÁREA 3: Performance (Optimización) ✅ CORREGIDO**
+
+**Problema:** Consultas frecuentes sin índices causando escaneos completos de tabla.
+
+**Migración:** `2026_01_25_100003_add_performance_indexes.php`
+
+**Índices añadidos:**
+| Tabla | Índice | Columnas |
+|-------|--------|----------|
+| `pla_club_teams_players` | `players_club_deleted_idx` | `(club_id, deleted_at)` |
+| `pla_club_teams_players` | `players_user_club_idx` | `(user_id, club_id)` |
+| `pla_club_teams_payments` | `payments_club_status_idx` | `(club_id, status)` |
+| `pla_club_teams_payments` | `payments_player_status_idx` | `(player_id, status)` |
+| `pla_club_teams_payments` | `payments_due_status_idx` | `(due_date, status)` |
+| `pla_club_teams_sessions` | `sessions_club_date_idx` | `(club_id, session_date)` |
+| `pla_club_teams_sessions` | `sessions_category_date_idx` | `(category_id, session_date)` |
+| `pla_club_teams_sessions` | `sessions_trainer_date_idx` | `(trainer_id, session_date)` |
+| `pla_club_teams_sessions_attendances` | `attendances_player_date_idx` | `(player_id, attendance_date)` |
+| `user_club_roles` | `ucr_user_status_idx` | `(user_id, status)` |
+| `user_club_roles` | `ucr_club_role_status_idx` | `(club_id, role, status)` |
+| `pla_events` | `events_club_start_idx` | `(club_id, start_datetime)` |
+| `pla_events` | `events_club_status_start_idx` | `(club_id, status, start_datetime)` |
+| `pla_club_teams_charges` | `charges_club_status_idx` | `(club_id, status)` |
+| `parent_child_relationships` | `pcr_parent_auth_idx` | `(parent_user_id, authorization_status)` |
+| `parent_child_relationships` | `pcr_child_auth_idx` | `(child_user_id, authorization_status)` |
+
+**Estado:** ✅ Aplicada
+
+---
+
+#### **ÁREA 4: Sincronización Frontend-Backend ✅ CORREGIDO**
+
+**Problema:** Estados de pago hardcodeados en frontend sin constantes centralizadas.
+
+**Solución en `PlaClubTeamPayment.php`:**
+```php
+public const STATUS_PENDING = 'PEN';
+public const STATUS_COMPLETED = 'COM';
+public const STATUS_PARTIAL = 'PAR';
+public const STATUS_CANCELLED = 'CXL';
+public const STATUS_OVERDUE = 'OVD';
+
+public static function getStatusLabels(): array { ... }
+public function getStatusLabelAttribute(): string { ... }
+public function isOverdue(): bool { ... }
+```
+
+**Estado:** ✅ Implementado
+
+---
+
+#### **Resumen de Migraciones Aplicadas:**
+
+```bash
+# Todas ejecutadas exitosamente el 25 Enero 2026
+✅ 2026_01_25_100001_fix_discount_player_fk
+✅ 2026_01_25_100002_add_idempotency_to_webhook_events
+✅ 2026_01_25_100003_add_performance_indexes
+```
+
+#### **Archivos Modificados en la Auditoría:**
+
+| Archivo | Cambio |
+|---------|--------|
+| 15 modelos Eloquent | Añadido `ProtectedModel` trait |
+| `PlaClubTeamPayment.php` | Constantes de estado y helpers |
+| `PlaWebhookEvent.php` | Actualizado fillable con campos reales |
+| `PlaClubTeamSessionController.php` | Corregido eager loading |
+| `PaymentService.php` | Idempotencia y validación de montos en webhooks |
+| 3 migraciones nuevas | FK, índices de idempotencia, índices de performance |
+
+---
+
+### 🔄 Pendientes Identificados:
+
+1. **Ejecutar migraciones en producción**:
+   ```bash
+   ssh root@167.71.88.31
+   cd /var/www/widdo && php artisan migrate --force
+   ```
+
+2. **Probar flujo completo de imágenes**: Verificar upload, almacenamiento en Spaces, y visualización en modal.
+
+3. **Emails de invitación**: Verificar que el job `SendEventInvitations` se ejecute correctamente con el queue worker.
+
+4. **Configurar Soketi en producción**:
+   ```bash
+   # En el servidor de producción
+   ssh root@167.71.88.31
+
+   # Crear archivo docker-compose.soketi.yml en /var/www/
+   # Actualizar .env con credenciales seguras
+   # Configurar Nginx para WebSocket proxy:
+   # location /app {
+   #     proxy_pass http://127.0.0.1:6001;
+   #     proxy_http_version 1.1;
+   #     proxy_set_header Upgrade $http_upgrade;
+   #     proxy_set_header Connection "upgrade";
+   # }
+
+   # Instalar dependencia PHP
+   cd /var/www/widdo && composer require pusher/pusher-php-server
+   ```
+
+5. **Actualizar frontend .env en producción**:
+   ```env
+   VITE_PUSHER_APP_KEY=widdo-key
+   VITE_PUSHER_HOST=api.widdo.co
+   VITE_PUSHER_PORT=443
+   VITE_PUSHER_SCHEME=https
+   ```
+
+---
+
+### 22 de Diciembre de 2025
+
+**Performance Optimizations:**
+- **N+1 Query Fixes**: Implementado eager loading en 3 controllers principales
+  - `PlaClubTeamController`: Agregado `->with(['sport', 'country', 'state', 'city', 'user'])` para reducir queries
+  - `PlaClubTeamPlayerController`: Agregado `->with(['club', 'category', 'gender', 'position', 'laterality'])` para optimizar listados
+  - `PlaClubTeamTrainerController`: Agregado `->with(['club', 'gender', 'country', 'state', 'city'])` para mejorar rendimiento
+  - **Resultado**: Score de performance mejorado de ~60 a 99/100
+
+**Validaciones y Estándares:**
+- **day_of_week Validation**: Corregida conversión entre frontend y backend
+  - Frontend usa 0-6 (JavaScript Date standard)
+  - Backend usa 1-7 (ISO 8601 standard)
+  - Implementada conversión automática en controllers y services
+
+**Autenticación y Seguridad:**
+- **Token Expiration**: Implementado sistema de expiración de tokens
+  - Duración: 60 minutos por token
+  - Login y Register ahora retornan campo `expires_in: 3600` (segundos)
+  - Frontend puede calcular tiempo de expiración exacto
+
+**Code Quality:**
+- **Console.log Cleanup**: Reducción significativa de logs en consola
+  - Antes: 98 instancias de console.log
+  - Después: 33 instancias (solo logs esenciales)
+  - Política: Usar `SecureLogger` en lugar de console.log directo
+
+**Metodología y Documentación:**
+- **Subagents System**: Creada metodología con sub-agentes especializados
+  - Directorio `plans/`: Contiene planes de trabajo y estrategias
+  - Directorio `evaluation/`: Contiene evaluaciones y métricas de calidad
+- **Invitation System Documentation**: Documentado flujo completo del sistema de invitaciones
+  - Flujo de invitaciones a jugadores
+  - Flujo de invitaciones a entrenadores
+  - Estados y transiciones
+
+---
+
+## 📦 Sistema de Almacenamiento y Migración de Archivos
+
+**Última actualización:** 23 de Enero de 2026
+
+---
+
+### ⚠️ REGLA CRÍTICA: Storage Local vs Spaces (Producción)
+
+**IMPORTANTE - Memorizar para todo manejo de archivos:**
+
+| Entorno | Disk | Ubicación | Uso |
+|---------|------|-----------|-----|
+| **Local/Desarrollo** | `public` | `storage/app/public/` | Fotos, logos, archivos públicos |
+| **Local/Desarrollo** | `local` | `storage/app/` | Documentos privados |
+| **Producción** | `spaces-public` | DigitalOcean Spaces | Fotos, logos (URLs permanentes) |
+| **Producción** | `spaces` | DigitalOcean Spaces | Documentos privados (URLs firmadas) |
+
+**Parámetros de Laravel Storage - REGLA DE ORO:**
+
+```php
+// ✅ CORRECTO - Laravel Flysystem
+Storage::disk($disk)->put($path, $content, [
+    'visibility' => 'public',  // SOLO 'public' o 'private' (constantes de Flysystem)
+    'ACL' => 'public-read',    // S3/Spaces ACL (solo necesario en producción)
+    'ContentType' => $mimeType,
+]);
+
+// ❌ INCORRECTO - Causará error 500
+Storage::disk($disk)->put($path, $content, [
+    'visibility' => 'public-read',  // ❌ NO EXISTE en Flysystem
+]);
+```
+
+**Explicación:**
+- **`visibility`**: Parámetro de Laravel Flysystem
+  - Valores permitidos: `'public'` o `'private'` (constantes: `Visibility::PUBLIC` / `Visibility::PRIVATE`)
+  - Se aplica en TODOS los disks (local y Spaces)
+
+- **`ACL`**: Parámetro específico de S3/DigitalOcean Spaces
+  - Valores: `'public-read'`, `'private'`, `'authenticated-read'`, etc.
+  - Solo funciona con disks S3 (spaces, spaces-public)
+  - En disk `public` (local) se ignora silenciosamente
+
+**Código Environment-Aware Correcto:**
+
+```php
+// Determinar disk según entorno
+$disk = app()->environment('production') ? 'spaces-public' : 'public';
+
+// Subir archivo con parámetros correctos
+Storage::disk($disk)->put($path, $content, [
+    'visibility' => 'public',      // ← Laravel Flysystem
+    'ACL' => 'public-read',        // ← Solo en Spaces (ignorado en local)
+    'ContentType' => $mimeType,
+    'CacheControl' => 'max-age=31536000',
+]);
+```
+
+**Servicios que implementan esto correctamente:**
+- ✅ `ImageOptimizationService::optimizeAndStore()`
+- ✅ `FileStorageService::uploadPublicLogo()`
+- ✅ `FileStorageService::upload()`
+
+---
+
+### 🔐 Protección de Datos: Fotos de Perfil con URLs Firmadas
+
+**Decisión Legal - 23 de Enero de 2026:**
+
+Por protección de datos personales de menores (RGPD/LOPD), las **fotos de perfil de jugadores** son **PRIVADAS** con URLs firmadas temporales.
+
+**Configuración implementada:**
+
+| Tipo de Archivo | Disk (Producción) | Visibilidad (Producción) | URLs (Producción) | Disk (Local) | URLs (Local) |
+|-----------------|-------------------|--------------------------|-------------------|--------------|--------------|
+| **Fotos de jugadores** | `spaces` | `private` ✅ | URLs firmadas (60 min) | `public` | URLs directas vía `/storage/` |
+| **Logos de clubes** | `spaces-public` | `public` | URLs permanentes | `public` | URLs directas vía `/storage/` |
+| **Documentos** | `spaces` | `private` ✅ | URLs firmadas (60 min) | `public` | URLs directas vía `/storage/` |
+
+**⚠️ IMPORTANTE - Desarrollo vs Producción:**
+
+En **DESARROLLO/LOCAL**:
+- **TODAS** las fotos van a disk `public` (storage/app/public/)
+- Son accesibles vía `/storage/` gracias al symlink de Laravel
+- No hay "protección real" (es desarrollo, no importa)
+- Permite que las imágenes carguen en `<img src="/storage/clubs/..."/>`
+
+En **PRODUCCIÓN (Spaces)**:
+- Fotos de jugadores → disk `spaces` + visibilidad `private` ✅
+- URLs firmadas que expiran en 60 min ✅
+- **Protección legal real de datos de menores** ✅
+
+**Código:**
+
+```php
+// ImageOptimizationService.php - Lógica de disk según entorno
+$isPrivateType = in_array($type, ['player-photos', 'player-documents']);
+
+if (app()->environment('production')) {
+    // PRODUCCIÓN: Spaces con visibilidad real
+    $disk = $isPrivateType ? 'spaces' : 'spaces-public';
+    $visibility = $isPrivateType ? 'private' : 'public';
+    $acl = $isPrivateType ? 'private' : 'public-read';
+} else {
+    // DESARROLLO: Todo a 'public' para acceso web vía /storage/
+    $disk = 'public';
+    $visibility = 'public';
+    $acl = null;
+}
+```
+
+**Accessor en User Model:**
+
+```php
+// app/Models/User.php
+public function getProfilePhotoUrlAttribute()
+{
+    if (!$this->profile_photo_path) {
+        return null;
+    }
+
+    $fileStorage = app(\App\Services\FileStorageService::class);
+    return $fileStorage->getTemporaryUrl($this->profile_photo_path, 60);
+}
+```
+
+**Resultado:**
+- ✅ Fotos de menores protegidas legalmente
+- ✅ URLs expiran en 60 minutos (no se pueden compartir permanentemente)
+- ✅ Solo usuarios autenticados pueden generar URLs
+- ✅ Frontend actualiza automáticamente la foto después del upload
+
+**Flujo Completo de Subida de Foto:**
+
+```
+1. Usuario selecciona foto en frontend
+   ↓
+2. Frontend: POST /api/profile/photo
+   { file: File, player_id: 123 }
+   ↓
+3. Backend: PlaClubTeamProfileController
+   - Elimina foto vieja si existe
+   - Llama ImageOptimizationService
+   ↓
+4. ImageOptimizationService:
+   DESARROLLO:  disk='public' → storage/app/public/clubs/8/player-photos/
+   PRODUCCIÓN:  disk='spaces'  → DigitalOcean Spaces (privado)
+   ↓
+5. Guarda path en users.profile_photo_path
+   path: "clubs/8/player-photos/user_123_timestamp.jpg"
+   ↓
+6. Retorna: { profile_photo_url: "..." }
+   DESARROLLO:  http://localhost:8010/storage/clubs/8/player-photos/user_123.jpg
+   PRODUCCIÓN:  https://widdo-files.nyc3.digitaloceanspaces.com/...?signature=...&expires=3600
+   ↓
+7. Frontend actualiza imagen inmediatamente
+```
+
+**⚠️ IMPORTANTE:** Nunca cambiar fotos de jugadores a públicas sin consentimiento legal explícito.
+
+---
+
+### 🚀 Guía Rápida: Cómo Detectar y Migrar Archivos
+
+Si sospechas que hay archivos en local storage que deberían estar en Spaces, sigue estos pasos:
+
+#### 1️⃣ Detectar Archivos en Ubicación Incorrecta
+
+```bash
+# En producción (SSH al servidor):
+ssh root@167.71.88.31
+
+# Verificar integridad general
+php artisan storage:verify-integrity
+
+# Investigar específicamente cada tipo:
+php artisan photos:investigate      # Fotos de perfil
+php artisan documents:investigate   # Documentos de jugadores
+php artisan payments:investigate    # Comprobantes de pago
+
+# Ver archivos físicos en storage local
+find /var/www/widdo/storage/app/public -type f | wc -l
+ls -lah /var/www/widdo/storage/app/public/
+```
+
+#### 2️⃣ Migrar Archivos a Spaces
+
+```bash
+# SIEMPRE hacer dry-run primero para verificar
+php artisan photos:migrate-to-spaces --dry-run
+php artisan documents:migrate-to-spaces --dry-run
+php artisan payments:migrate-to-spaces --dry-run
+
+# Si todo se ve bien, ejecutar migración real
+php artisan photos:migrate-to-spaces
+php artisan documents:migrate-to-spaces
+php artisan payments:migrate-to-spaces
+
+# Para pagos, sincronizar installments después
+php artisan payments:fix-installment-paths
+```
+
+#### 3️⃣ Verificar Migración Exitosa
+
+```bash
+# Verificar que todo esté en Spaces
+php artisan storage:verify-integrity
+
+# Debería mostrar:
+# ✅ No storage integrity issues found!
+# Profile photos checked: X
+# Profile photo issues: 0
+# Documents checked: X
+# Document issues: 0
+```
+
+#### 4️⃣ Corregir el Código que Causa el Problema
+
+Si encuentras archivos en local que deberían estar en Spaces, busca el controller/código que los sube:
+
+```bash
+# Buscar uploads hardcodeados
+grep -r "storeAs.*'public'" app/Http/Controllers/
+grep -r "storeAs.*'local'" app/Http/Controllers/
+
+# Reemplazar con environment-aware disk selection:
+$disk = app()->environment('production') ? 'spaces' : 'public';
+$disk = app()->environment('production') ? 'spaces-public' : 'public';  # Para fotos públicas
+```
+
+**Regla de oro:**
+- **Producción**: `spaces` (privado) o `spaces-public` (público)
+- **Local/desarrollo**: `public` o `local`
+
+---
+
+### 🔍 Problema Histórico Resuelto:
+
+#### Causa Raíz:
+1. **PlaClubTeamProfileController** usaba el método **legacy** `optimizeAndStoreLegacy()` que:
+   - ✅ En local: subía a `storage/app/public/` (correcto)
+   - ❌ En producción: subía a `storage/app/public/` (incorrecto, debería usar DigitalOcean Spaces)
+
+2. **PublicEnrollmentController** usaba discos hardcodeados:
+   - ✅ En local: subía a `storage/app/public/` y `storage/app/` (correcto)
+   - ❌ En producción: subía a `storage/app/public/` (incorrecto, debería usar DigitalOcean Spaces)
+
+#### Archivos Afectados:
+```
+Fotos de perfil:       13 archivos en storage local
+Documentos jugadores:  13 archivos en storage local
+Comprobantes de pago:  16 archivos en storage local
+Total migrado:         42 archivos a DigitalOcean Spaces
+```
+
+---
+
+### ✅ Soluciones Implementadas:
+
+#### 1. Migraciones Automáticas
+
+**Comando para fotos de perfil:**
+```bash
+php artisan photos:migrate-to-spaces [--dry-run]
+```
+- Migra fotos de `storage/app/public/` a Spaces público
+- Actualiza paths en la base de datos
+- Genera nuevos paths con patrón `clubs/{club_id}/player-photos/`
+- Configura ACL público para acceso directo
+- Modo dry-run para preview sin cambios
+
+**Comando para documentos:**
+```bash
+php artisan documents:migrate-to-spaces [--dry-run]
+```
+- Migra documentos de `storage/app/` a Spaces privado
+- Actualiza paths en la base de datos
+- Genera nuevos paths con patrón `clubs/{club_id}/player-documents/`
+- Mantiene visibilidad privada (solo URLs firmadas)
+- Modo dry-run para preview sin cambios
+
+**Comando para comprobantes de pago:**
+```bash
+php artisan payments:migrate-to-spaces [--dry-run]
+```
+- Migra comprobantes de `storage/app/public/enrollment_payments/` a Spaces privado
+- Actualiza paths en `pla_club_teams_payments.payment_receipt` y `pla_club_teams_payments_installments.proof_image`
+- Genera nuevos paths con patrón `clubs/{club_id}/payment-receipts/`
+- Mantiene visibilidad privada (solo URLs firmadas)
+- Modo dry-run para preview sin cambios
+
+**Comando auxiliar para sincronizar paths de installments:**
+```bash
+php artisan payments:fix-installment-paths
+```
+- Actualiza `proof_image` en installments para que coincidan con `payment_receipt` del pago padre
+- Útil después de migrar pagos
+
+#### 2. Comandos de Investigación
+
+**Ver ubicación de fotos:**
+```bash
+php artisan photos:investigate
+```
+Muestra:
+- Total de fotos de perfil
+- Cuántas están en spaces-public
+- Cuántas están en spaces (privado)
+- Cuántas están en public (local)
+- Cuántas no se encontraron
+- Patrones de paths utilizados
+
+**Ver ubicación de documentos:**
+```bash
+php artisan documents:investigate
+```
+Muestra el mismo análisis para documentos de jugadores.
+
+**Ver ubicación de comprobantes de pago:**
+```bash
+php artisan payments:investigate
+```
+Muestra:
+- Total de comprobantes de pago (payments + installments)
+- Cuántos están en spaces-public
+- Cuántos están en spaces (privado)
+- Cuántos están en public (local)
+- Cuántos no se encontraron
+- Detalles de archivos en ubicación incorrecta
+
+#### 3. Verificación de Integridad
+
+**Verificar estado del storage:**
+```bash
+php artisan storage:verify-integrity [--fix]
+```
+- Verifica que todos los archivos estén en la ubicación correcta
+- Detecta archivos en storage local que deberían estar en Spaces
+- Detecta archivos que no existen en ningún lado
+- Con flag `--fix` ejecuta migraciones automáticas (requiere confirmación)
+
+**Salida exitosa:**
+```
+✅ No storage integrity issues found!
+Profile photos checked: 13
+Profile photo issues: 0
+Documents checked: 13
+Document issues: 0
+```
+
+---
+
+### 🛠️ Correcciones de Código:
+
+#### PlaClubTeamProfileController.php (Corregido)
+
+**ANTES (incorrecto):**
+```php
+Storage::disk('public')->delete($user->profile_photo_path);
+$result = $this->imageService->optimizeAndStoreLegacy($file, 'profile_photos', 'profile');
+```
+
+**AHORA (correcto):**
+```php
+$this->fileStorage->delete($user->profile_photo_path);
+$result = $this->imageService->optimizeAndStore(
+    $file,
+    $clubId,
+    FileStorageService::TYPE_PLAYER_PHOTO,
+    'profile_photos',
+    "user_{$user->id}"
+);
+```
+
+#### PublicEnrollmentController.php (Corregido)
+
+**ANTES (incorrecto) - Línea 527:**
+```php
+// Comprobantes de pago siempre a 'public' disk
+$paymentProofPath = $file->storeAs('enrollment_payments/' . $club->id, $filename, 'public');
+```
+
+**AHORA (correcto):**
+```php
+// Environment-aware disk selection
+$disk = app()->environment('production') ? 'spaces' : 'public';
+$directory = app()->environment('production')
+    ? "clubs/{$club->id}/payment-receipts"
+    : "enrollment_payments/{$club->id}";
+$paymentProofPath = $file->storeAs($directory, $filename, $disk);
+```
+
+**ANTES (incorrecto) - Línea 560:**
+```php
+// Fotos siempre a 'public' disk
+$photoPath = $photoFile->storeAs('profile_photos/' . $club->id, $photoFilename, 'public');
+```
+
+**AHORA (correcto):**
+```php
+// Environment-aware disk selection
+$disk = app()->environment('production') ? 'spaces-public' : 'public';
+$directory = app()->environment('production')
+    ? "clubs/{$club->id}/player-photos"
+    : "profile_photos/{$club->id}";
+$photoPath = $photoFile->storeAs($directory, $photoFilename, $disk);
+
+// Set ACL to public in production
+if (app()->environment('production')) {
+    Storage::disk('spaces-public')->setVisibility($photoPath, 'public');
+}
+```
+
+**ANTES (incorrecto) - Líneas 604, 622:**
+```php
+// Documentos siempre a 'local' disk
+$docFrontPath = $docFront->storeAs('player_documents/' . $club->id, $docFrontFilename, 'local');
+$docBackPath = $docBack->storeAs('player_documents/' . $club->id, $docBackFilename, 'local');
+```
+
+**AHORA (correcto):**
+```php
+// Environment-aware disk selection
+$disk = app()->environment('production') ? 'spaces' : 'local';
+$directory = app()->environment('production')
+    ? "clubs/{$club->id}/player-documents"
+    : "player_documents/{$club->id}";
+$docFrontPath = $docFront->storeAs($directory, $docFrontFilename, $disk);
+$docBackPath = $docBack->storeAs($directory, $docBackFilename, $disk);
+```
+
+---
+
+### 🔒 Sistema de Prevención:
+
+#### FileUploadObserver (Nuevo)
+**Archivo:** `app/Observers/FileUploadObserver.php`
+
+- Monitorea todos los uploads de fotos y documentos en producción
+- Registra warnings en logs si detecta paths incorrectos
+- Valida que archivos usen patrón `clubs/{club_id}/`
+- Solo activo en environment production
+
+**Ejemplo de log de warning:**
+```
+⚠️  Profile photo uploaded to wrong location
+path: profile_photos/user_42.jpg
+expected_pattern: clubs/{club_id}/player-photos/
+environment: production
+```
+
+#### Registro del Observer:
+El observer se registra automáticamente en `AppServiceProvider::boot()`:
+```php
+if ($this->isProductionEnvironment()) {
+    $observer = new FileUploadObserver();
+    User::saving(fn($user) => $observer->saving($user));
+    PlaPlayerDocument::saving(fn($doc) => $observer->savingDocument($doc));
+}
+```
+
+---
+
+### 📊 Patrones de Storage:
+
+#### Estructura de Paths en Producción:
+
+| Tipo de Archivo | Patrón | Visibilidad | Acceso |
+|-----------------|--------|-------------|--------|
+| **Fotos de perfil** | `clubs/{club_id}/player-photos/user_{user_id}_{timestamp}_{random}.{ext}` | Público | URL directa permanente |
+| **Logos de clubes** | `clubs/{club_id}/club-logos/logo_{timestamp}_{random}.{ext}` | Público | URL directa permanente |
+| **Documentos** | `clubs/{club_id}/player-documents/doc_player_{player_id}_{timestamp}_{random}.{ext}` | Privado | Solo vía URLs firmadas (60 min) |
+| **Recibos de pago** | `clubs/{club_id}/payment_receipts/receipt_{payment_id}_{timestamp}.{ext}` | Privado | Solo vía URLs firmadas |
+
+#### Estructura en Desarrollo:
+
+| Tipo de Archivo | Ubicación | Disk |
+|-----------------|-----------|------|
+| **Fotos de perfil** | `storage/app/public/clubs/{club_id}/player-photos/` | `public` |
+| **Documentos** | `storage/app/clubs/{club_id}/player-documents/` | `local` |
+
+---
+
+### 🎯 Configuración de Discos:
+
+#### config/filesystems.php
+
+**Spaces (Privado) - Para documentos:**
+```php
+'spaces' => [
+    'driver' => 's3',
+    'key' => env('DO_SPACES_KEY'),
+    'secret' => env('DO_SPACES_SECRET'),
+    'region' => env('DO_SPACES_REGION', 'nyc3'),
+    'bucket' => env('DO_SPACES_BUCKET'),
+    'endpoint' => env('DO_SPACES_ENDPOINT'),
+    'visibility' => 'private', // URLs firmadas requeridas
+    'throw' => true,
+],
+```
+
+**Spaces-Public (Público) - Para fotos y logos:**
+```php
+'spaces-public' => [
+    'driver' => 's3',
+    'key' => env('DO_SPACES_KEY'),
+    'secret' => env('DO_SPACES_SECRET'),
+    'region' => env('DO_SPACES_REGION', 'nyc3'),
+    'bucket' => env('DO_SPACES_BUCKET'), // Mismo bucket
+    'endpoint' => env('DO_SPACES_ENDPOINT'),
+    'url' => env('DO_SPACES_PUBLIC_URL'),
+    'visibility' => 'public-read', // URLs permanentes
+    'throw' => true,
+],
+```
+
+**Nota:** Ambos discos usan el mismo bucket, la diferencia está en la visibilidad de los archivos.
+
+---
+
+### 🚀 Uso Correcto de FileStorageService:
+
+#### Subir Archivos Públicos (Logos):
+```php
+use App\Services\FileStorageService;
+
+$result = $this->fileStorage->uploadPublicLogo(
+    $file,
+    $clubId,
+    'logo' // prefix opcional
+);
+
+// Retorna:
+// - path: clubs/4/club-logos/logo_20260123_012345_abc123.png
+// - url: https://widdo-files.nyc3.cdn.digitaloceanspaces.com/clubs/4/...
+// - disk: spaces-public
+```
+
+#### Subir Archivos Privados (Documentos):
+```php
+$result = $this->fileStorage->upload(
+    $file,
+    $clubId,
+    FileStorageService::TYPE_PLAYER_DOCUMENT,
+    'doc_player' // prefix opcional
+);
+
+// Retorna:
+// - path: clubs/4/player-documents/doc_player_123_20260123_012345_abc123.pdf
+// - disk: spaces (privado)
+```
+
+#### Obtener URL Temporal:
+```php
+$url = $this->fileStorage->getTemporaryUrl($path, 60); // 60 minutos
+// En producción: URL firmada de Spaces
+// En local: URL con token encriptado
+```
+
+---
+
+### 📝 Historial de Migraciones Ejecutadas:
+
+#### 23 de Enero de 2026 - Producción
+
+**Fotos de Perfil:**
+```bash
+$ php artisan photos:migrate-to-spaces
+✅ Migration completed:
+   Total photos:      13
+   Already in Spaces: 1
+   Migrated:          12
+   Failed:            0
+```
+
+**Documentos:**
+```bash
+$ php artisan documents:migrate-to-spaces
+✅ Migration completed:
+   Total documents:    13
+   Already in Spaces:  1
+   Migrated:           12
+   Failed:             0
+```
+
+**Comprobantes de Pago:**
+```bash
+$ php artisan payments:migrate-to-spaces
+✅ Migration completed:
+   Total payments:      16
+   Migrated:            16
+   Already in Spaces:   0
+   Failed:              0
+
+$ php artisan payments:fix-installment-paths
+✅ Fixed 16 installment paths
+```
+
+**Verificación Final:**
+```bash
+$ php artisan storage:verify-integrity
+✅ No storage integrity issues found!
+   Profile photos checked: 14
+   Profile photo issues:   0
+   Documents checked:      15
+   Document issues:        0
+
+$ php artisan payments:investigate
+✅ All payment receipts are in the correct location!
+   Total payments: 16 (all in spaces-public)
+```
+
+**Archivos Residuales en Storage Local:**
+- 52 archivos antiguos sin referencias en BD (fotos antiguas y comprobantes ya migrados)
+- Seguro eliminar después de confirmar que no son necesarios
+
+---
+
+### ⚠️ Prevención para Nuevos Clubes:
+
+#### Checklist de Verificación:
+
+1. **Después de crear un club nuevo:**
+   ```bash
+   php artisan storage:verify-integrity
+   ```
+
+2. **Después de subir muchos archivos:**
+   ```bash
+   php artisan photos:investigate
+   php artisan documents:investigate
+   ```
+
+3. **Revisar logs periódicamente:**
+   ```bash
+   grep "uploaded to wrong location" storage/logs/laravel.log
+   ```
+
+4. **Comando de mantenimiento mensual:**
+   ```bash
+   # Verificar y migrar si es necesario
+   php artisan storage:verify-integrity --fix
+   ```
+
+---
+
+### 🔧 Troubleshooting:
+
+#### Error: "File not found anywhere"
+**Causa:** Path en BD pero archivo no existe en ningún disco
+**Solución:**
+1. Pedir al usuario que re-suba el archivo
+2. O limpiar el registro huérfano de la BD
+
+#### Error: "In local storage, should be in Spaces"
+**Causa:** Archivo se subió usando código legacy o incorrecto
+**Solución:**
+```bash
+php artisan photos:migrate-to-spaces  # para fotos
+# o
+php artisan documents:migrate-to-spaces  # para documentos
+```
+
+#### Error: "Access Denied (403)" al acceder a archivo
+**Causa:** Archivo sin ACL público o en disco privado
+**Solución:**
+```bash
+# Para logos y fotos
+php artisan spaces:make-photos-public
+
+# Para logos de clubes
+php artisan spaces:make-logos-public
+```
+
+---
+
+## 🚧 Funcionalidades Pendientes
+
+### Páginas de Super Admin - Decisiones de Diseño
+
+**IMPORTANTE - NO implementar funcionalidades falsas:**
+
+#### `/home/admin/system` - Administración del Sistema
+**NO IMPLEMENTAR (no son posibles en Droplet/producción):**
+- ❌ Botón "Crear Backup Manual" - No tenemos acceso directo al servidor
+- ❌ Botón "Reiniciar Servicios" - No es posible desde la app en Droplet
+- ❌ Botón "Configuración del Sistema" - Sin endpoint real
+- ❌ Datos mock de uptime, tamaño BD, etc. - Deben ser datos reales o no mostrar
+
+**SÍ IMPLEMENTAR (cuando haya endpoints reales):**
+- ✅ Consumir datos reales del servidor vía API
+- ✅ Solo mostrar información que el backend pueda proveer
+- ✅ Página simple con métricas reales de la BD (contar tablas, registros, etc.)
+
+#### `/home/admin/analytics` - Análisis Global
+- ✅ IMPLEMENTADO - Consume datos reales de AdminAnalyticsController
+- ✅ DAU/WAU/MAU, usuarios, clubes, jugadores, etc.
+
+#### `/home/admin/blog` - Gestión del Blog
+- ✅ IMPLEMENTADO - CRUD completo de posts, categorías y tags
+
+#### `/home/admin/reports` - Reportes
+- 🔄 PENDIENTE - Necesita ReportController con endpoints reales
+- NO poner botones de "Generar PDF" sin backend que lo soporte
+
+#### `/home/admin/communications` - Comunicaciones
+- 🔄 PENDIENTE - Necesita integración real con Resend
+- NO poner formularios que no envíen emails realmente
+
+**Regla general:** Si no hay backend que soporte la funcionalidad, NO poner el botón/UI.
+
+---
+
+### FASE 9: Notificaciones Automáticas (95% completado ✅)
+**Implementado:**
+- ✅ Sistema de emails con Resend
+- ✅ Emails de bienvenida, autenticación, eventos
+- ✅ PlaEventNotification model
+- ✅ **Jobs automáticos con validaciones de seguridad:**
+  - `SendEventInvitations` - Invitaciones a eventos
+  - `SendEventReminders` - Recordatorios 24h con deduplicación
+  - `SendPaymentReminders` - Recordatorios de pagos (pre, día, mora)
+  - `SendBirthdayNotifications` - Cumpleaños (jugadores, entrenadores, propietarios)
+  - `SendTrainingRemindersJob` - Recordatorios de entrenamientos
+  - `ApplyLateFees` - Aplicación automática de mora
+- ✅ **Validaciones en todos los Jobs:**
+  - Usuario activo (`status = 'ACT'`)
+  - Rol activo en club (`user_club_roles.status = 'ACT'`)
+  - Preferencias de notificación respetadas
+  - Deduplicación para evitar envíos repetidos
+- ✅ **Scheduler configurado en Kernel.php** (todos los cron jobs)
+- ✅ **Sistema de preferencias** vía `user_notification_preferences`
+
+**Pendiente (5%):**
+- ❌ Notificaciones en tiempo real (WebSockets/Pusher) - Post-MVP
+
+### FASE 10: Reportes Avanzados (70% pendiente)
+**Implementado:**
+- ✅ Dashboards por rol implementados
+- ✅ Componentes de métricas (MetricCard, StatsGrid)
+
+**Pendiente:**
+- ❌ ReportController con endpoints de reportes
+- ❌ Generación de PDF con DomPDF
+- ❌ Exportación a Excel
+- ❌ Gráficos avanzados con Chart.js
+- ❌ Reportes programados automáticos
+
+### Funcionalidades Futuras (Post-MVP)
+- ✅ Integración con pasarelas de pago (Wompi + MercadoPago + Stripe activas)
+- ❌ Facturación electrónica DIAN
+- 🟡 App móvil React Native/Expo — construida, PAUSADA en TestFlight build #3 (repo `mobile/`)
+- ❌ Sistema de mensajería interna
+- ❌ Videollamadas con Jitsi
+- ❌ Integración WhatsApp Business
+- ❌ **Sistema de Consentimientos por Evento/Torneo** (ver detalles abajo)
+
+### 📋 Backlog: Sistema de Consentimientos por Evento/Torneo
+
+**Prioridad:** Baja (implementar cuando haya demanda real de clubes)
+**Trigger:** Cuando 2-3 clubes soliciten esta funcionalidad
+
+**Descripción:**
+Permitir que organizadores de torneos/convocatorias soliciten consentimientos específicos a los padres, adicionales al consentimiento general del club.
+
+**Opciones de Implementación (evaluar cuando se implemente):**
+
+1. **Híbrido (Recomendado):** Permitir firma digital O upload de documento
+   - Organizador elige modalidad: digital, físico, o ambos
+   - Reutiliza `DataAuthorizationModal` y `PlayerDocumentsManager` existentes
+
+2. **Solo Upload:** Extender sistema de documentos para asociarlos a eventos
+   - Más simple, menos desarrollo
+   - Padres suben documento firmado como "Otro Documento"
+
+3. **Solo Digital:** Extender `PlaDataTreatmentAuthorization` para eventos
+   - Firma verificable, auditable
+   - Requiere más desarrollo
+
+**Estructura de datos sugerida (cuando se implemente):**
+```sql
+pla_event_consent_requirements
+├── event_id
+├── consent_type: 'digital' | 'upload' | 'both'
+├── template_content (texto para firma digital)
+├── template_file_path (PDF para descargar)
+├── is_mandatory
+└── deadline
+
+pla_event_consent_responses
+├── requirement_id
+├── player_id
+├── parent_user_id
+├── digital_signature_data
+├── uploaded_file_path
+├── signed_at
+└── status: 'pending' | 'signed' | 'rejected'
+```
+
+**Solución temporal actual:** Los clubes pueden pedir a padres que suban el documento firmado en la sección de documentos del jugador como "Otro Documento" con descripción del torneo.
+
+---
+
+## 🌍 Gestión de Países - Habilitar Nuevos Países
+
+### Descripción General
+
+El sistema incluye un **Panel de Gestión de Países** que permite a Super Admins configurar y habilitar nuevos países para la plataforma. Cada país tiene un **porcentaje de preparación (Readiness Score)** que indica qué tan listo está para ser lanzado.
+
+### Acceso al Panel
+
+**Ruta Frontend:** `/home/admin/countries`
+**Sidebar:** Administración → Países
+
+### Checklist de Preparación (Readiness Score)
+
+Para habilitar un país, debe cumplir **100%** de los siguientes criterios (todos son obligatorios):
+
+| Criterio | Peso | Requisito Mínimo |
+|----------|------|------------------|
+| **Datos básicos** | 10% | Moneda, símbolo de moneda, código telefónico |
+| **Formato de fecha** | 5% | Configurado (DD/MM/YYYY, MM/DD/YYYY, etc.) |
+| **Estados/Departamentos** | 15% | Al menos 5 estados cargados |
+| **Ciudades** | 15% | Al menos 20 ciudades cargadas |
+| **Tipos de documento** | 20% | Al menos 2 tipos (ej: CC adultos, TI menores) |
+| **Métodos de pago** | 20% | Al menos 2 métodos disponibles |
+| **Impuestos** | 10% | Tasa y nombre del impuesto configurados |
+| **Timezone** | 5% | Zona horaria configurada |
+
+### Proceso para Habilitar un Nuevo País
+
+#### Paso 1: Verificar datos geográficos
+
+```bash
+# Verificar si el país tiene estados y ciudades cargados
+docker compose exec saas_sport_app php artisan tinker --execute="
+\$country = App\Models\BasCountry::where('name', 'México')->first();
+echo 'Estados: ' . \$country->states()->count() . PHP_EOL;
+echo 'Ciudades: ' . App\Models\BasCity::whereHas('state', fn(\$q) => \$q->where('country_id', \$country->id))->count();
+"
+```
+
+Si no hay suficientes estados/ciudades, cargarlos con seeders o manualmente.
+
+#### Paso 2: Configurar datos básicos
+
+Desde el panel **Administración → Países → [Seleccionar país] → Configuración**:
+
+1. **Regional:**
+   - Zona horaria (ej: `America/Mexico_City`)
+   - Inicio de semana (Lunes/Domingo)
+   - Formato de fecha (DD/MM/YYYY para LATAM)
+
+2. **Moneda:**
+   - Decimales (0 para COP/CLP, 2 para MXN/USD)
+   - Separador decimal (coma o punto)
+   - Separador de miles (punto, coma o espacio)
+
+3. **Impuestos:**
+   - Nombre (IVA, ISV, etc.)
+   - Tasa por defecto (16%, 19%, etc.)
+
+#### Paso 3: Agregar tipos de documento
+
+Desde **Administración → Países → [País] → Documentos**:
+
+Agregar los tipos de documento de identidad del país:
+
+| País | Ejemplos de Tipos |
+|------|-------------------|
+| Colombia | CC (Cédula de Ciudadanía), TI (Tarjeta de Identidad), CE (Cédula Extranjería), Pasaporte |
+| México | INE, CURP, Pasaporte |
+| España | DNI, NIE, Pasaporte |
+| Argentina | DNI, CUIT/CUIL, Pasaporte |
+
+#### Paso 4: Agregar métodos de pago específicos
+
+Desde **Administración → Países → [País] → Pagos**:
+
+Agregar métodos de pago locales (los globales como Efectivo y Transferencia ya están):
+
+| País | Métodos Locales |
+|------|-----------------|
+| Colombia | Nequi, Daviplata, PSE |
+| México | SPEI, OXXO |
+| España | Bizum |
+| Argentina | Mercado Pago, Transferencia CBU |
+
+#### Paso 5: Activar el país
+
+Una vez que el **Readiness Score llegue a 100%**:
+
+1. Ir a **Administración → Países**
+2. En la fila del país, activar el switch "Estado"
+3. El país estará disponible para crear nuevos clubes
+
+### API Endpoints
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/api/admin/countries` | Lista países con % de preparación |
+| GET | `/api/admin/countries/{id}` | Detalle completo con checklist |
+| PUT | `/api/admin/countries/{id}` | Actualizar configuración |
+| POST | `/api/admin/countries/{id}/toggle-availability` | Activar/desactivar país |
+| GET | `/api/admin/countries/{id}/states` | Estados del país |
+| POST | `/api/admin/countries/{id}/document-types` | Crear tipo de documento |
+| PUT | `/api/admin/countries/{id}/document-types/{docId}` | Actualizar tipo |
+| DELETE | `/api/admin/countries/{id}/document-types/{docId}` | Eliminar tipo |
+| POST | `/api/admin/countries/{id}/payment-methods` | Crear método de pago |
+| PUT | `/api/admin/countries/{id}/payment-methods/{methodId}` | Actualizar método |
+| DELETE | `/api/admin/countries/{id}/payment-methods/{methodId}` | Eliminar método |
+
+### Tablas de Base de Datos Relacionadas
+
+```
+bas_countries                    # Países con configuración regional
+├── currency, simbol_currency    # Moneda
+├── currency_decimals            # Decimales (0 o 2)
+├── decimal_separator            # ',' o '.'
+├── thousand_separator           # '.' o ',' o ' '
+├── date_format                  # 'DD/MM/YYYY', 'MM/DD/YYYY', 'YYYY-MM-DD'
+├── default_tax_rate             # Tasa de impuesto (19.00)
+├── tax_name                     # Nombre del impuesto (IVA)
+├── timezone                     # Zona horaria
+├── available                    # Si está habilitado para nuevos clubes
+└── payments_enabled             # Si tiene pasarelas de pago configuradas
+
+bas_states                       # Estados/Departamentos por país
+bas_cities                       # Ciudades por estado
+bas_types_documents_by_country   # Tipos de documento por país
+bas_payment_methods              # Métodos de pago (globales + por país)
+bas_country_payment_config       # Configuración de pasarelas por país
+```
+
+### Ejemplo: Habilitar México
+
+```bash
+# 1. Verificar estado actual
+curl -X GET "http://localhost:8010/api/admin/countries/143" \
+  -H "Authorization: Bearer $TOKEN" | jq '.data.readiness'
+
+# 2. Actualizar configuración
+curl -X PUT "http://localhost:8010/api/admin/countries/143" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "timezone": "America/Mexico_City",
+    "date_format": "DD/MM/YYYY",
+    "currency_decimals": 2,
+    "decimal_separator": ".",
+    "thousand_separator": ",",
+    "default_tax_rate": 16,
+    "tax_name": "IVA"
+  }'
+
+# 3. Agregar tipo de documento
+curl -X POST "http://localhost:8010/api/admin/countries/143/document-types" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Instituto Nacional Electoral", "symbol": "INE"}'
+
+# 4. Agregar método de pago local
+curl -X POST "http://localhost:8010/api/admin/countries/143/payment-methods" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "SPEI", "description": "Transferencia interbancaria"}'
+
+# 5. Activar el país (solo si readiness = 100%)
+curl -X POST "http://localhost:8010/api/admin/countries/143/toggle-availability" \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+### Controller y Archivos Relacionados
+
+```
+app/Http/Controllers/Admin/CountryManagementController.php  # Controller principal
+app/Models/BasCountry.php                                    # Modelo de país
+app/Models/BasTypeDocumentByCountry.php                     # Tipos de documento
+app/Models/BasPaymentMethod.php                             # Métodos de pago base
+database/migrations/2026_01_21_120000_add_date_format_to_bas_countries_table.php
+frontend/src/pages/admin/CountryManagementPage.jsx          # Página del panel
+```
+
+---
+
+## 💳 Sistema de Pagos y Suscripciones
+
+### Arquitectura del Sistema
+
+El sistema de pagos está diseñado con una arquitectura modular que permite agregar nuevas pasarelas de pago fácilmente:
+
+```
+app/Services/Payments/
+├── PaymentGatewayInterface.php  # Interfaz base
+├── PaymentGatewayFactory.php    # Factory para obtener pasarela por país
+├── PaymentService.php           # Servicio principal de orquestación
+└── WompiGateway.php             # Implementación de Wompi (Colombia)
+```
+
+### Pasarelas Soportadas
+
+| Pasarela | País | Estado | Métodos de Pago |
+|----------|------|--------|-----------------|
+| **Wompi** | Colombia | ✅ Activa | Widget embebido — Tarjetas, Nequi, PSE, Bancolombia |
+| **MercadoPago** | AR, BR, CL, CO, MX, PE, UY | ✅ Activa | Redirect (Checkout Pro) |
+| **Stripe** | Global | ✅ Activa (suscripciones, test keys) | Cards + Stripe Connect (torneos) |
+| ePayco | Colombia | 🔄 Preparado | - |
+| EBANX | LATAM | 🔄 Preparado | - |
+| Kushki | LATAM | 🔄 Preparado | - |
+| PayU | LATAM | 🔄 Preparado | - |
+
+> Detalle multi-gateway vigente en `saas_sport/docs/PAYMENT-GATEWAYS.md` y `desarrollo/CLAUDE.md`.
+
+### Configuración de Pasarelas (Backend)
+
+#### 1. Configurar Credenciales de Wompi
+
+Las credenciales se configuran por país desde el panel de Super Admin en:
+`/home/admin/subscription-plans` → Configurar pasarelas
+
+**Credenciales requeridas para Wompi:**
+
+```json
+{
+  "public_key": "pub_prod_XXXXXXXX",
+  "private_key": "prv_prod_XXXXXXXX",
+  "integrity_secret": "prod_integrity_XXXXXXXX",
+  "events_secret": "prod_events_XXXXXXXX"
+}
+```
+
+**Obtener credenciales:**
+1. Ir a [comercios.wompi.co](https://comercios.wompi.co)
+2. Crear cuenta de comercio
+3. En Dashboard → Desarrolladores → Llaves de API
+4. Copiar las llaves de Sandbox (pruebas) o Producción
+
+**Configurar vía API (Super Admin):**
+
+```bash
+# POST /api/admin/payment-gateways/{gatewayId}/countries/{countryId}/config
+curl -X POST "http://localhost:8010/api/admin/payment-gateways/1/countries/48/config" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "is_default": true,
+    "is_active": true,
+    "environment": "sandbox",
+    "credentials": {
+      "public_key": "pub_test_XXXXXXXX",
+      "private_key": "prv_test_XXXXXXXX",
+      "integrity_secret": "test_integrity_XXXXXXXX",
+      "events_secret": "test_events_XXXXXXXX"
+    },
+    "priority": 1
+  }'
+```
+
+#### 2. Configurar Webhooks en Wompi
+
+En el Dashboard de Wompi → Desarrolladores → Webhooks:
+
+**URL de Webhook:**
+- Sandbox: `https://tu-dominio.com/api/webhooks/wompi/CO`
+- Producción: `https://tu-dominio.com/api/webhooks/wompi/CO`
+
+**Eventos a suscribir:**
+- `transaction.updated` - Cambios en estado de transacciones
+- `nequi_token.updated` - Cambios en tokens de Nequi
+- `bancolombia_transfer_token.updated` - Cambios en tokens de Bancolombia
+
+#### 3. Configurar Planes de Suscripción
+
+> ⚠️ **REGLA DE ORO — `enabled_modules` es la fuente de verdad del gating.**
+> El menú del frontend (`routeToModuleMap` en `MenuList.jsx` + `SubscriptionContext.hasModule`) muestra un ítem **con candado** si su clave NO está en `subscription.plan.enabled_modules`. Por lo tanto, al crear/editar un plan, `enabled_modules` debe listar **TODO** lo que el plan habilita, **incluidos siempre `club` y `settings`** (configuración del club y ajustes — son core, no premium; si faltan, el cliente ve "Mi Club / Equipo / Permisos / Config" bloqueados aunque pague). Guardado por `tests/Feature/PlanModulesAlignmentTest.php`.
+>
+> **Excepción numérica por club** (ej: dar 250 jugadores a un solo club sin cambiar el plan Pro global): NO existe override numérico por club. Crear un **plan dedicado oculto** (`is_active=false`, `is_custom=true`, `max_members` deseado, mismos módulos) y reapuntar la suscripción del club a ese plan. Ejemplo en prod: `corbeaux-250` (club 14). Si se vuelve frecuente, agregar columna `max_*_override` a la suscripción y respetarla en `ChecksSubscriptionLimits`/`getLimit`.
+
+Desde el panel de Super Admin → Planes de Suscripción:
+
+1. **Crear Plan:**
+   - Nombre, descripción, slug único
+   - Límites: miembros, entrenadores, categorías, equipos, almacenamiento
+   - Características: payment_integration, advanced_reports, api_access, etc.
+   - Módulos habilitados: players, trainers, categories, payments, etc.
+   - Días de prueba
+
+2. **Configurar Precios por País:**
+   - Seleccionar país (debe tener pasarela configurada)
+   - Precio mensual en centavos (ej: $99,000 COP = 9900000)
+   - Precio anual en centavos
+
+### Integración Frontend
+
+#### 1. Obtener Planes Disponibles
+
+```javascript
+// GET /api/subscriptions/plans
+const response = await api.get('/subscriptions/plans');
+const { plans, payments_enabled, available_gateways } = response.data.data;
+
+// Cada plan incluye:
+{
+  id: 1,
+  name: "Plan Profesional",
+  slug: "profesional",
+  description: "Para clubes medianos",
+  limits: { members: 100, trainers: 5, categories: 10 },
+  features: ["payment_integration", "advanced_reports"],
+  enabled_modules: ["players", "trainers", "payments"],
+  pricing: {
+    monthly: {
+      cents: 9900000,
+      amount: 99000,
+      formatted: "$99.000"
+    },
+    yearly: {
+      cents: 99000000,
+      amount: 990000,
+      formatted: "$990.000",
+      savings_percent: 17
+    },
+    currency: "COP",
+    currency_symbol: "$"
+  }
+}
+```
+
+#### 2. Iniciar Proceso de Pago
+
+```javascript
+// POST /api/subscriptions/initiate-payment
+const response = await api.post('/subscriptions/initiate-payment', {
+  plan_id: 1,
+  billing_cycle: 'monthly', // 'monthly' o 'yearly'
+  redirect_url: 'https://tu-app.com/subscription/callback'
+});
+
+const { widget_data, reference, amount_in_cents } = response.data.data;
+
+// widget_data contiene todo para el checkout de Wompi:
+{
+  public_key: "pub_prod_XXXXX",
+  currency: "COP",
+  amount_in_cents: 9900000,
+  reference: "SUB-123-1-ABCD1234",
+  signature: "sha256_hash...",
+  redirect_url: "https://...",
+  customer_email: "owner@club.com",
+  widget_url: "https://checkout.wompi.co/widget.js"
+}
+```
+
+#### 3. Implementar Widget de Wompi
+
+**Opción A: Widget Embebido (Recomendado)**
+
+```jsx
+import { useEffect, useRef } from 'react';
+
+function WompiCheckout({ widgetData, onSuccess, onError }) {
+  const checkoutRef = useRef(null);
+
+  useEffect(() => {
+    // Cargar script de Wompi
+    const script = document.createElement('script');
+    script.src = widgetData.widget_url;
+    script.async = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      // Inicializar widget
+      const checkout = new WidgetCheckout({
+        currency: widgetData.currency,
+        amountInCents: widgetData.amount_in_cents,
+        reference: widgetData.reference,
+        publicKey: widgetData.public_key,
+        signature: { integrity: widgetData.signature },
+        redirectUrl: widgetData.redirect_url,
+        customerData: {
+          email: widgetData.customer_email,
+          fullName: widgetData.customer_full_name,
+          phoneNumber: widgetData.customer_phone_number,
+          legalId: widgetData.customer_legal_id,
+          legalIdType: widgetData.customer_legal_id_type,
+        }
+      });
+
+      checkout.open((result) => {
+        const transaction = result.transaction;
+        if (transaction.status === 'APPROVED') {
+          onSuccess(transaction);
+        } else {
+          onError(transaction);
+        }
+      });
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [widgetData]);
+
+  return <div ref={checkoutRef} />;
+}
+```
+
+**Opción B: Redirección a Checkout Web**
+
+```jsx
+function redirectToWompiCheckout(widgetData) {
+  const form = document.createElement('form');
+  form.method = 'GET';
+  form.action = 'https://checkout.wompi.co/p/';
+
+  const params = {
+    'public-key': widgetData.public_key,
+    'currency': widgetData.currency,
+    'amount-in-cents': widgetData.amount_in_cents,
+    'reference': widgetData.reference,
+    'signature:integrity': widgetData.signature,
+    'redirect-url': widgetData.redirect_url,
+    'customer-data:email': widgetData.customer_email,
+  };
+
+  Object.entries(params).forEach(([key, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+}
+```
+
+#### 4. Verificar Estado del Pago
+
+```javascript
+// GET /api/subscriptions/payment-status/{reference}
+const checkPaymentStatus = async (reference) => {
+  const response = await api.get(`/subscriptions/payment-status/${reference}`);
+  return response.data.data;
+  // { status: 'approved', status_label: 'Pagado' }
+};
+
+// Polling hasta que el pago se procese
+const pollPaymentStatus = async (reference, maxAttempts = 10) => {
+  for (let i = 0; i < maxAttempts; i++) {
+    const result = await checkPaymentStatus(reference);
+
+    if (result.status === 'approved') {
+      return { success: true, ...result };
+    }
+
+    if (result.status === 'failed' || result.status === 'declined') {
+      return { success: false, ...result };
+    }
+
+    // Esperar 3 segundos antes del siguiente intento
+    await new Promise(resolve => setTimeout(resolve, 3000));
+  }
+
+  return { success: false, status: 'timeout' };
+};
+```
+
+#### 5. Obtener Suscripción Actual
+
+```javascript
+// GET /api/subscriptions/current
+const response = await api.get('/subscriptions/current');
+
+if (response.data.data.has_subscription) {
+  const { subscription } = response.data.data;
+  // {
+  //   status: 'active',
+  //   billing_cycle: 'monthly',
+  //   current_period_end: '2025-02-01',
+  //   days_remaining: 30,
+  //   plan: { name: 'Profesional', limits: {...} }
+  // }
+}
+```
+
+### Flujo Completo de Suscripción
+
+```
+1. Usuario selecciona plan
+   ↓
+2. Frontend: POST /api/subscriptions/initiate-payment
+   ↓
+3. Backend: Crea factura pendiente, retorna widget_data
+   ↓
+4. Frontend: Muestra widget de Wompi
+   ↓
+5. Usuario completa pago en Wompi
+   ↓
+6. Wompi: Envía webhook a /api/webhooks/wompi/CO
+   ↓
+7. Backend: Procesa webhook, activa suscripción
+   ↓
+8. Frontend: Polling verifica estado, muestra confirmación
+```
+
+### Endpoints de API
+
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/api/subscriptions/plans` | Planes disponibles para el país del club |
+| GET | `/api/subscriptions/current` | Suscripción actual del club |
+| POST | `/api/subscriptions/initiate-payment` | Iniciar proceso de pago |
+| GET | `/api/subscriptions/payment-status/{ref}` | Estado de un pago |
+| POST | `/api/subscriptions/cancel` | Cancelar suscripción |
+| GET | `/api/subscriptions/payment-history` | Historial de pagos |
+| POST | `/api/subscriptions/start-trial` | Activar período de prueba |
+| POST | `/api/webhooks/wompi/{country}` | Webhook de Wompi |
+
+### Variables de Entorno (Opcionales)
+
+```env
+# Si se quiere forzar ambiente de Wompi desde .env
+WOMPI_ENVIRONMENT=sandbox  # o 'production'
+
+# Las credenciales se guardan encriptadas en la BD
+# NO poner credenciales en .env
+```
+
+### Troubleshooting
+
+**Error: "No hay pasarela de pago configurada"**
+- Verificar que el país del club tenga una pasarela configurada
+- Ir a Admin → Planes → Configurar pasarela para el país
+
+**Error: "El plan no tiene precio configurado"**
+- Agregar precio para el país desde Admin → Planes → Editar plan
+
+**Webhook no se procesa:**
+- Verificar URL del webhook en dashboard de Wompi
+- Revisar logs: `storage/logs/laravel.log`
+- Verificar que events_secret sea correcto
+
+**Transacción queda en PENDING:**
+- PSE y algunos métodos son asíncronos
+- El webhook actualizará el estado cuando se complete
+- Usar polling desde frontend para verificar estado
+
+---
+
+## Project Architecture
+
+This is a sports club management SaaS application with two main components:
+
+- **Frontend**: React + Vite application in `/Frontend` directory
+- **Backend**: Laravel API in `/saas_sport` directory
+
+## Development Commands
+
+### Frontend (React + Vite)
+```bash
+# Navigate to frontend
+cd Frontend
+
+# Install dependencies
+npm install
+
+# Development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Lint code
+npm run lint
+
+# Preview production build
+npm run preview
+```
+
+### Backend (Laravel)
+```bash
+# Navigate to backend
+cd saas_sport
+
+# Install PHP dependencies
+composer install
+
+# Database migrations
+php artisan migrate
+
+# Run seeders
+php artisan db:seed
+
+# Run specific seeders
+php artisan db:seed --class=Database\\Seeders\\BasCountriesSeeder
+php artisan db:seed --class=Database\\Seeders\\BasStatesSeeder
+
+# Run onboarding system seeders
+php artisan db:seed --class=Database\\Seeders\\BasModulesSeeder
+php artisan db:seed --class=Database\\Seeders\\ModulePermissionsSeeder
+php artisan db:seed --class=Database\\Seeders\\UpdateRolesSeeder
+
+# Run tests
+php artisan test
+
+# Code formatting
+./vendor/bin/pint
+
+# Generate application key
+php artisan key:generate
+
+# Clear/cache configuration
+php artisan config:clear
+php artisan config:cache
+
+# Queue worker (for background jobs)
+php artisan queue:work
+```
+
+### Docker Development
+
+#### Backend (Laravel with Docker) - Local Development Setup
+```bash
+# Navigate to backend
+cd saas_sport
+
+# Start all services (app, database, queue worker, mailhog)
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop services
+docker-compose down
+
+# Execute artisan commands in container
+docker compose exec saas_sport_app php artisan migrate
+docker compose exec saas_sport_app php artisan db:seed
+docker compose exec saas_sport_app php artisan config:clear
+
+# Run geographic data seeders
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\BasCountriesSeeder
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\BasStatesSeeder
+
+# Access application container shell
+docker compose exec saas_sport_app bash
+
+# Install composer dependencies in container
+docker compose exec saas_sport_app composer install
+```
+
+**Local URLs when using Docker:**
+- Backend API: http://localhost:61918
+- Database: localhost:61919 (MySQL)
+- MailHog UI: http://localhost:61921 (Email testing)
+
+#### Frontend with Docker  
+```bash
+cd Frontend
+docker-compose up -d
+```
+- Frontend: http://localhost:5173
+
+## 🇨🇴 Colombian Sports Clubs Data System
+
+### Setup Complete System with Realistic Colombian Data
+
+**RECOMMENDED - Single Command Setup:**
+```bash
+# Complete system setup with Colombian clubs, players, coaches, etc.
+docker compose exec saas_sport_app php artisan setup:realistic-data
+```
+
+### Individual Seeders (Step by Step)
+
+**1. Base System Requirements:**
+```bash
+# Geographic data (required first)
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\BasCountriesSeeder
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\BasStatesSeeder
+
+# Permissions and roles system
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\BasModulesSeeder
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\ModulePermissionsSeeder
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\UpdateRolesSeeder
+```
+
+**2. Colombian Sports Clubs Data:**
+```bash
+# Super admin accounts
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\SuperAdminSeeder
+
+# Colombian sports clubs (5 realistic clubs)
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\ClubsRealisticsSeeder
+
+# Categories and trainers for each club
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\CategoriesAndTrainersSeeder
+
+# Players and parents/guardians
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\PlayersAndParentsSeeder
+
+# Accountants and administrative staff
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\AccountantsAndStaffSeeder
+
+# Charges and payment configurations (COP currency)
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\ChargesAndPaymentsSeeder
+
+# Training locations and sessions with attendance tracking
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\LocationsAndSessionsSeeder
+```
+
+**3. Complete Realistic Data Package:**
+```bash
+# All Colombian data in one command
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\RealisticDataSeeder
+
+# IMPORTANTE: Corregir current_club_id después de ejecutar seeders
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\FixAllUsersCurrentClubSeeder
+
+# Crear eventos de prueba para el sistema de calendario
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\EventsTestSeeder
+
+# ESCENARIO DE PRUEBA MULTI-ROL: Usuario con múltiples roles
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\MultiRoleUserSeeder
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\MultiRoleEventsSeeder
+```
+
+### 🏆 What You Get: Colombian Sports Clubs System
+
+**5 Realistic Colombian Sports Clubs:**
+- **Club Deportivo Bogotá FC** (Football) - Bogotá
+- **Academia Deportiva Medellín** (Multi-sport) - Medellín  
+- **Cali Basketball Academy** (Basketball) - Cali
+- **Escuela de Fútbol Barranquilla** (Football) - Barranquilla
+- **Club Tenis Cartagena** (Tennis) - Cartagena
+
+**150+ Users with Proper Roles:**
+- 5 Club owners (Propietario del Club)
+- 15+ Specialized trainers (Entrenador)
+- 5 Accountants (Contador) 
+- 100+ Players with realistic Colombian names (Jugador)
+- 25+ Parents/Guardians (Padre/Acudiente)
+
+**Complete System Features:**
+- Age-based categories (Pre-football → Adults)
+- Training sessions with attendance tracking
+- Payment system in Colombian Pesos (COP)
+- Realistic Colombian pricing:
+  - Monthly fees: $80,000 - $200,000 COP
+  - Uniforms: $180,000 - $300,000 COP
+  - Insurance: $60,000 COP
+  - Tournaments: $50,000 - $100,000 COP
+- Training locations and facilities
+- Parent-child relationships for minors
+- Complete onboarding system
+
+### 🔑 Access Credentials
+
+**Super Administrator:**
+- Email: admin@sportsclub.co
+- Password: admin123
+
+**Backup Administrator:**
+- Email: backup@sportsclub.co  
+- Password: backup123
+
+**Club Owners:**
+- All club owners use password: password123
+- See system output for specific emails
+
+**All Other Users:**
+- Default password: password123
+
+### 🌍 Colombian Localization Features
+
+- **Currency**: Colombian Peso (COP) throughout the system
+- **Geographic Data**: Colombian cities, states, regions
+- **Names**: Realistic Colombian first/last names
+- **Payment Methods**: PSE (Colombian electronic payment)
+- **Documents**: TI for minors, CC for adults
+- **Sports Categories**: Colombian football age divisions
+- **EPS**: Colombian health insurance providers
+- **Pricing**: Realistic Colombian sports club fees
+
+## Code Architecture
+
+### Frontend Structure
+- **Routes**: Defined in `src/App.jsx` with public/private route protection
+- **Context**: AuthContext, ClubContext for global state management
+- **Hooks**: Custom hooks organized by feature in `/src/hooks/`
+- **Components**: Reusable UI components in `/src/components/`
+- **Pages**: Feature-specific pages in `/src/pages/`
+- **Services**: API communication in `/src/services/`
+- **UI Library**: Uses Radix UI components with Tailwind CSS
+
+### Backend Structure
+- **Controllers**: Feature-organized controllers in `app/Http/Controllers/`
+- **Models**: Eloquent models with "Pla" prefix for business entities, "Bas" for base/reference data
+- **Policies**: Authorization logic for each entity
+- **Requests**: Form validation classes
+- **Seeders**: Database seeding with country/state/city data
+
+### Onboarding System
+- **Modular Permissions**: Module-based permission system with granular access control
+- **Role-based Onboarding**: Specific onboarding flows for each user role
+- **Profile Completion**: Automatic tracking of profile completion percentage
+- **Parent-Child Relationships**: Support for minor users with parent/guardian management
+- **Multi-tenant Security**: Club-based data isolation using policies and scopes
+
+### Database Design
+- **Naming Convention**: Tables use prefixes:
+  - `pla_` for platform/business entities (clubs, players, trainers, etc.)
+  - `bas_` for base/reference data (countries, sports, genders, etc.)
+- **Key Entities**:
+  - Club teams with sports, categories, players, trainers
+  - Payment system with charges, discounts, installments
+  - Location hierarchy: countries → states → cities
+  - Role-based permissions using Spatie Laravel Permission
+  - Session attendance tracking system
+- **day_of_week Format**: Uses ISO 8601 standard (1=Monday, 2=Tuesday, ..., 7=Sunday)
+  - Backend expects values 1-7
+  - Frontend must convert from 0-6 (JavaScript Date) to 1-7 before sending to API
+
+---
+
+## 🗄️ Estructura de Base de Datos Detallada
+
+### Resumen de Tablas (80 tablas totales):
+
+| Categoría | Cantidad | Descripción |
+|-----------|----------|-------------|
+| `bas_*` | 11 | Datos de referencia (países, deportes, géneros, etc.) |
+| `pla_*` | 39 | Datos de plataforma (clubes, jugadores, pagos, etc.) |
+| Otras | 30 | Sistema, autenticación, Laravel internos |
+
+### Tablas de Referencia (`bas_*`) - 11 tablas:
+```
+bas_cities              # Ciudades (relacionadas con estados)
+bas_countries           # Países
+bas_documents_types     # Tipos de documentos (CC, TI, Pasaporte)
+bas_eps                 # Entidades Promotoras de Salud (Colombia)
+bas_genders             # Géneros
+bas_laterality          # Lateralidad (diestro/zurdo)
+bas_modules             # Módulos del sistema para permisos
+bas_positions           # Posiciones deportivas
+bas_sports              # Deportes disponibles
+bas_states              # Estados/Departamentos
+bas_statuses            # Estados genéricos
+```
+
+### Tablas de Plataforma (`pla_*`) - 39 tablas:
+```
+# CLUBES Y EQUIPOS
+pla_club_teams                    # Clubes/equipos principales
+pla_club_teams_categories         # Categorías por edad/nivel
+pla_club_teams_sports             # Pivot: club ↔ deportes (status: ACT/BOR)
+pla_club_teams_sport_positions    # Posiciones por deporte del club
+pla_club_teams_trainers           # Entrenadores asignados a clubes
+pla_club_teams_locations          # Ubicaciones/instalaciones
+
+# JUGADORES
+pla_club_teams_players            # Jugadores registrados (club_id)
+pla_club_teams_players_documents  # Documentos de jugadores
+pla_club_teams_players_eps        # EPS de jugadores (Colombia)
+pla_club_teams_players_history    # Historial de jugadores
+
+# SESIONES Y ASISTENCIA
+pla_club_teams_sessions           # Sesiones de entrenamiento (club_id)
+pla_club_teams_sessions_attendances # Control de asistencia
+
+# PAGOS Y COBROS
+pla_club_teams_charges            # Cobros configurados (club_id)
+pla_club_teams_discounts          # Descuentos disponibles (club_id)
+pla_club_teams_payments           # Pagos realizados (club_id)
+pla_club_teams_payments_installments # Cuotas de pagos
+
+# EVENTOS Y CALENDARIO
+pla_events                        # Eventos del calendario
+pla_event_participants            # Participantes de eventos
+pla_event_notifications           # Notificaciones de eventos
+
+# INVITACIONES
+pla_player_invitations            # Invitaciones a jugadores
+pla_trainer_invitations           # Invitaciones a entrenadores
+```
+
+### Tablas de Sistema (30 tablas):
+```
+# AUTENTICACIÓN Y USUARIOS
+users                     # Usuarios del sistema
+user_club_roles          # 🔑 TABLA CENTRAL: Roles de usuario por club
+password_reset_tokens    # Tokens de reset
+personal_access_tokens   # Tokens de Sanctum
+
+# SPATIE PERMISSION (RBAC)
+roles                    # Roles: Propietario, Entrenador, Jugador, Padre, Contador
+permissions              # Permisos granulares
+model_has_roles          # Asignación usuario ↔ rol
+model_has_permissions    # Permisos directos
+role_has_permissions     # Permisos por rol
+
+# RELACIONES
+parent_child_relationships # Padres/acudientes ↔ menores
+
+# LARAVEL INTERNOS
+migrations, cache, sessions, jobs, failed_jobs, etc.
+```
+
+### 🔑 Tabla Central: `user_club_roles`
+
+Esta tabla es **CRÍTICA** para el sistema multi-tenant y multi-contexto:
+
+```sql
+CREATE TABLE user_club_roles (
+    id BIGINT PRIMARY KEY,
+    user_id BIGINT NOT NULL,           -- Usuario
+    club_id BIGINT NOT NULL,           -- Club/equipo
+    role VARCHAR(50) NOT NULL,         -- 'owner', 'trainer', 'player', 'parent', 'accountant'
+    status VARCHAR(10) DEFAULT 'ACT',  -- Estado del rol
+    assigned_at TIMESTAMP,
+    metadata JSON,                     -- Datos adicionales
+    onboarding_completed BOOLEAN,      -- Si completó onboarding
+    onboarding_step INT,               -- Paso actual
+    onboarding_completed_at TIMESTAMP,
+    created_at, updated_at
+);
+
+-- Índice único: un usuario solo puede tener UN rol por club
+UNIQUE INDEX (user_id, club_id, role)
+```
+
+**Roles disponibles (constantes en UserClubRole.php):**
+- `ROLE_OWNER = 'owner'` - Propietario del Club
+- `ROLE_TRAINER = 'trainer'` - Entrenador
+- `ROLE_PLAYER = 'player'` - Jugador
+- `ROLE_PARENT = 'parent'` - Padre/Acudiente
+- `ROLE_ACCOUNTANT = 'accountant'` - Contador
+
+### Tablas con `club_id` (Multi-tenant Isolation) - 19 tablas:
+
+Estas tablas tienen `club_id` y usan `ClubScope` para aislamiento automático:
+
+```
+pla_club_teams_categories
+pla_club_teams_charges
+pla_club_teams_discounts
+pla_club_teams_locations
+pla_club_teams_payments
+pla_club_teams_payments_installments
+pla_club_teams_players
+pla_club_teams_players_documents
+pla_club_teams_players_eps
+pla_club_teams_players_history
+pla_club_teams_sessions
+pla_club_teams_sessions_attendances
+pla_club_teams_sport_positions
+pla_club_teams_trainers
+pla_events
+pla_event_participants
+pla_event_notifications
+pla_player_invitations
+pla_trainer_invitations
+```
+
+### ⚠️ Tablas SIN `club_id` (No aplica ClubScope):
+
+```
+# Son las tablas de clubs/equipos mismas
+pla_club_teams                    # ES la tabla de clubes (usa user_id para owner)
+pla_club_teams_sports             # Pivot con club_id en columna diferente
+
+# Tablas de referencia (datos globales)
+bas_* (todas)                     # Datos de referencia compartidos
+```
+
+### Relaciones Importantes:
+
+```
+users (1) ←→ (N) user_club_roles ←→ (1) pla_club_teams
+                     ↑
+         Un usuario puede tener múltiples roles
+         en múltiples clubes (multi-contexto)
+
+pla_club_teams (1) ←→ (N) pla_club_teams_sports (N) ←→ (1) bas_sports
+                              ↑
+              Tabla pivot con status ACT/BOR
+
+pla_club_teams (1) ←→ (N) pla_club_teams_categories
+                              ↓
+              pla_club_teams_players asignados a categorías
+```
+
+### Global Scopes Aplicados:
+
+**ClubScope** (en `app/Scopes/ClubScope.php`):
+- Se aplica automáticamente a modelos con trait `HasClubIsolation`
+- Filtra por `club_id` del contexto activo del usuario
+- **NO aplica** a `pla_club_teams` (porque ES la tabla de clubes)
+
+```php
+// Ejemplo de cómo funciona:
+// En PlaClubTeamPlayer model:
+use HasClubIsolation; // Trait que aplica ClubScope
+
+// Al consultar:
+$players = PlaClubTeamPlayer::all();
+// SQL real: SELECT * FROM pla_club_teams_players WHERE club_id = [current_user_club_id]
+```
+
+### Seguridad de Datos por Rol:
+
+| Endpoint | Super Admin | Owner | Trainer | Player | Parent |
+|----------|-------------|-------|---------|--------|--------|
+| GET /pla_club_teams | ALL clubs | Only owned clubs | - | - | - |
+| GET /players | ALL | Club players | Category players | Own profile | Child profile |
+| POST /players | Yes | Yes | With permission | No | No |
+| GET /payments | ALL | Club payments | - | Own payments | Child payments |
+
+### Authentication & Authorization
+- Laravel Sanctum for API authentication
+- **Token Expiration**: Tokens expire after 60 minutes
+- **Token Response**: Login/register endpoints return `expires_in` field (in seconds) along with the token
+- **Format**: `{ access_token: "...", token_type: "Bearer", expires_in: 3600 }`
+- Role-based access control with club-specific permissions
+- Context-based authorization (users can only access their club data)
+
+### Testing
+- Backend: PHPUnit tests in `/tests` directory
+- Frontend: No test framework currently configured
+
+### Key Features
+- Multi-tenant club management
+- Player and trainer management with categories
+- Payment processing with charges and discounts
+- Geographic data management (countries, states, cities)
+- Role and permission management
+- Profile photo uploads
+- **Session Attendance System**: Complete tracking of player attendance in training sessions
+- **Onboarding System**: Role-specific onboarding flows with progress tracking
+- **Modular Permissions**: Granular access control by modules and roles
+- **Parent-Child Management**: Support for minor users with guardian oversight
+- **Profile Completion**: Automatic tracking and requirements by role
+- **Colombian Localization**: Complete system adapted for Colombian sports clubs
+
+### Development Notes
+- Frontend uses path aliases (`@/` for `/src`)
+- Backend uses Laravel 12 with PHP 8.2+
+- Database includes pre-seeded geographic data for Americas and Europe
+- Docker configuration available for both frontend and backend
+- Queue system configured for background job processing
+- All Colombian data uses COP currency and local conventions
+- Attendance system with proper model relationships and migrations
+
+### Important Commands Summary
+
+**Quick Start:**
+```bash
+cd saas_sport
+docker compose up -d
+docker compose exec saas_sport_app php artisan setup:realistic-data
+```
+
+**Individual Operations:**
+```bash
+# Add only Colombian clubs data
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\RealisticDataSeeder
+
+# Run specific seeder
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\ClubsRealisticsSeeder
+
+# Check system status
+docker compose exec saas_sport_app php artisan migrate:status
+```
+
+## 🚧 Funcionalidades Pendientes de Desarrollo
+
+### 1. Sistema de Gestión de Mantenimientos Programados
+
+**Estado actual:**
+- La alerta de mantenimiento en el dashboard del Super Admin solo se muestra cuando hay un mantenimiento programado
+- Actualmente se puede activar/desactivar manualmente en el código
+
+**Desarrollo pendiente:**
+- Crear migración para tabla `scheduled_maintenances`
+- Implementar CRUD para gestionar mantenimientos desde el panel de Super Admin
+- Sistema de notificaciones previas a usuarios
+- Modo de mantenimiento automático en las fechas programadas
+- API endpoints para consultar y gestionar mantenimientos
+
+**Estructura propuesta de la tabla:**
+```sql
+scheduled_maintenances:
+  - id
+  - title (varchar)
+  - message (text)
+  - scheduled_date (datetime)
+  - end_date (datetime)
+  - duration (varchar)
+  - type (enum: 'full', 'partial', 'read_only')
+  - affected_services (json)
+  - created_by (user_id)
+  - active (boolean)
+  - notification_sent (boolean)
+  - created_at
+  - updated_at
+```
+
+**Funcionalidades a implementar:**
+- Panel de administración para programar mantenimientos
+- Sistema de notificaciones por email 24h antes
+- Banner informativo en todos los dashboards cuando se acerca un mantenimiento
+- Modo de solo lectura durante mantenimientos parciales
+- Log de actividades durante el mantenimiento
+- Sistema de extensión de mantenimiento si es necesario
+
+**Para activar temporalmente un mantenimiento:**
+Descomentar las líneas en `SimpleDashboardController::getScheduledMaintenance()`
+
+## 🧪 Escenario de Prueba Multi-Rol
+
+### Usuario de Prueba Integral del Sistema de Eventos
+
+Se ha creado un usuario especial para probar todas las funcionalidades del sistema de eventos desde múltiples perspectivas de roles:
+
+**👤 Usuario Principal: Juan Carlos Múltiple**
+- **Email**: `juan.multiple@test.co`
+- **Contraseña**: `password123`
+- **Hijo**: Juanito Múltiple (`juanito.multiple@test.co`)
+
+### 📋 Roles Asignados en Diferentes Clubes:
+
+1. **🏢 Propietario del Club** - Club Deportivo Bogotá FC
+2. **🏃‍♂️ Entrenador** - Academia Deportiva Medellín  
+3. **🏀 Jugador** - Cali Basketball Academy
+4. **👨‍👦 Padre/Acudiente** - Escuela de Fútbol Barranquilla (hijo: Juanito)
+
+### 📅 Eventos Creados por Rol (16 eventos totales):
+
+#### Como Propietario (Bogotá FC):
+- ✅ **Reunión Directiva Mensual** - Planificación estratégica
+- 🏆 **Copa Bogotá FC 2025** - Torneo interno
+- 🎉 **Inauguración Nueva Sede** - Evento social  
+- 💰 **Revisión Cobros Pendientes** - Reunión de pagos
+
+#### Como Entrenador (Medellín):
+- ⚽ **Sesión Técnica Sub-15** - Entrenamiento especializado
+- 💪 **Preparación Física Avanzada** - Acondicionamiento
+- 🏆 **Liga Regional Antioquia** - Partido oficial
+- 📊 **Evaluación con Coordinador** - Reunión técnica
+
+#### Como Jugador (Cali Basketball):
+- 🏀 **Práctica de Tiros Libres** - Entrenamiento personal
+- 🆚 **vs. Deportivo Cali Basket** - Partido amistoso
+- 🏥 **Revisión Médica Obligatoria** - Examen médico
+- 🥗 **Charla Nutricional** - Reunión educativa
+
+#### Como Padre (Barranquilla - hijo Juanito):
+- ⚽ **Fútbol Base Infantil** - Entrenamiento del hijo
+- 💰 **Pago Mensualidad + Uniforme** - Gestión de pagos
+- 🏥 **Examen Médico - Juanito** - Revisión médica del menor
+- 👨‍👩‍👧‍👦 **Reunión de Padres** - Información sobre torneos
+
+### 📄 Seeders Especializados Creados:
+
+#### **1. MultiRoleUserSeeder.php**
+**Ubicación**: `/database/seeders/MultiRoleUserSeeder.php`
+
+**Funcionalidad**:
+- Crea usuario principal "Juan Carlos Múltiple" con email `juan.multiple@test.co`
+- Crea usuario hijo "Juanito Múltiple" con email `juanito.multiple@test.co`
+- Asigna 4 roles diferentes en 4 clubes distintos:
+  - Propietario del Club en Bogotá FC
+  - Entrenador en Academia Medellín  
+  - Jugador en Cali Basketball Academy
+  - Padre/Acudiente en Escuela Barranquilla
+- Establece relaciones padre-hijo y asignaciones a equipos
+- Maneja automáticamente campos requeridos y validaciones de BD
+
+**Características técnicas**:
+- Validación de datos base (géneros, ciudades) con fallbacks
+- Adaptación automática a estructura real de tablas
+- Creación de registros en `pla_club_teams_trainers` y `pla_club_teams_players`
+- Configuración de permisos y roles usando Spatie Laravel Permission
+
+#### **2. MultiRoleEventsSeeder.php**  
+**Ubicación**: `/database/seeders/MultiRoleEventsSeeder.php`
+
+**Funcionalidad**:
+- Crea 16 eventos distribuidos equitativamente (4 por rol)
+- Eventos realistas con fechas en próximos 15 días
+- Diferentes tipos: training, match, meeting, payment, medical, social, tournament
+- Descripciones detalladas y ubicaciones específicas
+- Configuración de participantes y visibilidad apropiada
+
+**Eventos por Rol**:
+```php
+// PROPIETARIO (Bogotá FC) - 4 eventos
+- Reunión Directiva Mensual (meeting)
+- Copa Bogotá FC 2025 (tournament) 
+- Inauguración Nueva Sede (social)
+- Revisión Cobros Pendientes (payment)
+
+// ENTRENADOR (Medellín) - 4 eventos  
+- Sesión Técnica Sub-15 (training)
+- Preparación Física Avanzada (training)
+- Liga Regional Antioquia (match)
+- Evaluación con Coordinador (meeting)
+
+// JUGADOR (Cali Basketball) - 4 eventos
+- Práctica de Tiros Libres (training)
+- vs. Deportivo Cali Basket (match)
+- Revisión Médica Obligatoria (medical)
+- Charla Nutricional (meeting)
+
+// PADRE (Barranquilla) - 4 eventos
+- Fútbol Base Infantil (training) - incluye participación del hijo
+- Pago Mensualidad + Uniforme (payment)
+- Examen Médico - Juanito (medical)
+- Reunión de Padres (meeting)
+```
+
+**Características técnicas**:
+- Utiliza EventService para creación consistente
+- Fechas y horarios realistas distribuidos en 15 días
+- Configuración de participantes con rol específico
+- Manejo de errores con logging detallado
+- Integración con sistema de ubicaciones y visibilidad
+
+### 📁 Archivos del Sistema Creados:
+
+```
+saas_sport/database/seeders/
+├── MultiRoleUserSeeder.php      # Seeder del usuario multi-rol
+└── MultiRoleEventsSeeder.php    # Seeder de eventos para el usuario
+```
+
+**Dependencias del Sistema**:
+- ✅ EventService (App\Services\EventService)
+- ✅ Modelos: User, PlaEvent, PlaClubTeam, ParentChildRelationship
+- ✅ Spatie Laravel Permission para gestión de roles
+- ✅ Carbon para manejo de fechas
+- ✅ Seeders base: RealisticDataSeeder, ClubsRealisticsSeeder
+
+**Estructura de Base de Datos Utilizada**:
+```sql
+-- Tablas principales modificadas/utilizadas:
+users                          # Usuario principal y hijo
+model_has_roles               # Asignación de roles Spatie
+pla_club_teams_trainers       # Registro como entrenador
+pla_club_teams_players        # Registro como jugador  
+parent_child_relationships    # Relación padre-hijo
+pla_events                    # Eventos creados
+pla_event_participants        # Participaciones en eventos
+```
+
+### 🧪 Comandos para Crear el Escenario de Prueba:
+
+```bash
+# Crear usuario multi-rol con todos los roles asignados
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\MultiRoleUserSeeder
+
+# Crear todos los eventos para el usuario multi-rol
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\MultiRoleEventsSeeder
+```
+
+### 🎯 Casos de Uso a Probar:
+
+#### **Dashboard Multi-Rol:**
+- ✓ Selector de vista por rol (Propietario/Entrenador/Jugador/Padre)
+- ✓ Próximos eventos según rol seleccionado
+- ✓ Estadísticas contextuales por rol
+
+#### **Calendario Integrado:**
+- ✓ Eventos de todos los clubes en vista unificada
+- ✓ Filtros por club, tipo de evento y rol
+- ✓ Códigos de color por tipo de evento
+- ✓ Navegación entre meses
+
+#### **Permisos Contextuales:**
+- ✓ Creación de eventos según permisos del rol
+- ✓ Visibilidad de eventos (público/privado/socios)
+- ✓ Gestión de participantes
+
+#### **Notificaciones:**
+- ✓ Recordatorios específicos por rol
+- ✓ Notificaciones de confirmación/cancelación
+- ✓ Alertas de eventos próximos
+
+#### **Casos Edge:**
+- ⚠️ Eventos simultáneos en diferentes clubes
+- ⚠️ Cambio de club activo durante navegación
+- ⚠️ Conflictos de horarios entre roles
+
+### 🔍 Validaciones del Sistema:
+
+1. **Aislamiento de Datos**: Cada rol solo ve eventos de su club correspondiente
+2. **Permisos de Escritura**: Solo puede crear eventos donde tiene permisos
+3. **Participación Múltiple**: Puede participar en eventos de diferentes clubes
+4. **Notificaciones Inteligentes**: Recibe notificaciones apropiadas para cada rol
+5. **UX Coherente**: Interfaz adaptada al contexto del rol activo
+
+### 💡 Escenarios de Prueba Recomendados:
+
+1. **Login y Navegación**: Acceder con `juan.multiple@test.co` y explorar cada vista de rol
+2. **Calendario Completo**: Verificar que se muestren los 16 eventos creados
+3. **Filtros**: Probar filtros por club, tipo de evento y fechas
+4. **Creación de Eventos**: Intentar crear eventos desde diferentes roles
+5. **Confirmación/Rechazo**: Probar participación en eventos donde corresponda
+6. **Cambio de Contexto**: Alternar entre clubes y verificar que los datos cambien
+
+Este escenario permite validar completamente el sistema multi-tenant y la gestión de eventos desde todas las perspectivas posibles de usuario.
+
+### 🔧 Consideraciones Técnicas y Troubleshooting:
+
+#### **Prerequisitos**:
+```bash
+# IMPORTANTE: Ejecutar en orden:
+1. docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\RealisticDataSeeder
+2. docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\MultiRoleUserSeeder  
+3. docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\MultiRoleEventsSeeder
+```
+
+#### **Validaciones Automáticas**:
+- ✅ Verificación de existencia de clubes antes de asignar roles
+- ✅ Validación de datos base (géneros, ciudades) con fallbacks
+- ✅ Adaptación automática a estructura real de tablas de BD
+- ✅ Manejo de errores con mensajes descriptivos
+
+#### **Limitaciones Conocidas**:
+- ⚠️ Relación padre-hijo se asigna por rol pero no se crea el registro en BD (se puede hacer manualmente en la app)
+- ⚠️ Los eventos se crean para próximos 15 días desde la fecha de ejecución
+- ⚠️ Si los clubes base no existen, el seeder fallará con mensaje descriptivo
+
+#### **Personalización**:
+Para modificar el escenario, editar directamente:
+- `MultiRoleUserSeeder.php`: Cambiar datos del usuario, clubes asignados, roles
+- `MultiRoleEventsSeeder.php`: Modificar tipos de eventos, fechas, descripciones
+
+#### **Limpieza del Escenario**:
+```bash
+# Para eliminar solo los datos de prueba:
+docker compose exec saas_sport_app php artisan tinker --execute="
+\App\Models\User::where('email', 'juan.multiple@test.co')->delete();
+\App\Models\User::where('email', 'juanito.multiple@test.co')->delete();
+"
+```
+
+#### **Verificación del Escenario**:
+```bash
+# Verificar usuario creado:
+docker compose exec saas_sport_app php artisan tinker --execute="
+\$user = \App\Models\User::where('email', 'juan.multiple@test.co')->first();
+echo 'Usuario: ' . \$user->name . ' ' . \$user->lastname . PHP_EOL;
+echo 'Roles: ' . implode(', ', \$user->roles->pluck('name')->toArray()) . PHP_EOL;
+echo 'Eventos creados: ' . \App\Models\PlaEvent::where('created_by', \$user->id)->count() . PHP_EOL;
+"
+```
+
+### 🎯 **Resultado Final**:
+Un ecosistema completo de prueba que simula un usuario real con múltiples responsabilidades en diferentes clubes, permitiendo validar todas las funcionalidades del sistema de eventos desde perspectivas reales de uso.
+
+---
+
+## 🚀 Producción y Deploy
+
+### Infraestructura de Producción
+
+| Componente | Servicio | Detalles |
+|------------|----------|----------|
+| **API Backend** | DigitalOcean Droplet | Ubuntu 24.04, 2GB RAM, 1 vCPU |
+| **Base de Datos** | DigitalOcean Managed MySQL | `widdo-db-mysql-do-user-23948875-0.k.db.ondigitalocean.com:25060` |
+| **Archivos** | DigitalOcean Spaces | Almacenamiento de archivos y documentos |
+| **Emails** | Resend | Transaccional emails |
+| **Frontend** | Vercel/Netlify | (configurar según despliegue) |
+
+### URLs de Producción
+
+- **API**: https://api.widdo.co
+- **Frontend**: https://widdo.co
+- **Health Check**: https://api.widdo.co/api/health
+
+### Servidor de Producción
+
+**IP**: `167.71.88.31`
+**Usuario SSH**: `root`
+**Directorio de la app**: `/var/www/widdo`
+
+### Stack del Servidor
+
+- **OS**: Ubuntu 24.04 LTS
+- **PHP**: 8.3 con OPcache
+- **Web Server**: Nginx con SSL (Let's Encrypt)
+- **Process Manager**: Supervisor (para queue workers)
+- **Scheduler**: Cron (ejecuta `php artisan schedule:run` cada minuto)
+- **Queue Driver**: `database`
+
+---
+
+## 🔄 Deploy Automático con GitHub Actions
+
+### Configuración
+
+El deploy se ejecuta **automáticamente** cada vez que se hace push a la rama `main`.
+
+**Archivo**: `.github/workflows/deploy.yml`
+
+### Lo que ejecuta el deploy:
+
+```bash
+1. git pull origin main              # Trae los cambios
+2. composer install --no-dev         # Instala dependencias (sin dev)
+3. php artisan migrate --force       # Ejecuta migraciones
+4. php artisan config:clear          # Limpia caches
+5. php artisan cache:clear
+6. php artisan route:clear
+7. php artisan view:clear
+8. php artisan config:cache          # Reconstruye caches
+9. php artisan route:cache
+10. php artisan view:cache
+11. php artisan queue:restart        # Reinicia workers
+12. supervisorctl restart widdo-worker:*
+13. systemctl reload php8.3-fpm      # Recarga PHP-FPM
+```
+
+### GitHub Secrets Requeridos
+
+Configurar en: `Settings → Secrets and variables → Actions`
+
+| Secret Name | Valor |
+|-------------|-------|
+| `SERVER_HOST` | `167.71.88.31` |
+| `SERVER_USER` | `root` |
+| `SERVER_SSH_KEY` | Clave privada SSH del servidor |
+
+### Flujo de Trabajo
+
+```
+1. Desarrollador hace cambios locales
+2. git add . && git commit -m "mensaje"
+3. git push origin main
+4. GitHub Actions detecta el push
+5. Se conecta al servidor por SSH
+6. Ejecuta el script de deploy
+7. La aplicación se actualiza automáticamente
+```
+
+---
+
+## 🛠️ Comando `widdo` - Herramienta de Monitoreo
+
+El servidor tiene instalado un comando personalizado para monitoreo y gestión:
+
+### Comandos Disponibles
+
+```bash
+# Conectar al servidor
+ssh root@167.71.88.31
+
+# Ver estado completo
+widdo status    # o: widdo s
+
+# Logs
+widdo logs           # Ver últimos 50 logs
+widdo logs-follow    # Seguir logs en tiempo real (Ctrl+C para salir)
+widdo errors         # Ver últimos errores
+
+# Workers y Jobs
+widdo jobs           # Estado de cola de jobs
+widdo jobs-retry     # Reintentar jobs fallidos
+widdo jobs-clear     # Limpiar jobs fallidos
+widdo worker-status  # Estado de workers
+widdo worker-restart # Reiniciar workers
+
+# Caches
+widdo cache-clear    # Limpiar todos los caches
+widdo cache-rebuild  # Reconstruir caches
+
+# Nginx
+widdo nginx-test     # Testear configuración
+widdo nginx-reload   # Recargar Nginx
+
+# Base de Datos
+widdo db-status      # Probar conexión
+widdo migrate-status # Estado de migraciones
+
+# Scheduler
+widdo scheduler-run  # Ejecutar scheduler manualmente
+widdo scheduler-list # Ver tareas programadas
+
+# Deploy
+widdo deploy         # Ejecutar deploy manual
+
+# Mantenimiento
+widdo maintenance-on  # Activar modo mantenimiento
+widdo maintenance-off # Desactivar mantenimiento
+
+# Disco
+widdo disk           # Ver uso de disco
+
+# Ayuda
+widdo help           # Ver todos los comandos
+```
+
+### Ejemplo de `widdo status`
+
+```
+╔══════════════════════════════════════════════════════════════╗
+║                    WIDDO SERVER STATUS                       ║
+╚══════════════════════════════════════════════════════════════╝
+
+🖥️  SISTEMA
+   Uptime:    up 2 hours, 1 minute
+   Load:      0.08 0.03 0.01
+
+💾 RAM
+   Usado:     442Mi / 1.9Gi (242Mi libre)
+
+💿 DISCO
+   Usado:     2.5G / 48G (6%)
+
+⚙️  SERVICIOS
+   Nginx:     active
+   PHP-FPM:   active
+   Supervisor:active
+   Cron:      active
+
+👷 WORKERS
+   widdo-worker:widdo-worker_00     RUNNING   pid 51156, uptime 0:01:25
+
+📋 COLA DE JOBS
+   Pendientes: 0
+   Fallidos:   0
+
+🌐 API HEALTH
+   Estado:     ✅ OK (HTTP 200)
+   TTFB:       0.091872s
+```
+
+---
+
+## 📁 Archivos de Configuración en Producción
+
+### Nginx
+**Ubicación**: `/etc/nginx/sites-available/widdo`
+
+### Supervisor (Queue Workers)
+**Ubicación**: `/etc/supervisor/conf.d/widdo-worker.conf`
+
+```ini
+[program:widdo-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /var/www/widdo/artisan queue:work database --sleep=3 --tries=3 --max-time=3600 --memory=256
+autostart=true
+autorestart=true
+user=www-data
+numprocs=1
+redirect_stderr=true
+stdout_logfile=/var/www/widdo/storage/logs/worker.log
+stopwaitsecs=3600
+```
+
+### Cron (Scheduler)
+**Archivo**: `/etc/cron.d/widdo-scheduler`
+
+```cron
+* * * * * www-data cd /var/www/widdo && php artisan schedule:run >> /dev/null 2>&1
+```
+
+### PHP-FPM
+**Ubicación**: `/etc/php/8.3/fpm/pool.d/www.conf`
+
+Configuración optimizada para 2GB RAM:
+- `pm.max_children = 10`
+- `pm.start_servers = 2`
+- `pm.min_spare_servers = 1`
+- `pm.max_spare_servers = 3`
+- `memory_limit = 256M`
+
+### Script de Deploy Manual
+**Ubicación**: `/var/www/widdo/deploy.sh`
+
+---
+
+## 🔧 Tareas Programadas (Scheduler)
+
+Definidas en `app/Console/Kernel.php`:
+
+| Tarea | Horario | Descripción |
+|-------|---------|-------------|
+| `sanctum:prune-expired` | Diario | Limpia tokens expirados |
+| `app:generate-monthly-payments` | 1º de cada mes 6:00 AM | Genera pagos mensuales |
+| `ApplyLateFees` Job | Diario 7:00 AM | Aplica mora a pagos vencidos |
+| `SendPaymentReminders` Job | Diario 8:00 AM | Envía recordatorios de pago |
+| `SendEventReminders` Job | Diario 9:00 AM | Envía recordatorios de eventos |
+| `events:process-reminders` | Cada hora | Procesa eventos próximos |
+| `reminders:send-due` | Cada 5 min | Envía recordatorios pendientes |
+| `queue:work` | Cada minuto | Procesa cola de notificaciones |
+| Limpieza de notificaciones | Domingos 3:00 AM | Limpia notificaciones antiguas |
+
+---
+
+## 🆘 Troubleshooting de Producción
+
+### La API no responde
+```bash
+ssh root@167.71.88.31
+widdo status          # Ver estado general
+widdo nginx-test      # Verificar config de Nginx
+systemctl status nginx
+systemctl status php8.3-fpm
+```
+
+### Errores 500
+```bash
+widdo errors          # Ver últimos errores
+widdo logs            # Ver logs completos
+cat /var/www/widdo/storage/logs/laravel.log | tail -100
+```
+
+### Jobs no se procesan
+```bash
+widdo jobs            # Ver estado de cola
+widdo worker-status   # Ver workers
+widdo worker-restart  # Reiniciar workers
+```
+
+### Problemas de permisos
+```bash
+cd /var/www/widdo
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+```
+
+### Forzar deploy manual
+```bash
+ssh root@167.71.88.31
+widdo deploy
+# o ejecutar manualmente:
+cd /var/www/widdo && /var/www/widdo/deploy.sh
+```
+
+### Limpiar todo y reconstruir
+```bash
+ssh root@167.71.88.31
+widdo cache-clear
+widdo cache-rebuild
+widdo worker-restart
+widdo nginx-reload
+```
+
+---
+
+## 📊 Monitoreo y Health Checks
+
+### Endpoints de Health
+
+| Endpoint | Descripción |
+|----------|-------------|
+| `GET /api/health` | Health check completo con métricas |
+| `GET /api/health/live` | Liveness probe (¿está vivo?) |
+| `GET /api/health/ready` | Readiness probe (¿está listo?) |
+| `GET /api/health/cache` | Estado del cache |
+| `GET /api/health/metrics` | Métricas de la aplicación |
+
+### Ejemplo de respuesta `/api/health`
+
+```json
+{
+  "status": "ok",
+  "timestamp": "2026-01-20T16:22:10.063091Z",
+  "checks": {
+    "database": { "status": "healthy" },
+    "cache": { "status": "healthy" },
+    "queue": { "status": "healthy" },
+    "filesystem": { "status": "healthy" },
+    "memory": { "status": "healthy" }
+  },
+  "summary": {
+    "total_checks": 7,
+    "healthy": 6,
+    "health_percentage": 85.71
+  }
+}
+```
+
+---
+
+## 🔐 Seguridad en Producción
+
+### SSL/TLS
+- Certificado Let's Encrypt (auto-renovación con Certbot)
+- Forzar HTTPS en todas las rutas
+
+### Headers de Seguridad (Nginx)
+```nginx
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header X-Content-Type-Options "nosniff" always;
+add_header X-XSS-Protection "1; mode=block" always;
+```
+
+### Variables de Entorno Sensibles
+- Nunca commitear `.env` con credenciales reales
+- Usar GitHub Secrets para deploy
+- Las credenciales de BD están en el servidor, no en el repo
+
+### Acceso SSH
+- Solo por clave SSH (no password)
+- Clave específica para GitHub Actions

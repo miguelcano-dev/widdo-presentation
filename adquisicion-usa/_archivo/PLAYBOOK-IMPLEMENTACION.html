@@ -1,0 +1,169 @@
+<!-- ARCHIVADO 13-ago-2026 — checklist que manda montar Instantly (canal descartado) — sustituido por MOTOR/RUNBOOK.md + LANZAMIENTO-GO-NOGO.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo · Playbook de Implementación</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1e293b; --panel2:#243449; --line:#334155;
+    --ink:#e2e8f0; --mut:#94a3b8; --acc:#22d3ee; --done:#34d399; --warn:#fbbf24; --hot:#f472b6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.5;padding:0 16px}
+  .wrap{max-width:900px;margin:0 auto;padding:28px 0 80px}
+  h1{font-size:1.7rem;margin:0 0 4px}
+  .sub{color:var(--mut);margin:0 0 18px}
+  h2{font-size:1.1rem;margin:26px 0 6px;display:flex;align-items:center;gap:8px}
+  .phasebar{height:6px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:2px 0 10px}
+  .phasebar>i{display:block;height:100%;background:var(--done);width:0;transition:width .25s}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 14px;margin-bottom:14px}
+  .item{display:flex;gap:11px;align-items:flex-start;padding:9px 4px;border-bottom:1px solid rgba(255,255,255,.04)}
+  .item:last-child{border-bottom:none}
+  .item input{appearance:none;min-width:20px;height:20px;margin-top:2px;border:2px solid var(--mut);border-radius:6px;cursor:pointer;position:relative;transition:.15s}
+  .item input:checked{background:var(--done);border-color:var(--done)}
+  .item input:checked::after{content:"✓";position:absolute;color:#04231a;font-weight:900;font-size:13px;left:3px;top:-1px}
+  .item label{cursor:pointer;flex:1}
+  .item.done label{color:var(--mut);text-decoration:line-through}
+  .who{font-size:.72rem;padding:1px 7px;border-radius:99px;background:var(--panel2);color:var(--acc);margin-left:6px;white-space:nowrap;text-decoration:none!important}
+  .who.alwin{color:#a7f3d0}.who.miguel{color:#fbbf24}.who.agente{color:#f472b6}
+  .ref{font-size:.72rem;color:var(--mut);display:block;margin-top:2px}
+  .sub2{margin-left:26px;border-left:2px solid var(--line);padding-left:8px}
+  .top{position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .bigbar{height:12px;background:var(--panel2);border-radius:99px;overflow:hidden}
+  .bigbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--done));width:0;transition:width .3s}
+  .pct{font-size:.85rem;color:var(--mut);margin-top:6px}
+  .pct b{color:var(--ink)}
+  .note{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);border-radius:10px;padding:10px 13px;color:#fde68a;font-size:.85rem;margin:6px 0 14px}
+  .reset{background:none;border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:5px 10px;font-size:.75rem;cursor:pointer;float:right}
+  .tag{font-size:.68rem;padding:1px 7px;border-radius:99px;border:1px solid var(--line);color:var(--mut);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🚀 Widdo · Playbook de Implementación</h1>
+  <p class="sub">Checklist accionable. Se marca solo en tu navegador. Orden sugerido: Fundaciones → Outreach → Landing → Orgánico → Producto → Cierre.</p>
+
+  <div class="top">
+    <button class="reset" onclick="if(confirm('¿Borrar todo el progreso?')){localStorage.clear();location.reload()}">↺ Reset</button>
+    <div class="bigbar"><i id="bigbar"></i></div>
+    <div class="pct"><b id="pctnum">0%</b> completado · <span id="pctcount">0/0</span></div>
+  </div>
+
+  <p class="note">🎯 Validado por el análisis de Indie Hackers (B2B SaaS bootstrapped, igual que Widdo): el motor de crecimiento real es <b>SEO/contenido + boca a boca (product-led)</b>, no ads. Prioriza esos.</p>
+
+  <!-- FASE 0 -->
+  <h2>🧱 Fase 0 — Fundaciones <span class="tag">antes de enviar</span></h2>
+  <div class="phasebar"><i data-bar="0"></i></div>
+  <div class="card" data-phase="0">
+    <div class="item"><input type="checkbox" id="f0-1"><label for="f0-1">Definir la <b>oferta founding-partner</b> (¿X meses gratis? ¿% el primer año?) <span class="who miguel">Miguel</span><span class="ref">Se referencia en los follow-ups; hoy está como placeholder.</span></label></div>
+    <div class="item"><input type="checkbox" id="f0-2"><label for="f0-2">Montar <b>infra de envío</b>: dominio aparte (try-widdo.com) + SPF/DKIM/DMARC <span class="who miguel">Miguel</span><span class="ref">04-ENVIO-EMAIL-SETUP.md</span></label></div>
+    <div class="item"><input type="checkbox" id="f0-3"><label for="f0-3">Warm-up 2-3 semanas + cuenta <b>Instantly/Smartlead</b> <span class="who miguel">Miguel</span></label></div>
+    <div class="item"><input type="checkbox" id="f0-4"><label for="f0-4">Verificar emails de la lista (NeverBounce/ZeroBounce) <span class="who agente">Agente</span></label></div>
+    <div class="item"><input type="checkbox" id="f0-5"><label for="f0-5">Grabar <b>demo corto EN/ES</b> (Loom) para enlazar en la respuesta <span class="who miguel">Miguel</span></label></div>
+  </div>
+
+  <!-- FASE 1 -->
+  <h2>📧 Fase 1 — Outreach / Ventas <span class="tag">el motor de arranque</span></h2>
+  <div class="phasebar"><i data-bar="1"></i></div>
+  <div class="card" data-phase="1">
+    <div class="item"><input type="checkbox" id="f1-1"><label for="f1-1"><b>Torneos sweet-spot</b> (11 mensajes) — enviar 3-6 sem antes de su evento <span class="who alwin">Alwin</span><span class="ref">torneos/01-MENSAJES-TORNEOS.md · secuencia: Email1 → FU2 (oferta gratis) → FU3 break-up</span></label></div>
+    <div class="item"><input type="checkbox" id="f1-2"><label for="f1-2"><b>Florida P1</b> (ya pagan software) — 5-6/día por buzón <span class="who alwin">Alwin</span><span class="ref">03-TIER1-MENSAJES.md + 06-SECUENCIA-FOLLOWUPS-CLUBES.md</span></label></div>
+    <div class="item"><input type="checkbox" id="f1-3"><label for="f1-3">Florida P2 y P3 <span class="who alwin">Alwin</span></label></div>
+    <div class="item"><input type="checkbox" id="f1-4"><label for="f1-4"><b>Texas P1</b> → P2 → P3 <span class="who alwin">Alwin</span><span class="ref">texas/03-TIER1-MENSAJES-TX.md</span></label></div>
+    <div class="item"><input type="checkbox" id="f1-5"><label for="f1-5"><b>IG DM / WhatsApp</b> manuales (los que no tienen email) <span class="who alwin">Alwin</span></label></div>
+    <div class="item"><input type="checkbox" id="f1-6"><label for="f1-6">Trackear <b>respuestas</b> (no aperturas); parar secuencia al responder <span class="who agente">Agente</span></label></div>
+  </div>
+
+  <!-- FASE 2 -->
+  <h2>🖥️ Fase 2 — Landing de conversión</h2>
+  <div class="phasebar"><i data-bar="2"></i></div>
+  <div class="card" data-phase="2">
+    <div class="item"><input type="checkbox" id="f2-1"><label for="f2-1">Pasar el <b>BRIEF-LANDING.md</b> a un dev/agente <span class="who miguel">Miguel</span></label></div>
+    <div class="item"><input type="checkbox" id="f2-2"><label for="f2-2">Tabla de comparación (vs TeamSnap/SportsEngine/LeagueApps/GotSport) <span class="who agente">Agente</span></label></div>
+    <div class="item"><input type="checkbox" id="f2-3"><label for="f2-3">Publicar + metadata SEO ("TeamSnap/GotSport alternative", "software ligas en español") <span class="who agente">Agente</span></label></div>
+  </div>
+
+  <!-- FASE 3 -->
+  <h2>🌱 Fase 3 — Crecimiento orgánico <span class="tag">mediano plazo · compone</span></h2>
+  <div class="phasebar"><i data-bar="3"></i></div>
+  <div class="card" data-phase="3">
+    <div class="item"><input type="checkbox" id="f3-1"><label for="f3-1"><b>Video corto bilingüe</b> — banco de 10 ideas, 3-4/sem (nicho vacío) <span class="who agente">Agente</span><span class="ref">05-CRECIMIENTO-ORGANICO.md · el canal nº1 según Indie Hackers</span></label></div>
+    <div class="item"><input type="checkbox" id="f3-2"><label for="f3-2"><b>Facebook Groups</b> (aportar, no spam) <span class="who alwin">Alwin</span></label></div>
+    <div class="item"><input type="checkbox" id="f3-3"><label for="f3-3">Comentarios <b>evergreen en Reddit</b> ("GotSport alternative") <span class="who agente">Agente</span></label></div>
+    <div class="item"><input type="checkbox" id="f3-4"><label for="f3-4"><b>Comparison SEO pages</b> (una por keyword) <span class="who agente">Agente</span></label></div>
+    <div class="item"><input type="checkbox" id="f3-5"><label for="f3-5">Build-in-public en <b>LinkedIn</b> <span class="who miguel">Miguel</span></label></div>
+    <div class="item"><input type="checkbox" id="f3-6"><label for="f3-6"><b>Product-led</b>: "Powered by Widdo" + "¿tu club quiere esto?" en la app <span class="who miguel">Miguel</span><span class="ref">la "viralidad" real: boca a boca validado en Indie Hackers</span></label></div>
+  </div>
+
+  <!-- FASE 4 -->
+  <h2>🏆 Fase 4 — Producto Torneos <span class="tag hot" style="color:var(--hot)">gate técnico</span></h2>
+  <div class="phasebar"><i data-bar="4"></i></div>
+  <div class="card" data-phase="4">
+    <div class="item"><input type="checkbox" id="f4-1"><label for="f4-1"><b>Rehacer la optimización de scheduling</b> en git worktree aislado, verificada <span class="who agente">widdo-tech</span><span class="ref">OPTIMIZACION-STATUS.md · el intento anterior no bajó la velocidad</span></label></div>
+    <div class="sub2">
+      <div class="item"><input type="checkbox" id="f4-1a"><label for="f4-1a">optimizeSchedule sin N+1 (queries ~constantes)</label></div>
+      <div class="item"><input type="checkbox" id="f4-1b"><label for="f4-1b">generateSchedule ~lineal (índices en memoria)</label></div>
+      <div class="item"><input type="checkbox" id="f4-1c"><label for="f4-1c">tests de perf reescritos para asertar rapidez y PASAN</label></div>
+      <div class="item"><input type="checkbox" id="f4-1d"><label for="f4-1d">SchedulingServiceTest sigue 10/10</label></div>
+    </div>
+    <div class="item"><input type="checkbox" id="f4-2"><label for="f4-2">Ejecutar el <b>RUNBOOK-QA</b> (los 20 escenarios) <span class="who agente">widdo-qa</span><span class="ref">torneos/RUNBOOK-QA-TORNEOS.md</span></label></div>
+    <div class="item"><input type="checkbox" id="f4-3"><label for="f4-3">Revisar los <b>cambios fuera de scope</b> del agente (ToolDefinitions, PublicTournamentController) <span class="who miguel">Miguel</span></label></div>
+    <div class="item"><input type="checkbox" id="f4-4"><label for="f4-4">Decidir qué <b>gaps conocidos</b> cerrar (seeding rating/snake, volleyball sets, empate en eliminación) <span class="who miguel">Miguel</span></label></div>
+    <div class="item"><input type="checkbox" id="f4-5"><label for="f4-5"><b>Piloto "Widdo Cup" Fase 0</b>: powerear GRATIS el torneo de 1 prospecto <span class="who alwin">Alwin</span><span class="ref">torneos/PLAN-WIDDO-CUP.md</span></label></div>
+  </div>
+
+  <!-- FASE 5 -->
+  <h2>🤝 Fase 5 — Cierre y cascada</h2>
+  <div class="phasebar"><i data-bar="5"></i></div>
+  <div class="card" data-phase="5">
+    <div class="item"><input type="checkbox" id="f5-1"><label for="f5-1">Cerrar <b>1 design partner</b> (descuento fundador + migración gratis) <span class="who alwin">Alwin</span></label></div>
+    <div class="item"><input type="checkbox" id="f5-2"><label for="f5-2">Onboarding con el <b>agente de IA de Widdo</b> (paso a paso) <span class="who miguel">Miguel</span></label></div>
+    <div class="item"><input type="checkbox" id="f5-3"><label for="f5-3"><b>Caso de estudio</b> (video/números) → usar en outreach + contenido <span class="who miguel">Miguel</span></label></div>
+    <div class="item"><input type="checkbox" id="f5-4"><label for="f5-4"><b>Land-and-expand</b>: de 1 liga/torneo → sus equipos/clubes <span class="who alwin">Alwin</span></label></div>
+  </div>
+
+  <!-- REVISAR -->
+  <h2>🔁 Revisar / Mejorar <span class="tag">loop continuo</span></h2>
+  <div class="phasebar"><i data-bar="6"></i></div>
+  <div class="card" data-phase="6">
+    <div class="item"><input type="checkbox" id="f6-1"><label for="f6-1">Medir <b>reply rate por segmento</b> y doblar el canal que convierte</label></div>
+    <div class="item"><input type="checkbox" id="f6-2"><label for="f6-2">Re-tocar las no-respuestas a los <b>2-3 meses</b> con algo nuevo (caso, feature, temporada)</label></div>
+    <div class="item"><input type="checkbox" id="f6-3"><label for="f6-3">Afinar mensajes con lo que responde (asuntos, gancho)</label></div>
+    <div class="item"><input type="checkbox" id="f6-4"><label for="f6-4">Cuando funcione FL/TX → <b>replicar pipeline</b> en otro estado</label></div>
+  </div>
+
+  <p class="sub" style="margin-top:20px">Mapa completo de archivos: <code>INDEX.md</code> · Estado visual: <code>DASHBOARD.html</code></p>
+</div>
+
+<script>
+  const boxes = Array.from(document.querySelectorAll('.item input[type=checkbox]'));
+  // restaurar
+  boxes.forEach(b=>{
+    if(localStorage.getItem('widdo-'+b.id)==='1'){b.checked=true;b.closest('.item').classList.add('done')}
+    b.addEventListener('change',()=>{
+      localStorage.setItem('widdo-'+b.id, b.checked?'1':'0');
+      b.closest('.item').classList.toggle('done',b.checked);
+      update();
+    });
+  });
+  function update(){
+    const total=boxes.length, done=boxes.filter(b=>b.checked).length;
+    const pct= total? Math.round(done/total*100):0;
+    document.getElementById('bigbar').style.width=pct+'%';
+    document.getElementById('pctnum').textContent=pct+'%';
+    document.getElementById('pctcount').textContent=done+'/'+total;
+    // barras por fase
+    document.querySelectorAll('[data-phase]').forEach(card=>{
+      const bx=Array.from(card.querySelectorAll('input')), d=bx.filter(x=>x.checked).length;
+      const bar=document.querySelector('[data-bar="'+card.dataset.phase+'"]');
+      if(bar) bar.style.width=(bx.length? d/bx.length*100:0)+'%';
+    });
+  }
+  update();
+</script>
+</body>
+</html>

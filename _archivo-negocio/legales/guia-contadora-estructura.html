@@ -1,0 +1,761 @@
+<!-- ARCHIVADO 13-ago-2026 — asume Widdo SAS OPERATIVA; la SAS Colombia esta INACTIVA (foco USA-only). Retomar si se reactiva — sustituido por negocio/legales/transfer-pricing-agreement-final.md (marco vigente Cost+15%) -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Estructura Corporativa y Fiscal para Contadora</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        bg: '#0A0A0F',
+        surface: '#12121A',
+        surface2: '#1a1a2e',
+        border: '#2a2a3e',
+        txt: '#E8E8ED',
+        txt2: '#888',
+        green: '#00C853',
+        red: '#FF6B6B',
+        yellow: '#FECA57',
+        blue: '#54A0FF',
+        purple: '#A29BFE',
+        orange: '#FF9F43',
+        teal: '#00CEC9',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  body { background: #0A0A0F; }
+  .diagram-box { white-space: pre; line-height: 1.6; }
+  @medía print {
+    body { background: white; color: black; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body class="font-sans text-txt leading-relaxed">
+
+<!-- Header -->
+<div class="max-w-4xl mx-auto px-6 py-12">
+
+  <div class="mb-12">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="w-10 h-10 rounded-lg bg-green flex items-center justify-center">
+        <span class="text-bg font-bold text-lg">W</span>
+      </div>
+      <span class="text-txt2 text-sm font-mono">DOCUMENTO INTERNO — MARZO 2026</span>
+    </div>
+    <h1 class="text-3xl font-extrabold mb-2">Estructura Corporativa y Fiscal de <span class="text-green">Widdo</span></h1>
+    <p class="text-txt2 text-lg">Guía completa para la contadora: cómo están constituidas las empresas, cómo fluye el dinero, por qué se hace así, y qué debe hacer la SAS cada mes.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECCION 1: LAS DOS EMPRESAS -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">1. Las dos empresas</h2>
+
+    <p class="text-[#ccc] mb-6">Widdo opera con dos empresas en dos paises. Ambas son controladas por Miguel Angel Cano.</p>
+
+    <div class="grid md:grid-cols-2 gap-4 mb-6">
+      <!-- C Corp -->
+      <div class="bg-surface border border-blue/30 rounded-xl p-6">
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-3 h-3 rounded-full bg-blue"></div>
+          <h3 class="font-bold text-blue text-lg">Widdo Inc (C Corp)</h3>
+        </div>
+        <table class="w-full text-sm">
+          <tbody>
+            <tr><td class="text-txt2 py-1 pr-3">País</td><td class="text-txt py-1">Delaware, USA</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Creada via</td><td class="text-txt py-1">Stripe Atlas (marzo 2026)</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Dueños</td><td class="text-txt py-1">Miguel 70% + Alwin 30%</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Banco</td><td class="text-txt py-1">Mercury (USA, online)</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Impuesto</td><td class="text-txt py-1">21% federal sobre utilidades</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Para que</td><td class="text-txt py-1">Recibir pagos de TODOS los clientes del mundo, recibir inversión, emitir acciones</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SAS -->
+      <div class="bg-surface border border-green/30 rounded-xl p-6">
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-3 h-3 rounded-full bg-green"></div>
+          <h3 class="font-bold text-green text-lg">Widdo SAS (Colombia)</h3>
+        </div>
+        <table class="w-full text-sm">
+          <tbody>
+            <tr><td class="text-txt2 py-1 pr-3">País</td><td class="text-txt py-1">Colombia</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Estado</td><td class="text-txt py-1 font-semibold text-yellow">Por crear (marzo 2026)</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Dueño</td><td class="text-txt py-1">Miguel 100% (accionista único)</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Banco</td><td class="text-txt py-1">Bancolombia o Davivienda</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Regimen</td><td class="text-txt py-1 font-semibold text-green">RST (1.8%)</td></tr>
+            <tr><td class="text-txt2 py-1 pr-3">Para que</td><td class="text-txt py-1">Emplear a Miguel, facturar servicios a la C Corp, pagar impuestos CO</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Por qué NO es subsidiaria -->
+    <div class="bg-surface2 border-l-4 border-blue rounded-r-lg p-5 mb-6">
+      <p class="text-sm font-semibold text-blue mb-1">Por qué la SAS es de Miguel y NO subsidiaria de la C Corp?</p>
+      <p class="text-[#ccc] text-sm">Porque crearla como subsidiaria requiere apostillar documentos de USA, traducciones oficiales, y presentar Form 5471 anual al IRS (~$1,000 extra/año en contador). Al ser de Miguel directamente, se crea en 2 días por ~$400K COP. El Transfer Pricing funciona exactamente igual porque Miguel controla ambas empresas (= "partes relacionadas" tanto para el IRS como para la DIAN). Si un inversor lo pide en el futuro, se transfiere en un dia.</p>
+    </div>
+
+    <div class="bg-surface2 border-l-4 border-green rounded-r-lg p-5">
+      <p class="text-sm font-semibold text-green mb-1">La idea clave</p>
+      <p class="text-[#ccc] text-sm">La C Corp gana el dinero (recibe pagos de clientes). La SAS hace el trabajo (desarrollo, operación, soporte). La C Corp le paga a la SAS por ese trabajo. Eso reduce impuestos en USA (gasto deducible) y permite pagar salarios en Colombia de forma legal y eficiente (RST 1.8%).</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 2: COMO COBRAN LOS CLUBES -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">2. Cómo pagan los clubes (clientes)</h2>
+
+    <p class="text-[#ccc] mb-6">Widdo es un SaaS (Software as a Service) de gestión de clubes deportivos. Los clubes pagan una suscripción mensual para usar la plataforma. Hay clubes en Colombia, USA, y próximamente en otros países de LATAM.</p>
+
+    <!-- Diagrama -->
+    <div class="bg-surface border border-border rounded-xl p-6 mb-6">
+      <h3 class="font-semibold text-txt mb-4">Flujo de cobro</h3>
+      <div class="font-mono text-sm text-green diagram-box">
+CLUB DEPORTIVO (Colombia, USA, Mexico, etc.)
+       |
+       | Paga con tarjeta de crédito/débito
+       |
+       v
+STRIPE (pasarela de pagos, cuenta de la C Corp USA)
+       |
+       | Cobra en moneda local del club (COP, USD, MXN, etc.)
+       | Descuenta fees (2.9% doméstico USA / ~4.4% internacional)
+       | Deposita en USD
+       |
+       v
+MERCURY (cuenta bancaria de la C Corp en USA)
+       |
+       | El dinero ya esta en la C Corp
+       v
+   FIN DEL COBRO</div>
+    </div>
+
+    <div class="bg-surface2 border-l-4 border-green rounded-r-lg p-5 mb-6">
+      <p class="text-sm font-semibold text-green mb-1">Punto clave</p>
+      <p class="text-[#ccc] text-sm"><strong class="text-txt">TODOS los clubes del mundo le pagan a la C Corp via Stripe.</strong> Incluidos los colombianos. Es el modelo estándar de cualquier SaaS global: Slack, Notion, Figma, ChatGPT — todos cobran desde su empresa americana. No emiten factura electrónica DIAN a cada cliente. El club recibe un recibo/invoice de Stripe.</p>
+    </div>
+
+    <h3 class="font-semibold text-txt mb-3">Precios por mercado</h3>
+    <div class="bg-surface border border-border rounded-xl overflow-hidden mb-6">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-border">
+          <th class="text-green text-left p-3 text-xs uppercase">Mercado</th>
+          <th class="text-green text-left p-3 text-xs uppercase">Plan Basico</th>
+          <th class="text-green text-left p-3 text-xs uppercase">Plan Pro</th>
+          <th class="text-green text-left p-3 text-xs uppercase">Plan Enterprise</th>
+          <th class="text-green text-left p-3 text-xs uppercase">IVA/Tax</th>
+        </tr></thead>
+        <tbody class="text-[#ccc]">
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">USA</td><td class="p-3">$99 USD</td><td class="p-3">$199 USD</td><td class="p-3">$349 USD</td><td class="p-3 text-txt2">Sales tax aparte (Stripe lo maneja)</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Colombia</td><td class="p-3">$69,000 COP</td><td class="p-3">$129,000 COP</td><td class="p-3">$299,000 COP</td><td class="p-3 text-green font-semibold">$0 IVA — SaaS excluido</td></tr>
+          <tr><td class="p-3 font-semibold text-txt">Mexico</td><td class="p-3">$499 MXN</td><td class="p-3">$899 MXN</td><td class="p-3">$1,999 MXN</td><td class="p-3 text-txt2">IVA local lo maneja el comprador</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-surface2 border-l-4 border-yellow rounded-r-lg p-5">
+      <p class="text-sm font-semibold text-yellow mb-1">IVA en Colombia</p>
+      <p class="text-[#ccc] text-sm">Widdo <strong class="text-txt">NO cobra IVA</strong>. Los servicios de computación en la nube (SaaS) están <strong class="text-txt">excluidos de IVA</strong> según el Artículo 476, Numeral 21 del Estatuto Tributario, confirmado por la DIAN en Oficio 190 de marzo 2024. La factura va sin IVA: subtotal = total. Los precios que pagan los clubes colombianos son netos ($129,000 COP = $129,000 COP de revenue para Widdo).</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 3: LA SAS NO FACTURA A CLUBES -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">3. Qué factura la SAS (y que NO factura)</h2>
+
+    <div class="grid md:grid-cols-2 gap-4 mb-6">
+      <div class="bg-surface border border-red/30 rounded-xl p-6">
+        <h3 class="font-bold text-red mb-3">La SAS NO hace esto</h3>
+        <ul class="text-[#ccc] text-sm space-y-2">
+          <li class="flex items-start gap-2"><span class="text-red mt-0.5">&#10007;</span> Facturar a clubes individuales</li>
+          <li class="flex items-start gap-2"><span class="text-red mt-0.5">&#10007;</span> Cobrar suscripciones</li>
+          <li class="flex items-start gap-2"><span class="text-red mt-0.5">&#10007;</span> Recibir pagos de clientes</li>
+          <li class="flex items-start gap-2"><span class="text-red mt-0.5">&#10007;</span> Emitir factura electrónica a cada club</li>
+          <li class="flex items-start gap-2"><span class="text-red mt-0.5">&#10007;</span> Vender el producto directamente</li>
+        </ul>
+      </div>
+      <div class="bg-surface border border-green/30 rounded-xl p-6">
+        <h3 class="font-bold text-green mb-3">La SAS SI hace esto</h3>
+        <ul class="text-[#ccc] text-sm space-y-2">
+          <li class="flex items-start gap-2"><span class="text-green mt-0.5">&#10003;</span> Emplear a Miguel (nómina, aportes PILA)</li>
+          <li class="flex items-start gap-2"><span class="text-green mt-0.5">&#10003;</span> Pagar infraestructura (servidores, email, IA)</li>
+          <li class="flex items-start gap-2"><span class="text-green mt-0.5">&#10003;</span> Emitir <strong class="text-txt">UNA factura mensual</strong> a la C Corp</li>
+          <li class="flex items-start gap-2"><span class="text-green mt-0.5">&#10003;</span> Recibir wire mensual de la C Corp (Mercury → banco CO)</li>
+          <li class="flex items-start gap-2"><span class="text-green mt-0.5">&#10003;</span> Pagar RST bimestral</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-surface border border-border rounded-xl p-6 mb-6">
+      <h3 class="font-semibold text-txt mb-3">Ejemplo de la única factura que emite la SAS cada mes</h3>
+      <p class="text-txt2 text-xs mb-3">Ejemplo con salario de $3,500 USD (~$14,700,000 COP). TRM referencia: $4,200 COP/USD</p>
+      <div class="font-mono text-sm text-[#ccc] bg-bg rounded-lg p-5 border border-border">
+        <p class="text-green font-semibold mb-3">WIDDO SAS — NIT: XXX.XXX.XXX-X</p>
+        <p class="text-txt2 mb-3">Régimen Simple de Tributación</p>
+        <p class="mb-1"><span class="text-txt2">Cliente:</span> Widdo Inc (C Corp Delaware)</p>
+        <p class="mb-1"><span class="text-txt2">EIN:</span> XX-XXXXXXX</p>
+        <p class="mb-4"><span class="text-txt2">Periodo:</span> Abril 2026</p>
+        <table class="w-full mb-3">
+          <thead><tr class="border-b border-border">
+            <th class="text-left text-txt2 pb-2 text-xs">Servicio</th>
+            <th class="text-right text-txt2 pb-2 text-xs">Costo real</th>
+            <th class="text-right text-txt2 pb-2 text-xs">+ 20% markup</th>
+          </tr></thead>
+          <tbody>
+            <tr class="border-b border-border/30"><td class="py-2">Desarrollo de software (salario)</td><td class="text-right py-2">$14,700,000</td><td class="text-right py-2">$17,640,000</td></tr>
+            <tr class="border-b border-border/30"><td class="py-2">Aportes patronales (salud, pensión, ARL, caja)</td><td class="text-right py-2">$2,574,800</td><td class="text-right py-2">$3,089,760</td></tr>
+            <tr class="border-b border-border/30"><td class="py-2">Infraestructura (servidores, email, IA, licencias)</td><td class="text-right py-2">$651,000</td><td class="text-right py-2">$781,200</td></tr>
+          </tbody>
+        </table>
+        <div class="border-t border-border pt-3 space-y-1">
+          <div class="flex justify-between"><span class="text-txt2">Subtotal costos:</span><span>$17,925,800</span></div>
+          <div class="flex justify-between"><span class="text-txt2">Markup 20%:</span><span>$3,585,160</span></div>
+          <div class="flex justify-between"><span class="text-txt2">IVA:</span><span class="text-green">$0 (Exportación de servicios de software)</span></div>
+          <div class="flex justify-between font-bold text-lg mt-2 pt-2 border-t border-border"><span>TOTAL:</span><span class="text-green">$21,510,960 COP</span></div>
+          <div class="flex justify-between text-txt2 text-xs mt-1"><span>Equivalente USD (TRM $4,200):</span><span>~$5,122 USD</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-surface2 border-l-4 border-blue rounded-r-lg p-5">
+      <p class="text-sm font-semibold text-blue mb-1">Por qué la SAS no le factura a cada club?</p>
+      <p class="text-[#ccc] text-sm">Porque los clubes le pagan a la C Corp, no a la SAS. La SAS es <strong class="text-txt">proveedora de servicios de la C Corp</strong>, no vendedora del producto. Es el mismo modelo que usan todas las empresas de tecnología globales: la empresa americana vende, la empresa local presta servicios internos. Si algún club colombiano necesita factura con NIT para deducir, se evalúa caso por caso, pero no es la norma.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 4: TRANSFER PRICING -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">4. Transfer Pricing (Precios de Transferencia)</h2>
+
+    <h3 class="font-semibold text-txt mb-3">Qué es y por qué existe</h3>
+    <p class="text-[#ccc] mb-6">Cuando dos empresas del mismo dueño en diferentes países hacen negocios entre si, tanto el IRS (USA) como la DIAN (Colombia) exigen que el precio sea "de mercado" — lo que cobrarían dos empresas independientes. Esto evita que se muevan ganancias de un pais a otro para evadir impuestos. Se llama <strong class="text-txt">Transfer Pricing</strong> o "precios de transferencia".</p>
+
+    <h3 class="font-semibold text-txt mb-3">El método: Cost Plus 20%</h3>
+    <p class="text-[#ccc] mb-4">El método estándar mundial para servicios de software entre empresas relacionadas es <strong class="text-txt">Cost Plus</strong>: la SAS suma todos sus costos reales del mes y agrega un <strong class="text-txt">markup del 20%</strong>. Ese 20% es aceptado tanto por el IRS como por la DIAN como precio arm's length (precio de mercado).</p>
+
+    <div class="bg-surface border border-green/30 rounded-xl p-6 mb-6 text-center">
+      <p class="font-mono text-xl text-green font-bold">Factura mensual = (Todos los costos de la SAS) x 1.20</p>
+      <p class="text-txt2 text-sm mt-2">La utilidad de la SAS siempre es ese 20% de markup</p>
+    </div>
+
+    <h3 class="font-semibold text-txt mb-3">Qué entra en "costos de la SAS"</h3>
+    <p class="text-txt2 text-xs mb-3">Valores en pesos colombianos. TRM referencia: $4,200 COP/USD (marzo 24, 2026)</p>
+    <div class="bg-surface border border-border rounded-xl overflow-hidden mb-6">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-border">
+          <th class="text-green text-left p-3 text-xs uppercase">Categoría</th>
+          <th class="text-green text-left p-3 text-xs uppercase">Detalle</th>
+          <th class="text-green text-right p-3 text-xs uppercase">% / Base</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Rango COP/mes</th>
+        </tr></thead>
+        <tbody class="text-[#ccc]">
+          <tr class="border-b border-border/50 bg-surface2/50"><td colspan="4" class="p-3 text-txt2 text-xs font-semibold uppercase">Nomina</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Salario Miguel</td><td class="p-3">Salario integral (bruto)</td><td class="p-3 text-right font-mono text-txt2">—</td><td class="p-3 text-right font-mono">$14,700,000 — $26,880,000</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Salud patronal</td><td class="p-3">Sobre el 70% del salario</td><td class="p-3 text-right font-mono text-txt2">8.5%</td><td class="p-3 text-right font-mono">$874,650 — $1,599,360</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Pensión patronal</td><td class="p-3">Sobre el 70% del salario</td><td class="p-3 text-right font-mono text-txt2">12%</td><td class="p-3 text-right font-mono">$1,234,800 — $2,257,920</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">ARL</td><td class="p-3">Riesgo I, sobre el 70%</td><td class="p-3 text-right font-mono text-txt2">0.522%</td><td class="p-3 text-right font-mono">$53,700 — $98,200</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Caja Compensacion</td><td class="p-3">Sobre el 70% del salario</td><td class="p-3 text-right font-mono text-txt2">4%</td><td class="p-3 text-right font-mono">$411,600 — $752,640</td></tr>
+          <tr class="border-b border-border/50 bg-surface2"><td class="p-3 font-bold text-txt" colspan="3">Subtotal nómina</td><td class="p-3 text-right font-mono font-bold">$17,274,750 — $31,588,120</td></tr>
+          <tr class="border-b border-border/50 bg-surface2/50"><td colspan="4" class="p-3 text-txt2 text-xs font-semibold uppercase">Infraestructura (se paga en USD, convertido a COP)</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">DigitalOcean</td><td class="p-3">Servidores de la plataforma</td><td class="p-3 text-right font-mono text-txt2">$27 USD</td><td class="p-3 text-right font-mono">$113,400</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Resend</td><td class="p-3">Emails transaccionales</td><td class="p-3 text-right font-mono text-txt2">$20 USD</td><td class="p-3 text-right font-mono">$84,000</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Claude / IA</td><td class="p-3">Herramienta de desarrollo e IA</td><td class="p-3 text-right font-mono text-txt2">$100 USD</td><td class="p-3 text-right font-mono">$420,000</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Apple Developer</td><td class="p-3">Licencia app iOS (prorrateado)</td><td class="p-3 text-right font-mono text-txt2">$8 USD</td><td class="p-3 text-right font-mono">$33,600</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Dominio widdo.co</td><td class="p-3">Dominio web (prorrateado)</td><td class="p-3 text-right font-mono text-txt2">$0.25 USD</td><td class="p-3 text-right font-mono">$1,050</td></tr>
+          <tr class="bg-surface2"><td class="p-3 font-bold text-txt" colspan="3">Subtotal infra</td><td class="p-3 text-right font-mono font-bold">$652,050</td></tr>
+          <tr class="bg-green/5 border-t-2 border-green/30"><td class="p-3 font-extrabold text-green text-base" colspan="3">TOTAL COSTOS SAS</td><td class="p-3 text-right font-mono font-extrabold text-green text-base">$17,926,800 — $32,240,170</td></tr>
+          <tr class="bg-green/10"><td class="p-3 font-extrabold text-green text-base" colspan="3">FACTURA A C CORP (+20%)</td><td class="p-3 text-right font-mono font-extrabold text-green text-base">$21,512,160 — $38,688,204</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Beneficios para las dos empresas -->
+    <h3 class="font-semibold text-txt mb-3">Por qué conviene este esquema</h3>
+    <div class="grid md:grid-cols-2 gap-4 mb-6">
+      <div class="bg-surface border border-blue/30 rounded-xl p-5">
+        <h4 class="font-semibold text-blue text-sm mb-2">Para la C Corp (USA)</h4>
+        <p class="text-[#ccc] text-sm">Todo lo que paga a la SAS es <strong class="text-txt">gasto deducible</strong>. Reduce la utilidad gravable al 21% federal. Si la C Corp factura $20K/mes y paga $9K a la SAS + $2.5K a Alwin, su utilidad gravable es solo $8.5K en vez de $20K. Menos utilidad = menos impuesto.</p>
+      </div>
+      <div class="bg-surface border border-green/30 rounded-xl p-5">
+        <h4 class="font-semibold text-green text-sm mb-2">Para la SAS (Colombia)</h4>
+        <p class="text-[#ccc] text-sm">Recibe el dinero como ingreso por <strong class="text-txt">exportación de servicios</strong>. Paga RST 1.8% sobre el total (no 35% régimen ordinario). IVA = $0 porque es exportación de servicios de software. Es la forma más eficiente de mover dinero de USA a Colombia legalmente.</p>
+      </div>
+    </div>
+
+    <div class="bg-surface2 border-l-4 border-yellow rounded-r-lg p-5">
+      <p class="text-sm font-semibold text-yellow mb-1">Qué pasa si NO se hace Transfer Pricing?</p>
+      <p class="text-[#ccc] text-sm">La alternativa sería que Miguel cobre dividendos de la C Corp. Eso paga 21% corporate tax + 30% withholding tax = <strong class="text-txt">carga fiscal del 44.7%</strong>. Con Transfer Pricing la carga es ~15%. La diferencia es enorme.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 5: POR QUE INFRA DESDE LA SAS -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">5. Por qué la infraestructura se paga desde la SAS</h2>
+
+    <p class="text-[#ccc] mb-4">Cada gasto que paga la SAS <strong class="text-txt">engrosa la base del Cost Plus 20%</strong>. Es decir, genera ganancia adicional con impuesto mínimo (RST 1.8%).</p>
+
+    <div class="bg-surface border border-border rounded-xl p-6 mb-6">
+      <h3 class="font-semibold text-txt mb-3">Ejemplo: servidor DigitalOcean ($27 USD = $113,400 COP/mes)</h3>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between items-center py-2 border-b border-border/30">
+          <span class="text-[#ccc]">SAS paga DigitalOcean:</span>
+          <span class="font-mono text-txt">$113,400</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-border/30">
+          <span class="text-[#ccc]">SAS factura a C Corp (+20%):</span>
+          <span class="font-mono text-txt">$136,080</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-border/30">
+          <span class="text-[#ccc]">Ganancia para la SAS:</span>
+          <span class="font-mono text-green">$22,680</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-border/30">
+          <span class="text-[#ccc]">RST sobre esa ganancia (1.8%):</span>
+          <span class="font-mono text-txt2">-$408</span>
+        </div>
+        <div class="flex justify-between items-center py-2 font-bold">
+          <span class="text-txt">Ganancia neta por el servidor:</span>
+          <span class="font-mono text-green">$22,272 COP/mes</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-[#ccc] mb-4">Si la C Corp pagara estos gastos directamente, se deducirian al 21% en USA ($5.67 de ahorro fiscal). Pero pasandolos por la SAS, se deducen igual en la C Corp (como parte de la factura) Y la SAS gana extra.</p>
+
+    <div class="bg-surface border border-border rounded-xl overflow-hidden mb-6">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-border">
+          <th class="text-green text-left p-3 text-xs uppercase">Servicio</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Costo real</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Factura (+20%)</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Markup neto</th>
+        </tr></thead>
+        <tbody class="text-[#ccc]">
+          <tr class="border-b border-border/50"><td class="p-3">DigitalOcean</td><td class="p-3 text-right font-mono">$113,400</td><td class="p-3 text-right font-mono">$136,080</td><td class="p-3 text-right font-mono text-green">$22,680</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3">Resend (emails)</td><td class="p-3 text-right font-mono">$84,000</td><td class="p-3 text-right font-mono">$100,800</td><td class="p-3 text-right font-mono text-green">$16,800</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3">Claude / IA</td><td class="p-3 text-right font-mono">$420,000</td><td class="p-3 text-right font-mono">$504,000</td><td class="p-3 text-right font-mono text-green">$84,000</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3">Apple Developer</td><td class="p-3 text-right font-mono">$33,600</td><td class="p-3 text-right font-mono">$40,320</td><td class="p-3 text-right font-mono text-green">$6,720</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3">Dominio</td><td class="p-3 text-right font-mono">$1,050</td><td class="p-3 text-right font-mono">$1,260</td><td class="p-3 text-right font-mono text-green">$210</td></tr>
+          <tr class="bg-surface2"><td class="p-3 font-bold text-txt">Total</td><td class="p-3 text-right font-mono font-bold">$652,050</td><td class="p-3 text-right font-mono font-bold">$782,460</td><td class="p-3 text-right font-mono font-bold text-green">$130,410/mes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="font-semibold text-txt mb-3">Lo que SI paga la C Corp directamente</h3>
+    <p class="text-[#ccc] text-sm mb-3">Gastos que son propios de la entidad legal americana, no de la operación de la plataforma:</p>
+    <div class="bg-surface border border-border rounded-xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-border">
+          <th class="text-blue text-left p-3 text-xs uppercase">Servicio</th>
+          <th class="text-blue text-right p-3 text-xs uppercase">Costo</th>
+          <th class="text-blue text-left p-3 text-xs uppercase">Por qué desde C Corp</th>
+        </tr></thead>
+        <tbody class="text-[#ccc]">
+          <tr class="border-b border-border/50"><td class="p-3">Stripe Atlas</td><td class="p-3 text-right font-mono">$500 (una vez)</td><td class="p-3">Constitución de la C Corp</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3">Registered Agent</td><td class="p-3 text-right font-mono">~$100/año</td><td class="p-3">Obligación legal Delaware</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3">Franchise Tax</td><td class="p-3 text-right font-mono">~$400/año</td><td class="p-3">Impuesto de la C Corp</td></tr>
+          <tr class="border-b border-border/50"><td class="p-3">Salario Alwin (W-2)</td><td class="p-3 text-right font-mono">$2,500/mes</td><td class="p-3">Empleado en USA, vive en Florida</td></tr>
+          <tr><td class="p-3">Stripe fees</td><td class="p-3 text-right font-mono">2.9% + 30c</td><td class="p-3">Comisión sobre revenue</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 6: RST vs ORDINARIO -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">6. RST vs Régimen Ordinario — con números reales</h2>
+
+    <p class="text-[#ccc] mb-4">Como la factura de la SAS siempre es <strong class="text-txt">costos + 20%</strong>, la utilidad siempre es el 16.7% del ingreso (20/120). Esto hace que la comparación sea matemática pura:</p>
+
+    <div class="grid md:grid-cols-2 gap-4 mb-6">
+      <div class="bg-surface border border-green/30 rounded-xl p-5 text-center">
+        <p class="text-green font-bold text-lg mb-1">RST</p>
+        <p class="text-3xl font-extrabold text-green mb-1">1.8%</p>
+        <p class="text-txt2 text-sm">del ingreso total</p>
+      </div>
+      <div class="bg-surface border border-red/30 rounded-xl p-5 text-center">
+        <p class="text-red font-bold text-lg mb-1">Ordinario</p>
+        <p class="text-3xl font-extrabold text-red mb-1">5.8%</p>
+        <p class="text-txt2 text-sm">efectivo (35% x 16.7% utilidad)</p>
+      </div>
+    </div>
+
+    <p class="text-[#ccc] mb-4 text-sm"><strong class="text-txt">RST es 3.2 veces más barato. Siempre.</strong> Independiente del monto, porque el margen del Transfer Pricing es fijo al 20%.</p>
+
+    <h3 class="font-semibold text-txt mb-3">Escenarios con salario de Miguel entre $3,500 y $6,400 USD/mes</h3>
+    <p class="text-txt2 text-xs mb-3">Todos los valores en COP. TRM referencia: $4,200 COP/USD</p>
+    <div class="bg-surface border border-border rounded-xl overflow-hidden mb-6">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-border">
+          <th class="text-green text-left p-3 text-xs uppercase">Salario Miguel</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Costos SAS</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Factura C Corp</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Utilidad</th>
+          <th class="text-green text-right p-3 text-xs uppercase">RST (1.8%)</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Ordinario (35%)</th>
+          <th class="text-green text-right p-3 text-xs uppercase">Ahorro RST</th>
+        </tr></thead>
+        <tbody class="text-[#ccc]">
+          <tr class="border-b border-border/50">
+            <td class="p-3 font-semibold text-txt">$14.7M<br><span class="text-txt2 text-xs">($3,500 USD)</span></td>
+            <td class="p-3 text-right font-mono">$17,926,800</td>
+            <td class="p-3 text-right font-mono">$21,512,160</td>
+            <td class="p-3 text-right font-mono">$3,585,360</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$387,219</td>
+            <td class="p-3 text-right font-mono text-red">$1,254,876</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$867,657</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="p-3 font-semibold text-txt">$16.8M<br><span class="text-txt2 text-xs">($4,000 USD)</span></td>
+            <td class="p-3 text-right font-mono">$20,394,650</td>
+            <td class="p-3 text-right font-mono">$24,473,580</td>
+            <td class="p-3 text-right font-mono">$4,078,930</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$440,524</td>
+            <td class="p-3 text-right font-mono text-red">$1,427,626</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$987,101</td>
+          </tr>
+          <tr class="border-b border-border/50">
+            <td class="p-3 font-semibold text-txt">$21M<br><span class="text-txt2 text-xs">($5,000 USD)</span></td>
+            <td class="p-3 text-right font-mono">$25,330,250</td>
+            <td class="p-3 text-right font-mono">$30,396,300</td>
+            <td class="p-3 text-right font-mono">$5,066,050</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$547,133</td>
+            <td class="p-3 text-right font-mono text-red">$1,773,118</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$1,225,984</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-semibold text-txt">$26.9M<br><span class="text-txt2 text-xs">($6,400 USD)</span></td>
+            <td class="p-3 text-right font-mono">$32,240,170</td>
+            <td class="p-3 text-right font-mono">$38,688,204</td>
+            <td class="p-3 text-right font-mono">$6,448,034</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$696,388</td>
+            <td class="p-3 text-right font-mono text-red">$2,256,812</td>
+            <td class="p-3 text-right font-mono text-green font-bold">$1,560,424</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-surface border border-border rounded-xl overflow-hidden mb-6">
+      <div class="p-4 border-b border-border bg-surface2">
+        <h4 class="font-semibold text-txt text-sm">Ahorro ANUAL con RST vs Ordinario</h4>
+      </div>
+      <div class="grid grid-cols-4 text-center p-4 gap-4">
+        <div>
+          <p class="text-txt2 text-xs mb-1">Salario $14.7M</p>
+          <p class="text-green font-bold text-xl">$10.4M</p>
+          <p class="text-txt2 text-xs">COP/año</p>
+        </div>
+        <div>
+          <p class="text-txt2 text-xs mb-1">Salario $16.8M</p>
+          <p class="text-green font-bold text-xl">$11.8M</p>
+          <p class="text-txt2 text-xs">COP/año</p>
+        </div>
+        <div>
+          <p class="text-txt2 text-xs mb-1">Salario $21M</p>
+          <p class="text-green font-bold text-xl">$14.7M</p>
+          <p class="text-txt2 text-xs">COP/año</p>
+        </div>
+        <div>
+          <p class="text-txt2 text-xs mb-1">Salario $26.9M</p>
+          <p class="text-green font-bold text-xl">$18.7M</p>
+          <p class="text-txt2 text-xs">COP/año</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Argumento flujo de caja -->
+    <div class="bg-surface2 border-l-4 border-yellow rounded-r-lg p-5 mb-6">
+      <p class="text-sm font-semibold text-yellow mb-2">Sobre el argumento del flujo de caja</p>
+      <p class="text-[#ccc] text-sm mb-2">Es cierto que el RST se paga bimestralmente sobre ingresos (tengas o no utilidad), mientras que el Ordinario se paga anualmente sobre utilidad. Pero con un margen fijo del 20%, el RST bimestral sería:</p>
+      <p class="text-sm font-mono text-green text-center my-3">Salario $21M → RST bimestral = $547,133 x 2 meses = $1,094,266 cada 2 meses</p>
+      <p class="text-[#ccc] text-sm">Es un monto bajo que no afecta el flujo de caja significativamente. En Ordinario pagarías $21,277,416 de golpe al final del año. El RST distribuye el pago en 6 cuotas pequeñas de ~$1.1M — mejor para flujo de caja, no peor.</p>
+    </div>
+
+    <!-- Cuando Ordinario gana -->
+    <div class="bg-surface2 border-l-4 border-purple rounded-r-lg p-5">
+      <p class="text-sm font-semibold text-purple mb-1">Único caso donde Ordinario ganaría</p>
+      <p class="text-[#ccc] text-sm">Si el margen fuera menor al 5.1% (es decir, que de cada $100 de ingreso la utilidad fuera menor a $5.10). Pero con Transfer Pricing el margen siempre es 20% — no es variable, es contractual. No hay escenario donde Ordinario sea mejor para esta estructura.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 7: FLUJO COMPLETO MES A MES -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">7. Flujo completo — paso a paso cada mes</h2>
+
+    <div class="bg-surface border border-border rounded-xl p-6 mb-6">
+      <h3 class="font-semibold text-txt mb-4">Ejemplo con salario de $5,000 USD/mes ($21,000,000 COP). TRM: $4,200</h3>
+      <div class="space-y-4">
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-blue/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-blue font-bold text-sm">1</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">Clubes pagan suscripciones via Stripe</p>
+            <p class="text-txt2 text-sm">Stripe cobra en moneda local, deposita USD en Mercury (C Corp). Ingresos varían según clubes activos.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-blue/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-blue font-bold text-sm">2</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">C Corp paga salario W-2 a Alwin (co-founder en USA)</p>
+            <p class="text-txt2 text-sm">$2,500 bruto (~$10,500,000 COP) + $200 employer taxes = ~$2,700 via payroll USA. Esto NO pasa por la SAS.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-green/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-green font-bold text-sm">3</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">SAS emite factura mensual a la C Corp</p>
+            <p class="text-txt2 text-sm">Costos $25,330,250 + 20% markup = <strong class="text-green">$30,396,300 COP (~$7,237 USD)</strong>. Concepto: "Software development and platform operation services".</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-green/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-green font-bold text-sm">4</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">C Corp hace wire de Mercury al banco de la SAS en Colombia</p>
+            <p class="text-txt2 text-sm">$7,237 USD. El banco colombiano convierte a COP a la TRM del día (~$30,395,400 COP).</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-green/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-green font-bold text-sm">5</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">SAS paga nómina de Miguel</p>
+            <p class="text-txt2 text-sm">$21,000,000 COP bruto ($5,000 USD). Salario integral. Miguel recibe neto ~$18,060,000 COP después de descuentos (salud 4%, pension 4%, retención ~3-6%).</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-green/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-green font-bold text-sm">6</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">SAS paga aportes patronales (PILA)</p>
+            <p class="text-txt2 text-sm">Salud 8.5% ($1,249,500) + Pensión 12% ($1,764,000) + ARL 0.522% ($76,700) + Caja 4% ($588,000) = <strong class="text-txt">$3,678,200 COP/mes</strong> (~$876 USD). Calculados sobre el 70% del salario integral ($14,700,000).</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-green/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-green font-bold text-sm">7</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">SAS paga infraestructura</p>
+            <p class="text-txt2 text-sm">DigitalOcean $113,400 + Resend $84,000 + Claude $420,000 + licencias $34,650 = <strong class="text-txt">$652,050 COP/mes</strong> (~$155 USD).</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-yellow/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-yellow font-bold text-sm">8</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">SAS paga RST bimestral (cada 2 meses)</p>
+            <p class="text-txt2 text-sm">1.8% sobre ingresos del bimestre. Con $30,396,300/mes = ~$1,094,267 cada 2 meses (~$547,133 COP/mes promedio).</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-green/20 flex items-center justify-center flex-shrink-0 mt-0.5"><span class="text-green font-bold text-sm">9</span></div>
+          <div>
+            <p class="font-semibold text-txt text-sm">Lo que queda es utilidad de la SAS</p>
+            <p class="text-txt2 text-sm">Del 20% de markup: ~$5,066,050 COP/mes (~$1,206 USD). Esta utilidad se acumula en la SAS y se distribuye según decida el accionista.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diagrama visual -->
+    <div class="bg-surface border border-border rounded-xl p-6">
+      <h3 class="font-semibold text-txt mb-4">Diagrama del flujo de dinero</h3>
+      <div class="font-mono text-xs text-green diagram-box overflow-x-auto">
+                     CLUBES DEPORTIVOS (Colombia, USA, Mexico, etc.)
+                              |
+                              | Pagan suscripción con tarjeta
+                              v
+                     ┌─────────────────────────────────────────┐
+                     |         STRIPE (pasarela de pagos)       |
+                     |  Fee: 2.9% doméstico / 4.4% intl        |
+                     └──────────────────┬──────────────────────┘
+                                        |
+                                        v
+                     ┌─────────────────────────────────────────┐
+                     |      WIDDO INC (C Corp Delaware)         |
+                     |      Banco: Mercury (USA)                |
+                     |                                          |
+                     |  Paga a Alwin: $2,500 USD W-2 ─────> Alwin (Orlando)
+                     |                                          |
+                     |  Paga a SAS: ~$30.4M COP wire ─┐        |
+                     |  ($7,237 USD, deducible al 21%)  |        |
+                     └──────────────────────────────────┼───────┘
+                                                        |
+                            Wire mensual Mercury → banco CO
+                            Concepto: "Software services"
+                                                        |
+                     ┌──────────────────────────────────┼───────┐
+                     |      WIDDO SAS (Colombia)         |       |
+                     |      Banco: Bancolombia            v       |
+                     |      RST: 1.8%                            |
+                     |                                           |
+                     |  Salario Miguel:  $21,000,000 ────> Miguel
+                     |  Aportes PILA:     $3,678,200             |
+                     |  Infra:              $652,050             |
+                     |  RST:                $547,133/mes         |
+                     |  ─────────────────────────────────        |
+                     |  Utilidad:         $4,518,917/mes         |
+                     └───────────────────────────────────────────┘</div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 8: DOCUMENTOS DE SOPORTE -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">8. Documentos legales de soporte</h2>
+
+    <p class="text-[#ccc] mb-4">Para que el Transfer Pricing sea válido ante el IRS y la DIAN, se necesitan estos documentos (ya están redactados, pendientes de revisión por abogado):</p>
+
+    <div class="bg-surface border border-border rounded-xl overflow-hidden mb-6">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-border">
+          <th class="text-green text-left p-3 text-xs uppercase">Documento</th>
+          <th class="text-green text-left p-3 text-xs uppercase">Qué es</th>
+          <th class="text-green text-center p-3 text-xs uppercase">Estado</th>
+        </tr></thead>
+        <tbody class="text-[#ccc]">
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">MSA (Master Services Agreement)</td><td class="p-3">Contrato entre SAS y C Corp que define los 8 tipos de servicios que presta la SAS</td><td class="p-3 text-center"><span class="bg-green/20 text-green px-2 py-1 rounded-full text-xs font-semibold">Redactado</span></td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Transfer Pricing Agreement</td><td class="p-3">Documento que establece la metodología Cost Plus 20% y por qué es arm's length</td><td class="p-3 text-center"><span class="bg-green/20 text-green px-2 py-1 rounded-full text-xs font-semibold">Redactado</span></td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">IP Assignment</td><td class="p-3">Asignación de propiedad intelectual del código a la C Corp</td><td class="p-3 text-center"><span class="bg-green/20 text-green px-2 py-1 rounded-full text-xs font-semibold">Redactado</span></td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Founders Agreement</td><td class="p-3">Equity, vesting, roles entre Miguel (70%) y Alwin (30%)</td><td class="p-3 text-center"><span class="bg-green/20 text-green px-2 py-1 rounded-full text-xs font-semibold">Redactado</span></td></tr>
+          <tr class="border-b border-border/50"><td class="p-3 font-semibold text-txt">Facturas mensuales SAS → C Corp</td><td class="p-3">Detalle de servicios prestados con desglose de costos + 20%</td><td class="p-3 text-center"><span class="bg-yellow/20 text-yellow px-2 py-1 rounded-full text-xs font-semibold">Por hacer</span></td></tr>
+          <tr><td class="p-3 font-semibold text-txt">Time tracking</td><td class="p-3">Registro de horas por categoría de servicio (evidencia para el IRS)</td><td class="p-3 text-center"><span class="bg-yellow/20 text-yellow px-2 py-1 rounded-full text-xs font-semibold">Por hacer</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 9: QUE DEBE HACER LA CONTADORA -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">9. Qué necesitamos de la contadora</h2>
+
+    <div class="space-y-4">
+      <div class="bg-surface border border-green/30 rounded-xl p-5">
+        <h3 class="font-bold text-green text-sm mb-3">Al crear la SAS (ahora)</h3>
+        <ul class="text-[#ccc] text-sm space-y-2">
+          <li class="flex items-start gap-2"><span class="text-green">1.</span> Inscribir la SAS nueva con RST desde día 1 (responsabilidad 47 en casilla 53 del RUT)</li>
+          <li class="flex items-start gap-2"><span class="text-green">2.</span> Actividades económicas: 6201 (desarrollo software) + 6202 (consultoría) + 6311 (hosting)</li>
+          <li class="flex items-start gap-2"><span class="text-green">3.</span> Habilitar facturación electrónica</li>
+          <li class="flex items-start gap-2"><span class="text-green">4.</span> Abrir cuenta bancaria empresarial</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface border border-blue/30 rounded-xl p-5">
+        <h3 class="font-bold text-blue text-sm mb-3">Cada mes</h3>
+        <ul class="text-[#ccc] text-sm space-y-2">
+          <li class="flex items-start gap-2"><span class="text-blue">1.</span> Registrar el wire de la C Corp como ingreso por exportación de servicios</li>
+          <li class="flex items-start gap-2"><span class="text-blue">2.</span> Emitir factura electrónica a la C Corp (una sola, con detalle de servicios + 20%)</li>
+          <li class="flex items-start gap-2"><span class="text-blue">3.</span> Liquidar nómina de Miguel (salario integral)</li>
+          <li class="flex items-start gap-2"><span class="text-blue">4.</span> Pagar aportes PILA (salud, pensión, ARL, caja) sobre 70% del salario</li>
+          <li class="flex items-start gap-2"><span class="text-blue">5.</span> Registrar pagos de infraestructura como gastos operativos</li>
+          <li class="flex items-start gap-2"><span class="text-blue">6.</span> Llevar contabilidad al dia</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface border border-yellow/30 rounded-xl p-5">
+        <h3 class="font-bold text-yellow text-sm mb-3">Cada 2 meses</h3>
+        <ul class="text-[#ccc] text-sm space-y-2">
+          <li class="flex items-start gap-2"><span class="text-yellow">1.</span> Declarar y pagar RST bimestral (recibo 2593)</li>
+        </ul>
+      </div>
+
+      <div class="bg-surface border border-purple/30 rounded-xl p-5">
+        <h3 class="font-bold text-purple text-sm mb-3">Cada año</h3>
+        <ul class="text-[#ccc] text-sm space-y-2">
+          <li class="flex items-start gap-2"><span class="text-purple">1.</span> Declaración RST anual consolidada</li>
+          <li class="flex items-start gap-2"><span class="text-purple">2.</span> Renovación Cámara de Comercio</li>
+          <li class="flex items-start gap-2"><span class="text-purple">3.</span> Información exógena (si aplica)</li>
+          <li class="flex items-start gap-2"><span class="text-purple">4.</span> Revisar que la documentación de Transfer Pricing este al dia</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCION 10: RESUMEN -->
+  <!-- ============================================ -->
+
+  <section class="mb-16">
+    <h2 class="text-xl font-bold text-green border-b border-border pb-3 mb-6">10. Resumen ejecutivo</h2>
+
+    <div class="bg-surface border-2 border-green/50 rounded-xl p-6">
+      <div class="space-y-4 text-[#ccc]">
+        <div class="flex gap-3">
+          <span class="text-green font-bold w-6 flex-shrink-0">1.</span>
+          <p><strong class="text-txt">Dos empresas:</strong> C Corp en USA (recibe dinero del mundo) + SAS en Colombia (hace el trabajo, emplea a Miguel).</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-green font-bold w-6 flex-shrink-0">2.</span>
+          <p><strong class="text-txt">Todos los clientes pagan a la C Corp via Stripe.</strong> Incluidos los colombianos. La SAS no factura a clubes.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-green font-bold w-6 flex-shrink-0">3.</span>
+          <p><strong class="text-txt">La SAS factura una vez al mes a la C Corp</strong> por servicios de desarrollo y operación. Precio = costos + 20% markup (Transfer Pricing estandar).</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-green font-bold w-6 flex-shrink-0">4.</span>
+          <p><strong class="text-txt">La C Corp hace wire mensual a la SAS.</strong> Ese pago es gasto deducible en USA (reduce impuesto 21%) y la SAS paga RST 1.8% en Colombia.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-green font-bold w-6 flex-shrink-0">5.</span>
+          <p><strong class="text-txt">RST siempre gana sobre Ordinario</strong> con esta estructura porque el margen es fijo al 20%. Ahorro: $2,484 - $4,464 USD/año según salario.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-green font-bold w-6 flex-shrink-0">6.</span>
+          <p><strong class="text-txt">La infraestructura se paga desde la SAS</strong> porque cada gasto engrosa la base del markup y genera ganancia extra con impuesto mínimo.</p>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-green font-bold w-6 flex-shrink-0">7.</span>
+          <p><strong class="text-txt">IVA = $0.</strong> SaaS excluido (Art. 476 Num. 21 E.T.). Exportación de servicios de software.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="bg-surface rounded-xl p-6 text-center">
+    <p class="text-txt2 text-xs">
+      Documento interno — Widdo Inc / Widdo SAS<br>
+      Ultima actualizacion: Marzo 2026<br>
+      Este documento es una guia informativa. Consultar con abogado corporativo y contador certificado para validar la estructura.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

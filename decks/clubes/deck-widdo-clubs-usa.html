@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo for Clubs — Run your club, not your spreadsheets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green: #16a34a;
+            --green-dark: #0f7a37;
+            --text: #18181b;
+            --muted: rgba(24, 24, 27, 0.65);
+            --faint: rgba(24, 24, 27, 0.40);
+            --bg: #ffffff;
+            --card: #f4f4f5;
+            --border: rgba(24, 24, 27, 0.12);
+        }
+
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- Slide shell ---------- */
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg);
+            page-break-after: always;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 64px 80px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Green veil — slides 2, 13 and 14 only. Deliberately near-invisible. */
+        .veil {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 900px 620px at 12% 0%, rgba(22, 163, 74, 0.055) 0%, rgba(22, 163, 74, 0) 68%);
+        }
+        .veil-center {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 1000px 700px at 50% 45%, rgba(22, 163, 74, 0.05) 0%, rgba(22, 163, 74, 0) 70%);
+        }
+
+        .cover-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #16a34a 0%, #0f7a37 100%);
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 24px;
+            right: 32px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--faint);
+            z-index: 20;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- Type ---------- */
+        h1 { font-size: 60px; font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; }
+        h2 { font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -0.8px; }
+        h3 { font-size: 20px; font-weight: 700; line-height: 1.3; }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 14px;
+        }
+        .deck { font-size: 18px; color: var(--muted); line-height: 1.55; }
+        .deck-lg { font-size: 21px; color: var(--muted); line-height: 1.5; }
+        .rule { width: 52px; height: 3px; background: var(--green); border-radius: 2px; }
+
+        /* ---------- Cards ---------- */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 26px 26px 28px;
+        }
+        .card h3 { margin-bottom: 8px; }
+        .card p { font-size: 15px; color: var(--muted); line-height: 1.5; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 18px; }
+
+        /* ---------- Icons (inline SVG, monochrome) ---------- */
+        .icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: rgba(22, 163, 74, 0.10);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .icon svg {
+            width: 20px; height: 20px;
+            stroke: var(--green); fill: none;
+            stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ---------- Capability map (slide 3) ---------- */
+        .cap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr 1fr;
+            gap: 16px;
+            margin: auto 0;
+        }
+        .cap {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px 18px;
+        }
+        .cap-head { display: flex; align-items: center; gap: 8px; margin-bottom: 11px; }
+        .cap-head svg {
+            width: 15px; height: 15px;
+            stroke: var(--green); fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+        .cap-title {
+            font-size: 11.5px; font-weight: 800; letter-spacing: 1.3px;
+            text-transform: uppercase; color: var(--green);
+        }
+        .cap ul { list-style: none; }
+        .cap li {
+            font-size: 13px; color: var(--muted); line-height: 1.55;
+            white-space: nowrap;
+        }
+
+        /* ---------- Bullets ---------- */
+        .bullets { list-style: none; }
+        .bullets li {
+            display: flex; align-items: flex-start; gap: 12px;
+            font-size: 17px; color: var(--muted); line-height: 1.45;
+            padding: 9px 0;
+        }
+        .bullets li::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            margin-top: 9px;
+            flex-shrink: 0;
+        }
+        .bullets strong { color: var(--text); font-weight: 600; }
+        .bullets-sm li { font-size: 15.5px; padding: 7px 0; }
+        .bullets-sm li::before { margin-top: 8px; }
+
+        /* ---------- Screenshot frames ----------
+           Fixed size + gray fill so a missing image leaves a clean
+           placeholder instead of collapsing the layout (the <img> removes
+           itself on error, so no broken-image icon either).
+
+           Frame aspect ratios match the capture sizes in the spec:
+             desktop shots  1440x900  -> 1.600  (frames 700x437, 660x412)
+             mobile shots    390x844  -> 0.462  (frames 262x567)
+           Captured at those sizes, object-fit: cover crops nothing. A taller
+           full-page capture is cropped from the bottom, which is the
+           forgiving direction.
+
+           Assets referenced: owner-dashboard, payments-collections,
+           qr-checkin-mobile, parent-app-mobile, widdo-ai-chat.
+           NOT referenced (no slide had room for them at a readable size):
+           attendance.png, payment-detail.png. */
+        .shot {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .shot img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* ---------- Big number ---------- */
+        .stat { font-size: 82px; font-weight: 900; line-height: 1; color: var(--green); letter-spacing: -3px; }
+        .stat-label { font-size: 16px; color: var(--muted); margin-top: 6px; }
+
+        /* ---------- Quoted AI commands (slide 10) ---------- */
+        .cmd {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--green);
+            border-radius: 8px;
+            padding: 11px 16px;
+            font-size: 14.5px;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        /* ---------- Before / after table ---------- */
+        .ba { width: 100%; border-collapse: collapse; }
+        .ba th {
+            font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+            padding: 0 22px 12px; text-align: left; color: var(--faint);
+        }
+        .ba td {
+            font-size: 17px; padding: 19px 22px; vertical-align: top;
+            border-top: 1px solid var(--border);
+        }
+        .ba td.before { color: var(--muted); width: 44%; }
+        .ba td.after { color: var(--text); font-weight: 600; width: 44%; background: rgba(22, 163, 74, 0.04); }
+        .ba td.label { font-size: 13px; font-weight: 600; color: var(--faint); width: 12%; padding-left: 0; }
+        .ba tr:last-child td.after { border-radius: 0 0 10px 10px; }
+        .ba tr:first-child td.after { border-radius: 10px 10px 0 0; border-top-color: transparent; }
+        .ba-head-after { color: var(--green) !important; }
+
+        /* ---------- Steps strip (slide 13) ---------- */
+        .step {
+            display: flex; align-items: baseline; gap: 10px;
+            font-size: 14.5px; color: var(--muted); line-height: 1.4;
+        }
+        .step b { font-size: 12px; font-weight: 800; color: var(--green); letter-spacing: 1px; flex-shrink: 0; }
+        .step strong { color: var(--text); font-weight: 700; }
+
+        /* ---------- Pricing ----------
+           NOTE: update-metrics.js propagates prices from metrics.json with
+           regexes anchored on `class="plan-name"...>NAME</div>` immediately
+           followed by `<div class="plan-price">$NNN`. Do not rename those two
+           classes, change the plan names, or put anything between them. */
+        .plan {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px 20px 20px;
+            background: #fff;
+            display: flex; flex-direction: column;
+        }
+        .plan.featured {
+            border: 2px solid var(--green);
+            padding: 17px 19px 19px;
+            position: relative;
+            box-shadow: 0 2px 12px rgba(22, 163, 74, 0.10);
+        }
+        .plan-badge {
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            background: var(--green); color: #fff;
+            font-size: 9.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
+            padding: 3px 12px; border-radius: 999px; white-space: nowrap;
+        }
+        .plan-name { font-size: 13px; font-weight: 700; letter-spacing: 0.3px; }
+        .plan-price { font-size: 34px; font-weight: 900; letter-spacing: -1.2px; margin-top: 4px; line-height: 1; }
+        .plan-price span { font-size: 13px; font-weight: 500; color: var(--faint); letter-spacing: 0; }
+        .plan-cap { font-size: 12px; color: var(--muted); margin-top: 5px; padding-bottom: 11px; border-bottom: 1px solid var(--border); }
+        .plan ul { list-style: none; margin-top: 11px; }
+        .plan li {
+            font-size: 12.5px; color: var(--muted); line-height: 1.35;
+            display: flex; gap: 8px; padding: 3.5px 0;
+        }
+        .plan li svg { width: 12px; height: 12px; stroke: var(--green); fill: none; stroke-width: 2.6; flex-shrink: 0; margin-top: 3px; }
+
+        /* ---------- Print ---------- */
+        @page { size: 1280px 720px; margin: 0; }
+
+        @media print {
+            body { background: none; margin: 0; padding: 0; }
+            .slide {
+                margin: 0;
+                page-break-after: always;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            #slide-counter, #presentation-help { display: none !important; }
+        }
+
+        @media screen {
+            body { background: #f0f0f3; padding: 20px 0; }
+            .slide { margin: 0 auto 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1 — COVER (only slide with a solid background)          -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="cover-bg"></div>
+    <div class="content" style="justify-content: center;">
+        <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 56px;">
+            <div style="width: 76px; height: 76px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center;">
+                <img src="widdo-logo.svg" alt="Widdo" style="width: 76px; height: 76px; display: block;">
+            </div>
+            <span style="font-size: 38px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">widdo</span>
+        </div>
+        <h1 style="color: #fff; max-width: 900px;">
+            Run your club,<br>not your spreadsheets.
+        </h1>
+        <p style="font-size: 23px; color: rgba(255,255,255,0.88); font-weight: 400; margin-top: 26px; max-width: 720px; line-height: 1.45;">
+            Payments, players, attendance and families in one place.
+        </p>
+        <div style="width: 52px; height: 3px; background: rgba(255,255,255,0.5); border-radius: 2px; margin-top: 44px;"></div>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 22px; letter-spacing: 0.4px;">
+            widdo.co
+        </p>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2 — THE PROBLEM (green veil)                            -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="veil"></div>
+    <div class="content">
+        <div class="eyebrow">The problem</div>
+        <h2 style="max-width: 800px;">You didn't start a club to do admin work.</h2>
+        <p class="deck" style="margin-top: 16px; max-width: 700px;">
+            But every month, the same four things eat your week.
+        </p>
+
+        <div class="grid-2" style="margin: auto 0; row-gap: 20px;">
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>You chase parents for money</h3>
+                <p>Texts, calls, reminders. Every month, one family at a time.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+                </div>
+                <h3>Everything lives in group chats</h3>
+                <p>Schedules, payments, permission slips. Scroll up and hope it's there.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 9h18M5 5h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>
+                </div>
+                <h3>Attendance is on paper</h3>
+                <p>A clipboard, or a spreadsheet nobody fills in after the session.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-5 3.5 3.5L21 7"/></svg>
+                </div>
+                <h3>You don't know where you stand</h3>
+                <p>How much came in this month? Who still owes you? Nobody knows until you count.</p>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">2</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3 — CAPABILITY MAP                                      -->
+<!-- Module names are taken literally from the product's English   -->
+<!-- menu (frontend/src/i18n/locales/en/menu.json).                -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content" style="padding: 52px 80px;">
+        <div class="eyebrow">The platform</div>
+        <h2 style="font-size: 36px;">Everything your club runs on.</h2>
+        <p class="deck" style="margin-top: 10px; font-size: 17px;">
+            One login. No add-ons to buy.
+        </p>
+
+        <div class="cap-grid">
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                    <span class="cap-title">Money</span>
+                </div>
+                <ul>
+                    <li>Payments</li>
+                    <li>Charges</li>
+                    <li>Discounts</li>
+                    <li>Expenses</li>
+                    <li>Financial Reports</li>
+                    <li>Collections</li>
+                    <li>Payments Received</li>
+                    <li>Payment Settings</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                    <span class="cap-title">Players &amp; families</span>
+                </div>
+                <ul>
+                    <li>Players</li>
+                    <li>Categories</li>
+                    <li>Enrollment Links</li>
+                    <li>Documents</li>
+                    <li>Doc Review</li>
+                    <li>Doc Requirements</li>
+                    <li>Import/Export</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 9h18M5 5h14a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>
+                    <span class="cap-title">Training</span>
+                </div>
+                <ul>
+                    <li>Sessions</li>
+                    <li>Attendance</li>
+                    <li>Calendar</li>
+                    <li>Attendance Reports</li>
+                    <li>Venues</li>
+                    <li>Trainers</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M10 21v-6h4v6"/></svg>
+                    <span class="cap-title">The club</span>
+                </div>
+                <ul>
+                    <li>Club Settings</li>
+                    <li>Club Team</li>
+                    <li>Role Permissions</li>
+                    <li>Inventory</li>
+                    <li>File Vault</li>
+                    <li>Legal Documents</li>
+                    <li>Consent Templates</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg>
+                    <span class="cap-title">For families</span>
+                </div>
+                <ul>
+                    <li>My Payments</li>
+                    <li>My Documents</li>
+                    <li>My Children</li>
+                    <li>Training Sessions</li>
+                    <li>Attendance</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18 16.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>
+                    <span class="cap-title">AI &amp; automation</span>
+                </div>
+                <ul>
+                    <li>Widdo AI</li>
+                    <li>AI Autonomy</li>
+                    <li>Automatic reminders</li>
+                    <li>Weekly club report</li>
+                    <li>Tournaments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">3</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4 — OWNER DASHBOARD                                     -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Owner dashboard</div>
+        <h2>Open one screen and know where you stand.</h2>
+        <div style="display: flex; gap: 48px; align-items: flex-start; margin: auto 0;">
+            <div style="width: 366px; flex-shrink: 0;">
+                <div class="rule" style="margin-bottom: 22px;"></div>
+                <ul class="bullets">
+                    <li><span><strong>Revenue this month</strong>, next to what you expected.</span></li>
+                    <li><span><strong>Who owes you</strong>, how much, and since when.</span></li>
+                    <li><span><strong>Attendance at a glance</strong>, by category and by coach.</span></li>
+                </ul>
+            </div>
+            <div class="shot" style="width: 700px; height: 437px;">
+                <img src="../assets/usa-en/owner-dashboard.png" alt="Widdo owner dashboard" onerror="this.remove()">
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">4</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5 — PAYMENTS & CHARGES                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Payments &amp; charges</div>
+        <h2>Stop chasing. Start collecting.</h2>
+        <div style="display: flex; gap: 48px; align-items: flex-start; margin: auto 0;">
+            <div class="shot" style="width: 700px; height: 437px;">
+                <img src="../assets/usa-en/payments-collections.png" alt="Payments and collections" onerror="this.remove()">
+            </div>
+            <div style="width: 366px; flex-shrink: 0;">
+                <div class="rule" style="margin-bottom: 18px;"></div>
+                <ul class="bullets bullets-sm">
+                    <li><span>Monthly charges, one-off charges and <strong>enrollment fees</strong>.</span></li>
+                    <li><span><strong>Discounts</strong> for siblings or scholarships, applied on their own.</span></li>
+                    <li><span>Parents <strong>pay by card</strong>; you can also record cash and transfers.</span></li>
+                    <li><span><strong>Expenses and financial reports</strong>, so the month actually closes.</span></li>
+                    <li><span>Export anything to a spreadsheet when your accountant asks.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">5</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6 — COLLECTIONS THAT RUN THEMSELVES                     -->
+<!-- Every line here maps to a scheduled job in the backend's      -->
+<!-- routes/console.php. Verified, not aspirational.               -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Collections</div>
+        <h2>Your collections run at night.</h2>
+        <p class="deck" style="margin-top: 14px; max-width: 760px;">
+            You set it up once. After that it happens whether you open the app or not.
+        </p>
+
+        <!-- Five cards, 3 + 2. Each one is a scheduled job in routes/console.php.
+             There is deliberately no sixth card: the only other scheduled jobs are
+             either off-theme for a money slide or already covered on slides 8 and 11. -->
+        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; margin: auto 0;">
+            <div class="card" style="padding: 22px 22px 24px; grid-column: span 2;">
+                <h3 style="font-size: 18px;">Monthly charges</h3>
+                <p style="font-size: 14.5px; margin-top: 6px;">Created automatically for every active player, every month.</p>
+            </div>
+            <div class="card" style="padding: 22px 22px 24px; grid-column: span 2;">
+                <h3 style="font-size: 18px;">Late fees</h3>
+                <p style="font-size: 14.5px; margin-top: 6px;">Applied on their own, on the rule you set. No awkward conversation.</p>
+            </div>
+            <div class="card" style="padding: 22px 22px 24px; grid-column: span 2;">
+                <h3 style="font-size: 18px;">Payment reminders</h3>
+                <p style="font-size: 14.5px; margin-top: 6px;">Sent to the families who owe, without you writing a single message.</p>
+            </div>
+            <div class="card" style="padding: 22px 26px 24px; grid-column: span 3;">
+                <h3 style="font-size: 18px;">A full collection cycle</h3>
+                <p style="font-size: 14.5px; margin-top: 6px;">You start it, you stop it. In between, it works through the list of families who owe you, one reminder at a time.</p>
+            </div>
+            <div class="card" style="padding: 22px 26px 24px; grid-column: span 3;">
+                <h3 style="font-size: 18px;">A weekly club report</h3>
+                <p style="font-size: 14.5px; margin-top: 6px;">In your inbox every Monday morning: money in, money still owed, and how attendance went.</p>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 22px;">
+            <p style="font-size: 19px; font-weight: 700;">
+                You approve it, or you let it run. <span style="color: var(--green);">Your call.</span>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">6</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7 — PLAYERS, FAMILIES & ENROLLMENT                      -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Players, families &amp; enrollment</div>
+        <h2>Your roster fills itself in.</h2>
+
+        <div class="grid-2" style="margin: auto 0; row-gap: 18px; column-gap: 22px;">
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                </div>
+                <h3>One profile per athlete</h3>
+                <p>Family, category, documents and history, all on the same page.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                </div>
+                <h3>Public enrollment links</h3>
+                <p>Parents sign themselves up, straight from your website or a text message.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>
+                </div>
+                <h3>Documents, handled in-app</h3>
+                <p>Requested, uploaded and reviewed. You see what's missing at a glance.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                </div>
+                <h3>Bring your roster over</h3>
+                <p>Use the import template. Categories are assigned by age, automatically.</p>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">7</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8 — ATTENDANCE, SESSIONS & CALENDAR                     -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Attendance, sessions &amp; calendar</div>
+        <h2 style="font-size: 36px;">Take attendance without taking time.</h2>
+
+        <div style="display: flex; align-items: center; gap: 44px; margin: auto 0;">
+            <div style="width: 430px; flex-shrink: 0;">
+                <div class="stat" style="font-size: 68px;">10 sec</div>
+                <div class="stat-label">to check in a full session</div>
+                <ul class="bullets bullets-sm" style="margin-top: 22px;">
+                    <li><span>The coach opens the session on their phone. <strong>Players scan their card.</strong></span></li>
+                    <li><span>Sessions, venues and the club calendar in <strong>one schedule</strong>.</span></li>
+                    <li><span>Attendance reports by <strong>player, category and coach</strong>.</span></li>
+                    <li><span>Reminders go out the evening before, or that same morning.</span></li>
+                </ul>
+            </div>
+            <div style="flex: 1; display: flex; justify-content: center;">
+                <div class="shot" style="width: 660px; height: 412px;">
+                    <img src="../assets/usa-en/attendance.png" alt="Attendance record for a week of sessions in Widdo" onerror="this.remove()">
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 18px;">
+            <p class="deck" style="font-size: 16px;">
+                No paper sheet to type up later. <strong style="color: var(--text); font-weight: 600;">Parents see who trained, the same day.</strong>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">8</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9 — PARENT APP                                          -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div style="display: flex; gap: 48px; height: 100%; align-items: center;">
+            <div style="width: 400px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;">
+                <div class="shot" style="width: 262px; height: 567px;">
+                    <img src="../assets/usa-en/parent-app-mobile.png" alt="Widdo parent app" onerror="this.remove()">
+                </div>
+            </div>
+            <div style="flex: 1;">
+                <div class="eyebrow">Parent app</div>
+                <h2 style="font-size: 36px;">Stop being your club's call center.</h2>
+                <div class="rule" style="margin: 26px 0 20px;"></div>
+                <ul class="bullets bullets-sm">
+                    <li><span>Parents <strong>pay from their phone</strong>, by card.</span></li>
+                    <li><span>They <strong>see the schedule</strong> without asking anyone.</span></li>
+                    <li><span>They <strong>see their kid's attendance</strong> after every session.</span></li>
+                    <li><span>They upload <strong>their own documents</strong> and track what's missing.</span></li>
+                </ul>
+                <p class="deck" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); max-width: 460px; font-size: 17px;">
+                    Every question a parent answers for themselves is a call you never take.
+                </p>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">9</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10 — WIDDO AI                                           -->
+<!-- 63 = the tool count an owner/admin actually gets. See          -->
+<!-- ToolDefinitions::get(): owner/admin returns $generalTools (63).-->
+<!-- The registry holds 104 in total, but 10 are Widdo's internal   -->
+<!-- platform tools, 26 are organizer-only and 5 are family-only.   -->
+<!-- Each command below maps to a real tool in that owner set.      -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Widdo AI</div>
+        <h2>63 things you can just ask for.</h2>
+        <p class="deck" style="margin-top: 12px; max-width: 900px;">
+            Ask a question, get an answer from your club's real data. Ask for something
+            to be done, and it's done.
+        </p>
+
+        <div style="display: flex; gap: 44px; align-items: center; margin: auto 0;">
+            <div style="width: 470px; flex-shrink: 0; display: flex; flex-direction: column; gap: 9px;">
+                <div class="cmd">&ldquo;Who hasn't paid this month?&rdquo;</div>
+                <div class="cmd">&ldquo;Create the August charge for U12.&rdquo;</div>
+                <div class="cmd">&ldquo;Send a reminder to everyone who owes more than $200.&rdquo;</div>
+                <div class="cmd">&ldquo;Which players are at risk of dropping out?&rdquo;</div>
+                <div class="cmd">&ldquo;Mark today's U10 session attendance.&rdquo;</div>
+                <div class="cmd">&ldquo;Close the month.&rdquo;</div>
+            </div>
+            <div class="shot" style="width: 606px; height: 379px;">
+                <img src="../assets/usa-en/widdo-ai-chat.png" alt="Widdo AI assistant" onerror="this.remove()">
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 18px;">
+            <p style="font-size: 16px; color: var(--muted);">
+                It only sees what the person asking is allowed to see.
+                <strong style="color: var(--text); font-weight: 600;">A coach never gets your finances.</strong>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">10</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11 — COACHES, ROLES & COMMUNICATIONS                    -->
+<!-- 67 = blade templates under resources/views (mail/email).      -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Coaches, roles &amp; communications</div>
+        <h2>Everyone gets their own view.</h2>
+        <p class="deck" style="margin-top: 12px; max-width: 820px;">
+            Invite your coaches by email. Six roles, each with its own permissions.
+        </p>
+
+        <div style="display: flex; gap: 40px; align-items: stretch; margin: auto 0;">
+            <div style="width: 560px; flex-shrink: 0;">
+                <div class="card" style="padding: 22px 26px 24px; height: 100%;">
+                    <div class="cap-head" style="margin-bottom: 14px;">
+                        <svg viewBox="0 0 24 24" style="width: 15px; height: 15px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round;"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                        <span class="cap-title">Who sees what</span>
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr><td style="font-size: 15px; font-weight: 700; padding: 12px 14px 12px 0; white-space: nowrap;">Owner</td><td style="font-size: 15px; color: var(--muted); padding: 12px 0;">The whole club, including the money</td></tr>
+                        <tr><td style="font-size: 15px; font-weight: 700; padding: 12px 14px 12px 0; white-space: nowrap;">Admin</td><td style="font-size: 15px; color: var(--muted); padding: 12px 0;">Runs the club day to day</td></tr>
+                        <tr><td style="font-size: 15px; font-weight: 700; padding: 12px 14px 12px 0; white-space: nowrap;">Coach</td><td style="font-size: 15px; color: var(--muted); padding: 12px 0;">Their categories and sessions. No finances</td></tr>
+                        <tr><td style="font-size: 15px; font-weight: 700; padding: 12px 14px 12px 0; white-space: nowrap;">Accountant</td><td style="font-size: 15px; color: var(--muted); padding: 12px 0;">The money, and nothing else</td></tr>
+                        <tr><td style="font-size: 15px; font-weight: 700; padding: 12px 14px 12px 0; white-space: nowrap;">Parent</td><td style="font-size: 15px; color: var(--muted); padding: 12px 0;">Their own children only</td></tr>
+                        <tr><td style="font-size: 15px; font-weight: 700; padding: 12px 14px 12px 0; white-space: nowrap;">Player</td><td style="font-size: 15px; color: var(--muted); padding: 12px 0;">Their own profile only</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 18px;">
+                <div class="card" style="padding: 22px 24px 24px;">
+                    <h3 style="margin-bottom: 8px;">Reminders that send themselves</h3>
+                    <p style="font-size: 14.5px;">Birthdays, training sessions and club events go out on schedule, without anyone remembering to press send.</p>
+                </div>
+                <div class="card" style="padding: 22px 24px 24px;">
+                    <h3 style="margin-bottom: 8px;">67 email templates</h3>
+                    <p style="font-size: 14.5px;">In English, Spanish and Portuguese. Each family is written to in their own language.</p>
+                </div>
+                <div class="card" style="padding: 22px 24px 24px;">
+                    <h3 style="margin-bottom: 8px;">Live on screen</h3>
+                    <p style="font-size: 14.5px;">Push notifications, and the page updates itself while you work. No refreshing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">11</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12 — BEFORE / AFTER                                     -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Before &amp; after</div>
+        <h2>What actually changes.</h2>
+
+        <table class="ba" style="margin: auto 0;">
+            <thead>
+                <tr>
+                    <th style="padding-left: 0;"></th>
+                    <th>Spreadsheet + group chat + bank transfers</th>
+                    <th class="ba-head-after">Widdo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label">Getting paid</td>
+                    <td class="before">You chase families one by one</td>
+                    <td class="after">Charges and reminders go out on their own</td>
+                </tr>
+                <tr>
+                    <td class="label">Who owes you</td>
+                    <td class="before">You rebuild the list every month</td>
+                    <td class="after">One list, always current</td>
+                </tr>
+                <tr>
+                    <td class="label">Attendance</td>
+                    <td class="before">Paper sheets, or nothing at all</td>
+                    <td class="after">Scanned in seconds, kept forever</td>
+                </tr>
+                <tr>
+                    <td class="label">Parents</td>
+                    <td class="before">They text you at 9pm</td>
+                    <td class="after">They open the app</td>
+                </tr>
+                <tr>
+                    <td class="label">Your records</td>
+                    <td class="before">Split across three tools and a notebook</td>
+                    <td class="after">One club, one place</td>
+                </tr>
+                <tr>
+                    <td class="label">Answers</td>
+                    <td class="before">You count it up by hand</td>
+                    <td class="after">You ask, and Widdo AI replies</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <span class="slide-number">12</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13 — GET STARTED + PRICING (green veil)                 -->
+<!--                                                              -->
+<!-- Plan names, prices and limits come from the PRODUCT, verified       -->
+<!-- 30-jul-2026 in bas_subscription_plans + bas_subscription_plan_prices -->
+<!-- (country_id = United States):                                        -->
+<!--   Basic       $99/mo   max_members 80  · 3 coaches  · 5 categories   -->
+<!--   Pro         $199/mo  max_members 200 · 10 coaches · 15 categories  -->
+<!--   Enterprise  $349/mo  max_members 500 · unlimited coaches           -->
+<!-- Trials: 14 / 14 / 30 days. Yearly = 12x monthly.                     -->
+<!--                                                                      -->
+<!-- NOTE: the plans are named "Basico" / "Pro" / "Enterprise" in the DB. -->
+<!-- Shown here in English; the product itself has no translation for     -->
+<!-- plan names, so a US customer currently sees "Basico".                -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="veil"></div>
+    <div class="content" style="padding: 48px 80px;">
+        <div class="eyebrow">Getting started &amp; pricing</div>
+        <h2 style="font-size: 36px;">Set up in under 30 minutes.</h2>
+
+        <div style="display: flex; gap: 34px; margin-top: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--border);">
+            <div class="step" style="flex: 1;">
+                <b>01</b><span><strong>Create your club.</strong> Name, sport, categories, fees.</span>
+            </div>
+            <div class="step" style="flex: 1;">
+                <b>02</b><span><strong>Bring your roster over.</strong> Paste your players into our template and upload it.</span>
+            </div>
+            <div class="step" style="flex: 1;">
+                <b>03</b><span><strong>Invite your families.</strong> One link. They do the rest.</span>
+            </div>
+        </div>
+
+        <div class="grid-3" style="margin: auto 0; gap: 18px; align-items: stretch;">
+            <div class="plan">
+                <div class="plan-name">BASIC</div>
+                <div class="plan-price">$99<span> /month</span></div>
+                <div class="plan-cap">Up to 80 athletes &middot; 3 coaches &middot; 5 categories</div>
+                <ul>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Players, families and categories</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Sessions, attendance and calendar</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Charges, payments and reminders</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Notifications</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Email support</span></li>
+                </ul>
+            </div>
+
+            <div class="plan featured">
+                <div class="plan-badge">Most popular</div>
+                <div class="plan-name" style="color: var(--green);">PRO</div>
+                <div class="plan-price">$199<span> /month</span></div>
+                <div class="plan-cap">Up to 200 athletes &middot; 10 coaches &middot; 15 categories</div>
+                <ul>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong style="color: var(--text);">Everything in Basic</strong></span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong style="color: var(--text);">Tournaments</strong></span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Discounts and documents</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Reports, inventory and venues</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>File Vault</span></li>
+                </ul>
+            </div>
+
+            <div class="plan">
+                <div class="plan-name">ENTERPRISE</div>
+                <div class="plan-price">$349<span> /month</span></div>
+                <div class="plan-cap">Up to 500 athletes &middot; unlimited coaches</div>
+                <ul>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong style="color: var(--text);">Everything in Pro</strong></span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong style="color: var(--text);">Compliance and NCAA</strong></span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Communications module</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>API access</span></li>
+                    <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Priority support</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 18px; margin-top: auto;">
+            <p style="font-size: 21px; font-weight: 800; color: var(--green); letter-spacing: -0.4px;">
+                0% platform fee on the payments you collect.
+            </p>
+            <p style="font-size: 13px; color: var(--faint);">No setup fee &middot; Billed monthly &middot; Cancel any time</p>
+        </div>
+    </div>
+    <span class="slide-number">13</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14 — CLOSE (green veil)                                 -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="veil-center"></div>
+    <div class="content" style="justify-content: center; align-items: center; text-align: center;">
+        <img src="widdo-logo.svg" alt="Widdo" style="width: 56px; height: 56px; display: block; margin-bottom: 44px;">
+        <h2 style="font-size: 46px; max-width: 860px;">
+            See it running on your own club's data.
+        </h2>
+        <p class="deck-lg" style="margin-top: 22px; max-width: 620px;">
+            Send us your roster. We'll show you your club inside Widdo, not a demo account.
+        </p>
+        <div class="rule" style="margin: 48px auto 40px;"></div>
+        <p style="font-size: 34px; font-weight: 800; letter-spacing: -0.8px;">hey@widdo.co</p>
+        <p style="font-size: 30px; font-weight: 700; color: var(--green); letter-spacing: -0.5px; margin-top: 10px;">widdo.co</p>
+    </div>
+    <span class="slide-number">14</span>
+</div>
+
+<script>
+/* Presentation navigation — screen only. Hidden in print via CSS. */
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presentationMode = false;
+
+    const counter = document.createElement('div');
+    counter.id = 'slide-counter';
+    counter.style.cssText = 'display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.7); color:#fff; padding:6px 16px; border-radius:20px; font-family:Red Hat Display,sans-serif; font-size:13px; z-index:9999; letter-spacing:1px;';
+    document.body.appendChild(counter);
+
+    const help = document.createElement('div');
+    help.id = 'presentation-help';
+    help.style.cssText = 'display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.9); color:#fff; padding:40px 50px; border-radius:16px; font-family:Red Hat Display,sans-serif; z-index:10000; text-align:center; border:1px solid rgba(22,163,74,0.3);';
+    help.innerHTML = `
+        <h3 style="color:#16a34a; margin-bottom:20px; font-size:22px;">Presentation Mode</h3>
+        <div style="font-size:15px; line-height:2; color:rgba(255,255,255,0.8);">
+            <b style="color:#fff;">F</b> or <b style="color:#fff;">F11</b> — Enter/exit fullscreen<br>
+            <b style="color:#fff;">&rarr;</b> or <b style="color:#fff;">Space</b> — Next slide<br>
+            <b style="color:#fff;">&larr;</b> or <b style="color:#fff;">Backspace</b> — Previous slide<br>
+            <b style="color:#fff;">Home</b> — First slide<br>
+            <b style="color:#fff;">End</b> — Last slide<br>
+            <b style="color:#fff;">Esc</b> — Exit presentation mode
+        </div>
+        <p style="margin-top:20px; font-size:12px; color:rgba(255,255,255,0.4);">Press any key to close this help</p>
+    `;
+    document.body.appendChild(help);
+
+    function goTo(index) {
+        if (index < 0 || index >= slides.length) return;
+        current = index;
+        if (presentationMode) {
+            slides.forEach((s, i) => { s.style.display = i === current ? 'block' : 'none'; });
+        } else {
+            slides[current].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+
+    function enterPresentation() {
+        presentationMode = true;
+        document.body.style.overflow = 'hidden';
+        document.body.style.background = '#000';
+        document.body.style.padding = '0';
+        slides.forEach((s, i) => {
+            s.style.display = i === current ? 'block' : 'none';
+            s.style.margin = '0 auto';
+            s.style.position = 'fixed';
+            s.style.top = '50%';
+            s.style.left = '50%';
+            s.style.transform = 'translate(-50%, -50%)';
+            s.style.boxShadow = 'none';
+        });
+        counter.style.display = 'block';
+        goTo(current);
+    }
+
+    function exitPresentation() {
+        presentationMode = false;
+        document.body.style.overflow = '';
+        document.body.style.background = '#f0f0f3';
+        document.body.style.padding = '20px 0';
+        slides.forEach(s => {
+            s.style.display = 'block';
+            s.style.position = 'relative';
+            s.style.top = '';
+            s.style.left = '';
+            s.style.transform = '';
+            s.style.margin = '0 auto 20px';
+            s.style.boxShadow = '0 4px 24px rgba(0,0,0,0.08)';
+        });
+        counter.style.display = 'none';
+        if (document.fullscreenElement) document.exitFullscreen();
+    }
+
+    let helpVisible = false;
+
+    document.addEventListener('keydown', function(e) {
+        if (helpVisible) {
+            help.style.display = 'none';
+            helpVisible = false;
+            return;
+        }
+
+        switch (e.key) {
+            case 'f':
+            case 'F':
+            case 'F11':
+                e.preventDefault();
+                if (!presentationMode) {
+                    enterPresentation();
+                    document.documentElement.requestFullscreen().catch(() => {});
+                }
+                break;
+            case 'Escape':
+                if (presentationMode) exitPresentation();
+                break;
+            case 'ArrowRight':
+            case ' ':
+                if (presentationMode) { e.preventDefault(); goTo(current + 1); }
+                break;
+            case 'ArrowLeft':
+            case 'Backspace':
+                if (presentationMode) { e.preventDefault(); goTo(current - 1); }
+                break;
+            case 'Home':
+                if (presentationMode) { e.preventDefault(); goTo(0); }
+                break;
+            case 'End':
+                if (presentationMode) { e.preventDefault(); goTo(slides.length - 1); }
+                break;
+            case 'h':
+            case 'H':
+            case '?':
+                if (presentationMode) { help.style.display = 'block'; helpVisible = true; }
+                break;
+        }
+    });
+
+    document.addEventListener('fullscreenchange', function() {
+        if (!document.fullscreenElement && presentationMode) exitPresentation();
+    });
+})();
+</script>
+
+</body>
+</html>

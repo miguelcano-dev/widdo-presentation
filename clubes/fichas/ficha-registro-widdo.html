@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Registro - Widdo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --green-200: #bbf7d0;
+            --green-300: #86efac;
+            --green-400: #4ade80;
+            --green-500: #22c55e;
+            --green-600: #16a34a;
+            --green-700: #15803d;
+            --green-800: #166534;
+            --green-900: #14532d;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --amber-50: #fffbeb;
+            --amber-100: #fef3c7;
+            --amber-500: #f59e0b;
+            --amber-700: #b45309;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            color: var(--gray-800);
+            background: var(--green-50);
+        }
+
+        .page {
+            width: 816px; /* Letter width */
+            min-height: 1056px; /* Letter height */
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--green-600) 0%, var(--green-500) 100%);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .club-logo {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--gray-400);
+            overflow: hidden;
+        }
+
+        .club-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header-info h1 {
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .header-info p {
+            color: rgba(255,255,255,0.9);
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        .season-badge {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .player-photo {
+            width: 72px;
+            height: 88px;
+            background: white;
+            border-radius: 8px;
+            border: 3px solid rgba(255,255,255,0.5);
+            overflow: hidden;
+        }
+
+        .player-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .player-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-100);
+            color: var(--gray-400);
+            font-size: 9px;
+            text-align: center;
+        }
+
+        /* Player name banner */
+        .player-banner {
+            background: var(--green-800);
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .player-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .player-doc {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .status-badge {
+            background: var(--green-400);
+            color: var(--green-900);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .status-badge.inactive {
+            background: var(--amber-100);
+            color: var(--amber-700);
+        }
+
+        /* Content */
+        .content {
+            padding: 16px 24px;
+            padding-bottom: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            flex: 1;
+        }
+
+        .content-full {
+            grid-column: 1 / -1;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border: 1px solid var(--green-200);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-green {
+            background: var(--green-50);
+            border-color: var(--green-200);
+        }
+
+        .card-header {
+            background: var(--green-100);
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--green-200);
+        }
+
+        .card-header h3 {
+            color: var(--green-800);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-body {
+            padding: 12px;
+        }
+
+        /* Data grid */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .data-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .data-grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .data-item {
+            min-height: 32px;
+        }
+
+        .data-item.full {
+            grid-column: 1 / -1;
+        }
+
+        .data-label {
+            font-size: 8px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin-bottom: 2px;
+        }
+
+        .data-value {
+            font-size: 11px;
+            color: var(--green-800);
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .data-value.light {
+            font-weight: 400;
+            color: var(--gray-700);
+        }
+
+        .data-value.empty {
+            color: var(--gray-400);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .badge-green {
+            background: var(--green-500);
+            color: white;
+        }
+
+        .badge-outline {
+            background: var(--green-100);
+            color: var(--green-700);
+            border: 1px solid var(--green-300);
+        }
+
+        /* Medical section */
+        .card-amber {
+            background: var(--amber-50);
+            border-color: #fcd34d;
+        }
+
+        .card-amber .card-header {
+            background: var(--amber-100);
+            border-color: #fcd34d;
+        }
+
+        .card-amber .card-header h3 {
+            color: var(--amber-700);
+        }
+
+        /* Contact item */
+        .contact-item {
+            background: var(--green-100);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .contact-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--green-800);
+        }
+
+        .contact-relation {
+            font-size: 9px;
+            color: var(--green-600);
+            background: var(--green-200);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* Jersey numbers */
+        .jersey-grid {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .jersey-item {
+            background: var(--green-100);
+            border: 1px solid var(--green-200);
+            border-radius: 8px;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        .jersey-number {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--green-700);
+        }
+
+        .jersey-name {
+            font-size: 8px;
+            color: var(--gray-500);
+        }
+
+        /* Footer */
+        .footer {
+            background: white;
+            border-top: 2px solid var(--green-500);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .footer-club {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--green-800);
+        }
+
+        .footer-contact {
+            font-size: 9px;
+            color: var(--gray-500);
+        }
+
+        .footer-date {
+            font-size: 8px;
+            color: var(--gray-400);
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .widdo-brand {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+            margin-bottom: 2px;
+        }
+
+        .widdo-logo-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .widdo-logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .widdo-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--green-500);
+            letter-spacing: -1px;
+        }
+
+        .widdo-tagline {
+            font-size: 8px;
+            color: var(--gray-500);
+        }
+
+        .widdo-url {
+            font-size: 9px;
+            color: var(--green-600);
+            font-weight: 500;
+        }
+
+        .verified-badge {
+            display: inline-block;
+            background: var(--green-500);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 8px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* Page break utilities */
+        .page-break-before {
+            page-break-before: always;
+            break-before: page;
+            margin-top: 24px;
+        }
+
+        .page-break-after {
+            page-break-after: always;
+            break-after: page;
+        }
+
+        .no-break {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        /* Print styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            @page {
+                size: letter;
+                margin: 0;
+            }
+
+            html, body {
+                width: 816px;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background: white !important;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .page {
+                width: 100%;
+                min-height: auto;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+                break-after: auto;
+            }
+
+            /* Evitar que las tarjetas se corten */
+            .card {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* El header y banner siempre juntos */
+            .header,
+            .player-banner {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* Footer fijo en todas las páginas */
+            .footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                background: white !important;
+                border-top: 2px solid #22c55e !important;
+                padding: 12px 24px;
+            }
+
+            /* Forzar colores de fondo */
+            .header {
+                background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%) !important;
+            }
+
+            .player-banner {
+                background: #166534 !important;
+            }
+
+            .card-green {
+                background: #f0fdf4 !important;
+            }
+
+            .card-header {
+                background: #dcfce7 !important;
+            }
+
+            .card-amber {
+                background: #fffbeb !important;
+            }
+
+            .card-amber .card-header {
+                background: #fef3c7 !important;
+            }
+
+            .badge-green {
+                background: #22c55e !important;
+            }
+
+            .badge-outline {
+                background: #dcfce7 !important;
+            }
+
+            .status-badge {
+                background: #4ade80 !important;
+            }
+
+            .contact-item {
+                background: #dcfce7 !important;
+            }
+
+            .jersey-item {
+                background: #dcfce7 !important;
+            }
+
+            .size-item {
+                background: #dcfce7 !important;
+            }
+
+            .stat-item {
+                background: white !important;
+            }
+
+            .clearance-box {
+                background: #dcfce7 !important;
+            }
+
+            .clearance-valid {
+                background: #22c55e !important;
+            }
+
+            .observation-box {
+                background: #f9fafb !important;
+            }
+
+            .authorized-list {
+                background: #f0fdf4 !important;
+            }
+
+            .season-badge {
+                background: rgba(255,255,255,0.2) !important;
+            }
+
+            .contact-relation {
+                background: #bbf7d0 !important;
+            }
+
+            /* Margen superior en elementos que inician nueva página */
+            .page-break-before {
+                padding-top: 24px;
+            }
+
+            /* Espacio inferior para que el contenido no se superponga con el footer fijo */
+            .content {
+                padding-bottom: 80px !important;
+            }
+        }
+
+        /* Sizes grid */
+        .sizes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .size-item {
+            background: var(--green-100);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .size-label {
+            font-size: 8px;
+            color: var(--gray-500);
+            margin-bottom: 2px;
+        }
+
+        .size-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--green-700);
+        }
+
+        /* Medical stats */
+        .medical-stats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .stat-item {
+            background: white;
+            border: 1px solid var(--green-200);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--green-700);
+        }
+
+        .stat-label {
+            font-size: 7px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+        }
+
+        /* Medical clearance */
+        .clearance-box {
+            background: var(--green-100);
+            border: 1px solid var(--green-300);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .clearance-status {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--green-700);
+        }
+
+        .clearance-valid {
+            background: var(--green-500);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .clearance-expired {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* Observations */
+        .observation-box {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 10px;
+            color: var(--gray-600);
+            min-height: 50px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Authorized persons list */
+        .authorized-list {
+            background: var(--green-50);
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 10px;
+            color: var(--gray-700);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="club-logo">
+                    <img src="logo-baqueros.svg" alt="Logo Club" onerror="this.parentElement.innerHTML='<span>LOGO</span>'">
+                </div>
+                <div class="header-info">
+                    <h1>Corporación Deportiva Familia Aba</h1>
+                    <p>NIT: 901.234.567-8 | Bogotá, Colombia</p>
+                    <span class="season-badge">Temporada 2026</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="player-photo">
+                    <img src="player-photo.jpg" alt="Foto Jugador" onerror="this.parentElement.innerHTML='<div class=\'player-photo-placeholder\'>Sin<br>Foto</div>'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Player Banner -->
+        <div class="player-banner">
+            <div>
+                <div class="player-name">Andrés Felipe Castro Martínez</div>
+                <div class="player-doc">T.I. 1234567890 | Masculino | 12 años</div>
+            </div>
+            <span class="status-badge">Activo</span>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Datos Personales -->
+            <div class="card card-green no-break">
+                <div class="card-header">
+                    <h3>Datos Personales</h3>
+                </div>
+                <div class="card-body">
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">Fecha Nacimiento</div>
+                            <div class="data-value">15/03/2014</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Edad</div>
+                            <div class="data-value">12 años</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Tipo Sangre</div>
+                            <div class="data-value">O+</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Género</div>
+                            <div class="data-value light">Masculino</div>
+                        </div>
+                        <div class="data-item full">
+                            <div class="data-label">Lugar de Nacimiento</div>
+                            <div class="data-value light">Bogotá, Cundinamarca, Colombia</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Email</div>
+                            <div class="data-value light">andres.castro@email.com</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Teléfono</div>
+                            <div class="data-value">+57 320 1234567</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información Deportiva -->
+            <div class="card card-green no-break">
+                <div class="card-header">
+                    <h3>Información Deportiva</h3>
+                </div>
+                <div class="card-body">
+                    <div style="margin-bottom: 10px;">
+                        <span class="badge badge-green">Baloncesto</span>
+                        <span class="badge badge-outline">Mini (2013-2014)</span>
+                    </div>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <div class="data-label">Posición</div>
+                            <div class="data-value">Base / Point Guard</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Lateralidad</div>
+                            <div class="data-value light">Diestro</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Fecha Ingreso</div>
+                            <div class="data-value">21/01/2026</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Descuento</div>
+                            <div class="data-value light">Hermanos 10%</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <div class="data-label" style="margin-bottom: 6px;">Números de Camiseta</div>
+                        <div class="jersey-grid">
+                            <div class="jersey-item">
+                                <div class="jersey-number">7</div>
+                                <div class="jersey-name">Local</div>
+                            </div>
+                            <div class="jersey-item">
+                                <div class="jersey-number">23</div>
+                                <div class="jersey-name">Visitante</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Residencia y Educación -->
+            <div class="card no-break">
+                <div class="card-header">
+                    <h3>Residencia y Educación</h3>
+                </div>
+                <div class="card-body">
+                    <div class="data-grid">
+                        <div class="data-item full">
+                            <div class="data-label">Dirección de Residencia</div>
+                            <div class="data-value light">Calle 45 #23-15 Apto 301</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Barrio</div>
+                            <div class="data-value light">Chapinero</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Ciudad</div>
+                            <div class="data-value light">Bogotá</div>
+                        </div>
+                        <div class="data-item full">
+                            <div class="data-label">Institución Educativa</div>
+                            <div class="data-value light">Colegio San Bartolomé La Merced</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Grado Actual</div>
+                            <div class="data-value light">7° Séptimo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tallas -->
+            <div class="card no-break">
+                <div class="card-header">
+                    <h3>Tallas de Equipamiento</h3>
+                </div>
+                <div class="card-body">
+                    <div class="sizes-grid">
+                        <div class="size-item">
+                            <div class="size-label">Camiseta</div>
+                            <div class="size-value">M</div>
+                        </div>
+                        <div class="size-item">
+                            <div class="size-label">Pantaloneta</div>
+                            <div class="size-value">S</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacto de Emergencia - Full Width -->
+            <div class="card content-full no-break">
+                <div class="card-header">
+                    <h3>Acudiente y Contactos de Emergencia</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <!-- Acudiente Principal -->
+                        <div class="contact-item">
+                            <div class="contact-header">
+                                <span class="contact-name">María Fernanda Martínez López</span>
+                                <span class="contact-relation">Madre</span>
+                            </div>
+                            <div class="data-grid">
+                                <div class="data-item">
+                                    <div class="data-label">Teléfono</div>
+                                    <div class="data-value">+57 310 9876543</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">Email</div>
+                                    <div class="data-value light">maria.martinez@email.com</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Segundo Contacto -->
+                        <div class="contact-item">
+                            <div class="contact-header">
+                                <span class="contact-name">Carlos Alberto Castro Ruiz</span>
+                                <span class="contact-relation">Padre</span>
+                            </div>
+                            <div class="data-grid">
+                                <div class="data-item">
+                                    <div class="data-label">Teléfono</div>
+                                    <div class="data-value">+57 315 5551234</div>
+                                </div>
+                                <div class="data-item">
+                                    <div class="data-label">Email</div>
+                                    <div class="data-value light">carlos.castro@email.com</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 12px;">
+                        <div class="data-label" style="margin-bottom: 6px;">Personas Autorizadas para Recogida</div>
+                        <div class="authorized-list">
+                            Ana María Castro (Tía) - CC 52.345.678 | Juan Pérez (Abuelo) - CC 19.234.567
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información Médica - Full Width -->
+            <div class="card card-amber content-full no-break page-break-before">
+                <div class="card-header">
+                    <h3>Información Médica</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Stats row -->
+                    <div class="medical-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">165</div>
+                            <div class="stat-label">Altura (cm)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">52</div>
+                            <div class="stat-label">Peso (kg)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">19.1</div>
+                            <div class="stat-label">IMC</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">15%</div>
+                            <div class="stat-label">Grasa Corp.</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">28</div>
+                            <div class="stat-label">Masa Musc.</div>
+                        </div>
+                    </div>
+
+                    <div class="data-grid data-grid-3" style="margin-bottom: 12px;">
+                        <div class="data-item">
+                            <div class="data-label">EPS / Seguro Médico</div>
+                            <div class="data-value">Sura EPS</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Tipo de Sangre</div>
+                            <div class="data-value">O+</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">Alergias</div>
+                            <div class="data-value light">Penicilina, Polen</div>
+                        </div>
+                        <div class="data-item full">
+                            <div class="data-label">Condiciones Crónicas</div>
+                            <div class="data-value light">Asma leve controlada</div>
+                        </div>
+                        <div class="data-item full">
+                            <div class="data-label">Medicamentos Actuales</div>
+                            <div class="data-value light">Salbutamol (inhalador) - Usar antes de actividad física intensa si es necesario</div>
+                        </div>
+                        <div class="data-item full">
+                            <div class="data-label">Historial de Lesiones</div>
+                            <div class="data-value light">Esguince tobillo derecho (2024) - Recuperación completa</div>
+                        </div>
+                    </div>
+
+                    <!-- Certificado médico -->
+                    <div class="clearance-box">
+                        <div style="flex: 1;">
+                            <div class="clearance-status">Certificado Médico Deportivo</div>
+                            <div style="font-size: 9px; color: var(--gray-500);">Dr. Juan Pablo Rodríguez - RM 12345</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="clearance-valid">Vigente</span>
+                            <div style="font-size: 8px; color: var(--gray-500); margin-top: 2px;">Vence: 15/06/2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Observaciones - Full Width -->
+            <div class="card content-full no-break">
+                <div class="card-header">
+                    <h3>Observaciones</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div>
+                            <div class="data-label" style="margin-bottom: 4px;">Observaciones del Acudiente</div>
+                            <div class="observation-box">
+                                Los martes y jueves debe salir 15 minutos antes por clases de inglés.
+                                Favor notificar cualquier cambio de horario con anticipación.
+                            </div>
+                        </div>
+                        <div>
+                            <div class="data-label" style="margin-bottom: 4px;">Observaciones del Club (Interno)</div>
+                            <div class="observation-box">
+                                Excelente actitud y disciplina. Potencial para categoría superior.
+                                Revisar técnica de tiro de media distancia.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-left">
+                <div class="footer-club">Corporación Deportiva Familia Aba</div>
+                <div class="footer-contact">Tel: 320 785 2186 | corporaciondeportivafamiliaaba@gmail.com</div>
+                <div class="footer-date">Generado el 23/01/2026 17:30</div>
+            </div>
+            <div class="footer-right">
+                <div class="widdo-brand">
+                    <div class="widdo-logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 375" preserveAspectRatio="xMidYMid meet">
+                            <circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/>
+                            <path fill="#ffffff" d="M 265.17 107.99 L 231.99 189.65 L 187.39 103.9 L 142.57 189.65 L 121.31 230.34 L 138.27 271.09 L 187.39 177.58 L 236.09 271.09 L 304.6 107.99 Z"/>
+                            <path fill="#ffffff" d="M 136.86 175.39 L 109.83 107.99 L 70.4 107.99 L 115.47 216.31 Z"/>
+                            <circle cx="306.8" cy="270.05" r="9.46" fill="#ffffff"/>
+                        </svg>
+                    </div>
+                    <span class="widdo-logo">Widdo</span>
+                </div>
+                <div class="widdo-tagline">Gestión Deportiva Digital</div>
+                <div class="widdo-url">widdo.co</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

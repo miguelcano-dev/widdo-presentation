@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Widdo for Clubs — One-pager</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    /* Version corta del deck de clubes (deck-widdo-clubs-usa.html): una sola
+       pagina Letter, sin capturas, para que un director vea de un golpe todo
+       lo que ofrece Widdo. Mismos tokens de marca que el deck. */
+    @page { size: letter; margin: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --green: #16a34a;
+        --green-dark: #0f7a37;
+        --text: #18181b;
+        --muted: rgba(24, 24, 27, 0.65);
+        --faint: rgba(24, 24, 27, 0.42);
+        --card: #f4f4f5;
+        --border: rgba(24, 24, 27, 0.12);
+    }
+
+    body {
+        font-family: 'Red Hat Display', -apple-system, sans-serif;
+        color: var(--text);
+        background: #fff;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+        width: 8.5in;
+        height: 11in;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* ---------- Cabecera verde ---------- */
+    .head {
+        background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+        color: #fff;
+        padding: 24px 44px 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; margin-bottom: 15px; }
+    .brand-mark {
+        width: 38px; height: 38px; border-radius: 50%; background: #fff;
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .brand-mark img { width: 38px; height: 38px; display: block; }
+    .brand span { font-size: 21px; font-weight: 800; letter-spacing: -0.3px; }
+    .head h1 { font-size: 30px; font-weight: 900; line-height: 1.08; letter-spacing: -1px; }
+    .head .sub {
+        font-size: 13.5px; font-weight: 400; margin-top: 9px;
+        color: rgba(255,255,255,0.9); max-width: 6in; line-height: 1.5;
+    }
+
+    /* ---------- Cuerpo ---------- */
+    .body { padding: 18px 44px 0; flex: 1; display: flex; flex-direction: column; }
+
+    .eyebrow {
+        font-size: 9px; font-weight: 800; letter-spacing: 1.5px;
+        text-transform: uppercase; color: var(--green); margin-bottom: 9px;
+    }
+
+    /* Problema: una linea, cuatro golpes */
+    .pains { display: flex; gap: 9px; margin-bottom: 15px; }
+    .pain {
+        flex: 1; background: var(--card); border: 1px solid var(--border);
+        border-radius: 8px; padding: 10px 11px;
+    }
+    .pain b { display: block; font-size: 11.5px; font-weight: 700; margin-bottom: 2px; }
+    .pain span { font-size: 10px; color: var(--muted); line-height: 1.4; }
+
+    /* Mapa de capacidades: el corazon del one-pager */
+    .caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+    .cap { background: var(--card); border: 1px solid var(--border); border-radius: 9px; padding: 9px 12px 10px; }
+    .cap-t {
+        font-size: 9px; font-weight: 800; letter-spacing: 1.1px; text-transform: uppercase;
+        color: var(--green); margin-bottom: 7px;
+    }
+    .cap ul { list-style: none; }
+    .cap li { font-size: 10px; color: var(--muted); line-height: 1.5; white-space: nowrap; }
+
+    /* Diferenciadores */
+    .diffs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 20px; margin-bottom: 12px; }
+    .diff { display: flex; gap: 9px; align-items: flex-start; }
+    .diff-n {
+        font-size: 19px; font-weight: 900; color: var(--green); line-height: 1;
+        min-width: 52px; letter-spacing: -0.5px;
+    }
+    .diff-b { font-size: 11px; font-weight: 700; display: block; }
+    .diff-s { font-size: 10px; color: var(--muted); line-height: 1.42; }
+
+    /* Pricing */
+    .pricing { display: flex; gap: 10px; margin-bottom: 11px; }
+    .plan {
+        flex: 1; border: 1px solid var(--border); border-radius: 9px;
+        padding: 9px 12px 10px; text-align: center;
+    }
+    .plan.on { border: 2px solid var(--green); background: rgba(22,163,74,0.04); }
+    .plan-n { font-size: 9px; font-weight: 800; letter-spacing: 1.1px; color: var(--faint); }
+    .plan.on .plan-n { color: var(--green); }
+    .plan-p { font-size: 23px; font-weight: 900; letter-spacing: -0.8px; margin: 3px 0 1px; }
+    .plan-p i { font-size: 10px; font-weight: 500; font-style: normal; color: var(--faint); }
+    .plan-c { font-size: 9.5px; color: var(--muted); }
+
+    .fee {
+        display: flex; justify-content: space-between; align-items: center;
+        border-top: 1px solid var(--border); padding-top: 9px;
+    }
+    .fee b { font-size: 13.5px; font-weight: 800; color: var(--green); letter-spacing: -0.3px; }
+    .fee span { font-size: 9.5px; color: var(--faint); }
+
+    /* ---------- Cierre ---------- */
+    .foot {
+        margin-top: auto; background: var(--card); border-top: 1px solid var(--border);
+        padding: 13px 44px 15px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .foot-l b { font-size: 15px; font-weight: 800; display: block; letter-spacing: -0.3px; }
+    .foot-l span { font-size: 10.5px; color: var(--muted); }
+    .foot-r { text-align: right; }
+    .foot-r b { font-size: 15.5px; font-weight: 800; display: block; letter-spacing: -0.3px; }
+    .foot-r span { font-size: 12px; font-weight: 700; color: var(--green); }
+</style>
+</head>
+<body>
+<div class="page">
+
+    <div class="head">
+        <div class="brand">
+            <div class="brand-mark"><img src="widdo-logo.svg" alt="Widdo"></div>
+            <span>widdo</span>
+        </div>
+        <h1>Run your club, not your spreadsheets.</h1>
+        <p class="sub">Payments, players, attendance and families in one place. Built for clubs and academies that would rather coach than chase receipts.</p>
+    </div>
+
+    <div class="body">
+
+        <div class="eyebrow">What eats your week today</div>
+        <div class="pains">
+            <div class="pain"><b>Chasing payments</b><span>One family at a time, every month.</span></div>
+            <div class="pain"><b>Everything in group chats</b><span>Schedules and receipts, buried.</span></div>
+            <div class="pain"><b>Attendance on paper</b><span>A clipboard nobody types up.</span></div>
+            <div class="pain"><b>No idea where you stand</b><span>Who owes you? Nobody knows.</span></div>
+        </div>
+
+        <div class="eyebrow">Everything your club runs on &mdash; one login, no add-ons to buy</div>
+        <div class="caps">
+            <div class="cap">
+                <div class="cap-t">Money</div>
+                <ul>
+                    <li>Payments</li><li>Charges</li><li>Discounts</li><li>Expenses</li>
+                    <li>Collections</li><li>Financial Reports</li><li>Payment Settings</li>
+                </ul>
+            </div>
+            <div class="cap">
+                <div class="cap-t">Players &amp; families</div>
+                <ul>
+                    <li>Players</li><li>Categories</li><li>Enrollment Links</li><li>Documents</li>
+                    <li>Doc Review</li><li>Doc Requirements</li><li>Import/Export</li>
+                </ul>
+            </div>
+            <div class="cap">
+                <div class="cap-t">Training</div>
+                <ul>
+                    <li>Sessions</li><li>Attendance</li><li>QR check-in</li><li>Calendar</li>
+                    <li>Attendance Reports</li><li>Venues</li><li>Trainers</li>
+                </ul>
+            </div>
+            <div class="cap">
+                <div class="cap-t">The club</div>
+                <ul>
+                    <li>Club Settings</li><li>Club Team</li><li>Role Permissions</li><li>Inventory</li>
+                    <li>File Vault</li><li>Legal Documents</li><li>Consent Templates</li>
+                </ul>
+            </div>
+            <div class="cap">
+                <div class="cap-t">For families</div>
+                <ul>
+                    <li>My Payments</li><li>My Documents</li><li>My Children</li>
+                    <li>Payment History</li><li>Training Sessions</li><li>Attendance</li>
+                    <li>Parent app</li>
+                </ul>
+            </div>
+            <div class="cap">
+                <div class="cap-t">AI &amp; automation</div>
+                <ul>
+                    <li>Widdo AI</li><li>AI Autonomy</li><li>Automatic reminders</li>
+                    <li>Weekly club report</li><li>Late fees</li><li>Collection cycles</li>
+                    <li>Tournaments</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="eyebrow">Why clubs switch</div>
+        <div class="diffs">
+            <div class="diff">
+                <div class="diff-n">63</div>
+                <div><b class="diff-b">Things you can just ask for</b><span class="diff-s">&ldquo;Who hasn&rsquo;t paid this month?&rdquo; &ldquo;Close the month.&rdquo; Widdo AI answers from your data &mdash; and does it.</span></div>
+            </div>
+            <div class="diff">
+                <div class="diff-n">0%</div>
+                <div><b class="diff-b">Platform fee on what you collect</b><span class="diff-s">Parents pay by card. We don&rsquo;t take a cut of your club&rsquo;s money.</span></div>
+            </div>
+            <div class="diff">
+                <div class="diff-n">0</div>
+                <div><b class="diff-b">Reminders you send by hand</b><span class="diff-s">Charges created, late fees applied and reminders sent overnight. You approve, or you let it run.</span></div>
+            </div>
+            <div class="diff">
+                <div class="diff-n">30 min</div>
+                <div><b class="diff-b">To be up and running</b><span class="diff-s">Create the club, upload your roster with our template, send one link to families.</span></div>
+            </div>
+            <div class="diff">
+                <div class="diff-n">6</div>
+                <div><b class="diff-b">Roles, each with its own view</b><span class="diff-s">Owner, admin, coach, accountant, parent, player. A coach never sees your finances.</span></div>
+            </div>
+            <div class="diff">
+                <div class="diff-n">3</div>
+                <div><b class="diff-b">Languages, out of the box</b><span class="diff-s">Every family is written to in English, Spanish or Portuguese.</span></div>
+            </div>
+        </div>
+
+        <div class="eyebrow">Pricing</div>
+        <div class="pricing">
+            <div class="plan">
+                <div class="plan-n">STARTER</div>
+                <div class="plan-p">$99<i> /mo</i></div>
+                <div class="plan-c">Up to 75 athletes</div>
+            </div>
+            <div class="plan on">
+                <div class="plan-n">GROWTH</div>
+                <div class="plan-p">$199<i> /mo</i></div>
+                <div class="plan-c">Up to 250 athletes &middot; Widdo AI</div>
+            </div>
+            <div class="plan">
+                <div class="plan-n">CLUB</div>
+                <div class="plan-p">$349<i> /mo</i></div>
+                <div class="plan-c">Unlimited athletes</div>
+            </div>
+        </div>
+        <div class="fee">
+            <b>0% platform fee on the payments you collect.</b>
+            <span>No setup fee &middot; Billed monthly &middot; Cancel any time</span>
+        </div>
+
+    </div>
+
+    <div class="foot">
+        <div class="foot-l">
+            <b>See it running on your own club&rsquo;s data.</b>
+            <span>Send us your roster &mdash; we&rsquo;ll show you your club inside Widdo, not a demo account.</span>
+        </div>
+        <div class="foot-r">
+            <b>hey@widdo.co</b>
+            <span>widdo.co</span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

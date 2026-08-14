@@ -1,0 +1,1205 @@
+# CLAUDE.md - Frontend (React + Vite)
+
+This file provides guidance to Claude Code when working with the **frontend** of this repository.
+
+---
+
+## 📋 REGLA DE DOCUMENTACIÓN
+
+**IMPORTANTE:** Mantener la documentación simple y consolidada.
+
+### ✅ Archivos de Documentación Permitidos en Frontend:
+1. **`README.md`** - Información básica de React/Vite
+2. **`CLAUDE.md`** (este archivo) - Documentación completa de desarrollo
+3. **`TESTING_ROUTES.md`** - Solo para guías de testing XSS
+
+### ❌ NO Crear:
+- Múltiples archivos .md con información duplicada
+- STATUS.md, ROADMAP.md, PENDING.md separados
+- Archivos .md temporales de análisis
+
+### 📝 Regla de Oro:
+- **Si necesitas documentar algo del frontend → Agrégalo a este CLAUDE.md**
+- **Si CLAUDE.md crece mucho → Reorganiza secciones, NO crees archivos nuevos**
+- **Un solo lugar para actualizar = Menos confusión**
+
+---
+
+## 📊 Estado del Frontend
+
+**Última actualización:** 22 de Diciembre de 2025
+**Progreso:** 82% completado
+
+### Componentes Implementados:
+- ✅ Sistema de autenticación (login, registro, reset password)
+- ✅ Dashboards por rol (6 dashboards específicos)
+- ✅ CRUD de jugadores con formularios completos
+- ✅ Sistema de documentos (upload, preview, download)
+- ✅ Sistema de pagos y cobros
+- ✅ Calendario de eventos
+- ✅ Gestión de asistencia
+- ✅ Landing page profesional
+- ✅ Blog integrado
+- ✅ Centro de ayuda
+- ✅ Estados de carga unificados (LoadingSpinner con variantes)
+
+### Pendientes:
+- 🔄 Reportes en PDF/Excel (frontend components)
+- 🔄 Gráficos avanzados con Chart.js
+- 🔄 Notificaciones en tiempo real (WebSocket integration)
+- 🔄 Sistema de preferencias de usuario
+
+---
+
+## 🔍 Blog y SEO
+
+**Última actualización:** 26 de Enero de 2026
+
+### Documentación SEO
+- **`SEO.md`** - Estrategia completa de SEO (keywords, competidores, fases)
+- **`SEO-TODO.md`** - Top 10 acciones y calendario de contenido
+
+### Landing Pages Verticales Implementadas
+
+| Página | Ruta | Keywords Target | Estado |
+|--------|------|-----------------|--------|
+| Escuelas de Fútbol | `/escuelas-futbol` | software escuela de fútbol | ✅ |
+| Clubes de Fútbol | `/clubes-futbol` | software club de fútbol | ✅ |
+| Ligas y Torneos | `/ligas` | software ligas deportivas | ✅ |
+
+**Archivos:**
+- `src/pages/EscuelasFutbolPage.jsx` - Landing escuelas (verde)
+- `src/pages/ClubesFutbolPage.jsx` - Landing clubes (azul/índigo)
+- `src/pages/LigasPage.jsx` - Landing ligas
+
+### Blog Posts SEO (Backend Seeder)
+
+**Seeder:** `saas_sport/database/seeders/BlogSEOPostsSeeder.php`
+
+**Ejecutar seeder:**
+```bash
+cd saas_sport
+docker compose exec saas_sport_app php artisan db:seed --class=Database\\Seeders\\BlogSEOPostsSeeder
+```
+
+**Posts creados (10 artículos con fechas estratégicas):**
+
+| Fecha | Artículo | Keyword Target |
+|-------|----------|----------------|
+| 3 Ene 2026 | Cómo Cobrar Mensualidades en tu Escuela de Fútbol | cobrar mensualidades escuela fútbol |
+| 10 Ene 2026 | 5 Errores Fatales al Administrar un Club Deportivo | errores administrar club deportivo |
+| 17 Ene 2026 | Control de Asistencia para Deportistas: Guía Completa | control asistencia deportistas |
+| 24 Ene 2026 | Cuánto Cobrar de Mensualidad en Escuela de Fútbol Colombia | mensualidad escuela fútbol Colombia |
+| 31 Ene 2026 | Los 5 Mejores Software para Clubes Deportivos Colombia | software clubes deportivos Colombia |
+| 7 Feb 2026 | Cómo Comunicarse con Padres de Jugadores | comunicación padres jugadores |
+| 14 Feb 2026 | Plantilla Excel para Control de Pagos en Clubes | plantilla excel control pagos club |
+| 21 Feb 2026 | Cómo Organizar un Torneo de Fútbol Infantil | organizar torneo fútbol infantil |
+| 28 Feb 2026 | Requisitos para Abrir una Escuela de Fútbol en Colombia | requisitos abrir escuela fútbol |
+| 7 Mar 2026 | Cómo Retener Jugadores en tu Academia Deportiva | retener jugadores academia |
+
+**Notas importantes:**
+- Posts con `published_at <= now()` se muestran automáticamente
+- Posts con fecha futura se "publican" cuando llega su fecha
+- El scope `published()` en `BlogPost.php` filtra por fecha
+- Cada post tiene CTAs hacia registro/demo de Widdo
+
+### SEO Técnico Implementado
+
+| Elemento | Estado | Ubicación |
+|----------|--------|-----------|
+| Meta tags dinámicos | ✅ | react-helmet-async |
+| Pre-rendering (SSR) | ✅ | react-snap |
+| Sitemap.xml | ✅ | `public/sitemap.xml` |
+| Robots.txt | ✅ | `public/robots.txt` |
+| Schema.org JSON-LD | ✅ | En landing pages |
+| Open Graph | ✅ | Facebook/LinkedIn |
+| Twitter Cards | ✅ | Configurado |
+| Canonical URLs | ✅ | En todas las páginas |
+
+### Verificar Posts en API
+
+```bash
+# Ver posts publicados (visibles)
+curl -s "http://localhost:8010/api/blog" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+for p in data['data']['posts']['data'][:5]:
+    print(f\"{p['published_at'][:10]} | {p['title'][:50]}\")
+"
+
+# Ver todos los posts en DB (incluye futuros)
+docker compose exec saas_sport_app php artisan tinker --execute="App\Models\BlogPost::count()"
+```
+
+---
+
+## 🔐 Sistema de Guards de Rutas (IMPORTANTE)
+
+**Última actualización:** 24 de Enero de 2026
+
+### Guards Disponibles:
+
+| Guard | Ubicación | Permite | Bloquea |
+|-------|-----------|---------|---------|
+| `AdminRouteGuard` | `components/guards/` | Owner, Admin, Trainer, Accountant | Parent, Player |
+| `FinancialRouteGuard` | `components/guards/` | Owner, Admin, Accountant | Trainer, Parent, Player |
+| `TrainerRouteGuard` | `components/guards/` | Owner, Admin, Trainer, Accountant | Parent, Player |
+| `OwnerOnlyGuard` | `components/guards/` | Owner (opción: +Admin) | Todos los demás |
+| `ParentOnlyGuard` | `components/guards/` | Parent | Todos los demás |
+| `PlayerOrParentGuard` | `components/guards/` | Player, Parent | Owner, Admin, Trainer, Accountant |
+| `SuperAdminGuard` | `components/guards/` | Super Admin | Todos |
+
+### Cómo usar al crear una nueva página:
+
+**Indicar al crear una página:**
+```
+Nueva página: /home/nueva-ruta
+Componente: NuevaPagina.jsx
+Acceso: [roles que pueden acceder]
+```
+
+**Ejemplo:**
+```
+Nueva página: /home/uniformes
+Componente: UniformesPage.jsx
+Acceso: owner, admin, accountant
+```
+
+### Referencia rápida:
+
+| Si el acceso es... | Usar este guard |
+|--------------------|-----------------|
+| Solo owner | `OwnerOnlyGuard` |
+| Owner y admin | `OwnerOnlyGuard allowAdmin={true}` |
+| Todos menos padres y jugadores | `AdminRouteGuard` |
+| Solo personal financiero (owner, admin, contador) | `FinancialRouteGuard` |
+| Entrenadores y admin | `TrainerRouteGuard` |
+| Solo padres | `ParentOnlyGuard` |
+| Jugadores y padres | `PlayerOrParentGuard` |
+| Todos los autenticados | Sin guard (solo `PrivateRoute`) |
+| Solo Super Admin | `SuperAdminGuard` |
+
+### Matriz de acceso actual por ruta:
+
+**Rutas Administrativas (AdminRouteGuard):**
+- `/home/enrollment-links`, `/home/club-team`, `/home/team-members`
+- `/home/categories`, `/home/trainers`, `/home/players`
+- `/home/venues`, `/home/inventory`, `/home/tournaments/*`
+- `/home/legal-documents`, `/home/consent-template`
+
+**Rutas Financieras (FinancialRouteGuard):**
+- `/home/payments`, `/home/chargers`, `/home/discounts`, `/home/expenses`
+- `/home/financial-reports`, `/home/payment-settings`
+- `/home/reports/income`, `/home/reports/pending`
+
+**Rutas de Entrenamiento (TrainerRouteGuard):**
+- `/home/sessions`, `/home/trainings`, `/home/attendance`, `/home/reports`
+
+**Rutas Solo Propietario (OwnerOnlyGuard):**
+- `/home/subscription`, `/home/create-club-team/:clubIdToEdit` (editar club existente)
+- `/home/role-permissions` (+ Admin)
+- `/home/admin/payment_methods`, `/home/admin/roles`, `/home/admin/users-roles` (+ Admin)
+
+**Sin Guard pero lógica especial:**
+- `/home/create-club-team` - Crear club nuevo (cualquier usuario autenticado puede crear su primer club)
+
+**Rutas Solo Padres (ParentOnlyGuard):**
+- `/home/my-children`, `/home/my-child-edit/:playerId`, `/home/children-sessions`
+
+**Rutas Jugador/Padre (PlayerOrParentGuard):**
+- `/home/my-payments`, `/home/my-documents`, `/home/payment-history`
+
+**Sin Guard (todos los autenticados):**
+- `/home/dashboard`, `/home/settings`, `/home/calendar`, `/home/my-profile`, `/home/context-selector`
+
+---
+
+## 🎯 Cambios Recientes
+
+### 25 de Enero de 2026
+
+**⚠️ Radix UI Checkbox + ScrollArea = Infinite Loop - IMPORTANTE:**
+
+**Problema:** Cuando se usa `Checkbox` de Radix UI dentro de una lista con `ScrollArea`, se produce un error de "Maximum update depth exceeded" al hacer click en los checkboxes. El error ocurre en el sistema de refs de Radix.
+
+**Causa:** Los componentes Radix UI Checkbox y ScrollArea tienen problemas de compatibilidad cuando se combinan en listas dinámicas. El sistema de refs entra en un loop infinito de actualizaciones.
+
+**Solución que NO funciona:**
+```jsx
+// ❌ NUNCA usar pointer-events-none como workaround
+<Checkbox checked={isSelected} className="pointer-events-none" />
+// Esto no soluciona el problema y solo hace que el checkbox no sea clickeable
+```
+
+**Solución correcta - Usar react-select con isMulti:**
+```jsx
+// ✅ Para selección múltiple en listas, usar react-select
+import Select from 'react-select';
+
+<Select
+  isMulti
+  options={memberOptions}
+  value={selectedOptions}
+  onChange={handleSelectChange}
+  closeMenuOnSelect={false}  // Mantener abierto para múltiple selección
+  styles={customStyles}
+/>
+```
+
+**Componente afectado:** `InvitationTargetSelector.jsx` - Reescrito completamente para usar react-select.
+
+**Regla para futuros desarrollos:**
+- Para selección múltiple en listas → **Usar react-select con isMulti=true**
+- Para checkboxes individuales (no en listas) → Radix UI Checkbox está bien
+- NUNCA combinar Checkbox + ScrollArea + listas dinámicas
+
+---
+
+### 21 de Enero de 2026
+
+**Dialog + Select/DatePicker Overlay Bug - SOLUCIONADO:**
+
+⚠️ **Problema:** Cuando un `Dialog` contiene componentes `Select` o `DatePicker` y se cierra el modal, el overlay negro se quedaba visible bloqueando toda la página.
+
+**Causa:** Los portales de Radix UI (`Select`, `Popover`) crean elementos DOM fuera del Dialog, y al cerrar el Dialog, estos portales no se limpiaban correctamente.
+
+**Solución aplicada en `components/ui/dialog.jsx`:**
+```jsx
+<DialogPrimitive.Content
+  onPointerDownOutside={(e) => {
+    // Prevenir cierre si se hace click en un Select/Dropdown abierto
+    const target = e.target;
+    if (
+      target?.closest('[data-radix-select-content]') ||
+      target?.closest('[data-radix-dropdown-menu-content]') ||
+      target?.closest('[data-radix-popover-content]')
+    ) {
+      e.preventDefault();
+    }
+  }}
+  onInteractOutside={(e) => {
+    // Prevenir interacción outside si hay Select/Dropdown abierto
+    const target = e.target;
+    if (
+      target?.closest('[data-radix-select-content]') ||
+      target?.closest('[data-radix-dropdown-menu-content]') ||
+      target?.closest('[data-radix-popover-content]')
+    ) {
+      e.preventDefault();
+    }
+  }}
+>
+```
+
+**También en `components/ui/select.jsx`:**
+- Cambié `z-50` a `z-[100]` en SelectContent para que esté por encima del overlay del Dialog
+
+**Regla para futuros modales:**
+- NO es necesario hacer nada especial, los componentes Dialog y Select ya tienen el fix global
+- Si usas un Popover personalizado dentro de un Dialog, asegúrate de que tenga `z-index > 50`
+
+---
+
+**Currency Input Pattern - IMPORTANTE:**
+
+⚠️ **NUNCA formatear el valor mientras el usuario está escribiendo en campos de moneda.**
+
+**Problema identificado:**
+Cuando un campo de moneda tiene formato en tiempo real (ej: `280.000`), al escribir un nuevo dígito, el valor se concatena incorrectamente:
+- Usuario ve: `280.000`
+- Usuario escribe: `8`
+- Resultado esperado: `2.800.008` o algún formato
+- Resultado real: `280.0008` → se convierte en `28.000.000` (un cero extra)
+
+**Solución aplicada - Formatear solo cuando pierde el foco:**
+```jsx
+const [amountInputFocused, setAmountInputFocused] = useState(false);
+
+<Input
+  type="text"
+  inputMode="numeric"
+  onFocus={() => setAmountInputFocused(true)}
+  onBlur={() => setAmountInputFocused(false)}
+  value={
+    disabled
+      ? new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 }).format(amount)
+      : amountInputFocused
+        ? rawAmount || ''  // Sin formato mientras escribe
+        : rawAmount
+          ? new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 }).format(Number(rawAmount))
+          : ''  // Con formato cuando pierde el foco
+  }
+  onChange={(e) => {
+    const rawValue = e.target.value.replace(/\D/g, '');
+    setValue('amount', rawValue);
+  }}
+/>
+
+// ❌ INCORRECTO - Formatear siempre causa bugs de concatenación
+<Input
+  value={new Intl.NumberFormat('es-CO').format(amount)} // ¡NO!
+  onChange={(e) => {
+    const rawValue = e.target.value.replace(/\D/g, '');
+    setValue('amount', rawValue);
+  }}
+/>
+```
+
+**Regla general para campos de moneda:**
+1. **Guardar siempre el valor crudo** (sin formato) en el estado: `280000`
+2. **Usar `maximumFractionDigits: 0`** para COP (no usa decimales)
+3. **Limpiar decimales del backend**: `Math.floor(Number(amount))`
+4. **Formatear con focus/blur**: crudo mientras escribe, formateado al salir
+5. **Seleccionar todo al hacer focus**: `e.target.select()` para fácil reemplazo
+6. **Formatear al mostrar** en otros lugares (tablas, resúmenes): usar `Intl.NumberFormat`
+
+**Ejemplo completo:**
+```jsx
+const [amount, setAmount] = useState('');
+const [focused, setFocused] = useState(false);
+
+// Función helper para formatear
+const formatCurrency = (value) => {
+  if (!value) return '';
+  return new Intl.NumberFormat('es-CO', {
+    maximumFractionDigits: 0
+  }).format(Number(value));
+};
+
+<Input
+  type="text"
+  inputMode="numeric"
+  onFocus={(e) => {
+    setFocused(true);
+    // Usar timeout para que select() funcione después del re-render
+    const input = e.target;
+    setTimeout(() => input.select(), 0);
+  }}
+  onBlur={() => setFocused(false)}
+  value={focused ? amount : formatCurrency(amount)}
+  onChange={(e) => setAmount(e.target.value.replace(/\D/g, ''))}
+/>
+
+// Para mostrar en tablas/resúmenes (solo lectura)
+<span>{new Intl.NumberFormat('es-CO', {
+  style: 'currency',
+  currency: 'COP',
+  minimumFractionDigits: 0
+}).format(amount || 0)}</span>
+```
+
+---
+
+### 22 de Diciembre de 2025
+
+**Validaciones y Estándares:**
+- **day_of_week Format**: Implementada conversión correcta para envío al backend
+  - JavaScript usa `0=Sunday, 1=Monday, ..., 6=Saturday` (getDay())
+  - Backend espera ISO 8601: `1=Monday, 2=Tuesday, ..., 7=Sunday`
+  - **Conversión requerida**: Antes de enviar al API, convertir `jsDay` a `isoDay = jsDay === 0 ? 7 : jsDay`
+  - **Ejemplo**: Domingo JavaScript (0) = Domingo ISO (7), Lunes JavaScript (1) = Lunes ISO (1)
+
+**Logging y Debugging:**
+- **SecureLogger Policy**: Política establecida para reducir console.log
+  - Antes: 98 instancias de console.log en todo el proyecto
+  - Después: 33 instancias (solo logs esenciales)
+  - **Nueva política**: Usar `SecureLogger` en lugar de `console.log` directo
+  - **Importancia**: Evitar logs de datos sensibles en producción
+  - **Ubicación**: `/src/utils/SecureLogger.js`
+
+**Autenticación y Seguridad:**
+- **Token Expiration Handling**: Actualización del manejo de tokens
+  - Login y Register ahora reciben campo `expires_in: 3600` (60 minutos en segundos)
+  - Frontend debe calcular tiempo de expiración: `expiryTime = Date.now() + (expires_in * 1000)`
+  - Implementar auto-refresh o logout cuando el token expira
+  - **Formato de respuesta**:
+    ```javascript
+    {
+      access_token: "...",
+      token_type: "Bearer",
+      expires_in: 3600  // ← Nuevo campo
+    }
+    ```
+
+**Code Quality:**
+- Reducción significativa de logs innecesarios en consola
+- Mejora en el manejo de errores y feedback al usuario
+- Implementación de políticas de logging más estrictas
+
+---
+
+## 🏗️ Arquitectura del Frontend
+
+### Stack Tecnológico:
+- **Framework:** React 18
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **UI Components:** Radix UI
+- **Routing:** React Router v6
+- **Forms:** React Hook Form
+- **HTTP Client:** Axios
+- **State Management:** Context API
+- **Testing:** Playwright (E2E)
+
+### Estructura de Carpetas:
+```
+src/
+├── assets/              # Imágenes, logos, iconos
+├── components/          # Componentes reutilizables
+│   ├── admin/          # Componentes del admin
+│   ├── auth/           # Autenticación (PublicRoute, PrivateRoute)
+│   ├── blog/           # Blog components
+│   ├── calendar/       # Calendario de eventos
+│   ├── dashboard/      # Dashboard components
+│   ├── dashboards/     # Dashboards específicos por rol
+│   ├── datatable/      # Componentes de tablas
+│   ├── documents/      # Gestión de documentos
+│   ├── elements/       # Elementos UI reutilizables
+│   ├── form/           # Componentes de formularios
+│   ├── guards/         # Guards de autorización
+│   ├── landing/        # Landing page components
+│   ├── onboarding/     # Onboarding por rol
+│   ├── parent-child/   # Relaciones padre-hijo
+│   └── ui/             # Radix UI components
+│
+├── contexts/           # Context API
+│   ├── AuthContext.jsx
+│   ├── ClubContext.jsx
+│   └── LoadingContext.jsx
+│
+├── hooks/              # Custom hooks
+│   ├── useAuth.js
+│   ├── useClub.js
+│   └── usePermissions.js
+│
+├── pages/              # Páginas principales
+│   ├── admin/          # Páginas de administración
+│   ├── auth/           # Login, Register, Reset
+│   ├── calendar/       # Página de calendario
+│   ├── dashboard/      # Dashboards por módulo
+│   │   ├── Categories/
+│   │   ├── Chargers/
+│   │   ├── ClubTeam/
+│   │   ├── Discounts/
+│   │   ├── Payments/
+│   │   ├── Players/
+│   │   └── Trainers/
+│   ├── BlogPage.jsx
+│   ├── LandingPage.jsx
+│   └── NotFoundPage.jsx
+│
+├── services/           # Servicios de API
+│   ├── api.js          # Axios instance
+│   ├── authService.js
+│   ├── clubService.js
+│   ├── playerService.js
+│   ├── paymentService.js
+│   └── eventService.js
+│
+├── utils/              # Utilidades
+│   ├── formatters.js   # Format dates, currency, etc
+│   └── validators.js   # Validation functions
+│
+├── App.jsx             # Rutas principales
+├── main.jsx            # Entry point
+└── index.css           # Tailwind imports
+```
+
+---
+
+## 💻 Comandos de Desarrollo
+
+### Instalación:
+```bash
+cd frontend
+npm install
+```
+
+### Desarrollo:
+```bash
+# Iniciar servidor de desarrollo (http://localhost:5173)
+npm run dev
+
+# Build para producción
+npm run build
+
+# Preview del build
+npm run preview
+
+# Lint del código
+npm run lint
+```
+
+### Testing:
+```bash
+# Tests E2E con Playwright
+npm run test:e2e
+
+# Tests E2E en modo UI
+npm run test:e2e:ui
+
+# Tests E2E con debug
+npm run test:e2e:debug
+```
+
+---
+
+## 🔧 Configuración
+
+### Variables de Entorno (.env)
+```bash
+# Backend API URL
+VITE_API_URL=http://localhost:8010/api
+
+# Environment
+VITE_APP_ENV=development
+```
+
+### Axios Configuration (services/api.js)
+```javascript
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
+});
+```
+
+---
+
+## 🎨 Componentes Principales
+
+### Dashboards por Rol:
+1. **SuperAdminDashboard.jsx** - Vista global de plataforma
+2. **ClubOwnerDashboard.jsx** - Gestión del club
+3. **TrainerDashboard.jsx** - Vista de entrenador
+4. **PlayerDashboard.jsx** - Vista de jugador
+5. **ParentDashboard.jsx** - Vista de padre/acudiente
+6. **AccountantDashboard.jsx** - Vista de contador
+
+### Componentes de Seguridad:
+- **SafeHTML.jsx** - Sanitización de HTML
+- **SecureLogger.jsx** - Logging seguro en cliente
+- **PrivateRoute.jsx** - Protección de rutas privadas
+- **PublicRoute.jsx** - Rutas públicas
+- **PermissionGuard.jsx** - Guard de permisos
+- **RoleGuard.jsx** - Guard de roles
+- **ModuleGuard.jsx** - Guard de módulos
+
+### Componentes de Formularios:
+- **FormInput.jsx** - Input básico
+- **FormSelect.jsx** - Select con búsqueda
+- **FormDatePicker.jsx** - Selector de fecha
+- **FormPasswordInput.jsx** - Input de contraseña
+- **FormCountryStateCityComponent.jsx** - Selector de ubicación
+- **FormClubSport.jsx** - Selector de club y deporte
+
+### Componentes de Loading (UNIFICADO):
+- **LoadingSpinner.jsx** - Spinner unificado con variantes (inline, centered, fullscreen)
+- **SuspenseLoader.jsx** - Loader para React.Suspense con skeletons
+- **DataTableSkeleton.jsx** - Skeleton específico para tablas
+- **Skeleton.jsx** - Componente base de skeleton
+
+**Uso recomendado:**
+```jsx
+import LoadingSpinner from '@/components/loading/LoadingSpinner';
+
+// Loading centrado (páginas)
+if (isLoading) {
+  return <LoadingSpinner variant="centered" size="lg" message="Cargando datos..." />;
+}
+
+// Loading inline (componentes)
+{isLoading && <LoadingSpinner variant="inline" size="sm" />}
+
+// Loading fullscreen (transiciones)
+<LoadingSpinner variant="fullscreen" size="xl" message="Procesando..." />
+```
+
+**Variantes disponibles:**
+- `inline` - Para mostrar en línea con contenido
+- `centered` - Centrado en el contenedor (default para páginas)
+- `fullscreen` - Pantalla completa con fondo
+
+**Tamaños disponibles:**
+- `sm` - 16px (inline buttons, etc)
+- `md` - 32px (default)
+- `lg` - 48px (páginas principales)
+- `xl` - 64px (fullscreen)
+
+### Componentes de DatePicker (OBLIGATORIO):
+
+**IMPORTANTE:** Siempre usar los DatePickers del proyecto, NUNCA `<Input type="date" />`.
+
+**1. SimpleDatePicker** - Para formularios con useState (sin react-hook-form):
+```jsx
+import SimpleDatePicker from '@/components/form/SimpleDatePicker';
+
+// Uso básico
+<SimpleDatePicker
+  label="Fecha de inicio"
+  value={startDate}
+  onChange={(value) => setStartDate(value)}
+  placeholder="Seleccione fecha"
+/>
+
+// Con restricciones de fecha
+<SimpleDatePicker
+  label="Fecha de nacimiento"
+  value={birthDate}
+  onChange={(value) => setBirthDate(value)}
+  required={true}
+  minDate={new Date('1900-01-01')}
+  maxDate={new Date()}
+  fromYear={1900}
+  toYear={new Date().getFullYear()}
+/>
+```
+
+**Props de SimpleDatePicker:**
+- `label` - Etiqueta del campo
+- `value` - Valor en formato ISO (yyyy-MM-dd) o Date
+- `onChange` - Callback que recibe el valor en formato ISO
+- `placeholder` - Texto placeholder
+- `required` - Muestra asterisco rojo
+- `disabled` - Deshabilita el campo
+- `minDate` - Fecha mínima seleccionable (Date)
+- `maxDate` - Fecha máxima seleccionable (Date)
+- `fromYear` - Año inicial en dropdown (default: año actual - 10)
+- `toYear` - Año final en dropdown (default: año actual + 10)
+- `error` - Mensaje de error a mostrar
+
+**2. FormDatePicker** - Para formularios con react-hook-form:
+```jsx
+import FormDatePicker from '@/components/form/FormDatePicker';
+
+// Dentro de un form con react-hook-form
+<FormDatePicker
+  control={control}
+  name="birth_date"
+  label="Fecha de nacimiento"
+  required={true}
+/>
+```
+
+**3. FormDateOfBirthPicker** - Específico para fechas de nacimiento:
+```jsx
+import FormDateOfBirthPicker from '@/components/form/FormDateOfBirthPicker';
+
+<FormDateOfBirthPicker
+  control={control}
+  name="date_of_birth"
+  label="Fecha de nacimiento"
+/>
+```
+
+**Características de los DatePickers:**
+- Formato de visualización: dd/MM/yyyy (español)
+- Formato de almacenamiento: yyyy-MM-dd (ISO para backend)
+- Locale español (date-fns/locale/es)
+- Dropdown para selección rápida de año
+- Detección automática de espacio (abre arriba o abajo)
+- Z-index alto (9999) para evitar problemas con modales
+
+---
+
+## 🔐 Sistema de Autenticación
+
+### AuthContext:
+```javascript
+// Contexto global de autenticación
+const { user, login, logout, isAuthenticated } = useAuth();
+```
+
+### Flujo de Autenticación:
+1. Usuario ingresa credenciales en LoginPage
+2. authService.login() llama a `/api/login`
+3. Backend retorna token y user data
+4. Token se guarda en localStorage
+5. AuthContext actualiza estado global
+6. Usuario redirigido a dashboard apropiado
+
+### Rutas Protegidas:
+```jsx
+<Route element={<PrivateRoute />}>
+  <Route path="/dashboard" element={<DashboardPage />} />
+</Route>
+```
+
+---
+
+## 🎯 Sistema de Permisos (RBAC)
+
+### usePermissions Hook:
+```javascript
+const { hasPermission, hasRole } = usePermissions();
+
+// Verificar permiso
+if (hasPermission('players.create')) {
+  // Mostrar botón crear jugador
+}
+
+// Verificar rol
+if (hasRole('Propietario del Club')) {
+  // Mostrar opciones de propietario
+}
+```
+
+### PermissionGuard Component:
+```jsx
+<PermissionGuard permission="players.view">
+  <PlayersTable />
+</PermissionGuard>
+```
+
+---
+
+## 📱 Responsive Design
+
+### Breakpoints (Tailwind):
+```javascript
+sm: '640px'   // Mobile landscape
+md: '768px'   // Tablet
+lg: '1024px'  // Desktop
+xl: '1280px'  // Large desktop
+2xl: '1536px' // Extra large
+```
+
+### Mobile-First Approach:
+```jsx
+// Componentes diseñados mobile-first
+<div className="flex flex-col md:flex-row">
+  {/* Stack vertical en mobile, horizontal en desktop */}
+</div>
+```
+
+---
+
+## 🎨 Estilos de Estados (Tailwind CSS)
+
+### Estados Inactivos / Deshabilitados (Estilo Advertencia - Amber/Amarillo):
+Usar estos estilos cuando un elemento está **inactivo pero visible** (ej: métodos de pago deshabilitados, usuarios suspendidos, funciones temporalmente no disponibles).
+
+```jsx
+// Contenedor principal
+<div className={`... ${
+  isActive
+    ? 'bg-white dark:bg-slate-900 border-gray-200 dark:border-gray-700'
+    : 'bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800'
+}`}>
+
+// Ícono
+<div className={`p-1.5 rounded-lg ${
+  isActive
+    ? 'bg-primary/10 text-primary'
+    : 'bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400'
+}`}>
+
+// Texto principal
+<span className={`text-sm font-medium ${
+  isActive
+    ? 'text-gray-900 dark:text-white'
+    : 'text-amber-700 dark:text-amber-300'
+}`}>
+
+// Badge "Inactivo"
+<Badge className="text-[10px] px-1.5 py-0 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 border-amber-300 dark:border-amber-700">
+  Inactivo
+</Badge>
+
+// Badge secundario (tipo, categoría, etc.)
+<Badge variant="outline" className={`text-[10px] px-1.5 py-0 ${
+  !isActive
+    ? 'border-amber-300 dark:border-amber-700 text-amber-600 dark:text-amber-400'
+    : ''
+}`}>
+```
+
+**Cuándo usar:**
+- Métodos de pago deshabilitados
+- Usuarios/jugadores suspendidos temporalmente
+- Funcionalidades en mantenimiento
+- Items que pueden reactivarse
+
+**NO usar para:**
+- Elementos eliminados (usar gris con opacidad reducida)
+- Errores críticos (usar rojo)
+- Estados de éxito (usar verde)
+
+### Paleta de Colores por Estado:
+
+| Estado | Background Light | Background Dark | Text Light | Text Dark | Border |
+|--------|-----------------|-----------------|------------|-----------|--------|
+| **Activo** | `bg-white` | `bg-slate-900` | `text-gray-900` | `text-white` | `border-gray-200` |
+| **Inactivo/Warning** | `bg-amber-50` | `bg-amber-950/30` | `text-amber-700` | `text-amber-300` | `border-amber-200` |
+| **Error** | `bg-red-50` | `bg-red-950/30` | `text-red-700` | `text-red-300` | `border-red-200` |
+| **Éxito** | `bg-green-50` | `bg-green-950/30` | `text-green-700` | `text-green-300` | `border-green-200` |
+| **Info** | `bg-blue-50` | `bg-blue-950/30` | `text-blue-700` | `text-blue-300` | `border-blue-200` |
+
+### Hover en Tablas:
+```jsx
+// ✅ CORRECTO - Hover gris neutro
+<TableRow className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+
+// ❌ INCORRECTO - No usar colores de estado para hover
+<TableRow className="hover:bg-green-50"> // NO
+```
+
+---
+
+## 🧪 Testing E2E con Playwright
+
+### Sistema de Tests por Perfil (25 Enero 2026)
+
+Sistema completo de tests E2E organizados por rol de usuario. Cada perfil tiene su flujo completo que prueba TODO el sistema desde esa perspectiva.
+
+### Estructura de Archivos
+
+```
+tests/e2e/
+├── fixtures/
+│   ├── auth.js              # Autenticación persistente por rol
+│   └── test-users.js        # Usuarios de prueba
+├── pages/
+│   ├── BasePage.js          # Clase base con acciones comunes
+│   ├── DashboardPage.js     # Page Object del dashboard
+│   ├── PlayersPage.js       # Page Object de jugadores
+│   └── PaymentsPage.js      # Page Object de pagos
+├── flows/
+│   ├── new-user-registration-flow.spec.js  # 🆕 7 tests - Registro completo
+│   ├── owner-complete-flow.spec.js    # 14 tests - Propietario
+│   ├── trainer-complete-flow.spec.js  # 8 tests - Entrenador
+│   ├── player-complete-flow.spec.js   # 8 tests - Jugador
+│   ├── parent-complete-flow.spec.js   # 10 tests - Padre
+│   └── README.md
+├── helpers/
+│   └── mailhog.js              # Helper para leer emails de Mailhog
+├── screenshots/             # Screenshots automáticos
+├── .auth/                   # Sesiones guardadas por rol
+│   ├── owner.json
+│   ├── trainer.json
+│   ├── player.json
+│   └── parent.json
+└── test-results/            # Videos y artifacts
+```
+
+### Comandos para Ejecutar Tests
+
+```bash
+cd frontend
+
+# ========================================
+# FLUJOS POR PERFIL (modo visual con navegador)
+# ========================================
+npm run test:e2e:register   # 🆕 Flujo de registro de nuevo usuario
+npm run test:e2e:full-journey # 🆕 Registro completo con video
+npm run test:e2e:owner      # Flujo completo del propietario
+npm run test:e2e:trainer    # Flujo del entrenador
+npm run test:e2e:player     # Flujo del jugador
+npm run test:e2e:parent     # Flujo del padre
+
+# ========================================
+# EJECUTAR MÚLTIPLES FLUJOS
+# ========================================
+npm run test:e2e:flows      # Todos los flujos (sin navegador visible)
+npm run test:e2e            # Todos los tests incluyendo unitarios
+
+# ========================================
+# MODO INTERACTIVO Y DEBUG
+# ========================================
+npm run test:e2e:ui         # Interfaz visual para seleccionar tests
+npm run test:e2e:debug      # Modo debug paso a paso
+
+# ========================================
+# VER REPORTES
+# ========================================
+npm run test:e2e:report     # Abrir reporte HTML con videos
+```
+
+### Características del Sistema
+
+| Característica | Descripción |
+|----------------|-------------|
+| **Login una vez** | La sesión se guarda en `.auth/owner.json`, etc. No repite login |
+| **Videos siempre** | Se graban TODOS los tests en `test-results/` |
+| **Screenshots** | En cada paso, guardados en `screenshots/` |
+| **Reportes HTML** | Con videos embebidos y errores detallados |
+| **Page Objects** | Selectores centralizados, fácil mantenimiento |
+| **Locale español** | Configurado para es-CO y timezone Bogotá |
+
+### Flujo de Ejecución de un Test
+
+```
+1. Inicia el test (ej: owner-complete-flow)
+2. Si no hay sesión guardada → Hace login automático
+3. Si hay sesión válida → La reutiliza (NO hace login)
+4. Ejecuta cada paso del flujo secuencialmente
+5. Toma screenshot en cada módulo visitado
+6. Al final muestra resumen con ✅ o ❌
+7. Genera video completo del flujo
+```
+
+### Usuarios de Prueba
+
+| Rol | Email | Password | Club |
+|-----|-------|----------|------|
+| Owner | director@bogotafc.co | password123 | Bogotá FC |
+| Trainer | diego.sanchez@bogotafc.co | password123 | Bogotá FC |
+| Player | alejandro.álvarez10@player.co | password123 | Bogotá FC |
+| Parent | luzm@h.com | password123 | Club 7 |
+| Admin | admin@sportsclub.co | admin123 | Super Admin |
+
+### Si un Test Falla
+
+El sistema proporciona:
+
+1. **Descripción del error** - Qué paso falló y por qué
+2. **Screenshot del momento** - Estado exacto de la página cuando falló
+3. **Video completo** - Para ver toda la secuencia de acciones
+4. **URL donde estaba** - Para reproducir manualmente
+5. **Trace (opcional)** - Timeline detallado de eventos
+
+### Módulos Probados por Flujo
+
+**Owner (14 tests):**
+- Dashboard, Jugadores, Pagos, Calendario, Sesiones
+- Categorías, Entrenadores, Cobros, Descuentos
+- Configuración del Club, Mi Perfil
+
+**Trainer (8 tests):**
+- Dashboard, Sesiones, Calendario, Jugadores (limitado)
+- Asistencia, Mi Perfil, Verificación de restricciones
+
+**Player (8 tests):**
+- Dashboard, Mi Perfil, Mis Pagos, Mis Documentos
+- Calendario, Historial, Verificación de restricciones
+
+**Parent (10 tests):**
+- Dashboard, Mis Hijos, Pagos, Documentos, Sesiones
+- Calendario, Mi Perfil, Historial, Restricciones
+
+### 🆕 Flujo de Registro de Nuevo Usuario
+
+**Archivo:** `flows/new-user-registration-flow.spec.js`
+
+Este flujo prueba el journey completo de un usuario nuevo desde cero:
+
+| Paso | Descripción |
+|------|-------------|
+| 1 | Landing page → Click en registrarse |
+| 2 | Formulario de registro completo |
+| 3 | Verificación de email (via Mailhog) |
+| 4 | Login con credenciales nuevas |
+| 5 | Crear primer club |
+| 6 | Completar onboarding |
+| 7 | Acceso al dashboard |
+
+**Requisitos:**
+- Backend corriendo en `localhost:8010`
+- Mailhog corriendo en `localhost:8025` (para captura de emails)
+- Base de datos con seeders básicos
+
+**Ejecutar:**
+```bash
+# Flujo de registro con navegador visible
+npm run test:e2e:register
+
+# Con video grabado
+npm run test:e2e:full-journey
+```
+
+**Helper de Mailhog (`helpers/mailhog.js`):**
+```javascript
+import { getLatestEmailFor, findVerificationLink } from '../helpers/mailhog.js';
+
+// Obtener email enviado al usuario
+const email = await getLatestEmailFor('usuario@test.co', { maxWait: 30000 });
+
+// Extraer link de verificación
+const verifyLink = findVerificationLink(email);
+```
+
+**Funciones disponibles:**
+- `getAllEmails()` - Todos los emails en Mailhog
+- `getLatestEmailFor(email)` - Último email para un destinatario
+- `findVerificationLink(email)` - Extraer link de verificación
+- `findPasswordResetLink(email)` - Extraer link de reset
+- `clearAllEmails()` - Limpiar bandeja de Mailhog
+- `waitForEmailWithSubject(subject)` - Esperar email con asunto específico
+
+### Crear Nuevo Test en un Flujo
+
+```javascript
+test('N. Nuevo módulo - Descripción', async ({ ownerPage }) => {
+  // Navegar al módulo
+  await ownerPage.goto('/home/nuevo-modulo');
+  await ownerPage.waitForLoadState('networkidle');
+
+  // Screenshot automático
+  await ownerPage.screenshot({
+    path: './tests/e2e/screenshots/owner-N-nuevo-modulo.png',
+    fullPage: true,
+  });
+
+  // Verificaciones
+  const pageLoaded = await ownerPage.locator('main').isVisible();
+  expect(pageLoaded).toBe(true);
+
+  console.log('✅ Nuevo módulo accesible');
+});
+```
+
+### Limpiar Sesiones Guardadas
+
+Si necesitas forzar un nuevo login:
+
+```bash
+# Eliminar todas las sesiones
+rm -rf tests/e2e/.auth/*.json
+
+# O eliminar sesión específica
+rm tests/e2e/.auth/owner.json
+```
+
+### Tests Existentes (Legacy)
+
+```bash
+# Ubicación: frontend/tests/e2e/
+├── auth.spec.js           # Tests de autenticación
+├── players.spec.js        # Tests de CRUD jugadores
+├── rbac.spec.js           # Tests de permisos
+└── multi-tenancy.spec.js  # Tests de aislamiento de datos
+```
+
+---
+
+## 🎨 Convenciones de Código
+
+### Nombres de Componentes:
+- **PascalCase** para componentes: `PlayerForm.jsx`
+- **camelCase** para hooks: `useAuth.js`
+- **camelCase** para services: `playerService.js`
+
+### Estructura de Componentes:
+```javascript
+// 1. Imports
+import { useState } from 'react';
+
+// 2. Component
+const PlayerForm = ({ playerId, onSuccess }) => {
+  // 3. State
+  const [loading, setLoading] = useState(false);
+
+  // 4. Hooks
+  const { user } = useAuth();
+
+  // 5. Functions
+  const handleSubmit = async (data) => {
+    // ...
+  };
+
+  // 6. Effects
+  useEffect(() => {
+    // ...
+  }, []);
+
+  // 7. Render
+  return (
+    <div>
+      {/* JSX */}
+    </div>
+  );
+};
+
+// 8. Export
+export default PlayerForm;
+```
+
+---
+
+## 🐛 Debugging
+
+### React DevTools:
+- Instalar extensión de navegador
+- Inspeccionar componentes y state
+
+### Console Logging:
+```javascript
+// IMPORTANTE: Usar SecureLogger en lugar de console.log
+import SecureLogger from '@/utils/SecureLogger';
+
+// ✅ CORRECTO
+SecureLogger.info('User logged in', { userId: user.id });
+
+// ❌ INCORRECTO (evitar)
+console.log('User logged in', user); // No usar directamente
+
+// Política establecida:
+// - Solo 33 console.log permitidos en todo el proyecto
+// - Usar SecureLogger para logs de desarrollo y producción
+```
+
+---
+
+## 🚀 Deployment
+
+### Build de Producción:
+```bash
+npm run build
+# Output: dist/
+```
+
+### Variables de Producción:
+```bash
+VITE_API_URL=https://api.widdo.co
+VITE_APP_ENV=production
+```
+
+---
+
+## 📝 Notas Importantes
+
+### 1. API Calls:
+- **Siempre** usar services en lugar de llamadas directas
+- **Siempre** manejar errores con try/catch
+- **Siempre** mostrar feedback al usuario (toasts)
+
+### 2. State Management:
+- **Context API** para estado global (auth, club)
+- **useState** para estado local de componentes
+- **useReducer** para estado complejo
+
+### 3. Formularios:
+- **React Hook Form** obligatorio para validaciones
+- **Validaciones en tiempo real** en inputs críticos
+- **Confirmaciones** en acciones destructivas
+
+### 4. Seguridad:
+- **Sanitizar** todo HTML dinámico con SafeHTML
+- **Validar permisos** antes de mostrar UI
+- **No confiar** en validaciones del frontend solamente
+- **SecureLogger** para evitar logs de datos sensibles
+
+### 5. Conversión de Datos:
+- **day_of_week**: Siempre convertir de JS (0-6) a ISO 8601 (1-7) antes de enviar al backend
+- **Tokens**: Manejar campo `expires_in` para calcular expiración de sesión
+- **Fechas**: Usar formato ISO 8601 para todas las fechas enviadas al API
+
+---
+
+## 🔗 Recursos Útiles
+
+- [React Docs](https://react.dev)
+- [Vite Docs](https://vitejs.dev)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Radix UI](https://www.radix-ui.com)
+- [React Hook Form](https://react-hook-form.com)
+- [Playwright](https://playwright.dev)
+
+---
+
+**Última actualización:** 22 de Diciembre de 2025
+**Mantenedor:** Sistema de Gestión Widdo Frontend
+**Proyecto:** Widdo SaaS - Frontend React

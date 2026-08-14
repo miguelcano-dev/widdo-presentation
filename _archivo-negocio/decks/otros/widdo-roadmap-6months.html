@@ -1,0 +1,720 @@
+<!-- ARCHIVADO 13-ago-2026 — roadmap de 6 meses vencido (feb-ago 2026) — sustituido por usa/USA-PROGRESS.md -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo — Strategic Roadmap Apr-Sep 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #fff;
+            color: #18181b;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            max-height: 11in;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #18181b;
+            color: #fff;
+            padding: 14px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            width: 36px;
+            height: 36px;
+        }
+
+        .header-text h1 {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .header-text p {
+            font-size: 9px;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right .period {
+            font-size: 13px;
+            font-weight: 800;
+            color: #22c55e;
+        }
+
+        .header-right .date {
+            font-size: 9px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ===== TAGLINE BAR ===== */
+        .tagline-bar {
+            background: #16a34a;
+            color: #fff;
+            text-align: center;
+            padding: 6px 32px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== VISION BAR ===== */
+        .vision-bar {
+            background: #fafafa;
+            border-bottom: 1px solid #e4e4e7;
+            padding: 10px 32px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .vision-bar .icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .vision-bar p {
+            font-size: 10px;
+            color: #52525b;
+            line-height: 1.45;
+        }
+
+        .vision-bar strong {
+            color: #18181b;
+        }
+
+        /* ===== MAIN ===== */
+        .main {
+            padding: 12px 32px 8px;
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 9.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #16a34a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e4e4e7;
+        }
+
+        /* ===== VERTICAL CARDS ===== */
+        .verticals {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .vertical-card {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .vertical-header {
+            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .vertical-header .v-icon {
+            font-size: 16px;
+        }
+
+        .vertical-header h3 {
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .vertical-header .v-badge {
+            margin-left: auto;
+            font-size: 7px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .v-clubs .vertical-header { background: #f0fdf4; border-bottom: 1.5px solid #bbf7d0; }
+        .v-clubs .vertical-header h3 { color: #166534; }
+        .v-clubs .v-badge { background: #dcfce7; color: #16a34a; }
+        .v-clubs .obj-number { background: #16a34a; }
+
+        .v-tournaments .vertical-header { background: #eff6ff; border-bottom: 1.5px solid #bfdbfe; }
+        .v-tournaments .vertical-header h3 { color: #1e40af; }
+        .v-tournaments .v-badge { background: #dbeafe; color: #2563eb; }
+        .v-tournaments .obj-number { background: #2563eb; }
+
+        .v-pathways .vertical-header { background: #fdf4ff; border-bottom: 1.5px solid #e9d5ff; }
+        .v-pathways .vertical-header h3 { color: #7e22ce; }
+        .v-pathways .v-badge { background: #f3e8ff; color: #9333ea; }
+        .v-pathways .obj-number { background: #9333ea; }
+
+        .vertical-body {
+            padding: 8px 10px;
+        }
+
+        .vertical-desc {
+            font-size: 8.5px;
+            color: #71717a;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .objective {
+            margin-bottom: 8px;
+        }
+
+        .objective:last-child {
+            margin-bottom: 0;
+        }
+
+        .obj-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 3px;
+        }
+
+        .obj-number {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .obj-header h4 {
+            font-size: 10px;
+            font-weight: 800;
+            color: #18181b;
+        }
+
+        .obj-target {
+            margin-left: 22px;
+            font-size: 9px;
+            color: #52525b;
+            line-height: 1.4;
+        }
+
+        .obj-target .metric {
+            font-weight: 800;
+            color: #18181b;
+        }
+
+        .obj-krs {
+            margin-left: 22px;
+            margin-top: 2px;
+        }
+
+        .obj-krs li {
+            font-size: 8.5px;
+            color: #71717a;
+            line-height: 1.4;
+            margin-bottom: 1px;
+        }
+
+        /* ===== REVENUE MODEL ===== */
+        .revenue-section {
+            margin-bottom: 12px;
+        }
+
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .rev-card {
+            background: #18181b;
+            border-radius: 8px;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        .rev-card .rev-priority {
+            font-size: 7px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 2px;
+        }
+
+        .rev-card .rev-name {
+            font-size: 10px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .rev-card .rev-desc {
+            font-size: 8px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .rev-card .rev-amount {
+            font-size: 14px;
+            font-weight: 900;
+            color: #22c55e;
+        }
+
+        .rev-card .rev-unit {
+            font-size: 7.5px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .rev-card.primary {
+            border: 1.5px solid #22c55e;
+        }
+
+        /* ===== MILESTONES TIMELINE ===== */
+        .milestones-section {
+            margin-bottom: 12px;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+        }
+
+        .month-col {
+            border: 1px solid #e4e4e7;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .month-header {
+            background: #f4f4f5;
+            padding: 4px 6px;
+            font-size: 9px;
+            font-weight: 800;
+            text-align: center;
+            color: #18181b;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .month-body {
+            padding: 4px 5px;
+        }
+
+        .month-item {
+            font-size: 7.5px;
+            color: #52525b;
+            line-height: 1.35;
+            margin-bottom: 3px;
+            padding-left: 8px;
+            position: relative;
+        }
+
+        .month-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+        }
+
+        .month-item.clubs::before { background: #16a34a; }
+        .month-item.tournaments::before { background: #2563eb; }
+        .month-item.pathways::before { background: #9333ea; }
+        .month-item.general::before { background: #f97316; }
+
+        /* ===== KPI TARGETS ===== */
+        .kpi-section {
+            margin-bottom: 10px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+        }
+
+        .kpi-box {
+            background: #18181b;
+            border-radius: 6px;
+            padding: 6px 6px;
+            text-align: center;
+        }
+
+        .kpi-box .kpi-value {
+            font-size: 16px;
+            font-weight: 900;
+            color: #22c55e;
+            line-height: 1;
+        }
+
+        .kpi-box .kpi-label {
+            font-size: 7px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #18181b;
+            color: rgba(255,255,255,0.4);
+            padding: 6px 32px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+        }
+
+        .footer a {
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-left">
+                <svg class="header-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#22c55e"/>
+                    <text x="50" y="62" text-anchor="middle" fill="#fff" font-family="Red Hat Display" font-weight="900" font-size="38">W</text>
+                </svg>
+                <div class="header-text">
+                    <h1>Widdo</h1>
+                    <p>Strategic Roadmap</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="period">April &mdash; September 2026</div>
+                <div class="date">6-Month Execution Plan &bull; 3 Verticals &bull; 9 Objectives</div>
+            </div>
+        </div>
+
+        <!-- TAGLINE -->
+        <div class="tagline-bar">The Financial &amp; Operational Infrastructure for Amateur Sports</div>
+
+        <!-- VISION -->
+        <div class="vision-bar">
+            <div class="icon">&#127942;</div>
+            <p><strong>Vision:</strong> Build the largest database of verified youth athletes in the Americas. Clubs operate on Widdo, tournaments drive growth, and families finance their path to USA sports opportunities through BNPL. <strong>The Toast of amateur sports.</strong></p>
+        </div>
+
+        <div class="main">
+            <!-- 3 VERTICALS -->
+            <div class="section-title">Three Verticals &mdash; Three Engines</div>
+
+            <div class="verticals">
+                <!-- WIDDO CLUBS -->
+                <div class="vertical-card v-clubs">
+                    <div class="vertical-header">
+                        <span class="v-icon">&#127939;</span>
+                        <h3>Widdo Clubs</h3>
+                        <span class="v-badge">LIVE</span>
+                    </div>
+                    <div class="vertical-body">
+                        <p class="vertical-desc">The infrastructure. Where clubs operate and player data lives permanently.</p>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">1</span>
+                                <h4>Monetize &amp; Prove WTP</h4>
+                            </div>
+                            <p class="obj-target">Activate billing. Convert free clubs to paid. <span class="metric">30+ paying clubs</span> (CO + USA). First <span class="metric">$3,000 MRR</span> combined.</p>
+                        </div>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">2</span>
+                                <h4>Multi-Country Expansion</h4>
+                            </div>
+                            <p class="obj-target">Active in <span class="metric">3+ countries</span> (CO, USA, MX or BR). Local payments via Stripe + dLocal. Multi-currency live.</p>
+                        </div>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">3</span>
+                                <h4>Player Database Moat</h4>
+                            </div>
+                            <p class="obj-target">Build the defensible data moat. <span class="metric">5,000+ verified player profiles</span> with medical history, stats, and compliance data.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WIDDO TOURNAMENTS -->
+                <div class="vertical-card v-tournaments">
+                    <div class="vertical-header">
+                        <span class="v-icon">&#127942;</span>
+                        <h3>Widdo Tournaments</h3>
+                        <span class="v-badge">BUILDING</span>
+                    </div>
+                    <div class="vertical-body">
+                        <p class="vertical-desc">The growth engine. Free for organizers. Every tournament brings 15-20 new clubs to the platform.</p>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">1</span>
+                                <h4>Launch &amp; Validate</h4>
+                            </div>
+                            <p class="obj-target">Ship feature-complete platform. <span class="metric">10+ tournaments</span> organized. Brackets, live scores, public views.</p>
+                        </div>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">2</span>
+                                <h4>Club Acquisition Engine</h4>
+                            </div>
+                            <p class="obj-target">Each tournament = ~480 new player profiles. <span class="metric">200+ clubs exposed</span> to Widdo through tournament participation.</p>
+                        </div>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">3</span>
+                                <h4>USA Showcases Pipeline</h4>
+                            </div>
+                            <p class="obj-target"><span class="metric">2-3 showcases/camps in Florida</span> listed on platform. Bridge between LATAM clubs and USA opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WIDDO PATHWAYS -->
+                <div class="vertical-card v-pathways">
+                    <div class="vertical-header">
+                        <span class="v-icon">&#127759;</span>
+                        <h3>Widdo Pathways</h3>
+                        <span class="v-badge">BUILDING</span>
+                    </div>
+                    <div class="vertical-body">
+                        <p class="vertical-desc">The revenue engine. BNPL cross-border for families financing camps, colleges &amp; sports equipment.</p>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">1</span>
+                                <h4>BNPL Integration Live</h4>
+                            </div>
+                            <p class="obj-target">dLocal + local BNPL providers integrated. <span class="metric">First families financing</span> camps/equipment via Widdo.</p>
+                        </div>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">2</span>
+                                <h4>USA Catalog</h4>
+                            </div>
+                            <p class="obj-target"><span class="metric">10+ camps/colleges/showcases</span> published and accepting LATAM enrollments with BNPL payment.</p>
+                        </div>
+
+                        <div class="objective">
+                            <div class="obj-header">
+                                <span class="obj-number">3</span>
+                                <h4>Cross-Border Revenue</h4>
+                            </div>
+                            <p class="obj-target"><span class="metric">$50K+ GMV processed</span>. BNPL fee model (3-5%) validated with real transactions. First revenue from financing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REVENUE MODEL -->
+            <div class="section-title">Revenue Model &mdash; Three Layers</div>
+
+            <div class="revenue-section">
+                <div class="revenue-grid">
+                    <div class="rev-card primary">
+                        <div class="rev-priority">#1 Priority</div>
+                        <div class="rev-name">BNPL Cross-Border</div>
+                        <div class="rev-desc">LATAM families financing USA camps, colleges, showcases</div>
+                        <div class="rev-amount">3-5%</div>
+                        <div class="rev-unit">fee per transaction &bull; ~95% margin</div>
+                    </div>
+                    <div class="rev-card">
+                        <div class="rev-priority">#2 Priority</div>
+                        <div class="rev-name">SaaS USA</div>
+                        <div class="rev-desc">Club subscriptions for USA academies &amp; clubs</div>
+                        <div class="rev-amount">$99-349</div>
+                        <div class="rev-unit">per month &bull; ~90% margin</div>
+                    </div>
+                    <div class="rev-card">
+                        <div class="rev-priority">#3 Priority</div>
+                        <div class="rev-name">BNPL Local</div>
+                        <div class="rev-desc">Equipment, enrollment fees, tournament entry in LATAM</div>
+                        <div class="rev-amount">3-5%</div>
+                        <div class="rev-unit">fee per transaction &bull; ~95% margin</div>
+                    </div>
+                    <div class="rev-card">
+                        <div class="rev-priority">#4 Priority</div>
+                        <div class="rev-name">SaaS LATAM</div>
+                        <div class="rev-desc">Club subscriptions in Colombia, Mexico, Brazil, etc.</div>
+                        <div class="rev-amount">$16-71</div>
+                        <div class="rev-unit">per month &bull; ~90% margin</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIMELINE -->
+            <div class="section-title">Execution Timeline</div>
+
+            <div class="milestones-section">
+                <div class="timeline">
+                    <div class="month-col">
+                        <div class="month-header">APR</div>
+                        <div class="month-body">
+                            <div class="month-item general">Receive EIN</div>
+                            <div class="month-item general">Sign Founders Agreement</div>
+                            <div class="month-item clubs">Activate CO billing</div>
+                            <div class="month-item tournaments">Tournaments live</div>
+                        </div>
+                    </div>
+                    <div class="month-col">
+                        <div class="month-header">MAY</div>
+                        <div class="month-body">
+                            <div class="month-item clubs">First USA clubs paying</div>
+                            <div class="month-item pathways">dLocal sandbox</div>
+                            <div class="month-item tournaments">First 3 tournaments</div>
+                            <div class="month-item general">Close Erica SAFE</div>
+                        </div>
+                    </div>
+                    <div class="month-col">
+                        <div class="month-header">JUN</div>
+                        <div class="month-body">
+                            <div class="month-item clubs">Expand to MX or BR</div>
+                            <div class="month-item pathways">BNPL integration live</div>
+                            <div class="month-item pathways">List first 3 USA camps</div>
+                            <div class="month-item tournaments">5+ tournaments done</div>
+                        </div>
+                    </div>
+                    <div class="month-col">
+                        <div class="month-header">JUL</div>
+                        <div class="month-body">
+                            <div class="month-item clubs">Background check law</div>
+                            <div class="month-item clubs">Compliance marketing push</div>
+                            <div class="month-item pathways">First BNPL transactions</div>
+                            <div class="month-item pathways">10+ camps listed</div>
+                        </div>
+                    </div>
+                    <div class="month-col">
+                        <div class="month-header">AUG</div>
+                        <div class="month-body">
+                            <div class="month-item clubs">3 countries active</div>
+                            <div class="month-item clubs">30+ clubs paying</div>
+                            <div class="month-item tournaments">10+ tournaments</div>
+                            <div class="month-item pathways">$25K GMV processed</div>
+                        </div>
+                    </div>
+                    <div class="month-col">
+                        <div class="month-header">SEP</div>
+                        <div class="month-body">
+                            <div class="month-item clubs">5,000 player profiles</div>
+                            <div class="month-item clubs">$3K MRR target</div>
+                            <div class="month-item pathways">$50K+ GMV</div>
+                            <div class="month-item general">Evaluate YC application</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPIs -->
+            <div class="section-title">Target KPIs &mdash; September 2026</div>
+
+            <div class="kpi-section">
+                <div class="kpi-grid">
+                    <div class="kpi-box">
+                        <div class="kpi-value">30+</div>
+                        <div class="kpi-label">PAYING CLUBS</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-value">5K</div>
+                        <div class="kpi-label">PLAYER PROFILES</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-value">$3K</div>
+                        <div class="kpi-label">MRR</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-value">$50K</div>
+                        <div class="kpi-label">BNPL GMV</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-value">3</div>
+                        <div class="kpi-label">COUNTRIES</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-value">10+</div>
+                        <div class="kpi-label">TOURNAMENTS</div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="kpi-value">0%</div>
+                        <div class="kpi-label">CHURN</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <span>Widdo Inc. &bull; Delaware C-Corp &bull; <a href="https://widdo.co">widdo.co</a></span>
+            <span>Confidential &bull; March 2026</span>
+        </div>
+    </div>
+</body>
+</html>

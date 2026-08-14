@@ -1,0 +1,1325 @@
+<!-- ARCHIVADO 13-ago-2026 — estrategia 2026 con BNPL como fuente de revenue #1: linea abandonada — sustituido por negocio/business-model-current.md -->
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo — Estrategia 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                    colors: {
+                        widdo: '#22c55e',
+                        dark: '#0A0A0F',
+                        card: '#12121A',
+                        'card-border': '#1E1E2E',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Stagger children */
+        .stagger > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger.active > *:nth-child(5) { transition-delay: 0.5s; }
+        .stagger.active > *:nth-child(6) { transition-delay: 0.6s; }
+        .stagger.active > *:nth-child(7) { transition-delay: 0.7s; }
+        .stagger.active > * {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .stagger.active > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Counter animation */
+        .counter { font-variant-numeric: tabular-nums; }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #22c55e, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Pulse glow */
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.4); }
+        }
+
+        /* Flow line animation */
+        .flow-line {
+            background: linear-gradient(90deg, transparent, #22c55e, transparent);
+            background-size: 200% 100%;
+            animation: flowLine 3s linear infinite;
+        }
+        @keyframes flowLine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0A0A0F; }
+        ::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-dark text-white">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-xl border-b border-card-border">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-3">
+                <div class="w-8 h-8 bg-widdo rounded-lg flex items-center justify-center font-black text-dark text-sm">W</div>
+                <span class="font-bold text-base md:text-lg">Widdo</span>
+                <span class="text-[10px] md:text-xs text-zinc-500 ml-1 md:ml-2">Estrategia 2026</span>
+            </div>
+            <!-- Desktop nav -->
+            <div class="hidden md:flex gap-5 text-xs text-zinc-400">
+                <a href="#equipo" class="hover:text-widdo transition">Equipo</a>
+                <a href="#problema" class="hover:text-widdo transition">Problema</a>
+                <a href="#competencia" class="hover:text-widdo transition">Competencia</a>
+                <a href="#validacion" class="hover:text-widdo transition">Validación</a>
+                <a href="#estrategia" class="hover:text-widdo transition">Estrategia</a>
+                <a href="#flujo" class="hover:text-widdo transition">Flujo</a>
+                <a href="#numeros" class="hover:text-widdo transition">Números</a>
+                <a href="#roadmap" class="hover:text-widdo transition">Roadmap</a>
+            </div>
+            <!-- Mobile hamburger -->
+            <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                <span class="w-5 h-0.5 bg-zinc-400 rounded"></span>
+                <span class="w-5 h-0.5 bg-zinc-400 rounded"></span>
+                <span class="w-5 h-0.5 bg-zinc-400 rounded"></span>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dark/95 backdrop-blur-xl border-t border-card-border">
+            <div class="flex flex-col px-6 py-4 gap-4 text-sm text-zinc-400">
+                <a href="#equipo" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Equipo</a>
+                <a href="#problema" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Problema</a>
+                <a href="#competencia" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Competencia</a>
+                <a href="#validacion" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Validación</a>
+                <a href="#estrategia" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Estrategia</a>
+                <a href="#flujo" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Flujo</a>
+                <a href="#numeros" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Números</a>
+                <a href="#roadmap" class="hover:text-widdo transition" onclick="document.getElementById('mobileMenu').classList.add('hidden')">Roadmap</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-green-950/20 to-transparent"></div>
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-4">Confidencial — Solo Founders</p>
+                <h1 class="text-3xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6">
+                    Widdo no compite.<br>
+                    <span class="gradient-text">Widdo conecta.</span>
+                </h1>
+                <p class="text-sm md:text-xl text-zinc-400 max-w-2xl mx-auto mb-8">
+                    La infraestructura financiera y operativa del deporte amateur.
+                    3 verticales. 5 fuentes de revenue. 0 competidores directos.
+                </p>
+                <div class="grid grid-cols-2 md:flex gap-3 md:gap-4 justify-center">
+                    <div class="bg-card border border-card-border rounded-xl px-4 md:px-6 py-3">
+                        <div class="text-lg md:text-2xl font-black text-widdo">71K+</div>
+                        <div class="text-[10px] md:text-xs text-zinc-500">Estudiantes LATAM en USA/año</div>
+                    </div>
+                    <div class="bg-card border border-card-border rounded-xl px-4 md:px-6 py-3">
+                        <div class="text-lg md:text-2xl font-black text-widdo">25K+</div>
+                        <div class="text-[10px] md:text-xs text-zinc-500">Atletas internacionales NCAA</div>
+                    </div>
+                    <div class="bg-card border border-card-border rounded-xl px-4 md:px-6 py-3">
+                        <div class="text-lg md:text-2xl font-black text-widdo">$2.57B</div>
+                        <div class="text-[10px] md:text-xs text-zinc-500">Contribución LATAM/año</div>
+                    </div>
+                    <div class="bg-card border border-card-border rounded-xl px-4 md:px-6 py-3">
+                        <div class="text-lg md:text-2xl font-black text-widdo">~14%</div>
+                        <div class="text-[10px] md:text-xs text-zinc-500">Revenue por jugador</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section id="equipo" class="py-12 md:py-24 px-4 md:px-6 bg-card/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">El Equipo</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-4">Miguel construye. Alwin abre puertas.</h2>
+                <p class="text-zinc-400 mb-12 max-w-2xl">Un equipo que entiende el problema desde adentro: como jugadores, como padres, como developers, y como empresarios.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Miguel -->
+                <div class="reveal-left">
+                    <div class="bg-card border border-card-border rounded-2xl p-5 md:p-8 h-full">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-10 h-10 md:w-16 md:h-16 bg-widdo/20 rounded-2xl flex items-center justify-center text-3xl">&#128187;</div>
+                            <div>
+                                <h3 class="text-xl font-black">Miguel Angel Cano</h3>
+                                <p class="text-widdo font-semibold text-sm">CEO / CTO</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <span class="text-widdo mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>25+ años</strong> senior full-stack developer (Laravel + React + IA). Ha trabajado para grandes empresas y startups en USA y el mundo</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-widdo mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Jugador profesional</strong> de basquetbol en Colombia + becas deportivas universitarias. Conoce el problema como atleta</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-widdo mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Padre de jugador activo.</strong> Conoce el problema como familia. 10+ años con la idea de Widdo</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-widdo mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Renunció a $8,000 USD/mes</strong> (2 trabajos) para dedicarse 100% a Widdo. Full skin in the game</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-widdo mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Construyó todo solo:</strong> 282K líneas de código, 124 modelos, 80+ tablas, IA integrada. Trabaja con AI agents como equipo de 3-4 devs</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-green-950/30 rounded-xl p-4 border border-green-900/20">
+                            <p class="text-xs text-green-300"><strong>Domain Expert desde 3 ángulos:</strong> jugador profesional + padre de atleta + senior developer. Nadie más tiene esta combinación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alwin -->
+                <div class="reveal-right">
+                    <div class="bg-card border border-card-border rounded-2xl p-5 md:p-8 h-full">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-10 h-10 md:w-16 md:h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center text-3xl">&#127758;</div>
+                            <div>
+                                <h3 class="text-xl font-black">Alwin Perez</h3>
+                                <p class="text-purple-400 font-semibold text-sm">Co-founder / BD USA</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <span class="text-purple-400 mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Colombiano en Orlando.</strong> Vivió en Argentina, Brasil, Alemania, USA. Entiende LATAM y USA desde adentro</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-purple-400 mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Jugador de basquetbol</strong> con contactos en NBA y MLB. Red deportiva activa en Florida</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-purple-400 mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Consiguió reunión con Erica Berman</strong> (Unrivaled, WNBA, familia CardWorks $2.65B) en las primeras semanas</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-purple-400 mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Contacto directo</strong> con Hank Waters (CEO SEPA, Super Fan Orlando Magic) y entrenadores de academias en Florida</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-purple-400 mt-0.5">&#9654;</span>
+                                <p class="text-sm text-zinc-300"><strong>Ha trabajado con Miguel antes</strong> en ecommerce y negocios tech. Equipo probado</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-purple-950/30 rounded-xl p-4 border border-purple-900/20">
+                            <p class="text-xs text-purple-300"><strong>El door opener:</strong> En semanas consiguió acceso a una familia billonaria, un socio del Orlando Magic, y el director de la academia que definió el modelo de negocio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why this team -->
+            <div class="reveal">
+                <div class="bg-gradient-to-r from-green-950/30 to-purple-950/30 border border-card-border rounded-2xl p-8 text-center">
+                    <h3 class="text-lg font-black mb-3">¿Por qué este equipo?</h3>
+                    <p class="text-zinc-400 max-w-3xl mx-auto">Miguel entiende el problema desde adentro (jugador + padre + developer) y construyó un producto que tomaría $150K+ y 2 años replicar. Alwin vive en el mercado USA y abre puertas que el dinero no puede comprar. Juntos cubren tech + business en los dos mercados que importan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section id="problema" class="py-12 md:py-24 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">El Problema</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-6">71,000+ estudiantes LATAM ya van a USA cada año.<br><span class="text-zinc-500">En deportes, no hay infraestructura.</span></h2>
+                <p class="text-zinc-400 mb-12 max-w-3xl">Hay 25,000+ atletas internacionales en NCAA. Los Hispanic/Latino crecieron 62% en 10 años (38,654 — record). Colombia crece 11.3% anual. Pero no existe una plataforma digital que conecte el talento deportivo LATAM con oportunidades en USA.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="reveal-left">
+                    <div class="bg-red-950/30 border border-red-900/30 rounded-2xl p-5 md:p-8">
+                        <h3 class="text-lg font-bold text-red-400 mb-4">Lo que paga una familia deportiva al año</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center"><span class="text-zinc-400">Inscripción club/academia</span><span class="font-bold">$500 - $2,000</span></div>
+                            <div class="flex justify-between items-center"><span class="text-zinc-400">Torneos/showcases (3-6)</span><span class="font-bold">$900 - $4,800</span></div>
+                            <div class="flex justify-between items-center"><span class="text-zinc-400">Equipo/uniformes</span><span class="font-bold">$200 - $500</span></div>
+                            <div class="flex justify-between items-center"><span class="text-zinc-400">Camps de verano</span><span class="font-bold">$500 - $2,000</span></div>
+                            <div class="flex justify-between items-center"><span class="text-zinc-400">Travel (hoteles, gas)</span><span class="font-bold">$1,000 - $5,000</span></div>
+                            <div class="h-px bg-red-900/30 my-3"></div>
+                            <div class="flex justify-between items-center"><span class="text-red-400 font-bold">Total por hijo</span><span class="text-red-400 font-black text-xl">$3,000 - $14,000</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="bg-card border border-card-border rounded-2xl p-5 md:p-8">
+                        <h3 class="text-lg font-bold text-zinc-300 mb-4">¿Quién les ofrece financiamiento?</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">❌</span>
+                                <div><div class="font-semibold">Affirm / Klarna</div><div class="text-sm text-zinc-500">No tienen vertical deportiva</div></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">❌</span>
+                                <div><div class="font-semibold">Kueski / Addi</div><div class="text-sm text-zinc-500">BNPL genérico, no entienden deportes</div></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">❌</span>
+                                <div><div class="font-semibold">TeamSnap / LeagueApps</div><div class="text-sm text-zinc-500">Solo USA, no LATAM, no BNPL</div></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">❌</span>
+                                <div><div class="font-semibold">ExposureEvents</div><div class="text-sm text-zinc-500">Showcases pero sin BNPL ni perfil verificado</div></div>
+                            </div>
+                            <div class="h-px bg-card-border my-3"></div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">✅</span>
+                                <div><div class="font-bold text-widdo text-lg">Widdo Pathways</div><div class="text-sm text-zinc-400">Perfil verificado + conexión camps/colleges + BNPL cross-border</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKET DATA -->
+    <section class="py-12 md:py-24 px-4 md:px-6 bg-card/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Datos del Mercado</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-4">Los números son reales.<br><span class="text-zinc-500">Las fuentes también.</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mt-12 mb-10">
+                <div class="reveal-left">
+                    <div class="bg-card border border-card-border rounded-2xl p-6">
+                        <h3 class="font-bold text-widdo text-sm mb-4 tracking-wider uppercase">NCAA Student-Athletes</h3>
+                        <div class="space-y-3">
+                            <div><div class="text-xl md:text-3xl font-black text-widdo">554,298</div><div class="text-xs text-zinc-500">Total NCAA 2024-25 (record)</div></div>
+                            <div><div class="text-2xl font-black">25,000+</div><div class="text-xs text-zinc-500">Internacionales</div></div>
+                            <div><div class="text-2xl font-black">38,654</div><div class="text-xs text-zinc-500">Hispanic/Latino (+62% en 10 años)</div></div>
+                            <div><div class="text-2xl font-black">$4B</div><div class="text-xs text-zinc-500">En becas atléticas por año</div></div>
+                        </div>
+                        <div class="mt-4 text-xs text-zinc-600">Fuente: NCAA.org, 2024-25</div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="bg-card border border-card-border rounded-2xl p-6">
+                        <h3 class="font-bold text-purple-400 text-sm mb-4 tracking-wider uppercase">LATAM → USA (educación)</h3>
+                        <div class="space-y-3">
+                            <div><div class="text-3xl font-black text-purple-400">71,444</div><div class="text-xs text-zinc-500">Estudiantes LATAM en USA/año</div></div>
+                            <div><div class="text-2xl font-black">$2.57B</div><div class="text-xs text-zinc-500">Contribución económica LATAM</div></div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div><div class="font-bold text-sm">Brasil 17.3K</div><div class="text-xs text-zinc-600">#1 LATAM</div></div>
+                                <div><div class="font-bold text-sm">México 15.7K</div><div class="text-xs text-zinc-600">+6.4%</div></div>
+                                <div><div class="font-bold text-sm text-widdo">Colombia 10.2K</div><div class="text-xs text-zinc-600">+11.3% record</div></div>
+                                <div><div class="font-bold text-sm">Perú 4K+</div><div class="text-xs text-zinc-600">+19.3% record</div></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-xs text-zinc-600">Fuente: Open Doors / IIE, 2024-25</div>
+                    </div>
+                </div>
+
+                <div class="reveal-right">
+                    <div class="bg-card border border-card-border rounded-2xl p-6">
+                        <h3 class="font-bold text-amber-400 text-sm mb-4 tracking-wider uppercase">Florida Sports Tourism</h3>
+                        <div class="space-y-3">
+                            <div><div class="text-3xl font-black text-amber-400">$128B</div><div class="text-xs text-zinc-500">Impacto total sports tourism FL</div></div>
+                            <div><div class="text-2xl font-black">26M+</div><div class="text-xs text-zinc-500">Participantes en camps USA</div></div>
+                            <div><div class="text-2xl font-black">20,175</div><div class="text-xs text-zinc-500">Camps en USA ($4.7B market)</div></div>
+                            <div><div class="text-2xl font-black">117K</div><div class="text-xs text-zinc-500">Atletas en AAU Volleyball Orlando</div></div>
+                        </div>
+                        <div class="mt-4 text-xs text-zinc-600">Fuente: FL Sports Foundation, Summer Camp Hub, IBISWorld</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key insight -->
+            <div class="reveal">
+                <div class="bg-gradient-to-r from-green-950/30 to-card border border-widdo/20 rounded-2xl p-5 md:p-8">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-xl font-black mb-3">El dato más importante</h3>
+                            <p class="text-zinc-400 text-sm mb-4">Athletes USA ha colocado <strong class="text-white">3,000+ atletas LATAM</strong> en colleges USA en los últimos 15 años — <strong class="text-white">manualmente</strong>, con 54+ países y 20,000+ coaches.</p>
+                            <p class="text-zinc-400 text-sm mb-4">Flywire procesa <strong class="text-white">$29.7B/año</strong> en pagos cross-border de educación (+23.6% YoY) y ya opera en Colombia, Brasil, México, Perú y Chile.</p>
+                            <p class="text-widdo font-bold text-sm">Widdo digitaliza lo que Athletes USA hace manualmente y agrega el BNPL que Flywire no tiene en deportes.</p>
+                        </div>
+                        <div class="bg-dark rounded-xl p-6">
+                            <h4 class="text-sm font-bold text-zinc-400 mb-3">El gap que nadie llena:</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-3"><span class="text-widdo">✅</span> Athletes USA recluta LATAM → USA</div>
+                                <div class="flex items-center gap-3"><span class="text-red-400">❌</span> Pero es manual, no plataforma tech</div>
+                                <div class="flex items-center gap-3"><span class="text-widdo">✅</span> Flywire procesa pagos cross-border</div>
+                                <div class="flex items-center gap-3"><span class="text-red-400">❌</span> Pero no tiene deportes ni BNPL</div>
+                                <div class="flex items-center gap-3"><span class="text-widdo">✅</span> NCAA tiene 25K+ internacionales</div>
+                                <div class="flex items-center gap-3"><span class="text-red-400">❌</span> Pero no hay pipeline digital desde LATAM</div>
+                                <div class="h-px bg-card-border my-2"></div>
+                                <div class="flex items-center gap-3"><span class="text-widdo font-bold text-lg">→</span> <strong class="text-widdo">Widdo = pipeline + pagos + BNPL</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LATAM data gap -->
+            <div class="reveal mt-6">
+                <div class="bg-card border border-card-border rounded-xl p-5">
+                    <p class="text-sm text-zinc-400 text-center"><strong class="text-zinc-300">Dato clave para inversores:</strong> No existe data consolidada de clubes deportivos juveniles en Colombia, México ni Brasil. Este vacío de datos es en sí mismo una oportunidad — Widdo se convierte en la fuente de data del deporte amateur en LATAM. <span class="text-zinc-600">350M menores de 30 años en LATAM, 90% siguen deportes. (Profluence)</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETENCIA -->
+    <section id="competencia" class="py-12 md:py-24 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Competencia</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-4">$200M+ en funding combinado.<br><span class="text-zinc-500">Ninguno hace lo que Widdo hace.</span></h2>
+                <p class="text-zinc-400 mb-12 max-w-2xl">Estas son las startups más grandes de sports tech. Todas atacan UN pedazo del mercado. Ninguna tiene las 3 capas juntas.</p>
+            </div>
+
+            <!-- Competitor cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 stagger">
+                <!-- LeagueApps -->
+                <div class="reveal bg-card border border-card-border rounded-xl p-5 hover:border-green-800 transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-base">LeagueApps</h4>
+                        <span class="text-xs bg-green-950 text-green-400 px-2 py-1 rounded-full font-semibold">Activo</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div><div class="text-xs text-zinc-500">Funding</div><div class="font-black text-widdo">$35M</div></div>
+                        <div><div class="text-xs text-zinc-500">Revenue</div><div class="font-black text-widdo">$20M/año</div></div>
+                        <div><div class="text-xs text-zinc-500">Clientes</div><div class="font-bold">3,000</div></div>
+                        <div><div class="text-xs text-zinc-500">Años</div><div class="font-bold">15</div></div>
+                    </div>
+                    <p class="text-xs text-zinc-500 mb-2">Youth sports registration, pagos, scheduling. Solo USA.</p>
+                    <div class="text-xs text-red-400 font-semibold">❌ No LATAM · No BNPL · No cross-border · No IA</div>
+                    <div class="mt-3 bg-green-950/30 rounded-lg p-2">
+                        <p class="text-xs text-green-300">💡 <strong>Lección:</strong> Prueba que el mercado paga. ARPC $550/mes. Widdo no compite — complementa.</p>
+                    </div>
+                </div>
+
+                <!-- PlayMetrics + Stack -->
+                <div class="reveal bg-card border border-card-border rounded-xl p-5 hover:border-orange-800 transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-base">PlayMetrics + Stack</h4>
+                        <span class="text-xs bg-orange-950 text-orange-400 px-2 py-1 rounded-full font-semibold">PE-Backed</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div><div class="text-xs text-zinc-500">Funding</div><div class="font-black text-orange-400">PE (Genstar)</div></div>
+                        <div><div class="text-xs text-zinc-500">Revenue</div><div class="font-bold">N/A</div></div>
+                        <div><div class="text-xs text-zinc-500">Clientes</div><div class="font-bold">2,700+</div></div>
+                        <div><div class="text-xs text-zinc-500">Merger</div><div class="font-bold">Jun 2025</div></div>
+                    </div>
+                    <p class="text-xs text-zinc-500 mb-2">Club OS, governing bodies, leagues. El gorila de 800 libras.</p>
+                    <div class="text-xs text-red-400 font-semibold">❌ No LATAM · No BNPL · Clientes infelices post-merger</div>
+                    <div class="mt-3 bg-orange-950/30 rounded-lg p-2">
+                        <p class="text-xs text-orange-300">💡 <strong>Lección:</strong> Merger dejó gap en mid-market. Clientes buscando alternativas AHORA.</p>
+                    </div>
+                </div>
+
+                <!-- Spond -->
+                <div class="reveal bg-card border border-card-border rounded-xl p-5 hover:border-blue-800 transition">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-base">Spond</h4>
+                        <span class="text-xs bg-zinc-800 text-zinc-400 px-2 py-1 rounded-full font-semibold">Sin funding desde 2021</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div><div class="text-xs text-zinc-500">Funding</div><div class="font-black text-blue-400">$17M</div></div>
+                        <div><div class="text-xs text-zinc-500">Usuarios</div><div class="font-black text-blue-400">3M+ MAU</div></div>
+                        <div><div class="text-xs text-zinc-500">País</div><div class="font-bold">Noruega</div></div>
+                        <div><div class="text-xs text-zinc-500">Modelo</div><div class="font-bold">Freemium</div></div>
+                    </div>
+                    <p class="text-xs text-zinc-500 mb-2">Comunicación de equipos, scheduling, pagos. Europa.</p>
+                    <div class="text-xs text-red-400 font-semibold">❌ No BNPL · No cross-border · No tournaments · Solo Europa</div>
+                    <div class="mt-3 bg-blue-950/30 rounded-lg p-2">
+                        <p class="text-xs text-blue-300">💡 <strong>Lección:</strong> Freemium = 3M usuarios con $17M. Widdo replica en LATAM.</p>
+                    </div>
+                </div>
+
+                <!-- PlayVS -->
+                <div class="reveal bg-card border border-red-900/50 rounded-xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-base">PlayVS</h4>
+                        <span class="text-xs bg-red-950 text-red-400 px-2 py-1 rounded-full font-semibold">⚠️ 0.40x return</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div><div class="text-xs text-zinc-500">Funding</div><div class="font-black text-red-400">$115M</div></div>
+                        <div><div class="text-xs text-zinc-500">Valoración</div><div class="font-black text-red-400">$46M</div></div>
+                        <div><div class="text-xs text-zinc-500">Vertical</div><div class="font-bold">Esports</div></div>
+                        <div><div class="text-xs text-zinc-500">Pérdida</div><div class="font-bold text-red-400">-$69M</div></div>
+                    </div>
+                    <div class="mt-3 bg-red-950/30 rounded-lg p-2">
+                        <p class="text-xs text-red-300">⚠️ <strong>CAUTIONARY TALE:</strong> Levantó demasiado sin PMF. $115M invertidos → vale $46M. NO sobre-levantar.</p>
+                    </div>
+                </div>
+
+                <!-- Sezzle + Gridiron -->
+                <div class="reveal bg-card border border-card-border rounded-xl p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-base">Sezzle + Gridiron</h4>
+                        <span class="text-xs bg-zinc-800 text-zinc-400 px-2 py-1 rounded-full font-semibold">Sin updates 2021</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div><div class="text-xs text-zinc-500">Tipo</div><div class="font-bold">Partnership</div></div>
+                        <div><div class="text-xs text-zinc-500">BNPL</div><div class="font-bold">Solo football USA</div></div>
+                    </div>
+                    <p class="text-xs text-zinc-500 mb-2">Primer intento de BNPL para youth sports. 4 cuotas, sin interés.</p>
+                    <div class="mt-3 bg-purple-950/30 rounded-lg p-2">
+                        <p class="text-xs text-purple-300">💡 <strong>Lección:</strong> Probó el concepto pero no escaló. Widdo = BNPL nativo en plataforma, no partnership externo.</p>
+                    </div>
+                </div>
+
+                <!-- LATAM -->
+                <div class="reveal bg-card border border-widdo/30 rounded-xl p-5 pulse-glow">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-base text-widdo">LATAM Sports Tech</h4>
+                        <span class="text-xs bg-green-950 text-green-400 px-2 py-1 rounded-full font-semibold">WHITESPACE</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div><div class="text-xs text-zinc-500">Startups</div><div class="font-black text-widdo">833</div></div>
+                        <div><div class="text-xs text-zinc-500">Con funding</div><div class="font-bold">51</div></div>
+                        <div><div class="text-xs text-zinc-500">Haciendo lo de Widdo</div><div class="font-black text-widdo text-xl">0</div></div>
+                        <div><div class="text-xs text-zinc-500">VC a fintech LATAM</div><div class="font-bold">61%</div></div>
+                    </div>
+                    <div class="mt-3 bg-green-950/30 rounded-lg p-2">
+                        <p class="text-xs text-green-300">✅ <strong>OPORTUNIDAD:</strong> 833 startups de sports tech, CERO haciendo clubs + BNPL + cross-border. Widdo es el primero.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Widdo vs All -->
+            <div class="reveal">
+                <div class="bg-gradient-to-r from-green-950/50 to-card border border-widdo/30 rounded-2xl p-5 md:p-8">
+                    <h3 class="text-lg md:text-xl font-black mb-6 text-center">¿Qué tiene cada uno? <span class="text-widdo">Solo Widdo tiene todo.</span></h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="text-zinc-400 text-xs">
+                                    <th class="text-left py-2 px-3">Feature</th>
+                                    <th class="text-center py-2 px-3">LeagueApps</th>
+                                    <th class="text-center py-2 px-3">Stack+PM</th>
+                                    <th class="text-center py-2 px-3">TeamSnap</th>
+                                    <th class="text-center py-2 px-3">Spond</th>
+                                    <th class="text-center py-2 px-3">Exposure</th>
+                                    <th class="text-center py-2 px-3 text-widdo font-bold">Widdo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-xs">
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">Club Management</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">❌</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">Tournaments</td><td class="text-center">⚠️</td><td class="text-center">✅</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">✅</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">BNPL / Financing</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">Cross-Border Payments</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">LATAM Market</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">Multi-Language (EN/ES/PT)</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">AI Assistant</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">Player Profile (permanente)</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">⚠️</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                                <tr class="border-t border-card-border"><td class="py-2 px-3 text-zinc-300">Referral Commission (10%)</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center">❌</td><td class="text-center text-widdo font-bold">✅</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALIDACIÓN USA -->
+    <section id="validacion" class="py-12 md:py-24 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Validación USA</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-4">El mercado nos dijo qué construir.<br><span class="text-zinc-500">No al revés.</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+                <!-- Quote -->
+                <div class="reveal-left">
+                    <div class="bg-gradient-to-br from-green-950/40 to-card border border-widdo/20 rounded-2xl p-5 md:p-8 h-full">
+                        <div class="text-6xl text-widdo/30 font-black leading-none mb-4">"</div>
+                        <p class="text-lg text-zinc-200 italic leading-relaxed mb-6">Si implementan esto, yo soy el primero en pasar todo a Widdo. Y lo referencio con otros camps de mi red. Los camps pagamos entre 8-15% por jugador referido. Es normal en la industria.</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-widdo/20 rounded-full flex items-center justify-center text-xl">&#127939;</div>
+                            <div>
+                                <div class="font-bold text-white">Director, The Academy CFL</div>
+                                <div class="text-sm text-zinc-400">Orlando, Florida — 5 deportes, 60+ atletas en colleges</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What this means -->
+                <div class="reveal-right">
+                    <div class="bg-card border border-card-border rounded-2xl p-5 md:p-8 h-full">
+                        <h3 class="text-lg font-bold mb-6">¿Qué significa esto?</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-green-950 rounded-lg flex items-center justify-center text-lg flex-shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-sm mb-1">Customer-led product</h4>
+                                    <p class="text-sm text-zinc-400">El cliente definió el modelo de negocio, no nosotros. Widdo Pathways nació de una necesidad real del mercado USA.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-green-950 rounded-lg flex items-center justify-center text-lg flex-shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-sm mb-1">Primer cliente confirmado</h4>
+                                    <p class="text-sm text-zinc-400">Academy CFL se comprometió a ser el primer camp en Widdo. No es una proyección — es un compromiso verbal del director.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-green-950 rounded-lg flex items-center justify-center text-lg flex-shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-sm mb-1">Canal de distribución incluido</h4>
+                                    <p class="text-sm text-zinc-400">El director referirá otros camps por una comisión. Es un canal de ventas orgánico sin costo fijo. Cada entrenador = un vendedor.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-green-950 rounded-lg flex items-center justify-center text-lg flex-shrink-0">4</div>
+                                <div>
+                                    <h4 class="font-bold text-sm mb-1">Pricing validado por el mercado</h4>
+                                    <p class="text-sm text-zinc-400">"Los camps pagamos 8-15% por jugador referido" — es práctica estándar en la industria. Widdo cobra 10%: competitivo y validado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ambassador Model -->
+            <div class="reveal mt-8">
+                <div class="bg-card border border-card-border rounded-2xl p-5 md:p-8">
+                    <h3 class="text-lg font-bold mb-6 text-center">Modelo de Embajadores <span class="text-zinc-500">— Cómo escala sin sales team</span></h3>
+                    <div class="flex items-center justify-center gap-3 flex-wrap px-2">
+                        <div class="bg-green-950/30 border border-green-900/20 rounded-xl p-4 text-center min-w-[140px]">
+                            <div class="text-2xl mb-1">&#127939;</div>
+                            <div class="text-xs text-zinc-400">Widdo envía</div>
+                            <div class="font-bold text-sm">Jugador verificado</div>
+                        </div>
+                        <div class="text-widdo text-2xl">&#8594;</div>
+                        <div class="bg-purple-950/30 border border-purple-900/20 rounded-xl p-4 text-center min-w-[140px]">
+                            <div class="text-2xl mb-1">&#127960;</div>
+                            <div class="text-xs text-zinc-400">Camp USA paga</div>
+                            <div class="font-bold text-sm text-widdo">10% comisión ($300)</div>
+                        </div>
+                        <div class="text-widdo text-2xl">&#8594;</div>
+                        <div class="bg-card border border-card-border rounded-xl p-4 text-center min-w-[180px]">
+                            <div class="text-2xl mb-1">&#128176;</div>
+                            <div class="text-xs text-zinc-400">Widdo distribuye</div>
+                            <div class="flex gap-4 mt-1">
+                                <div><div class="font-bold text-sm text-widdo">$200-250</div><div class="text-xs text-zinc-500">Widdo retiene</div></div>
+                                <div><div class="font-bold text-sm text-amber-400">$50-100</div><div class="text-xs text-zinc-500">Embajador</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center text-sm text-zinc-500 mt-6">Cada entrenador que refiere camps se convierte en un canal de ventas sin costo fijo.<br>10 embajadores × 5 camps cada uno = 50 camps sin un solo dólar en marketing.</p>
+                </div>
+            </div>
+
+            <!-- Why Now -->
+            <div class="reveal mt-8">
+                <div class="bg-gradient-to-r from-amber-950/30 to-card border border-amber-900/20 rounded-2xl p-5 md:p-8">
+                    <h3 class="text-xl font-black mb-6 text-center text-amber-400">&#9200; ¿Por qué AHORA?</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl mb-3">&#128220;</div>
+                            <h4 class="font-bold text-sm mb-2">Ley Background Checks</h4>
+                            <p class="text-xs text-zinc-400">Julio 2026 en Florida. Miles de clubes necesitan digitalizarse. <strong class="text-amber-300">Quedan 3 meses.</strong></p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-3">&#9728;&#65039;</div>
+                            <h4 class="font-bold text-sm mb-2">Temporada de Camps</h4>
+                            <p class="text-xs text-zinc-400">Los camps de verano se llenan entre mayo-junio. Si no tenemos camps listados para entonces, <strong class="text-amber-300">perdemos la temporada completa.</strong></p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl mb-3">&#9888;&#65039;</div>
+                            <h4 class="font-bold text-sm mb-2">Competidor en Colombia</h4>
+                            <p class="text-xs text-zinc-400">Ya clonaron parte de la UI y son partner de la Liga Antioqueña. <strong class="text-amber-300">Cada mes sin capital es un mes que ellos crecen.</strong></p>
+                        </div>
+                    </div>
+                    <p class="text-center text-sm text-amber-300 font-semibold mt-6">El costo de esperar 3 meses: perder la temporada de camps, perder la ventana de compliance, y darle espacio al competidor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTRATEGIA -->
+    <section id="estrategia" class="py-12 md:py-24 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Estrategia USA</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-4">No competimos.<br><span class="gradient-text">Creamos una categoría nueva.</span></h2>
+                <p class="text-zinc-400 mb-12 max-w-2xl">USA no es nuestro campo de batalla — es el destino. LATAM es la fuente de jugadores. Widdo es el puente.</p>
+            </div>
+
+            <!-- 3 vías -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16">
+                <div class="reveal-left">
+                    <div class="bg-card border border-purple-900/30 rounded-2xl p-6 h-full">
+                        <div class="w-12 h-12 bg-purple-950 rounded-xl flex items-center justify-center text-2xl mb-4">🌎</div>
+                        <h3 class="text-lg font-bold mb-2">Vía 1: Pathways</h3>
+                        <p class="text-sm text-purple-300 font-semibold mb-3">Proveedor de jugadores LATAM</p>
+                        <p class="text-sm text-zinc-400 mb-4">"Tengo 5,000 jugadores verificados en CO, MX, BR. ¿Quieres los mejores en tu camp?"</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Camp paga 10% comisión por jugador</div>
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Familia paga con BNPL (3-5%)</div>
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Doble revenue: ~14% del ticket</div>
+                        </div>
+                        <div class="mt-4 bg-purple-950/50 rounded-lg p-3">
+                            <p class="text-xs text-purple-300">💰 200 jugadores × $420 = <strong>$84,000/año</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="bg-card border border-blue-900/30 rounded-2xl p-6 h-full">
+                        <div class="w-12 h-12 bg-blue-950 rounded-xl flex items-center justify-center text-2xl mb-4">🏆</div>
+                        <h3 class="text-lg font-bold mb-2">Vía 2: Tournaments</h3>
+                        <p class="text-sm text-blue-300 font-semibold mb-3">Motor de adquisición masiva</p>
+                        <p class="text-sm text-zinc-400 mb-4">Gratis para organizadores. Cada torneo trae 15-20 clubes nuevos y ~480 perfiles de jugadores.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Showcases en Florida listados gratis</div>
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Clubes LATAM exponen jugadores</div>
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Revenue = $0 (es adquisición)</div>
+                        </div>
+                        <div class="mt-4 bg-blue-950/50 rounded-lg p-3">
+                            <p class="text-xs text-blue-300">📊 10 torneos = <strong>4,800 perfiles nuevos</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-right">
+                    <div class="bg-card border border-amber-900/30 rounded-2xl p-6 h-full">
+                        <div class="w-12 h-12 bg-amber-950 rounded-xl flex items-center justify-center text-2xl mb-4">🛡️</div>
+                        <h3 class="text-lg font-bold mb-2">Vía 3: Compliance</h3>
+                        <p class="text-sm text-amber-300 font-semibold mb-3">Caballo de Troya</p>
+                        <p class="text-sm text-zinc-400 mb-4">Ley de background checks julio 2026 en Florida. Miles de clubes necesitan digitalizarse urgente.</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Compliance dashboard como gancho</div>
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> Una vez adentro → Pathways + Tournaments</div>
+                            <div class="flex items-center gap-2 text-sm"><span class="text-widdo">→</span> SaaS como upsell natural</div>
+                        </div>
+                        <div class="mt-4 bg-amber-950/50 rounded-lg p-3">
+                            <p class="text-xs text-amber-300">📅 Deadline: <strong>Julio 2026</strong> — timing perfecto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SaaS = Upsell -->
+            <div class="reveal">
+                <div class="bg-gradient-to-r from-card to-green-950/20 border border-card-border rounded-2xl p-5 md:p-8">
+                    <h3 class="text-xl font-black mb-6 text-center">SaaS USA ($99-349/mes) = <span class="text-widdo">Upsell</span>, no producto principal</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-sm font-bold text-red-400 mb-3">❌ ANTES (malo)</h4>
+                            <ul class="space-y-2 text-sm text-zinc-400">
+                                <li>Vender a cualquier club USA</li>
+                                <li>Competir con LeagueApps por 300K clubes</li>
+                                <li>Cold outreach a desconocidos</li>
+                                <li>$0 marketing vs empresas con millones</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-widdo mb-3">✅ AHORA (bueno)</h4>
+                            <ul class="space-y-2 text-sm text-zinc-300">
+                                <li>Solo a camps que YA usan Pathways</li>
+                                <li>Vender a los 50-100 que ya pagan referral</li>
+                                <li>"Ya te mandé 20 jugadores, ¿quieres gestionar tu academia conmigo?"</li>
+                                <li>Relación existente → conversión natural</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLUJO -->
+    <section id="flujo" class="py-12 md:py-24 px-4 md:px-6 bg-card/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">El Flujo</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-12">Así funciona Widdo.<br><span class="text-zinc-500">De principio a fin.</span></h2>
+            </div>
+
+            <!-- Flow diagram -->
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="reveal-left">
+                    <div class="flex items-start gap-3 md:gap-6">
+                        <div class="w-10 h-10 md:w-16 md:h-16 bg-green-950 border-2 border-widdo rounded-2xl flex items-center justify-center text-2xl font-black text-widdo flex-shrink-0">1</div>
+                        <div class="bg-card border border-card-border rounded-xl p-5 flex-1">
+                            <h4 class="font-bold text-sm md:text-lg mb-1">Club se registra en LATAM <span class="text-zinc-500 text-sm font-normal">(gratis o bajo costo)</span></h4>
+                            <p class="text-sm text-zinc-400">Director del club crea cuenta. Registra jugadores, entrenadores, familias. Gestiona pagos, asistencia, calendario. Todo en Widdo.</p>
+                            <div class="mt-2 text-xs text-widdo font-semibold">Revenue: $0-71 USD/mes (SaaS LATAM)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center"><div class="w-0.5 h-8 flow-line"></div></div>
+
+                <!-- Step 2 -->
+                <div class="reveal-right">
+                    <div class="flex items-start gap-3 md:gap-6">
+                        <div class="w-10 h-10 md:w-16 md:h-16 bg-green-950 border-2 border-widdo rounded-2xl flex items-center justify-center text-2xl font-black text-widdo flex-shrink-0">2</div>
+                        <div class="bg-card border border-card-border rounded-xl p-5 flex-1">
+                            <h4 class="font-bold text-sm md:text-lg mb-1">Jugadores acumulan perfil verificado</h4>
+                            <p class="text-sm text-zinc-400">Stats, historial médico, compliance, video highlights, asistencia, pagos. El perfil viaja con el jugador, no con el club. Permanente.</p>
+                            <div class="mt-2 text-xs text-widdo font-semibold">Valor: DATA (el moat defensivo)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center"><div class="w-0.5 h-8 flow-line"></div></div>
+
+                <!-- Step 3 -->
+                <div class="reveal-left">
+                    <div class="flex items-start gap-3 md:gap-6">
+                        <div class="w-10 h-10 md:w-16 md:h-16 bg-blue-950 border-2 border-blue-500 rounded-2xl flex items-center justify-center text-2xl font-black text-blue-400 flex-shrink-0">3</div>
+                        <div class="bg-card border border-card-border rounded-xl p-5 flex-1">
+                            <h4 class="font-bold text-sm md:text-lg mb-1">Torneos traen más clubes y jugadores <span class="text-zinc-500 text-sm font-normal">(gratis para organizadores)</span></h4>
+                            <p class="text-sm text-zinc-400">Cada torneo = ~480 perfiles nuevos. Brackets, resultados en vivo, vistas públicas. El organizador no paga nada — Widdo crece en volumen.</p>
+                            <div class="mt-2 text-xs text-blue-400 font-semibold">Revenue: $0 (adquisición masiva)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center"><div class="w-0.5 h-8 flow-line"></div></div>
+
+                <!-- Step 4 -->
+                <div class="reveal-right">
+                    <div class="flex items-start gap-3 md:gap-6">
+                        <div class="w-10 h-10 md:w-16 md:h-16 bg-purple-950 border-2 border-purple-500 rounded-2xl flex items-center justify-center text-2xl font-black text-purple-400 flex-shrink-0">4</div>
+                        <div class="bg-card border border-card-border rounded-xl p-5 flex-1">
+                            <h4 class="font-bold text-sm md:text-lg mb-1">Camp/College USA quiere jugadores verificados</h4>
+                            <p class="text-sm text-zinc-400">"Necesito 20 jugadores para mi camp de verano en Orlando." Widdo selecciona de su base de datos. Envía perfiles verificados al camp.</p>
+                            <div class="mt-2 text-xs text-purple-400 font-semibold">Revenue: 10% comisión por jugador referido ($300 por jugador de $3K)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center"><div class="w-0.5 h-8 flow-line"></div></div>
+
+                <!-- Step 5 -->
+                <div class="reveal-left">
+                    <div class="flex items-start gap-3 md:gap-6">
+                        <div class="w-10 h-10 md:w-16 md:h-16 bg-purple-950 border-2 border-purple-500 rounded-2xl flex items-center justify-center text-2xl font-black text-purple-400 flex-shrink-0">5</div>
+                        <div class="bg-card border border-card-border rounded-xl p-5 flex-1">
+                            <h4 class="font-bold text-sm md:text-lg mb-1">Familia LATAM financia con BNPL</h4>
+                            <p class="text-sm text-zinc-400">Camp cuesta $3,000 USD. La familia en Colombia no tiene esa plata de una vez. Paga en 6-12 cuotas en pesos colombianos via dLocal + BNPL local.</p>
+                            <div class="mt-2 text-xs text-purple-400 font-semibold">Revenue: 3-5% fee sobre monto financiado ($120 por $3K)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center"><div class="w-0.5 h-8 flow-line"></div></div>
+
+                <!-- Step 6 -->
+                <div class="reveal-right">
+                    <div class="flex items-start gap-3 md:gap-6">
+                        <div class="w-10 h-10 md:w-16 md:h-16 bg-widdo/20 border-2 border-widdo rounded-2xl flex items-center justify-center text-2xl font-black text-widdo flex-shrink-0">💰</div>
+                        <div class="bg-gradient-to-r from-green-950/50 to-card border border-widdo/30 rounded-xl p-5 flex-1">
+                            <h4 class="font-bold text-sm md:text-lg mb-1 text-widdo">Widdo gana por cada lado</h4>
+                            <p class="text-sm text-zinc-300">Por UN jugador de $3,000 que va a un camp en USA:</p>
+                            <div class="grid grid-cols-3 gap-2 md:gap-4 mt-3">
+                                <div class="text-center">
+                                    <div class="text-lg md:text-2xl font-black text-widdo">$300</div>
+                                    <div class="text-[10px] md:text-xs text-zinc-500">Referral (camp paga)</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg md:text-2xl font-black text-widdo">$120</div>
+                                    <div class="text-[10px] md:text-xs text-zinc-500">BNPL fee (familia paga)</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg md:text-2xl font-black text-yellow-400">$420</div>
+                                    <div class="text-[10px] md:text-xs text-zinc-500">Total por jugador</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NÚMEROS -->
+    <section id="numeros" class="py-12 md:py-24 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Los Números</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-12">Revenue Year 1 sin competir con nadie.</h2>
+            </div>
+
+            <!-- Revenue table -->
+            <div class="reveal">
+                <div class="bg-card border border-card-border rounded-2xl overflow-x-auto mb-12">
+                    <table class="w-full min-w-[600px]">
+                        <thead>
+                            <tr class="bg-dark">
+                                <th class="text-left py-4 px-6 text-sm font-bold text-zinc-300">Stream</th>
+                                <th class="text-left py-4 px-6 text-sm font-bold text-zinc-300">Cálculo</th>
+                                <th class="text-right py-4 px-6 text-sm font-bold text-zinc-300">Revenue Anual</th>
+                                <th class="text-right py-4 px-6 text-sm font-bold text-zinc-300">Margen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-card-border">
+                                <td class="py-4 px-6"><span class="font-bold">Referral Commission</span><br><span class="text-xs text-zinc-500">10% por jugador → camp USA</span></td>
+                                <td class="py-4 px-6 text-sm text-zinc-400">10 camps × 20 jugadores × $300</td>
+                                <td class="py-4 px-6 text-right font-black text-widdo text-lg">$60,000</td>
+                                <td class="py-4 px-6 text-right text-sm text-zinc-400">~100%</td>
+                            </tr>
+                            <tr class="border-t border-card-border">
+                                <td class="py-4 px-6"><span class="font-bold">BNPL Cross-Border</span><br><span class="text-xs text-zinc-500">3-5% fee sobre monto financiado</span></td>
+                                <td class="py-4 px-6 text-sm text-zinc-400">200 jugadores × $3K × 4%</td>
+                                <td class="py-4 px-6 text-right font-black text-widdo text-lg">$24,000</td>
+                                <td class="py-4 px-6 text-right text-sm text-zinc-400">~95%</td>
+                            </tr>
+                            <tr class="border-t border-card-border">
+                                <td class="py-4 px-6"><span class="font-bold">SaaS USA (upsell)</span><br><span class="text-xs text-zinc-500">Camps que ya pagan referral</span></td>
+                                <td class="py-4 px-6 text-sm text-zinc-400">10 camps × $199/mes × 12</td>
+                                <td class="py-4 px-6 text-right font-black text-widdo text-lg">$23,880</td>
+                                <td class="py-4 px-6 text-right text-sm text-zinc-400">~90%</td>
+                            </tr>
+                            <tr class="border-t border-card-border">
+                                <td class="py-4 px-6"><span class="font-bold">SaaS LATAM</span><br><span class="text-xs text-zinc-500">Clubes CO, MX, BR</span></td>
+                                <td class="py-4 px-6 text-sm text-zinc-400">30 clubes × $30/mes × 12</td>
+                                <td class="py-4 px-6 text-right font-black text-widdo text-lg">$10,800</td>
+                                <td class="py-4 px-6 text-right text-sm text-zinc-400">~90%</td>
+                            </tr>
+                            <tr class="border-t-2 border-widdo bg-green-950/20">
+                                <td class="py-4 px-6 font-black text-lg">TOTAL YEAR 1</td>
+                                <td class="py-4 px-6"></td>
+                                <td class="py-4 px-6 text-right font-black text-widdo text-2xl">$118,680</td>
+                                <td class="py-4 px-6 text-right font-bold text-widdo">~94%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Key metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 stagger">
+                <div class="reveal bg-card border border-card-border rounded-xl p-6 text-center">
+                    <div class="text-2xl md:text-2xl md:text-4xl font-black text-widdo mb-1">$420</div>
+                    <div class="text-sm text-zinc-400">Revenue por jugador cross-border</div>
+                    <div class="text-xs text-zinc-600 mt-1">Referral $300 + BNPL $120</div>
+                </div>
+                <div class="reveal bg-card border border-card-border rounded-xl p-6 text-center">
+                    <div class="text-2xl md:text-2xl md:text-4xl font-black text-widdo mb-1">~14%</div>
+                    <div class="text-sm text-zinc-400">Take rate por transacción</div>
+                    <div class="text-xs text-zinc-600 mt-1">10% referral + 4% BNPL</div>
+                </div>
+                <div class="reveal bg-card border border-card-border rounded-xl p-6 text-center">
+                    <div class="text-2xl md:text-2xl md:text-4xl font-black text-widdo mb-1">$0</div>
+                    <div class="text-sm text-zinc-400">CAC (adquisición orgánica)</div>
+                    <div class="text-xs text-zinc-600 mt-1">Tournaments gratis = growth engine</div>
+                </div>
+                <div class="reveal bg-card border border-card-border rounded-xl p-6 text-center">
+                    <div class="text-2xl md:text-2xl md:text-4xl font-black text-widdo mb-1">94%</div>
+                    <div class="text-sm text-zinc-400">Gross margin promedio</div>
+                    <div class="text-xs text-zinc-600 mt-1">BNPL + referral = casi 100%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECCIÓN YEAR 1-3 -->
+    <section class="py-12 md:py-24 px-4 md:px-6 bg-card/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Proyección</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-4">Path a $1M ARR <span class="text-zinc-500">en 18-24 meses.</span></h2>
+                <p class="text-zinc-400 mb-12 max-w-2xl">Con el modelo de embajadores + BNPL + SaaS, cada camp que entra trae más camps. El crecimiento es compuesto.</p>
+            </div>
+
+            <!-- 3 Year cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <!-- Year 1 -->
+                <div class="reveal-left">
+                    <div class="bg-card border border-card-border rounded-2xl overflow-hidden h-full">
+                        <div class="bg-green-950/50 border-b border-green-900/20 p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="font-black text-lg">Year 1</h3>
+                                    <p class="text-xs text-zinc-400">Abr 2026 — Mar 2027</p>
+                                </div>
+                                <span class="text-xs bg-green-950 text-green-400 px-3 py-1 rounded-full font-bold">VALIDACIÓN</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">Referrals (10%)</span><span class="font-bold text-widdo">$60K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">BNPL cross-border</span><span class="font-bold text-widdo">$24K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">SaaS USA (upsell)</span><span class="font-bold text-widdo">$24K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">SaaS LATAM</span><span class="font-bold text-widdo">$11K</span></div>
+                            <div class="h-px bg-card-border"></div>
+                            <div class="flex justify-between"><span class="font-bold">Total</span><span class="font-black text-widdo text-xl">$119K</span></div>
+                            <div class="h-px bg-card-border"></div>
+                            <div class="text-xs text-zinc-500 space-y-1">
+                                <div>&#127939; 10 camps · 200 jugadores cross-border</div>
+                                <div>&#127758; 3 países · 30 clubs pagando</div>
+                                <div>&#128100; 5,000 perfiles verificados</div>
+                                <div>&#129309; 3-5 embajadores activos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year 2 -->
+                <div class="reveal">
+                    <div class="bg-card border border-widdo/30 rounded-2xl overflow-hidden h-full pulse-glow">
+                        <div class="bg-green-950/50 border-b border-widdo/20 p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="font-black text-lg">Year 2</h3>
+                                    <p class="text-xs text-zinc-400">Abr 2027 — Mar 2028</p>
+                                </div>
+                                <span class="text-xs bg-widdo/20 text-widdo px-3 py-1 rounded-full font-bold">$1M ARR</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">Referrals (10%)</span><span class="font-bold text-widdo">$300K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">BNPL cross-border</span><span class="font-bold text-widdo">$120K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">SaaS USA (upsell)</span><span class="font-bold text-widdo">$120K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">SaaS LATAM</span><span class="font-bold text-widdo">$60K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">BNPL local LATAM</span><span class="font-bold text-widdo">$100K</span></div>
+                            <div class="h-px bg-card-border"></div>
+                            <div class="flex justify-between"><span class="font-bold">Total</span><span class="font-black text-widdo text-2xl">$700K - $1M</span></div>
+                            <div class="h-px bg-card-border"></div>
+                            <div class="text-xs text-zinc-500 space-y-1">
+                                <div>&#127939; 50 camps · 1,000 jugadores cross-border</div>
+                                <div>&#127758; 5 países · 100+ clubs</div>
+                                <div>&#128100; 20,000 perfiles verificados</div>
+                                <div>&#129309; 10-20 embajadores</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year 3 -->
+                <div class="reveal-right">
+                    <div class="bg-card border border-card-border rounded-2xl overflow-hidden h-full">
+                        <div class="bg-green-950/50 border-b border-green-900/20 p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="font-black text-lg">Year 3</h3>
+                                    <p class="text-xs text-zinc-400">Abr 2028 — Mar 2029</p>
+                                </div>
+                                <span class="text-xs bg-purple-950 text-purple-400 px-3 py-1 rounded-full font-bold">NETWORK EFFECTS</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-3">
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">Referrals + BNPL</span><span class="font-bold text-widdo">$1.5M</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">SaaS (USA + LATAM)</span><span class="font-bold text-widdo">$500K</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-zinc-400">BNPL local LATAM</span><span class="font-bold text-widdo">$500K</span></div>
+                            <div class="h-px bg-card-border"></div>
+                            <div class="flex justify-between"><span class="font-bold">Total</span><span class="font-black text-widdo text-2xl">$2M - $4M</span></div>
+                            <div class="h-px bg-card-border"></div>
+                            <div class="text-xs text-zinc-500 space-y-1">
+                                <div>&#127939; 200+ camps · 5,000 jugadores cross-border</div>
+                                <div>&#127758; 7+ países · 500+ clubs</div>
+                                <div>&#128100; 50,000+ perfiles (moat irreversible)</div>
+                                <div>&#128176; $15-25M GMV procesado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investor return -->
+            <div class="reveal">
+                <div class="bg-gradient-to-r from-green-950/50 to-purple-950/50 border border-card-border rounded-2xl p-8 text-center">
+                    <h3 class="text-lg font-bold mb-6">Para el inversor: ¿Qué significa?</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-xl md:text-3xl font-black text-widdo">$250K</div>
+                            <div class="text-sm text-zinc-400 mt-1">Inversión hoy @ $3M cap</div>
+                            <div class="text-xs text-zinc-600">~7.7% equity</div>
+                        </div>
+                        <div>
+                            <div class="text-xl md:text-3xl font-black text-widdo">$20-40M</div>
+                            <div class="text-sm text-zinc-400 mt-1">Valoración Year 3 (10x revenue)</div>
+                            <div class="text-xs text-zinc-600">$2-4M ARR × 10x múltiplo</div>
+                        </div>
+                        <div>
+                            <div class="text-xl md:text-3xl font-black text-yellow-400">$1.5M - $3M</div>
+                            <div class="text-sm text-zinc-400 mt-1">Valor de la posición del inversor</div>
+                            <div class="text-xs text-zinc-600">6-12x return en 3 años</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-zinc-500 mt-6">Comparable: Flywire (cross-border educación) llegó a $3B. LeagueApps (solo clubs USA) tiene $20M revenue con $35M funding.</p>
+                </div>
+            </div>
+
+            <!-- Defensibility -->
+            <div class="reveal mt-8">
+                <div class="bg-card border border-card-border rounded-2xl p-5 md:p-8">
+                    <h3 class="text-lg font-bold mb-4 text-center">¿Y si un camp dice "lo hago directo sin Widdo"?</h3>
+                    <p class="text-center text-zinc-400 text-sm mb-6">La barrera no es el software. Es la data.</p>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-dark rounded-xl p-4 text-center">
+                            <div class="text-2xl font-black text-widdo mb-1">5,000+</div>
+                            <div class="text-xs text-zinc-400">Perfiles verificados con historial médico, stats, compliance, video</div>
+                        </div>
+                        <div class="bg-dark rounded-xl p-4 text-center">
+                            <div class="text-2xl font-black text-widdo mb-1">$150K+</div>
+                            <div class="text-xs text-zinc-400">Costo de replicar el producto desde cero (2 años mínimo)</div>
+                        </div>
+                        <div class="bg-dark rounded-xl p-4 text-center">
+                            <div class="text-2xl font-black text-widdo mb-1">BNPL</div>
+                            <div class="text-xs text-zinc-400">Integración con dLocal + proveedores locales por país. No se arma en un fin de semana</div>
+                        </div>
+                    </div>
+                    <p class="text-center text-sm text-zinc-500 mt-4">Un camp puede buscar 5 jugadores solo. Pero no puede buscar 500 jugadores verificados en 5 países con BNPL integrado y perfil médico completo. Para eso necesita Widdo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLYWHEEL -->
+    <section class="py-12 md:py-24 px-4 md:px-6 bg-card/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Network Effects</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-12 text-center">El Flywheel.<br><span class="text-zinc-500">Cada jugador hace la plataforma más valiosa.</span></h2>
+            </div>
+
+            <div class="reveal-scale">
+                <div class="bg-card border border-card-border rounded-2xl p-5 md:p-8">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 bg-green-950/20 rounded-xl border border-green-900/20">
+                            <div class="w-10 h-10 bg-widdo/20 rounded-lg flex items-center justify-center text-widdo font-bold flex-shrink-0">1</div>
+                            <p class="text-sm">Más <strong class="text-widdo">clubes en LATAM</strong> (gratis/barato)</p>
+                        </div>
+                        <div class="flex justify-center"><span class="text-widdo text-xl">↓</span></div>
+                        <div class="flex items-center gap-4 p-4 bg-green-950/20 rounded-xl border border-green-900/20">
+                            <div class="w-10 h-10 bg-widdo/20 rounded-lg flex items-center justify-center text-widdo font-bold flex-shrink-0">2</div>
+                            <p class="text-sm">Más <strong class="text-widdo">jugadores con perfil verificado</strong> (stats, médico, compliance)</p>
+                        </div>
+                        <div class="flex justify-center"><span class="text-widdo text-xl">↓</span></div>
+                        <div class="flex items-center gap-4 p-4 bg-purple-950/20 rounded-xl border border-purple-900/20">
+                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 font-bold flex-shrink-0">3</div>
+                            <p class="text-sm">Más atractivo para <strong class="text-purple-400">camps y colleges USA</strong></p>
+                        </div>
+                        <div class="flex justify-center"><span class="text-widdo text-xl">↓</span></div>
+                        <div class="flex items-center gap-4 p-4 bg-purple-950/20 rounded-xl border border-purple-900/20">
+                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 font-bold flex-shrink-0">4</div>
+                            <p class="text-sm">Más familias usan <strong class="text-purple-400">BNPL para financiar</strong> (3-5% + 10% referral)</p>
+                        </div>
+                        <div class="flex justify-center"><span class="text-widdo text-xl">↓</span></div>
+                        <div class="flex items-center gap-4 p-4 bg-yellow-950/20 rounded-xl border border-yellow-900/20">
+                            <div class="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center text-yellow-400 font-bold flex-shrink-0">5</div>
+                            <p class="text-sm">Más <strong class="text-yellow-400">revenue para Widdo</strong> → más inversión en producto</p>
+                        </div>
+                        <div class="flex justify-center"><span class="text-widdo text-xl">↻</span></div>
+                        <p class="text-center text-sm text-zinc-400">Se repite. Cada ciclo es más fuerte que el anterior.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="py-12 md:py-24 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="reveal">
+                <p class="text-widdo text-sm font-semibold tracking-widest uppercase mb-3">Roadmap</p>
+                <h2 class="text-2xl md:text-4xl font-black mb-12">Abril — Septiembre 2026</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 stagger">
+                <div class="reveal bg-card border border-card-border rounded-xl p-4">
+                    <div class="text-widdo font-black text-sm mb-3">ABR</div>
+                    <div class="space-y-2 text-xs text-zinc-400">
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-orange-500 mt-1 flex-shrink-0"></span>Recibir EIN</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-orange-500 mt-1 flex-shrink-0"></span>Founders Agreement</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-green-500 mt-1 flex-shrink-0"></span>Activar cobros CO</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-blue-500 mt-1 flex-shrink-0"></span>Tournaments live</div>
+                    </div>
+                </div>
+                <div class="reveal bg-card border border-card-border rounded-xl p-4">
+                    <div class="text-widdo font-black text-sm mb-3">MAY</div>
+                    <div class="space-y-2 text-xs text-zinc-400">
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-green-500 mt-1 flex-shrink-0"></span>Primeros clubs USA</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-purple-500 mt-1 flex-shrink-0"></span>dLocal sandbox</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-blue-500 mt-1 flex-shrink-0"></span>3 primeros torneos</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-orange-500 mt-1 flex-shrink-0"></span>Cerrar SAFE Erica</div>
+                    </div>
+                </div>
+                <div class="reveal bg-card border border-card-border rounded-xl p-4">
+                    <div class="text-widdo font-black text-sm mb-3">JUN</div>
+                    <div class="space-y-2 text-xs text-zinc-400">
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-green-500 mt-1 flex-shrink-0"></span>Expandir a MX o BR</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-purple-500 mt-1 flex-shrink-0"></span>BNPL integrado</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-purple-500 mt-1 flex-shrink-0"></span>3 camps USA listados</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-blue-500 mt-1 flex-shrink-0"></span>5+ torneos</div>
+                    </div>
+                </div>
+                <div class="reveal bg-card border border-card-border rounded-xl p-4">
+                    <div class="text-widdo font-black text-sm mb-3">JUL</div>
+                    <div class="space-y-2 text-xs text-zinc-400">
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-amber-500 mt-1 flex-shrink-0"></span>Background check law</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-green-500 mt-1 flex-shrink-0"></span>Campaña compliance</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-purple-500 mt-1 flex-shrink-0"></span>Primeras tx BNPL</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-purple-500 mt-1 flex-shrink-0"></span>10+ camps listados</div>
+                    </div>
+                </div>
+                <div class="reveal bg-card border border-card-border rounded-xl p-4">
+                    <div class="text-widdo font-black text-sm mb-3">AGO</div>
+                    <div class="space-y-2 text-xs text-zinc-400">
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-green-500 mt-1 flex-shrink-0"></span>3 países activos</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-green-500 mt-1 flex-shrink-0"></span>30+ clubs pagando</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-blue-500 mt-1 flex-shrink-0"></span>10+ torneos</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-purple-500 mt-1 flex-shrink-0"></span>$25K GMV</div>
+                    </div>
+                </div>
+                <div class="reveal bg-card border border-widdo/30 rounded-xl p-4">
+                    <div class="text-widdo font-black text-sm mb-3">SEP ✓</div>
+                    <div class="space-y-2 text-xs text-zinc-300">
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-widdo mt-1 flex-shrink-0"></span>5,000 perfiles</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-widdo mt-1 flex-shrink-0"></span>$3K MRR</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-widdo mt-1 flex-shrink-0"></span>$50K+ GMV BNPL</div>
+                        <div class="flex items-start gap-2"><span class="w-2 h-2 rounded-full bg-widdo mt-1 flex-shrink-0"></span>Evaluar YC</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="reveal mt-16">
+                <div class="bg-gradient-to-r from-green-950/50 via-card to-green-950/50 border border-widdo/20 rounded-2xl p-12 text-center">
+                    <h2 class="text-xl md:text-3xl font-black mb-4">El Toast del deporte amateur.</h2>
+                    <p class="text-lg text-zinc-400 max-w-2xl mx-auto mb-8">LATAM tiene el talento. USA tiene las oportunidades. Widdo es el puente que conecta ambos mundos y cobra por cada cruce.</p>
+                    <div class="flex justify-center gap-6">
+                        <div class="text-center">
+                            <div class="text-xl md:text-3xl font-black text-widdo">$250K</div>
+                            <div class="text-xs text-zinc-500">SAFE @ $3M cap</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl md:text-3xl font-black text-widdo">$118K</div>
+                            <div class="text-xs text-zinc-500">Revenue Year 1</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl md:text-3xl font-black text-widdo">6</div>
+                            <div class="text-xs text-zinc-500">Países en 12 meses</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 border-t border-card-border">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-zinc-600">
+            <span>Widdo Inc. · Delaware C-Corp · widdo.co</span>
+            <span>Confidencial · Solo Founders · Marzo 2026</span>
+        </div>
+    </footer>
+
+    <!-- SCROLL ANIMATION JS -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth active nav
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-widdo');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('text-widdo');
+            });
+        });
+    </script>
+</body>
+</html>

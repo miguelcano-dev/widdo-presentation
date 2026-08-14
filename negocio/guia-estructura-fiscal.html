@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Guia Estructura Fiscal y Corporativa</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root {
+    --bg: #0A0A0F; --surface: #12121A; --surface2: #1a1a2e; --border: #2a2a3e;
+    --text: #E8E8ED; --text2: #888; --green: #00C853; --red: #FF6B6B;
+    --yellow: #FECA57; --blue: #54A0FF; --purple: #A29BFE; --orange: #FF9F43;
+    --teal: #00CEC9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+  /* Sidebar */
+  .sidebar { position: fixed; left: 0; top: 0; bottom: 0; width: 280px; background: var(--surface); border-right: 1px solid var(--border); padding: 24px 16px; overflow-y: auto; z-index: 50; }
+  .sidebar h2 { font-size: 14px; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .sidebar a { display: block; padding: 8px 12px; color: var(--text2); text-decoration: none; font-size: 13px; border-radius: 6px; margin-bottom: 2px; transition: all 0.2s; }
+  .sidebar a:hover, .sidebar a.active { color: var(--text); background: var(--surface2); }
+  .sidebar .section-label { font-size: 11px; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px 12px; font-weight: 600; }
+
+  /* Main */
+  .main { margin-left: 280px; padding: 40px 60px 80px; max-width: 1000px; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+  h1 span { color: var(--green); }
+  .subtitle { color: var(--text2); font-size: 15px; margin-bottom: 40px; }
+  h2 { font-size: 22px; font-weight: 700; color: var(--green); margin: 48px 0 16px; padding-top: 24px; border-top: 1px solid var(--border); }
+  h2:first-of-type { border-top: none; }
+  h3 { font-size: 17px; font-weight: 600; color: #fff; margin: 28px 0 12px; }
+  p { margin-bottom: 14px; color: #ccc; font-size: 15px; }
+  strong { color: #fff; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .card-green { border-color: var(--green); background: rgba(0,200,83,0.05); }
+  .card-yellow { border-color: var(--yellow); background: rgba(254,202,87,0.05); }
+  .card-red { border-color: var(--red); background: rgba(255,107,107,0.05); }
+  .card-blue { border-color: var(--blue); background: rgba(84,160,255,0.05); }
+
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th { background: var(--surface); color: var(--green); padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: #ccc; }
+  tr:hover td { background: var(--surface2); }
+
+  .diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin: 20px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--green); white-space: pre; line-height: 1.6; overflow-x: auto; }
+
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .tag-green { background: rgba(0,200,83,0.15); color: var(--green); }
+  .tag-red { background: rgba(255,107,107,0.15); color: var(--red); }
+  .tag-yellow { background: rgba(254,202,87,0.15); color: var(--yellow); }
+  .tag-blue { background: rgba(84,160,255,0.15); color: var(--blue); }
+
+  ul, ol { margin: 12px 0 12px 24px; color: #ccc; }
+  li { margin-bottom: 8px; font-size: 15px; }
+
+  .emoji { font-size: 20px; margin-right: 8px; }
+
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media (max-width: 768px) { .sidebar { display: none; } .main { margin-left: 0; padding: 20px; } .comparison-grid { grid-template-columns: 1fr; } }
+
+  .checklist { list-style: none; margin-left: 0; }
+  .checklist li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .checklist li::before { content: '[ ] '; font-family: 'JetBrains Mono', monospace; color: var(--green); }
+
+  .highlight-box { padding: 16px 20px; border-radius: 8px; margin: 16px 0; font-size: 15px; }
+  .highlight-green { background: rgba(0,200,83,0.1); border-left: 4px solid var(--green); }
+  .highlight-red { background: rgba(255,107,107,0.1); border-left: 4px solid var(--red); }
+  .highlight-yellow { background: rgba(254,202,87,0.1); border-left: 4px solid var(--yellow); }
+  .highlight-blue { background: rgba(84,160,255,0.1); border-left: 4px solid var(--blue); }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>Guia Fiscal Widdo</h2>
+  <div class="section-label">Conceptos</div>
+  <a href="#que-es">Que es todo esto?</a>
+  <a href="#estructura">La estructura</a>
+  <a href="#por-que">Por que hacerlo asi?</a>
+  <a href="#flujo-dinero">Como fluye el dinero</a>
+  <div class="section-label">Impuestos</div>
+  <a href="#impuestos-usa">Impuestos en USA</a>
+  <a href="#impuestos-col">Impuestos en Colombia</a>
+  <a href="#transfer-pricing">Transfer Pricing</a>
+  <a href="#servicios">Que servicios facturar</a>
+  <div class="section-label">Salarios</div>
+  <a href="#salarios">Salarios de founders</a>
+  <a href="#salario-miguel">Miguel (via SAS)</a>
+  <a href="#salario-alwin">Alwin (W-2 USA)</a>
+  <div class="section-label">Escenarios</div>
+  <a href="#vivir-usa">Si Miguel se muda a USA</a>
+  <a href="#comparacion">Colombia vs USA</a>
+  <a href="#recomendacion">Recomendacion</a>
+  <div class="section-label">Gastos</div>
+  <a href="#infra">Servidores e infra</a>
+  <div class="section-label">Internacional</div>
+  <a href="#iva-pricing">IVA y pricing por país</a>
+  <a href="#facturacion-intl">Facturación internacional</a>
+  <div class="section-label">Operativo</div>
+  <a href="#documentos">Documentos necesarios</a>
+  <a href="#checklist">Checklist mensual</a>
+  <a href="#errores">Errores a evitar</a>
+</div>
+
+<div class="main">
+  <h1>Guia de Estructura <span>Fiscal y Corporativa</span></h1>
+  <p class="subtitle">Todo lo que necesitas saber como CEO sobre como fluye el dinero entre Widdo Inc (USA) y Widdo SAS (Colombia), impuestos, salarios, y que conviene mas. Explicado en espanol, sin jerga legal.</p>
+
+  <!-- ============================================ -->
+  <h2 id="que-es">Que es todo esto y por que importa?</h2>
+
+  <p>Widdo tiene <strong>dos empresas</strong>, ambas controladas por Miguel:</p>
+
+  <div class="comparison-grid">
+    <div class="card">
+      <h3 style="color:var(--blue)">Widdo Inc (C Corp)</h3>
+      <p>Empresa en <strong>Delaware, USA</strong>. Creada via Stripe Atlas. Es la empresa "principal" donde estan los inversores, las acciones, y donde entra el dinero de USA.</p>
+      <p><strong>Dueno:</strong> Miguel 70% + Alwin 30%</p>
+      <p><strong>Banco:</strong> Mercury (online, USA)</p>
+      <p><strong>Para que:</strong> Recibir pagos de clientes USA, inversiones, emitir acciones</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--green)">Widdo SAS (Colombia)</h3>
+      <p>Empresa en <strong>Colombia</strong>. Sociedad por Acciones Simplificada. Es donde trabaja el equipo colombiano y se factura el desarrollo.</p>
+      <p><strong>Dueno:</strong> Miguel 100% (NO es subsidiaria de la C Corp — es mas simple y barato asi)</p>
+      <p><strong>Banco:</strong> Bancolombia o Davivienda</p>
+      <p><strong>Para que:</strong> Emplear a Miguel, pagar impuestos CO, recibir pagos de clubes CO</p>
+    </div>
+  </div>
+
+  <div class="highlight-box highlight-blue">
+    <strong>¿Por que la SAS es de Miguel y no de la C Corp?</strong> Porque crearla como subsidiaria requiere apostillar documentos de USA, traducciones oficiales, y Form 5471 anual (~$1,000 extra/ano). Al ser de Miguel, se crea en 2 dias por ~$400K COP. El Transfer Pricing funciona exactamente igual porque Miguel controla ambas empresas (= "partes relacionadas" para el IRS y la DIAN). Si un inversor lo pide en el futuro, se transfiere en un dia.
+  </div>
+
+  <div class="highlight-box highlight-green">
+    <strong>La idea clave:</strong> La C Corp gana el dinero. La SAS hace el trabajo. La C Corp le paga a la SAS por ese trabajo. Eso reduce impuestos en USA y permite pagar salarios en Colombia de forma legal y eficiente.
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="estructura">La estructura completa</h2>
+
+  <div class="diagram">
+                    WIDDO INC (C Corp Delaware)
+                    Banco: Mercury
+                    Impuesto: 21% federal sobre utilidades
+                    ┌──────────────────────────────────────┐
+                    │                                      │
+    Clientes USA ──>│  Revenue USA (Stripe)                │
+                    │                                      │
+    Inversores ────>│  Inversion (SAFE notes)              │
+                    │                                      │
+                    │  Paga a Alwin: W-2 ($2,500/mes)      │──> Alwin (Orlando)
+                    │                                      │
+                    │  Paga a SAS: factura servicios       │──┐
+                    └──────────────────────────────────────┘  │
+                                                              │
+                    Wire mensual (Mercury → banco CO)         │
+                    Concepto: "Software services"             │
+                                                              │
+                    ┌──────────────────────────────────────┐  │
+                    │  WIDDO SAS (Colombia)                │<─┘
+                    │  Banco: Bancolombia/Davivienda       │
+                    │  Impuesto: RST 1.8%                  │
+                    │                                      │
+    Clubes CO ─────>│  Revenue Colombia (SAS INACTIVA)     │
+                    │                                      │
+                    │  Emplea a Miguel ($5,000/mes)         │──> Miguel (Colombia)
+                    │  Paga aportes (salud, pension, etc.)  │
+                    │  Paga RST 1.8%                       │
+                    │                                      │
+                    │  Futuros empleados CO                │──> Devs, QA, soporte
+                    └──────────────────────────────────────┘</div>
+
+  <!-- ============================================ -->
+  <h2 id="por-que">Por que hacerlo asi y no de otra forma?</h2>
+
+  <h3>Opcion 1: Pagarse directo desde la C Corp como dividendo</h3>
+  <div class="card card-red">
+    <p><span class="tag tag-red">MALA IDEA</span></p>
+    <p>La C Corp paga <strong>21% de impuesto sobre utilidades</strong>. Luego, cuando reparte dividendos a Miguel (que vive en Colombia y no es residente USA), retienen <strong>otro 30%</strong>.</p>
+    <p><strong>Resultado:</strong> De cada $100 de ganancia, Miguel recibe solo $55.30. <span style="color:var(--red)">Carga fiscal: 44.7%</span></p>
+  </div>
+
+  <h3>Opcion 2: Transfer Pricing — pagar como servicio a la SAS</h3>
+  <div class="card card-green">
+    <p><span class="tag tag-green">ASI LO HACEMOS</span></p>
+    <p>La C Corp le paga a la SAS por "servicios de desarrollo". Ese pago es un <strong>gasto deducible</strong> — reduce la utilidad de la C Corp, asi que paga menos impuesto en USA.</p>
+    <p>La SAS recibe ese dinero y paga <strong>RST 1.8%</strong> en Colombia (en vez de 35% regimen ordinario).</p>
+    <p><strong>Resultado:</strong> De cada $100, Miguel recibe ~$85. <span style="color:var(--green)">Carga fiscal: ~15%</span></p>
+  </div>
+
+  <h3>Opcion 3: Que Miguel sea contractor de la C Corp</h3>
+  <div class="card card-yellow">
+    <p><span class="tag tag-yellow">RIESGOSO</span></p>
+    <p>Miguel factura directamente a la C Corp como persona natural. Parece mas simple pero:</p>
+    <ul>
+      <li>La DIAN puede reclasificarlo como relacion laboral (multas)</li>
+      <li>No hay separacion entre empresa y persona</li>
+      <li>No escala (si contratas mas gente en CO, cada uno factura independiente)</li>
+      <li>No tiene la proteccion legal de la SAS</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box highlight-blue">
+    <strong>Por que el 20% de markup?</strong> Tanto el IRS (USA) como la DIAN (Colombia) exigen que cuando dos empresas del mismo dueno hacen negocios, el precio sea "de mercado" — lo que cobrarian dos empresas que NO son del mismo dueno. Si la SAS cobra a costo (sin margen), el IRS dice "eso no es precio real, estan moviendo dinero para evadir impuestos". El 20% es estandar mundial para servicios de software y ambas agencias lo aceptan.
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="flujo-dinero">Como fluye el dinero — paso a paso</h2>
+
+  <div class="card">
+    <h3>Cada mes (ejemplo con numeros reales)</h3>
+    <table>
+      <thead><tr><th>Paso</th><th>Que pasa</th><th>Monto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>Clientes USA pagan suscripciones via Stripe → entra a Mercury (C Corp)</td><td>Varia</td></tr>
+        <tr><td><strong>2</strong></td><td>C Corp paga salario W-2 a Alwin (payroll USA)</td><td>$2,500 + $383 employer taxes</td></tr>
+        <tr><td><strong>3</strong></td><td>SAS emite factura a C Corp por servicios del mes</td><td>$9,436</td></tr>
+        <tr><td><strong>4</strong></td><td>C Corp hace wire de Mercury → banco SAS en Colombia</td><td>$9,436 USD</td></tr>
+        <tr><td><strong>5</strong></td><td>Banco colombiano convierte USD → COP a TRM del dia</td><td>~$39.6M COP</td></tr>
+        <tr><td><strong>6</strong></td><td>SAS paga nomina de Miguel (salario integral)</td><td>$5,000 (~$21M COP)</td></tr>
+        <tr><td><strong>7</strong></td><td>SAS paga aportes patronales (salud, pension, ARL, caja)</td><td>~$876</td></tr>
+        <tr><td><strong>8</strong></td><td>SAS paga RST bimestral (1.8% sobre ingresos)</td><td>~$170/mes promedio</td></tr>
+        <tr><td><strong>9</strong></td><td>SAS paga infra, tools, internet (gastos operativos)</td><td>~$170</td></tr>
+        <tr><td><strong>10</strong></td><td>Lo que queda es utilidad de la SAS (del 20% markup)</td><td>~$1,400</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="impuestos-usa">Impuestos en USA (C Corp)</h2>
+
+  <table>
+    <thead><tr><th>Impuesto</th><th>Tasa</th><th>Sobre que</th><th>Cuando</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Corporate Income Tax (Federal)</strong></td><td>21%</td><td>Utilidades netas (revenue - gastos deducibles)</td><td>Anual (Form 1120)</td></tr>
+      <tr><td><strong>State Tax (Delaware)</strong></td><td>$0-$400/ano</td><td>Franchise tax (tarifa fija, no sobre ingresos)</td><td>Anual (1 marzo)</td></tr>
+      <tr><td><strong>Payroll Tax (FICA)</strong></td><td>7.65% employer</td><td>Salario W-2 de Alwin</td><td>Cada payroll</td></tr>
+      <tr><td><strong>Withholding Tax (dividendos)</strong></td><td>30%</td><td>Dividendos a accionistas no-residentes USA</td><td>Al pagar dividendos</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box highlight-green">
+    <strong>Lo que reduce impuestos USA:</strong> Todo lo que la C Corp paga a la SAS como servicio es <strong>gasto deducible</strong>. Si la C Corp factura $20K/mes y paga $9.4K a la SAS + $2.9K a Alwin, su utilidad gravable es solo $7.7K. El impuesto seria $7,700 x 21% = $1,617/mes en vez de $4,200/mes. <span style="color:var(--green)">Ahorro: $2,583/mes.</span>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="impuestos-col">Impuestos en Colombia (SAS)</h2>
+
+  <table>
+    <thead><tr><th>Impuesto</th><th>Tasa</th><th>Sobre que</th><th>Cuando</th></tr></thead>
+    <tbody>
+      <tr><td><strong>RST (Regimen Simple)</strong></td><td>1.8%</td><td>Todos los ingresos de la SAS (factura a C Corp + clubes CO)</td><td>Bimestral</td></tr>
+      <tr><td><strong>Salud (patronal)</strong></td><td>8.5%</td><td>70% del salario integral</td><td>Mensual (PILA)</td></tr>
+      <tr><td><strong>Pension (patronal)</strong></td><td>12%</td><td>70% del salario integral</td><td>Mensual (PILA)</td></tr>
+      <tr><td><strong>ARL</strong></td><td>0.52%</td><td>70% del salario integral</td><td>Mensual (PILA)</td></tr>
+      <tr><td><strong>Caja de Compensacion</strong></td><td>4%</td><td>70% del salario integral</td><td>Mensual (PILA)</td></tr>
+      <tr><td><strong>GMF (4x1000)</strong></td><td>0.4%</td><td>Movimientos bancarios</td><td>Automatico</td></tr>
+      <tr><td><strong>IVA</strong></td><td>0%</td><td>Servicios de software exportados estan EXCLUIDOS</td><td>N/A</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box highlight-green">
+    <strong>Por que RST y no regimen ordinario?</strong> El regimen ordinario cobra 35% sobre utilidades. El RST cobra 1.8% sobre INGRESOS (no utilidades). Con margenes altos como los de Widdo, el RST ahorra una fortuna. Ejemplo: si la SAS recibe $9,436/mes y tiene $1,400 de utilidad, el ordinario cobraria $490 (35% de $1,400). El RST cobra $170 (1.8% de $9,436). <span style="color:var(--green)">Ahorro: $320/mes. A escala, son miles.</span>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="transfer-pricing">Transfer Pricing explicado simple</h2>
+
+  <div class="card">
+    <h3>Que es</h3>
+    <p>Son las reglas que dicen <strong>a que precio</strong> pueden hacerse negocios entre dos empresas del mismo dueno en diferentes paises. Existen para que la gente no mueva ganancias de un pais a otro para pagar menos impuestos.</p>
+
+    <h3>Como funciona con Widdo</h3>
+    <p>La SAS le cobra a la C Corp por los servicios que hace (desarrollo, operaciones, soporte, etc.). El precio se calcula como:</p>
+    <p style="text-align:center;font-size:18px;font-family:'JetBrains Mono',monospace;color:var(--green);padding:12px;">
+      Costos reales de la SAS + 20% de markup = precio de la factura
+    </p>
+
+    <h3>Que pasa si NO lo haces?</h3>
+    <ul>
+      <li>El IRS puede reclasificar los pagos y cobrar impuestos adicionales + multas</li>
+      <li>La DIAN puede hacer lo mismo del lado colombiano</li>
+      <li>Si hay auditoria, sin documentacion estas en problemas</li>
+    </ul>
+
+    <h3>Que necesitas para estar tranquilo</h3>
+    <ol>
+      <li><strong>MSA (Master Services Agreement)</strong> — contrato entre la SAS y la C Corp <span class="tag tag-green">YA CREADO</span></li>
+      <li><strong>Facturas mensuales</strong> — la SAS factura a la C Corp cada mes con detalle</li>
+      <li><strong>Time tracking</strong> — registro de horas por categoria de servicio</li>
+      <li><strong>Worksheets de costos</strong> — como se calcula la base de costos</li>
+    </ol>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="servicios">Que servicios puede facturar la SAS</h2>
+
+  <p>Entre mas servicios legitimos facture la SAS, mas deduce la C Corp. Todos estos son reales — Miguel (y futuros empleados) los hacen:</p>
+
+  <table>
+    <thead><tr><th>Servicio</th><th>Descripcion</th><th>Rango mensual</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--green)"><strong>Desarrollo de Software</strong></td><td>Codigo Laravel + React, APIs, mobile, migraciones</td><td>$3,000 - $5,000</td></tr>
+      <tr><td style="color:var(--blue)"><strong>Desarrollo de IA</strong></td><td>Agentes IA, prompt engineering, integracion LLMs</td><td>$500 - $1,000</td></tr>
+      <tr><td style="color:var(--purple)"><strong>Operaciones & DevOps</strong></td><td>Servidores, deploys, CI/CD, monitoreo, seguridad</td><td>$500 - $1,000</td></tr>
+      <tr><td style="color:var(--yellow)"><strong>Product Management</strong></td><td>Roadmap, specs, research, priorizacion</td><td>$300 - $500</td></tr>
+      <tr><td style="color:var(--orange)"><strong>QA & Testing</strong></td><td>Testing manual y automatizado, bug triage</td><td>$300 - $500</td></tr>
+      <tr><td style="color:var(--teal)"><strong>Customer Success LATAM</strong></td><td>Soporte clubes CO, onboarding, capacitacion</td><td>$300 - $500</td></tr>
+      <tr><td style="color:var(--purple)"><strong>Content & Marketing ES</strong></td><td>Redes sociales, copy, traducciones, SEO</td><td>$200 - $400</td></tr>
+      <tr><td><strong>Data Operations</strong></td><td>Migracion datos, reportes, analytics</td><td>$200 - $300</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box highlight-blue">
+    <strong>El multiplicador:</strong> Cada persona que la SAS contrate en Colombia (dev junior $800/mes, disenador $600/mes, community manager $400/mes) se suma a la base de costos. La SAS factura esos costos + 20% a la C Corp. La C Corp lo deduce de impuestos USA. <strong>Cada contratacion colombiana reduce impuestos americanos.</strong>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="salarios">Salarios de founders</h2>
+
+  <div class="card card-yellow">
+    <p><span class="tag tag-yellow">IMPORTANTE</span></p>
+    <p>Los salarios se activan <strong>SOLO cuando entre la inversion o el MRR llegue a $5,000</strong>. Antes de eso, ninguno de los dos cobra. Ademas, los salarios son <strong>escalonados</strong> — empiezan bajos y suben con el revenue:</p>
+    <table>
+      <thead><tr><th>Fase</th><th>MRR</th><th>Miguel</th><th>Alwin</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Launch</td><td>$0-2K</td><td>$3,000</td><td>$1,500</td><td style="color:var(--green)">$4,500</td></tr>
+        <tr><td>Traction</td><td>$2K-5K</td><td>$4,000</td><td>$2,000</td><td style="color:var(--green)">$6,000</td></tr>
+        <tr><td>Growth</td><td>$5K-10K</td><td>$5,000</td><td>$2,500</td><td style="color:var(--green)">$7,500</td></tr>
+        <tr><td>Scale</td><td>$10K+</td><td>Board decide</td><td>Board decide</td><td>-</td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--text2);font-size:13px;margin-top:8px;">Esto hace que los $200K duren mucho mas y los inversores ven founders lean y responsables.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="salario-miguel">Miguel — $5,000/mes via SAS Colombia</h2>
+
+  <p>Miguel vive en Colombia y es empleado de la SAS. NO es empleado de la C Corp. La C Corp le paga a la SAS, y la SAS le paga a Miguel.</p>
+
+  <h3>Tipo de salario: Integral</h3>
+  <p>Como el salario supera 13 SMMLV (~$20M COP), se puede usar <strong>salario integral</strong>. Esto significa que las prestaciones (cesantias, prima, vacaciones) ya estan incluidas en el salario. Los aportes se calculan sobre el 70% del salario.</p>
+
+  <table>
+    <thead><tr><th>Concepto</th><th>%</th><th>Monto/mes</th><th>Quien paga</th></tr></thead>
+    <tbody>
+      <tr><td>Salario bruto</td><td>-</td><td style="color:var(--green)">$5,000</td><td>SAS a Miguel</td></tr>
+      <tr style="background:rgba(0,200,83,0.03)"><td colspan="4" style="color:var(--text2);font-size:13px;padding:4px 12px">Aportes patronales (la SAS paga ADICIONAL al salario):</td></tr>
+      <tr><td>Salud patronal</td><td>8.5% de 70%</td><td>$298</td><td>SAS</td></tr>
+      <tr><td>Pension patronal</td><td>12% de 70%</td><td>$420</td><td>SAS</td></tr>
+      <tr><td>ARL</td><td>0.52% de 70%</td><td>$18</td><td>SAS</td></tr>
+      <tr><td>Caja de Compensacion</td><td>4% de 70%</td><td>$140</td><td>SAS</td></tr>
+      <tr><td><strong>Total costo SAS</strong></td><td></td><td style="color:var(--yellow)"><strong>~$5,876</strong></td><td></td></tr>
+      <tr style="background:rgba(84,160,255,0.03)"><td colspan="4" style="color:var(--text2);font-size:13px;padding:4px 12px">Descuentos al salario de Miguel:</td></tr>
+      <tr><td>Salud empleado</td><td>4% de 70%</td><td>-$140</td><td>Descuento</td></tr>
+      <tr><td>Pension empleado</td><td>4% de 70%</td><td>-$140</td><td>Descuento</td></tr>
+      <tr><td>Retencion en la fuente</td><td>~3-6%</td><td>-$300 a $500</td><td>Descuento</td></tr>
+      <tr><td><strong>Miguel recibe neto</strong></td><td></td><td style="color:var(--green)"><strong>~$4,200 - $4,400</strong></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>La SAS factura a la C Corp:</h3>
+  <p>Costo SAS ($5,876 salario + $876 aportes + gastos operativos ~$300) = <strong>~$7,050</strong> + 20% markup = <strong>~$8,460 - $9,436/mes</strong> dependiendo de los servicios adicionales facturados.</p>
+
+  <!-- ============================================ -->
+  <h2 id="salario-alwin">Alwin — $2,500/mes W-2 de C Corp</h2>
+
+  <p>Alwin vive en USA (Orlando, Florida). Es empleado directo de la C Corp. No pasa por la SAS.</p>
+
+  <table>
+    <thead><tr><th>Concepto</th><th>Monto/mes</th><th>Quien paga</th></tr></thead>
+    <tbody>
+      <tr><td>Salario bruto</td><td style="color:var(--green)">$2,500</td><td>C Corp a Alwin</td></tr>
+      <tr><td>FICA employer (Social Security + Medicare)</td><td>$191 (7.65%)</td><td>C Corp (adicional)</td></tr>
+      <tr><td>FUTA (federal unemployment)</td><td>~$10</td><td>C Corp (adicional)</td></tr>
+      <tr><td><strong>Costo total C Corp</strong></td><td style="color:var(--yellow)"><strong>~$2,700</strong></td><td></td></tr>
+      <tr style="background:rgba(84,160,255,0.03)"><td colspan="3" style="color:var(--text2);font-size:13px;padding:4px 12px">Descuentos al salario de Alwin:</td></tr>
+      <tr><td>FICA employee</td><td>-$191</td><td>Descuento</td></tr>
+      <tr><td>Federal income tax</td><td>-$150 a $250</td><td>Descuento (12% bracket)</td></tr>
+      <tr><td>Florida state tax</td><td>$0</td><td>Florida no tiene income tax</td></tr>
+      <tr><td><strong>Alwin recibe neto</strong></td><td style="color:var(--green)"><strong>~$2,050 - $2,150</strong></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box highlight-green">
+    <strong>Florida = 0% state tax.</strong> Esa es una de las razones por las que Orlando es buen lugar para la empresa. En California o Nueva York, Alwin pagaria 5-13% adicional.
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="vivir-usa">Que pasa si Miguel se muda a USA?</h2>
+
+  <p>Si Miguel se muda a Orlando y se vuelve residente fiscal de USA, la estructura cambia:</p>
+
+  <div class="comparison-grid">
+    <div class="card">
+      <h3 style="color:var(--green)">Ahora (Miguel en Colombia)</h3>
+      <ul>
+        <li>Empleado de la SAS Colombia</li>
+        <li>C Corp paga a SAS via Transfer Pricing</li>
+        <li>RST 1.8% sobre ingresos SAS</li>
+        <li>Aportes CO sobre 70% (integral)</li>
+        <li>IVA: excluido (exportacion)</li>
+        <li><strong>Miguel neto: ~$4,300/mes</strong></li>
+        <li><strong>Costo de vida: bajo</strong> (Fusagasuga)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--blue)">Si se muda a USA (Florida)</h3>
+      <ul>
+        <li>W-2 employee de la C Corp</li>
+        <li>No mas Transfer Pricing para su salario</li>
+        <li>Federal income tax 12-22%</li>
+        <li>FICA 7.65% employee + 7.65% employer</li>
+        <li>State tax: $0 (Florida)</li>
+        <li><strong>Miguel neto: ~$3,800/mes</strong></li>
+        <li><strong>Costo de vida: ALTO</strong> (Orlando)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Comparacion detallada con salario de $5,000/mes</h3>
+  <table>
+    <thead><tr><th>Concepto</th><th>Colombia</th><th>USA (Florida)</th></tr></thead>
+    <tbody>
+      <tr><td>Salario bruto</td><td>$5,000</td><td>$5,000</td></tr>
+      <tr><td>Impuesto empresa</td><td>RST 1.8% (~$170)</td><td>FICA employer 7.65% ($383)</td></tr>
+      <tr><td>Impuesto empleado</td><td>~$580 (salud+pension+retencion)</td><td>~$780 (FICA+federal)</td></tr>
+      <tr><td>State tax</td><td>N/A</td><td>$0 (Florida)</td></tr>
+      <tr><td><strong>Neto mensual</strong></td><td style="color:var(--green)"><strong>~$4,300</strong></td><td><strong>~$3,830</strong></td></tr>
+      <tr><td>Salud incluida</td><td style="color:var(--green)">Si (EPS via aportes)</td><td style="color:var(--red)">No — $300-500/mes aparte</td></tr>
+      <tr><td><strong>Neto REAL (con salud)</strong></td><td style="color:var(--green)"><strong>~$4,300</strong></td><td style="color:var(--red)"><strong>~$3,330-3,530</strong></td></tr>
+      <tr><td>Costo de vida mensual</td><td style="color:var(--green)">~$1,500-2,000</td><td style="color:var(--red)">~$3,500-4,500</td></tr>
+      <tr><td><strong>Ahorro mensual</strong></td><td style="color:var(--green)"><strong>~$2,300</strong></td><td style="color:var(--red)"><strong>-$500 a $0</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box highlight-yellow">
+    <strong>Financieramente, Colombia es mejor por ~$2,500/mes.</strong> Pero hay beneficios estrategicos de estar en USA que no se miden en dolares.
+  </div>
+
+  <h3>Beneficios estrategicos de vivir en USA</h3>
+  <table>
+    <thead><tr><th>Beneficio</th><th>Impacto</th></tr></thead>
+    <tbody>
+      <tr><td>Cercania a inversores</td><td>Las reuniones en persona cierran deals 3x mas rapido</td></tr>
+      <tr><td>Cercania a clientes USA</td><td>Demos presenciales, relaciones mas fuertes</td></tr>
+      <tr><td>Credibilidad</td><td>"USA-based founder" pesa mas que "remote from Colombia"</td></tr>
+      <tr><td>Networking</td><td>Eventos, meetups, conferencias deportivas (NAYS, USSSA)</td></tr>
+      <tr><td>Elimina riesgo CFC</td><td>La DIAN ya no puede taxar ingresos de la C Corp</td></tr>
+      <tr><td>Visa mas solida</td><td>Vivir en USA fortalece la aplicacion de visa permanente</td></tr>
+      <tr><td>Co-founder en la misma ciudad</td><td>Decisiones mas rapidas, equipo mas fuerte</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <h2 id="comparacion">Cuando conviene mudarse?</h2>
+
+  <div class="card card-green">
+    <h3 style="color:var(--green)">Quedarse en Colombia (ahora)</h3>
+    <p>Ideal si:</p>
+    <ul>
+      <li>Revenue < $10K/mes (no alcanza para costo de vida USA)</li>
+      <li>La SAS todavia no esta creada (necesitas montarla primero)</li>
+      <li>No tienes visa de trabajo USA</li>
+      <li>Puedes viajar con B1/B2 para reuniones clave</li>
+    </ul>
+    <p><strong>Ahorro estimado:</strong> ~$2,500/mes vs vivir en Orlando</p>
+  </div>
+
+  <div class="card card-blue">
+    <h3 style="color:var(--blue)">Mudarse a USA (despues)</h3>
+    <p>Conviene cuando:</p>
+    <ul>
+      <li>Revenue > $10K-15K/mes (cubre costo de vida + salario mayor)</li>
+      <li>Tienes 5+ clientes USA activos (necesitas estar cerca)</li>
+      <li>Visa aprobada (E-2 o L-1A)</li>
+      <li>Inversion cerrada (tienes runway)</li>
+      <li>El salario puede subir a $7K-10K/mes (para cubrir costo de vida USA)</li>
+    </ul>
+    <p><strong>La SAS sigue existiendo</strong> para empleados colombianos y Transfer Pricing de otros costos</p>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="recomendacion">Recomendacion</h2>
+
+  <div class="card" style="border-color:var(--green);border-width:2px;">
+    <h3 style="color:var(--green);font-size:20px;">Plan en 3 fases</h3>
+
+    <h3>Fase 1: Ahora → 6 meses (quedarse en Colombia)</h3>
+    <ul>
+      <li>Crear SAS nueva con RST</li>
+      <li>Activar Transfer Pricing y cobrar $5K/mes via SAS</li>
+      <li>Viajar a USA cada 2-3 meses con B1/B2 para reuniones</li>
+      <li>Cobrar a los clubes colombianos</li>
+      <li>Ahorrar la diferencia de costo de vida (~$2,500/mes)</li>
+    </ul>
+
+    <h3>Fase 2: 6-12 meses (preparar mudanza)</h3>
+    <ul>
+      <li>Cuando revenue > $10K/mes, aplicar visa E-2 Employee</li>
+      <li>La C Corp tiene revenue USA + inversion + empleados = caso fuerte</li>
+      <li>Aumentar salario a $7K-8K/mes para cubrir costo de vida Orlando</li>
+      <li>Contratar 1-2 personas en Colombia via SAS (el Transfer Pricing sigue funcionando)</li>
+    </ul>
+
+    <h3>Fase 3: 12+ meses (vivir en USA)</h3>
+    <ul>
+      <li>Miguel es W-2 de la C Corp (ya con visa)</li>
+      <li>La SAS emplea al equipo colombiano y factura a la C Corp</li>
+      <li>Transfer Pricing sigue activo para costos colombianos</li>
+      <li>Miguel + Alwin en la misma ciudad = ejecucion rapida</li>
+      <li>Cercania a inversores para Seed round ($500K-$1M)</li>
+    </ul>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="infra">Servidores, herramientas e infraestructura: ¿Desde dónde pagar?</h2>
+
+  <div class="card card-green">
+    <h3>Regla simple</h3>
+    <p><strong>Si el gasto es para operar la plataforma → pagar desde la SAS Colombia</strong></p>
+    <p><strong>Si el gasto es para mantener la C Corp como entidad legal → pagar desde la C Corp</strong></p>
+  </div>
+
+  <h3>¿Por qué desde la SAS?</h3>
+  <p>Todos los gastos operativos de la SAS <strong>engrosan la base del Cost Plus 20%</strong>. Es decir, la SAS paga el servidor, lo incluye en su factura mensual a la C Corp con el 20% de markup, y ese markup es ganancia adicional que paga solo 1.8% RST.</p>
+
+  <div class="diagram">
+SAS paga DigitalOcean:      $27/mes
+SAS factura a C Corp:       $27 + 20% = $32.40
+                            ─────────────────
+Ganancia adicional SAS:     $5.40/mes
+Impuesto RST (1.8%):       $0.10
+                            ─────────────────
+Ganancia neta por servidor: $5.30/mes</div>
+
+  <h3>Gastos que paga la SAS (infraestructura de la plataforma)</h3>
+  <table>
+    <thead><tr><th>Servicio</th><th>Costo real</th><th>Factura a C Corp (+20%)</th><th>Markup neto</th></tr></thead>
+    <tbody>
+      <tr><td>DigitalOcean (servidor)</td><td>$27/mes</td><td>$32.40</td><td>$5.40</td></tr>
+      <tr><td>Resend (emails)</td><td>$20/mes</td><td>$24.00</td><td>$4.00</td></tr>
+      <tr><td>Claude Code / IA</td><td>$100/mes</td><td>$120.00</td><td>$20.00</td></tr>
+      <tr><td>Apple Developer</td><td>$8.25/mes</td><td>$9.90</td><td>$1.65</td></tr>
+      <tr><td>Dominio widdo.co</td><td>~$3/mes</td><td>$3.60</td><td>$0.60</td></tr>
+      <tr><td>Google Play Developer</td><td>$2.08/mes</td><td>$2.50</td><td>$0.42</td></tr>
+      <tr><td>Vercel (frontend)</td><td>$0 (free)</td><td>—</td><td>—</td></tr>
+      <tr style="background: rgba(0,200,83,0.08);">
+        <td><strong>Total</strong></td><td><strong>$160/mes</strong></td><td><strong>$192/mes</strong></td><td><strong>$32/mes</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>El markup de <strong>$32/mes ($384/año)</strong> es ganancia adicional que paga solo <strong>$0.58 de RST</strong>. Si pagaras estos gastos directamente desde la C Corp, perderías esa ganancia.</p>
+
+  <h3>Gastos que paga la C Corp directamente</h3>
+  <table>
+    <thead><tr><th>Servicio</th><th>Costo</th><th>Por qué desde C Corp</th></tr></thead>
+    <tbody>
+      <tr><td>Stripe Atlas (incorporación)</td><td>$500 (una vez)</td><td>Es gasto de constitución de la C Corp</td></tr>
+      <tr><td>Registered Agent (Delaware)</td><td>~$100/año</td><td>Obligación legal de la C Corp</td></tr>
+      <tr><td>Mercury (banco USA)</td><td>$0</td><td>Cuenta de la C Corp</td></tr>
+      <tr><td>Franchise Tax Delaware</td><td>~$400/año</td><td>Impuesto de la C Corp</td></tr>
+      <tr><td>Abogado USA (si aplica)</td><td>Variable</td><td>Asesoría legal de la C Corp</td></tr>
+      <tr><td>Stripe fees (comisiones)</td><td>2.9% + 30¢</td><td>Son fees sobre revenue de la C Corp</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card card-yellow">
+    <h3>⚠️ Mientras no exista la SAS</h3>
+    <p>Mientras se crea la SAS nueva, Miguel puede pagar los servidores con su tarjeta personal y llevar registro de los gastos. Cuando se cree la SAS, estos gastos iniciales se registran como <strong>aportes del socio</strong> o se reembolsan. Lo importante es guardar todas las facturas desde el día 1.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="iva-pricing">IVA y pricing: lo que realmente recibimos</h2>
+
+  <div class="card card-yellow">
+    <h3>Punto clave</h3>
+    <p>Los precios que publicamos en Colombia <strong>ya incluyen IVA 19%</strong>. Eso significa que de cada $129,000 COP que paga un club, solo $108,403 son revenue real. Los $20,597 restantes son IVA que debemos declarar a la DIAN.</p>
+    <p><strong>En USA el sales tax se agrega aparte</strong>, así que los $99 USD son $99 netos para nosotros.</p>
+  </div>
+
+  <h3>Pricing Colombia — con IVA incluido</h3>
+  <table>
+    <thead><tr><th>Plan</th><th>Precio al club</th><th>Base (revenue real)</th><th>IVA 19%</th><th>En USD</th></tr></thead>
+    <tbody>
+      <tr><td>Básico</td><td>$49,000 COP</td><td>$41,176</td><td>$7,824</td><td>~$10</td></tr>
+      <tr><td><strong>Pro</strong></td><td><strong>$129,000 COP</strong></td><td><strong>$108,403</strong></td><td><strong>$20,597</strong></td><td><strong>~$26</strong></td></tr>
+      <tr><td>Enterprise</td><td>$299,000 COP</td><td>$251,261</td><td>$47,739</td><td>~$60</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Pricing USA — tax aparte</h3>
+  <table>
+    <thead><tr><th>Plan</th><th>Precio base</th><th>Sales tax</th><th>Revenue para Widdo</th></tr></thead>
+    <tbody>
+      <tr><td>Starter</td><td>$99 USD</td><td>Varía por estado (Stripe lo maneja)</td><td><strong>$99 USD</strong></td></tr>
+      <tr><td>Pro</td><td>$199 USD</td><td>Varía</td><td><strong>$199 USD</strong></td></tr>
+      <tr><td>Enterprise</td><td>$349 USD</td><td>Varía</td><td><strong>$349 USD</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>ARPC corregido</h3>
+  <table>
+    <thead><tr><th>Mercado</th><th>ARPC antes</th><th>ARPC corregido</th><th>Cambio</th></tr></thead>
+    <tbody>
+      <tr><td>Colombia</td><td>$28 USD</td><td><strong>$23 USD</strong></td><td style="color:var(--red);">-18% (IVA)</td></tr>
+      <tr><td>USA</td><td>$99 USD</td><td><strong>$99 USD</strong></td><td>Sin cambio</td></tr>
+    </tbody>
+  </table>
+
+  <p>Ver documento completo: <a href="../finanzas/iva-pricing-internacional.html" style="color:var(--green);">IVA, Pricing e Impacto en Revenue</a></p>
+
+  <!-- ============================================ -->
+  <h2 id="facturacion-intl">Facturación internacional</h2>
+
+  <div class="card card-green">
+    <h3>Regla principal</h3>
+    <p><strong>La C Corp (Widdo Inc) es la empresa que vende globalmente.</strong> Todos los clientes del mundo son clientes de la C Corp. La SAS Colombia NO vende directamente — solo actúa como distribuidor local en Colombia y proveedor de servicios de desarrollo.</p>
+  </div>
+
+  <h3>¿Quién factura a quién?</h3>
+  <div class="diagram">
+COLOMBIA:
+  Club CO → paga a Widdo SAS → SAS emite factura electrónica + IVA
+  SAS transfiere revenue a C Corp (menos comisión 15%)
+
+USA:
+  Club USA → paga a Widdo Inc → Stripe cobra + sales tax automático
+
+OTROS LATAM (México, Brasil, Argentina, Chile, etc.):
+  Club → paga a Widdo Inc vía Stripe → IVA local lo maneja el comprador
+
+SIEMPRE:
+  Widdo SAS → factura servicios de desarrollo a C Corp (Transfer Pricing Cost+20%)</div>
+
+  <h3>La SAS tiene dos roles</h3>
+  <table>
+    <thead><tr><th>Rol</th><th>Qué hace</th><th>Documento legal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Distribuidor CO</strong></td><td>Vende suscripciones a clubes colombianos, emite factura electrónica, cobra IVA</td><td>Distribution Agreement (anexo al MSA)</td></tr>
+      <tr><td><strong>Proveedor desarrollo</strong></td><td>Desarrolla la plataforma, mantiene servidores, soporte</td><td>Transfer Pricing + MSA</td></tr>
+    </tbody>
+  </table>
+
+  <h3>¿Cuándo necesitamos entidad local en otro país?</h3>
+  <table>
+    <thead><tr><th>Situación</th><th>¿Entidad local?</th><th>Cuándo</th></tr></thead>
+    <tbody>
+      <tr><td>Vender SaaS a clubes</td><td>NO</td><td>La C Corp factura vía Stripe</td></tr>
+      <tr><td>Contratar empleados en ese país</td><td>SÍ (o usar EOR como Deel)</td><td>Cuando haya contrataciones locales</td></tr>
+      <tr><td>Revenue >$100K/año en un país</td><td>Evaluar</td><td>Por eficiencia fiscal</td></tr>
+      <tr><td>Licitaciones gubernamentales</td><td>Posiblemente</td><td>Si una liga/federación pública lo exige</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Todo por Stripe</h3>
+  <p>Una sola pasarela para todo. La C Corp tiene cuenta Stripe US (vía Stripe Atlas) que acepta pagos de 46+ países en moneda local. Fees:</p>
+  <table>
+    <thead><tr><th>Tipo</th><th>Fee</th><th>Aplica a</th></tr></thead>
+    <tbody>
+      <tr><td>Doméstico (USA)</td><td>2.9% + 30¢</td><td>Clubes en USA</td></tr>
+      <tr><td>Cross-border (internacional)</td><td>~4.4% + 30¢</td><td>Clubes en CO, MX, BR, etc.</td></tr>
+      <tr><td>Stripe Tax (opcional)</td><td>+0.5% por transacción</td><td>Activar cuando haya volumen</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <h2 id="documentos">Documentos necesarios</h2>
+
+  <table>
+    <thead><tr><th>Documento</th><th>Que es</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Founders Agreement</strong></td><td>Quien es dueno de que, equity, vesting, roles</td><td><span class="tag tag-green">Casi listo</span></td></tr>
+      <tr><td><strong>IP Assignment</strong></td><td>Todo el codigo y marca son de la C Corp</td><td><span class="tag tag-green">Casi listo</span></td></tr>
+      <tr><td><strong>Transfer Pricing Agreement</strong></td><td>Reglas de como se paga la SAS ↔ C Corp</td><td><span class="tag tag-green">Listo</span></td></tr>
+      <tr><td><strong>Master Services Agreement</strong></td><td>Que servicios presta la SAS a la C Corp</td><td><span class="tag tag-green">Listo</span></td></tr>
+      <tr><td><strong>SAFE Note Template</strong></td><td>Formato para inversores</td><td><span class="tag tag-green">Listo</span></td></tr>
+      <tr><td><strong>Terms of Service</strong></td><td>Terminos de la plataforma para usuarios</td><td><span class="tag tag-green">Listo</span></td></tr>
+      <tr><td><strong>Privacy Policy</strong></td><td>Politica de privacidad (COPPA, Ley 1581)</td><td><span class="tag tag-green">Listo</span></td></tr>
+      <tr><td><strong>83(b) Election</strong></td><td>Alwin presenta al IRS dentro de 30 dias de recibir shares</td><td><span class="tag tag-yellow">Pendiente</span></td></tr>
+      <tr><td><strong>SAS Colombia (nueva)</strong></td><td>Crear SAS nueva con RST en Camara de Comercio</td><td><span class="tag tag-red">Por crear</span></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================ -->
+  <h2 id="checklist">Checklist mensual</h2>
+
+  <div class="card">
+    <h3>Cada mes la SAS debe:</h3>
+    <ul class="checklist">
+      <li>Emitir factura a la C Corp con detalle de servicios y costos</li>
+      <li>Registrar horas trabajadas por categoria (time tracking)</li>
+      <li>Pagar nomina de Miguel (quincenal o mensual)</li>
+      <li>Pagar aportes PILA (salud, pension, ARL, caja)</li>
+      <li>Recibir wire de Mercury y registrar como ingreso por exportacion</li>
+      <li>Pagar RST bimestral (cada 2 meses)</li>
+      <li>Llevar contabilidad al dia (contador colombiano)</li>
+    </ul>
+
+    <h3>Cada mes la C Corp debe:</h3>
+    <ul class="checklist">
+      <li>Hacer wire a la SAS por la factura de servicios</li>
+      <li>Pagar payroll de Alwin (W-2)</li>
+      <li>Registrar el pago a la SAS como gasto deducible</li>
+      <li>Mantener registros en Mercury para el contador USA</li>
+    </ul>
+
+    <h3>Cada ano:</h3>
+    <ul class="checklist">
+      <li>Declaracion de renta C Corp (Form 1120) — contador USA</li>
+      <li>Form 5471 — NO aplica (SAS es de Miguel, no subsidiaria de C Corp)</li>
+      <li>Delaware Franchise Tax (~$400) — 1 de marzo</li>
+      <li>Declaracion RST anual — contador Colombia</li>
+      <li>Revisar si Transfer Pricing documentation es requerida (umbral ~$100K USD)</li>
+      <li>Revisar markup del 20% sigue siendo arm's length</li>
+    </ul>
+  </div>
+
+  <!-- ============================================ -->
+  <h2 id="errores">Errores comunes a evitar</h2>
+
+  <div class="card card-red">
+    <h3 style="color:var(--red)">NO hagas esto:</h3>
+    <table>
+      <thead><tr><th>Error</th><th>Consecuencia</th></tr></thead>
+      <tbody>
+        <tr><td>Repartir dividendos de la C Corp</td><td>Doble tributacion 44.7%. Siempre prefiere Transfer Pricing</td></tr>
+        <tr><td>No llevar time tracking</td><td>Sin evidencia, el IRS puede rechazar las deducciones</td></tr>
+        <tr><td>Facturar sin MSA firmado</td><td>Sin contrato base, los pagos no tienen soporte legal</td></tr>
+        <tr><td>Cambiar el % de markup cada mes</td><td>Inconsistencia = bandera roja para auditoria</td></tr>
+        <tr><td>Depositar >$10K en cash y dividirlo</td><td>"Structuring" = delito federal en USA</td></tr>
+        <tr><td>No presentar 83(b) Election de Alwin</td><td>Paga impuestos sobre acciones cuando hacen vest (mucho mas caro)</td></tr>
+        <tr><td>Crear SAS en regimen ordinario</td><td>35% impuesto vs 1.8% RST. Diferencia de miles de dolares</td></tr>
+        <tr><td>No declarar exportacion de servicios (DIAN)</td><td>La SAS debe reportar ingresos del exterior con Form 150</td></tr>
+        <tr><td>Pagarse como contractor en vez de empleado</td><td>DIAN puede reclasificar + multas</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div style="margin-top:60px;padding:24px;background:var(--surface);border-radius:12px;text-align:center;">
+    <p style="color:var(--text2);font-size:13px;margin:0;">
+      Ultima actualizacion: Marzo 2026 | Widdo Inc<br>
+      Este documento es una guia interna. NO constituye asesoria legal ni fiscal.<br>
+      Consultar con abogado corporativo y contador en ambas jurisdicciones.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M4 · Renovación de temporada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#16a34a; --ring:#16a34a;
+    --green-50:#f0fdf4; --green-200:#bbf7d0; --green-700:#15803d;
+    --amber-50:#fffbeb; --amber-200:#fde68a; --amber-700:#b45309;
+    --red-50:#fef2f2; --red-200:#fecaca; --red-700:#b91c1c;
+    --gray-50:#f9fafb; --gray-100:#f3f4f6; --gray-200:#e5e7eb; --gray-400:#9ca3af; --gray-600:#4b5563; --gray-900:#111827;
+    --radius:.5rem;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Red Hat Display',system-ui,sans-serif;background:var(--gray-100);color:var(--gray-900);padding:24px;font-size:14px}
+  .page{max-width:880px;margin:0 auto;display:grid;gap:14px}
+  .card{background:#fff;border:1px solid var(--gray-200);border-radius:calc(var(--radius)*1.5);padding:18px 20px}
+  :is(button,input,select):focus-visible{outline:none;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ring);border-radius:var(--radius)}
+  h1{font-size:19px;font-weight:800}
+  .sub{color:var(--gray-600);font-size:13px;margin-top:3px}
+  h2{font-size:13.5px;font-weight:800;margin-bottom:4px}
+  .base{font-size:11.5px;color:var(--gray-400);margin-bottom:14px}
+  /* aviso escalado */
+  .alert{display:flex;align-items:center;gap:11px;border-radius:calc(var(--radius)*1.5);padding:13px 17px;font-size:13.5px;border:1px solid}
+  .alert.info{background:var(--amber-50);border-color:var(--amber-200);color:var(--amber-700)}
+  .alert b{font-weight:800}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;padding:9px 10px;color:var(--gray-400);font-size:11px;text-transform:uppercase;letter-spacing:.03em;border-bottom:1px solid var(--gray-200);font-weight:700}
+  td{padding:11px 10px;border-bottom:1px solid var(--gray-100);vertical-align:middle}
+  tr:hover td{background:var(--gray-50)}
+  .r{text-align:right}
+  input[type=checkbox]{width:16px;height:16px;accent-color:var(--primary);cursor:pointer}
+  .precio{width:118px;border:1px solid var(--gray-200);border-radius:var(--radius);padding:7px 9px;font:inherit;font-weight:700;text-align:right}
+  .delta{font-size:11.5px;font-weight:800;margin-left:7px}
+  .up{color:var(--amber-700)} .same{color:var(--gray-400)}
+  .viejo{color:var(--gray-400);text-decoration:line-through;font-size:12px}
+  .pill{font-size:11px;font-weight:700;border-radius:6px;padding:2px 9px;white-space:nowrap}
+  .pill.ok{background:var(--green-50);color:var(--green-700)}
+  .pill.no{background:var(--gray-100);color:var(--gray-400)}
+  .copia{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);padding:12px 15px;font-size:12.5px;color:var(--gray-600);line-height:1.7}
+  .copia b{color:var(--gray-900)}
+  .foot{background:#0f172a;color:#e2e8f0;border-radius:calc(var(--radius)*1.5);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot .n{font-size:20px;font-weight:800;color:#4ade80}
+  .foot .d{font-size:12px;color:#94a3b8;margin-top:3px}
+  .btn{border:1px solid var(--gray-200);border-radius:var(--radius);padding:11px 22px;font:inherit;font-weight:700;cursor:pointer;background:#fff;color:var(--gray-600)}
+  .btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .note{font-size:11.5px;color:var(--gray-400);margin-top:9px}
+  .vig{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
+  .vig label{display:block;font-size:11.5px;font-weight:700;margin-bottom:5px}
+  .vig input{border:1px solid var(--gray-200);border-radius:var(--radius);padding:8px 10px;font:inherit}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div>
+    <h1>Renovación de temporada 2027</h1>
+    <div class="sub">Corporación Deportiva Familia Aba · tu temporada 2026 termina el 30 de noviembre</div>
+  </div>
+
+  <div class="alert info">📅 <span>Faltan <b>28 días</b> para que termine tu temporada. Tienes <b>4 cobros</b> por renovar.
+    Si no renuevas, dejarán de generarse y tus jugadores quedarán sin cuota — te lo avisaremos en el reporte de cobertura.</span></div>
+
+  <div class="card">
+    <h2>¿Qué cobros renuevas?</h2>
+    <div class="base">Renovar crea una versión nueva del cobro para 2027, con el <b>mismo nombre</b> y distinta temporada. La de 2026 queda archivada con su historia y sus pagos intactos — nada se edita ni se pierde.</div>
+
+    <table>
+      <tr>
+        <th style="width:34px"></th><th>Cobro</th><th>2026</th><th>Precio 2027</th><th class="r">Jugadores</th><th>Estado</th>
+      </tr>
+      <tr>
+        <td><input type="checkbox" checked onchange="calc()" data-n="89" data-p="160000"></td>
+        <td><b>Mensualidad Tipo 2</b> <span class="pill" style="background:var(--gray-100);color:var(--gray-600)">2026</span><div class="note" style="margin:0">mensual · vence día 10</div></td>
+        <td><span class="viejo">$ 140.000</span></td>
+        <td><input class="precio" value="160.000" onchange="calc()"><span class="delta up">+14%</span></td>
+        <td class="r">89</td>
+        <td><span class="pill ok">Renueva</span></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" checked onchange="calc()" data-n="25" data-p="125000"></td>
+        <td><b>Mensualidad Tipo 1</b> <span class="pill" style="background:var(--gray-100);color:var(--gray-600)">2026</span><div class="note" style="margin:0">mensual · vence día 10</div></td>
+        <td><span class="viejo">$ 110.000</span></td>
+        <td><input class="precio" value="125.000" onchange="calc()"><span class="delta up">+14%</span></td>
+        <td class="r">25</td>
+        <td><span class="pill ok">Renueva</span></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" checked onchange="calc()" data-n="104" data-p="160000"></td>
+        <td><b>Matrícula Categorías Mayores</b><div class="note" style="margin:0">anual · al inscribirse</div></td>
+        <td><span class="viejo">$ 160.000</span></td>
+        <td><input class="precio" value="160.000" onchange="calc()"><span class="delta same">=</span></td>
+        <td class="r">104</td>
+        <td><span class="pill ok">Renueva</span></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" onchange="calc()" data-n="31" data-p="130000"></td>
+        <td><b>Matrícula Categorías Menores</b><div class="note" style="margin:0">anual · al inscribirse</div></td>
+        <td><span class="viejo">$ 130.000</span></td>
+        <td><input class="precio" value="130.000" onchange="calc()" disabled style="opacity:.4"></td>
+        <td class="r">31</td>
+        <td><span class="pill no">No renueva</span></td>
+      </tr>
+    </table>
+    <p class="note">Los cobros de una sola vez (uniformes, torneos) no aparecen aquí porque no se renuevan por calendario. Si cambia su precio, se versionan igual desde su propia ficha con <b>«Duplicar con nuevo precio»</b>.</p>
+  </div>
+
+  <div class="card">
+    <h2>Vigencia de la temporada 2027</h2>
+    <div class="base">Los cobros nuevos generan solo dentro de esta ventana. Nunca pueden crear pagos de 2026.</div>
+    <div class="vig">
+      <div><label for="d1">Desde</label><input type="date" id="d1" value="2027-01-01"></div>
+      <div><label for="d2">Hasta</label><input type="date" id="d2" value="2027-11-30"></div>
+      <div style="font-size:12.5px;color:var(--gray-600);padding-bottom:9px">Diciembre sigue sin cobrarse</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Qué se copia a la versión 2027</h2>
+    <div class="copia">
+      <b>Sí se copia:</b> categorías y alcance · modalidades ofrecidas · descuentos aplicables · jugadores excluidos · día de vencimiento · escala de mora · método de pago · descripción y notas<br>
+      <b>No se copia:</b> los pagos ya generados · el historial de precios · las exenciones individuales (se revisan aparte)
+    </div>
+    <p class="note">La modalidad de cada jugador (mensual o trimestral) vive en su ficha, así que se mantiene sola.</p>
+  </div>
+
+  <div class="foot">
+    <div>
+      <div class="n" id="tot">+14%</div>
+      <div class="d" id="det"></div>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="btn">Decidir después</button>
+      <button class="btn primary" id="cta">Renovar 3 cobros</button>
+    </div>
+  </div>
+
+  <p class="note" style="text-align:center">Al renovar, los cobros de 2026 se cierran el 30 de noviembre y quedan archivados. Ninguno se elimina: un cobro que generó pagos no se puede borrar nunca.</p>
+</div>
+
+<script>
+function num(s){ return parseInt(String(s).replace(/\D/g,''))||0 }
+function fmt(n){ return '$ '+n.toLocaleString('es-CO') }
+function calc(){
+  const filas=[...document.querySelectorAll('table tr')].filter(r=>r.querySelector('input[type=checkbox]'));
+  // mensual y anual NO se suman: son cosas distintas
+  let mesNuevo=0, mesViejo=0, anualCambia=false, n=0;
+  filas.forEach(r=>{
+    const cb=r.querySelector('input[type=checkbox]'), pi=r.querySelector('.precio');
+    pi.disabled=!cb.checked; pi.style.opacity=cb.checked?1:.4;
+    r.querySelector('.pill').className='pill '+(cb.checked?'ok':'no');
+    r.querySelector('.pill').textContent=cb.checked?'Renueva':'No renueva';
+    const nuevo=num(pi.value), viejo=num(r.querySelector('.viejo').textContent);
+    const d=r.querySelector('.delta'), pct=viejo?Math.round((nuevo-viejo)/viejo*100):0;
+    if(d){ d.textContent = pct===0?'=':(pct>0?'+':'')+pct+'%'; d.className='delta '+(pct===0?'same':'up'); }
+    if(!cb.checked) return;
+    n++;
+    const esMensual = r.textContent.includes('mensual');
+    if(esMensual){ const jug=+cb.dataset.n; mesNuevo+=jug*nuevo; mesViejo+=jug*viejo; }
+    else if(pct!==0) anualCambia=true;
+  });
+  const pctMes = mesViejo? Math.round((mesNuevo-mesViejo)/mesViejo*1000)/10 : 0;
+  document.getElementById('tot').textContent = (pctMes>0?'+':'')+pctMes+'% en tus cuotas mensuales';
+  document.getElementById('det').innerHTML =
+    `Con los ${filas.filter(r=>r.querySelector('input:checked')&&r.textContent.includes('mensual'))
+        .reduce((a,r)=>a+ +r.querySelector('input').dataset.n,0)} jugadores de HOY: `+
+    `${fmt(mesViejo)} → <b style="color:#e2e8f0">${fmt(mesNuevo)}</b> al mes` +
+    (anualCambia?' · la matrícula también cambia':'') +
+    `<br><span style="color:#64748b">Estimación con el plantel actual. En 2027 entrarán y saldrán jugadores, así que el ingreso real será otro.</span>`;
+  document.getElementById('cta').textContent=`Renovar ${n} cobro${n===1?'':'s'}`;
+}
+calc();
+</script>
+</body>
+</html>

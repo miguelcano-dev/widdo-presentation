@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Costeo Real de los Fundadores</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{--bg:#0f1117;--surface:#1a1d27;--surface2:#242834;--border:#2e3348;--text:#e4e6f0;--text2:#8b8fa8;--accent:#6c5ce7;--accent2:#a29bfe;--green:#00b894;--red:#ff6b6b;--yellow:#feca57;--blue:#54a0ff;--orange:#f39c12;--teal:#00cec9;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:2rem;line-height:1.5;max-width:1100px;margin:0 auto;}
+  h1{font-size:1.8rem;font-weight:700;} h2{font-size:1.2rem;font-weight:600;color:var(--accent2);margin-bottom:1rem;} h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem;}
+  .subtitle{color:var(--text2);font-size:0.9rem;margin-bottom:2rem;}
+  .nav-back{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent2);text-decoration:none;font-size:0.85rem;margin-bottom:1.5rem;} .nav-back:hover{color:var(--accent);}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;}
+  .grid{display:grid;gap:1.5rem;margin-bottom:1.5rem;} .grid-2{grid-template-columns:1fr 1fr;} .grid-3{grid-template-columns:repeat(3,1fr);} .grid-4{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}
+  @media(max-width:768px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+  .kpi{text-align:center;padding:1.25rem;} .kpi-value{font-size:2rem;font-weight:800;margin:0.5rem 0 0.25rem;} .kpi-label{font-size:0.8rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.05em;} .kpi-sub{font-size:0.75rem;color:var(--text2);}
+  .chart-container{position:relative;height:280px;}
+  table{width:100%;border-collapse:collapse;font-size:0.85rem;} th{text-align:left;padding:0.6rem 0.5rem;color:var(--text2);font-weight:600;border-bottom:2px solid var(--border);} td{padding:0.5rem;border-bottom:1px solid var(--border);} tr:hover td{background:var(--surface2);} .num{text-align:right;font-variant-numeric:tabular-nums;}
+  .total-row td{font-weight:700;border-top:2px solid var(--border);background:var(--surface2);}
+  .subtotal-row td{font-weight:600;border-top:1px solid var(--accent);color:var(--accent2);}
+  .section-label{color:var(--text2);font-weight:700;text-transform:uppercase;font-size:0.75rem;letter-spacing:0.05em;}
+  .indent{padding-left:1.5rem;}
+  .note{font-size:0.8rem;color:var(--text2);font-style:italic;margin-top:0.75rem;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:0.7rem;font-weight:600;}
+  .tag-green{background:rgba(0,184,148,0.15);color:var(--green);} .tag-blue{background:rgba(84,160,255,0.15);color:var(--blue);} .tag-yellow{background:rgba(254,202,87,0.15);color:var(--yellow);} .tag-purple{background:rgba(108,92,231,0.15);color:var(--accent2);} .tag-red{background:rgba(255,107,107,0.15);color:var(--red);} .tag-orange{background:rgba(243,156,18,0.15);color:var(--orange);}
+  .method-card{padding:1.25rem;border-radius:10px;background:var(--surface2);margin-bottom:1rem;}
+  .method-name{font-weight:700;font-size:0.95rem;margin-bottom:0.25rem;}
+  .method-desc{font-size:0.85rem;color:var(--text2);margin-bottom:0.5rem;}
+  .method-calc{font-size:0.9rem;padding:0.5rem;background:var(--bg);border-radius:6px;font-family:monospace;}
+  .method-result{font-size:1.2rem;font-weight:800;margin-top:0.5rem;}
+  .highlight{background:rgba(0,184,148,0.1);border:1px solid rgba(0,184,148,0.3);border-radius:8px;padding:1rem;margin:1rem 0;}
+  .warning{background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);border-radius:8px;padding:1rem;margin:1rem 0;}
+  .insight{background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);border-radius:8px;padding:1rem;margin:1rem 0;}
+  .currency-toggle{display:inline-flex;background:var(--surface2);border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-left:1rem;vertical-align:middle;}
+  .currency-btn{padding:4px 12px;font-size:0.75rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--text2);transition:all 0.2s;}
+  .currency-btn.active{background:var(--accent);color:white;}
+  .currency-badge{display:inline-block;padding:2px 10px;border-radius:6px;font-size:0.75rem;font-weight:600;background:rgba(84,160,255,0.15);color:var(--blue);margin-left:0.75rem;vertical-align:middle;}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back">&#8592; Volver al Centro Financiero</a>
+<div style="background:rgba(254,202,87,0.12);border:1px solid #FECA57;border-radius:10px;padding:1rem 1.25rem;margin:1rem 0 1.5rem;font-size:0.85rem;line-height:1.6;">
+  <strong style="color:#FECA57;">MODELO DE marzo 2026 — no es el estado actual.</strong>
+  Las cifras internas de este documento son coherentes entre sí pero corresponden a la foto de marzo 2026.
+  <strong>Estado real a 13-ago-2026:</strong> 9 clubes, 3 pagando, MRR $101, 1.476 usuarios, 701 jugadores,
+  burn de infraestructura <strong>$32/mes</strong> medido en DigitalOcean el 28-jul-2026
+  (droplet $12 + MySQL $15 + Spaces $5). Fuente única de verdad: <code>metrics.json</code>.
+  Entidad operativa: <strong>Widdo Inc (Delaware)</strong>; la SAS Colombia está inactiva.
+  Pasarela de pago única: <strong>Stripe</strong> (USA, Canadá, México).
+</div>
+
+<div style="display:flex;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;">
+  <h1>Costeo Real de los Fundadores</h1>
+  <div class="currency-toggle">
+    <button class="currency-btn active" onclick="setCurrency('USD')">USD</button>
+    <button class="currency-btn" onclick="setCurrency('COP')">COP</button>
+  </div>
+  <span class="currency-badge" id="currencyBadge">Cifras en USD</span>
+</div>
+<p class="subtitle">Miguel Ángel Cano — Fundador (70%) | Co-founder USA (30%) | Datos verificados Mar 2026 | Atribución real (uso compartido) | TRM: $4,200 COP/USD</p>
+
+<!-- Summary KPIs -->
+<div class="grid grid-4">
+  <div class="card kpi">
+    <div class="kpi-label">Cash Atribuible a Widdo</div>
+    <div class="kpi-value" style="color:var(--blue);" data-usd="749.65">$749.65</div>
+    <div class="kpi-sub">USD (uso compartido prorrateado)</div>
+  </div>
+  <div class="card kpi">
+    <div class="kpi-label">Sweat Equity</div>
+    <div class="kpi-value" style="color:var(--accent2);" data-usd="150000">$150,000</div>
+    <div class="kpi-sub">USD (1,364h × $100/hr + domain)</div>
+  </div>
+  <div class="card kpi">
+    <div class="kpi-label">Aporte Total</div>
+    <div class="kpi-value" style="color:var(--green);" data-usd="150750">$150,750</div>
+    <div class="kpi-sub">USD (cash + sweat equity)</div>
+  </div>
+  <div class="card kpi">
+    <div class="kpi-label">Burn Mensual Actual</div>
+    <div class="kpi-value" style="color:var(--orange);" data-usd="177">$177</div>
+    <div class="kpi-sub">/mes (Mar 2026)</div>
+  </div>
+</div>
+
+<!-- Verification Legend -->
+<div class="card" style="padding:1rem;">
+  <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;font-size:0.8rem;">
+    <strong style="color:var(--text2);">Nivel de verificación:</strong>
+    <span><span class="tag tag-green">Factura/Receipt</span> Documento digital disponible</span>
+    <span><span class="tag tag-blue">Screenshot</span> Captura de pantalla</span>
+    <span><span class="tag tag-yellow">Declarado</span> Informado por el fundador sin factura</span>
+    <span><span class="tag tag-red">Pendiente</span> Falta verificar monto exacto</span>
+  </div>
+</div>
+
+<!-- Cash Investment Detail -->
+<div class="card">
+  <h2>1. Inversiones en Efectivo (Cash) — Costeo Real</h2>
+  <p class="subtitle" style="margin-bottom:1rem;">Todo pagado del bolsillo del fundador. Fuente: facturas, receipts, screenshots de billing.</p>
+
+  <div style="background:rgba(0,206,201,0.08);border-left:3px solid var(--teal);padding:1rem 1.25rem;margin-bottom:1.25rem;border-radius:6px;font-size:0.9rem;line-height:1.6;">
+    <strong style="color:var(--teal);">Corte en 31-dic-2025 (actualizado 3-ago-2026).</strong>
+    Esta tabla llegaba hasta feb-2026 y sumaba $1,189, pero contaba gastos que hoy están en la
+    <strong>Promissory Note</strong> ($1,476.46, ene–jul 2026): DigitalOcean de ene y feb,
+    Resend de feb, Apple Developer y Google Play. Se eliminaron de aquí para que ningún dólar
+    quede en los dos sitios.
+    <br><br>
+    <strong>Los dos cubos, sin solape:</strong>
+    <br>· <strong>Aporte pre-incorporación</strong> — jul–dic 2025, <strong>$749.65</strong>.
+    Prorrateado por uso compartido. <em>No se reembolsa</em>: es aporte del fundador.
+    <br>· <strong>Founder Loan</strong> — ene–jul 2026, <strong>$1,476.46</strong>. Al 100%,
+    sin prorrateo, porque desde el 1-ene-2026 la dedicación es full-time. <em>Se reembolsa</em>
+    vía pagaré.
+    <br><br>
+    Claude figura aquí al 50% y en el pagaré al 100%: no es contradicción, son dos periodos con
+    dedicación distinta. La atribución de 2025 se calcula sobre el facturado real ($1,100.34 en
+    la era Widdo menos los $400 de ene–feb 2026 = $700.34 × 50%).
+    Mismo número en <code>negocio/founder-loan-tracker.html</code>.
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Concepto</th><th>Proveedor</th><th>Período</th><th class="num">Total USD</th><th>Verificación</th></tr>
+    </thead>
+    <tbody>
+      <!-- AI Tools -->
+      <tr><td class="section-label" colspan="5">A. Herramientas de IA (Desarrollo)</td></tr>
+      <tr>
+        <td class="indent">Claude Code / API <span class="tag tag-purple">50% Widdo</span></td>
+        <td>Anthropic</td>
+        <td>Ago 2025 — Dic 2025</td>
+        <td class="num" data-usd="350.17">$350.17</td>
+        <td><span class="tag tag-blue">Screenshot</span></td>
+      </tr>
+      <tr>
+        <td class="indent" style="padding-left:2.5rem;font-size:0.8rem;color:var(--text2);" colspan="5">
+          Total facturado en la era Widdo: $1,100.34, de los cuales <strong>$400 son ene–feb 2026</strong> y ya se cobran al 100% en la Promissory Note. Quedan $700.34 en 2025, con uso compartido con otros proyectos (50% Widdo).<br>
+          <em style="color:var(--accent2);">Atribución: $700.34 × 50% = $350.17</em>
+        </td>
+      </tr>
+      <tr>
+        <td class="indent">ChatGPT Plus <span class="tag tag-purple">30% Widdo</span></td>
+        <td>OpenAI</td>
+        <td>Ago 2025 — Dic 2025</td>
+        <td class="num" data-usd="30">$30.00</td>
+        <td><span class="tag tag-yellow">Declarado</span></td>
+      </tr>
+      <tr>
+        <td class="indent" style="padding-left:2.5rem;font-size:0.8rem;color:var(--text2);" colspan="5">
+          $20/mes × 5 meses = $100. Uso compartido (~70% otros, 30% Widdo).<br>
+          <em style="color:var(--accent2);">Atribución: $100 × 30% = $30</em>
+        </td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="3">Subtotal IA (atribuible)</td><td class="num" data-usd="380.17">$380.17</td><td></td></tr>
+
+      <tr><td colspan="5" style="height:8px;border:none;"></td></tr>
+
+      <!-- Infrastructure -->
+      <tr><td class="section-label" colspan="5">B. Infraestructura Cloud</td></tr>
+      <tr>
+        <td class="indent">DigitalOcean (completo)</td>
+        <td>DigitalOcean</td>
+        <td>Jul 2025 — Dic 2025</td>
+        <td class="num" data-usd="112.30">$112.30</td>
+        <td><span class="tag tag-green">Facturas</span></td>
+      </tr>
+      <tr>
+        <td class="indent" style="padding-left:2.5rem;font-size:0.8rem;color:var(--text2);" colspan="5">
+          Jul: $11.55 | Ago: ~$20.15 (est.) | Sep-Dic: $20.15/mes<br>
+          Ene 2026 en adelante ($27.01, $34.70, $34.15…) ya no va aquí: está en la Promissory Note.
+        </td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="3">Subtotal Infraestructura</td><td class="num" data-usd="112.30">$112.30</td><td></td></tr>
+
+      <tr><td colspan="5" style="height:8px;border:none;"></td></tr>
+
+      <!-- Licenses -->
+      <tr><td class="section-label" colspan="5">C. Licencias y Registro</td></tr>
+      <tr>
+        <td class="indent">Dominio widdo.co (1 año)</td>
+        <td>Namecheap</td>
+        <td>Jul 12, 2025</td>
+        <td class="num" data-usd="2.98">$2.98</td>
+        <td><span class="tag tag-green">Factura</span></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="3">Subtotal Licencias</td><td class="num" data-usd="2.98">$2.98</td><td></td></tr>
+
+      <tr><td colspan="5" style="height:8px;border:none;"></td></tr>
+
+      <!-- Equipment -->
+      <tr><td class="section-label" colspan="5">D. Equipos</td></tr>
+      <tr>
+        <td class="indent">MacBook Pro 14" M3 Pro (18GB/512GB) <span class="tag tag-purple">60% Widdo</span></td>
+        <td>Apple Store</td>
+        <td>Nov 2023</td>
+        <td class="num" data-usd="119.95">$119.95</td>
+        <td><span class="tag tag-green">Receipt</span></td>
+      </tr>
+      <tr>
+        <td class="indent" style="padding-left:2.5rem;font-size:0.8rem;color:var(--text2);" colspan="5">
+          Comprado Nov 2023 ($1,999). Vida util 5 años (60 meses). Uso para Widdo: Jul 2025 — Dic 2025 = 6 meses. Uso compartido (60% Widdo, 40% freelance).<br>
+          <em style="color:var(--accent2);">Atribución: $1,999 × (6/60) × 60% = $119.94 ≈ $119.95</em>
+        </td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="3">Subtotal Equipos (atribuible)</td><td class="num" data-usd="119.95">$119.95</td><td></td></tr>
+
+      <tr><td colspan="5" style="height:8px;border:none;"></td></tr>
+
+      <!-- Shared Costs -->
+      <tr><td class="section-label" colspan="5">E. Costos Compartidos (50% Widdo)</td></tr>
+      <tr>
+        <td class="indent">Internet celular (49,000 COP/mes x 50%)</td>
+        <td>Operador</td>
+        <td>Jul 2025 — Dic 2025</td>
+        <td class="num" data-usd="35.00">$35.00</td>
+        <td><span class="tag tag-yellow">Declarado</span></td>
+      </tr>
+      <tr>
+        <td class="indent">Internet hogar (139,000 COP/mes x 50%)</td>
+        <td>ISP</td>
+        <td>Jul 2025 — Dic 2025</td>
+        <td class="num" data-usd="99.25">$99.25</td>
+        <td><span class="tag tag-yellow">Declarado</span></td>
+      </tr>
+      <tr>
+        <td class="indent" style="padding-left:2.5rem;font-size:0.8rem;color:var(--text2);" colspan="5">
+188,000 COP/mes total. Se atribuye 50% a Widdo (6 meses desde infra en producción). El otro 50% es uso personal/freelance. <strong style="color:var(--red)">⚠ Sin comprobante y a nombre de la esposa</strong> — por el mismo criterio con que se excluyó del pagaré el 21-jul-2026, debería salir también de aquí. Sin internet el total es $615.40.
+        </td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="3">Subtotal Compartidos</td><td class="num" data-usd="134.25">$134.25</td><td></td></tr>
+
+      <tr><td colspan="5" style="height:8px;border:none;"></td></tr>
+
+      <!-- Legal / SAS -->
+      <tr><td class="section-label" colspan="5">F. Legal / SAS (PENDIENTE DE VERIFICAR)</td></tr>
+      <tr>
+        <td class="indent">Cámara de Comercio (renovación anual)</td>
+        <td>CCB</td>
+        <td>Anual desde 2017</td>
+        <td class="num" style="color:var(--red)">???</td>
+        <td><span class="tag tag-red">Pendiente</span></td>
+      </tr>
+      <tr>
+        <td class="indent">Registro inicial SAS (2017)</td>
+        <td>CCB</td>
+        <td>2017</td>
+        <td class="num" style="color:var(--red)">???</td>
+        <td><span class="tag tag-red">Pendiente</span></td>
+      </tr>
+      <tr>
+        <td class="indent">Capital social SAS</td>
+        <td>—</td>
+        <td>2017</td>
+        <td class="num" style="color:var(--red)">???</td>
+        <td><span class="tag tag-red">Pendiente</span></td>
+      </tr>
+      <tr>
+        <td class="indent" style="padding-left:2.5rem;font-size:0.8rem;color:var(--text2);" colspan="5">
+          SAS constituida hace 8+ años. Miguel no recuerda los montos exactos. NOTA CRÍTICA: Widdo NO está vinculado a la SAS todavía — pendiente formalizar.
+        </td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="3">Subtotal Legal</td><td class="num" style="color:var(--red)">Pendiente</td><td></td></tr>
+
+      <tr><td colspan="5" style="height:12px;border:none;"></td></tr>
+
+      <tr class="total-row">
+        <td colspan="3"><strong>TOTAL CASH ATRIBUIBLE A WIDDO (A+B+C+D+E) — Jul–Dic 2025</strong></td>
+        <td class="num" data-usd="749.65"><strong>$749.65</strong></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding-left:1rem;color:var(--text2);font-size:0.8rem;">Total gastado (antes de atribución):</td>
+        <td class="num" style="color:var(--text2);font-size:0.8rem;" data-usd="3183">$3,183</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding-left:1rem;color:var(--text2);font-size:0.8rem;">Criterio: Solo % de uso real en Widdo. Claude 40%, ChatGPT 30%, MacBook 60% depreciado.</td>
+        <td class="num" style="color:var(--accent2);font-size:0.8rem;">29% atrib.</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">Nota: Montos en COP convertidos a USD con TRM $4,200. Herramientas compartidas (Claude, ChatGPT, MacBook) se atribuyen por % de uso real en Widdo. MacBook depreciado a 5 años. Viajes de negocio excluidos. Los costos de SAS/CCB están pendientes.</p>
+</div>
+
+<!-- Key Insights -->
+<div class="card" style="border-color:var(--orange);">
+  <h2>Hallazgos Clave del Costeo</h2>
+
+  <div class="insight">
+    <h3 style="color:var(--accent2);">1. Cash atribuible real: $749.65 (no $3,183)</h3>
+    <p style="font-size:0.9rem;color:var(--text2);margin-top:0.25rem;">
+      En jul–dic 2025 el gasto bruto fue $3,183, pero muchas herramientas eran compartidas con otros proyectos/freelance. Aplicando atribución real: Claude 50% ($350.17), ChatGPT 30% ($30), MacBook depreciado 60% ($119.95). Solo $749.65 corresponde a Widdo. IA atribuible: $380.17.
+    </p>
+  </div>
+
+  <div class="insight">
+    <h3 style="color:var(--accent2);">2. Capital efficiency extrema: $2,226 → producto de $150K</h3>
+    <p style="font-size:0.9rem;color:var(--text2);margin-top:0.25rem;">
+      Sumando los dos periodos — aporte pre-incorporación $749.65 (jul–dic 2025) + Promissory Note $1,476.46 (ene–jul 2026) = <strong>$2,226.11</strong> — se construyó un producto que costaría $100K-$150K en agencia. Ratio de eficiencia ~67x. El IA fue el "equipo de desarrollo": un solo founder produjo output de 2-3 devs.
+    </p>
+  </div>
+
+  <div class="insight">
+    <h3 style="color:var(--accent2);">3. Infraestructura cloud increíblemente eficiente</h3>
+    <p style="font-size:0.9rem;color:var(--text2);margin-top:0.25rem;">
+      Solo $27/mes en DigitalOcean para 16 clubes y 915 usuarios. Eso es <strong>$1.69/club/mes</strong> de costo de infra.
+      Con el plan de $129,000 COP/club/año ($30.71 USD), el margen de infra sería 94%.
+    </p>
+  </div>
+
+  <div class="warning">
+    <h3 style="color:var(--red);">PENDIENTES CRÍTICOS</h3>
+    <ul style="font-size:0.85rem;color:var(--text2);margin-top:0.5rem;padding-left:1.5rem;">
+      <li><strong>Vincular Widdo a la SAS:</strong> El producto NO está formalmente vinculado a la empresa. Esto es urgente antes de cobrar o recibir inversión.</li>
+      <li><strong>Verificar costos CCB/SAS:</strong> Consultar recibos de Cámara de Comercio para montos exactos.</li>
+      <li><strong>Verificar historial ChatGPT:</strong> Confirmar meses y pagos exactos.</li>
+      <li><strong>Transferir gastos a la empresa:</strong> Todos estos gastos están en tarjeta personal — deben formalizarse como aportes del socio o préstamos a la empresa.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Distribution Chart -->
+<div class="card">
+  <h2>Distribución del Cash Invertido</h2>
+  <div class="grid grid-2">
+    <div class="chart-container">
+      <canvas id="distributionChart"></canvas>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>Categoría</th><th class="num">Atribuible</th><th class="num">%</th><th class="num" style="color:var(--text2)">Total real</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--accent2);">Herramientas IA</td><td class="num" data-usd="380.17">$380.17</td><td class="num">51%</td><td class="num" style="color:var(--text2)">$800</td></tr>
+          <tr><td style="color:var(--blue);">Equipos (MacBook depreciado)</td><td class="num" data-usd="119.95">$119.95</td><td class="num">16%</td><td class="num" style="color:var(--text2)">$1,999</td></tr>
+          <tr><td style="color:var(--teal);">Infraestructura Cloud</td><td class="num" data-usd="112.30">$112.30</td><td class="num">15%</td><td class="num" style="color:var(--text2)">$112</td></tr>
+          <tr><td style="color:var(--green);">Licencias (dominio)</td><td class="num" data-usd="2.98">$2.98</td><td class="num">0.4%</td><td class="num" style="color:var(--text2)">$3</td></tr>
+          <tr><td style="color:var(--yellow);">Internet (50%)</td><td class="num" data-usd="134.25">$134.25</td><td class="num">18%</td><td class="num" style="color:var(--text2)">$269</td></tr>
+          <tr class="total-row"><td>Total</td><td class="num" data-usd="749.65">$749.65</td><td class="num">100%</td><td class="num" style="color:var(--text2)">$3,183</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Monthly Burn -->
+<div class="card">
+  <h2>2. Burn Mensual Actual (Mar 2026)</h2>
+  <div class="grid grid-2">
+    <div>
+      <h3>Costos Recurrentes</h3>
+      <table>
+        <tbody>
+          <tr><td>Claude Code (Anthropic) <span class="tag tag-purple">Widdo $100, personal $100</span></td><td class="num" style="font-weight:700;" data-usd="100">$100/mes</td></tr>
+          <tr><td>DigitalOcean (hosting completo)</td><td class="num" data-usd="27">$27/mes</td></tr>
+          <tr><td>Resend Pro (email)</td><td class="num" data-usd="20">$20/mes</td></tr>
+          <tr><td>Internet 50% (188K COP)</td><td class="num" data-usd="22">~$22/mes</td></tr>
+          <tr><td>Apple Developer (amortizado)</td><td class="num" data-usd="8.25">$8.25/mes</td></tr>
+          <tr><td>Dominio (amortizado)</td><td class="num" data-usd="0.25">$0.25/mes</td></tr>
+          <tr class="total-row"><td><strong>Total burn mensual</strong></td><td class="num" style="color:var(--orange);" data-usd="177"><strong>~$177/mes</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="note">IA = 56% del burn mensual ($100 de $177). Plan Claude $200/mes: $100 Widdo + $100 personal (otros proyectos).</p>
+    </div>
+    <div>
+      <h3>Servicios Gratuitos en Uso</h3>
+      <table>
+        <tbody>
+          <tr><td>Sentry (error monitoring)</td><td class="num" style="color:var(--green)">$0</td></tr>
+          <tr><td>Firebase FCM (push notifications)</td><td class="num" style="color:var(--green)">$0</td></tr>
+          <tr><td>GitHub (repositorios + Actions CI/CD)</td><td class="num" style="color:var(--green)">$0</td></tr>
+          <tr><td>OpenAI API (AI onboarding, minimal)</td><td class="num" style="color:var(--green)">~$0</td></tr>
+          <tr class="total-row"><td>Total</td><td class="num" style="color:var(--green)">$0/mes</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight" style="margin-top:1rem;">
+        <h3>Con 16 clubes pagando</h3>
+        <p style="font-size:0.85rem;color:var(--text2);">
+          MRR proyectado: 4 Pro × $129K + 12 Básico × $49K = $1,104K COP/mes<br>
+          = <strong data-usd="263">~$263 USD/mes</strong><br><br>
+          <span style="color:var(--green);font-weight:600;">Supera el burn de $177/mes.</span> Al activar cobro, el negocio estaría en breakeven de infra + herramientas.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Unit Economics & Margins -->
+<div class="card" style="border-color:var(--green);">
+  <h2>3. Unit Economics y Márgenes</h2>
+  <p class="subtitle" style="margin-bottom:1.5rem;">Números reales con 16 clubes en prueba (pre-revenue). Proyección al activar cobro.</p>
+
+  <div class="grid grid-4">
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:10px;">
+      <div style="font-size:0.75rem;color:var(--text2);text-transform:uppercase;">MRR Proyectado</div>
+      <div style="font-size:1.5rem;font-weight:800;color:var(--green);" data-usd="263">$263</div>
+      <div style="font-size:0.7rem;color:var(--text2);">USD/mes</div>
+    </div>
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:10px;">
+      <div style="font-size:0.75rem;color:var(--text2);text-transform:uppercase;">COGS (Infra)</div>
+      <div style="font-size:1.5rem;font-weight:800;color:var(--red);" data-usd="47">$47</div>
+      <div style="font-size:0.7rem;color:var(--text2);">USD/mes</div>
+    </div>
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:10px;">
+      <div style="font-size:0.75rem;color:var(--text2);text-transform:uppercase;">Margen Bruto</div>
+      <div style="font-size:1.5rem;font-weight:800;color:var(--green);">82%</div>
+      <div style="font-size:0.7rem;color:var(--text2);">(Revenue - COGS) / Revenue</div>
+    </div>
+    <div style="text-align:center;padding:1rem;background:var(--surface2);border-radius:10px;">
+      <div style="font-size:0.75rem;color:var(--text2);text-transform:uppercase;">Costo / Club</div>
+      <div style="font-size:1.5rem;font-weight:800;color:var(--blue);" data-usd="2.94">$2.94</div>
+      <div style="font-size:0.7rem;color:var(--text2);">USD/mes de infra</div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <h3 style="margin-bottom:0.75rem;">Desglose del Margen</h3>
+    <table>
+      <thead><tr><th>Concepto</th><th class="num">Monto/mes</th><th>Categoría</th><th>Notas</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4" class="section-label">REVENUE (proyectado al cobrar)</td></tr>
+        <tr><td class="indent">4 clubes Pro × $129K COP</td><td class="num" data-usd="123">$123</td><td>Revenue</td><td>Clubes con 86-168 jugadores</td></tr>
+        <tr><td class="indent">12 clubes Básico × $49K COP</td><td class="num" data-usd="140">$140</td><td>Revenue</td><td>Clubes con 20-50 jugadores</td></tr>
+        <tr class="subtotal-row"><td>MRR Total</td><td class="num" data-usd="263">$263</td><td></td><td>ARPC: $16 USD (blended CO)</td></tr>
+
+        <tr><td colspan="4" style="height:8px;border:none;"></td></tr>
+
+        <tr><td colspan="4" class="section-label">COGS (costo de entregar el servicio)</td></tr>
+        <tr><td class="indent">DigitalOcean (servidor + BD + storage)</td><td class="num" data-usd="27">$27</td><td><span class="tag tag-red">COGS</span></td><td>Escala con clubes</td></tr>
+        <tr><td class="indent">Resend Pro (emails transaccionales)</td><td class="num" data-usd="20">$20</td><td><span class="tag tag-red">COGS</span></td><td>Confirmaciones, cobros, notif.</td></tr>
+        <tr class="subtotal-row"><td>Total COGS</td><td class="num">$47</td><td></td><td></td></tr>
+
+        <tr><td colspan="4" style="height:8px;border:none;"></td></tr>
+
+        <tr style="background:rgba(0,184,148,0.08);"><td><strong>MARGEN BRUTO</strong></td><td class="num" style="color:var(--green);font-weight:700;" data-usd="216"><strong>$216/mes</strong></td><td></td><td style="color:var(--green);font-weight:700;">82%</td></tr>
+
+        <tr><td colspan="4" style="height:8px;border:none;"></td></tr>
+
+        <tr><td colspan="4" class="section-label">OPEX (gastos operativos — NO son COGS)</td></tr>
+        <tr><td class="indent">Claude Code (50% Widdo)</td><td class="num" data-usd="100">$100</td><td><span class="tag tag-purple">OpEx</span></td><td>Herramienta de desarrollo, no de servicio</td></tr>
+        <tr><td class="indent">Internet 50%</td><td class="num" data-usd="22">$22</td><td><span class="tag tag-purple">OpEx</span></td><td>Costo del founder, no del producto</td></tr>
+        <tr><td class="indent">Apple Dev + Dominio (amortizado)</td><td class="num" data-usd="8.50">$8.50</td><td><span class="tag tag-purple">OpEx</span></td><td>Publicación apps + dominio</td></tr>
+        <tr class="subtotal-row"><td>Total OpEx</td><td class="num">$130.50</td><td></td><td></td></tr>
+
+        <tr><td colspan="4" style="height:8px;border:none;"></td></tr>
+
+        <tr style="background:rgba(108,92,231,0.08);"><td><strong>MARGEN OPERATIVO (EBITDA)</strong></td><td class="num" style="color:var(--accent2);font-weight:700;" data-usd="85"><strong>$85/mes</strong></td><td></td><td style="color:var(--accent2);font-weight:700;">32%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note" style="margin-top:1rem;">
+      <strong>¿Por qué 82% de margen bruto?</strong> En SaaS, el margen bruto solo cuenta el costo de entregar el servicio (COGS): servidores y email transaccional. NO incluye herramientas del developer (Claude), internet del founder, ni licencias — eso es OpEx. SaaS promedio: 70-80%. Widdo está en el rango alto porque la infra es muy eficiente ($2.94/club/mes).
+    </p>
+  </div>
+
+  <div class="highlight" style="margin-top:1.5rem;">
+    <h3>Cómo escala el margen</h3>
+    <table style="margin-top:0.5rem;">
+      <thead><tr><th>Escenario</th><th class="num">Clubes</th><th class="num">MRR</th><th class="num">COGS</th><th class="num">Margen Bruto</th><th class="num">OpEx</th><th class="num">EBITDA</th></tr></thead>
+      <tbody>
+        <tr><td>Hoy (CO)</td><td class="num">16</td><td class="num" data-usd="263">$263</td><td class="num">$47</td><td class="num" style="color:var(--green)">82%</td><td class="num">$131</td><td class="num">$85 (32%)</td></tr>
+        <tr><td>+10 CO</td><td class="num">26</td><td class="num" data-usd="423">$423</td><td class="num">$55</td><td class="num" style="color:var(--green)">87%</td><td class="num">$131</td><td class="num">$237 (56%)</td></tr>
+        <tr><td>+5 USA ($99)</td><td class="num">31</td><td class="num" data-usd="918">$918</td><td class="num">$70</td><td class="num" style="color:var(--green)">92%</td><td class="num">$131</td><td class="num">$717 (78%)</td></tr>
+        <tr><td>60 mix</td><td class="num">60</td><td class="num" data-usd="2500">~$2,500</td><td class="num">$100</td><td class="num" style="color:var(--green)">96%</td><td class="num">$200</td><td class="num">$2,200 (88%)</td></tr>
+      </tbody>
+    </table>
+    <p class="note">La infra escala sublinealmente: pasar de 16 a 60 clubes sube el COGS de $47 a ~$100, pero el revenue se multiplica 10x. Un club USA ($99) = 6 clubes CO en revenue.</p>
+  </div>
+</div>
+
+<!-- Sweat Equity -->
+<div class="card">
+  <h2>4. Sweat Equity (Trabajo No Remunerado)</h2>
+  <p class="subtitle" style="margin-bottom:1.5rem;">Valoración del trabajo aportado por el fundador sin recibir salario</p>
+
+  <div class="grid grid-3">
+    <div class="method-card">
+      <div class="method-name">Método 1: Costo de Reemplazo</div>
+      <div class="method-desc">Cuánto costaría contratar a alguien para construir lo mismo</div>
+      <div class="method-calc">
+        2-3 Devs Senior Full-Stack (LATAM)<br>
+        Salario: $5,000-$6,000/mes c/u<br>
+        Tiempo estimado: 8-12 meses<br>
+        Sin contar IA como acelerador
+      </div>
+      <div class="method-result" style="color:var(--blue);">$80,000 — $144,000</div>
+    </div>
+    <div class="method-card">
+      <div class="method-name">Método 2: Horas Reales Invertidas</div>
+      <div class="method-desc">Horas dedicadas a Widdo valoradas a tarifa de mercado</div>
+      <div class="method-calc">
+        Jul-Dic 2025: ~6.5h/dia × 132 dias = ~858h<br>
+        Ene-Mar 2026: ~11h/dia × 46 dias = ~506h<br>
+        Total: ~1,364 horas verificadas<br>
+        Tarifa: $100/hr (dev senior + domain expert)
+      </div>
+      <div class="method-result" style="color:var(--orange);">$136,400</div>
+    </div>
+    <div class="method-card">
+      <div class="method-name">Método 3: Cotización de Mercado</div>
+      <div class="method-desc">Cuánto cobraría una agencia/dev shop por este producto</div>
+      <div class="method-calc">
+        124 modelos, 95+ tablas<br>
+        99 controllers, 61 services<br>
+        Frontend React + Mobile Capacitor<br>
+        Multi-tenant SaaS completo
+      </div>
+      <div class="method-result" style="color:var(--green);">$80,000 — $150,000</div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <h3>Valor Adoptado (justo y verificable)</h3>
+        <p style="font-size:0.85rem;color:var(--text2);">1,364 horas verificadas × $100/hr + $13,600 domain expertise (10 años industria deportiva: jugador profesional básquet, gestión de clubes, torneos, ligas). Validado por costo de reemplazo.</p>
+      </div>
+      <div style="font-size:2.5rem;font-weight:900;color:var(--green);" data-usd="150000">$150,000 USD</div>
+    </div>
+  </div>
+
+  <p class="note">La IA (Claude) funciona como multiplicador de productividad — un solo founder produce output equivalente a un equipo de 2-3 personas. El costo atribuible de IA (~$512 histórico) está contabilizado en cash, el trabajo humano como sweat equity. Desde Mar 2026: Claude $100/mes Widdo + $100/mes personal. El founder es además domain expert con 10 años en la industria deportiva.</p>
+</div>
+
+<!-- What was built -->
+<div class="card">
+  <h2>5. Qué Se Construyó (Detalle del Producto)</h2>
+  <p class="subtitle" style="margin-bottom:1rem;">Inventario del activo tecnológico. Primer commit: Feb 19, 2024</p>
+
+  <div class="grid grid-2">
+    <div>
+      <h3>Backend (Laravel 12)</h3>
+      <table>
+        <tbody>
+          <tr><td>Modelos Eloquent</td><td class="num" style="font-weight:700;">124</td></tr>
+          <tr><td>Tablas de base de datos</td><td class="num" style="font-weight:700;">95+</td></tr>
+          <tr><td>Controllers</td><td class="num" style="font-weight:700;">99</td></tr>
+          <tr><td>Services</td><td class="num" style="font-weight:700;">61</td></tr>
+          <tr><td>Commits</td><td class="num" style="font-weight:700;">465</td></tr>
+          <tr><td>Cron jobs programados</td><td class="num">12+</td></tr>
+          <tr><td>Pasarelas de pago</td><td class="num">1 (Stripe)</td></tr>
+          <tr><td>WebSockets (real-time)</td><td class="num">Laravel Reverb</td></tr>
+          <tr><td>AI Agent (onboarding)</td><td class="num">OpenAI gpt-4o-mini</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Frontend (React + Vite)</h3>
+      <table>
+        <tbody>
+          <tr><td>Framework</td><td class="num">React 18 + Tailwind</td></tr>
+          <tr><td>Componentes UI</td><td class="num">Radix UI</td></tr>
+          <tr><td>State management</td><td class="num">React Query</td></tr>
+          <tr><td>Commits</td><td class="num" style="font-weight:700;">560</td></tr>
+          <tr><td>Tests E2E</td><td class="num">Playwright</td></tr>
+          <tr><td>Roles soportados</td><td class="num">6 roles</td></tr>
+          <tr><td>Mobile</td><td class="num">Capacitor (iOS + Android)</td></tr>
+          <tr><td>Idiomas</td><td class="num">ES + EN</td></tr>
+          <tr><td>Landing page</td><td class="num">Next.js (widdo.co)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <h3>Módulos Funcionales Completos</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <span class="tag tag-green">Gestión de Jugadores</span>
+      <span class="tag tag-green">Gestión de Pagos/Cobros</span>
+      <span class="tag tag-green">Control de Asistencia</span>
+      <span class="tag tag-green">Calendario y Eventos</span>
+      <span class="tag tag-green">Dashboard por Rol</span>
+      <span class="tag tag-green">Multi-tenancy (Club Isolation)</span>
+      <span class="tag tag-green">Notificaciones Real-time</span>
+      <span class="tag tag-green">Suscripciones y Planes</span>
+      <span class="tag tag-green">Pasarelas de Pago</span>
+      <span class="tag tag-green">Onboarding con AI</span>
+      <span class="tag tag-green">Gestión de Entrenadores</span>
+      <span class="tag tag-green">Portal de Padres</span>
+      <span class="tag tag-green">Super Admin Panel</span>
+      <span class="tag tag-green">Evaluaciones de Jugadores</span>
+      <span class="tag tag-green">Categorías y Equipos</span>
+      <span class="tag tag-green">Estadísticas y Reportes</span>
+      <span class="tag tag-green">Referidos</span>
+      <span class="tag tag-green">Facturación Electrónica</span>
+    </div>
+  </div>
+</div>
+
+<!-- DigitalOcean Invoice Detail -->
+<div class="card">
+  <h2>6. Detalle Facturas DigitalOcean</h2>
+  <p class="subtitle" style="margin-bottom:1rem;">Registro mes a mes verificado con facturas PDF. Cuenta: weddoapp@gmail.com (tarjeta personal Mastercard *5072)</p>
+
+  <table>
+    <thead>
+      <tr><th>Mes</th><th class="num">App Platform</th><th class="num">Droplet</th><th class="num">MySQL</th><th class="num">Spaces</th><th class="num">Total Uso</th><th class="num">Creditos</th><th class="num">Pagado</th><th># Factura</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Jul 2025</td><td class="num">$2.87</td><td class="num">—</td><td class="num">$8.68</td><td class="num">—</td><td class="num">$11.55</td><td class="num" style="color:var(--green);">-$11.55</td><td class="num">$0.00</td><td>523027379</td></tr>
+      <tr style="color:var(--text2);"><td>Ago 2025</td><td class="num">~$5.00</td><td class="num">—</td><td class="num">~$15.15</td><td class="num">—</td><td class="num">~$20.15</td><td class="num">?</td><td class="num">~$10-$20</td><td style="font-style:italic;">Sin factura</td></tr>
+      <tr><td>Sep 2025</td><td class="num">$5.00</td><td class="num">—</td><td class="num">$15.15</td><td class="num">—</td><td class="num">$20.15</td><td class="num" style="color:var(--green);">-$9.36</td><td class="num">$10.79</td><td>527596020</td></tr>
+      <tr><td>Oct 2025</td><td class="num">$5.00</td><td class="num">—</td><td class="num">$15.15</td><td class="num">—</td><td class="num">$20.15</td><td class="num">—</td><td class="num">$20.15</td><td>530714976</td></tr>
+      <tr><td>Nov 2025</td><td class="num">$5.00</td><td class="num">—</td><td class="num">$15.15</td><td class="num">—</td><td class="num">$20.15</td><td class="num">—</td><td class="num">$20.15</td><td>534028046</td></tr>
+      <tr><td>Dec 2025</td><td class="num">$5.00</td><td class="num">—</td><td class="num">$15.15</td><td class="num">—</td><td class="num">$20.15</td><td class="num">—</td><td class="num">$20.15</td><td>535636855</td></tr>
+      <tr><td>Ene 2026</td><td class="num">$3.51</td><td class="num">$5.70</td><td class="num">$15.15</td><td class="num">$2.65</td><td class="num">$27.01</td><td class="num">—</td><td class="num">$27.01</td><td>538436181</td></tr>
+      <tr style="color:var(--text2);"><td>Feb 2026</td><td class="num" colspan="4">Estimado similar a Ene</td><td class="num">~$27.01</td><td class="num">—</td><td class="num">~$27.01</td><td style="font-style:italic;">Pendiente</td></tr>
+      <tr class="total-row"><td colspan="5">Total</td><td class="num">~$166</td><td class="num" style="color:var(--green);">-$21</td><td class="num">~$135</td><td></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Los creditos de bienvenida de DigitalOcean ($21) cubrieron parte de los primeros meses. Desde Oct 2025 se paga el 100%. En Ene 2026 se agrego Droplet y Spaces (migración de arquitectura).</p>
+</div>
+
+<!-- Claude Billing Detail -->
+<div class="card">
+  <h2>7. Detalle Facturación Claude/Anthropic</h2>
+  <p class="subtitle" style="margin-bottom:1rem;">Historial completo verificado con screenshot de billing. Solo se contabiliza para Widdo desde Ago 2025.</p>
+
+  <table>
+    <thead>
+      <tr><th>Fecha</th><th>Concepto</th><th class="num">Monto USD</th><th>Widdo?</th></tr>
+    </thead>
+    <tbody>
+      <tr style="opacity:0.4;"><td>2 Ago 2024</td><td>Claude Pro (primer mes)</td><td class="num" data-usd="20">$20.00</td><td><span class="tag tag-red">No</span></td></tr>
+      <tr style="opacity:0.4;"><td>19 Feb 2025</td><td>Claude Pro</td><td class="num" data-usd="20">$20.00</td><td><span class="tag tag-red">No</span></td></tr>
+      <tr style="opacity:0.4;"><td>27 Feb 2025</td><td>Claude Pro / API usage</td><td class="num" data-usd="165.92">$165.92</td><td><span class="tag tag-red">No</span></td></tr>
+      <tr style="opacity:0.4;"><td>18 Jul 2025</td><td>Ajuste/Reembolso</td><td class="num" style="color:var(--green);" data-usd="-10.62">-$10.62</td><td><span class="tag tag-red">No</span></td></tr>
+      <tr><td>18 Ago 2025</td><td>Claude Code ($100/mes) — inicio Widdo</td><td class="num" data-usd="100">$100.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>18 Sep 2025</td><td>Claude Code ($100/mes)</td><td class="num" data-usd="100">$100.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>18 Oct 2025</td><td>Claude Code ($100/mes)</td><td class="num" data-usd="100">$100.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>18 Nov 2025</td><td>Claude Code ($100/mes)</td><td class="num" data-usd="100">$100.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>18 Nov 2025</td><td>Upgrade/Ajuste</td><td class="num" data-usd="100.34">$100.34</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>18 Dic 2025</td><td>Claude Code ($200/mes)</td><td class="num" data-usd="200">$200.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>18 Ene 2026</td><td>Claude Code ($200/mes)</td><td class="num" data-usd="200">$200.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>21 Ene 2026</td><td>Cargo adicional</td><td class="num" data-usd="10">$10.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>1 Feb 2026</td><td>Cargo menor</td><td class="num" data-usd="0.49">$0.49</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr><td>18 Feb 2026</td><td>Claude Code ($200/mes)</td><td class="num" data-usd="200">$200.00</td><td><span class="tag tag-green">Si</span></td></tr>
+      <tr style="opacity:0.5;"><td colspan="2" style="color:var(--text2);"><em>Subtotal pre-Widdo (Ago 2024 — Jul 2025)</em></td><td class="num" style="color:var(--text2);" data-usd="195.30"><em>$195.30</em></td><td><span class="tag tag-red">Excluido</span></td></tr>
+      <tr class="subtotal-row"><td colspan="2"><strong>Subtotal Widdo (Ago 2025 — Feb 2026)</strong></td><td class="num" data-usd="1100.34"><strong>$1,100.34</strong></td><td><span class="tag tag-green">Contabilizado</span></td></tr>
+      <tr class="total-row"><td colspan="2"><strong>Total facturado Anthropic</strong></td><td class="num" data-usd="1306.13"><strong>$1,306.13</strong></td><td></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Anthropic se usa desde Ago 2024 pero para otros proyectos. Widdo empezó en serio Jul 2025 (dominio comprado Jul 12). Solo se contabilizan $1,100.34 desde Ago 2025. Los $195.30 pre-Widdo están excluidos.</p>
+</div>
+
+<!-- Timeline Chart -->
+<div class="card">
+  <h2>8. Timeline de Gasto Mensual Real</h2>
+  <div class="chart-container" style="height:320px;">
+    <canvas id="timelineChart"></canvas>
+  </div>
+</div>
+
+<!-- Summary for Investors -->
+<div class="card" style="border-color:var(--accent);">
+  <h2>9. Resumen para Inversores</h2>
+
+  <h3 style="margin-bottom:0.75rem;color:var(--accent2);">Cap Table Actual</h3>
+  <table>
+    <thead><tr><th>Socio</th><th class="num">Equity</th><th class="num">Cash</th><th>Rol</th><th>Vesting</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Miguel Ángel Cano</strong></td><td class="num" style="font-weight:700;">70%</td><td class="num" data-usd="749.65">$749.65</td><td>Fundador / CEO / CTO</td><td>—</td></tr>
+      <tr><td><strong>Co-founder USA</strong></td><td class="num" style="font-weight:700;">30%</td><td class="num" data-usd="15000">$15,000</td><td>Co-founder / BD USA</td><td>Reverse vesting 4 años, cliff 12 meses</td></tr>
+      <tr class="total-row"><td>Total</td><td class="num">100%</td><td class="num" data-usd="16189">$16,189</td><td colspan="2"></td></tr>
+    </tbody>
+  </table>
+  <p class="note">El co-founder aporta $15,000 USD en cash + trabajo diario (4 días/semana) en business development, ventas y contactos en Florida. Su equity tiene reverse vesting: si se va antes de 12 meses pierde el 100%. Debe cumplir 2 de 4 milestones para activar el cliff (≥10 clubes USA, ≥$3K MRR USA, ≥1 celebrity deal, ≥$50K raised).</p>
+
+  <div style="height:1.5rem;"></div>
+
+  <h3 style="margin-bottom:0.75rem;color:var(--accent2);">Aportes del Fundador (Miguel)</h3>
+  <table>
+    <thead><tr><th>Concepto</th><th class="num">Valor USD</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td>Cash atribuible a Widdo</td><td class="num" data-usd="749.65">$749.65</td><td>Jul 2025 — Feb 2026. Herramientas compartidas prorrateadas (40% Claude, 30% ChatGPT, 60% MacBook dep.)</td></tr>
+      <tr><td>Sweat equity (desarrollo + domain expertise)</td><td class="num" data-usd="150000">$150,000</td><td>1,364h verificadas × $100/hr + 10 años domain expertise</td></tr>
+      <tr class="total-row"><td>TOTAL APORTADO POR EL FUNDADOR</td><td class="num" style="color:var(--green)" data-usd="150750">$150,750</td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div style="height:1.5rem;"></div>
+
+  <h3 style="margin-bottom:0.75rem;color:var(--accent2);">Estado Financiero</h3>
+  <table>
+    <tbody>
+      <tr><td>Deuda externa</td><td class="num">$0</td><td>Sin préstamos, sin inversionistas previos</td></tr>
+      <tr><td>Equity fundador</td><td class="num" style="font-weight:700;">70%</td><td>Miguel Ángel Cano — producto, tecnología, visión</td></tr>
+      <tr><td>Equity co-founder</td><td class="num" style="font-weight:700;">30%</td><td>Co-founder USA — $15K cash + BD + contactos Florida (reverse vesting)</td></tr>
+      <tr><td>Salario del fundador (pagado por Widdo)</td><td class="num">$0</td><td>Nunca ha recibido salario de la empresa</td></tr>
+      <tr><td>Burn mensual actual</td><td class="num" style="color:var(--orange)" data-usd="177">$177/mes</td><td>56% es IA ($100), 27% infra cloud ($47)</td></tr>
+    </tbody>
+  </table>
+
+  <div style="height:1.5rem;"></div>
+
+  <h3 style="margin-bottom:0.75rem;color:var(--accent2);">Proyección Post-Inversión <span class="tag tag-yellow">TENTATIVO</span> (Pre-Seed SAFE $200K, cap $2M post-money)</h3>
+  <table>
+    <thead><tr><th>Socio</th><th class="num">Pre-SAFE</th><th class="num">Post-SAFE (~9%)</th><th class="num">Post-Seed (~16% + ESOP)</th></tr></thead>
+    <tbody>
+      <tr><td>Miguel (Fundador)</td><td class="num">70%</td><td class="num">~61%</td><td class="num">~49%</td></tr>
+      <tr><td>Co-founder USA</td><td class="num">30%</td><td class="num">~27%</td><td class="num">~24%</td></tr>
+      <tr><td>Inversores Pre-Seed</td><td class="num">—</td><td class="num">~9%</td><td class="num">~9%</td></tr>
+      <tr><td>Inversores Seed</td><td class="num">—</td><td class="num">—</td><td class="num">~8%</td></tr>
+      <tr><td>ESOP (empleados)</td><td class="num">—</td><td class="num">~3%</td><td class="num">~10%</td></tr>
+      <tr class="total-row"><td>Total</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Miguel mantiene control con dual-class shares (Clase A: 10 votos/acción). Aún con 49% del equity, tendría ~91% del poder de voto. Se crea al incorporar la C Corp en Delaware.</p>
+
+  <div class="highlight" style="margin-top:1.5rem;">
+    <h3>Por qué esto importa para inversores</h3>
+    <div style="font-size:0.9rem;color:var(--text2);margin-top:0.5rem;">
+      <p><strong>1. Skin in the game:</strong> Fundador: $749.65 atribuible pre-incorporación (+ $1,476.46 adelantados en 2026, documentados en la Promissory Note) + 1,364 horas (8 meses) sin salario + 1,025 commits. Co-founder: $15,000 cash + dedicación 4 días/semana. Domain expertise combinada: 10+ años en industria deportiva.</p>
+      <p style="margin-top:0.5rem;"><strong>2. Capital efficiency extrema:</strong> Con ~$1.2K de cash atribuible + IA se construyó un producto que costaría $100K-$150K en agencia. Ratio de eficiencia ~126x.</p>
+      <p style="margin-top:0.5rem;"><strong>3. Zero debt:</strong> La empresa no tiene obligaciones. Cada dólar invertido va directo a crecimiento.</p>
+      <p style="margin-top:0.5rem;"><strong>4. AI-native development:</strong> El founder usa IA como multiplicador, no como muleta. Un equipo de 1 produjo output de 3. Esto escala.</p>
+      <p style="margin-top:0.5rem;"><strong>5. Equipo complementario:</strong> Fundador (producto + tech) + Co-founder (ventas USA + contactos). Total cash aportado entre ambos: $15,750 ($749.65 atribuible fundador + $15,000 co-founder). Ambos con skin in the game.</p>
+      <p style="margin-top:0.5rem;"><strong>6. Costos transparentes:</strong> Cada gasto documentado con atribución real de uso. Herramientas compartidas prorrateadas honestamente.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Actions Required -->
+<div class="card" style="border-color:var(--red);">
+  <h2>10. Acciones Pendientes (Recomendación Mentor)</h2>
+  <table>
+    <thead><tr><th>#</th><th>Acción</th><th>Prioridad</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Vincular Widdo formalmente a la SAS</strong> — asignar IP, registrar actividad comercial</td><td><span class="tag tag-red">Urgente</span></td><td>Pendiente</td></tr>
+      <tr><td>2</td><td><strong>Empezar a cobrar a los 16 clubes</strong> — comunicar precio y activar cobros</td><td><span class="tag tag-red">Urgente</span></td><td>Pendiente</td></tr>
+      <tr><td>3</td><td><strong>Abrir cuenta bancaria empresarial</strong> — separar finanzas personales de la empresa</td><td><span class="tag tag-red">Urgente</span></td><td>Pendiente</td></tr>
+      <tr><td>4</td><td><strong>Formalizar gastos como aportes del socio</strong> — los $749.65 de jul–dic 2025 son aporte pre-incorporación; lo de 2026 ya está formalizado en la Promissory Note ($1,476.46)</td><td><span class="tag tag-orange">Alta</span></td><td>Parcial</td></tr>
+      <tr><td>5</td><td><strong>Transferir servicios a cuenta empresarial</strong> — DO, Resend, Apple Dev deben facturar a la SAS</td><td><span class="tag tag-orange">Alta</span></td><td>Pendiente</td></tr>
+      <tr><td>6</td><td><strong>Verificar costos CCB/SAS</strong> — obtener recibos y montos exactos</td><td><span class="tag tag-yellow">Media</span></td><td>Pendiente</td></tr>
+      <tr><td>7</td><td><strong>Verificar historial ChatGPT</strong> — confirmar meses y pagos</td><td><span class="tag tag-yellow">Media</span></td><td>Pendiente</td></tr>
+      <tr><td>8</td><td><strong>Evaluar plan Claude Code</strong> — bajado a $100/mes Widdo (de $200). Subir si productividad baja</td><td><span class="tag tag-green">Hecho</span></td><td>Resuelto</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+// === Distribution Pie Chart ===
+new Chart(document.getElementById('distributionChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Herramientas IA', 'Equipos (dep.)', 'Infraestructura', 'Licencias', 'Internet'],
+    datasets: [{
+      data: [380.17, 119.95, 112.30, 2.98, 134.25],
+      backgroundColor: ['rgba(162,155,254,0.8)', 'rgba(84,160,255,0.8)', 'rgba(0,206,201,0.8)', 'rgba(0,184,148,0.8)', 'rgba(254,202,87,0.8)'],
+      borderColor: '#1a1d27',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { color: '#8b8fa8', font: { size: 11 }, padding: 12 } },
+      tooltip: { callbacks: { label: ctx => `${ctx.label}: $${ctx.parsed.toLocaleString()} (${Math.round(ctx.parsed/1189*100)}%)` } }
+    }
+  }
+});
+
+// === Timeline Chart - Real monthly spending ===
+const monthLabels = ['Ago 24','Sep 24','Oct 24','Nov 24','Dic 24','Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26'];
+
+// Claude/Anthropic monthly
+const claudeData = [20, 0, 0, 0, 0, 0, 185.92, 0, 0, 0, 0, -10.62, 100, 100, 100, 200.34, 200, 210.49, 200];
+
+// DigitalOcean monthly
+const doData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11.55, 20.15, 20.15, 20.15, 20.15, 20.15, 27.01, 27.01];
+
+// ChatGPT estimated ($20/mo from ~Aug 2025)
+const chatgptData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 20, 20, 20, 20, 20, 20];
+
+// Other costs (one-time items in their month)
+const otherData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.98, 0, 0, 0, 0, 0, 0, 139]; // domain in Jul, Resend+Apple in Feb
+
+// Cumulative
+let cum = 1999; // MacBook (Nov 2023, before chart starts)
+const cumulativeData = [];
+for (let i = 0; i < monthLabels.length; i++) {
+  const monthTotal = Math.max(0, claudeData[i]) + doData[i] + chatgptData[i] + otherData[i];
+  cum += monthTotal;
+  cumulativeData.push(cum);
+}
+
+new Chart(document.getElementById('timelineChart'), {
+  type: 'bar',
+  data: {
+    labels: monthLabels,
+    datasets: [
+      { label: 'Claude/Anthropic', data: claudeData.map(v => Math.max(0,v)), backgroundColor: 'rgba(162,155,254,0.7)', borderRadius: 2, stack: 'stack' },
+      { label: 'DigitalOcean', data: doData, backgroundColor: 'rgba(0,206,201,0.7)', borderRadius: 2, stack: 'stack' },
+      { label: 'ChatGPT', data: chatgptData, backgroundColor: 'rgba(243,156,18,0.7)', borderRadius: 2, stack: 'stack' },
+      { label: 'Otros', data: otherData, backgroundColor: 'rgba(84,160,255,0.5)', borderRadius: 2, stack: 'stack' },
+      { label: 'Acumulado', data: cumulativeData, type: 'line', borderColor: '#00b894', backgroundColor: 'transparent', tension: 0.3, pointRadius: 2, yAxisID: 'y1' },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8b8fa8', font: { size: 10 } } },
+      tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(0)}` } }
+    },
+    scales: {
+      x: { stacked: true, ticks: { color: '#8b8fa8', font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
+      y: { stacked: true, position: 'left', ticks: { color: '#8b8fa8', callback: v => '$' + v }, grid: { color: 'rgba(46,51,72,0.3)' }, title: { display: true, text: 'Gasto mensual', color: '#8b8fa8' } },
+      y1: { position: 'right', ticks: { color: '#00b894', callback: v => '$' + (v/1000).toFixed(1) + 'K' }, grid: { display: false }, title: { display: true, text: 'Acumulado', color: '#00b894' } },
+    }
+  }
+});
+
+// === Currency Toggle ===
+const COP_RATE = 4200;
+let currentCurrency = 'USD';
+
+function setCurrency(curr) {
+  currentCurrency = curr;
+  document.querySelectorAll('.currency-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === curr);
+  });
+  document.getElementById('currencyBadge').textContent = 'Cifras en ' + curr;
+
+  document.querySelectorAll('[data-usd]').forEach(el => {
+    const usd = parseFloat(el.dataset.usd);
+    if (curr === 'COP') {
+      const cop = usd * COP_RATE;
+      if (cop >= 1000000) {
+        el.textContent = '$' + (cop/1000000).toFixed(1) + 'M COP';
+      } else if (cop >= 1000) {
+        el.textContent = '$' + Math.round(cop).toLocaleString() + ' COP';
+      } else {
+        el.textContent = '$' + cop.toFixed(0) + ' COP';
+      }
+    } else {
+      if (Math.abs(usd) >= 1000) {
+        el.textContent = '$' + usd.toLocaleString('en-US', {maximumFractionDigits: 0});
+      } else if (usd === Math.floor(usd)) {
+        el.textContent = '$' + usd.toLocaleString('en-US');
+      } else {
+        el.textContent = '$' + usd.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>

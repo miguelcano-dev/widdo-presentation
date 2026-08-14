@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Use of Funds ($200K)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface2: #242834; --border: #2e3348;
+    --text: #e4e6f0; --text2: #8b8fa8; --accent: #6c5ce7; --accent2: #a29bfe;
+    --green: #00b894; --red: #ff6b6b; --yellow: #feca57; --blue: #54a0ff;
+    --orange: #f39c12; --pink: #e84393; --teal: #00cec9;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--text); padding:2rem; line-height:1.5; }
+  h1 { font-size:1.8rem; font-weight:700; }
+  h2 { font-size:1.2rem; font-weight:600; color:var(--accent2); margin-bottom:1rem; }
+  h3 { font-size:1rem; font-weight:600; margin-bottom:0.5rem; }
+  .subtitle { color:var(--text2); font-size:0.9rem; margin-bottom:2rem; }
+  .nav-back { display:inline-flex; align-items:center; gap:0.5rem; color:var(--accent2); text-decoration:none; font-size:0.85rem; margin-bottom:1.5rem; }
+  .nav-back:hover { color:var(--accent); }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:1.5rem; }
+  .grid { display:grid; gap:1.5rem; margin-bottom:1.5rem; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-5 { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  @media(max-width:768px) { .grid-2,.grid-3 { grid-template-columns:1fr; } }
+
+  .bucket { text-align:center; padding:1.25rem; }
+  .bucket-icon { font-size:2rem; margin-bottom:0.5rem; }
+  .bucket-amount { font-size:1.5rem; font-weight:800; }
+  .bucket-pct { font-size:0.85rem; color:var(--text2); }
+  .bucket-label { font-size:0.8rem; color:var(--text2); margin-top:0.25rem; }
+
+  .chart-container { position:relative; height:300px; }
+
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+  th { text-align:left; padding:0.6rem 0.5rem; color:var(--text2); font-weight:600; border-bottom:2px solid var(--border); }
+  td { padding:0.5rem; border-bottom:1px solid var(--border); }
+  tr:hover td { background:var(--surface2); }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .total-row td { font-weight:700; border-top:2px solid var(--border); background:var(--surface2); }
+
+  .timeline { position:relative; padding-left:2rem; }
+  .timeline::before { content:''; position:absolute; left:0.5rem; top:0; bottom:0; width:2px; background:var(--border); }
+  .timeline-item { position:relative; margin-bottom:2rem; padding-left:1rem; }
+  .timeline-dot { position:absolute; left:-1.75rem; top:0.25rem; width:14px; height:14px; border-radius:50%; border:3px solid var(--accent); background:var(--bg); }
+  .timeline-dot.done { background:var(--green); border-color:var(--green); }
+  .timeline-dot.active { background:var(--yellow); border-color:var(--yellow); }
+  .timeline-period { font-size:0.75rem; color:var(--accent2); font-weight:600; text-transform:uppercase; }
+  .timeline-title { font-weight:700; margin:0.25rem 0; }
+  .timeline-detail { font-size:0.85rem; color:var(--text2); }
+  .timeline-amount { display:inline-block; background:var(--surface2); padding:2px 10px; border-radius:6px; font-weight:700; margin-top:0.25rem; font-size:0.85rem; }
+
+  .milestone { display:flex; align-items:center; gap:0.75rem; padding:0.75rem; border-radius:8px; background:var(--surface2); margin-bottom:0.5rem; }
+  .milestone-check { width:20px; height:20px; border-radius:50%; border:2px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.7rem; }
+  .milestone-check.hit { background:var(--green); border-color:var(--green); }
+  .milestone-text { font-size:0.85rem; }
+  .milestone-target { font-size:0.75rem; color:var(--text2); }
+
+  .bar-chart { margin:1rem 0; }
+  .bar-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem; }
+  .bar-label { min-width:140px; font-size:0.8rem; color:var(--text2); text-align:right; }
+  .bar-track { flex:1; height:28px; background:var(--surface2); border-radius:6px; overflow:hidden; position:relative; }
+  .bar-fill { height:100%; border-radius:6px; display:flex; align-items:center; padding:0 8px; font-size:0.75rem; font-weight:600; color:#fff; min-width:fit-content; transition:width 0.5s; }
+  .bar-amount { min-width:70px; font-size:0.8rem; font-weight:600; text-align:right; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back">&#8592; Volver al Dashboard</a>
+<div style="background:rgba(254,202,87,0.12);border:1px solid #FECA57;border-radius:10px;padding:1rem 1.25rem;margin:1rem 0 1.5rem;font-size:0.85rem;line-height:1.6;">
+  <strong style="color:#FECA57;">Desglose de fondos reescrito el 13-ago-2026; los milestones de clubes siguen siendo el modelo de marzo 2026.</strong>
+  El uso de fondos, el runway y el calendario mensual corresponden al ask vigente de $200K.
+  Las metas de clubes y revenue por tramo de gasto (más abajo) vienen del modelo de marzo y no se han rebaseado.
+  <strong>Estado real a 13-ago-2026:</strong> 9 clubes, 3 pagando, MRR $101, 1.476 usuarios, 701 jugadores,
+  burn de infraestructura <strong>$32/mes</strong> medido en DigitalOcean el 28-jul-2026
+  (droplet $12 + MySQL $15 + Spaces $5). Fuente única de verdad: <code>metrics.json</code>.
+  Entidad operativa: <strong>Widdo Inc (Delaware)</strong>; la SAS Colombia está inactiva.
+  Pasarela de pago única: <strong>Stripe</strong> (USA, Canadá, México).
+</div>
+
+<h1>Use of Funds — $200,000 USD <span style="font-size:0.8rem;color:var(--yellow);font-weight:400;">(TENTATIVO — ronda no levantada)</span></h1>
+<p class="subtitle">Ronda: $200K sobre $1.5M&ndash;2M pre-money &rarr; post-money $1.7M&ndash;$2.2M | Dilución 9,1%&ndash;11,8% | Runway objetivo: 18 meses</p>
+
+<!-- BORRADOR: desglose reescrito el 13-ago-2026 tras fijar el raising en $200K.
+     Pendiente de visto bueno de Miguel. Supuestos clave documentados en la tabla
+     "Desglose Línea por Línea" (una nota por partida). La compensación de Alwin
+     NO está decidida: figura como reserva. -->
+<div style="background:rgba(162,155,254,0.12);border:1px solid var(--accent2);border-radius:10px;padding:1rem 1.25rem;margin:0 0 1.5rem;font-size:0.85rem;line-height:1.6;">
+  <strong style="color:var(--accent2);">BORRADOR para validar con Miguel (13-ago-2026).</strong>
+  Desglose reescrito al nuevo ask de $200K. Cada partida lleva su supuesto al lado.
+  Salario del founder: <strong>$2.000/mes plano los 18 meses</strong> (decisión de Miguel,
+  13-ago: sin subida por ahora). Decisión abierta: la <strong>compensación de Alwin no está
+  decidida</strong> — aparece como reserva de $18.000, no como gasto comprometido. Si no se
+  activa, el runway se alarga a ~20 meses.
+</div>
+
+<!-- Runway -->
+<div class="card" style="border-color:var(--green);">
+  <h2 style="color:var(--green);">Runway: 18 meses</h2>
+  <table>
+    <tbody>
+      <tr><td>Gasto comprometido (18 meses)</td><td class="num">$158,000</td><td>Founder + vendedor USA + marketing + infra + legal/contable</td></tr>
+      <tr><td>Burn promedio</td><td class="num">$8,778/mes</td><td>$158.000 / 18 meses</td></tr>
+      <tr><td>Burn pico (M15&ndash;M16, con vendedor a cuota)</td><td class="num">$10,050/mes</td><td>El vendedor entra en M4; antes de eso el burn ronda $2.500&ndash;$5.700/mes</td></tr>
+      <tr><td>Reservas sin comprometer</td><td class="num">$42,000</td><td>$18K compensación Alwin (por definir) + $24K colchón</td></tr>
+      <tr class="total-row"><td>Total ronda</td><td class="num">$200,000</td><td>18 meses de pista SIN contar revenue. Con revenue creciendo, la pista se alarga</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Allocation Summary -->
+<div class="grid grid-5">
+  <div class="card bucket">
+    <div class="bucket-icon" style="color:var(--blue)">&#9775;</div>
+    <div class="bucket-amount" style="color:var(--blue)">$65,000</div>
+    <div class="bucket-pct">32.5%</div>
+    <div class="bucket-label">Experto en ventas USA</div>
+  </div>
+  <div class="card bucket">
+    <div class="bucket-icon" style="color:var(--teal)">&#9730;</div>
+    <div class="bucket-amount" style="color:var(--teal)">$36,000</div>
+    <div class="bucket-pct">18%</div>
+    <div class="bucket-label">Salario founder (Miguel)</div>
+  </div>
+  <div class="card bucket">
+    <div class="bucket-icon" style="color:var(--pink)">&#9733;</div>
+    <div class="bucket-amount" style="color:var(--pink)">$32,000</div>
+    <div class="bucket-pct">16%</div>
+    <div class="bucket-label">Marketing y adquisición</div>
+  </div>
+  <div class="card bucket">
+    <div class="bucket-icon" style="color:var(--orange)">&#9878;</div>
+    <div class="bucket-amount" style="color:var(--orange)">$16,000</div>
+    <div class="bucket-pct">8%</div>
+    <div class="bucket-label">Legal y contable</div>
+  </div>
+  <div class="card bucket">
+    <div class="bucket-icon" style="color:var(--yellow)">&#9998;</div>
+    <div class="bucket-amount" style="color:var(--yellow)">$18,000</div>
+    <div class="bucket-pct">9%</div>
+    <div class="bucket-label">Compensación Alwin<br><small>por definir</small></div>
+  </div>
+  <div class="card bucket">
+    <div class="bucket-icon" style="color:var(--accent2)">&#9733;</div>
+    <div class="bucket-amount" style="color:var(--accent2)">$24,000</div>
+    <div class="bucket-pct">12%</div>
+    <div class="bucket-label">Colchón / contingencia</div>
+  </div>
+  <div class="card bucket">
+    <div class="bucket-icon" style="color:var(--green)">&#9881;</div>
+    <div class="bucket-amount" style="color:var(--green)">$9,000</div>
+    <div class="bucket-pct">4.5%</div>
+    <div class="bucket-label">Infra y herramientas</div>
+  </div>
+</div>
+
+<!-- Visual Bar Chart -->
+<div class="card">
+  <h2>Distribución Visual</h2>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <span class="bar-label">Experto ventas USA</span>
+      <div class="bar-track"><div class="bar-fill" style="width:32.5%; background:var(--blue);">32.5%</div></div>
+      <span class="bar-amount">$65,000</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Salario founder</span>
+      <div class="bar-track"><div class="bar-fill" style="width:18%; background:var(--teal);">18%</div></div>
+      <span class="bar-amount">$36,000</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Marketing y adquisición</span>
+      <div class="bar-track"><div class="bar-fill" style="width:16%; background:var(--pink);">16%</div></div>
+      <span class="bar-amount">$32,000</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Legal y contable</span>
+      <div class="bar-track"><div class="bar-fill" style="width:8%; background:var(--orange);">8%</div></div>
+      <span class="bar-amount">$16,000</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Alwin (por definir)</span>
+      <div class="bar-track"><div class="bar-fill" style="width:9%; background:var(--yellow);">9%</div></div>
+      <span class="bar-amount">$18,000</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Colchón</span>
+      <div class="bar-track"><div class="bar-fill" style="width:12%; background:var(--accent2);">12%</div></div>
+      <span class="bar-amount">$24,000</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Infra y herramientas</span>
+      <div class="bar-track"><div class="bar-fill" style="width:4.5%; background:var(--green);">4.5%</div></div>
+      <span class="bar-amount">$9,000</span>
+    </div>
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="grid grid-2">
+  <div class="card">
+    <h3>Distribución por Categoría</h3>
+    <div class="chart-container">
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Burn Rate Mensual Proyectado</h3>
+    <div class="chart-container">
+      <canvas id="burnChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Detailed Breakdown -->
+<div class="card">
+  <h2>Desglose Línea por Línea</h2>
+  <table>
+    <thead>
+      <tr><th>Categoría</th><th>Concepto</th><th class="num">Monto</th><th>Timing</th><th>Notas</th></tr>
+    </thead>
+    <tbody>
+      <!-- Experto en ventas USA -->
+      <tr><td rowspan="2" style="color:var(--blue); font-weight:700; vertical-align:top;">Experto en<br>ventas USA<br><small style="color:var(--text2)">$65,000</small></td>
+        <td>Base salarial (~$3,400/mes)</td><td class="num">$51,000</td><td>Mes 4-18 (15 meses)</td><td><strong>Supuesto:</strong> perfil junior/mid de inside sales en Florida, OTE $65K/año = $40K base + $25K variable a cuota. Aquí se presupuestan 15 meses de base ($40K/año prorrateado)</td></tr>
+      <tr><td>Comisión variable (a cierre)</td><td class="num">$14,000</td><td>Mes 6-18</td><td>Solo se paga sobre clubes cerrados. Rampa: arranca en $500/mes y llega a $1,400/mes. Si no vende, no se gasta</td></tr>
+
+      <tr><td colspan="5" style="background:rgba(84,160,255,0.05);padding:0.75rem;font-size:0.8rem;color:var(--text2);border:none;">
+        <strong>Por qué es la partida más grande:</strong> es el motivo declarado de la ronda. Hoy la adquisición es 100% del founder y 100% orgánica. Un vendedor dedicado en Florida es la palanca que convierte capital en clubes. El OTE de $65K está por debajo del mercado USA para un AE senior ($90K-$120K) y en el rango de un SDR/inside sales con experiencia ($55K-$80K).
+      </td></tr>
+
+      <!-- Salario founder -->
+      <tr><td style="color:var(--teal); font-weight:700; vertical-align:top;">Salario<br>founder<br><small style="color:var(--text2)">$36,000</small></td>
+        <td>CEO / CTO — Miguel</td><td class="num">$36,000</td><td>Mes 1-18</td><td>$2,000/mes plano los 18 meses (decisión Miguel 13-ago: sin subida por ahora). $24K/año, muy por debajo de mercado para un founder técnico</td></tr>
+
+      <!-- Marketing -->
+      <tr><td rowspan="3" style="color:var(--pink); font-weight:700; vertical-align:top;">Marketing y<br>adquisición<br><small style="color:var(--text2)">$32,000</small></td>
+        <td>Paid ads (Meta + Google, foco Florida)</td><td class="num">$18,000</td><td>Mes 2-18 (~$1,050/mes)</td><td>Apoya al vendedor: genera el pipeline que él cierra</td></tr>
+      <tr><td>Contenido y SEO (EN + ES)</td><td class="num">$8,000</td><td>Mes 1-17</td><td>Blog, video corto, casos de club. Canal de coste marginal decreciente</td></tr>
+      <tr><td>Eventos y ligas locales</td><td class="num">$6,000</td><td>Mes 3-18</td><td>Stands en torneos y ligas de FL, material, viajes de venta</td></tr>
+
+      <!-- Infra y herramientas -->
+      <tr><td style="color:var(--green); font-weight:700; vertical-align:top;">Infra y<br>herramientas<br><small style="color:var(--text2)">$9,000</small></td>
+        <td>Servidores, IA, CRM, monitoring</td><td class="num">$9,000</td><td>Mes 1-18 (~$500/mes)</td><td>Hoy la infra medida son <strong>$32/mes</strong> (DigitalOcean). El presupuesto de $500/mes cubre el escalado a 200-300 clubes más CRM, Sentry, herramientas de IA y fees de Stripe. Partida deliberadamente pequeña: el producto ya está construido</td></tr>
+
+      <!-- Legal y contable -->
+      <tr><td rowspan="2" style="color:var(--orange); font-weight:700; vertical-align:top;">Legal y<br>contable<br><small style="color:var(--text2)">$16,000</small></td>
+        <td>Abogado startup (paquete pendiente de firma)</td><td class="num">$6,000</td><td>Mes 2-3</td><td>Founders Agreement, IP Assignment, 83(b), revisión del SAFE. Hoy NADA está firmado: es gasto prioritario del mes 2</td></tr>
+      <tr><td>Contador USA + contable Colombia</td><td class="num">$10,000</td><td>Mes 2-18</td><td>~$600/mes: tax filings de Widdo Inc (Delaware), compliance y contabilidad</td></tr>
+
+      <tr class="total-row">
+        <td colspan="2"><strong>SUBTOTAL COMPROMETIDO (18 meses)</strong></td>
+        <td class="num"><strong>$158,000</strong></td>
+        <td colspan="2">$8,778/mes promedio</td>
+      </tr>
+
+      <!-- Reservas -->
+      <tr><td style="color:var(--yellow); font-weight:700; vertical-align:top;">Reserva<br><small style="color:var(--text2)">$18,000</small></td>
+        <td><strong>Compensación Alwin — POR DEFINIR</strong></td><td class="num">$18,000</td><td>Sin fecha</td><td><strong>Decisión abierta de Miguel.</strong> Alwin es co-founder con 30% y hoy no cobra. $18K equivale a $1,000/mes durante 18 meses, pero ni el monto ni la forma (salario W-2 vs. contractor vs. solo equity) están decididos. Si no se activa, este dinero pasa al colchón y el runway sube a ~20 meses</td></tr>
+
+      <tr><td style="color:var(--accent2); font-weight:700; vertical-align:top;">Colchón<br><small style="color:var(--text2)">$24,000</small></td>
+        <td>Contingencia</td><td class="num">$24,000</td><td>Reserva</td><td>~2,4 meses de burn a precio de pico ($10,050/mes). Imprevistos, un mes malo de ventas, gastos legales que se pasen del estimado</td></tr>
+
+      <tr class="total-row">
+        <td colspan="2"><strong>TOTAL RONDA</strong></td>
+        <td class="num"><strong>$200,000</strong></td>
+        <td colspan="2">18 meses de runway sin contar revenue</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Monthly Burn Schedule -->
+<div class="card">
+  <h2>Calendario de Gastos Mensual</h2>
+  <p class="subtitle" style="margin-bottom:1rem;">Cómo se gasta mes a mes durante los 18 meses (sin contar las reservas: $18K de Alwin por definir + $18K de colchón)</p>
+  <div style="overflow-x:auto;">
+    <table id="monthly-schedule">
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th class="num">M1</th><th class="num">M2</th><th class="num">M3</th><th class="num">M4</th>
+          <th class="num">M5</th><th class="num">M6</th><th class="num">M7</th><th class="num">M8</th>
+          <th class="num">M9</th><th class="num">M10</th><th class="num">M11</th><th class="num">M12</th>
+          <th class="num">M13</th><th class="num">M14</th><th class="num">M15</th><th class="num">M16</th>
+          <th class="num">M17</th><th class="num">M18</th>
+          <th class="num">Total</th>
+        </tr>
+      </thead>
+      <tbody id="schedule-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="card">
+  <h2>Timeline de Ejecución</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot active"></div>
+      <div class="timeline-period">Mes 1-3 | Cierre y contratación</div>
+      <div class="timeline-title">Foundation</div>
+      <div class="timeline-detail">Firmar el paquete legal pendiente (Founders Agreement, IP Assignment, 83(b)). Stripe live en producción. Buscar y contratar al vendedor de Florida. Miguel sigue haciendo la venta directamente.</div>
+      <div class="timeline-amount">~$2,500 &rarr; $5,700/mes</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Mes 4-6 | Vendedor USA arranca</div>
+      <div class="timeline-title">Sales Ramp</div>
+      <div class="timeline-detail">El vendedor entra en nómina (M4) y empieza a cerrar (comisión desde M6). Paid ads en Florida alimentando su pipeline. Primeros clubes USA de pago.</div>
+      <div class="timeline-amount">~$8,600 &rarr; $9,700/mes</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Mes 7-12 | Motor de adquisición</div>
+      <div class="timeline-title">Growth</div>
+      <div class="timeline-detail">Canal de ventas con cuota. Contenido y SEO empiezan a aportar leads sin coste marginal. El revenue cubre una parte creciente del burn (no contado en el runway).</div>
+      <div class="timeline-amount">~$9,700 &rarr; $10,350/mes</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-period">Mes 13-18 | Seed prep</div>
+      <div class="timeline-title">Scale &amp; Seed Prep</div>
+      <div class="timeline-detail">Cohortes de retención con historia real, unit economics probados en USA y case studies. Con eso se levanta la seed. Aquí se decide si se activa la reserva de compensación de Alwin.</div>
+      <div class="timeline-amount">~$10,050 &rarr; $8,800/mes</div>
+    </div>
+  </div>
+</div>
+
+<!-- Milestones -->
+<div class="card">
+  <h2>Milestones por cada $25K gastados</h2>
+  <div class="grid grid-2">
+    <div>
+      <h3 style="color:var(--accent2);">$25K gastados (Mes 3)</h3>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">15 clubs convertidos a pagos en Colombia</div><div class="milestone-target">Revenue: $750+ USD/mes</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Delaware C-Corp incorporada</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Founders Agreement firmado con partners</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Pipeline de 30+ leads (CO + USA)</div></div></div>
+    </div>
+    <div>
+      <h3 style="color:var(--accent2);">$50K gastados (Mes 6)</h3>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">30+ clubs totales (CO + USA)</div><div class="milestone-target">Revenue: $1,500+ USD/mes</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Primeros 3-5 clubs USA (via partners BD)</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Paid ads corriendo con CAC < $100</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Stripe USA activo, cobros automaticos</div></div></div>
+    </div>
+    <div>
+      <h3 style="color:var(--accent2);">$75K gastados (Mes 9)</h3>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">80+ clubs totales</div><div class="milestone-target">Revenue: $4,000+ USD/mes</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Churn < 3%</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">2+ canales de adquisicion probados</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">3 case studies publicados (CO + USA)</div></div></div>
+    </div>
+    <div>
+      <h3 style="color:var(--accent2);">$100K gastados (Mes 10)</h3>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">120+ clubs totales</div><div class="milestone-target">Revenue: $7,000+ USD/mes (ARR ~$84K+)</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Unit economics comprobados (LTV/CAC > 5x)</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Churn estabilizado < 3%</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Camino a breakeven operativo</div></div></div>
+    </div>
+    <div>
+      <h3 style="color:var(--accent2);">$200K gastados (Mes 18)</h3>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">200-300 clubs totales</div><div class="milestone-target">Revenue: $12,000-18,000 USD/mes (ARR ~$150K-$200K)</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Revenue cubre costos operativos (breakeven)</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Listo para Seed round ($500K-$1M)</div></div></div>
+      <div class="milestone"><div class="milestone-check"></div><div><div class="milestone-text">Founder salaries cubiertos por revenue de empresa</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- What If No Investment -->
+<div class="card" style="border-color:var(--yellow);">
+  <h2 style="color:var(--yellow);">Escenario Sin Inversión (Bootstrap)</h2>
+  <p style="margin-bottom:1rem; color:var(--text2);">Si no se levanta la ronda, el plan se ajusta así:</p>
+  <table>
+    <thead><tr><th>Aspecto</th><th>Con $200K</th><th>Sin Inversión</th></tr></thead>
+    <tbody>
+      <tr><td>Timeline a 100 clubs</td><td>8-9 meses</td><td>18-24 meses</td></tr>
+      <tr><td>Equipo</td><td>Miguel + un vendedor dedicado en Florida</td><td>Solo Miguel</td></tr>
+      <tr><td>USA launch</td><td>Mes 4 (vendedor en nómina)</td><td>Mes 8-12 (organico)</td></tr>
+      <tr><td>Marketing spend</td><td>$32K en 18 meses</td><td>$0 (100% organico)</td></tr>
+      <tr><td>Runway</td><td>18 meses (~20 si no se activa la reserva de Alwin)</td><td>Depende de revenue growth</td></tr>
+      <tr><td>Salario founder</td><td>$2.000/mes plano (M1-M18)</td><td>$2.000/mes puente, con sunset 31-oct-2026</td></tr>
+      <tr><td>Seed readiness</td><td>Mes 12-14</td><td>Mes 24+</td></tr>
+      <tr class="total-row"><td>Probabilidad de éxito</td><td style="color:var(--green)">Alta (capital + equipo + runway)</td><td style="color:var(--yellow)">Media (lento pero posible)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+// Pie Chart
+new Chart(document.getElementById('pieChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Experto ventas USA', 'Salario founder', 'Marketing y adquisición', 'Legal y contable', 'Alwin (por definir)', 'Colchón', 'Infra y herramientas'],
+    datasets: [{
+      data: [65000, 36000, 32000, 16000, 18000, 24000, 9000],
+      backgroundColor: ['#54a0ff', '#00cec9', '#e84393', '#f39c12', '#feca57', '#a29bfe', '#00b894'],
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'right', labels: { color: '#8b8fa8', padding: 12, font: { size: 12 } } }
+    }
+  }
+});
+
+// Monthly burn schedule data — 18 meses.
+// El vendedor USA entra en M4 (base) y empieza a cobrar comisión en M6.
+// El salario del founder es $2,000/mes plano M1-M18 (decisión Miguel 13-ago: sin subida).
+// Las reservas (Alwin por definir + colchón) NO estan aqui: son dinero sin comprometer.
+const schedule = {
+  'Miguel (CEO/CTO)':    [2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000],
+  'Ventas USA — base':   [0,0,0,3400,3400,3400,3400,3400,3400,3400,3400,3400,3400,3400,3400,3400,3400,3400],
+  'Ventas USA — comisión':[0,0,0,0,0,500,700,800,900,1000,1100,1200,1300,1300,1400,1400,1400,1000],
+  'Paid ads (FL)':       [0,500,800,900,1000,1000,1100,1100,1100,1100,1200,1200,1200,1200,1200,1200,1100,1100],
+  'Contenido y SEO':     [200,300,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,0],
+  'Eventos y ligas':     [0,0,300,300,300,400,400,400,400,400,400,400,400,400,400,400,400,300],
+  'Infra y herramientas':[300,300,400,450,450,500,500,500,550,550,550,550,550,550,550,550,600,600],
+  'Abogado startup':     [0,4000,2000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  'Contadores US+CO':    [0,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,600,400],
+};
+const MONTHS = 18;
+const RESERVA_ALWIN = 18000;
+const RESERVA_COLCHON = 24000;
+
+const tbody = document.getElementById('schedule-body');
+let monthTotals = new Array(MONTHS).fill(0);
+let grandTotal = 0;
+
+Object.entries(schedule).forEach(([label, months]) => {
+  const total = months.reduce((a,b) => a+b, 0);
+  grandTotal += total;
+  let row = `<tr><td>${label}</td>`;
+  months.forEach((v, i) => {
+    monthTotals[i] += v;
+    row += `<td class="num">${v > 0 ? '$' + v.toLocaleString() : '-'}</td>`;
+  });
+  row += `<td class="num" style="font-weight:600">$${total.toLocaleString()}</td></tr>`;
+  tbody.innerHTML += row;
+});
+
+let totalRow = '<tr class="total-row"><td>TOTAL</td>';
+monthTotals.forEach(t => totalRow += `<td class="num">$${t.toLocaleString()}</td>`);
+totalRow += `<td class="num">$${grandTotal.toLocaleString()}</td></tr>`;
+tbody.innerHTML += totalRow;
+
+// Reservas sin comprometer + comprobacion de que la suma da exactamente $200K
+const empty = monthTotals.map(() => '<td></td>').join('');
+tbody.innerHTML += `<tr><td style="color:var(--yellow)">Reserva Alwin (por definir)</td>${empty}<td class="num" style="color:var(--yellow)">$${RESERVA_ALWIN.toLocaleString()}</td></tr>`;
+tbody.innerHTML += `<tr><td style="color:var(--accent2)">Colchón / contingencia</td>${empty}<td class="num" style="color:var(--accent2)">$${RESERVA_COLCHON.toLocaleString()}</td></tr>`;
+const ronda = grandTotal + RESERVA_ALWIN + RESERVA_COLCHON;
+const cuadra = ronda === 200000;
+tbody.innerHTML += `<tr class="total-row"><td>RONDA COMPLETA</td>${empty}<td class="num" style="color:${cuadra ? 'var(--green)' : 'var(--red)'}">$${ronda.toLocaleString()}</td></tr>`;
+
+// Burn Chart
+new Chart(document.getElementById('burnChart'), {
+  type: 'bar',
+  data: {
+    labels: Array.from({length: MONTHS}, (_, i) => 'M' + (i + 1)),
+    datasets: [{
+      label: 'Gasto Mensual',
+      data: monthTotals,
+      backgroundColor: monthTotals.map((v,i) => {
+        const cumulative = monthTotals.slice(0, i+1).reduce((a,b) => a+b, 0);
+        return cumulative > 160000 ? 'rgba(255,107,107,0.7)' : cumulative > 100000 ? 'rgba(254,202,87,0.7)' : 'rgba(108,92,231,0.7)';
+      }),
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+    },
+    scales: {
+      x: { ticks: { color: '#8b8fa8' }, grid: { display: false } },
+      y: { ticks: { color: '#8b8fa8', callback: v => '$' + (v/1000) + 'K' }, grid: { color: 'rgba(46,51,72,0.5)' } }
+    }
+  }
+});
+</script>
+</body>
+</html>

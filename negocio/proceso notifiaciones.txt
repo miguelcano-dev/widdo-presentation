@@ -1,0 +1,23 @@
+npm install firebase
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCCDSNSYxJgBB6daFxiyc3-m0G67bKL1VQ",
+  authDomain: "widdo-dev.firebaseapp.com",
+  projectId: "widdo-dev",
+  storageBucket: "widdo-dev.firebasestorage.app",
+  messagingSenderId: "1023149143649",
+  appId: "1:1023149143649:web:73fddda0a0f91715229c20"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+
+key_pair=BCVb4mH9ufhpXZzr2KOkIwo1CUfztqzRBq4dFzGD8lPCoGP2k78J2oGHBmxsBJ4q13JXkairyFYak8L-vehtOh0

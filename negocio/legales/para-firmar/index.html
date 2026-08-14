@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Documentos Para Firmar</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --bg: #0A0A0F; --card: #12121A; --border: #1F1F2B; --green: #00C853; --green-dim: #00C85320; --text: #E8E8ED; --text-dim: #8B8B95; --text-muted: #5A5A66; --warning: #FFB800; --danger: #FF4757; --blue: #5B8DEF; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 14px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 32px 80px; }
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 40px; }
+  .badge { display: inline-block; padding: 4px 10px; background: var(--green-dim); border: 1px solid var(--green); border-radius: 4px; color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  h1 { font-size: 28px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+  .subtitle { font-size: 14px; color: var(--text-dim); }
+  h2 { font-size: 16px; font-weight: 700; margin: 36px 0 16px; color: var(--green); text-transform: uppercase; letter-spacing: 1px; }
+  p { color: var(--text-dim); margin-bottom: 12px; font-size: 13px; }
+
+  .doc-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; transition: border-color 0.2s; }
+  .doc-card:hover { border-color: var(--green); }
+  .doc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .doc-number { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green); font-weight: 600; }
+  .doc-title { font-size: 18px; font-weight: 700; margin: 4px 0; }
+  .doc-desc { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+  .doc-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
+  .doc-meta span { display: flex; align-items: center; gap: 4px; }
+
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.5px; }
+  .pill-urgent { background: rgba(255,71,87,0.15); color: var(--danger); border: 1px solid var(--danger); }
+  .pill-ready { background: var(--green-dim); color: var(--green); border: 1px solid var(--green); }
+  .pill-wait { background: rgba(255,184,0,0.15); color: var(--warning); border: 1px solid var(--warning); }
+  .pill-done { background: var(--border); color: var(--text-muted); border: 1px solid var(--text-muted); }
+
+  .btn { display: inline-block; padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; margin-top: 12px; margin-right: 8px; transition: all 0.2s; }
+  .btn-primary { background: var(--green); color: var(--bg); }
+  .btn-primary:hover { background: #00E676; }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dim); }
+  .btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+  .steps { background: rgba(0,200,83,0.05); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-top: 12px; }
+  .steps ol { margin: 8px 0 0 20px; font-size: 13px; color: var(--text-dim); }
+  .steps li { margin-bottom: 6px; }
+
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+  <span class="badge">Widdo Inc · Legal</span>
+  <h1>Documentos Para Firmar</h1>
+  <p class="subtitle">Todos los documentos legales pendientes de firma. Abrir cada uno, revisar, imprimir a PDF (Ctrl+P → Save as PDF) y subir a DocuSign para firma electrónica.</p>
+  <p class="subtitle" style="margin-top:12px;color:var(--danger);"><strong>ESTADO A 13-AGO-2026: NADA FIRMADO.</strong> Ninguno de estos documentos se ha ejecutado todavía. El más crítico es el <strong>IP Assignment</strong>: mientras no se firme, el código de Widdo es propiedad de Miguel, no de Widdo Inc.</p>
+</header>
+
+<!-- COMO USAR -->
+<h2>Cómo firmar</h2>
+<div class="steps">
+  <ol>
+    <li>Haz clic en <strong>"Abrir documento"</strong> para ver el HTML</li>
+    <li>Revisa el contenido — verifica que todos los datos sean correctos</li>
+    <li>Imprime a PDF: <strong>Ctrl+P → Destino: Guardar como PDF</strong></li>
+    <li>Sube el PDF a <strong>DocuSign</strong> (docusign.com → free plan permite 3 docs/mes)</li>
+    <li>Agrega los campos de firma para cada parte</li>
+    <li>Envía para firma electrónica</li>
+    <li>Guarda el PDF firmado en <code>negocio/legales/firmados/</code></li>
+  </ol>
+</div>
+
+<!-- DOCUMENTOS -->
+<h2>Documentos en orden de prioridad</h2>
+
+<!-- 1. FOUNDERS AGREEMENT -->
+<div class="doc-card">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">#1</span>
+      <div class="doc-title">Founders Agreement</div>
+    </div>
+    <span class="pill pill-urgent">Firmar esta semana</span>
+  </div>
+  <div class="doc-desc">Contrato entre Miguel (70%) y Alwin (30%). Define equity, vesting, roles, compensación, gobernanza, IP, non-compete. Corregido para coincidir con lo que emitió Stripe Atlas (9M shares Common Stock single-class).</div>
+  <div class="doc-meta">
+    <span>Firman: Miguel + Alwin</span>
+    <span>Páginas: ~8</span>
+    <span>Versión: Final (corregida abril 2026)</span>
+  </div>
+  <a href="founders-agreement.html" class="btn btn-primary">Abrir documento</a>
+  <a href="founders-agreement.html" class="btn btn-outline" target="_blank">Abrir en nueva pestaña</a>
+</div>
+
+<!-- 2. PROMISSORY NOTE -->
+<div class="doc-card">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">#2</span>
+      <div class="doc-title">Promissory Note (Founder Loan)</div>
+    </div>
+    <span class="pill pill-done">Préstamo PAGADO 3-ago-2026</span>
+  </div>
+  <div class="doc-desc">Formaliza el founder loan de <strong>$1,476.46 USD</strong> que Widdo Inc le debía a Miguel por gastos operativos adelantados ene–jul 2026 (Anthropic, DigitalOcean, Resend, Google Play, Apple). Sin intereses. Incluye Schedule A con 21 líneas, todas con factura. <strong>El préstamo ya se repagó íntegro el 3-ago-2026: NO es deuda viva.</strong> Se firma junto con el Board Consent de repago para dejar el papel del hecho ya consumado.</div>
+  <div class="doc-meta">
+    <span>Firma: Miguel (como CEO + como individuo)</span>
+    <span>Páginas: ~4</span>
+    <span>Saldo pendiente: $0.00 — PAID IN FULL 3-ago-2026</span>
+  </div>
+  <a href="promissory-note.html" class="btn btn-primary">Abrir documento</a>
+  <a href="promissory-note.html" class="btn btn-outline" target="_blank">Abrir en nueva pestaña</a>
+</div>
+
+<!-- 3. IP ASSIGNMENT -->
+<div class="doc-card">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">#3</span>
+      <div class="doc-title">IP Assignment Agreement</div>
+    </div>
+    <span class="pill pill-ready">Listo para firma</span>
+  </div>
+  <div class="doc-desc">Transfiere toda la propiedad intelectual de Widdo (código, marca, dominio, diseños) de Miguel a Widdo Inc. Necesario para que la C Corp sea dueña legal del producto. Firmar después del Founders Agreement.</div>
+  <div class="doc-meta">
+    <span>Firma: Miguel (asigna IP a la C Corp)</span>
+    <span>Páginas: ~3</span>
+    <span>Prerequisito: Founders Agreement firmado</span>
+  </div>
+  <a href="ip-assignment.html" class="btn btn-primary">Abrir documento</a>
+  <a href="ip-assignment.html" class="btn btn-outline" target="_blank">Abrir en nueva pestaña</a>
+</div>
+
+<!-- 4. ACTA 002 -->
+<div class="doc-card">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">#4</span>
+      <div class="doc-title">Acta No. 002 — Reforma Estatutaria SAS</div>
+    </div>
+    <span class="pill pill-wait">En standby — SAS INACTIVA</span>
+  </div>
+  <div class="doc-desc">Cambio de nombre ALIANZ DESIGN S.A.S. → WIDDO S.A.S. Ampliación del objeto social (SaaS, sports tech, AI, export de servicios). Cambio de período del Representante Legal a indefinido. Ratificación de Miguel como Gerente.</div>
+  <div class="doc-meta">
+    <span>Firma: Miguel (accionista único SAS)</span>
+    <span>Formato: 3 copias impresas en tinta azul</span>
+    <span>Destino: Radicación CCB Bogotá</span>
+  </div>
+  <div class="steps" style="margin-top: 12px;">
+    <ol>
+      <li>Este documento es un <strong>.md</strong> — copiarlo a Word o Google Docs primero</li>
+      <li>Imprimir <strong>3 copias</strong></li>
+      <li>Firmar las 3 con <strong>tinta azul</strong> (NO negra, NO digital)</li>
+      <li>Radicar en CCB Bogotá (en persona o portal digital)</li>
+      <li>Pagar tasa de radicación (~$65-80K COP)</li>
+      <li>Esperar aprobación (3-5 días hábiles)</li>
+    </ol>
+  </div>
+  <a href="../acta-002-reforma-cambio-nombre-widdo.md" class="btn btn-primary">Abrir documento</a>
+</div>
+
+<!-- 5. AMENDMENT 01 -->
+<div class="doc-card">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">#5</span>
+      <div class="doc-title">Amendment 01 — Founder Compensation</div>
+    </div>
+    <span class="pill pill-urgent">Sin firmar</span>
+  </div>
+  <div class="doc-desc">Enmienda al Founders Agreement que fija el salario puente de Miguel en <strong>$2,000 USD/mes durante 3 meses</strong>, con <strong>sunset el 31-oct-2026</strong>. PDF ya generado. <em>Decisiones abiertas de Miguel: si el monto es $2,000 o $2,500, y si el salario se corta al entrar inversión o al conseguir otro trabajo.</em></div>
+  <div class="doc-meta">
+    <span>Firma: Miguel + Alwin (board)</span>
+    <span>Sunset: 31-oct-2026</span>
+    <span>PDF: amendment-01-founder-compensation.pdf</span>
+  </div>
+  <a href="amendment-01-founder-compensation.html" class="btn btn-primary">Abrir documento</a>
+  <a href="amendment-01-founder-compensation.pdf" class="btn btn-outline" target="_blank">Ver PDF</a>
+</div>
+
+<!-- 6. BOARD CONSENT -->
+<div class="doc-card">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">#6</span>
+      <div class="doc-title">Board Consent — Founder Loan Repayment</div>
+    </div>
+    <span class="pill pill-urgent">Sin firmar</span>
+  </div>
+  <div class="doc-desc">Consentimiento del board que autoriza el repago del founder loan a Miguel. El repago <strong>ya se ejecutó el 3-ago-2026 por $1,476.46 USD</strong>; este documento deja el respaldo corporativo del desembolso. Se firma junto con el Promissory Note (#2). PDF ya generado.</div>
+  <div class="doc-meta">
+    <span>Firma: Miguel + Alwin (board)</span>
+    <span>Monto autorizado: $1,476.46 USD</span>
+    <span>PDF: board-consent-founder-loan-repayment.pdf</span>
+  </div>
+  <a href="board-consent-founder-loan-repayment.html" class="btn btn-primary">Abrir documento</a>
+  <a href="board-consent-founder-loan-repayment.pdf" class="btn btn-outline" target="_blank">Ver PDF</a>
+</div>
+
+<!-- 7. TRANSFER PRICING — STANDBY -->
+<div class="doc-card" style="opacity: 0.7;">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">#7</span>
+      <div class="doc-title">Transfer Pricing Agreement (Cost+15%)</div>
+    </div>
+    <span class="pill pill-wait">En standby — SAS INACTIVA</span>
+  </div>
+  <div class="doc-desc">Acuerdo de precios de transferencia entre Widdo Inc (USA) y Widdo SAS (Colombia) a <strong>Cost+15%</strong>. <strong>En standby:</strong> la SAS Colombia está inactiva y el foco es USA-only. La versión HTML que vivía aquí era la equivocada (Cost+20%, además internamente incoherente) y quedó archivada en <code>_archivo-negocio/legales/transfer-pricing.html</code>. Las versiones canónicas al 15% son las de abajo.</div>
+  <div class="doc-meta">
+    <span>Firma: Miguel (como CEO de C Corp + como RL de SAS)</span>
+    <span>Markup canónico: Cost+15%</span>
+    <span>Solo si se reactiva la SAS</span>
+  </div>
+  <a href="../transfer-pricing-agreement-final.md" class="btn btn-primary">Ver versión .md canónica (15%)</a>
+  <a href="../03-transfer-pricing.html" class="btn btn-outline">Ver versión HTML canónica (15%)</a>
+</div>
+
+<!-- ALREADY DONE -->
+<h2>Ya publicados / No requieren firma</h2>
+
+<div class="doc-card" style="opacity: 0.6;">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">✓</span>
+      <div class="doc-title">Terms of Service</div>
+    </div>
+    <span class="pill pill-done">Publicado</span>
+  </div>
+  <div class="doc-desc">Publicado en widdo.co/en/terms, /es/terms, /pt/terms. Fuente de la versión publicada: <code>landing/src/app/[locale]/terms/page.tsx</code> (no el HTML de negocio/legales).</div>
+</div>
+
+<div class="doc-card" style="opacity: 0.6;">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">✓</span>
+      <div class="doc-title">Privacy Policy</div>
+    </div>
+    <span class="pill pill-done">Publicado</span>
+  </div>
+  <div class="doc-desc">Publicado en widdo.co/en/privacy, /es/privacy, /pt/privacy. Fuente de la versión publicada: <code>landing/src/app/[locale]/privacy/page.tsx</code> (no el HTML de negocio/legales).</div>
+</div>
+
+<div class="doc-card" style="opacity: 0.6;">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">✓</span>
+      <div class="doc-title">Section 83(b) Elections</div>
+    </div>
+    <span class="pill pill-done">Fileados IRS</span>
+  </div>
+  <div class="doc-desc">Fileados marzo 17, 2026 para ambos founders vía Stripe Atlas. Miguel: 6,300,000 shares @ $63. Alwin: 2,700,000 shares @ $27.</div>
+</div>
+
+<!-- FUTURE -->
+<h2>Para usar cuando se necesiten</h2>
+
+<div class="doc-card" style="opacity: 0.7;">
+  <div class="doc-header">
+    <div>
+      <span class="doc-number">—</span>
+      <div class="doc-title">SAFE Note Template</div>
+    </div>
+    <span class="pill pill-wait">Cuando llegue inversor</span>
+  </div>
+  <div class="doc-desc">Template estándar YC post-money SAFE. Personalizar cap y monto cuando haya inversor concreto (Erica Berman u otro).</div>
+  <a href="../04-safe-note-template.html" class="btn btn-outline">Ver template</a>
+</div>
+
+<footer class="footer">
+  <p>Widdo Inc · Documentos Legales · Actualizado 13 agosto 2026<br>
+  Directorio: <code>negocio/legales/para-firmar/</code></p>
+</footer>
+
+</div>
+</body>
+</html>

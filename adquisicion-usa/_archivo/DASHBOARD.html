@@ -1,0 +1,261 @@
+<!-- ARCHIVADO 13-ago-2026 — manda montar Instantly como canal de envío (descartado) — sustituido por MOTOR/RUNBOOK.md + LANZAMIENTO-GO-NOGO.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo · Adquisición USA — Paso a Paso</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#1e293b; --panel2:#243449; --line:#334155;
+    --ink:#e2e8f0; --mut:#94a3b8; --acc:#22d3ee; --acc2:#34d399;
+    --warn:#fbbf24; --done:#34d399; --todo:#64748b; --hot:#f472b6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.55;padding:0 16px}
+  .wrap{max-width:1040px;margin:0 auto;padding:32px 0 64px}
+  h1{font-size:1.9rem;margin:0 0 4px}
+  h2{font-size:1.25rem;margin:38px 0 14px;border-left:4px solid var(--acc);padding-left:10px}
+  .sub{color:var(--mut);margin:0 0 20px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+  .chip{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.85rem}
+  .chip b{color:var(--acc)}
+  .grid{display:grid;gap:14px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .card h3{margin:0 0 8px;font-size:1.02rem}
+  .tag{display:inline-block;font-size:.72rem;padding:2px 9px;border-radius:999px;font-weight:600}
+  .t-now{background:rgba(52,211,153,.15);color:var(--done);border:1px solid rgba(52,211,153,.4)}
+  .t-next{background:rgba(251,191,36,.13);color:var(--warn);border:1px solid rgba(251,191,36,.35)}
+  .t-have{background:rgba(34,211,238,.13);color:var(--acc);border:1px solid rgba(34,211,238,.35)}
+  ul{margin:8px 0;padding-left:18px}
+  li{margin:5px 0}
+  .done::marker{content:"✓ "}
+  .done{color:var(--ink)}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:0}
+  .steps>li{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px 14px 58px;margin:12px 0}
+  .steps>li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:14px;
+    width:30px;height:30px;border-radius:50%;background:var(--acc);color:#04222b;font-weight:800;
+    display:flex;align-items:center;justify-content:center}
+  .steps h4{margin:0 0 4px;font-size:1rem}
+  .who{font-size:.75rem;color:var(--mut)}
+  .who b{color:var(--acc2)}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:8px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--mut);font-weight:600;position:sticky;top:0;background:var(--panel2)}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:8px}
+  .arrow{color:var(--acc);font-size:1.4rem;text-align:center}
+  code{background:var(--panel2);padding:1px 6px;border-radius:5px;font-size:.82em}
+  .note{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.3);border-radius:10px;padding:12px 14px;color:#fde68a;font-size:.9rem}
+  .foot{margin-top:34px;color:var(--mut);font-size:.82rem;border-top:1px solid var(--line);padding-top:16px}
+  @media(max-width:720px){.g3,.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🎯 Widdo · Adquisición USA — Handoff Alwin</h1>
+  <p class="sub">Ligas primero · Florida · wedge hispano + anti-TeamSnap · demo online + onboarding con agente de Widdo</p>
+
+  <a href="PLAYBOOK-IMPLEMENTACION.html" style="display:inline-block;background:linear-gradient(90deg,#22d3ee,#34d399);color:#04222b;font-weight:800;text-decoration:none;padding:11px 20px;border-radius:10px;margin:4px 0 6px;font-size:1rem">▶ Ir al Playbook de Implementación (checklist)</a>
+  <p class="sub" style="margin:0 0 8px;font-size:.82rem">Checklist interactivo con progreso — para ejecutar y marcar avances.</p>
+
+  <div class="chips">
+    <span class="chip"><b>161</b> prospectos reales (FL+TX)</span>
+    <span class="chip"><b>3</b> segmentos: torneos · FL clubes · TX clubes</span>
+    <span class="chip"><b>47</b> mensajes escritos</span>
+    <span class="chip">Meta: <b>60</b> clubes = breakeven</span>
+    <span class="chip">3 <b>skills</b> IA listos</span>
+  </div>
+
+  <h2>🗺️ Segmentos y geografía</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Segmento</th><th>Prospectos</th><th>Mensajes</th><th>Valor</th><th>Archivo</th></tr></thead>
+      <tbody>
+        <tr><td>⭐ <b>Torneos y ligas grandes</b> (FL+TX)</td><td>28</td><td>✅ 11 + follow-ups</td><td><b>Máximo</b> — cobran a escala, desplazar GotSport/AES</td><td><code>torneos/00-TORNEOS-MASTER.md</code> · <code>torneos/01-MENSAJES-TORNEOS.md</code></td></tr>
+        <tr><td><b>Florida</b> — clubes/ligas</td><td>82+</td><td>✅ 18 + follow-ups</td><td>Base validación del mensaje</td><td><code>00-LISTA-MAESTRA-FLORIDA.md</code> · <code>03-TIER1-MENSAJES.md</code></td></tr>
+        <tr><td><b>Texas</b> — clubes/ligas</td><td>51</td><td>✅ 18 + follow-ups</td><td>Mayor volumen hispano</td><td><code>texas/00-LISTA-MAESTRA-TEXAS.md</code> · <code>texas/03-TIER1-MENSAJES-TX.md</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">🎯 <b>ICP por capacidad de pago</b> (sin sesgo hispano): organizadores de torneos / ligas grandes → clubes que ya pagan software → semi-estructura → manual. El <b>bilingüe ES/EN es un feature</b>, no el filtro. <b>GotSport</b> domina soccer y todos lo odian → un mensaje "alternativa a GotSport" sirve para ~11 prospectos a la vez.</p>
+  <p class="note" style="background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.3);color:#a7f3d0">✅ <b>Gate de torneos RESUELTO + verificado con tests.</b> Módulo real y completo (brackets, pagos Stripe, check-in, live scoring). Tests P0: scheduler <b>correcto</b> (10/10) pero <b>lento a escala</b> (round-robin 32 = 496 fixtures → 7,5 min síncrono). <b>Sweet-spot en eliminación/grupos pitcheable ya</b> (HTX 275, SMC 251-295); antes de eventos grandes o round-robins grandes hace falta el fix de colas + optimización. Ver <code>torneos/REPORTE-P0-TESTS.md</code>.</p>
+
+  <p class="note" style="background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.3);color:#a7f3d0">
+    🤖 <b>El agente lo ejecuta automático.</b> Research → enrich → verificar sistema → redactar → <b>enviar EMAIL</b> lo hace el agente de punta a punta (los 18 ya están en <code>03-TIER1-MENSAJES.md</code>, orden P1→P2→P3). <b>Lo único manual</b>: los IG DM / WhatsApp (Meta banea bots → los hace Alwin) y aprobar las respuestas al inicio. Requiere montar la infra de envío una vez (dominio aparte + Instantly/Smartlead) — ver capa 1 abajo.
+  </p>
+
+  <h2>✅ Lo que ya está hecho</h2>
+  <div class="grid g3">
+    <div class="card">
+      <h3>📋 Prospectos <span class="tag t-have">datos reales</span></h3>
+      <ul>
+        <li class="done">82+ orgs de FL con contacto público verificado</li>
+        <li class="done">Tier 1 (18) y Tier 2 (land-and-expand)</li>
+        <li class="done">4 deportes: soccer, baseball, basket/vóley, flag/cheer/rec</li>
+      </ul>
+      <code>00-LISTA-MAESTRA-FLORIDA.md</code>
+    </div>
+    <div class="card">
+      <h3>🗡️ Copy de venta <span class="tag t-have">quejas reales</span></h3>
+      <ul>
+        <li class="done">TeamSnap: ads a quien paga, cobros, soporte</li>
+        <li class="done">SportsEngine + LeagueApps: fees, complejidad, bugs</li>
+        <li class="done">Cada queja → frase de venta de Widdo</li>
+      </ul>
+      <code>reseñas-*.md</code>
+    </div>
+    <div class="card">
+      <h3>✉️ 18 mensajes <span class="tag t-have">listos para enviar</span></h3>
+      <ul>
+        <li class="done">Decisor real + sistema actual verificado por prospecto</li>
+        <li class="done">Gancho específico al software que usan hoy</li>
+        <li class="done">Prioridad P1/P2/P3 + canal + idioma por lead</li>
+      </ul>
+      <code>03-TIER1-MENSAJES.md</code>
+    </div>
+  </div>
+
+  <h2>🔻 El embudo en 3 capas</h2>
+  <div class="flow">
+    <div class="card">
+      <span class="tag t-now">AHORA</span>
+      <h3>1 · Outreach</h3>
+      <p class="sub" style="margin:6px 0 0"><b>Email → agente automático</b> (dominio warmed + Instantly/Smartlead API). <b>IG DM / WhatsApp → Alwin a mano</b> (Meta banea bots).</p>
+    </div>
+    <div class="arrow">➜</div>
+    <div class="card">
+      <span class="tag t-next">DESPUÉS</span>
+      <h3>2 · Demo online</h3>
+      <p class="sub" style="margin:6px 0 0">Lean: <b>video EN/ES + Alwin en vivo</b>. Escalar con <b>Karumi.ai</b> (demo por videollamada IA) cuando haya volumen.</p>
+    </div>
+    <div class="arrow">➜</div>
+    <div class="card">
+      <span class="tag t-have">YA EXISTE</span>
+      <h3>3 · Onboarding</h3>
+      <p class="sub" style="margin:6px 0 0"><b>Agente de IA de Widdo</b> que lleva al cliente paso a paso.</p>
+    </div>
+  </div>
+  <p class="note">⚠️ <b>Karumi.ai</b> es un agente que da el <i>demo</i> en videollamada (multilingüe, 24/7) — NO es email. Actívalo <b>más adelante</b>, cuando agendar demos sea el cuello de botella. Con 0 clientes USA es sobre-ingeniería.</p>
+
+  <h2>📚 Playbooks de ejecución</h2>
+  <div class="grid g3">
+    <div class="card">
+      <h3>📧 Envío de email <span class="tag t-next">setup</span></h3>
+      <ul>
+        <li><b>~25/día por buzón</b> warmed (empezar 5-10, subir 2-3 sem)</li>
+        <li>Más volumen = <b>más buzones</b> (2 dominios × 3 = ~150/día)</li>
+        <li>Dominio aparte + SPF/DKIM/DMARC + verificar emails</li>
+        <li>Herramienta: <b>Instantly</b> (o Smartlead p/ API)</li>
+        <li>Trackea <b>respuestas</b>, no aperturas (Apple las infla)</li>
+      </ul>
+      <code>04-ENVIO-EMAIL-SETUP.md</code>
+    </div>
+    <div class="card">
+      <h3>🌱 Crecimiento orgánico <span class="tag t-next">mediano plazo</span></h3>
+      <ul>
+        <li><b>Video corto bilingüe</b> — nicho vacío (mejor apuesta)</li>
+        <li><b>Facebook Groups</b> — donde están los admins hispanos</li>
+        <li><b>Reddit evergreen</b> — "GotSport alternative" rankea siempre</li>
+        <li>Comparison SEO + build-in-public (LinkedIn)</li>
+        <li>Product-led: cada familia en la app = exposición</li>
+      </ul>
+      <code>05-CRECIMIENTO-ORGANICO.md</code>
+    </div>
+    <div class="card">
+      <h3>⚡ Ventaja injusta <span class="tag t-now">clave</span></h3>
+      <p class="sub" style="margin:6px 0 0">Contenido de administración de ligas/torneos <b>en español</b> es un <b>nicho casi vacío</b>. Nadie le habla al admin de liga hispana. Ese es el hueco a ocupar con video + comunidad.</p>
+    </div>
+    <div class="card">
+      <h3>🏆 "Widdo Cup" <span class="tag t-next">cuña</span></h3>
+      <p class="sub" style="margin:6px 0 0">Lección de Perfect Game: <b>sé dueño del evento, no solo del software</b>. Empieza <b>powereando gratis</b> el torneo de un prospecto (La Cantera, Copa Texas…) → demo viviente + leads + dogfooding, casi $0.</p>
+      <code>torneos/PLAN-WIDDO-CUP.md</code>
+    </div>
+    <div class="card">
+      <h3>📖 Estudio Perfect Game <span class="tag t-have">ref</span></h3>
+      <p class="sub" style="margin:6px 0 0">Cómo el gigante del béisbol ($100M+) empezó y monetiza en capas. Qué replicar (estructura, no la extracción a familias).</p>
+      <code>torneos/ESTUDIO-PERFECT-GAME.md</code>
+    </div>
+  </div>
+
+  <h2>🪜 Paso a paso — qué sigue</h2>
+  <ol class="steps">
+    <li>
+      <h4>Montar infra de envío (una vez, Semana 1)</h4>
+      <p class="who">Dueño: <b>Miguel + IA</b></p>
+      Dominio aparte (ej. <code>try-widdo.com</code>) + SPF/DKIM/DMARC + warm-up 2-3 sem + cuenta Instantly/Smartlead (API). Sin esto, auto-enviar quema el dominio principal.
+    </li>
+    <li>
+      <h4>Enviar P1 por email → automático</h4>
+      <p class="who">Dueño: <b>Agente</b> (Alwin aprueba lote 1)</p>
+      Los 8 de P1 <b>ya pagan software</b> → dolor de cambio real. El agente personaliza (1 detalle fresco por lead) y encola vía API. 5-6/día por buzón, subiendo. Objetivo: 3-5 respuestas.
+    </li>
+    <li>
+      <h4>P2/P3 + los de IG/WhatsApp</h4>
+      <p class="who">Dueño: <b>Agente (email)</b> · <b>Alwin (IG/WhatsApp)</b></p>
+      Email de P2/P3 sigue automático. IG DM / WhatsApp (Only Soccer, La Cantera, KCX, Hialeah City FC, SW FL) los hace Alwin a mano. Seguimiento a 3-4 días.
+    </li>
+    <li>
+      <h4>Demo online a quien responda</h4>
+      <p class="who">Dueño: <b>Alwin</b></p>
+      Video EN/ES + Alwin en vivo (15 min). Enseña la migración gratis desde SU sistema actual (es el gancho más fuerte).
+    </li>
+    <li>
+      <h4>Cerrar 1 liga "design partner"</h4>
+      <p class="who">Dueño: <b>Alwin</b></p>
+      Descuento fundador + migración de datos gratis. Demo online → el <b>agente de Widdo onboarda</b> paso a paso.
+    </li>
+    <li>
+      <h4>Caso de estudio → cascada</h4>
+      <p class="who">Dueño: <b>Miguel + IA</b></p>
+      Video/números de esa liga. Usarlo para cerrar las siguientes y activar land-and-expand (equipos → clubes).
+    </li>
+    <li>
+      <h4>Escalar hacia breakeven (60 clubes)</h4>
+      <p class="who">Dueño: <b>equipo</b></p>
+      Doblar el canal que convierta. Replicar el pipeline en otro estado (TX/GA). Evaluar Karumi + herramienta de envío (Instantly/Smartlead).
+    </li>
+  </ol>
+
+  <h2>🔥 Tier 1 — orden de envío (P1 primero)</h2>
+  <p class="sub" style="margin:-6px 0 10px">Prioridad = <b>capacidad de pago + dolor de cambio</b>, no tamaño. 🔥 P1 = ya pagan software · 🟡 P2 = semi-estructura · 🟢 P3 = manual/redes (cierran lento). Mensaje completo de cada uno en <code>03-TIER1-MENSAJES.md</code>.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Prio</th><th>Organización</th><th>Decisor</th><th>Sistema hoy → gancho</th><th>Canal · idioma</th><th>Contacto</th></tr></thead>
+      <tbody>
+        <tr><td>🔥1</td><td>KCX Elite (cheer)</td><td>Raquel Sabet</td><td>GoMotion+Square+Setmore → consolida</td><td>WhatsApp · 🇪🇸</td><td>RSabet.kcxelite@gmail.com · 321-697-2388</td></tr>
+        <tr><td>🔥1</td><td>Voltage Volleyball</td><td>Tom Wagenhauser</td><td>PlayMetrics → ~50% + sin fees a familias</td><td>Email · 🇺🇸</td><td>info@voltagevb.com</td></tr>
+        <tr><td>🔥1</td><td>Florida Elite Volleyball (FEVA)</td><td>Katia & Fernando Saavedra</td><td>SportsEngine + form aparte → une los dos</td><td>Email · 🇺🇸</td><td>feva@fevolleyball.com · 813-833-8746</td></tr>
+        <tr><td>🔥1</td><td>South Florida Flag Football</td><td>Amanda Conforti</td><td>LeagueApps → quita el ~5% fee</td><td>Email · 🇺🇸</td><td>info@sfffl.org</td></tr>
+        <tr><td>🔥1</td><td>BNA Sports (Orlando NFL Flag)</td><td>Darrell "DK" Taylor</td><td>LeagueApps → mitad + soporte español</td><td>Email · 🇺🇸</td><td>dtaylor@bnasports.org</td></tr>
+        <tr><td>🔥1</td><td>Optimist Club Miami Lakes</td><td>Chris McCall</td><td>Blue Sombrero + flag aparte → unifica</td><td>Email · 🇺🇸</td><td>info@ocml.org · 305-204-6857</td></tr>
+        <tr><td>🔥1</td><td>Liberty City Optimist</td><td>Eureca Coulanges</td><td>SportsEngine + PDF Dropbox → una sola</td><td>Email · 🇺🇸</td><td>info@libertycityoptimist.org</td></tr>
+        <tr><td>🔥1</td><td>Hialeah City FC</td><td>Osmani Pelaez</td><td>SQUAAD+GotSport+Wix → deja de repartir</td><td>WhatsApp · 🇪🇸</td><td>INFO@HIALEAHCITYCLUB.COM · 786-651-1423</td></tr>
+        <tr><td>🟡2</td><td>Naples Knights Softball</td><td>Christine Matulay</td><td>Wix forms → plataforma deportiva real</td><td>Email · 🇺🇸</td><td>admin@NaplesKnightsSoftball.com</td></tr>
+        <tr><td>🟡2</td><td>Premier Futbol League (PFL)</td><td>(por confirmar)</td><td>TeamPass + Wix → junta los dos</td><td>Email · 🇪🇸</td><td>pflsoccer@outlook.com</td></tr>
+        <tr><td>🟡2</td><td>La Cantera Soccer Academy</td><td>Drey A. Gomez</td><td>GotSport → club + Kendall Cup juntos</td><td>IG DM · 🇪🇸</td><td>lacantersa@gmail.com · 305-299-5236</td></tr>
+        <tr><td>🟡2</td><td>Ciudad de Hialeah (municipal)</td><td>Alyssa Palenzuela</td><td>CivicRec (EN) → inscripción bilingüe</td><td>Email formal · 🇪🇸</td><td>ap7776@hialeahfl.gov · 305-687-2650</td></tr>
+        <tr><td>🟢3</td><td>Copa Latina Soccer League</td><td>Abel Riquelme</td><td>Wix + teléfono → cobros online solos</td><td>Email · 🇪🇸</td><td>CopaLatinaSoccer@yahoo.com · 561-329-2580</td></tr>
+        <tr><td>🟢3</td><td>Liga Hispana de Tampa</td><td>(por confirmar)</td><td>Web HTML 2000s → web moderna + cobros</td><td>Email · 🇪🇸</td><td>info@futbollocal.com</td></tr>
+        <tr><td>🟢3</td><td>SW Florida Latin American SL</td><td>Enrique Chivas</td><td>Meetup + efectivo → cobros online</td><td>WhatsApp · 🇪🇸</td><td>239-849-1094</td></tr>
+        <tr><td>🟢3</td><td>Only Soccer Liga Miami</td><td>Julio Olmedo</td><td>Solo Instagram → tu propia plataforma</td><td>IG DM · 🇪🇸</td><td>IG @onlysoccerligamiami</td></tr>
+        <tr><td>🟢3</td><td>N Zone Sports Champion's Gate</td><td>Pedro y Gabriela</td><td>Franquicia interna → ángulo suave (lock-in)</td><td>Email · 🇪🇸</td><td>championsgate@nzonesports.com · 407-978-0288</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="sub" style="margin-top:8px">Tier 2 (land-and-expand: ligas de 120-500 equipos) y la fuente para más prospectos (FYSA Club Finder, 200+ clubes) → en <code>00-LISTA-MAESTRA-FLORIDA.md</code>. Decisores completos en <code>prospectos-raw/_enrich_*.md</code>.</p>
+
+  <div class="foot">
+    <b>Estructura</b> · <code>adquisicion-usa/</code>: <b>INDEX.md</b> (mapa de todo) · CLAUDE.md · PLAN · 00-LISTA-MAESTRA-FLORIDA · 03-TIER1-MENSAJES (18 FL) · 06-SECUENCIA-FOLLOWUPS-CLUBES · <b>texas/</b> (51 orgs + 18 mensajes) · <b>torneos/</b> (28 orgs + 11 mensajes + estudio PG + plan Widdo Cup) · 01-GUIONES · 02-AUTOMATIZACION · <b>04-ENVIO-EMAIL-SETUP</b> · <b>05-CRECIMIENTO-ORGANICO</b> · reseñas-*.md · prospectos-raw/ &nbsp;|&nbsp; <b>Skills</b>: <code>.claude/skills/</code><br>
+    <b>Reglas</b>: nunca inventar contactos · email en frío = CAN-SPAM (identidad + dirección + baja) · Instagram/WhatsApp a mano (sin bots) · personalizar siempre (org + gancho + idioma).
+  </div>
+
+</div>
+</body>
+</html>

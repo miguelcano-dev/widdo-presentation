@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAFE Note — Widdo Inc (YC Post-Money)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0A0A0F; color: #E8E8ED; line-height: 1.7; }
+  .draft-banner { background: linear-gradient(135deg, #FF6B35, #E53E3E); color: white; text-align: center; padding: 12px; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; position: sticky; top: 0; z-index: 100; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 60px 80px; }
+  .doc-header { text-align: center; border-bottom: 2px solid #00C853; padding-bottom: 30px; margin-bottom: 40px; }
+  .doc-header h1 { font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+  .doc-header .subtitle { font-size: 16px; color: #00C853; font-weight: 500; }
+  .doc-header .date { font-size: 14px; color: #888; margin-top: 8px; }
+  .doc-header .note { font-size: 13px; color: #888; margin-top: 8px; font-style: italic; }
+  h2 { font-size: 20px; font-weight: 700; color: #00C853; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #1a1a2e; counter-increment: section; }
+  h2::before { content: counter(section) ". "; }
+  h3 { font-size: 16px; font-weight: 600; color: #FFFFFF; margin: 24px 0 12px; }
+  p { margin-bottom: 14px; color: #ccc; text-align: justify; font-size: 15px; }
+  .fill-in { background: #1a1a2e; border: 1px dashed #00C853; padding: 2px 12px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00C853; }
+  .highlight { color: #00C853; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th { background: #12121A; color: #00C853; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+  td { padding: 10px 12px; border-bottom: 1px solid #1a1a2e; color: #ccc; }
+  ol, ul { margin: 12px 0 12px 24px; color: #ccc; }
+  li { margin-bottom: 8px; }
+  .party-block { background: #12121A; border: 1px solid #1a1a2e; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .party-block .label { font-size: 12px; color: #00C853; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+  .party-block .name { font-size: 18px; font-weight: 600; color: #fff; }
+  .party-block .detail { font-size: 14px; color: #999; margin-top: 4px; }
+  .key-terms { background: #0a1a0a; border: 1px solid #00C853; border-radius: 8px; padding: 20px; margin: 20px 0; }
+  .key-terms h3 { color: #00C853; margin-top: 0; }
+  .key-terms table td { font-family: 'JetBrains Mono', monospace; }
+  .signature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; padding-top: 40px; border-top: 2px solid #1a1a2e; }
+  .sig-party { text-align: center; }
+  .sig-line { border-top: 1px solid #555; margin: 60px 0 8px; padding-top: 8px; }
+  .sig-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .sig-name { font-size: 16px; font-weight: 600; color: #fff; margin-top: 4px; }
+  .sig-title { font-size: 13px; color: #00C853; margin-top: 2px; }
+  .attorney-notes { background: #1a0a00; border: 1px solid #FF6B35; border-radius: 8px; padding: 20px; margin-top: 40px; }
+  .attorney-notes h3 { color: #FF6B35; }
+  .attorney-notes li { color: #FF6B35; font-size: 14px; }
+  .disclaimer { text-align: center; padding: 20px; margin-top: 40px; background: #12121A; border-radius: 8px; font-size: 12px; color: #666; }
+  @media print { body { background: white; color: black; } .draft-banner { background: #ccc; color: black; } h2 { color: #006622; } td, p, li { color: #333; } }
+</style>
+</head>
+<body>
+  <div class="draft-banner">DRAFT — BASED ON YC POST-MONEY SAFE — FOR ATTORNEY REVIEW</div>
+
+  <div class="container">
+    <div class="doc-header">
+      <h1>SAFE</h1>
+      <div class="subtitle">Simple Agreement for Future Equity</div>
+      <div class="note">Based on Y Combinator Post-Money SAFE with Valuation Cap (No Discount)</div>
+      <div class="date">Date: <span class="fill-in">[DATE]</span></div>
+    </div>
+
+    <div class="key-terms">
+      <h3>Key Terms Summary</h3>
+      <table>
+        <tr><td style="width:200px">Company</td><td><strong>Widdo Inc</strong>, a Delaware C Corporation</td></tr>
+        <tr><td>Investor</td><td><span class="fill-in">[INVESTOR FULL LEGAL NAME]</span></td></tr>
+        <tr><td>Investment Amount</td><td><span class="fill-in">$[AMOUNT]</span> USD</td></tr>
+        <tr><td>Valuation Cap</td><td><strong>$2,000,000</strong> USD (Post-Money)</td></tr>
+        <tr><td>Discount Rate</td><td>None</td></tr>
+        <tr><td>Type</td><td>Post-Money SAFE with Valuation Cap</td></tr>
+      </table>
+    </div>
+
+    <p>This SAFE (Simple Agreement for Future Equity) is entered into on the date set forth above by and between:</p>
+
+    <div class="party-block">
+      <div class="label">Company</div>
+      <div class="name">Widdo Inc</div>
+      <div class="detail">C Corporation, State of Delaware</div>
+      <div class="detail">EIN: <span class="fill-in">[EIN]</span></div>
+      <div class="detail">Address: <span class="fill-in">[Registered Agent Address, DE]</span></div>
+    </div>
+
+    <div class="party-block">
+      <div class="label">Investor</div>
+      <div class="name"><span class="fill-in">[INVESTOR NAME]</span></div>
+      <div class="detail">Address: <span class="fill-in">[INVESTOR ADDRESS]</span></div>
+      <div class="detail">Email: <span class="fill-in">[INVESTOR EMAIL]</span></div>
+    </div>
+
+    <h2>Events</h2>
+
+    <h3>1.1 Equity Financing</h3>
+    <p>If there is an Equity Financing before the termination of this SAFE, on the initial closing of such Equity Financing, this SAFE will automatically convert into the number of shares of <strong>Safe Preferred Stock</strong> equal to the Purchase Amount divided by the <strong>Safe Price</strong>.</p>
+    <p>The <strong>"Safe Price"</strong> means the price per share equal to the <strong>Post-Money Valuation Cap</strong> divided by the <strong>Company Capitalization</strong>.</p>
+    <p>In the event the Safe Price is higher than the price per share of the Standard Preferred Stock sold in the Equity Financing, then the Safe Price shall be the price per share of the Standard Preferred Stock (i.e., the investor gets the better of the two prices).</p>
+
+    <h3>1.2 Liquidity Event</h3>
+    <p>If there is a Liquidity Event (acquisition, IPO, or similar transaction) before the termination of this SAFE, the Investor will, at their option, receive either:</p>
+    <ol type="a">
+      <li>A cash payment equal to the <strong>Purchase Amount</strong>; or</li>
+      <li>A number of shares of Common Stock equal to the Purchase Amount divided by the Liquidity Price (defined as the Valuation Cap divided by the Company Capitalization, or the fair market value per share, whichever is lower).</li>
+    </ol>
+
+    <h3>1.3 Dissolution Event</h3>
+    <p>If there is a Dissolution Event before the termination of this SAFE, the Company will pay the Investor an amount equal to the <strong>Purchase Amount</strong>, with priority over holders of Common Stock but subordinate to creditors of the Company.</p>
+
+    <h2>Definitions</h2>
+    <p><strong>"Company Capitalization"</strong> means the sum of: (a) all shares of capital stock outstanding; (b) all shares underlying outstanding options, warrants, and convertible instruments (including SAFEs); and (c) shares reserved for future issuance under equity incentive plans. This is calculated on a <em>post-money</em> basis (i.e., includes the shares to be issued upon conversion of all SAFEs).</p>
+    <p><strong>"Equity Financing"</strong> means a bona fide transaction in which the Company issues and sells Preferred Stock at a fixed valuation, with aggregate gross proceeds to the Company of not less than <strong>$250,000</strong> USD (excluding conversion of SAFEs or other convertible instruments).</p>
+    <p><strong>"Liquidity Event"</strong> means a Change of Control or an Initial Public Offering.</p>
+    <p><strong>"Post-Money Valuation Cap"</strong> means <span class="highlight">$2,000,000 USD</span>.</p>
+    <p><strong>"Purchase Amount"</strong> means <span class="fill-in">$[AMOUNT]</span> USD.</p>
+    <p><strong>"Safe Preferred Stock"</strong> means a series of Preferred Stock issued to the Investor with identical rights to the Standard Preferred Stock, except that the per-share liquidation preference and conversion price will be based on the Safe Price.</p>
+
+    <h2>Company Representations</h2>
+    <p>The Company represents and warrants to the Investor that:</p>
+    <ol type="a">
+      <li>The Company is duly organized, validly existing, and in good standing under the laws of the State of Delaware.</li>
+      <li>The execution, delivery, and performance of this SAFE is within the Company's powers and has been duly authorized.</li>
+      <li>This SAFE does not conflict with any material agreement to which the Company is a party.</li>
+      <li>The Company's capitalization is as set forth in the cap table provided to the Investor.</li>
+      <li>All intellectual property material to the Company's business is owned by the Company.</li>
+    </ol>
+
+    <h2>Investor Representations</h2>
+    <p>The Investor represents and warrants to the Company that:</p>
+    <ol type="a">
+      <li>The Investor is an "accredited investor" as defined in Rule 501(a) of Regulation D under the Securities Act of 1933, or is otherwise eligible to invest in the Company under applicable exemptions.</li>
+      <li>The Investor is purchasing this SAFE for their own account, for investment purposes only, and not with a view to distribution or resale.</li>
+      <li>The Investor understands that the purchase involves substantial risks, including the possibility of losing the entire investment.</li>
+      <li>The Investor has had the opportunity to ask questions and receive information from the Company regarding the business, operations, and financial condition.</li>
+    </ol>
+
+    <h2>Pro-Rata Right</h2>
+    <p>The Investor shall have the right, but not the obligation, to purchase their <em>pro rata</em> share of the Standard Preferred Stock sold in the Equity Financing. The Investor's pro rata share shall be calculated based on the ratio of (a) the number of shares of capital stock held by the Investor (on an as-converted basis) immediately prior to the Equity Financing to (b) the total number of shares of capital stock outstanding (on a fully diluted basis) immediately prior to the Equity Financing.</p>
+
+    <h2>Most Favored Nation (MFN)</h2>
+    <p>If the Company issues any subsequent SAFEs prior to the initial closing of an Equity Financing with terms more favorable to the investor (including a lower valuation cap or addition of a discount), this SAFE shall automatically be amended to incorporate such more favorable terms, at the option of the Investor.</p>
+
+    <h2>Miscellaneous</h2>
+    <p><strong>7.1 Amendment:</strong> This SAFE may be amended only by a written instrument signed by both the Company and the Investor.</p>
+    <p><strong>7.2 Assignment:</strong> The Investor may not assign this SAFE without the prior written consent of the Company, except to an affiliate or in connection with the Investor's estate planning.</p>
+    <p><strong>7.3 Governing Law:</strong> This SAFE shall be governed by and construed in accordance with the laws of the State of Delaware.</p>
+    <p><strong>7.4 No Maturity:</strong> This SAFE has no maturity date and no interest rate. It is not a debt instrument.</p>
+    <p><strong>7.5 Counterparts:</strong> This SAFE may be executed in counterparts, including electronic counterparts.</p>
+    <p><strong>7.6 Notices:</strong> Notices shall be sent to the addresses set forth above, by email (with confirmation) or certified mail.</p>
+    <p><strong>7.7 Tax Treatment:</strong> For U.S. federal income tax purposes, the parties intend that this SAFE be treated as a forward contract for the issuance of equity.</p>
+
+    <h2>Wire Instructions</h2>
+    <table>
+      <tr><td style="width:200px">Bank</td><td>Mercury</td></tr>
+      <tr><td>Account Name</td><td>Widdo Inc</td></tr>
+      <tr><td>Routing Number</td><td><span class="fill-in">[ROUTING]</span></td></tr>
+      <tr><td>Account Number</td><td><span class="fill-in">[ACCOUNT]</span></td></tr>
+      <tr><td>Bank Address</td><td><span class="fill-in">[Mercury Bank Address]</span></td></tr>
+    </table>
+
+    <h2>Dilution Reference</h2>
+    <table>
+      <tr><th>Investment</th><th>% at $2M Cap</th><th>Shares (approx)</th></tr>
+      <tr><td>$50,000</td><td>2.5%</td><td>~256,410</td></tr>
+      <tr><td>$100,000</td><td>5.0%</td><td>~526,316</td></tr>
+      <tr><td>$150,000</td><td>7.5%</td><td>~810,811</td></tr>
+      <tr><td>$200,000</td><td>10.0%</td><td>~1,111,111</td></tr>
+    </table>
+    <p style="font-size:13px;color:#888;"><em>Note: Exact share counts depend on Company Capitalization at time of Equity Financing conversion. Numbers above are illustrative.</em></p>
+
+    <div class="signature-block">
+      <div class="sig-party">
+        <div class="sig-line"></div>
+        <div class="sig-label">COMPANY — Widdo Inc</div>
+        <div class="sig-name">Miguel Angel Cano</div>
+        <div class="sig-title">CEO</div>
+        <div style="margin-top:20px"><div class="sig-line"></div><div class="sig-label">Date</div></div>
+      </div>
+      <div class="sig-party">
+        <div class="sig-line"></div>
+        <div class="sig-label">INVESTOR</div>
+        <div class="sig-name"><span class="fill-in">[Investor Name]</span></div>
+        <div style="margin-top:20px"><div class="sig-line"></div><div class="sig-label">Date</div></div>
+      </div>
+    </div>
+
+    <div class="attorney-notes">
+      <h3>Notes for Attorney Review</h3>
+      <ol>
+        <li>This is adapted from the YC Post-Money SAFE template — verify no material deviations</li>
+        <li>Confirm accredited investor requirements for each specific investor</li>
+        <li>Review Regulation D (506(b) or 506(c)) compliance and Form D filing obligations</li>
+        <li>Verify state blue sky filings for Florida (where investors may be located)</li>
+        <li>Confirm interaction between SAFE conversion and dual-class share structure (investors get Class B)</li>
+        <li>Review if any Colombian law implications for Colombian founder issuing USA SAFEs</li>
+        <li>Confirm QSBS (Section 1202) eligibility considerations</li>
+        <li>Review whether Investor signing digitally (DocuSign) is sufficient under Delaware law</li>
+        <li>For the official YC template visit: ycombinator.com/documents — this draft should be reconciled with the official version</li>
+      </ol>
+    </div>
+
+    <div class="disclaimer">
+      This document is based on the Y Combinator Post-Money SAFE template and adapted for Widdo Inc.
+      It was drafted with AI assistance and must be reviewed by a licensed attorney before execution.
+      The official YC SAFE template is available at ycombinator.com/documents.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,2637 @@
+<!-- ARCHIVADO 13-ago-2026 — guia PRE-incorporacion con metricas falsas ('14 clubes activos, 0% churn', 774 usuarios) y Wompi x9 (Stripe es la unica pasarela) — sustituido por negocio/legales/index.html + metrics.json -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Guía de Inversión y Estructura Legal — Widdo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#10B981',
+            'accent-dark': '#059669',
+            'accent-light': '#34D399',
+            dark: {
+              900: '#0f0f0f',
+              800: '#1a1a1a',
+              700: '#242424',
+              600: '#2e2e2e',
+              500: '#3a3a3a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f0f;
+      color: #e5e5e5;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10B981; }
+
+    .sidebar-link {
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+    }
+    .sidebar-link:hover,
+    .sidebar-link.active {
+      border-left-color: #10B981;
+      background: rgba(16, 185, 129, 0.08);
+      color: #10B981;
+    }
+
+    .section-card {
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 12px;
+      transition: border-color 0.3s ease;
+    }
+    .section-card:hover {
+      border-color: #3a3a3a;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-urgente { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-alta { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .badge-media { background: rgba(96, 165, 250, 0.15); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.3); }
+    .badge-baja { background: rgba(156, 163, 175, 0.15); color: #9ca3af; border: 1px solid rgba(156, 163, 175, 0.3); }
+    .badge-pendiente { background: rgba(156, 163, 175, 0.1); color: #9ca3af; border: 1px solid rgba(156, 163, 175, 0.2); }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-private { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+    .badge-trip { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3); }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    table th {
+      background: #242424;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      padding: 12px 16px;
+      text-align: left;
+      position: sticky;
+      top: 0;
+    }
+    table th:first-child { border-radius: 8px 0 0 0; }
+    table th:last-child { border-radius: 0 8px 0 0; }
+    table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #2e2e2e;
+      font-size: 0.875rem;
+      vertical-align: top;
+    }
+    table tr:last-child td { border-bottom: none; }
+    table tr:hover td { background: rgba(16, 185, 129, 0.03); }
+
+    .diagram-box {
+      background: #242424;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: #d1d5db;
+      overflow-x: auto;
+    }
+    .diagram-box .highlight { color: #10B981; font-weight: 600; }
+    .diagram-box .dim { color: #6b7280; }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 32px;
+      bottom: -20px;
+      width: 2px;
+      background: #2e2e2e;
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #10B981;
+      border: 3px solid #1a1a1a;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #242424;
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .check-box {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid #3a3a3a;
+      border-radius: 4px;
+      margin-top: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .check-box:hover {
+      border-color: #10B981;
+      background: rgba(16, 185, 129, 0.08);
+    }
+    .check-box.checked {
+      background: #10B981;
+      border-color: #10B981;
+    }
+    .check-box.checked::after {
+      content: '';
+      width: 6px;
+      height: 10px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      margin-bottom: 2px;
+    }
+    .checklist-item.completed .check-text {
+      text-decoration: line-through;
+      color: #6b7280;
+    }
+    .checklist-item.completed .check-sub {
+      text-decoration: line-through;
+      color: #4b5563;
+    }
+
+    /* Interactive task rows in tables */
+    .task-checkbox {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid #3a3a3a;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .task-checkbox:hover {
+      border-color: #10B981;
+      background: rgba(16, 185, 129, 0.08);
+    }
+    .task-checkbox.checked {
+      background: #10B981;
+      border-color: #10B981;
+    }
+    .task-checkbox.checked::after {
+      content: '';
+      width: 6px;
+      height: 10px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      margin-bottom: 2px;
+    }
+    tr.task-completed td {
+      opacity: 0.5;
+    }
+    tr.task-completed td:nth-child(2) .task-text {
+      text-decoration: line-through;
+    }
+    tr.task-completed td:first-child .task-checkbox {
+      opacity: 1;
+    }
+    tr.task-completed td:first-child {
+      opacity: 1;
+    }
+
+    /* Progress bar */
+    .progress-bar-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #242424;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .progress-bar-track {
+      flex: 1;
+      height: 6px;
+      background: #3a3a3a;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #10B981;
+      border-radius: 3px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    .progress-bar-label {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      white-space: nowrap;
+      min-width: 100px;
+      text-align: right;
+    }
+    .progress-bar-label .done {
+      color: #10B981;
+      font-weight: 600;
+    }
+
+    /* Reset button */
+    .reset-btn {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: #9ca3af;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .reset-btn:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
+      border: 1px solid #2e2e2e;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .stat-card .value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #10B981;
+      line-height: 1;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 40;
+      display: none;
+    }
+    .overlay.active { display: block; }
+
+    @media (max-width: 1023px) {
+      .sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        bottom: 0;
+        z-index: 50;
+        transition: left 0.3s ease;
+        width: 272px;
+      }
+      .sidebar.open { left: 0; }
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+    @media (max-width: 1023px) {
+      .mobile-menu-btn { display: flex; }
+    }
+
+    .number-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .info-callout {
+      background: rgba(16, 185, 129, 0.06);
+      border-left: 3px solid #10B981;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .warning-callout {
+      background: rgba(251, 191, 36, 0.06);
+      border-left: 3px solid #fbbf24;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .danger-callout {
+      background: rgba(239, 68, 68, 0.06);
+      border-left: 3px solid #ef4444;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .trip-callout {
+      background: rgba(249, 115, 22, 0.06);
+      border-left: 3px solid #f97316;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .trip-highlight {
+      border: 2px solid rgba(249, 115, 22, 0.4);
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.08);
+    }
+
+    .agenda-table td { padding: 10px 16px; }
+    .agenda-table tr:hover td { background: rgba(249, 115, 22, 0.04); }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Mobile menu overlay -->
+  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Mobile menu button -->
+  <button id="menuBtn" class="mobile-menu-btn fixed top-4 left-4 z-50 bg-dark-700 border border-dark-500 text-white p-2 rounded-lg" onclick="toggleSidebar()">
+    <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    <svg id="closeIcon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar w-[272px] h-screen bg-dark-800 border-r border-dark-600 flex flex-col lg:sticky lg:top-0 overflow-y-auto shrink-0">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 bg-accent rounded-lg flex items-center justify-center font-bold text-white text-sm">W</div>
+          <div>
+            <div class="font-bold text-white text-sm">Widdo</div>
+            <div class="text-xs text-gray-500">Guía de Inversión</div>
+          </div>
+        </div>
+        <span class="badge badge-private text-[10px]">Documento privado</span>
+      </div>
+      <nav class="flex-1 py-4 px-3 space-y-1 text-sm">
+        <a href="#diagnostico" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">1. Diagnóstico</a>
+        <a href="#viaje" class="sidebar-link block px-3 py-2 rounded-r-lg text-orange-400 font-semibold">2. Viaje USA</a>
+        <a href="#estructura" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">3. Estructura Corporativa</a>
+        <a href="#colombia" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">4. Tareas Colombia</a>
+        <a href="#usa" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">5. Tareas USA</a>
+        <a href="#pagos" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">6. Cómo Recibir Pagos</a>
+        <a href="#inversion" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">7. Inversión Pre-Seed</a>
+        <a href="#latam" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">8. Expansión LATAM</a>
+        <a href="#timeline" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">9. Timeline</a>
+        <a href="#dataroom" class="sidebar-link block px-3 py-2 rounded-r-lg text-gray-400">10. Data Room</a>
+      </nav>
+      <div class="p-4 border-t border-dark-600 text-xs text-gray-600">
+        Actualizado: Marzo 2026
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 min-w-0">
+
+      <!-- Header -->
+      <header class="border-b border-dark-600 bg-dark-800/80 backdrop-blur-sm sticky top-0 z-30">
+        <div class="max-w-5xl mx-auto px-6 lg:px-10 py-6">
+          <div class="flex items-start justify-between flex-wrap gap-4">
+            <div class="lg:pl-0 pl-10">
+              <h1 class="text-2xl lg:text-3xl font-bold text-white leading-tight">
+                Guía de Inversión y Estructura Legal
+              </h1>
+              <p class="text-gray-400 mt-1 text-sm lg:text-base">Colombia + USA &mdash; Todo lo que necesitas paso a paso</p>
+            </div>
+            <span class="badge badge-private">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="8" height="6" rx="1"/><path d="M5 7V5a2 2 0 014 0v2"/></svg>
+              No indexado
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <div class="max-w-5xl mx-auto px-6 lg:px-10 py-10 space-y-12">
+
+        <!-- ============================================================ -->
+        <!-- SECTION 1: DIAGNOSTICO -->
+        <!-- ============================================================ -->
+        <section id="diagnostico" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">1</span>
+            <h2 class="text-xl font-bold text-white">Dónde está Widdo hoy?</h2>
+            <span class="badge badge-green text-[10px]">Diagnóstico Mar 2026</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div class="stat-card">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Producto</div>
+              <div class="value text-lg">Completo</div>
+              <div class="text-xs text-gray-400 mt-2">107 modelos, 80+ tablas, 55+ controllers, 29 services, agente IA</div>
+            </div>
+            <div class="stat-card">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Clubes Activos</div>
+              <div class="value">14</div>
+              <div class="text-xs text-gray-400 mt-2">Colombia &middot; 0% churn &middot; $0 CAC</div>
+            </div>
+            <div class="stat-card">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Usuarios</div>
+              <div class="value">774</div>
+              <div class="text-xs text-gray-400 mt-2">399 jugadores registrados</div>
+            </div>
+          </div>
+
+          <div class="section-card p-6">
+            <div class="danger-callout mb-4">
+              <div class="flex items-center gap-2 text-red-400 font-semibold text-sm mb-1">
+                <span>!!</span> Revenue: $0
+              </div>
+              <p class="text-sm text-gray-400">URGENTE empezar a cobrar. El producto está listo, la tracción existe, pero no hay ingresos.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-red-400 mt-0.5">!!</span>
+                <div><span class="text-gray-300 font-medium">Legal:</span> <span class="text-gray-500">SAS constituida pero sin vincular con Widdo realmente</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-red-400 mt-0.5">!!</span>
+                <div><span class="text-gray-300 font-medium">Contabilidad:</span> <span class="text-gray-500">Ninguna</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-yellow-400 mt-0.5">!</span>
+                <div><span class="text-gray-300 font-medium">IP:</span> <span class="text-gray-500">No asignada a la empresa</span></div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-yellow-400 mt-0.5">!</span>
+                <div><span class="text-gray-300 font-medium">Contratos con clubes:</span> <span class="text-gray-500">Ninguno</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 2: PREPARACION VIAJE USA (NEW - MOST PROMINENT) -->
+        <!-- ============================================================ -->
+        <section id="viaje" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]" style="background:rgba(249,115,22,0.2);color:#fb923c">2</span>
+            <h2 class="text-xl font-bold text-white">Preparación Viaje USA</h2>
+            <span class="badge badge-trip">~Mar 10-25, 2026</span>
+          </div>
+          <p class="text-sm text-orange-300/70 mb-6">Orlando, FL &mdash; demos en 2 colegios + reuniones con co-founder y abogado corporativo</p>
+
+          <!-- Trip progress -->
+          <div class="progress-bar-container" id="progress-viaje" style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.15)">
+            <span class="progress-bar-label"><span class="done" id="progress-viaje-count">0</span> de <span id="progress-viaje-total">0</span> completados</span>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progress-viaje-fill" style="background:#f97316"></div>
+            </div>
+          </div>
+
+          <!-- Lo que Miguel debe llevar -->
+          <div class="section-card p-6 mb-6 trip-highlight">
+            <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-4">Lo que Miguel debe llevar</h3>
+            <div class="space-y-0" id="viaje-miguel-tasks">
+              <div class="checklist-item" data-task-id="vm-1">
+                <div class="check-box" data-task="vm-1"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Pasaporte vigente (visa B1/B2 turismo)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vm-2">
+                <div class="check-box" data-task="vm-2"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Cedula de ciudadanía</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vm-3">
+                <div class="check-box" data-task="vm-3"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Laptop con demo de Widdo funcionando en inglés</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vm-4">
+                <div class="check-box" data-task="vm-4"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Deck USA impreso (5 copias mínimo)</div>
+                  <div class="text-xs text-gray-600 check-sub">decks/usa/deck-usa-widdo.pdf</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vm-5">
+                <div class="check-box" data-task="vm-5"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">One-pager impreso (10 copias)</div>
+                  <div class="text-xs text-gray-600 check-sub">decks/otros/one-pager-widdo-usa.pdf</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vm-6">
+                <div class="check-box" data-task="vm-6"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Pitch de 2 minutos en inglés MEMORIZADO</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vm-7">
+                <div class="check-box" data-task="vm-7"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Cuenta demo USA con datos en inglés configurada</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vm-8">
+                <div class="check-box" data-task="vm-8"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Tarjetas de presentación (si tiene)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lo que el co-founder debe tener listo -->
+          <div class="section-card p-6 mb-6 trip-highlight">
+            <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-4">Lo que el co-founder debe tener listo</h3>
+            <div class="space-y-0" id="viaje-cofunder-tasks">
+              <div class="checklist-item" data-task-id="vc-1">
+                <div class="check-box" data-task="vc-1"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Reuniones agendadas con The Academy CFL (contacto: Dalmau)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vc-2">
+                <div class="check-box" data-task="vc-2"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Reunion agendada con SEPA / Hank Waters</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vc-7">
+                <div class="check-box" data-task="vc-7"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Reunion agendada con Erica Berman</div>
+                  <div class="text-xs text-gray-600 check-sub">Inversora potencial. Hija de Don Berman (Cardworks/Discover). Colleges en North Carolina</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vc-3">
+                <div class="check-box" data-task="vc-3"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Contacto de abogado corporativo en Orlando</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vc-6">
+                <div class="check-box" data-task="vc-6"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Lugar para trabajar/reunirse (su casa o coworking)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agenda sugerida del viaje -->
+          <div class="section-card overflow-hidden mb-6">
+            <div class="p-6 pb-3">
+              <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-1">Agenda sugerida del viaje (~15 dias)</h3>
+              <p class="text-xs text-gray-500 mb-0">Flexible, ajustar según disponibilidad de reuniones</p>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="agenda-table">
+                <thead>
+                  <tr>
+                    <th class="w-32">Días</th>
+                    <th>Actividad</th>
+                    <th class="hidden lg:table-cell">Objetivo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Días 1-2</span></td>
+                    <td class="text-gray-300">Llegada, sync con co-founder, revisar demos, preparar presentaciones</td>
+                    <td class="hidden lg:table-cell text-gray-500">Alinearse, practicar pitch juntos</td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Días 3-4</span></td>
+                    <td class="text-gray-300">Demo en <strong class="text-white">The Academy CFL</strong> (Dalmau)</td>
+                    <td class="hidden lg:table-cell text-gray-500">Que vean Widdo, oferta 2 meses gratis, medir interés real</td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Días 5-6</span></td>
+                    <td class="text-gray-300">Demo en <strong class="text-white">SEPA</strong> con <strong class="text-white">Hank Waters</strong></td>
+                    <td class="hidden lg:table-cell text-gray-500">Cliente primero, posible inversor. Mostrar valor, NO pedir dinero todavía</td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Días 7-8</span></td>
+                    <td class="text-gray-300">Reunión con <strong class="text-white">abogado corporativo</strong>. Abrir cuenta <strong class="text-white">Chase Business</strong> en sucursal (llevar EIN + Certificate of Incorporation)</td>
+                    <td class="hidden lg:table-cell text-gray-500">Asesoría legal + banco fisico USA</td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Días 9-10</span></td>
+                    <td class="text-gray-300">Reunion con <strong class="text-white">Erica Berman</strong>. Demo de Widdo + pitch de inversion ($200K SAFE, cap $2M)</td>
+                    <td class="hidden lg:table-cell text-gray-500">Inversora + sus colleges como clientes</td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Días 11-12</span></td>
+                    <td class="text-gray-300">Revisar <strong class="text-white">Founders Agreement</strong> terms con co-founder. Discutir equity (30%), reverse vesting, milestones</td>
+                    <td class="hidden lg:table-cell text-gray-500">Alinear expectativas, NO firmar todavia</td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Días 13-14</span></td>
+                    <td class="text-gray-300">Follow-up con colegios. Cerrar piloto gratuito (2 meses). Recoger feedback</td>
+                    <td class="hidden lg:table-cell text-gray-500">Compromiso concreto de piloto</td>
+                  </tr>
+                  <tr>
+                    <td><span class="text-orange-400 font-semibold">Día 15</span></td>
+                    <td class="text-gray-300">Wrap-up, definir próximos pasos con co-founder, regreso</td>
+                    <td class="hidden lg:table-cell text-gray-500">Plan de acción claro post-viaje</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Qué decir en reuniones con colegios -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-4">Qué decir en las reuniones con colegios</h3>
+            <div class="danger-callout mb-4">
+              <p class="text-sm text-red-300 font-semibold">NO vender. DEMOSTRAR.</p>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300"><em class="text-white">"We'd love for your academy to try Widdo free for 2 months"</em></span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300">Mostrar: dashboard, player management, attendance, payments, parent portal, AI assistant</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300">Preguntar: <em class="text-white">"What's your biggest pain point managing [sport] right now?"</em></span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300">Si preguntan precio: <em class="text-white">"$99/month flat, zero hidden fees. But let's start with a free pilot"</em></span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-red-400 font-bold mt-0.5">X</span>
+                <span class="text-gray-400">NO hablar de inversión en la primera reunión &mdash; eso viene después si les gusta el producto</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Qué decir a Hank Waters -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-4">Qué decir a Hank Waters específicamente</h3>
+            <div class="info-callout mb-4">
+              <p class="text-sm text-accent font-semibold">Approach: CLIENTE primero, inversor DESPUÉS</p>
+            </div>
+            <div class="space-y-4 text-sm">
+              <div class="bg-dark-700 rounded-lg p-4 border border-dark-500">
+                <p class="text-gray-300 italic">"Hank, we built the all-in-one platform for sports academies. AI assistant, tournament management, parent portal &mdash; everything in one place for $99/month with zero platform fees"</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300">Si muestra interés genuino en el producto, ENTONCES mencionar: <em class="text-white">"We're also raising a small pre-seed round. We're looking for strategic investors who understand this space &mdash; not just capital, but distribution"</em></span>
+              </div>
+              <div class="warning-callout">
+                <p class="text-xs text-yellow-300 font-medium">NO presionar. Hank tiene 6 empresas, sabe cómo funciona esto.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documentos para crear la C Corp -->
+          <div class="section-card p-6 mb-6 trip-highlight">
+            <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-4">Documentos para crear la C Corp (Stripe Atlas)</h3>
+            <div class="space-y-0" id="viaje-corp-tasks">
+              <div class="checklist-item" data-task-id="vp-1">
+                <div class="check-box" data-task="vp-1"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Nombre de la empresa: Widdo Inc (verificar disponibilidad)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vp-2">
+                <div class="check-box" data-task="vp-2"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Dirección del registered agent (Stripe Atlas lo provee)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vp-3">
+                <div class="check-box" data-task="vp-3"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Información de los fundadores: Miguel (CEO, 70% initial) + Co-founder (30% initial)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vp-4">
+                <div class="check-box" data-task="vp-4"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">EIN (se genera automáticamente)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vp-5">
+                <div class="check-box" data-task="vp-5"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Cuenta bancaria Mercury (se abre junto con Stripe Atlas)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vp-6">
+                <div class="check-box" data-task="vp-6"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Tarjeta de crédito/débito para pago de $500</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vp-7">
+                <div class="check-box" data-task="vp-7"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Definir dual-class shares desde el inicio (RECOMENDADO: SI)</div>
+                  <div class="text-xs text-gray-600 check-sub">Clase A: 10 votos/acción (solo Miguel) &mdash; Clase B: 1 voto/acción (co-founder, futuros inversores). Poner en Certificate of Incorporation &mdash; pedir a Stripe Atlas o al abogado</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Founders Agreement (discutir durante el viaje) -->
+          <div class="section-card p-6 mb-6 trip-highlight">
+            <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wider mb-4">Founders Agreement (discutir con co-founder durante el viaje)</h3>
+            <div class="warning-callout mb-4">
+              <p class="text-xs text-yellow-300 font-medium">Solo DISCUTIR, NO firmar durante el viaje. Firmar con abogado DESPUÉS.</p>
+            </div>
+            <div class="space-y-0" id="viaje-founders-tasks">
+              <div class="checklist-item" data-task-id="vf-1">
+                <div class="check-box" data-task="vf-1"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Equity: 30% co-founder con reverse vesting 4 años, cliff 12 meses</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-2">
+                <div class="check-box" data-task="vf-2"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Milestones del cliff: 2 de 4 (10 clubs USA, $3K MRR, 1 celebrity deal, $50K raised)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-3">
+                <div class="check-box" data-task="vf-3"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Inversión del co-founder: $15,000 USD a la C Corp</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-4">
+                <div class="check-box" data-task="vf-4"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Salario: $2,500/mes para co-founder (después de recibir inversión)</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-5">
+                <div class="check-box" data-task="vf-5"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Roles: Miguel = CEO/CTO/Product. Co-founder = BD/Growth USA</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-6">
+                <div class="check-box" data-task="vf-6"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">IP: todo creado para Widdo es de Widdo</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-7">
+                <div class="check-box" data-task="vf-7"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Non-compete: durante vesting + 12 meses</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-8">
+                <div class="check-box" data-task="vf-8"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">Dual-class: Miguel mantiene control de voto</div>
+                </div>
+              </div>
+              <div class="checklist-item" data-task-id="vf-9">
+                <div class="check-box" data-task="vf-9"></div>
+                <div>
+                  <div class="text-sm text-gray-300 check-text">FIRMAR con abogado DESPUÉS del viaje, NO durante</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 3: ESTRUCTURA CORPORATIVA -->
+        <!-- ============================================================ -->
+        <section id="estructura" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">3</span>
+            <h2 class="text-xl font-bold text-white">Estructura Corporativa Recomendada</h2>
+          </div>
+
+          <!-- Diagram -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Diagrama de Estructura</h3>
+            <div class="diagram-box">
+<span class="highlight">C Corp Delaware (Holding)</span>
+<span class="dim">|</span>
+<span class="dim">|--</span> Recibe inversión (SAFE)
+<span class="dim">|--</span> Dueña de la IP
+<span class="dim">|--</span> Factura clientes USA <span class="dim">(Stripe)</span>
+<span class="dim">|--</span> Factura otros LATAM <span class="dim">(Stripe / MercadoPago Cross Border)</span>
+<span class="dim">|</span>
+<span class="dim">|--</span> <span class="highlight">100% dueña de --></span> <span class="highlight">SAS Colombia nueva (RST)</span>
+<span class="dim">    |</span>
+<span class="dim">    |--</span> Factura clientes Colombia <span class="dim">(Wompi)</span>
+<span class="dim">    |--</span> Equipo trabaja aquí
+<span class="dim">    |--</span> Provee servicios de desarrollo a la C Corp
+            </div>
+          </div>
+
+          <!-- Cap Table -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="section-card p-6">
+              <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Cap Table (en la C Corp)</h3>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm text-gray-300 font-medium">Miguel Angel Cano</span>
+                    <span class="text-accent font-bold">~61%</span>
+                  </div>
+                  <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                    <div class="h-full bg-accent rounded-full" style="width:61%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm text-gray-300 font-medium">Co-founder USA</span>
+                    <span class="text-yellow-400 font-bold">30%</span>
+                  </div>
+                  <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                    <div class="h-full bg-yellow-500 rounded-full" style="width:30%"></div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">Reverse vesting 4 años, cliff 1 año</div>
+                </div>
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm text-gray-300 font-medium">Inversores (SAFE)</span>
+                    <span class="text-blue-400 font-bold">~9%</span>
+                  </div>
+                  <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                    <div class="h-full bg-blue-500 rounded-full" style="width:9%"></div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">Via SAFE cap $1.5M-$2M</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-card p-6">
+              <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">SAS Colombia</h3>
+              <div class="space-y-4">
+                <div class="warning-callout">
+                  <p class="text-sm text-yellow-300 font-medium mb-1">SAS NUEVA (no la vieja)</p>
+                  <p class="text-xs text-gray-400">La SAS vieja perdió el plazo RST en Feb 2026. Se necesita una nueva inscrita en RST desde día 1.</p>
+                </div>
+                <div class="flex items-start gap-3 text-sm">
+                  <span class="text-accent">></span>
+                  <div>
+                    <span class="text-gray-300 font-medium">Propietario:</span>
+                    <span class="text-gray-400">100% Miguel (subsidiaria de C Corp después)</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 text-sm">
+                  <span class="text-accent">></span>
+                  <div>
+                    <span class="text-gray-300 font-medium">Régimen:</span>
+                    <span class="text-gray-400">RST 1.8% desde día 1</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 text-sm">
+                  <span class="text-accent">></span>
+                  <div>
+                    <span class="text-gray-300 font-medium">Costo:</span>
+                    <span class="text-gray-400">~$300K-$500K COP</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transfer Pricing -->
+          <div class="section-card p-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Transfer Pricing</h3>
+            <div class="info-callout">
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-3">
+                  <span class="text-accent font-bold">1.</span>
+                  <span class="text-gray-300">Clientes USA/LATAM pagan a <strong class="text-white">C Corp</strong></span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-accent font-bold">2.</span>
+                  <span class="text-gray-300">C Corp paga a SAS por <strong class="text-white">"servicios de desarrollo"</strong> (deducible USA)</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-accent font-bold">3.</span>
+                  <span class="text-gray-300">SAS recibe y paga <strong class="text-white">RST 1.8%</strong></span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-accent font-bold">=</span>
+                  <span class="text-accent font-semibold">Mínimo impuesto en ambos lados</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 4: COLOMBIA -->
+        <!-- ============================================================ -->
+        <section id="colombia" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">4</span>
+            <h2 class="text-xl font-bold text-white">Qué hacer en Colombia</h2>
+          </div>
+
+          <div class="progress-bar-container" id="progress-colombia">
+            <span class="progress-bar-label"><span class="done" id="progress-colombia-count">0</span> de 12 completadas</span>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progress-colombia-fill"></div>
+            </div>
+          </div>
+
+          <div class="section-card overflow-hidden mb-6">
+            <div class="overflow-x-auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="w-10"></th>
+                    <th>Tarea</th>
+                    <th class="w-24">Prioridad</th>
+                    <th class="w-24">Estado</th>
+                    <th class="hidden lg:table-cell">Dónde / Cómo</th>
+                  </tr>
+                </thead>
+                <tbody id="colombia-tasks">
+                  <tr data-task-id="co-1">
+                    <td><div class="task-checkbox" data-task="co-1"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Crear SAS nueva con RST</span></td>
+                    <td><span class="badge badge-urgente">Urgente</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Camara de Comercio + DIAN presencial</td>
+                  </tr>
+                  <tr data-task-id="co-2">
+                    <td><div class="task-checkbox" data-task="co-2"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Abrir cuenta bancaria empresarial</span></td>
+                    <td><span class="badge badge-urgente">Urgente</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Bancolombia Empresarial</td>
+                  </tr>
+                  <tr data-task-id="co-3">
+                    <td><div class="task-checkbox" data-task="co-3"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Empezar a cobrar 14 clubes ($129K COP/mes)</span></td>
+                    <td><span class="badge badge-urgente">Urgente</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Wompi integrado en Widdo</td>
+                  </tr>
+                  <tr data-task-id="co-4">
+                    <td><div class="task-checkbox" data-task="co-4"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Facturación electrónica</span></td>
+                    <td><span class="badge badge-urgente">Urgente</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Portal DIAN (gratis) o Alegra ($50K/mes)</td>
+                  </tr>
+                  <tr data-task-id="co-5">
+                    <td><div class="task-checkbox" data-task="co-5"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Asignar IP del código a la SAS nueva</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Documento legal con abogado</td>
+                  </tr>
+                  <tr data-task-id="co-6">
+                    <td><div class="task-checkbox" data-task="co-6"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Términos de servicio (ToS)</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Abogado o template revisado</td>
+                  </tr>
+                  <tr data-task-id="co-7">
+                    <td><div class="task-checkbox" data-task="co-7"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Política de privacidad (incluir COPPA para USA)</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Abogado</td>
+                  </tr>
+                  <tr data-task-id="co-8">
+                    <td><div class="task-checkbox" data-task="co-8"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Contabilidad real (contador)</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Contador + Excel/Alegra</td>
+                  </tr>
+                  <tr data-task-id="co-9">
+                    <td><div class="task-checkbox" data-task="co-9"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Contratos de suscripción con clubes</span></td>
+                    <td><span class="badge badge-media">Media</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Template legal</td>
+                  </tr>
+                  <tr data-task-id="co-10">
+                    <td><div class="task-checkbox" data-task="co-10"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Registro marca "Widdo" en Colombia</span></td>
+                    <td><span class="badge badge-media">Media</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">SIC (Superintendencia de Industria)</td>
+                  </tr>
+                  <tr data-task-id="co-11">
+                    <td><div class="task-checkbox" data-task="co-11"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Data processing agreement</span></td>
+                    <td><span class="badge badge-media">Media</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Abogado (por datos de menores)</td>
+                  </tr>
+                  <tr data-task-id="co-12">
+                    <td><div class="task-checkbox" data-task="co-12"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Vincular gastos personales como aportes del socio</span></td>
+                    <td><span class="badge badge-media">Media</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Contador formaliza</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Paso a paso: Crear SAS -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Paso a paso: Crear SAS nueva</h3>
+            <div class="info-callout mb-4">
+              <p class="text-sm text-gray-300">La SAS se puede crear <strong class="text-white">100% online</strong> con firma digital via Camara de Comercio Virtual. No necesitas ir presencialmente.</p>
+            </div>
+            <div class="space-y-3 text-sm mb-6">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">1.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Obtener firma digital</span>
+                  <span class="text-gray-500 block text-xs">Certicamara o GSE (~$80K-$150K COP, 1-2 dias). Necesaria para todo tramite virtual</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">2.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Crear la SAS en Camara de Comercio Virtual</span>
+                  <span class="text-gray-500 block text-xs">Entrar a SII (Sistema Integrado de Informacion) de la Camara de Comercio de tu ciudad. Llenar formulario online</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">3.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Documentos necesarios</span>
+                  <span class="text-gray-500 block text-xs">Cedula, estatutos de la SAS (documento privado), PRE-RUT (se genera en DIAN virtual)</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">4.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Codigo CIIU: 6201</span>
+                  <span class="text-gray-500 block text-xs">Actividades de desarrollo de sistemas informaticos (planificacion, analisis, diseno, programacion, pruebas)</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">5.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Capital: $100K COP minimo</span>
+                  <span class="text-gray-500 block text-xs">No hay capital minimo real para SAS, pero se recomienda al menos $100K para formalidad</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">6.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">RUT definitivo en DIAN</span>
+                  <span class="text-gray-500 block text-xs">Con el certificado de existencia provisional, ir a DIAN (presencial o virtual) para obtener RUT definitivo</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div class="text-center bg-dark-700 rounded-lg p-3">
+                <div class="text-lg font-bold text-white">~$250K</div>
+                <div class="text-xs text-gray-500">COP total (~$60 USD)</div>
+              </div>
+              <div class="text-center bg-dark-700 rounded-lg p-3">
+                <div class="text-lg font-bold text-white">1 sem</div>
+                <div class="text-xs text-gray-500">Timeline</div>
+              </div>
+              <div class="text-center bg-dark-700 rounded-lg p-3">
+                <div class="text-lg font-bold text-white">Online</div>
+                <div class="text-xs text-gray-500">100% virtual</div>
+              </div>
+              <div class="text-center bg-dark-700 rounded-lg p-3">
+                <div class="text-lg font-bold text-white">6201</div>
+                <div class="text-xs text-gray-500">Codigo CIIU</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RST: Dato critico -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-red-400 uppercase tracking-wider mb-4">RST: Dato critico sobre plazos</h3>
+            <div class="danger-callout mb-4">
+              <p class="text-sm text-red-300 font-semibold mb-1">El plazo RST 2026 ya paso (28 de febrero)</p>
+              <p class="text-xs text-gray-400">Las empresas existentes solo pueden inscribirse al RST antes del ultimo dia habil de febrero de cada año. Para la SAS vieja, el plazo 2026 ya vencio.</p>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">Opcion A</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Crear SAS NUEVA con RST desde dia 1</span>
+                  <span class="text-gray-500 block text-xs">Recomendado. La SAS nueva se inscribe al RST al momento de crear el RUT. No hay restriccion de fecha para empresas nuevas.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-yellow-400 font-bold mt-0.5">Opcion B</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Esperar a febrero 2027 con la SAS vieja</span>
+                  <span class="text-gray-500 block text-xs">Mientras tanto tributa regimen ordinario (35% renta). NO recomendado: la SAS vieja no tiene RST ni contabilidad.</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-callout mt-4">
+              <p class="text-xs text-accent font-semibold">Conclusion: crear SAS nueva. Es mas barato, mas rapido, y queda con RST desde dia 1.</p>
+            </div>
+          </div>
+
+          <!-- Banco Colombia -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Cuenta bancaria empresarial</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">Bancolombia Empresarial</span>
+                  <span class="text-gray-500 block text-xs">La mas usada para SAS. Se puede abrir con certificado de existencia provisional de la Camara de Comercio</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">Documentos: Certificado existencia + RUT + cedula representante legal</span>
+                  <span class="text-gray-500 block text-xs">Ir a sucursal Bancolombia con cita. Apertura en ~1-3 dias habiles</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">Alternativas: Davivienda, Banco de Bogota</span>
+                  <span class="text-gray-500 block text-xs">Bancolombia es la mas recomendada por integracion con Wompi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cobros Colombia -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Cobros: Activar YA con los 14 clubes</h3>
+            <div class="danger-callout mb-4">
+              <p class="text-sm text-red-300 font-semibold">Wompi ya esta integrado en Widdo. Solo falta activar cobros reales.</p>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">1.</span>
+                <span class="text-gray-300">Crear cuenta Wompi comercio con la SAS nueva (RUT + cuenta bancaria)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">2.</span>
+                <span class="text-gray-300">Configurar credenciales Wompi en el admin de Widdo (ya existe la UI)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">3.</span>
+                <span class="text-gray-300">Definir plan de precios para Colombia: ~$69K COP/mes por club</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">4.</span>
+                <span class="text-gray-300">Activar cobros a los 14 clubes = <strong class="text-white">~$966K COP/mes (~$230 USD)</strong></span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">5.</span>
+                <span class="text-gray-300">Facturacion electronica via DIAN gratuito o Alegra ($50K COP/mes)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tributario Colombia -->
+          <div class="section-card p-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Tributario Colombia</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-3 text-sm">
+                <div class="flex items-start gap-3">
+                  <span class="text-accent font-bold mt-0.5">></span>
+                  <div>
+                    <span class="text-gray-200 font-medium">SaaS excluido de IVA</span>
+                    <span class="text-gray-500 block text-xs">Art. 476 Num. 21 E.T.</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-accent font-bold mt-0.5">></span>
+                  <div>
+                    <span class="text-gray-200 font-medium">RST: 1.8%</span>
+                    <span class="text-gray-500 block text-xs">Hasta ~$314M COP/año. 3.2% hasta ~$628M</span>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="text-accent font-bold mt-0.5">></span>
+                  <div>
+                    <span class="text-gray-200 font-medium">Ordinario: 35% renta + 15-20% dividendos</span>
+                    <span class="text-gray-500 block text-xs">= ~22% efectivo</span>
+                  </div>
+                </div>
+              </div>
+              <div class="info-callout">
+                <p class="text-sm text-accent font-semibold mb-1">RST ahorra ~$720K USD vs Ordinario en 3 años</p>
+                <p class="text-xs text-gray-400">Inscripción RST: DIAN presencial o SAS nueva desde día 1 (recomendado)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 5: USA -->
+        <!-- ============================================================ -->
+        <section id="usa" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">5</span>
+            <h2 class="text-xl font-bold text-white">Qué hacer en USA</h2>
+          </div>
+
+          <div class="progress-bar-container" id="progress-usa">
+            <span class="progress-bar-label"><span class="done" id="progress-usa-count">0</span> de 7 completadas</span>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progress-usa-fill"></div>
+            </div>
+          </div>
+
+          <div class="section-card overflow-hidden mb-6">
+            <div class="overflow-x-auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="w-10"></th>
+                    <th>Tarea</th>
+                    <th class="w-24">Prioridad</th>
+                    <th class="w-24">Estado</th>
+                    <th class="hidden lg:table-cell">Dónde / Cómo</th>
+                  </tr>
+                </thead>
+                <tbody id="usa-tasks">
+                  <tr data-task-id="us-1">
+                    <td><div class="task-checkbox" data-task="us-1"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Crear C Corp Delaware via Stripe Atlas</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">$500 online, 3-5 dias &middot; Viaje Orlando</td>
+                  </tr>
+                  <tr data-task-id="us-2">
+                    <td><div class="task-checkbox" data-task="us-2"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Founders Agreement con co-founder</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Abogado Orlando, ~$2,500 &middot; Post-viaje</td>
+                  </tr>
+                  <tr data-task-id="us-3">
+                    <td><div class="task-checkbox" data-task="us-3"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Cuenta bancaria USA (Mercury)</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Incluido con Stripe Atlas</td>
+                  </tr>
+                  <tr data-task-id="us-4">
+                    <td><div class="task-checkbox" data-task="us-4"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Conectar Stripe para cobros USA</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">stripe.com + C Corp + Mercury</td>
+                  </tr>
+                  <tr data-task-id="us-5">
+                    <td><div class="task-checkbox" data-task="us-5"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">Registro marca "Widdo" en USA</span></td>
+                    <td><span class="badge badge-media">Media</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">USPTO, $250-$350/clase, 8-12 meses</td>
+                  </tr>
+                  <tr data-task-id="us-6">
+                    <td><div class="task-checkbox" data-task="us-6"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">ToS + Privacy Policy (inglés, COPPA compliant)</span></td>
+                    <td><span class="badge badge-alta">Alta</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Abogado o template</td>
+                  </tr>
+                  <tr data-task-id="us-8">
+                    <td><div class="task-checkbox" data-task="us-8"></div></td>
+                    <td><span class="text-gray-200 font-medium task-text">NDA template para inversores</span></td>
+                    <td><span class="badge badge-baja">Baja</span></td>
+                    <td><span class="badge badge-pendiente">Pendiente</span></td>
+                    <td class="hidden lg:table-cell text-gray-500">Template estándar</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Por que Stripe Atlas -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Por que Stripe Atlas para crear la C Corp</h3>
+
+            <div class="space-y-4 text-sm mb-6">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">1.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Widdo va a cobrar con Stripe en USA.</span>
+                  <span class="text-gray-500 block text-xs">Stripe Atlas te crea la C Corp Y te activa Stripe automaticamente. No tienes que hacer dos procesos separados. Un solo paso y ya puedes cobrar.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">2.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">100% online desde Colombia.</span>
+                  <span class="text-gray-500 block text-xs">Acepta 169 paises. No necesitas estar en USA, no necesitas esperar al viaje, no necesitas SSN. Puedes aplicar hoy y la incorporacion tarda 1-2 dias.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">3.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Emite las acciones por ti.</span>
+                  <span class="text-gray-500 block text-xs">Si usas doola o Clerky, tienes que hacer la emision de acciones, el 83(b), y el cap table aparte. Atlas lo hace todo junto: defines los founders, los porcentajes, y sale listo.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">4.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">$2,500 en creditos de Stripe.</span>
+                  <span class="text-gray-500 block text-xs">Con el volumen que Widdo va a procesar los primeros meses, estos creditos cubren las fees de Stripe por ~6 meses. Es como si Atlas fuera gratis.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">5.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Es lo que usan las startups que levantan inversion.</span>
+                  <span class="text-gray-500 block text-xs">Inversores USA esperan C Corp Delaware. Stripe Atlas usa los mismos documentos que Y Combinator. Cuando llegue el SAFE, el abogado del inversor ya conoce el formato.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto mb-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Servicio</th>
+                    <th class="text-center">Costo</th>
+                    <th>Que hace</th>
+                    <th class="hidden lg:table-cell">Por que no</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-accent font-semibold">Stripe Atlas</td>
+                    <td class="text-center text-white font-bold">$500</td>
+                    <td class="text-gray-400 text-xs">C Corp + EIN + acciones + 83(b) + Stripe + $2,500 credits</td>
+                    <td class="hidden lg:table-cell text-accent text-xs font-semibold">Esta es la opcion</td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-300 font-medium">doola</td>
+                    <td class="text-center text-white">$297</td>
+                    <td class="text-gray-400 text-xs">C Corp + EIN + registered agent</td>
+                    <td class="hidden lg:table-cell text-gray-500 text-xs">$200 mas barato pero no emite acciones, no conecta Stripe, no tiene credits. Terminas pagando mas</td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-300 font-medium">Firstbase</td>
+                    <td class="text-center text-white">$399</td>
+                    <td class="text-gray-400 text-xs">C Corp + EIN + registered agent</td>
+                    <td class="hidden lg:table-cell text-gray-500 text-xs">Igual que doola. $100 menos que Atlas pero sin acciones ni Stripe</td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-300 font-medium">Clerky</td>
+                    <td class="text-center text-white">$99</td>
+                    <td class="text-gray-400 text-xs">Solo documentos legales</td>
+                    <td class="hidden lg:table-cell text-gray-500 text-xs">Tienes que hacer EIN, agente, banco, todo por tu cuenta. Para alguien que no ha hecho esto antes, es perder tiempo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="warning-callout">
+              <p class="text-xs text-yellow-300 font-medium">Timeline real: Incorporacion 1-2 dias. EIN 2-8 semanas (el IRS es lento). Total hasta poder cobrar: 2-4 semanas.</p>
+            </div>
+          </div>
+
+          <!-- Banco: estrategia de 2 cuentas -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Banco USA: abrir los 2</h3>
+
+            <div class="info-callout mb-6">
+              <p class="text-sm text-accent font-semibold mb-1">Estrategia: Mercury (online, ya) + Chase (presencial, durante el viaje)</p>
+              <p class="text-xs text-gray-400">No hay que elegir uno. Tener dos cuentas es lo normal en startups USA. Cada una sirve para cosas distintas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <!-- Mercury -->
+              <div class="bg-dark-700 rounded-lg p-5 border border-accent/20">
+                <h4 class="text-accent font-bold mb-3">Mercury &mdash; cuenta principal operativa</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="flex items-start gap-2">
+                    <span class="text-accent mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">Se abre online desde Colombia.</span>
+                      <span class="text-gray-500 block text-xs">No tienes que esperar al viaje. La puedes tener lista antes de ir a Orlando.</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-accent mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">$0 fees. Se conecta directo con Stripe.</span>
+                      <span class="text-gray-500 block text-xs">Club paga &rarr; Stripe procesa &rarr; Mercury recibe. Sin intermediarios.</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-accent mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">Treasury ~5% APY.</span>
+                      <span class="text-gray-500 block text-xs">Si recibes el SAFE de $200K y gastas $10K/mes, los $190K que quedan generan ~$800/mes en intereses. En Chase ganarias $1.50/mes.</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-accent mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">Es lo que usan las startups.</span>
+                      <span class="text-gray-500 block text-xs">Los inversores conocen Mercury. Cuando hagan wire del SAFE, saben exactamente que es.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-dark-500 text-xs text-gray-500">
+                  Usar para: cobros Stripe, recibir inversion, pagos operativos, Treasury
+                </div>
+              </div>
+
+              <!-- Chase -->
+              <div class="bg-dark-700 rounded-lg p-5 border border-dark-500">
+                <h4 class="text-white font-bold mb-3">Chase &mdash; abrir durante el viaje</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="flex items-start gap-2">
+                    <span class="text-gray-400 mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">Requiere ir presencialmente a una sucursal.</span>
+                      <span class="text-gray-500 block text-xs">Llevar EIN, Certificate of Incorporation, pasaporte. Hay sucursales en todo Orlando.</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-gray-400 mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">Lineas de credito y historial bancario USA.</span>
+                      <span class="text-gray-500 block text-xs">Mercury no ofrece credito. Chase si, con el tiempo. Tener historial en un banco grande ayuda cuando necesites financiamiento.</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-gray-400 mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">Depositos en cash y wires mas robustos.</span>
+                      <span class="text-gray-500 block text-xs">Si algun dia necesitas manejar efectivo o wires internacionales grandes, Chase es mas confiable.</span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-gray-400 mt-0.5">></span>
+                    <div>
+                      <span class="text-gray-200 font-medium">Respaldo: banco fisico real.</span>
+                      <span class="text-gray-500 block text-xs">Mercury es fintech (partner banks). Chase es el banco mas grande de USA. Tener los dos es un seguro.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-dark-500 text-xs text-gray-500">
+                  Usar para: respaldo, lineas de credito futuras, operaciones que Mercury no puede
+                </div>
+              </div>
+            </div>
+
+            <div class="warning-callout">
+              <p class="text-xs text-yellow-300 font-medium mb-1">Para abrir Chase durante el viaje necesitas:</p>
+              <p class="text-xs text-gray-400">EIN de la C Corp (tarda 2-8 semanas despues de Stripe Atlas). Si aplicas Atlas esta semana, puede que el EIN no llegue a tiempo para el viaje. Si no llega, Mercury funciona perfecto solo, y abres Chase en el proximo viaje.</p>
+            </div>
+          </div>
+
+          <!-- Abogado corporativo -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Abogado corporativo: por que y como encontrarlo</h3>
+
+            <h4 class="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Por que lo necesitas</h4>
+            <div class="space-y-3 text-sm mb-6">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">El Founders Agreement NO se puede hacer con templates.</span>
+                  <span class="text-gray-500 block text-xs">Stripe Atlas te crea la C Corp, pero NO el acuerdo entre founders. El Founders Agreement define equity, vesting, que pasa si el co-founder se va, dual-class shares, IP. Un error aqui te cuesta mucho mas que $2K de abogado.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">Las dual-class shares requieren que alguien sepa lo que hace.</span>
+                  <span class="text-gray-500 block text-xs">Si quieres que Miguel mantenga control de voto (Clase A: 10 votos/accion) mientras el co-founder e inversores tienen Clase B (1 voto), eso va en el Certificate of Incorporation. Un abogado de startups sabe como redactarlo para que no te cause problemas despues.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">Costo: $1,500 - $3,000 por el setup completo.</span>
+                  <span class="text-gray-500 block text-xs">Incluye Founders Agreement + revision de estructura. La consulta inicial muchas veces es gratis o $200-$300.</span>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Como encontrar abogado de startups en Orlando</h4>
+            <div class="space-y-3 text-sm mb-4">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">1.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Starter Studio / Orlando startup community.</span>
+                  <span class="text-gray-500 block text-xs">Starter Studio es la aceleradora mas conocida de Orlando. Tienen lista de abogados que trabajan con startups. Preguntar en sus eventos o contactar directamente.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">2.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Preguntar al co-founder.</span>
+                  <span class="text-gray-500 block text-xs">El vive en Orlando y tiene contactos. Pedir que pregunte a empresarios que conozca quien les hizo la incorporacion o el partnership agreement.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">3.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Florida Bar Lawyer Referral Service.</span>
+                  <span class="text-gray-500 block text-xs">La Florida Bar tiene servicio de referencia: llamar al (800) 342-8011 o buscar en floridabar.org. Pedir "corporate/business law" + "startup experience".</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">4.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Avvo / Justia / Google "startup attorney Orlando".</span>
+                  <span class="text-gray-500 block text-xs">Filtrar por reviews, buscar "C Corp", "founders agreement", "equity". Leer reviews de otros founders.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold min-w-[20px]">5.</span>
+                <div>
+                  <span class="text-gray-200 font-medium">Opcion remota: Clerky o Atrium para documentos estandar.</span>
+                  <span class="text-gray-500 block text-xs">Si no encuentras abogado local a tiempo, Clerky genera Founders Agreements estandar de Silicon Valley por ~$500. No es personalizado pero es mejor que nada. Despues lo revisas con abogado local.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="warning-callout">
+              <p class="text-xs text-yellow-300 font-medium mb-1">Que preguntarle al abogado en la primera reunion:</p>
+              <div class="space-y-1 text-xs text-gray-400 mt-2">
+                <div class="flex items-start gap-2"><span class="text-yellow-400">></span><span>Has trabajado con C Corps de Delaware para startups de tecnologia?</span></div>
+                <div class="flex items-start gap-2"><span class="text-yellow-400">></span><span>Sabes hacer dual-class shares en el Certificate of Incorporation?</span></div>
+                <div class="flex items-start gap-2"><span class="text-yellow-400">></span><span>Cuanto cobras por un Founders Agreement con reverse vesting?</span></div>
+                <div class="flex items-start gap-2"><span class="text-yellow-400">></span><span>Conoces SAFEs de Y Combinator? (si no sabe que es un SAFE, es el abogado equivocado)</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Costos C Corp -->
+          <div class="section-card p-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Costos C Corp anuales</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+              <div class="text-center">
+                <div class="text-lg font-bold text-white">$500</div>
+                <div class="text-xs text-gray-500">Stripe Atlas (una vez)</div>
+              </div>
+              <div class="text-center">
+                <div class="text-lg font-bold text-white">$100-$200</div>
+                <div class="text-xs text-gray-500">Registered Agent / año</div>
+              </div>
+              <div class="text-center">
+                <div class="text-lg font-bold text-white">$400-$550</div>
+                <div class="text-xs text-gray-500">Franchise Tax DE / año</div>
+              </div>
+              <div class="text-center">
+                <div class="text-lg font-bold text-white">$500-$2K</div>
+                <div class="text-xs text-gray-500">CPA (contador USA) / año</div>
+              </div>
+            </div>
+            <div class="info-callout mt-4 mb-4">
+              <p class="text-xs text-accent font-semibold mb-1">Que es un CPA?</p>
+              <p class="text-xs text-gray-400"><strong class="text-gray-300">CPA = Certified Public Accountant</strong> (contador publico certificado en USA). Es el equivalente al contador en Colombia. La C Corp debe presentar taxes federales (IRS) y estatales cada año. El CPA te prepara el Form 1120 (impuesto corporativo), las declaraciones estatales, y te asesora sobre deducciones. No es opcional &mdash; si no presentas, el IRS te multa.</p>
+            </div>
+            <div class="text-center border-t border-dark-600 pt-4">
+              <span class="text-sm text-gray-400">Total anual recurrente: </span>
+              <span class="text-accent font-bold text-lg">~$1,100-$2,750/año</span>
+              <span class="text-gray-500 text-xs block mt-1">Registered agent + Franchise Tax + CPA. El primer año el CPA es mas barato (~$500) porque hay poco que declarar</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 6: COMO RECIBIR PAGOS -->
+        <!-- ============================================================ -->
+        <section id="pagos" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">6</span>
+            <h2 class="text-xl font-bold text-white">Como Recibir Pagos</h2>
+          </div>
+
+          <!-- Diagrama de flujo de pagos -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Flujo de pagos por pais</h3>
+            <div class="diagram-box mb-4">
+<span class="highlight">COLOMBIA</span>                          <span class="highlight">USA / Internacional</span>
+<span class="dim">|</span>                                       <span class="dim">|</span>
+Clubes CO pagan via <span class="highlight">Wompi</span>          Clubes USA pagan via <span class="highlight">Stripe</span>
+<span class="dim">|</span>                                       <span class="dim">|</span>
+<span class="dim">v</span>                                       <span class="dim">v</span>
+<span class="highlight">SAS Colombia</span> (RST 1.8%)             <span class="highlight">C Corp Delaware</span>
+<span class="dim">|</span>                                       <span class="dim">|</span>
+<span class="dim">v</span>                                       <span class="dim">v</span>
+<span class="highlight">Bancolombia</span> Empresarial              <span class="highlight">Mercury</span>
+            </div>
+          </div>
+
+          <!-- Estructura dual -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Estructura estandar SaaS dual</h3>
+            <div class="info-callout mb-4">
+              <p class="text-sm text-gray-300"><strong class="text-white">C Corp = holding.</strong> SAS Colombia = subsidiaria o contrato de servicios. Es la estructura estandar para startups LATAM que operan en USA.</p>
+            </div>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300">C Corp es duena de la IP y recibe inversion</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300">SAS es donde trabaja el equipo y se ejecuta el desarrollo</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <span class="text-gray-300">Cada entidad factura a los clientes de su pais con su pasarela local</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transfer pricing -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Transfer pricing: como mover dinero entre entidades</h3>
+            <div class="diagram-box mb-4">
+<span class="highlight">C Corp USA</span> paga a <span class="highlight">SAS Colombia</span> por <span class="highlight">"servicios de desarrollo"</span>
+
+<span class="dim">Beneficio:</span>
+  - C Corp <span class="highlight">deduce</span> el pago como gasto (reduce impuestos USA)
+  - SAS <span class="highlight">recibe</span> y paga solo <span class="highlight">RST 1.8%</span> (no 35%)
+  - Resultado: <span class="highlight">minimo impuesto</span> en ambos lados
+
+<span class="dim">Requisito legal:</span>
+  - El precio debe ser "arm's length" (precio de mercado)
+  - Documentar con contrato de servicios intercompany
+  - Asesorar con CPA que entienda transfer pricing
+            </div>
+          </div>
+
+          <!-- Preguntas frecuentes pagos -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Preguntas frecuentes</h3>
+            <div class="space-y-4 text-sm">
+              <div>
+                <p class="text-gray-200 font-medium mb-1">Puede la SAS cobrar a clientes USA?</p>
+                <p class="text-gray-500">Tecnicamente si, pero clientes USA esperan Stripe con factura americana. No es practico. Ademas, el dinero estaria en Colombia y no en la C Corp donde estan los inversores.</p>
+              </div>
+              <div>
+                <p class="text-gray-200 font-medium mb-1">Puede la C Corp cobrar a clientes Colombia?</p>
+                <p class="text-gray-500">Tecnicamente si, pero clientes CO esperan Wompi/PSE/Nequi. Ademas, recibirias dolares y tendrias que convertir. No es practico.</p>
+              </div>
+              <div>
+                <p class="text-gray-200 font-medium mb-1">Stripe como pasarela en Widdo?</p>
+                <p class="text-gray-500">Ya existe el PaymentGatewayFactory en el codigo. Solo falta crear StripeGateway.php siguiendo el mismo patron de WompiGateway y MercadoPagoGateway.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pasarelas en codigo -->
+          <div class="section-card p-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Pasarelas ya integradas en el codigo</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-dark-700 rounded-lg p-4 text-center">
+                <div class="text-accent font-bold mb-1">Wompi</div>
+                <div class="text-xs text-gray-500">Colombia &middot; Widget embebido</div>
+                <div class="text-xs text-accent mt-1">Activa</div>
+              </div>
+              <div class="bg-dark-700 rounded-lg p-4 text-center">
+                <div class="text-accent font-bold mb-1">MercadoPago</div>
+                <div class="text-xs text-gray-500">LATAM &middot; Redirect</div>
+                <div class="text-xs text-accent mt-1">Activa</div>
+              </div>
+              <div class="bg-dark-700 rounded-lg p-4 text-center border border-dashed border-dark-500">
+                <div class="text-gray-400 font-bold mb-1">Stripe</div>
+                <div class="text-xs text-gray-500">USA &middot; Pendiente</div>
+                <div class="text-xs text-yellow-400 mt-1">Por crear</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 7: INVERSION PRE-SEED -->
+        <!-- ============================================================ -->
+        <section id="inversion" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">7</span>
+            <h2 class="text-xl font-bold text-white">Inversión Pre-Seed</h2>
+          </div>
+
+          <!-- Que es un SAFE -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Que es un SAFE y como funciona</h3>
+            <div class="space-y-4 text-sm mb-4">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">SAFE = Simple Agreement for Future Equity.</span>
+                  <span class="text-gray-500 block text-xs">Creado por Y Combinator. Es el estandar USA para rondas pre-seed. El inversor te da dinero HOY, y recibe acciones DESPUES (cuando hagas una ronda con precio, como un Seed o Serie A).</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">No defines una valoracion exacta. Defines un "cap" (tope).</span>
+                  <span class="text-gray-500 block text-xs">Ejemplo: si el cap es $2M y alguien pone $100K, esa persona tendra <strong class="text-gray-300">como maximo</strong> el 5% de la empresa ($100K / $2M). Si en la siguiente ronda la valoracion es $5M, el inversor igual convierte a $2M &mdash; le va mejor que a los nuevos. El cap protege al inversor temprano.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">Es rapido: 1-2 paginas, sin negociar valoracion, sin board seats.</span>
+                  <span class="text-gray-500 block text-xs">Un inversor angel puede decir "si" hoy y firmar manana. No necesita abogados de ambos lados negociando por semanas. El template es estandar de Y Combinator, todo el mundo lo conoce.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold mt-0.5">></span>
+                <div>
+                  <span class="text-gray-200 font-medium">Se pueden apilar.</span>
+                  <span class="text-gray-500 block text-xs">No necesitas un solo inversor que ponga todo. Puedes recibir $50K de Erica, $50K de Hank, $50K de otro. Cada uno firma su propio SAFE con el mismo cap. Se van sumando hasta completar la ronda.</span>
+                </div>
+              </div>
+            </div>
+            <div class="warning-callout">
+              <p class="text-xs text-yellow-300 font-medium mb-1">Requisito: el SAFE se firma contra la C Corp.</p>
+              <p class="text-xs text-gray-400">El inversor hace wire a la cuenta bancaria de la C Corp (Mercury o Chase). Por eso la C Corp debe estar creada ANTES de pedir inversion. Si alguien dice "si" durante el viaje, necesitas la cuenta lista para recibir el wire.</p>
+            </div>
+          </div>
+
+          <!-- Tabla: cuanto pido = que % -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Cuanto pido = que % se lleva el inversor</h3>
+            <div class="overflow-x-auto mb-4">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Inversor pone</th>
+                    <th class="text-center">Cap $2M</th>
+                    <th class="text-center">Cap $1.5M</th>
+                    <th class="hidden lg:table-cell">Ejemplo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-white font-bold">$50,000</td>
+                    <td class="text-center text-accent font-semibold">2.5%</td>
+                    <td class="text-center text-gray-300">3.3%</td>
+                    <td class="hidden lg:table-cell text-gray-500 text-xs">Un angel que quiere probar. Bajo riesgo para ambos</td>
+                  </tr>
+                  <tr>
+                    <td class="text-white font-bold">$100,000</td>
+                    <td class="text-center text-accent font-semibold">5%</td>
+                    <td class="text-center text-gray-300">6.7%</td>
+                    <td class="hidden lg:table-cell text-gray-500 text-xs">Un inversor serio. La mitad de la ronda</td>
+                  </tr>
+                  <tr>
+                    <td class="text-white font-bold">$150,000</td>
+                    <td class="text-center text-accent font-semibold">7.5%</td>
+                    <td class="text-center text-gray-300">10%</td>
+                    <td class="hidden lg:table-cell text-gray-500 text-xs">Casi toda la ronda de un solo inversor</td>
+                  </tr>
+                  <tr>
+                    <td class="text-white font-bold">$200,000</td>
+                    <td class="text-center text-accent font-semibold">10%</td>
+                    <td class="text-center text-gray-300">13.3%</td>
+                    <td class="hidden lg:table-cell text-gray-500 text-xs">Ronda completa. Un solo check</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="info-callout">
+              <p class="text-xs text-accent font-semibold mb-1">Cap recomendado: $2M.</p>
+              <p class="text-xs text-gray-400">Con producto completo (107 modelos, IA), 14 clubes activos, 0% churn, y pilotos USA, una valoracion de $2M cap es razonable y facil de defender. Inversores pre-seed tipicamente reciben 7-12%, no 15-20%.</p>
+            </div>
+          </div>
+
+          <!-- Numeros clave -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+            <div class="stat-card text-center">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Raising</div>
+              <div class="value">$200K</div>
+            </div>
+            <div class="stat-card text-center">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Cap SAFE</div>
+              <div class="value text-lg">$2M</div>
+            </div>
+            <div class="stat-card text-center">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Dilucion max</div>
+              <div class="value text-lg">~10%</div>
+            </div>
+            <div class="stat-card text-center">
+              <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Sweat Equity</div>
+              <div class="value text-lg">$150K</div>
+              <div class="text-xs text-gray-500 mt-1">1,364 hrs x $100/hr + domain expertise</div>
+            </div>
+          </div>
+
+          <!-- Distribución del $200K -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Distribución del $200K</h3>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm text-gray-300">Salarios (12 meses) &mdash; Miguel $5K + Co-founder $2.5K</span>
+                  <span class="text-sm text-white font-bold">$90,000 <span class="text-gray-500 font-normal">(45%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                  <div class="h-full bg-accent rounded-full" style="width:45%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm text-gray-300">Buffer</span>
+                  <span class="text-sm text-white font-bold">~$68,500 <span class="text-gray-500 font-normal">(34%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                  <div class="h-full bg-gray-500 rounded-full" style="width:34%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm text-gray-300">Legal + Setup &mdash; Delaware, abogado, visa, marca, ToS</span>
+                  <span class="text-sm text-white font-bold">$15,500 <span class="text-gray-500 font-normal">(8%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                  <div class="h-full bg-yellow-500 rounded-full" style="width:8%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm text-gray-300">Marketing</span>
+                  <span class="text-sm text-white font-bold">$12,000 <span class="text-gray-500 font-normal">(6%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                  <div class="h-full bg-blue-500 rounded-full" style="width:6%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm text-gray-300">Viajes</span>
+                  <span class="text-sm text-white font-bold">$9,000 <span class="text-gray-500 font-normal">(4.5%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                  <div class="h-full bg-purple-500 rounded-full" style="width:4.5%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-sm text-gray-300">Infra + Tools</span>
+                  <span class="text-sm text-white font-bold">$5,000 <span class="text-gray-500 font-normal">(2.5%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
+                  <div class="h-full bg-red-500 rounded-full" style="width:2.5%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Burn mensual -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div class="section-card p-6">
+              <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Burn Mensual</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center py-2 border-b border-dark-600">
+                  <span class="text-sm text-gray-400">Meses 0-5</span>
+                  <span class="text-white font-bold">~$9,000/mes</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-dark-600">
+                  <span class="text-sm text-gray-400">Meses 6-11</span>
+                  <span class="text-white font-bold">~$10,000/mes</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                  <span class="text-sm text-gray-400">Meses 12+</span>
+                  <span class="text-white font-bold">~$11,000/mes</span>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-dark-600 text-center">
+                <span class="text-sm text-gray-400">Breakeven: </span>
+                <span class="text-accent font-bold">Mes 11 (~200 clubs)</span>
+              </div>
+            </div>
+
+            <div class="section-card p-6">
+              <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Inversores Target</h3>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 min-w-[32px] bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 text-xs font-bold">EB</div>
+                  <div>
+                    <div class="text-sm text-white font-medium">Erica Berman</div>
+                    <div class="text-xs text-gray-400">Hija de Don Berman (ex-dueño de Cardworks, vendido a Discover Financial). Posible dueña de varios colleges en North Carolina. Casa en Orlando. Contactos de alto nivel en finanzas y educacion.</div>
+                    <div class="text-xs text-accent mt-1 font-semibold">Inversora-distribuidora: sus colleges tienen programas deportivos &rarr; clientes directos de Widdo</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 min-w-[32px] bg-accent/20 rounded-full flex items-center justify-center text-accent text-xs font-bold">HW</div>
+                  <div>
+                    <div class="text-sm text-white font-medium">Hank Waters (CEO SEPA)</div>
+                    <div class="text-xs text-gray-400">6 empresas en Florida, Super Fan #1 Orlando Magic, contactos NBA/MLB. SEPA = 6 deportes, 60+ atletas, $1.5M revenue.</div>
+                    <div class="text-xs text-accent mt-1 font-semibold">Inversor-distribuidor: SEPA como cliente + trae colegios + contactos Magic/NBA</div>
+                  </div>
+                </div>
+                <div class="info-callout mt-4">
+                  <p class="text-xs text-accent font-semibold mb-1">Por que inversores-distribuidores y no angeles normales?</p>
+                  <p class="text-xs text-gray-400">Un angel normal te da $50K y ya. Erica o Hank te dan $50K + sus colleges/colegios como clientes + sus contactos. Cada $50K de un inversor-distribuidor puede traer 10+ instituciones que usen Widdo. Eso vale mas que el dinero.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Estrategia: pedir inversion durante el viaje -->
+          <div class="section-card p-6 mb-6">
+            <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-4">Se puede pedir inversion durante el viaje?</h3>
+            <div class="info-callout mb-4">
+              <p class="text-sm text-accent font-semibold">SI. Pre-seed es exactamente para este momento.</p>
+              <p class="text-xs text-gray-400 mt-1">Los inversores pre-seed invierten en el <strong class="text-gray-300">founder + producto + mercado</strong>, no en revenue. Tu tienes: producto completo funcionando, 14 clubes activos con 0% churn, 774 usuarios, y pilotos en 2 colegios de Florida. Eso es mas de lo que la mayoria de startups pre-seed tienen.</p>
+            </div>
+
+            <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Pitch para Erica Berman</h4>
+            <div class="bg-dark-700 rounded-lg p-4 border border-dark-500 mb-4">
+              <div class="space-y-3 text-sm">
+                <p class="text-gray-300 italic">"Erica, we built the all-in-one platform for sports clubs and academies. AI assistant, payment management, tournament organization &mdash; everything in one place. We already have 14 clubs using it in Colombia with zero churn, and we're piloting with two academies here in Orlando."</p>
+                <p class="text-gray-300 italic">"Your colleges in North Carolina &mdash; do they have athletic programs? Because Widdo solves exactly the pain they have: managing rosters, tracking attendance, processing payments, communicating with parents. All for $99/month flat, no hidden fees."</p>
+                <p class="text-gray-300 italic">"We're raising a small pre-seed round &mdash; $200K via SAFE at a $2M cap. We're looking for strategic investors who don't just bring capital, but also bring distribution. Your colleges could be our first clients in North Carolina."</p>
+              </div>
+            </div>
+
+            <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Pitch para Hank Waters</h4>
+            <div class="bg-dark-700 rounded-lg p-4 border border-dark-500 mb-4">
+              <div class="space-y-2 text-sm">
+                <div class="danger-callout">
+                  <p class="text-xs text-red-300 font-semibold">Con Hank: CLIENTE primero. Solo mencionar inversion si el muestra interes genuino en el producto.</p>
+                </div>
+                <p class="text-gray-300 italic mt-2">"Hank, we'd love for SEPA to try Widdo free for 2 months. Let me show you what it does."</p>
+                <p class="text-gray-400 text-xs">Si despues de la demo dice algo como "this is great, how can I get involved?":</p>
+                <p class="text-gray-300 italic">"We're raising a small pre-seed. We're looking for investors who understand this space &mdash; not just capital, but distribution. Someone like you, with SEPA and your connections, could help us grow across Florida."</p>
+              </div>
+            </div>
+
+            <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Que necesitas tener listo ANTES del viaje</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300"><strong class="text-white">C Corp creada</strong> &mdash; el SAFE se firma contra la C Corp. Sin C Corp no puedes recibir inversion</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300"><strong class="text-white">Cuenta bancaria</strong> (Mercury) &mdash; el wire del SAFE va a esta cuenta</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300"><strong class="text-white">SAFE template listo</strong> &mdash; descargar el SAFE de Y Combinator (ycombinator.com/documents), rellenar con cap $2M. Es 1 pagina</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300"><strong class="text-white">Demo en ingles impecable</strong> &mdash; esta es tu unica oportunidad de primera impresion</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300"><strong class="text-white">Deck impreso + one-pager</strong> &mdash; para dejar en la mesa despues de la reunion</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 8: LATAM EXPANSION -->
+        <!-- ============================================================ -->
+        <section id="latam" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">8</span>
+            <h2 class="text-xl font-bold text-white">Expansión LATAM</h2>
+            <span class="badge badge-green text-[10px]">Sin entidad local</span>
+          </div>
+
+          <div class="section-card p-6 mb-6">
+            <div class="info-callout mb-6">
+              <p class="text-sm text-gray-300"><strong class="text-accent">MercadoPago Cross Border</strong> desde C Corp &mdash; sin necesidad de crear entidad local en cada país. Crear subsidiaria local solo cuando >50 clubs en un país.</p>
+            </div>
+
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Pricing por País</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
+              <div class="bg-dark-700 rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-500 mb-1">Mexico</div>
+                <div class="text-white font-bold">$899 MXN</div>
+              </div>
+              <div class="bg-dark-700 rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-500 mb-1">Brasil</div>
+                <div class="text-white font-bold">R$199</div>
+              </div>
+              <div class="bg-dark-700 rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-500 mb-1">Chile</div>
+                <div class="text-white font-bold">$29,900 CLP</div>
+              </div>
+              <div class="bg-dark-700 rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-500 mb-1">Perú</div>
+                <div class="text-white font-bold">S/129</div>
+              </div>
+              <div class="bg-dark-700 rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-500 mb-1">Argentina</div>
+                <div class="text-white font-bold">$29,900 ARS</div>
+              </div>
+              <div class="bg-dark-700 rounded-lg p-3 text-center">
+                <div class="text-xs text-gray-500 mb-1">Uruguay</div>
+                <div class="text-white font-bold">TBD</div>
+              </div>
+            </div>
+
+            <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Fases de Expansión</h3>
+            <div class="flex flex-wrap gap-2 items-center">
+              <span class="bg-accent/20 text-accent px-3 py-1.5 rounded-lg text-sm font-medium">CO + USA</span>
+              <svg width="20" height="20" fill="none" stroke="#6b7280" stroke-width="2"><path d="M8 4l6 6-6 6"/></svg>
+              <span class="bg-dark-700 text-gray-300 px-3 py-1.5 rounded-lg text-sm">MX + CL</span>
+              <svg width="20" height="20" fill="none" stroke="#6b7280" stroke-width="2"><path d="M8 4l6 6-6 6"/></svg>
+              <span class="bg-dark-700 text-gray-300 px-3 py-1.5 rounded-lg text-sm">BR + PE</span>
+              <svg width="20" height="20" fill="none" stroke="#6b7280" stroke-width="2"><path d="M8 4l6 6-6 6"/></svg>
+              <span class="bg-dark-700 text-gray-300 px-3 py-1.5 rounded-lg text-sm">AR + UY</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 9: TIMELINE (UPDATED) -->
+        <!-- ============================================================ -->
+        <section id="timeline" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">9</span>
+            <h2 class="text-xl font-bold text-white">Timeline de Ejecución</h2>
+          </div>
+
+          <div class="section-card p-6">
+            <div class="space-y-8">
+              <!-- ESTA SEMANA -->
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:#f97316"></div>
+                <div class="bg-dark-700 rounded-lg p-5 border border-orange-500/30">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="badge badge-trip">ESTA SEMANA</span>
+                    <span class="text-xs text-gray-500">Antes del viaje (Mar 4-9)</span>
+                  </div>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Preparar demo en inglés</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Imprimir decks y one-pagers</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Preparar pitch de 2 minutos</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Verificar que Widdo funciona bien en inglés</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Aplicar Stripe Atlas (puede hacerse online antes de viajar)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIAJE USA -->
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:#f97316"></div>
+                <div class="bg-dark-700 rounded-lg p-5 border border-orange-500/30">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="badge badge-trip">VIAJE USA</span>
+                    <span class="text-xs text-gray-500">~15 dias, Mar 10-25</span>
+                  </div>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Demos en 2 colegios (The Academy CFL + SEPA)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Reunión abogado corporativo</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-orange-400 mt-0.5">></span>
+                      <span class="text-gray-300">Alinear con co-founder (equity, roles, Founders Agreement)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- POST-VIAJE -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="bg-dark-700 rounded-lg p-5 border border-dark-500">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="badge badge-green">POST-VIAJE</span>
+                    <span class="text-xs text-gray-500">Abr 2026</span>
+                  </div>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex items-start gap-2">
+                      <span class="text-accent mt-0.5">></span>
+                      <span class="text-gray-300">Formalizar Founders Agreement con abogado</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-accent mt-0.5">></span>
+                      <span class="text-gray-300">Empezar a cobrar 14 clubes Colombia ($129K COP/mes)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-accent mt-0.5">></span>
+                      <span class="text-gray-300">Crear SAS nueva con RST</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-accent mt-0.5">></span>
+                      <span class="text-gray-300">Activar pilotos gratuitos USA (2 meses)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MES 2-3 POST-VIAJE -->
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:#fbbf24"></div>
+                <div class="bg-dark-700 rounded-lg p-5 border border-dark-500">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="badge badge-alta">MES 2-3 POST-VIAJE</span>
+                    <span class="text-xs text-gray-500">May-Jun 2026</span>
+                  </div>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex items-start gap-2">
+                      <span class="text-yellow-400 mt-0.5">></span>
+                      <span class="text-gray-300">Colegios empiezan a pagar ($99/mes)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-yellow-400 mt-0.5">></span>
+                      <span class="text-gray-300">Levantar Pre-Seed $200K SAFE</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-yellow-400 mt-0.5">></span>
+                      <span class="text-gray-300">Co-founder cierra más clubs</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MES 4-6 -->
+              <div class="timeline-item">
+                <div class="timeline-dot" style="background:#60a5fa"></div>
+                <div class="bg-dark-700 rounded-lg p-5 border border-dark-500">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="badge badge-media">MES 4-6</span>
+                    <span class="text-xs text-gray-500">Jul-Sep 2026</span>
+                  </div>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex items-start gap-2">
+                      <span class="text-blue-400 mt-0.5">></span>
+                      <span class="text-gray-300">Aplicar visa E-2 Employee (con revenue real)</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-blue-400 mt-0.5">></span>
+                      <span class="text-gray-300">50+ clubes</span>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <span class="text-blue-400 mt-0.5">></span>
+                      <span class="text-accent font-semibold">Breakeven a la vista</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 10: DATA ROOM -->
+        <!-- ============================================================ -->
+        <section id="dataroom" class="scroll-mt-24">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="number-circle text-base w-8 h-8 min-w-[32px]">10</span>
+            <h2 class="text-xl font-bold text-white">Documentos Necesarios (Data Room)</h2>
+          </div>
+
+          <div class="progress-bar-container" id="progress-dataroom">
+            <span class="progress-bar-label"><span class="done" id="progress-dataroom-count">0</span> de 12 completados</span>
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progress-dataroom-fill"></div>
+            </div>
+          </div>
+
+          <div class="section-card p-6">
+            <p class="text-sm text-gray-500 mb-6">Checklist de documentos que necesitas tener listos para inversores y operación legal.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8" id="dataroom-tasks">
+              <!-- Columna 1: Corporativo -->
+              <div class="mb-6">
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 pb-2 border-b border-dark-600">Corporativo</h4>
+                <div class="space-y-0">
+                  <div class="checklist-item" data-task-id="dr-1">
+                    <div class="check-box" data-task="dr-1"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Certificate of Incorporation (C Corp)</div>
+                      <div class="text-xs text-gray-600 check-sub">Delaware via Stripe Atlas</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-2">
+                    <div class="check-box" data-task="dr-2"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Founders Agreement</div>
+                      <div class="text-xs text-gray-600 check-sub">Con co-founder, abogado Orlando</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-3">
+                    <div class="check-box" data-task="dr-3"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Cap Table actualizado</div>
+                      <div class="text-xs text-gray-600 check-sub">Carta/Pulley</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-4">
+                    <div class="check-box" data-task="dr-4"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">IP Assignment</div>
+                      <div class="text-xs text-gray-600 check-sub">Código asignado a la empresa</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-5">
+                    <div class="check-box" data-task="dr-5"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Marca registrada (CO + USA)</div>
+                      <div class="text-xs text-gray-600 check-sub">SIC + USPTO</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Columna 2: Inversión -->
+              <div class="mb-6">
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 pb-2 border-b border-dark-600">Inversión</h4>
+                <div class="space-y-0">
+                  <div class="checklist-item" data-task-id="dr-6">
+                    <div class="check-box" data-task="dr-6"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">SAFE Notes (ejecutados)</div>
+                      <div class="text-xs text-gray-600 check-sub">Post cierre de ronda</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-7">
+                    <div class="check-box" data-task="dr-7"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Financial Model (P&L 36 meses)</div>
+                      <div class="text-xs text-gray-600 check-sub">3 escenarios + sensibilidad</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-8">
+                    <div class="check-box" data-task="dr-8"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Pitch Deck</div>
+                      <div class="text-xs text-gray-600 check-sub">USA + LATAM versiones</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-9">
+                    <div class="check-box" data-task="dr-9"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">NDA template</div>
+                      <div class="text-xs text-gray-600 check-sub">Para antes de compartir data room</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Columna 3: Legal -->
+              <div class="mb-6">
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 pb-2 border-b border-dark-600">Legal & Compliance</h4>
+                <div class="space-y-0">
+                  <div class="checklist-item" data-task-id="dr-10">
+                    <div class="check-box" data-task="dr-10"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">ToS + Privacy Policy</div>
+                      <div class="text-xs text-gray-600 check-sub">ES + EN, COPPA compliant</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-11">
+                    <div class="check-box" data-task="dr-11"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Data Processing Agreement</div>
+                      <div class="text-xs text-gray-600 check-sub">Crítico por datos de menores</div>
+                    </div>
+                  </div>
+                  <div class="checklist-item" data-task-id="dr-12">
+                    <div class="check-box" data-task="dr-12"></div>
+                    <div>
+                      <div class="text-sm text-gray-300 check-text">Contratos con clubes (template)</div>
+                      <div class="text-xs text-gray-600 check-sub">Suscripción SaaS estándar</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="border-t border-dark-600 mt-12">
+        <div class="max-w-5xl mx-auto px-6 lg:px-10 py-8">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-600">
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-accent rounded flex items-center justify-center font-bold text-white text-xs">W</div>
+              <span>Documento privado &mdash; Widdo 2026</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <a href="visa-usa.html" class="text-gray-500 hover:text-accent transition-colors text-xs">Visa USA &rarr;</a>
+              <span>Generado como guia interna del founder</span>
+              <button class="reset-btn" onclick="resetAllChecks()" title="Reiniciar todos los checkboxes">Resetear todo</button>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    // Sidebar toggle
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      const menuIcon = document.getElementById('menuIcon');
+      const closeIcon = document.getElementById('closeIcon');
+
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+
+    // Close sidebar on link click (mobile)
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          toggleSidebar();
+        }
+      });
+    });
+
+    // Active section highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.sidebar-link');
+
+    function updateActiveLink() {
+      let current = '';
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ============================================================
+    // CHECKLIST INTERACTIVITY (localStorage persistence)
+    // ============================================================
+    const STORAGE_KEY = 'widdo-guia-checklist';
+
+    // Viaje section: dynamic counting of all vm-, vc-, vp-, vf- prefixed tasks
+    const VIAJE_PREFIXES = ['vm', 'vc', 'vp', 'vf'];
+
+    // Section definitions for table-based sections: prefix -> { total, countId, fillId }
+    const sectionConfig = {
+      'co': { total: 12, countId: 'progress-colombia-count', fillId: 'progress-colombia-fill' },
+      'us': { total: 7,  countId: 'progress-usa-count',      fillId: 'progress-usa-fill' },
+      'dr': { total: 12, countId: 'progress-dataroom-count',  fillId: 'progress-dataroom-fill' },
+    };
+
+    // Count total viaje tasks dynamically
+    function getViajeTotalAndDone(state) {
+      let total = 0;
+      let done = 0;
+      VIAJE_PREFIXES.forEach(prefix => {
+        document.querySelectorAll('[data-task^="' + prefix + '-"]').forEach(el => {
+          total++;
+          const taskId = el.getAttribute('data-task');
+          if (state[taskId]) done++;
+        });
+      });
+      return { total, done };
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function updateProgressBars(state) {
+      // Table-based sections
+      Object.keys(sectionConfig).forEach(prefix => {
+        const cfg = sectionConfig[prefix];
+        let done = 0;
+        for (let i = 1; i <= cfg.total; i++) {
+          if (state[prefix + '-' + i]) done++;
+        }
+        const countEl = document.getElementById(cfg.countId);
+        const fillEl = document.getElementById(cfg.fillId);
+        if (countEl) countEl.textContent = done;
+        if (fillEl) fillEl.style.width = (done / cfg.total * 100) + '%';
+      });
+
+      // Viaje section
+      const viaje = getViajeTotalAndDone(state);
+      const vCountEl = document.getElementById('progress-viaje-count');
+      const vTotalEl = document.getElementById('progress-viaje-total');
+      const vFillEl = document.getElementById('progress-viaje-fill');
+      if (vCountEl) vCountEl.textContent = viaje.done;
+      if (vTotalEl) vTotalEl.textContent = viaje.total;
+      if (vFillEl) vFillEl.style.width = (viaje.total > 0 ? (viaje.done / viaje.total * 100) : 0) + '%';
+    }
+
+    function applyCheckedState(taskId, isChecked) {
+      // Table rows (Colombia & USA)
+      const row = document.querySelector('tr[data-task-id="' + taskId + '"]');
+      if (row) {
+        const checkbox = row.querySelector('.task-checkbox');
+        if (isChecked) {
+          row.classList.add('task-completed');
+          if (checkbox) checkbox.classList.add('checked');
+        } else {
+          row.classList.remove('task-completed');
+          if (checkbox) checkbox.classList.remove('checked');
+        }
+      }
+
+      // Checklist items (Data Room + Viaje sections)
+      const item = document.querySelector('.checklist-item[data-task-id="' + taskId + '"]');
+      if (item) {
+        const checkBox = item.querySelector('.check-box');
+        if (isChecked) {
+          item.classList.add('completed');
+          if (checkBox) checkBox.classList.add('checked');
+        } else {
+          item.classList.remove('completed');
+          if (checkBox) checkBox.classList.remove('checked');
+        }
+      }
+    }
+
+    function initChecklist() {
+      const state = loadState();
+
+      // Restore all saved states
+      Object.keys(state).forEach(taskId => {
+        if (state[taskId]) {
+          applyCheckedState(taskId, true);
+        }
+      });
+
+      // Bind click events on table checkboxes (Colombia & USA)
+      document.querySelectorAll('.task-checkbox[data-task]').forEach(checkbox => {
+        checkbox.addEventListener('click', function() {
+          const taskId = this.getAttribute('data-task');
+          const currentState = loadState();
+          const newVal = !currentState[taskId];
+          currentState[taskId] = newVal;
+          saveState(currentState);
+          applyCheckedState(taskId, newVal);
+          updateProgressBars(currentState);
+        });
+      });
+
+      // Bind click events on check-boxes (Data Room + Viaje sections)
+      document.querySelectorAll('.check-box[data-task]').forEach(checkBox => {
+        checkBox.addEventListener('click', function() {
+          const taskId = this.getAttribute('data-task');
+          const currentState = loadState();
+          const newVal = !currentState[taskId];
+          currentState[taskId] = newVal;
+          saveState(currentState);
+          applyCheckedState(taskId, newVal);
+          updateProgressBars(currentState);
+        });
+      });
+
+      // Also allow clicking the entire row text area for table tasks
+      document.querySelectorAll('tr[data-task-id]').forEach(row => {
+        row.style.cursor = 'pointer';
+        row.addEventListener('click', function(e) {
+          if (e.target.closest('.task-checkbox')) return;
+          const taskId = this.getAttribute('data-task-id');
+          const checkbox = this.querySelector('.task-checkbox');
+          if (checkbox) checkbox.click();
+        });
+      });
+
+      // Also allow clicking checklist-item row for Data Room + Viaje
+      document.querySelectorAll('.checklist-item[data-task-id]').forEach(item => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', function(e) {
+          if (e.target.closest('.check-box')) return;
+          const taskId = this.getAttribute('data-task-id');
+          const checkBox = this.querySelector('.check-box');
+          if (checkBox) checkBox.click();
+        });
+      });
+
+      updateProgressBars(state);
+    }
+
+    function resetAllChecks() {
+      if (!confirm('Resetear todos los checkboxes? Se perdera el progreso guardado.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+
+      // Clear all visual states
+      document.querySelectorAll('.task-checkbox.checked').forEach(el => el.classList.remove('checked'));
+      document.querySelectorAll('tr.task-completed').forEach(el => el.classList.remove('task-completed'));
+      document.querySelectorAll('.check-box.checked').forEach(el => el.classList.remove('checked'));
+      document.querySelectorAll('.checklist-item.completed').forEach(el => el.classList.remove('completed'));
+
+      updateProgressBars({});
+    }
+
+    // Initialize on DOM ready
+    initChecklist();
+  </script>
+</body>
+</html>

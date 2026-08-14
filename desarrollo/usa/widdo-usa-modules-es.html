@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo USA — Nuevos Modulos</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        widdo: {
+          bg: '#0A0A0F',
+          card: '#12121A',
+          cardHover: '#1A1A25',
+          green: '#00C853',
+          greenDark: '#00A844',
+          greenGlow: 'rgba(0, 200, 83, 0.15)',
+          text: '#E8E8ED',
+          muted: '#8B8B9E',
+          border: '#1E1E2E',
+          yellow: '#FFB300',
+          red: '#FF3D57',
+          blue: '#3D8BFF',
+        }
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #0A0A0F; color: #E8E8ED; font-family: 'Inter', sans-serif; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0A0F; }
+  ::-webkit-scrollbar-thumb { background: #1E1E2E; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00C853; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 200, 83, 0.1); }
+    50% { box-shadow: 0 0 40px rgba(0, 200, 83, 0.25); }
+  }
+  @keyframes countUp {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes drawLine {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .animate-on-scroll.visible.delay-1 { transition-delay: 0.1s; }
+  .animate-on-scroll.visible.delay-2 { transition-delay: 0.2s; }
+  .animate-on-scroll.visible.delay-3 { transition-delay: 0.3s; }
+  .animate-on-scroll.visible.delay-4 { transition-delay: 0.4s; }
+  .animate-on-scroll.visible.delay-5 { transition-delay: 0.5s; }
+
+  /* Traffic light dots */
+  .dot-green { background: #00C853; box-shadow: 0 0 8px rgba(0, 200, 83, 0.6); }
+  .dot-yellow { background: #FFB300; box-shadow: 0 0 8px rgba(255, 179, 0, 0.6); }
+  .dot-red { background: #FF3D57; box-shadow: 0 0 8px rgba(255, 61, 87, 0.6); }
+
+  /* Progress bars */
+  .progress-fill {
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #00C853, #00E676, #69F0AE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card hover */
+  .module-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00C853, transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .module-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Flow arrows */
+  .flow-arrow {
+    position: relative;
+  }
+  .flow-arrow::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid #00C853;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+  }
+
+  /* Noise overlay */
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.015;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Signature animation */
+  .signature-path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawSignature 2s ease-in-out forwards;
+  }
+  @keyframes drawSignature {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Glow ring */
+  .glow-ring {
+    box-shadow: 0 0 0 1px rgba(0, 200, 83, 0.1), 0 0 30px rgba(0, 200, 83, 0.05);
+  }
+
+  /* Nav active */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #00C853;
+    transition: width 0.3s;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<div class="noise-overlay"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-widdo-bg/80 border-b border-widdo-border/50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="font-mono font-bold text-2xl tracking-wider text-widdo-green">WIDDO</span>
+      <span class="text-widdo-muted text-xs font-mono uppercase tracking-widest hidden sm:inline">Modulos USA</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-sm text-widdo-muted">
+      <a href="#compliance" class="nav-link hover:text-widdo-text transition-colors">Cumplimiento</a>
+      <a href="#waivers" class="nav-link hover:text-widdo-text transition-colors">Exoneraciones</a>
+      <a href="#credentials" class="nav-link hover:text-widdo-text transition-colors">Credenciales</a>
+      <a href="#ncaa" class="nav-link hover:text-widdo-text transition-colors">NCAA</a>
+      <a href="#tryouts" class="nav-link hover:text-widdo-text transition-colors">Pruebas</a>
+      <a href="#pitch" class="nav-link hover:text-widdo-text transition-colors">Pitch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="min-h-screen flex items-center justify-center relative overflow-hidden">
+  <!-- Background grid -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(0,200,83,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,83,0.3) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  <!-- Radial glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full" style="background: radial-gradient(circle, rgba(0,200,83,0.08) 0%, transparent 70%);"></div>
+
+  <div class="text-center relative z-10 px-6" style="animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1);">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-widdo-green/20 bg-widdo-green/5 mb-8">
+      <span class="w-2 h-2 rounded-full bg-widdo-green animate-pulse"></span>
+      <span class="text-widdo-green text-sm font-mono">5 Nuevos Modulos</span>
+    </div>
+
+    <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-6">
+      <span class="text-widdo-text">Construido para</span><br>
+      <span class="gradient-text">Clubes en USA</span>
+    </h1>
+
+    <p class="text-xl md:text-2xl text-widdo-muted max-w-2xl mx-auto mb-4 font-light">
+      Lo que los clubes necesitan. Lo que nadie mas tiene.
+    </p>
+    <p class="text-sm text-widdo-muted/60 font-mono mb-12">
+      Cumplimiento &middot; Exoneraciones &middot; Credenciales &middot; NCAA &middot; Pruebas
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-8 text-center">
+      <div style="animation: countUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;">
+        <div class="text-4xl font-bold text-widdo-green font-mono">$54B</div>
+        <div class="text-xs text-widdo-muted mt-1">Mercado Deportivo Juvenil USA</div>
+      </div>
+      <div style="animation: countUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;">
+        <div class="text-4xl font-bold text-widdo-text font-mono">55M</div>
+        <div class="text-xs text-widdo-muted mt-1">Atletas Juveniles</div>
+      </div>
+      <div style="animation: countUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;">
+        <div class="text-4xl font-bold text-widdo-text font-mono">73%</div>
+        <div class="text-xs text-widdo-muted mt-1">Sin Software</div>
+      </div>
+      <div style="animation: countUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;">
+        <div class="text-4xl font-bold text-widdo-red font-mono">Jul '26</div>
+        <div class="text-xs text-widdo-muted mt-1">Limite Ley Florida</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-widdo-muted/40" style="animation: fadeIn 1s 1.5s both;">
+    <span class="text-xs font-mono">Desliza</span>
+    <div class="w-px h-8 bg-gradient-to-b from-widdo-muted/40 to-transparent animate-pulse"></div>
+  </div>
+</header>
+
+<!-- ==================== MODULE 1: COMPLIANCE DASHBOARD ==================== -->
+<section id="compliance" class="py-32 px-6 relative">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Module header -->
+    <div class="animate-on-scroll mb-20">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="font-mono text-widdo-green text-sm tracking-widest">01</span>
+        <div class="h-px flex-1 bg-gradient-to-r from-widdo-green/30 to-transparent"></div>
+      </div>
+      <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">
+        Panel de<br><span class="gradient-text">Cumplimiento</span>
+      </h2>
+      <p class="text-xl text-widdo-muted max-w-2xl font-light">
+        Cada atleta. Cada documento. Un semaforo.
+      </p>
+    </div>
+
+    <!-- Problem / Solution -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="animate-on-scroll delay-1 bg-widdo-red/5 border border-widdo-red/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <span class="text-widdo-red font-semibold text-sm uppercase tracking-wider">El Problema</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Los clubes de USA estan <strong>legalmente obligados</strong> a mantener los documentos de atletas y entrenadores al dia. Examenes medicos, verificacion de antecedentes, protocolos de concusion.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Documentos faltantes = <span class="text-widdo-red font-semibold">multas, demandas, perdida de licencia</span>. Hoy usan carpetas, Google Drive, revision manual. Los documentos vencen sin aviso. Auditoria = panico.
+        </p>
+      </div>
+
+      <div class="animate-on-scroll delay-2 bg-widdo-greenGlow border border-widdo-green/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="text-widdo-green font-semibold text-sm uppercase tracking-wider">Solucion Widdo</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Panel tipo semaforo por atleta y entrenador. <strong>Verde</strong> = al dia, <strong class="text-widdo-yellow">Amarillo</strong> = por vencer, <strong class="text-widdo-red">Rojo</strong> = vencido.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Alertas automaticas 30 y 7 dias antes del vencimiento. Asistente IA: <span class="font-mono text-widdo-green">"¿Quien tiene examenes medicos vencidos?"</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Mock Dashboard -->
+    <div class="animate-on-scroll delay-2 module-card bg-widdo-card border border-widdo-border rounded-2xl overflow-hidden glow-ring">
+      <!-- Dashboard header -->
+      <div class="px-8 py-5 border-b border-widdo-border flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <h3 class="font-semibold text-widdo-text">Estado de Cumplimiento de Atletas</h3>
+          <span class="text-xs font-mono bg-widdo-green/10 text-widdo-green px-3 py-1 rounded-full">The Academy CFL</span>
+        </div>
+        <div class="flex items-center gap-3 text-xs">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full dot-green"></span> 18 Al dia</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full dot-yellow"></span> 5 Atencion</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full dot-red"></span> 2 Vencido</span>
+        </div>
+      </div>
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="text-xs text-widdo-muted uppercase tracking-wider border-b border-widdo-border">
+              <th class="text-left px-8 py-4 font-medium">Atleta</th>
+              <th class="text-center px-4 py-4 font-medium">Examen Medico</th>
+              <th class="text-center px-4 py-4 font-medium">Protocolo Concusion</th>
+              <th class="text-center px-4 py-4 font-medium">Antecedentes</th>
+              <th class="text-center px-4 py-4 font-medium">Seguro</th>
+              <th class="text-center px-4 py-4 font-medium">ECG</th>
+              <th class="text-right px-8 py-4 font-medium">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-widdo-border/50 hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-widdo-green/20 flex items-center justify-center text-widdo-green text-xs font-bold">JS</div>
+                  <div>
+                    <div class="font-medium text-sm">John Smith</div>
+                    <div class="text-xs text-widdo-muted">Basketball Varsity</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Ago 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Dic 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Ene 2027</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Mar 2027</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Listo</div></td>
+              <td class="text-right px-8 py-4"><span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-green/10 text-widdo-green">AL DIA</span></td>
+            </tr>
+            <tr class="border-b border-widdo-border/50 hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-widdo-yellow/20 flex items-center justify-center text-widdo-yellow text-xs font-bold">ML</div>
+                  <div>
+                    <div class="font-medium text-sm">Maria Lopez</div>
+                    <div class="text-xs text-widdo-muted">Soccer JV</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-yellow"></span><div class="text-[10px] text-widdo-yellow mt-1">Abr 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Nov 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Sep 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Jun 2027</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Listo</div></td>
+              <td class="text-right px-8 py-4"><span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-yellow/10 text-widdo-yellow">ATENCION</span></td>
+            </tr>
+            <tr class="hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-widdo-red/20 flex items-center justify-center text-widdo-red text-xs font-bold">JW</div>
+                  <div>
+                    <div class="font-medium text-sm">Jake Williams</div>
+                    <div class="text-xs text-widdo-muted">Baseball Varsity</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-red"></span><div class="text-[10px] text-widdo-red mt-1">Vencido</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Oct 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Dic 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-red"></span><div class="text-[10px] text-widdo-red mt-1">Vencido</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Listo</div></td>
+              <td class="text-right px-8 py-4"><span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-red/10 text-widdo-red">VENCIDO</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- AI bar -->
+      <div class="px-8 py-4 border-t border-widdo-border bg-widdo-bg/50 flex items-center gap-3">
+        <svg class="w-4 h-4 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span class="text-sm text-widdo-muted">IA:</span>
+        <span class="text-sm text-widdo-text font-mono">"2 atletas con documentos vencidos. Jake Williams necesita renovar Examen Medico y Seguro."</span>
+      </div>
+    </div>
+
+    <!-- Features grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+      <div class="animate-on-scroll delay-1 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-widdo-green text-2xl mb-2 font-mono font-bold">7</div>
+        <div class="text-xs text-widdo-muted">Tipos de cumplimiento predefinidos</div>
+      </div>
+      <div class="animate-on-scroll delay-2 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-widdo-green text-2xl mb-2 font-mono font-bold">30d</div>
+        <div class="text-xs text-widdo-muted">Alerta automatica antes de vencer</div>
+      </div>
+      <div class="animate-on-scroll delay-3 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-widdo-green text-2xl mb-2 font-mono font-bold">PDF</div>
+        <div class="text-xs text-widdo-muted">Exportar para auditorias (PDF + Excel)</div>
+      </div>
+      <div class="animate-on-scroll delay-4 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-widdo-green text-2xl mb-2 font-mono font-bold">IA</div>
+        <div class="text-xs text-widdo-muted">Preguntale al asistente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MODULE 2: DIGITAL WAIVERS ==================== -->
+<section id="waivers" class="py-32 px-6 relative border-t border-widdo-border/30">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="animate-on-scroll mb-20">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="font-mono text-widdo-green text-sm tracking-widest">02</span>
+        <div class="h-px flex-1 bg-gradient-to-r from-widdo-green/30 to-transparent"></div>
+      </div>
+      <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">
+        Exoneraciones<br><span class="gradient-text">Digitales</span>
+      </h2>
+      <p class="text-xl text-widdo-muted max-w-2xl font-light">
+        Firma en el telefono. PDF generado. Archivado para siempre.
+      </p>
+    </div>
+
+    <!-- Problem / Solution -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="animate-on-scroll delay-1 bg-widdo-red/5 border border-widdo-red/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <span class="text-widdo-red font-semibold text-sm uppercase tracking-wider">El Problema</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Antes de que cualquier menor pise una cancha, los padres <strong>DEBEN firmar documentos legales</strong>. Sin esto, el club es responsable de todo.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Hoy: papel impreso el dia 1, o PDF por email que el padre imprime, firma, escanea y devuelve. Perdido, sin archivar, sin rastro de verificacion.
+        </p>
+      </div>
+
+      <div class="animate-on-scroll delay-2 bg-widdo-greenGlow border border-widdo-green/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+          <span class="text-widdo-green font-semibold text-sm uppercase tracking-wider">Solucion Widdo</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Durante la inscripcion, el padre lee cada exoneracion, <strong>firma digitalmente en el canvas</strong>, el PDF se genera automaticamente con firma + fecha/hora.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          5 plantillas predefinidas. El dueño puede editar texto y crear exoneraciones personalizadas. Todo vinculado a la pestaña de documentos del jugador.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mock Waiver Flow -->
+    <div class="animate-on-scroll delay-2 module-card bg-widdo-card border border-widdo-border rounded-2xl overflow-hidden glow-ring">
+      <div class="px-8 py-5 border-b border-widdo-border">
+        <div class="flex items-center justify-between">
+          <h3 class="font-semibold text-widdo-text">Inscripcion Publica — Paso 3 de 5</h3>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-widdo-green font-mono">Firmar Documentos</span>
+          </div>
+        </div>
+        <!-- Progress bar -->
+        <div class="flex gap-2 mt-3">
+          <div class="h-1 flex-1 rounded-full bg-widdo-green"></div>
+          <div class="h-1 flex-1 rounded-full bg-widdo-green"></div>
+          <div class="h-1 flex-1 rounded-full bg-widdo-green/50"></div>
+          <div class="h-1 flex-1 rounded-full bg-widdo-border"></div>
+          <div class="h-1 flex-1 rounded-full bg-widdo-border"></div>
+        </div>
+      </div>
+
+      <div class="p-8 md:flex gap-8">
+        <!-- Waiver list -->
+        <div class="md:w-1/3 mb-6 md:mb-0">
+          <div class="text-xs text-widdo-muted uppercase tracking-wider mb-3 font-medium">Documentos Requeridos</div>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-widdo-green/10 border border-widdo-green/20">
+              <svg class="w-4 h-4 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-widdo-green">Exoneracion de Responsabilidad</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-widdo-green/10 border border-widdo-green/20">
+              <svg class="w-4 h-4 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-widdo-green">Autorizacion Medica</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-widdo-card border border-widdo-green/40">
+              <div class="w-4 h-4 rounded-full border-2 border-widdo-green flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-widdo-green"></div>
+              </div>
+              <span class="text-sm text-widdo-text font-medium">Consentimiento Foto/Video</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-widdo-bg/50 border border-widdo-border">
+              <div class="w-4 h-4 rounded-full border border-widdo-muted/40"></div>
+              <span class="text-sm text-widdo-muted">Ack. Concusion</span>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-widdo-bg/50 border border-widdo-border">
+              <div class="w-4 h-4 rounded-full border border-widdo-muted/40"></div>
+              <span class="text-sm text-widdo-muted">Consentimiento NIL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waiver content -->
+        <div class="md:w-2/3">
+          <div class="bg-widdo-bg/80 border border-widdo-border rounded-xl p-6">
+            <h4 class="font-semibold text-widdo-text mb-1">Consentimiento Foto/Video</h4>
+            <span class="text-[10px] font-mono text-widdo-muted uppercase tracking-wider">Requerido</span>
+
+            <div class="mt-4 text-sm text-widdo-muted leading-relaxed max-h-32 overflow-y-auto pr-2">
+              <p>Yo, el padre/tutor legal abajo firmante, otorgo permiso a The Academy CFL y sus representantes para fotografiar, grabar en video y usar la imagen y semejanza de mi hijo/a durante practicas, partidos, torneos y otras actividades relacionadas con el club.</p>
+              <p class="mt-2">Estas imagenes pueden ser usadas para materiales promocionales, redes sociales, contenido web y otros propositos de marketing. Entiendo que puedo revocar este consentimiento en cualquier momento mediante notificacion escrita a la administracion del club.</p>
+              <p class="mt-2">Reconozco que no recibire compensacion por el uso de la imagen de mi hijo/a y que el club hara esfuerzos razonables para usar las imagenes de manera respetuosa y apropiada.</p>
+            </div>
+
+            <!-- Signature area -->
+            <div class="mt-6 border-t border-widdo-border pt-6">
+              <div class="text-xs text-widdo-muted mb-3 font-medium">Firma del Padre/Tutor</div>
+              <div class="bg-widdo-card border-2 border-dashed border-widdo-green/30 rounded-xl h-24 flex items-center justify-center relative overflow-hidden">
+                <!-- Animated signature -->
+                <svg viewBox="0 0 300 60" class="w-48 h-12">
+                  <path class="signature-path" d="M 20 40 C 30 10, 50 10, 60 35 S 80 50, 95 30 C 105 15, 110 15, 120 30 S 140 50, 155 25 C 165 10, 175 15, 180 30 L 190 35 M 200 25 C 210 20, 220 35, 230 25 S 250 15, 270 30" fill="none" stroke="#00C853" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="flex items-center justify-between mt-3">
+                <div class="text-xs text-widdo-muted">
+                  <span class="text-widdo-text font-medium">Firmado por:</span> Maria Lopez
+                </div>
+                <div class="text-xs font-mono text-widdo-muted">
+                  03/12/2026 2:34 PM EST
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end mt-4 gap-3">
+            <button class="px-6 py-2.5 rounded-lg border border-widdo-border text-widdo-muted text-sm hover:border-widdo-text transition-colors">Atras</button>
+            <button class="px-6 py-2.5 rounded-lg bg-widdo-green text-widdo-bg text-sm font-semibold hover:bg-widdo-greenDark transition-colors">Firmar y Continuar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+      <div class="animate-on-scroll delay-1 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-widdo-green text-2xl mb-2 font-mono font-bold">5</div>
+        <div class="text-xs text-widdo-muted">Plantillas predefinidas</div>
+      </div>
+      <div class="animate-on-scroll delay-2 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-2xl mb-2">&#9999;&#65039;</div>
+        <div class="text-xs text-widdo-muted">Editables por el dueño</div>
+      </div>
+      <div class="animate-on-scroll delay-3 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-2xl mb-2">&#128241;</div>
+        <div class="text-xs text-widdo-muted">Firma en movil o escritorio</div>
+      </div>
+      <div class="animate-on-scroll delay-4 bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5">
+        <div class="text-widdo-green text-2xl mb-2 font-mono font-bold">PDF</div>
+        <div class="text-xs text-widdo-muted">Auto-generado con fecha/hora</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MODULE 3: COACH CREDENTIALS ==================== -->
+<section id="credentials" class="py-32 px-6 relative border-t border-widdo-border/30">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="animate-on-scroll mb-20">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="font-mono text-widdo-green text-sm tracking-widest">03</span>
+        <div class="h-px flex-1 bg-gradient-to-r from-widdo-green/30 to-transparent"></div>
+      </div>
+      <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">
+        Credenciales de<br><span class="gradient-text">Entrenadores</span>
+      </h2>
+      <p class="text-xl text-widdo-muted max-w-2xl font-light">
+        Ley Florida, Julio 2026. Cada entrenador. Verificacion de antecedentes. Sin excepciones.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="animate-on-scroll delay-1 bg-widdo-red/5 border border-widdo-red/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <span class="text-widdo-red font-semibold text-sm uppercase tracking-wider">El Problema</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          <strong>Florida HB 975 (vigente desde Julio 1, 2026):</strong> Cada adulto con contacto con menores en una organizacion deportiva juvenil debe tener un Background Check Nivel 2 (huellas dactilares via FDLE).
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Hoy: el director "confia" en que el entrenador lo hizo. Sin rastreo centralizado. Auditoria = nadie sabe donde esta el certificado. <span class="text-widdo-red">La organizacion es responsable, no el individuo.</span>
+        </p>
+      </div>
+
+      <div class="animate-on-scroll delay-2 bg-widdo-greenGlow border border-widdo-green/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span class="text-widdo-green font-semibold text-sm uppercase tracking-wider">Solucion Widdo</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Rastreo dedicado de credenciales para cada entrenador. Estado tipo semaforo. <strong>Los entrenadores suben desde su propio portal.</strong> El director recibe alertas.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Estado rojo = este entrenador NO deberia estar en la cancha. Visual, inmediato, innegable.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mock Coach Table -->
+    <div class="animate-on-scroll delay-2 module-card bg-widdo-card border border-widdo-border rounded-2xl overflow-hidden glow-ring">
+      <div class="px-8 py-5 border-b border-widdo-border flex items-center justify-between">
+        <h3 class="font-semibold text-widdo-text">Credenciales de Entrenadores</h3>
+        <span class="text-xs font-mono text-widdo-muted">3 entrenadores &middot; 1 necesita atencion</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="text-xs text-widdo-muted uppercase tracking-wider border-b border-widdo-border">
+              <th class="text-left px-8 py-4 font-medium">Entrenador</th>
+              <th class="text-center px-4 py-4 font-medium">Background Check N2</th>
+              <th class="text-center px-4 py-4 font-medium">SafeSport</th>
+              <th class="text-center px-4 py-4 font-medium">CPR / Primeros Auxilios</th>
+              <th class="text-right px-8 py-4 font-medium">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-widdo-border/50 hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-widdo-green/20 flex items-center justify-center text-widdo-green text-xs font-bold">MJ</div>
+                  <div>
+                    <div class="font-medium text-sm">Mike Johnson</div>
+                    <div class="text-xs text-widdo-muted">Entrenador Principal &middot; Basketball</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Ene 2027</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Dic 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Mar 2028</div></td>
+              <td class="text-right px-8 py-4"><span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-green/10 text-widdo-green">AL DIA</span></td>
+            </tr>
+            <tr class="border-b border-widdo-border/50 hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-widdo-red/20 flex items-center justify-center text-widdo-red text-xs font-bold">SD</div>
+                  <div>
+                    <div class="font-medium text-sm">Sarah Davis</div>
+                    <div class="text-xs text-widdo-muted">Entrenador Asistente &middot; Soccer</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-red"></span><div class="text-[10px] text-widdo-red mt-1">Vencido</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Nov 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-yellow"></span><div class="text-[10px] text-widdo-yellow mt-1">Abr 2026</div></td>
+              <td class="text-right px-8 py-4"><span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-red/10 text-widdo-red">NO DEBE ENTRENAR</span></td>
+            </tr>
+            <tr class="hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-widdo-yellow/20 flex items-center justify-center text-widdo-yellow text-xs font-bold">TB</div>
+                  <div>
+                    <div class="font-medium text-sm">Tom Brown</div>
+                    <div class="text-xs text-widdo-muted">Voluntario &middot; Baseball</div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-yellow"></span><div class="text-[10px] text-widdo-yellow mt-1">Abr 2026</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-red"></span><div class="text-[10px] text-widdo-red mt-1">Vencido</div></td>
+              <td class="text-center px-4 py-4"><span class="inline-block w-3 h-3 rounded-full dot-green"></span><div class="text-[10px] text-widdo-muted mt-1">Sep 2027</div></td>
+              <td class="text-right px-8 py-4"><span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-yellow/10 text-widdo-yellow">ATENCION</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Law callout -->
+    <div class="animate-on-scroll delay-3 mt-12 bg-widdo-red/5 border border-widdo-red/20 rounded-2xl p-8 flex items-start gap-4">
+      <div class="w-12 h-12 rounded-full bg-widdo-red/10 flex items-center justify-center flex-shrink-0">
+        <svg class="w-6 h-6 text-widdo-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div>
+        <h4 class="text-widdo-red font-bold text-lg">Fecha Limite Ley Florida: Julio 1, 2026</h4>
+        <p class="text-widdo-muted text-sm mt-1">HB 975 requiere Background Check Nivel 2 (huellas dactilares via FDLE) para cada adulto con contacto con menores en cualquier organizacion deportiva juvenil privada en Florida. La organizacion es responsable — no el individuo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MODULE 4: NCAA ELIGIBILITY TRACKER ==================== -->
+<section id="ncaa" class="py-32 px-6 relative border-t border-widdo-border/30">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="animate-on-scroll mb-20">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="font-mono text-widdo-green text-sm tracking-widest">04</span>
+        <div class="h-px flex-1 bg-gradient-to-r from-widdo-green/30 to-transparent"></div>
+      </div>
+      <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">
+        Elegibilidad<br><span class="gradient-text">NCAA</span>
+      </h2>
+      <p class="text-xl text-widdo-muted max-w-2xl font-light">
+        GPA. Materias base. Preparacion universitaria. Todo rastreado.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="animate-on-scroll delay-1 bg-widdo-red/5 border border-widdo-red/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <span class="text-widdo-red font-semibold text-sm uppercase tracking-wider">El Problema</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Las academias existen para preparar atletas para <strong>becas universitarias</strong>. NCAA D1/D2 requieren elegibilidad academica estricta. Los entrenadores rastrean esto en su cabeza o en Excel.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Los padres no tienen visibilidad. Cuando llega el momento de aplicar, descubren materias base faltantes <span class="text-widdo-red font-semibold">demasiado tarde</span>.
+        </p>
+      </div>
+
+      <div class="animate-on-scroll delay-2 bg-widdo-greenGlow border border-widdo-green/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          <span class="text-widdo-green font-semibold text-sm uppercase tracking-wider">Solucion Widdo</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Nueva pestaña en el perfil del jugador: <strong>GPA vs requisito</strong>, progreso de materias base, universidades de interes, alertas automaticas.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Genera un perfil PDF de reclutamiento para compartir con entrenadores universitarios. Los padres ven todo en tiempo real.
+        </p>
+      </div>
+    </div>
+
+    <!-- Mock NCAA Profile -->
+    <div class="animate-on-scroll delay-2 module-card bg-widdo-card border border-widdo-border rounded-2xl overflow-hidden glow-ring">
+      <div class="px-8 py-5 border-b border-widdo-border flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <h3 class="font-semibold text-widdo-text">Elegibilidad NCAA</h3>
+          <span class="text-xs font-mono bg-widdo-blue/10 text-widdo-blue px-3 py-1 rounded-full">Objetivo Division I</span>
+        </div>
+        <button class="text-xs px-4 py-2 rounded-lg border border-widdo-green/30 text-widdo-green hover:bg-widdo-green/10 transition-colors font-medium">Generar Perfil PDF</button>
+      </div>
+
+      <div class="p-8">
+        <!-- Player header -->
+        <div class="flex items-center gap-6 mb-8">
+          <div class="w-16 h-16 rounded-xl bg-widdo-green/10 flex items-center justify-center text-widdo-green text-xl font-bold">JS</div>
+          <div>
+            <h4 class="text-xl font-bold text-widdo-text">John Smith</h4>
+            <p class="text-sm text-widdo-muted">Basketball Varsity &middot; Junior &middot; NCAA ID: 2305847291</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- GPA -->
+          <div class="bg-widdo-bg/80 rounded-xl p-6 border border-widdo-border">
+            <div class="text-xs text-widdo-muted uppercase tracking-wider mb-4 font-medium">Estado GPA</div>
+            <div class="text-center">
+              <div class="text-5xl font-black text-widdo-green font-mono">2.8</div>
+              <div class="text-sm text-widdo-muted mt-1">GPA Actual</div>
+              <div class="mt-4 flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-sm text-widdo-green">Por encima del minimo D1 (2.3)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Courses -->
+          <div class="bg-widdo-bg/80 rounded-xl p-6 border border-widdo-border">
+            <div class="text-xs text-widdo-muted uppercase tracking-wider mb-4 font-medium">Materias Base</div>
+            <div class="text-center mb-4">
+              <span class="text-5xl font-black text-widdo-text font-mono">12</span>
+              <span class="text-xl text-widdo-muted font-mono">/16</span>
+            </div>
+            <!-- Progress bar -->
+            <div class="w-full bg-widdo-border rounded-full h-2 mb-4">
+              <div class="progress-fill bg-widdo-green h-2 rounded-full" style="width: 75%;"></div>
+            </div>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-widdo-muted">Ingles</span><span class="text-widdo-yellow font-mono">3/4</span></div>
+              <div class="flex justify-between"><span class="text-widdo-muted">Matematicas (Alg 1+)</span><span class="text-widdo-green font-mono">3/3 &#10003;</span></div>
+              <div class="flex justify-between"><span class="text-widdo-muted">Ciencias (1 lab)</span><span class="text-widdo-green font-mono">2/2 &#10003;</span></div>
+              <div class="flex justify-between"><span class="text-widdo-muted">Ciencias Sociales</span><span class="text-widdo-green font-mono">2/2 &#10003;</span></div>
+              <div class="flex justify-between"><span class="text-widdo-muted">Adicionales</span><span class="text-widdo-yellow font-mono">2/5</span></div>
+            </div>
+          </div>
+
+          <!-- College Interests -->
+          <div class="bg-widdo-bg/80 rounded-xl p-6 border border-widdo-border">
+            <div class="text-xs text-widdo-muted uppercase tracking-wider mb-4 font-medium">Universidades de Interes</div>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-medium text-widdo-text">University of Florida</div>
+                  <div class="text-[10px] text-widdo-muted">D1 &middot; Basketball</div>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-1 rounded bg-widdo-blue/10 text-widdo-blue">CONTACTADA</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-medium text-widdo-text">UCF</div>
+                  <div class="text-[10px] text-widdo-muted">D1 &middot; Basketball</div>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-1 rounded bg-widdo-muted/10 text-widdo-muted">INTERESADO</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-sm font-medium text-widdo-text">Rollins College</div>
+                  <div class="text-[10px] text-widdo-muted">D3 &middot; Basketball</div>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-1 rounded bg-widdo-green/10 text-widdo-green">VISITADA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert -->
+        <div class="mt-6 bg-widdo-yellow/5 border border-widdo-yellow/20 rounded-xl p-4 flex items-start gap-3">
+          <svg class="w-5 h-5 text-widdo-yellow flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <div>
+            <div class="text-sm font-semibold text-widdo-yellow">Necesita 4 materias base mas</div>
+            <div class="text-xs text-widdo-muted mt-0.5">Ingles (1 restante) y Academicas Adicionales (3 restantes) deben completarse antes de la fecha limite del ultimo año.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Requirements table -->
+    <div class="animate-on-scroll delay-3 mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5 text-center">
+        <div class="text-xs text-widdo-muted mb-2 font-mono uppercase">Division I</div>
+        <div class="text-2xl font-bold text-widdo-text font-mono">2.3</div>
+        <div class="text-[10px] text-widdo-muted mt-1">GPA &middot; 16 materias &middot; Regla 10/7</div>
+      </div>
+      <div class="bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5 text-center">
+        <div class="text-xs text-widdo-muted mb-2 font-mono uppercase">Division II</div>
+        <div class="text-2xl font-bold text-widdo-text font-mono">2.2</div>
+        <div class="text-[10px] text-widdo-muted mt-1">GPA &middot; 16 materias</div>
+      </div>
+      <div class="bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5 text-center">
+        <div class="text-xs text-widdo-muted mb-2 font-mono uppercase">Division III</div>
+        <div class="text-2xl font-bold text-widdo-text font-mono">Varia</div>
+        <div class="text-[10px] text-widdo-muted mt-1">Cada universidad define</div>
+      </div>
+      <div class="bg-widdo-card/50 border border-widdo-border/50 rounded-xl p-5 text-center">
+        <div class="text-xs text-widdo-muted mb-2 font-mono uppercase">NAIA</div>
+        <div class="text-2xl font-bold text-widdo-text font-mono">2.0</div>
+        <div class="text-[10px] text-widdo-muted mt-1">GPA + 2 de 3 criterios</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MODULE 5: TRYOUT MANAGEMENT ==================== -->
+<section id="tryouts" class="py-32 px-6 relative border-t border-widdo-border/30">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="animate-on-scroll mb-20">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="font-mono text-widdo-green text-sm tracking-widest">05</span>
+        <div class="h-px flex-1 bg-gradient-to-r from-widdo-green/30 to-transparent"></div>
+      </div>
+      <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">
+        Gestion de<br><span class="gradient-text">Pruebas</span>
+      </h2>
+      <p class="text-xl text-widdo-muted max-w-2xl font-light">
+        Registra. Evalua. Un clic al roster.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="animate-on-scroll delay-1 bg-widdo-red/5 border border-widdo-red/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-red" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <span class="text-widdo-red font-semibold text-sm uppercase tracking-wider">El Problema</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Las pruebas son el <strong>evento mas importante del año</strong>. Hoy es un caos: Google Forms, seguimiento en Excel, evaluacion en papel, emails individuales, y luego triple digitacion de datos para meter atletas al roster.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Horas perdidas. Datos perdidos. Atletas frustrados. Padres confundidos.
+        </p>
+      </div>
+
+      <div class="animate-on-scroll delay-2 bg-widdo-greenGlow border border-widdo-green/20 rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <svg class="w-5 h-5 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-widdo-green font-semibold text-sm uppercase tracking-wider">Solucion Widdo</span>
+        </div>
+        <p class="text-widdo-text leading-relaxed">
+          Link de registro publico + rubrica de evaluacion + un clic <strong>"Convertir a Jugador"</strong>. Cero doble digitacion.
+        </p>
+        <p class="text-widdo-muted mt-3 text-sm">
+          Comparte el link en Instagram. Los atletas se registran. Los coaches evaluan con rubrica. Resultados enviados automaticamente. Atletas aceptados en el roster al instante.
+        </p>
+      </div>
+    </div>
+
+    <!-- Flow visualization -->
+    <div class="animate-on-scroll delay-2 mb-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-widdo-card border border-widdo-border rounded-2xl p-6 text-center relative">
+          <div class="w-12 h-12 rounded-full bg-widdo-green/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <div class="font-mono text-widdo-green text-xs mb-2">PASO 1</div>
+          <div class="font-semibold text-sm text-widdo-text">Registrar</div>
+          <div class="text-xs text-widdo-muted mt-1">Link publico, sin login</div>
+          <!-- Arrow (hidden on mobile) -->
+          <div class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10">
+            <svg class="w-6 h-6 text-widdo-green/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <div class="bg-widdo-card border border-widdo-border rounded-2xl p-6 text-center relative">
+          <div class="w-12 h-12 rounded-full bg-widdo-green/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          </div>
+          <div class="font-mono text-widdo-green text-xs mb-2">PASO 2</div>
+          <div class="font-semibold text-sm text-widdo-text">Evaluar</div>
+          <div class="text-xs text-widdo-muted mt-1">Rubrica 1-5</div>
+          <div class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10">
+            <svg class="w-6 h-6 text-widdo-green/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <div class="bg-widdo-card border border-widdo-border rounded-2xl p-6 text-center relative">
+          <div class="w-12 h-12 rounded-full bg-widdo-green/10 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="font-mono text-widdo-green text-xs mb-2">PASO 3</div>
+          <div class="font-semibold text-sm text-widdo-text">Comunicar</div>
+          <div class="text-xs text-widdo-muted mt-1">Aceptado / Lista espera / Rechazado</div>
+          <div class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10">
+            <svg class="w-6 h-6 text-widdo-green/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <div class="bg-widdo-card border-2 border-widdo-green/40 rounded-2xl p-6 text-center" style="animation: pulseGlow 3s infinite;">
+          <div class="w-12 h-12 rounded-full bg-widdo-green/20 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-widdo-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+          </div>
+          <div class="font-mono text-widdo-green text-xs mb-2">PASO 4</div>
+          <div class="font-semibold text-sm text-widdo-green">Convertir a Jugador</div>
+          <div class="text-xs text-widdo-muted mt-1">Un clic. En el roster.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mock tryout card -->
+    <div class="animate-on-scroll delay-3 module-card bg-widdo-card border border-widdo-border rounded-2xl overflow-hidden glow-ring">
+      <div class="px-8 py-5 border-b border-widdo-border flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h3 class="font-semibold text-widdo-text">Prueba de Basketball Primavera 2026</h3>
+          <p class="text-xs text-widdo-muted mt-1">Abr 15, 2026 &middot; 3:00 PM &middot; Gimnasio Principal &middot; 45/60 registrados</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-green/10 text-widdo-green">ABIERTA</span>
+          <button class="text-xs px-4 py-2 rounded-lg bg-widdo-card border border-widdo-border text-widdo-muted hover:text-widdo-text transition-colors">Copiar Link</button>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="text-xs text-widdo-muted uppercase tracking-wider border-b border-widdo-border">
+              <th class="text-left px-8 py-3 font-medium">Atleta</th>
+              <th class="text-center px-4 py-3 font-medium">Atletismo</th>
+              <th class="text-center px-4 py-3 font-medium">Habilidad</th>
+              <th class="text-center px-4 py-3 font-medium">Actitud</th>
+              <th class="text-center px-4 py-3 font-medium">Receptividad</th>
+              <th class="text-center px-4 py-3 font-medium">Total</th>
+              <th class="text-right px-8 py-3 font-medium">Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-widdo-border/50 hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4"><div class="font-medium text-sm">Alex Rivera</div><div class="text-[10px] text-widdo-muted">15 años &middot; 2 años exp.</div></td>
+              <td class="text-center px-4 py-4 font-mono text-sm text-widdo-green">5</td>
+              <td class="text-center px-4 py-4 font-mono text-sm text-widdo-green">4</td>
+              <td class="text-center px-4 py-4 font-mono text-sm text-widdo-green">5</td>
+              <td class="text-center px-4 py-4 font-mono text-sm text-widdo-green">5</td>
+              <td class="text-center px-4 py-4 font-mono text-sm font-bold text-widdo-green">19/20</td>
+              <td class="text-right px-8 py-4"><button class="text-xs px-3 py-1.5 rounded-lg bg-widdo-green text-widdo-bg font-semibold">Convertir a Jugador</button></td>
+            </tr>
+            <tr class="border-b border-widdo-border/50 hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4"><div class="font-medium text-sm">Casey Chen</div><div class="text-[10px] text-widdo-muted">14 años &middot; 1 año exp.</div></td>
+              <td class="text-center px-4 py-4 font-mono text-sm">4</td>
+              <td class="text-center px-4 py-4 font-mono text-sm">3</td>
+              <td class="text-center px-4 py-4 font-mono text-sm">4</td>
+              <td class="text-center px-4 py-4 font-mono text-sm">4</td>
+              <td class="text-center px-4 py-4 font-mono text-sm font-bold">15/20</td>
+              <td class="text-right px-8 py-4"><span class="text-xs font-mono px-3 py-1 rounded-full bg-widdo-yellow/10 text-widdo-yellow">LISTA ESPERA</span></td>
+            </tr>
+            <tr class="hover:bg-widdo-cardHover transition-colors">
+              <td class="px-8 py-4"><div class="font-medium text-sm">Jordan Lee</div><div class="text-[10px] text-widdo-muted">16 años &middot; 3 años exp.</div></td>
+              <td class="text-center px-4 py-4 font-mono text-sm">3</td>
+              <td class="text-center px-4 py-4 font-mono text-sm">4</td>
+              <td class="text-center px-4 py-4 font-mono text-sm">5</td>
+              <td class="text-center px-4 py-4 font-mono text-sm">4</td>
+              <td class="text-center px-4 py-4 font-mono text-sm font-bold">16/20</td>
+              <td class="text-right px-8 py-4"><button class="text-xs px-3 py-1.5 rounded-lg bg-widdo-green text-widdo-bg font-semibold">Convertir a Jugador</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PITCH / SALES ARGUMENTS ==================== -->
+<section id="pitch" class="py-32 px-6 relative border-t border-widdo-border/30">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="animate-on-scroll mb-16 text-center">
+      <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-4">
+        El<br><span class="gradient-text">Argumento</span>
+      </h2>
+      <p class="text-xl text-widdo-muted max-w-2xl mx-auto font-light">
+        Una linea por modulo. Que decir en la reunion.
+      </p>
+    </div>
+
+    <div class="space-y-4 max-w-4xl mx-auto">
+      <div class="animate-on-scroll delay-1 bg-widdo-card border border-widdo-border rounded-2xl p-8 hover:border-widdo-green/30 transition-colors">
+        <div class="flex items-start gap-5">
+          <div class="w-10 h-10 rounded-lg bg-widdo-green/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-widdo-green font-mono font-bold text-sm">01</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-widdo-text text-lg mb-2">Panel de Cumplimiento</h4>
+            <p class="text-widdo-muted leading-relaxed">
+              <span class="text-widdo-text font-medium">"El background check es ley desde julio.</span> ¿Como van a rastrear 200 atletas y 30 entrenadores? Con un semaforo automatico — verde, amarillo, rojo. Una mirada. Cero panico en auditoria."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll delay-2 bg-widdo-card border border-widdo-border rounded-2xl p-8 hover:border-widdo-green/30 transition-colors">
+        <div class="flex items-start gap-5">
+          <div class="w-10 h-10 rounded-lg bg-widdo-green/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-widdo-green font-mono font-bold text-sm">02</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-widdo-text text-lg mb-2">Exoneraciones Digitales</h4>
+            <p class="text-widdo-muted leading-relaxed">
+              <span class="text-widdo-text font-medium">"Dejen de imprimir papeles.</span> El padre firma en el telefono, el PDF se genera automaticamente con firma y fecha, queda archivado para siempre. Vinculado al perfil del atleta."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll delay-3 bg-widdo-card border border-widdo-border rounded-2xl p-8 hover:border-widdo-green/30 transition-colors">
+        <div class="flex items-start gap-5">
+          <div class="w-10 h-10 rounded-lg bg-widdo-green/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-widdo-green font-mono font-bold text-sm">03</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-widdo-text text-lg mb-2">Credenciales de Entrenadores</h4>
+            <p class="text-widdo-muted leading-relaxed">
+              <span class="text-widdo-text font-medium">"Si un entrenador sin background check tiene contacto con un menor, USTEDES son legalmente responsables.</span> No el entrenador — la organizacion. Widdo rastrea cada credencial, alerta antes de vencer, y marca quien no deberia estar en la cancha."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll delay-4 bg-widdo-card border border-widdo-border rounded-2xl p-8 hover:border-widdo-green/30 transition-colors">
+        <div class="flex items-start gap-5">
+          <div class="w-10 h-10 rounded-lg bg-widdo-green/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-widdo-green font-mono font-bold text-sm">04</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-widdo-text text-lg mb-2">Elegibilidad NCAA</h4>
+            <p class="text-widdo-muted leading-relaxed">
+              <span class="text-widdo-text font-medium">"Sus atletas van a la universidad, ¿verdad?</span> ¿Saben cuantas materias base les faltan HOY? Widdo rastrea GPA, 16 materias base, universidades de interes, y genera un PDF de reclutamiento. Los padres ven todo en tiempo real."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll delay-5 bg-widdo-card border border-widdo-border rounded-2xl p-8 hover:border-widdo-green/30 transition-colors">
+        <div class="flex items-start gap-5">
+          <div class="w-10 h-10 rounded-lg bg-widdo-green/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-widdo-green font-mono font-bold text-sm">05</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-widdo-text text-lg mb-2">Gestion de Pruebas</h4>
+            <p class="text-widdo-muted leading-relaxed">
+              <span class="text-widdo-text font-medium">"¿Cuantas horas pierden con Google Forms + Excel + emails?</span> Con Widdo, comparten un link en Instagram. Los atletas se registran. Los coaches evaluan con rubrica. Resultados enviados automaticamente. Un clic — el atleta esta en el roster. Cero doble digitacion."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="py-24 px-6 border-t border-widdo-border/30 relative overflow-hidden">
+  <!-- Background glow -->
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px]" style="background: radial-gradient(ellipse, rgba(0,200,83,0.08) 0%, transparent 70%);"></div>
+
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <div class="animate-on-scroll">
+      <div class="font-mono text-6xl md:text-7xl font-black gradient-text mb-6">5 modulos.</div>
+      <div class="text-3xl md:text-4xl font-bold text-widdo-text mb-2">Cero competencia.</div>
+      <div class="text-3xl md:text-4xl font-bold text-widdo-text mb-8">
+        Desde <span class="text-widdo-green font-mono">$99</span>/mes.
+      </div>
+    </div>
+
+    <div class="animate-on-scroll delay-2 flex flex-col items-center gap-6">
+      <div class="h-px w-24 bg-widdo-green/30"></div>
+      <div>
+        <span class="font-mono text-widdo-green font-bold text-xl tracking-wider">WIDDO</span>
+        <p class="text-widdo-muted text-sm mt-1">La Plataforma Todo-en-Uno para Clubes Deportivos</p>
+      </div>
+      <a href="mailto:hey@widdo.co" class="font-mono text-sm text-widdo-muted hover:text-widdo-green transition-colors">hey@widdo.co</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll Animation Script -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      if (link.getAttribute('href') === `#${current}`) {
+        link.style.color = '#00C853';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

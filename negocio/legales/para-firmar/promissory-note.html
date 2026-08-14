@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promissory Note — Widdo Inc</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', 'Times New Roman', serif; background: #fff; color: #111; line-height: 1.9; padding: 0; font-size: 14px; }
+  .container { max-width: 750px; margin: 0 auto; padding: 60px 60px 80px; }
+  .doc-header { text-align: center; border-bottom: 2px solid #111; padding-bottom: 20px; margin-bottom: 36px; }
+  .doc-header h1 { font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 4px; }
+  .doc-header .subtitle { font-size: 13px; color: #555; }
+  h2 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 28px 0 12px; }
+  p { margin-bottom: 16px; text-align: justify; }
+  strong { font-weight: 600; }
+  .party-box { background: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; padding: 16px 20px; margin: 12px 0; }
+  .party-box .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; color: #888; margin-bottom: 4px; }
+  .party-box .name { font-size: 15px; font-weight: 600; }
+  .party-box .detail { font-size: 13px; color: #555; margin-top: 2px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  th { background: #f5f5f5; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; border: 1px solid #ddd; }
+  td { padding: 8px 12px; border: 1px solid #ddd; }
+  td.amount { text-align: right; font-weight: 600; font-family: 'Inter', monospace; }
+  .total td { background: #f5f5f5; font-weight: 700; }
+  .sig-block { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px; padding-top: 30px; border-top: 2px solid #111; }
+  .sig-party { text-align: center; }
+  .sig-line { border-top: 1px solid #333; margin: 80px 0 6px; padding-top: 6px; }
+  .sig-label { font-size: 11px; color: #777; text-transform: uppercase; letter-spacing: 1px; }
+  .sig-name { font-size: 14px; font-weight: 600; margin-top: 4px; }
+  .sig-title { font-size: 12px; color: #555; }
+  .note { background: #fffde7; border: 1px solid #f0e68c; border-radius: 4px; padding: 12px 16px; margin: 20px 0; font-size: 12px; color: #666; }
+  @media print {
+    .container { padding: 30px 40px; }
+    .note { display: none; }
+    body { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="doc-header">
+  <h1>Promissory Note</h1>
+  <div class="subtitle">Founder Loan — Operational Expenses Advanced by Founder</div>
+</div>
+
+<p><strong>Date:</strong> August 3, 2026</p>
+<p><strong>Note Amount:</strong> USD $1,476.46 (see itemized Schedule A below) — every line item is documented with an invoice on file.</p>
+<p><strong>Period Covered:</strong> January 1, 2026 — July 31, 2026 (Founder's full-time dedication period)</p>
+
+<h2>Parties</h2>
+
+<div class="party-box">
+  <div class="label">Borrower</div>
+  <div class="name">Widdo Inc</div>
+  <div class="detail">A Delaware C Corporation</div>
+  <div class="detail">EIN: 35-2952499</div>
+  <div class="detail">420 E Church St, Apt 905, Orlando, FL 32801, USA</div>
+</div>
+
+<div class="party-box">
+  <div class="label">Lender</div>
+  <div class="name">Miguel Angel Cano Quinonez</div>
+  <div class="detail">Founder &amp; CEO of Widdo Inc</div>
+  <div class="detail">Colombian Citizen | Passport: BD131033</div>
+  <div class="detail">Cra 22A #13-119 Torre 1 Apto 501, Fusagasuga, Cundinamarca, Colombia</div>
+</div>
+
+<h2>Terms</h2>
+
+<p><strong>1. Principal.</strong> FOR VALUE RECEIVED, the Borrower (Widdo Inc) promises to pay to the Lender (Miguel Angel Cano Quinonez) the aggregate principal sum set forth in <strong>Schedule A</strong> attached hereto, representing legitimate operational expenses advanced by the Lender on behalf of the Borrower.</p>
+
+<p><strong>2. Interest Rate.</strong> This Note shall bear interest at a rate of <strong>zero percent (0%)</strong> per annum. No interest shall accrue on the outstanding principal balance.</p>
+
+<p><strong>3. Repayment.</strong> The principal shall be repaid at such time as the Borrower has sufficient funds available, as determined by the Borrower's Board of Directors, in one or more payments. There is no fixed maturity date. The Borrower may prepay this Note in whole or in part at any time without penalty.</p>
+
+<p><strong>4. Subordination.</strong> This Note is subordinate to any obligations of the Borrower to third-party investors, lenders, or creditors. Repayment of this Note shall not take priority over the Company's operational needs, payroll obligations, or investor obligations.</p>
+
+<p><strong>5. Purpose.</strong> The funds advanced by the Lender were used exclusively for legitimate business expenses of the Borrower, including but not limited to: cloud infrastructure (DigitalOcean), artificial intelligence development tools (Anthropic Claude), transactional email services (Resend), domain registration, and developer program licenses (Apple, Google) necessary for the development and operation of the Company's software platform.</p>
+
+<p><strong>6. No Security.</strong> This Note is unsecured. The Lender shall have no lien or security interest in any assets of the Borrower.</p>
+
+<p><strong>7. Documentation.</strong> The Lender shall maintain a detailed record of all expenses advanced (the "Founder Loan Tracker"), including dates, amounts, descriptions, and supporting receipts. This record shall be made available to the Borrower's Board of Directors and CPA upon request.</p>
+
+<p><strong>8. Tax Treatment.</strong> Both parties acknowledge that: (a) this Note represents a bona fide loan and not compensation, equity, or a capital contribution; (b) repayment of principal is not taxable income to the Lender; (c) the zero-interest rate is acceptable for loans under $10,000 USD per IRS guidelines; and (d) if the outstanding balance exceeds $10,000, the parties will consult with a CPA regarding IRS Applicable Federal Rate requirements.</p>
+
+<p><strong>9. Assignment.</strong> This Note may not be assigned by either party without the written consent of the other party.</p>
+
+<p><strong>10. Governing Law.</strong> This Note shall be governed by the laws of the State of Delaware.</p>
+
+<h2>Schedule A — Itemized Expenses Advanced (Jan 1 – Jul 31, 2026)</h2>
+
+<p>The following is an invoice-by-invoice list of operational expenses advanced by the Lender (Miguel Angel Cano) on behalf of the Borrower (Widdo Inc) during the Lender's full-time dedication period. Amounts reflect the actual paid invoices, and the dates reflect the actual charge date on the Lender's personal cards (Mastercard ending 5072 and BBVA ending 0968). Each invoice PDF is filed under <code>negocio/recibos/YYYY-MM/</code>.</p>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Date charged</th><th>Description / Invoice #</th><th>Provider</th><th style="text-align:right">Amount USD</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>2026-01-18</td><td>Claude Max 20x (Jan 18–Feb 18) · inv 20BA369D-0011</td><td>Anthropic</td><td class="amount">$200.00</td></tr>
+    <tr><td>2</td><td>2026-01-31</td><td>DigitalOcean — January usage · inv 538436181</td><td>DigitalOcean</td><td class="amount">$27.01</td></tr>
+    <tr><td>3</td><td>2026-02-10</td><td>Resend Pro (Feb 10–Mar 10) · inv TXGSEQYQ-0001</td><td>Resend</td><td class="amount">$20.00</td></tr>
+    <tr><td>4</td><td>2026-02-18</td><td>Claude Max 20x (Feb 18–Mar 18) · inv 20BA369D-0014</td><td>Anthropic</td><td class="amount">$200.00</td></tr>
+    <tr><td>5</td><td>2026-02-19</td><td>Google Play Developer (one-time) · IVA incl.</td><td>Google</td><td class="amount">$25.00</td></tr>
+    <tr><td>6</td><td>2026-02-19</td><td>Apple Developer Program (annual license) · inv MC52643250</td><td>Apple</td><td class="amount">$99.00</td></tr>
+    <tr><td>7</td><td>2026-03-01</td><td>DigitalOcean — February usage · inv 540429995</td><td>DigitalOcean</td><td class="amount">$34.70</td></tr>
+    <tr><td>8</td><td>2026-03-10</td><td>Resend Pro (Mar 10–Apr 10) · inv TXGSEQYQ-0002</td><td>Resend</td><td class="amount">$20.00</td></tr>
+    <tr><td>9</td><td>2026-03-18</td><td>Claude Max 20x (Mar 18–Apr 18) · inv 20BA369D-0015</td><td>Anthropic</td><td class="amount">$200.00</td></tr>
+    <tr><td>10</td><td>2026-03-31</td><td>DigitalOcean — March usage · inv 542197769</td><td>DigitalOcean</td><td class="amount">$34.15</td></tr>
+    <tr><td>11</td><td>2026-04-10</td><td>Resend Pro (Apr 10–May 10) · inv TXGSEQYQ-0003</td><td>Resend</td><td class="amount">$20.00</td></tr>
+    <tr><td>12</td><td>2026-04-30</td><td>Claude Max 20x (Apr 30–May 30) · inv 3ZBV1PVM-0001</td><td>Anthropic</td><td class="amount">$200.00</td></tr>
+    <tr><td>13</td><td>2026-05-01</td><td>DigitalOcean — April usage · inv 543901508</td><td>DigitalOcean</td><td class="amount">$34.15</td></tr>
+    <tr><td>14</td><td>2026-05-10</td><td>Resend Pro (May 10–Jun 10) · inv TXGSEQYQ-0004</td><td>Resend</td><td class="amount">$20.00</td></tr>
+    <tr><td>15</td><td>2026-05-30</td><td>Claude Max 5x (May 30–Jun 30, plan reduced) · inv 3ZBV1PVM-0002</td><td>Anthropic</td><td class="amount">$100.00</td></tr>
+    <tr><td>16</td><td>2026-06-01</td><td>DigitalOcean — May usage · inv 546242303</td><td>DigitalOcean</td><td class="amount">$34.15</td></tr>
+    <tr><td>17</td><td>2026-06-10</td><td>Resend Pro (Jun 10–Jul 10) · inv TXGSEQYQ-0005</td><td>Resend</td><td class="amount">$20.00</td></tr>
+    <tr><td>18</td><td>2026-06-30</td><td>Claude Max 5x (Jun 30–Jul 30) · inv 3ZBV1PVM-0003</td><td>Anthropic</td><td class="amount">$100.00</td></tr>
+    <tr><td>19</td><td>2026-06-30</td><td>DigitalOcean — June usage · inv 548402377</td><td>DigitalOcean</td><td class="amount">$34.15</td></tr>
+    <tr><td>20</td><td>2026-07-10</td><td>Resend Pro (Jul 10–Aug 10) · BBVA *0968</td><td>Resend</td><td class="amount">$20.00</td></tr>
+    <tr><td>21</td><td>2026-07-31</td><td>DigitalOcean — July usage · Mastercard *5072</td><td>DigitalOcean</td><td class="amount">$34.15</td></tr>
+  </tbody>
+  <tfoot>
+    <tr class="total" style="font-size: 15px;"><td colspan="4"><strong>TOTAL PRINCIPAL (Jan 1 – Jul 31, 2026)</strong></td><td class="amount"><strong>$1,476.46</strong></td></tr>
+  </tfoot>
+</table>
+
+<p class="note"><strong>Excluded — not claimed:</strong> On 2026-04-27, Anthropic charged a duplicate $200.00 (inv 20BA369D-0018, "Gift Max 20X", old account <em>miguelbas@gmail.com</em>) during the migration to the new <em>weddoapp@gmail.com</em> account. This charge was never refunded; the Founder absorbs the loss and does <strong>not</strong> claim it under this Note.</p>
+<p class="note"><strong>Paid by the Company — not claimed:</strong> Charges settled directly by the Company's Mercury card in July 2026 are <strong>not</strong> part of this Note: Anthropic $133.46 (Jul 11), $20.00 (Jul 17) and $20.00 (Jul 24), and Namecheap $45.48 (Jul 15) — $218.94 total.</p>
+<p class="note"><strong>Note:</strong> This Note covers the Founder's full-time dedication period, which began on January 1, 2026, when the founding team was confirmed. Every expense listed above is therefore claimed at 100% — no shared-use proration applies to any line item in this Schedule. Expenses incurred before that date, when certain tools were shared with the Founder's other projects, are prorated and recorded separately (see below). This Note covers Jan 1 – Jul 31, 2026. Claude's Jun 30 invoice (inv 3ZBV1PVM-0003) covers service through Jul 30 and is the last Anthropic charge advanced by the Lender; every subsequent Anthropic charge was paid by the Company. Expenses advanced prior to January 2026 are recorded separately as part of the Founder's pre-incorporation contribution and are not included here. All invoice PDFs are filed under <code>negocio/recibos/</code>.</p>
+
+<h2>Signatures</h2>
+
+<p>IN WITNESS WHEREOF, the Borrower has executed this Promissory Note as of the date first written above.</p>
+
+<div class="sig-block">
+  <div class="sig-party">
+    <p style="font-size: 12px; color: #888; text-align: center;">BORROWER</p>
+    <div class="sig-line"></div>
+    <div class="sig-label">Signature</div>
+    <div class="sig-name">Miguel Angel Cano Quinonez</div>
+    <div class="sig-title">CEO, Widdo Inc</div>
+    <div style="margin-top: 20px;">
+      <div class="sig-line"></div>
+      <div class="sig-label">Date</div>
+    </div>
+  </div>
+  <div class="sig-party">
+    <p style="font-size: 12px; color: #888; text-align: center;">LENDER</p>
+    <div class="sig-line"></div>
+    <div class="sig-label">Signature</div>
+    <div class="sig-name">Miguel Angel Cano Quinonez</div>
+    <div class="sig-title">Individual / Founder</div>
+    <div style="margin-top: 20px;">
+      <div class="sig-line"></div>
+      <div class="sig-label">Date</div>
+    </div>
+  </div>
+</div>
+
+<p class="note" style="margin-top: 40px;"><strong>Note:</strong> It is standard practice for the same individual to sign as both Borrower (in their capacity as CEO of the Company) and Lender (in their individual capacity). This is common in single-founder or early-stage startups. The Board of Directors should ratify this Note via Board Resolution or written consent.</p>
+
+</div>
+</body>
+</html>

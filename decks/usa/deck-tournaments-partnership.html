@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo Tournaments - Technology Partnership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #15803d;
+            --primary-light: #22c55e;
+            --bg: #ffffff;
+            --bg-card: #f8faf9;
+            --text-dark: #18181b;
+            --text-muted: rgba(24, 24, 27, 0.7);
+            --text-subtle: rgba(24, 24, 27, 0.45);
+            --border-subtle: rgba(24, 24, 27, 0.1);
+            --accent-blue: #2563eb;
+            --accent-purple: #7c3aed;
+            --accent-orange: #ea580c;
+            --accent-red: #dc2626;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            background: #e8e8ec;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            page-break-after: always;
+        }
+
+        .bg-gradient { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, var(--bg) 60%); }
+        .bg-gradient-right { position: absolute; inset: 0; background: linear-gradient(225deg, rgba(22, 163, 74, 0.04) 0%, var(--bg) 60%); }
+        .bg-gradient-center { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(22, 163, 74, 0.03) 0%, var(--bg) 70%); }
+        .bg-accent-top { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--primary); }
+
+        .content { position: relative; z-index: 10; padding: 60px 80px; height: 100%; display: flex; flex-direction: column; }
+        .content-centered { justify-content: center; align-items: center; text-align: center; }
+
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: var(--text-subtle); z-index: 20; }
+        .logo-corner { position: absolute; bottom: 20px; left: 30px; display: flex; align-items: center; gap: 6px; z-index: 20; }
+        .logo-corner img { width: 20px; height: 20px; }
+        .logo-corner span { font-size: 11px; font-weight: 700; color: var(--text-subtle); letter-spacing: 1px; }
+
+        h1 { font-size: 48px; font-weight: 900; line-height: 1.1; }
+        h2 { font-size: 40px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+        h3 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+        h4 { font-size: 18px; font-weight: 700; }
+
+        .text-green { color: var(--primary); }
+        .text-muted { color: var(--text-muted); }
+        .text-subtle { color: var(--text-subtle); }
+        .text-sm { font-size: 14px; }
+        .text-xs { font-size: 12px; }
+        .text-lg { font-size: 20px; }
+
+        .subtitle { font-size: 20px; color: var(--text-muted); font-weight: 400; line-height: 1.5; max-width: 800px; }
+
+        .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(22, 163, 74, 0.08); border: 1px solid rgba(22, 163, 74, 0.25); border-radius: 9999px; padding: 8px 20px; font-size: 13px; color: var(--primary); font-weight: 600; }
+        .badge-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+
+        .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; }
+        .card-highlight { border-color: rgba(22, 163, 74, 0.3); background: rgba(22, 163, 74, 0.04); }
+        .card-red { border-color: rgba(220, 38, 38, 0.2); background: rgba(220, 38, 38, 0.03); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+
+        .mt-8 { margin-top: 8px; }
+        .mt-12 { margin-top: 12px; }
+        .mt-16 { margin-top: 16px; }
+        .mt-24 { margin-top: 24px; }
+        .mt-32 { margin-top: 32px; }
+        .mb-8 { margin-bottom: 8px; }
+        .mb-12 { margin-bottom: 12px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-24 { margin-bottom: 24px; }
+
+        .icon-box { width: 48px; height: 48px; background: rgba(22, 163, 74, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon-box svg { width: 24px; height: 24px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .icon-box-blue { background: rgba(37, 99, 235, 0.1); }
+        .icon-box-blue svg { stroke: var(--accent-blue); }
+        .icon-box-purple { background: rgba(124, 58, 237, 0.1); }
+        .icon-box-purple svg { stroke: var(--accent-purple); }
+        .icon-box-orange { background: rgba(234, 88, 12, 0.1); }
+        .icon-box-orange svg { stroke: var(--accent-orange); }
+        .icon-box-red { background: rgba(220, 38, 38, 0.1); }
+        .icon-box-red svg { stroke: var(--accent-red); }
+
+        .bullet-list { list-style: none; }
+        .bullet-list li { padding: 5px 0; font-size: 14px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; }
+        .bullet-list li::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+        .bullet-list-sm li { font-size: 13px; padding: 4px 0; }
+
+        .check-list { list-style: none; }
+        .check-list li { padding: 4px 0; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+        .check-icon { color: var(--primary); font-weight: 700; font-size: 16px; }
+
+        .table-simple { width: 100%; border-collapse: collapse; }
+        .table-simple th { text-align: left; font-size: 11px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; border-bottom: 2px solid var(--border-subtle); font-weight: 700; }
+        .table-simple td { padding: 10px 12px; font-size: 13px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .widdo-row { background: rgba(22, 163, 74, 0.06); }
+        .widdo-row td { color: var(--primary); font-weight: 700; }
+        .widdo-label { background: var(--primary); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+        .vs-label { background: var(--accent-red); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+
+        .step-card { display: flex; gap: 16px; align-items: flex-start; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; }
+        .step-number { width: 36px; height: 36px; background: var(--primary); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; flex-shrink: 0; }
+
+        .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; display: flex; align-items: center; justify-content: center; gap: 40px; border-top: 1px solid var(--border-subtle); z-index: 20; background: var(--bg); }
+        .bottom-bar span { font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle); text-transform: uppercase; }
+
+        /* Navigation */
+        .nav-help { display: none; }
+
+        @media screen {
+            body { cursor: default; }
+            .nav-help {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0,0,0,0.75);
+                color: #fff;
+                padding: 10px 24px;
+                border-radius: 12px;
+                font-size: 12px;
+                z-index: 9999;
+                opacity: 0;
+                transition: opacity 0.3s;
+                pointer-events: none;
+            }
+            .nav-help.visible { opacity: 1; }
+        }
+
+        /* Print styles */
+        @page {
+            size: 1280px 720px;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            .nav-help { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- SLIDE 1: COVER -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content content-centered">
+        <div style="margin-bottom: 32px;">
+            <img src="widdo-logo.svg" style="width: 90px; height: 90px;" alt="Widdo">
+        </div>
+        <h1 style="font-size: 52px; margin-bottom: 12px;">
+            Widdo <span class="text-green">Tournaments</span>
+        </h1>
+        <p class="subtitle" style="font-size: 22px; max-width: 700px; margin-bottom: 40px;">
+            The free tournament platform that gives your organization<br>
+            <strong style="color: var(--primary);">AI-powered brackets, live scoring, and automated payments.</strong>
+        </p>
+        <div style="display: flex; gap: 16px; align-items: center;">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Technology Partnership
+            </div>
+            <span class="text-subtle text-sm">|</span>
+            <span class="text-subtle text-sm">widdo.co</span>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <span>AI Scheduling</span>
+        <span>Live Scoring</span>
+        <span>Online Payments</span>
+        <span>Player Profiles</span>
+        <span>Multi-Sport</span>
+    </div>
+    <span class="slide-number">1</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 2: THE CHALLENGE -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> The Challenge</div>
+        <h2 style="font-size: 36px; margin-bottom: 8px;">Running tournaments today means<br><span class="text-green">doing everything manually.</span></h2>
+        <p class="text-muted text-sm mb-24" style="max-width: 900px;">Tournament organizers spend more time on logistics than on the actual competition. Brackets built by hand. Payments collected through Venmo and Zelle. Results shared via text. And every event starts from scratch.</p>
+
+        <div class="grid-3" style="gap: 16px; margin-bottom: 20px;">
+            <div class="card card-red" style="text-align: center; padding: 20px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">📋</div>
+                <h4 style="font-size: 15px; margin-bottom: 6px;">Manual Brackets</h4>
+                <p class="text-xs text-muted">Hours building brackets in spreadsheets. One late registration and you start over. Seeding is guesswork.</p>
+            </div>
+            <div class="card card-red" style="text-align: center; padding: 20px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">💸</div>
+                <h4 style="font-size: 15px; margin-bottom: 6px;">Messy Payments</h4>
+                <p class="text-xs text-muted">Collecting fees via Venmo, Zelle, or cash. Chasing teams that haven't paid. No receipts, no records.</p>
+            </div>
+            <div class="card card-red" style="text-align: center; padding: 20px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">📱</div>
+                <h4 style="font-size: 15px; margin-bottom: 6px;">Fragmented Apps</h4>
+                <p class="text-xs text-muted">A different app for every tournament. Parents frustrated. Data lost after the event. No continuity.</p>
+            </div>
+        </div>
+
+        <div class="grid-3" style="gap: 16px;">
+            <div class="card card-red" style="text-align: center; padding: 20px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">📊</div>
+                <h4 style="font-size: 15px; margin-bottom: 6px;">No Live Updates</h4>
+                <p class="text-xs text-muted">Parents texting "what's the score?" all day. No public standings. Results posted hours after the event.</p>
+            </div>
+            <div class="card card-red" style="text-align: center; padding: 20px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">🗑️</div>
+                <h4 style="font-size: 15px; margin-bottom: 6px;">Data Disappears</h4>
+                <p class="text-xs text-muted">Player stats, game results, attendance &mdash; all gone after the weekend. No history, no player records.</p>
+            </div>
+            <div class="card card-red" style="text-align: center; padding: 20px;">
+                <div style="font-size: 32px; margin-bottom: 8px;">🔄</div>
+                <h4 style="font-size: 15px; margin-bottom: 6px;">Start From Zero</h4>
+                <p class="text-xs text-muted">Every tournament is a new spreadsheet. No returning team data, no saved contacts, no learning from previous events.</p>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">2</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 3: MEET WIDDO -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> Meet Widdo</div>
+        <h2 style="font-size: 38px; margin-bottom: 8px;">The all-in-one sports platform for<br><span class="text-green">clubs, tournaments, and families.</span></h2>
+        <p class="text-muted text-sm mb-24" style="max-width: 900px;">Widdo is a complete sports management platform already live in production. We connect tournament organizers, clubs, coaches, players, and families &mdash; all in one place, for any sport, any age group.</p>
+
+        <div class="grid-2" style="gap: 24px; margin-bottom: 24px;">
+            <div class="card card-highlight" style="padding: 28px; text-align: center;">
+                <div style="font-size: 36px; margin-bottom: 12px;">🏟️</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px;" class="text-green">Widdo Clubs</h3>
+                <p class="text-xs text-subtle mb-12" style="letter-spacing: 1px; text-transform: uppercase; font-weight: 700;">Live in Production</p>
+                <p class="text-sm text-muted">Complete club management: players, payments, attendance, families, coaches. Any sport, any age.</p>
+            </div>
+            <div class="card" style="padding: 28px; text-align: center; border-color: rgba(37, 99, 235, 0.3); background: rgba(37, 99, 235, 0.03);">
+                <div style="font-size: 36px; margin-bottom: 12px;">🏆</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px; color: var(--accent-blue);">Widdo Tournaments</h3>
+                <p class="text-xs text-subtle mb-12" style="letter-spacing: 1px; text-transform: uppercase; font-weight: 700;">Free for Organizers</p>
+                <p class="text-sm text-muted">AI brackets, live scoring, online payments, verified stats, public standings. Zero cost for organizers.</p>
+            </div>
+        </div>
+
+        <div class="card card-highlight" style="padding: 16px 32px; text-align: center;">
+            <p class="text-sm"><strong class="text-green">The ecosystem:</strong> Clubs manage their day-to-day operations &rarr; enter their teams in tournaments &rarr; tournaments bring new clubs into the platform &rarr; coaches see it in action and bring Widdo to their own clubs. <strong>Every tournament grows the network for everyone.</strong></p>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">3</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 4: WIDDO TOURNAMENTS FEATURES -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Widdo Tournaments</div>
+        <h2 style="font-size: 36px; margin-bottom: 8px;">Everything you need to run<br>a <span class="text-green">professional tournament. Free.</span></h2>
+        <p class="text-muted text-sm mb-24">No setup fees. No per-team charges. No commissions. Just a powerful platform that makes your tournaments look and run like the pros.</p>
+
+        <div class="grid-2" style="gap: 16px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-subtle);">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <div>
+                    <h4 style="font-size: 16px;">AI-Powered Brackets</h4>
+                    <p class="text-sm text-muted mt-4">Automatic bracket generation with smart seeding. Round-robin, single/double elimination, pool play. Handles late entries without rebuilding.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-subtle);">
+                <div class="icon-box-blue icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div>
+                    <h4 style="font-size: 16px;">Live Scoring & Standings</h4>
+                    <p class="text-sm text-muted mt-4">Real-time score updates visible to everyone. Public brackets, live standings, game-by-game results. Parents follow from anywhere.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-subtle);">
+                <div class="icon-box-purple icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <div>
+                    <h4 style="font-size: 16px;">Online Registration & Payments</h4>
+                    <p class="text-sm text-muted mt-4">Teams register and pay online through Stripe. No more chasing payments. Automatic receipts, financial reports, and reconciliation.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-subtle);">
+                <div class="icon-box-orange icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <div>
+                    <h4 style="font-size: 16px;">Verified Stats & Records</h4>
+                    <p class="text-sm text-muted mt-4">Every game generates verified statistics with timestamps. Player performance tracked across tournaments. Stats athletes can use forever.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-subtle);">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                    <h4 style="font-size: 16px;">Smart Scheduling</h4>
+                    <p class="text-sm text-muted mt-4">AI assigns courts, fields, and time slots automatically. Conflict-free scheduling that accounts for team rest time and venue capacity.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: rgba(22, 163, 74, 0.04); border-radius: 12px; border: 1px solid rgba(22, 163, 74, 0.2);">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div>
+                    <h4 style="font-size: 16px;" class="text-green">Portable Player Profiles</h4>
+                    <p class="text-sm text-muted mt-4">Players create one profile that carries their stats, history, and achievements across every tournament. Their data belongs to them.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">4</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 5: HOW IT WORKS -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> How It Works</div>
+        <h2 style="font-size: 36px; margin-bottom: 8px;">From setup to results<br>in <span class="text-green">four simple steps.</span></h2>
+        <p class="text-muted text-sm mb-32">No training needed. No complex setup. Your first tournament can be live in minutes.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="grid-2" style="gap: 16px;">
+                <div class="step-card" style="border-color: rgba(22, 163, 74, 0.3);">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h4 style="font-size: 16px;">Create Your Tournament</h4>
+                        <p class="text-sm text-muted mt-4">Set up your event in minutes: name, sport, dates, venue, divisions, registration fee. Widdo generates a public tournament page with all the details.</p>
+                        <p class="text-xs text-green mt-8" style="font-weight: 600;">&#10003; Share one link &mdash; teams register themselves</p>
+                    </div>
+                </div>
+                <div class="step-card" style="border-color: rgba(37, 99, 235, 0.3);">
+                    <div class="step-number" style="background: var(--accent-blue);">2</div>
+                    <div>
+                        <h4 style="font-size: 16px;">Teams Register & Pay Online</h4>
+                        <p class="text-sm text-muted mt-4">Coaches register their teams and pay securely through the platform. Rosters, waivers, and documents collected automatically. Money goes directly to you.</p>
+                        <p class="text-xs" style="font-weight: 600; color: var(--accent-blue); margin-top: 8px;">&#10003; No more chasing Venmo payments</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2" style="gap: 16px;">
+                <div class="step-card" style="border-color: rgba(124, 58, 237, 0.3);">
+                    <div class="step-number" style="background: var(--accent-purple);">3</div>
+                    <div>
+                        <h4 style="font-size: 16px;">Run the Competition</h4>
+                        <p class="text-sm text-muted mt-4">AI generates brackets and schedules. During games, update scores in real time. Parents and fans follow live from the app &mdash; standings update instantly.</p>
+                        <p class="text-xs" style="font-weight: 600; color: var(--accent-purple); margin-top: 8px;">&#10003; No more "what's the score?" texts</p>
+                    </div>
+                </div>
+                <div class="step-card" style="border-color: rgba(234, 88, 12, 0.3);">
+                    <div class="step-number" style="background: var(--accent-orange);">4</div>
+                    <div>
+                        <h4 style="font-size: 16px;">Results & Stats Live Forever</h4>
+                        <p class="text-sm text-muted mt-4">After the event, all results, stats, and player performance data are permanently available. Athletes build a verified sports profile over time.</p>
+                        <p class="text-xs" style="font-weight: 600; color: var(--accent-orange); margin-top: 8px;">&#10003; Data that helps athletes get recruited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 14px 40px;">
+                <p class="text-sm"><strong class="text-green">From spreadsheets to professional:</strong> What used to take days of manual work now takes minutes. And it's free.</p>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">5</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 6: WHAT YOUR ORGANIZATION GETS -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> For Your Organization</div>
+        <h2 style="font-size: 36px; margin-bottom: 8px;">Zero cost. <span class="text-green">Zero risk.</span><br>Full tournament technology.</h2>
+        <p class="text-muted text-sm mb-24">Widdo Tournaments is completely free for organizers. No subscription, no per-team fee, no revenue share. We handle the technology &mdash; you focus on the competition.</p>
+
+        <div class="grid-2" style="gap: 16px; margin-bottom: 20px;">
+            <div class="card" style="padding: 18px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 24px; flex-shrink: 0;">💰</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Automated Payments</h4>
+                        <p class="text-xs text-muted mt-4">Registration fees collected online via Stripe. Money deposited directly into your account. Automatic receipts. Full financial reporting.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 18px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 24px; flex-shrink: 0;">🧠</div>
+                    <div>
+                        <h4 style="font-size: 15px;">AI Does the Heavy Lifting</h4>
+                        <p class="text-xs text-muted mt-4">Brackets, schedules, court assignments &mdash; all generated by AI. Handles re-seeding and late changes without starting over.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 18px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 24px; flex-shrink: 0;">📊</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Professional Presentation</h4>
+                        <p class="text-xs text-muted mt-4">Public tournament pages, live brackets, real-time standings. Your events look and feel like a premier operation &mdash; because they are.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 18px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 24px; flex-shrink: 0;">📁</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Centralized Data</h4>
+                        <p class="text-xs text-muted mt-4">Every tournament's data lives in one place. Returning teams pre-loaded. Historical results. Build on every event instead of starting from scratch.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 18px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 24px; flex-shrink: 0;">📣</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Built-In Marketing</h4>
+                        <p class="text-xs text-muted mt-4">Your tournaments listed in the Widdo directory. Automatic notifications to registered teams. Reach more teams without spending on advertising.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 18px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <div style="font-size: 24px; flex-shrink: 0;">🏀</div>
+                    <div>
+                        <h4 style="font-size: 15px;">Multi-Sport Ready</h4>
+                        <p class="text-xs text-muted mt-4">Basketball, soccer, volleyball, baseball, flag football, and more. One platform handles all your sports programming.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-flex; gap: 48px; padding: 16px 48px;">
+                <div style="text-align: center;"><span style="font-size: 28px; font-weight: 900; color: var(--primary);">$0</span><br><span class="text-xs text-muted">Platform cost</span></div>
+                <div style="text-align: center;"><span style="font-size: 28px; font-weight: 900; color: var(--primary);">$0</span><br><span class="text-xs text-muted">Per-team fees</span></div>
+                <div style="text-align: center;"><span style="font-size: 28px; font-weight: 900; color: var(--primary);">$0</span><br><span class="text-xs text-muted">Revenue share</span></div>
+                <div style="text-align: center;"><span style="font-size: 28px; font-weight: 900; color: var(--primary);">100%</span><br><span class="text-xs text-muted">Your revenue</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">6</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 7: WHAT ATHLETES & FAMILIES GET -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> For Athletes & Families</div>
+        <h2 style="font-size: 36px; margin-bottom: 8px;">Every game builds a <span class="text-green">verified sports profile</span><br>that follows the athlete forever.</h2>
+        <p class="text-muted text-sm mb-24">When athletes compete in a Widdo tournament, their stats don't disappear after the weekend. They become part of a permanent, verified profile that grows with every event.</p>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div>
+                <h4 class="mb-16" style="font-size: 17px;">For the Athlete</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(22,163,74,0.04); border-radius: 10px; border: 1px solid rgba(22,163,74,0.15);">
+                        <div style="font-size: 20px; flex-shrink: 0;">📊</div>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Verified Stats Portfolio</p>
+                            <p class="text-xs text-muted mt-4">Every game generates real, timestamped statistics. Points, assists, goals, saves &mdash; verified and permanent. Not self-reported.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(22,163,74,0.04); border-radius: 10px; border: 1px solid rgba(22,163,74,0.15);">
+                        <div style="font-size: 20px; flex-shrink: 0;">🎓</div>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">College Recruiting Value</p>
+                            <p class="text-xs text-muted mt-4">A verified performance history that coaches and scouts can trust. Real data across multiple tournaments, seasons, and sports.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(22,163,74,0.04); border-radius: 10px; border: 1px solid rgba(22,163,74,0.15);">
+                        <div style="font-size: 20px; flex-shrink: 0;">🏅</div>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">NIL-Ready Profile</p>
+                            <p class="text-xs text-muted mt-4">As NIL becomes more relevant in youth sports, athletes need documented proof of their market value. Widdo builds that record automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-16" style="font-size: 17px;">For the Family</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border-subtle);">
+                        <div style="font-size: 20px; flex-shrink: 0;">📱</div>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">One App for Everything</p>
+                            <p class="text-xs text-muted mt-4">No more downloading a new app for every tournament. One profile, one login. Every club, every event, every season &mdash; all in Widdo.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border-subtle);">
+                        <div style="font-size: 20px; flex-shrink: 0;">📍</div>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Live Updates From Anywhere</p>
+                            <p class="text-xs text-muted mt-4">Can't make it to the game? Follow scores, standings, and schedules in real time. Push notifications for every update.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--border-subtle);">
+                        <div style="font-size: 20px; flex-shrink: 0;">💳</div>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Simple, Secure Payments</p>
+                            <p class="text-xs text-muted mt-4">Pay registration fees securely online. Digital receipts. No more cash or personal payment apps.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">7</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 8: ONE APP EVERY TOURNAMENT -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content" style="padding: 50px 80px;">
+        <div class="badge mb-16"><span class="badge-dot"></span> One App. Every Tournament.</div>
+        <h2 style="font-size: 36px; margin-bottom: 8px;">Stop making parents download<br><span class="text-green">a new app for every event.</span></h2>
+        <p class="text-muted text-sm mb-32" style="max-width: 800px;">Today, every tournament forces families to download a different app, create a new account, and re-enter their information. With Widdo, parents download one app and every tournament lives there.</p>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <h4 class="mb-12" style="font-size: 16px;">Without Widdo</h4>
+                <div class="card card-red" style="padding: 24px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span class="vs-label">Today</span>
+                        <span class="text-sm text-muted">5 tournaments = 5 apps</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+                        <span style="background: rgba(220,38,38,0.08); color: var(--accent-red); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App A</span>
+                        <span style="background: rgba(220,38,38,0.08); color: var(--accent-red); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App B</span>
+                        <span style="background: rgba(220,38,38,0.08); color: var(--accent-red); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App C</span>
+                        <span style="background: rgba(220,38,38,0.08); color: var(--accent-red); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App D</span>
+                        <span style="background: rgba(220,38,38,0.08); color: var(--accent-red); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App E</span>
+                    </div>
+                    <ul class="bullet-list bullet-list-sm" style="margin: 0;">
+                        <li style="color: var(--accent-red);">Different login for each event</li>
+                        <li style="color: var(--accent-red);">Stats don't carry over</li>
+                        <li style="color: var(--accent-red);">Data lost after the weekend</li>
+                        <li style="color: var(--accent-red);">Parents frustrated and confused</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-12" style="font-size: 16px;">With Widdo</h4>
+                <div class="card card-highlight" style="padding: 24px;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span class="widdo-label">Widdo</span>
+                        <span class="text-sm" style="font-weight: 600; color: var(--primary);">5 tournaments = 1 app</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+                        <span style="background: rgba(22,163,74,0.1); color: var(--primary); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 Widdo</span>
+                    </div>
+                    <ul class="check-list" style="margin: 0;">
+                        <li><span class="check-icon">&#10003;</span> One profile, one login, forever</li>
+                        <li><span class="check-icon">&#10003;</span> Stats verified and portable</li>
+                        <li><span class="check-icon">&#10003;</span> History grows with every event</li>
+                        <li><span class="check-icon">&#10003;</span> Club management in the same place</li>
+                    </ul>
+                </div>
+                <div class="card card-highlight mt-16" style="padding: 14px; text-align: center;">
+                    <p class="text-sm"><strong class="text-green">Network effect:</strong> Every tournament adds users to the platform. Every user brings their club. Your organization becomes part of a growing sports network.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">8</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 9: WIDDO vs PLAYBOOK -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content" style="padding: 45px 70px;">
+        <div class="badge mb-16"><span class="badge-dot"></span> Widdo vs Traditional Platforms</div>
+        <h2 style="font-size: 34px; margin-bottom: 8px;">What you get with Widdo that<br><span class="text-green">other platforms don't offer.</span></h2>
+        <p class="text-muted text-sm mb-16">Most sports management tools handle registration and scheduling. But when it comes to tournaments, live competition, and the athlete experience &mdash; they stop short.</p>
+
+        <div class="grid-2" style="gap: 24px; margin-bottom: 16px;">
+            <div>
+                <table class="table-simple" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="width: 55%; padding: 6px 10px;">Feature</th>
+                            <th style="width: 22%; text-align: center; padding: 6px 10px;">Traditional</th>
+                            <th style="width: 23%; text-align: center; padding: 6px 10px;">Widdo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Registration & scheduling</td>
+                            <td style="text-align: center; color: var(--primary); padding: 7px 10px;">&#10003;</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 7px 10px;">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Payment processing</td>
+                            <td style="text-align: center; color: var(--primary); padding: 7px 10px;">&#10003;</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 7px 10px;">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Tournament brackets</td>
+                            <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 7px 10px;">AI-powered</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Live scoring & standings</td>
+                            <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 7px 10px;">Real-time</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Portable player profiles</td>
+                            <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 7px 10px;">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Verified stats across events</td>
+                            <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 7px 10px;">&#10003;</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Multi-role dashboards</td>
+                            <td style="text-align: center; color: var(--text-subtle); font-size: 11px; padding: 7px 10px;">Admin only</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 11px; padding: 7px 10px;">6 roles</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Real-time notifications</td>
+                            <td style="text-align: center; color: var(--text-subtle); font-size: 11px; padding: 7px 10px;">Basic</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 11px; padding: 7px 10px;">WebSocket live</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">AI assistant</td>
+                            <td style="text-align: center; color: var(--text-subtle); font-size: 11px; padding: 7px 10px;">Generators</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 11px; padding: 7px 10px;">Full AI chat</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; font-size: 12px; padding: 7px 10px;">Financial reconciliation</td>
+                            <td style="text-align: center; color: var(--accent-red); font-size: 11px; padding: 7px 10px;">Issues reported</td>
+                            <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 11px; padding: 7px 10px;">&#10003;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h4 style="font-size: 16px; margin-bottom: 12px;">What Widdo adds to your stack</h4>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="card card-highlight" style="padding: 14px;">
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <div style="font-size: 20px; flex-shrink: 0;">🏆</div>
+                            <div>
+                                <p class="text-sm" style="font-weight: 700; color: var(--primary);">Complete Tournament Engine</p>
+                                <p class="text-xs text-muted mt-4">AI brackets, smart scheduling, live scoring, public standings &mdash; everything you need to run professional tournaments that no registration platform provides.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-highlight" style="padding: 14px;">
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <div style="font-size: 20px; flex-shrink: 0;">👤</div>
+                            <div>
+                                <p class="text-sm" style="font-weight: 700; color: var(--primary);">Athlete-Centric Data</p>
+                                <p class="text-xs text-muted mt-4">Player profiles that carry stats, history, and achievements across every club and tournament. Data belongs to the athlete, not the platform.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-highlight" style="padding: 14px;">
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <div style="font-size: 20px; flex-shrink: 0;">📱</div>
+                            <div>
+                                <p class="text-sm" style="font-weight: 700; color: var(--primary);">Mobile App That Works</p>
+                                <p class="text-xs text-muted mt-4">Native iOS &amp; Android app built with Flutter. Real-time push notifications, live scores, attendance alerts. Stable and fast.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-highlight" style="padding: 14px;">
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <div style="font-size: 20px; flex-shrink: 0;">👨‍👩‍👧</div>
+                            <div>
+                                <p class="text-sm" style="font-weight: 700; color: var(--primary);">Everyone Gets Their View</p>
+                                <p class="text-xs text-muted mt-4">Organizer, coach, parent, player, accountant &mdash; each sees exactly what they need. Not just an admin dashboard.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">9</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 10: WHY PARTNER WITH WIDDO -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content" style="padding: 45px 60px;">
+        <div class="badge mb-16"><span class="badge-dot"></span> Competitive Landscape</div>
+        <h2 style="font-size: 34px; margin-bottom: 16px;">Built different. <span class="text-green">Built for you.</span></h2>
+
+        <table class="table-simple" style="width: 100%; table-layout: fixed; margin-bottom: 16px;">
+            <thead>
+                <tr>
+                    <th style="width: 22%; padding: 6px 10px;">Feature</th>
+                    <th style="width: 16%; text-align: center; padding: 6px 10px;">Playbook</th>
+                    <th style="width: 16%; text-align: center; padding: 6px 10px;">Exposure Events</th>
+                    <th style="width: 16%; text-align: center; padding: 6px 10px;">SportsEngine</th>
+                    <th style="width: 14%; text-align: center; padding: 6px 10px;">Spreadsheets</th>
+                    <th style="width: 16%; text-align: center; padding: 6px 10px;">Widdo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Cost to organizer</td>
+                    <td style="text-align: center; font-size: 12px;">Custom</td>
+                    <td style="text-align: center; font-size: 12px;">$2/team</td>
+                    <td style="text-align: center; font-size: 12px;">$3,650+/yr</td>
+                    <td style="text-align: center; font-size: 12px;">Free</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 12px;">Free</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Registration</td>
+                    <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    <td style="text-align: center; color: var(--text-subtle);">Basic</td>
+                    <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Tournament brackets</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--text-subtle);">Manual</td>
+                    <td style="text-align: center; color: var(--text-subtle);">Basic</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700;">AI-powered</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Live scoring</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--text-subtle);">Partial</td>
+                    <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Online payments</td>
+                    <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Player data portability</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700;">&#10003;</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Multi-role dashboards</td>
+                    <td style="text-align: center; color: var(--text-subtle); font-size: 11px;">Admin only</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--text-subtle); font-size: 11px;">Partial</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 11px;">6 roles</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">Mobile app</td>
+                    <td style="text-align: center; color: var(--accent-orange); font-size: 11px;">Unstable</td>
+                    <td style="text-align: center; color: var(--text-subtle); font-size: 11px;">$299/app</td>
+                    <td style="text-align: center; color: var(--primary);">&#10003;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 11px;">&#10003; Free</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; font-size: 12px;">AI assistant</td>
+                    <td style="text-align: center; color: var(--text-subtle); font-size: 11px;">Basic</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--accent-red);">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700; font-size: 11px;">Full AI</td>
+                </tr>
+                <tr class="widdo-row">
+                    <td style="font-weight: 800; font-size: 12px;">Multi-sport</td>
+                    <td style="text-align: center; font-weight: 400;">&#10003;</td>
+                    <td style="text-align: center; color: var(--accent-red); font-weight: 400; font-size: 11px;">Limited</td>
+                    <td style="text-align: center; font-weight: 400;">&#10003;</td>
+                    <td style="text-align: center; font-weight: 400;">&#10003;</td>
+                    <td style="text-align: center; font-weight: 700;">&#10003;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="grid-4" style="gap: 10px;">
+            <div class="card card-highlight" style="text-align: center; padding: 14px;">
+                <p style="font-size: 26px; font-weight: 900; color: var(--primary);">Free</p>
+                <p class="text-xs text-muted mt-4">No cost for organizers</p>
+            </div>
+            <div class="card card-highlight" style="text-align: center; padding: 14px;">
+                <p style="font-size: 26px; font-weight: 900; color: var(--primary);">AI</p>
+                <p class="text-xs text-muted mt-4">Only AI-powered brackets</p>
+            </div>
+            <div class="card card-highlight" style="text-align: center; padding: 14px;">
+                <p style="font-size: 26px; font-weight: 900; color: var(--primary);">0 Ads</p>
+                <p class="text-xs text-muted mt-4">Clean experience</p>
+            </div>
+            <div class="card card-highlight" style="text-align: center; padding: 14px;">
+                <p style="font-size: 26px; font-weight: 900; color: var(--primary);">1 App</p>
+                <p class="text-xs text-muted mt-4">Everything in one place</p>
+            </div>
+        </div>
+    </div>
+    <div class="logo-corner"><img src="widdo-logo.svg" alt=""><span>WIDDO</span></div>
+    <span class="slide-number">10</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 11: LET'S BUILD TOGETHER -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-center"></div>
+    <div class="bg-accent-top"></div>
+    <div class="content content-centered">
+        <div style="margin-bottom: 32px;">
+            <img src="widdo-logo.svg" style="width: 80px; height: 80px;" alt="Widdo">
+        </div>
+        <h2 style="font-size: 44px; margin-bottom: 16px;">
+            Let's Build <span class="text-green">Together.</span>
+        </h2>
+        <p class="subtitle" style="font-size: 20px; max-width: 700px; margin-bottom: 48px;">
+            We provide the technology platform. You bring the community.<br>
+            Together, we make every tournament a better experience<br>for organizers, clubs, coaches, players, and families.
+        </p>
+
+        <div style="display: flex; gap: 24px; margin-bottom: 48px;">
+            <div class="card card-highlight" style="padding: 20px 32px; text-align: center;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">$0</p>
+                <p class="text-xs text-muted mt-4">Zero cost to you</p>
+            </div>
+            <div class="card card-highlight" style="padding: 20px 32px; text-align: center;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">0 Risk</p>
+                <p class="text-xs text-muted mt-4">No contracts, cancel anytime</p>
+            </div>
+            <div class="card card-highlight" style="padding: 20px 32px; text-align: center;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">100%</p>
+                <p class="text-xs text-muted mt-4">Your revenue stays yours</p>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 32px;">
+            <p style="font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 8px;">Schedule a Demo</p>
+            <p style="font-size: 16px; color: var(--text-muted);">hello@widdo.co &nbsp;&middot;&nbsp; widdo.co</p>
+        </div>
+
+        <p class="text-subtle text-sm">Zero cost. Zero risk. Full tournament technology.</p>
+    </div>
+    <div class="bottom-bar">
+        <span>AI Scheduling</span>
+        <span>Live Scoring</span>
+        <span>Online Payments</span>
+        <span>Player Profiles</span>
+        <span>Free Forever</span>
+    </div>
+    <span class="slide-number">11</span>
+</div>
+
+<!-- Navigation Script -->
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let fullscreen = false;
+
+    function showSlide(n) {
+        current = Math.max(0, Math.min(n, slides.length - 1));
+        if (fullscreen) {
+            slides.forEach((s, i) => {
+                s.style.display = i === current ? 'block' : 'none';
+                if (i === current) {
+                    s.style.position = 'fixed';
+                    s.style.top = '50%';
+                    s.style.left = '50%';
+                    s.style.transform = 'translate(-50%, -50%) scale(' + (Math.min(window.innerWidth / 1280, window.innerHeight / 720)) + ')';
+                    s.style.margin = '0';
+                    s.style.zIndex = '10000';
+                }
+            });
+        }
+    }
+
+    function enterFullscreen() {
+        fullscreen = true;
+        document.body.style.background = '#000';
+        document.body.style.overflow = 'hidden';
+        showSlide(current);
+        showHelp();
+    }
+
+    function exitFullscreen() {
+        fullscreen = false;
+        document.body.style.background = '#e8e8ec';
+        document.body.style.overflow = 'auto';
+        slides.forEach(s => {
+            s.style.display = 'block';
+            s.style.position = 'relative';
+            s.style.top = '';
+            s.style.left = '';
+            s.style.transform = '';
+            s.style.margin = '20px auto';
+            s.style.zIndex = '';
+        });
+    }
+
+    const helpEl = document.createElement('div');
+    helpEl.className = 'nav-help';
+    helpEl.textContent = 'F = Fullscreen | ← → = Navigate | H = Help | Esc = Exit';
+    document.body.appendChild(helpEl);
+
+    function showHelp() {
+        helpEl.classList.add('visible');
+        setTimeout(() => helpEl.classList.remove('visible'), 3000);
+    }
+
+    document.addEventListener('keydown', function(e) {
+        switch(e.key) {
+            case 'f': case 'F':
+                if (!fullscreen) enterFullscreen();
+                break;
+            case 'Escape':
+                if (fullscreen) exitFullscreen();
+                break;
+            case 'ArrowRight': case 'ArrowDown': case ' ':
+                if (fullscreen) { e.preventDefault(); showSlide(current + 1); }
+                break;
+            case 'ArrowLeft': case 'ArrowUp':
+                if (fullscreen) { e.preventDefault(); showSlide(current - 1); }
+                break;
+            case 'h': case 'H':
+                showHelp();
+                break;
+        }
+    });
+
+    window.addEventListener('resize', () => { if (fullscreen) showSlide(current); });
+})();
+</script>
+
+</body>
+</html>

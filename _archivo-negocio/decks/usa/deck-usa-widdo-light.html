@@ -1,0 +1,1778 @@
+<!-- ARCHIVADO 13-ago-2026 — duplicado en tema claro del deck USA (113 KB) sin generador propio ni referencias; se desincronizaba en cada update de metricas — sustituido por decks/usa/deck-usa-widdo.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo - USA Market Investor Deck 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #15803d;
+            --primary-light: #22c55e;
+            --bg-dark: #ffffff;
+            --bg-card: #f4f4f5;
+            --text-white: #18181b;
+            --text-muted: rgba(24, 24, 27, 0.7);
+            --text-subtle: rgba(24, 24, 27, 0.45);
+            --border-subtle: rgba(24, 24, 27, 0.12);
+            --accent-blue: #2563eb;
+            --accent-purple: #7c3aed;
+            --accent-orange: #ea580c;
+            --accent-red: #dc2626;
+        }
+
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            background: #f0f0f3;
+            color: var(--text-white);
+            line-height: 1.5;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-dark);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            page-break-after: always;
+        }
+
+        .bg-gradient { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22, 163, 74, 0.06) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%); }
+        .bg-gradient-right { position: absolute; inset: 0; background: linear-gradient(225deg, rgba(22, 163, 74, 0.05) 0%, var(--bg-dark) 60%); }
+        .bg-gradient-center { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(22, 163, 74, 0.04) 0%, var(--bg-dark) 70%); }
+
+        .bg-blur-1 { position: absolute; top: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(22, 163, 74, 0.08) 0%, transparent 70%); }
+        .bg-blur-2 { position: absolute; bottom: -150px; right: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(22, 163, 74, 0.06) 0%, transparent 70%); }
+        .bg-blur-3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(22, 163, 74, 0.04) 0%, transparent 70%); }
+
+        .bg-grid { position: absolute; inset: 0; background-image: url('../grid-tile.png'); background-size: 80px 80px; background-repeat: repeat; opacity: 0.15; }
+
+        .content { position: relative; z-index: 10; padding: 60px 80px; height: 100%; display: flex; flex-direction: column; }
+        .content-centered { justify-content: center; align-items: center; text-align: center; }
+
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: var(--text-subtle); z-index: 20; }
+        .confidential { position: absolute; bottom: 20px; left: 30px; font-size: 10px; color: var(--text-subtle); z-index: 20; letter-spacing: 2px; text-transform: uppercase; }
+
+        h1 { font-size: 48px; font-weight: 900; line-height: 1.1; }
+        h2 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+        h3 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+        h4 { font-size: 18px; font-weight: 700; }
+
+        .text-green { color: var(--primary); }
+        .text-muted { color: var(--text-muted); }
+        .text-subtle { color: var(--text-subtle); }
+        .text-sm { font-size: 14px; }
+        .text-xs { font-size: 12px; }
+        .text-lg { font-size: 20px; }
+
+        .subtitle { font-size: 20px; color: var(--text-muted); font-weight: 400; line-height: 1.5; max-width: 800px; }
+
+        .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(22, 163, 74, 0.1); border: 1px solid rgba(22, 163, 74, 0.3); border-radius: 9999px; padding: 8px 20px; font-size: 13px; color: var(--primary); font-weight: 600; }
+        .badge-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+        .badge-neutral { background: rgba(0,0,0,0.04); border-color: var(--border-subtle); color: var(--text-muted); }
+
+        .card { background: rgba(0, 0, 0, 0.03); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; }
+        .card-highlight { border-color: rgba(22, 163, 74, 0.3); background: rgba(22, 163, 74, 0.05); }
+
+        .metric-card { background: rgba(0, 0, 0, 0.03); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 28px; text-align: center; }
+        .metric-value { font-size: 42px; font-weight: 900; color: var(--primary); line-height: 1; }
+        .metric-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; font-weight: 500; }
+        .metric-delta { font-size: 12px; color: var(--primary-light); margin-top: 4px; font-weight: 600; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .flex-between { display: flex; align-items: center; justify-content: space-between; }
+        .gap-12 { gap: 12px; }
+        .gap-16 { gap: 16px; }
+        .gap-24 { gap: 24px; }
+        .gap-32 { gap: 32px; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .mt-24 { margin-top: 24px; }
+        .mt-32 { margin-top: 32px; }
+        .mt-40 { margin-top: 40px; }
+        .mb-8 { margin-bottom: 8px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-24 { margin-bottom: 24px; }
+        .flex-1 { flex: 1; }
+
+        .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; display: flex; align-items: center; justify-content: center; gap: 40px; border-top: 1px solid var(--border-subtle); z-index: 20; }
+        .bottom-bar span { font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle); text-transform: uppercase; }
+
+        .progress-bar { width: 100%; height: 6px; background: rgba(0,0,0,0.08); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary); border-radius: 3px; }
+
+        .table-simple { width: 100%; border-collapse: collapse; }
+        .table-simple th { text-align: left; font-size: 11px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); }
+        .table-simple td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid rgba(0,0,0,0.02); }
+
+        .pricing-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 32px 24px; text-align: center; }
+        .pricing-card.featured { border: 2px solid var(--primary); background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%); position: relative; }
+        .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 16px; border-radius: 9999px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+        .price { font-size: 36px; font-weight: 900; }
+        .price-period { font-size: 14px; color: var(--text-subtle); }
+
+        .timeline-item { display: flex; gap: 16px; padding: 12px 0; }
+        .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--primary); margin-top: 4px; flex-shrink: 0; }
+        .timeline-dot.future { background: rgba(0,0,0,0.1); border: 2px solid var(--primary); }
+        .timeline-dot.current { background: var(--primary); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25); }
+
+        .icon-box { width: 48px; height: 48px; background: rgba(22, 163, 74, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon-box svg { width: 24px; height: 24px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .icon-box-blue { background: rgba(59, 130, 246, 0.1); }
+        .icon-box-blue svg { stroke: var(--accent-blue); }
+        .icon-box-purple { background: rgba(139, 92, 246, 0.1); }
+        .icon-box-purple svg { stroke: var(--accent-purple); }
+        .icon-box-orange { background: rgba(249, 115, 22, 0.1); }
+        .icon-box-orange svg { stroke: var(--accent-orange); }
+
+        .divider { width: 60px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+        .bullet-list { list-style: none; }
+        .bullet-list li { padding: 6px 0; font-size: 15px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; }
+        .bullet-list li::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+        .bullet-list-sm li { font-size: 13px; padding: 4px 0; }
+
+        .check-list { list-style: none; }
+        .check-list li { padding: 5px 0; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+        .check-icon { color: var(--primary); font-weight: 700; font-size: 16px; }
+
+        .funnel-step { display: flex; align-items: center; gap: 16px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px; margin-bottom: 8px; }
+        .funnel-number { font-size: 28px; font-weight: 900; color: var(--primary); width: 40px; }
+
+        .vs-label { background: var(--accent-red); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+        .widdo-label { background: var(--primary); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+
+        /* Print styles */
+        @page {
+            size: 1280px 720px;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- SLIDE 1: COVER -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div style="margin-bottom: 24px;">
+            <img src="widdo-logo.svg" style="width: 80px; height: 80px;" alt="Widdo">
+        </div>
+        <div class="badge" style="margin-bottom: 32px;">
+            <span class="badge-dot"></span>
+            Pre-Seed &middot; May 2026
+        </div>
+        <h1 style="font-size: 56px; margin-bottom: 16px;">
+            Widdo
+        </h1>
+        <p class="subtitle" style="font-size: 24px; max-width: 700px; margin-bottom: 32px;">
+            The Player-Centric Sports Platform.<br><span class="text-green" style="font-weight: 700;">Every sport. Every age. One platform.</span>
+        </p>
+        <p style="font-size: 16px; color: var(--text-subtle);">
+            B2B SaaS &middot; Multi-sport &middot; Clubs &amp; Tournaments &middot; USA-first
+        </p>
+    </div>
+    <div class="bottom-bar">
+        <span>Management</span>
+        <span>Payments</span>
+        <span>Tournaments</span>
+        <span>AI</span>
+        <span>USA-first</span>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">1</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 2: PROBLEM (merged old 2+3+4) -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content" style="padding: 50px 80px;">
+        <div class="badge mb-16"><span class="badge-dot"></span> The Problem</div>
+        <h2 style="font-size: 34px; margin-bottom: 12px;">300K+ sports organizations.<br><span class="text-green">73% run on spreadsheets.</span> Player data is lost forever.</h2>
+        <p class="text-muted text-sm mb-16" style="max-width: 900px;">150 million Americans play organized sports across all ages. Yet most clubs still run on group texts, spreadsheets, and paper sign-up sheets. Player data is lost every time someone changes teams, sports, or seasons. NCSA charges $4K/yr just for exposure. No single platform connects clubs, tournaments, and families.</p>
+
+        <div class="grid-3" style="gap: 14px; margin-bottom: 16px;">
+            <div class="card" style="text-align: center; padding: 18px;">
+                <div style="font-size: 28px; margin-bottom: 6px;">🏝️</div>
+                <h4 style="margin-bottom: 6px; font-size: 15px;">Every club is an island</h4>
+                <p class="text-xs text-muted">Fragmented data across notebooks, Google Sheets, and group chats. No single source of truth.</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 18px;">
+                <div style="font-size: 28px; margin-bottom: 6px;">📉</div>
+                <h4 style="margin-bottom: 6px; font-size: 15px;">Can't manage what you don't measure</h4>
+                <p class="text-xs text-muted">Without attendance, payment, and performance data, directors fly blind until it's too late.</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 18px;">
+                <div style="font-size: 28px; margin-bottom: 6px;">💸</div>
+                <h4 style="margin-bottom: 6px; font-size: 15px;">Costs up 46% since 2019</h4>
+                <p class="text-xs text-muted">Parents demand transparency and value. Clubs that can't show it, lose families to those that can.</p>
+            </div>
+        </div>
+
+        <div class="grid-3" style="gap: 14px; margin-bottom: 16px;">
+            <div class="card" style="padding: 14px; border-color: rgba(59, 130, 246, 0.3);">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <p style="font-size: 20px;">🏀</p>
+                    <div>
+                        <h4 style="font-size: 13px;">Basketball &middot; 29.7M players</h4>
+                        <p class="text-xs text-muted">$1,500&ndash;$4,000/yr per player</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 14px; border-color: rgba(22, 163, 74, 0.3);">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <p style="font-size: 20px;">⚽</p>
+                    <div>
+                        <h4 style="font-size: 13px;">Soccer &middot; 14.1M players</h4>
+                        <p class="text-xs text-muted">$1,200&ndash;$5,000/yr per player</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="padding: 14px; border-color: rgba(249, 115, 22, 0.3);">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <p style="font-size: 20px;">🏈</p>
+                    <div>
+                        <h4 style="font-size: 13px;">Football &middot; Flag +60% YoY</h4>
+                        <p class="text-xs text-muted">Fastest growing sport in HS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <div class="card-highlight card" style="display: inline-flex; gap: 40px; padding: 12px 40px;">
+                <div><span style="font-size: 22px; font-weight: 900; color: var(--accent-orange);">150M+</span><br><span class="text-xs text-muted">Athletes in organized sports</span></div>
+                <div><span style="font-size: 22px; font-weight: 900; color: var(--accent-red);">300K+</span><br><span class="text-xs text-muted">Sports organizations</span></div>
+                <div><span style="font-size: 22px; font-weight: 900; color: var(--accent-purple);">73%</span><br><span class="text-xs text-muted">Use no paid software</span></div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">2</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 3: SOLUTION -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> The Solution</div>
+        <h2 style="font-size: 40px;">Player-centric platform for <span class="text-green">every sport,<br>every club, every family</span></h2>
+        <p class="text-muted mt-8 mb-24">The player is the center &mdash; not the club. Their profile, stats, and history live in Widdo forever. Multi-role: be owner, coach, player &amp; parent in different clubs. Multi-language (EN/ES, PT ready). AI assistant built-in.</p>
+
+        <div class="grid-2" style="gap: 16px;">
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(0,0,0,0.02); border-radius: 12px;">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                    <h4>Player Management</h4>
+                    <p class="text-sm text-muted">Digital registration, documents, age groups, full history. Automatic compliance tracking.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(0,0,0,0.02); border-radius: 12px;">
+                <div class="icon-box icon-box-blue">
+                    <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><rect x="2" y="2" width="20" height="20" rx="2"/></svg>
+                </div>
+                <div>
+                    <h4>Billing &amp; Payments</h4>
+                    <p class="text-sm text-muted">Automated invoicing, family discounts, late payment reminders, real-time financial reports.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(0,0,0,0.02); border-radius: 12px;">
+                <div class="icon-box icon-box-purple">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                    <h4>Calendar &amp; Events</h4>
+                    <p class="text-sm text-muted">Practices, games, meetings. Automatic invitations, RSVPs, and reminders for parents and coaches.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(0,0,0,0.02); border-radius: 12px;">
+                <div class="icon-box icon-box-orange">
+                    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                </div>
+                <div>
+                    <h4>Attendance Tracking</h4>
+                    <p class="text-sm text-muted">Digital check-in per session, attendance metrics per player, automatic absence alerts to parents.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(22,163,74,0.06); border-radius: 12px; border: 1px solid rgba(22,163,74,0.2);">
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                    <h4 class="text-green">Portable Player Profile</h4>
+                    <p class="text-sm text-muted">A player's sports resume lives in Widdo. When they switch clubs or sports, their history, documents, and stats follow them.</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(0,0,0,0.02); border-radius: 12px;">
+                <div class="icon-box icon-box-blue">
+                    <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                </div>
+                <div>
+                    <h4>6 Role-Based Dashboards</h4>
+                    <p class="text-sm text-muted">Director, coach, accountant, player, parent, and super admin. Each sees exactly what they need, nothing more.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">3</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 4: ECOSYSTEM (2 verticals) -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div class="badge mb-24"><span class="badge-dot"></span> Product Ecosystem</div>
+        <h2 style="font-size: 40px; margin-bottom: 32px;">One platform.<br><span class="text-green">Two verticals. One network.</span></h2>
+
+        <div class="grid-2" style="gap: 32px; max-width: 800px;">
+            <div class="card" style="padding: 32px; text-align: center; border-color: rgba(22, 163, 74, 0.4);">
+                <div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏟️</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px;" class="text-green">Widdo Clubs</h3>
+                <p class="text-xs text-subtle mb-16">LIVE IN PRODUCTION</p>
+                <p class="text-sm text-muted">Complete club management: players, payments, attendance, families, coaches, AI assistant. Any sport.</p>
+                <p style="font-size: 12px; color: var(--primary); font-weight: 600; margin-top: 8px;">$99&ndash;$349/mo per club</p>
+            </div>
+            <div class="card" style="padding: 32px; text-align: center; border-color: rgba(59, 130, 246, 0.4);">
+                <div style="width: 56px; height: 56px; background: rgba(59, 130, 246, 0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏆</div>
+                <h3 style="font-size: 20px; margin-bottom: 4px; color: var(--accent-blue);">Widdo Tournaments</h3>
+                <p class="text-xs text-subtle mb-16">LIVE &mdash; THE VIRAL ENGINE</p>
+                <p class="text-sm text-muted">AI brackets, live scoring, verified stats, public standings. 1 tournament = 2,000+ new users in a weekend.</p>
+                <p style="font-size: 12px; color: var(--accent-blue); font-weight: 600; margin-top: 8px;">Free for organizers</p>
+            </div>
+        </div>
+
+        <div class="mt-24" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 16px 32px; max-width: 750px;">
+                <p class="text-sm"><strong class="text-green">The flywheel:</strong> Clubs pay to operate &rarr; enter tournaments &rarr; tournaments bring 30+ new clubs &rarr; coaches see it in action &rarr; take Widdo to their clubs &rarr; more clubs. <strong>Each vertical feeds the other.</strong></p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">4</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 5: TOURNAMENTS DEEP DIVE -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Widdo Tournaments &mdash; The Viral Engine</div>
+        <h2 style="font-size: 36px; margin-bottom: 8px;">One tournament = <span class="text-green">2,000+ new users</span><br>in a single weekend</h2>
+        <p class="text-muted text-sm mb-20">Tournaments are the growth engine. Every tournament exposes 30+ clubs to Widdo. Coaches see it, take it home, subscribe. Repeat.</p>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div>
+                <h4 class="mb-12">How it works</h4>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(59,130,246,0.06); border-radius: 8px; border: 1px solid rgba(59,130,246,0.15);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--accent-blue);">1</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Organizer creates tournament in Widdo</p>
+                            <p class="text-xs text-muted">AI generates brackets, schedules, assigns courts/fields automatically.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(59,130,246,0.06); border-radius: 8px; border: 1px solid rgba(59,130,246,0.15);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--accent-blue);">2</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">32 teams register &amp; pay through Widdo</p>
+                            <p class="text-xs text-muted">800 players + 96 coaches + 1,200 parents = 2,100 new users create accounts.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(59,130,246,0.06); border-radius: 8px; border: 1px solid rgba(59,130,246,0.15);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--accent-blue);">3</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Live scoring &amp; verified stats during games</p>
+                            <p class="text-xs text-muted">Real-time standings, public brackets. Stats verified with timestamps &amp; Transparency Score.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(22,163,74,0.08); border-radius: 8px; border: 1px solid rgba(22,163,74,0.2);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--primary);">4</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600; color: var(--primary);">5-10 clubs subscribe after the tournament</p>
+                            <p class="text-xs text-muted">Coaches saw Widdo in action. "How much for my club?" Viral loop starts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-12">Tournament market</h4>
+                <div class="card mb-8" style="padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Youth tournaments in US annually</p>
+                            <p class="text-xs text-muted">Basketball, soccer, volleyball, baseball, football&hellip;</p>
+                        </div>
+                        <span style="font-size: 22px; font-weight: 900; color: var(--primary);">100K+</span>
+                    </div>
+                </div>
+                <div class="card mb-8" style="padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Average tournament revenue</p>
+                            <p class="text-xs text-muted">Registration fees + gate admission + concessions</p>
+                        </div>
+                        <span style="font-size: 22px; font-weight: 900; color: var(--primary);">$15-50K</span>
+                    </div>
+                </div>
+                <div class="card mb-8" style="padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">New clubs converted per tournament</p>
+                            <p class="text-xs text-muted">Free to organize &mdash; Widdo earns only on payment processing</p>
+                        </div>
+                        <span style="font-size: 22px; font-weight: 900; color: var(--primary);">5-10</span>
+                    </div>
+                </div>
+
+                <div class="card card-highlight" style="padding: 14px; margin-top: 12px;">
+                    <h4 style="font-size: 14px;" class="text-green mb-8">Competitive advantage vs Exposure Events</h4>
+                    <ul class="bullet-list bullet-list-sm" style="margin: 0;">
+                        <li>AI-powered scheduling &amp; brackets (not manual)</li>
+                        <li>Verified stats with Transparency Score</li>
+                        <li>Player profiles carry over (not one-time)</li>
+                        <li>Multi-sport (not basketball only)</li>
+                        <li>One centralized app &mdash; parents download once, not a new app per tournament</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">5</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 6: MOBILE APP + ONE PLATFORM -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content" style="padding: 45px 80px;">
+        <div class="badge mb-16"><span class="badge-dot"></span> One App. Every Tournament. Every Club.</div>
+        <h2 style="font-size: 34px; margin-bottom: 8px;">The Uber model for <span class="text-green">youth sports</span></h2>
+        <p class="text-muted text-sm mb-24">Today, every tournament organizer forces parents to download a different app. Exposure Events charges $299 per white-label app. With Widdo, parents download <strong>one app</strong> and every club, every tournament, every season lives there &mdash; forever.</p>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <h4 class="mb-12" style="font-size: 16px;">The problem today</h4>
+                <div class="card mb-12" style="padding: 20px; border-color: rgba(239,68,68,0.3);">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <span class="vs-label">Competitors</span>
+                        <span class="text-sm text-muted">5 tournaments = 5 apps</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App A</span>
+                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App B</span>
+                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App C</span>
+                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App D</span>
+                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App E</span>
+                    </div>
+                    <p class="text-xs text-muted">Different login for each. Stats don't carry over. Data lost after the event. Parents frustrated.</p>
+                </div>
+                <div class="card card-highlight" style="padding: 20px;">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                        <span class="widdo-label">Widdo</span>
+                        <span class="text-sm" style="font-weight: 600; color: var(--primary);">5 tournaments = 1 app</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+                        <span style="background: rgba(22,163,74,0.15); color: var(--primary); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 Widdo</span>
+                    </div>
+                    <p class="text-xs text-muted">One profile, one login, all stats verified and portable. Club management + tournaments in the same place.</p>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-12" style="font-size: 16px;">Mobile app &mdash; already in TestFlight</h4>
+                <div class="card mb-12" style="padding: 16px; border-color: rgba(22,163,74,0.3);">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 24px;">📱</div>
+                        <div>
+                            <h4 style="font-size: 14px;">React Native + Expo SDK 54</h4>
+                            <p class="text-xs text-muted mt-4">iOS + Android from a single codebase. Push notifications, offline-ready, biometric login.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 24px;">🔔</div>
+                        <div>
+                            <h4 style="font-size: 14px;">Real-time for parents</h4>
+                            <p class="text-xs text-muted mt-4">Live scores, attendance alerts, payment reminders, schedule changes &mdash; all push-notified.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 24px;">🌐</div>
+                        <div>
+                            <h4 style="font-size: 14px;">Bilingual (EN/ES) natively</h4>
+                            <p class="text-xs text-muted mt-4">62M+ Hispanics in USA. 41M+ speak Spanish at home. No competitor supports both languages.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-highlight" style="padding: 14px; text-align: center;">
+                    <p class="text-sm"><strong class="text-green">Network effect:</strong> Every tournament adds thousands of users to the app. Every user is a potential club subscriber.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">6</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 7: NIL & PLAYER MARKET VALUE -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content" style="padding: 45px 80px;">
+        <div class="badge mb-16"><span class="badge-dot"></span> NIL &amp; Player Market Value</div>
+        <h2 style="font-size: 34px; margin-bottom: 8px;">Every stat builds an athlete's<br><span class="text-green">market value</span></h2>
+        <p class="text-muted text-sm mb-24">Since 2021, NCAA athletes can monetize their Name, Image &amp; Likeness. But market value starts in youth sports &mdash; years before college. Widdo captures it all.</p>
+
+        <div class="grid-2" style="gap: 28px;">
+            <div>
+                <h4 class="mb-12" style="font-size: 16px;">How Widdo creates market value</h4>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(22,163,74,0.06); border-radius: 8px; border: 1px solid rgba(22,163,74,0.15);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--primary);">1</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Club captures everything</p>
+                            <p class="text-xs text-muted">Attendance, skills, evaluations, season stats &mdash; all verified with timestamps.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(22,163,74,0.06); border-radius: 8px; border: 1px solid rgba(22,163,74,0.15);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--primary);">2</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Tournaments add competition data</p>
+                            <p class="text-xs text-muted">Verified game stats, rankings, results &mdash; Transparency Score validates everything.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(22,163,74,0.06); border-radius: 8px; border: 1px solid rgba(22,163,74,0.15);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--primary);">3</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Parent packages the data</p>
+                            <p class="text-xs text-muted">One profile with complete history &mdash; shared with college coaches and scouts.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; background: rgba(22,163,74,0.08); border-radius: 8px; border: 1px solid rgba(22,163,74,0.25);">
+                        <span style="font-size: 20px; font-weight: 900; color: var(--primary);">4</span>
+                        <div>
+                            <p class="text-sm" style="font-weight: 600; color: var(--primary);">Coach creates the narrative</p>
+                            <p class="text-xs text-muted">Data-backed story &mdash; not opinions, but verified performance. Scout makes informed decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-12" style="font-size: 16px;">Why NIL changes everything</h4>
+                <div class="card mb-8" style="padding: 14px; border-color: rgba(22, 163, 74, 0.3);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">NIL market size (2024)</p>
+                            <p class="text-xs text-muted">Growing 30%+ YoY since 2021</p>
+                        </div>
+                        <span style="font-size: 22px; font-weight: 900; color: var(--primary);">$1.17B+</span>
+                    </div>
+                </div>
+                <div class="card mb-8" style="padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">NCAA athletes eligible for NIL</p>
+                            <p class="text-xs text-muted">Every sport, every division</p>
+                        </div>
+                        <span style="font-size: 22px; font-weight: 900; color: var(--accent-blue);">500K+</span>
+                    </div>
+                </div>
+                <div class="card mb-8" style="padding: 14px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p class="text-sm" style="font-weight: 600;">Age scouts start looking</p>
+                            <p class="text-xs text-muted">Data needs to be built years before</p>
+                        </div>
+                        <span style="font-size: 22px; font-weight: 900; color: var(--accent-purple);">14-16</span>
+                    </div>
+                </div>
+
+                <div class="card card-highlight" style="padding: 16px; margin-top: 12px;">
+                    <h4 style="font-size: 14px;" class="text-green mb-8">The KEY piece: Market Value</h4>
+                    <p class="text-sm text-muted">Widdo aggregates verified stats, attendance, tournament performance, and coach evaluations into a single data-backed profile. Scouts see one player, one story, one verified record &mdash; not scattered stats across 10 different apps.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 12px 32px; max-width: 800px;">
+                <p class="text-sm"><strong class="text-green">The LinkedIn for athletes:</strong> Free for every player. Every club interaction, every tournament stat, every coach evaluation builds their market value. This is the infrastructure layer for NIL &mdash; and nobody else is building it.</p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">7</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 8: MARKET SIZE -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content" style="padding: 55px 80px;">
+        <div class="badge mb-24"><span class="badge-dot"></span> USA Market Opportunity</div>
+        <h2 style="font-size: 36px; margin-bottom: 24px;">A <span class="text-green">$40B+</span> industry — all ages, all sports —<br>running on spreadsheets and group texts</h2>
+
+        <div class="grid-3 mb-24" style="gap: 20px;">
+            <div class="card" style="text-align: center; border-color: rgba(139, 92, 246, 0.3); padding: 18px;">
+                <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">TAM</p>
+                <div style="font-size: 36px; font-weight: 900; color: var(--accent-purple);">$10.2B</div>
+                <p class="text-xs text-muted mt-6">Global sports management software (2025). 11.3% CAGR to $17.5B by 2030.</p>
+            </div>
+            <div class="card" style="text-align: center; border-color: rgba(59, 130, 246, 0.3); padding: 18px;">
+                <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">SAM</p>
+                <div style="font-size: 36px; font-weight: 900; color: var(--accent-blue);">$3.7B</div>
+                <p class="text-xs text-muted mt-6">North America 36.2% share. 300K+ sports organizations across all ages and sports.</p>
+            </div>
+            <div class="card" style="text-align: center; border-color: rgba(22, 163, 74, 0.3); padding: 18px;">
+                <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">SOM</p>
+                <div style="font-size: 36px; font-weight: 900; color: var(--primary);">$180M</div>
+                <p class="text-xs text-muted mt-6">15,000 underserved clubs in USA (3 years). ~$100/club/mo avg.</p>
+            </div>
+        </div>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div>
+                <h4 class="mb-8" style="font-size: 16px;">USA Organized Sports by the Numbers</h4>
+                <table class="table-simple">
+                    <tr><td style="padding: 7px 12px;">Americans in organized sports</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">150+ million</td></tr>
+                    <tr><td style="padding: 7px 12px;">Youth athletes (under 18)</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">60 million</td></tr>
+                    <tr><td style="padding: 7px 12px;">Adult recreational leagues</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">55+ million</td></tr>
+                    <tr><td style="padding: 7px 12px;">Community-based clubs</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">300K+</td></tr>
+                    <tr><td style="padding: 7px 12px;">Using no paid software</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 7px 12px;">73%</td></tr>
+                    <tr><td style="padding: 7px 12px;">Cost increase since 2019</td><td style="text-align:right; font-weight: 700; color: var(--accent-red); padding: 7px 12px;">+46%</td></tr>
+                </table>
+            </div>
+            <div>
+                <h4 class="mb-8" style="font-size: 16px;">Key Sports (Participation)</h4>
+                <table class="table-simple">
+                    <tr><td style="padding: 7px 12px;">🏀 Basketball</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">36.8% &middot; ~4.3M</td></tr>
+                    <tr><td style="padding: 7px 12px;">⚽ Soccer</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">26.5% &middot; ~3.8M</td></tr>
+                    <tr><td style="padding: 7px 12px;">⚾ Baseball</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">24.1% &middot; ~3.2M</td></tr>
+                    <tr><td style="padding: 7px 12px;">🏈 Football (Flag rising)</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">+60% YoY</td></tr>
+                    <tr><td style="padding: 7px 12px;">🏊 Swimming, Volleyball, etc.</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">Millions more</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">8</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 9: COMPETITION (merged old 8+9) -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="content" style="padding: 40px 60px;">
+        <div class="badge mb-16"><span class="badge-dot"></span> Competitive Landscape</div>
+        <h2 style="font-size: 32px; margin-bottom: 16px;">Incumbents are <span class="text-green">expensive, ad-heavy, and incomplete</span>.<br>None own the player's data across clubs and sports.</h2>
+
+        <table class="table-simple" style="width: 100%; table-layout: fixed; margin-bottom: 16px;">
+            <thead>
+                <tr>
+                    <th style="width: 28%; padding: 6px 10px;">Platform</th>
+                    <th style="width: 18%; text-align: center; padding: 6px 10px;">Real Cost/yr</th>
+                    <th style="width: 12%; text-align: center; padding: 6px 10px;">AI</th>
+                    <th style="width: 16%; text-align: center; padding: 6px 10px;">Tournaments</th>
+                    <th style="width: 26%; text-align: center; padding: 6px 10px;">Key Weakness</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 7px 10px; font-size: 13px;">📢 TeamSnap</td>
+                    <td style="text-align: center; padding: 7px 10px; font-size: 13px;">$4,800+</td>
+                    <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                    <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                    <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">Aggressive ads, poor support</td>
+                </tr>
+                <tr>
+                    <td style="padding: 7px 10px; font-size: 13px;">🏢 SportsEngine</td>
+                    <td style="text-align: center; padding: 7px 10px; font-size: 13px;">$3,650+</td>
+                    <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                    <td style="text-align: center; color: var(--text-subtle); padding: 7px 10px;">Partial</td>
+                    <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">Overkill for small clubs, weeks to setup</td>
+                </tr>
+                <tr>
+                    <td style="padding: 7px 10px; font-size: 13px;">Crossbar</td>
+                    <td style="text-align: center; padding: 7px 10px; font-size: 13px;">$995 + fees</td>
+                    <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); padding: 7px 10px;">&#10003;</td>
+                    <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">+1.99%+$0.99/txn, no bilingual</td>
+                </tr>
+                <tr>
+                    <td style="padding: 7px 10px; font-size: 13px;">LeagueApps</td>
+                    <td style="text-align: center; padding: 7px 10px; font-size: 13px;">Custom</td>
+                    <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                    <td style="text-align: center; color: var(--text-subtle); padding: 7px 10px;">Partial</td>
+                    <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">No attendance, no portability</td>
+                </tr>
+                <tr>
+                    <td style="padding: 7px 10px; font-size: 13px;">Exposure Events</td>
+                    <td style="text-align: center; padding: 7px 10px; font-size: 13px;">Per-event</td>
+                    <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
+                    <td style="text-align: center; color: var(--primary); padding: 7px 10px;">&#10003;</td>
+                    <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">Basketball only, manual brackets, fragmented apps</td>
+                </tr>
+                <tr style="background: rgba(22, 163, 74, 0.08);">
+                    <td style="padding: 8px 10px; font-size: 13px;"><span class="widdo-label">Widdo</span></td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 900; padding: 8px 10px; font-size: 13px;">$1,188</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 8px 10px;">&#10003;</td>
+                    <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 8px 10px;">&#10003;</td>
+                    <td style="text-align: center; font-size: 11px; color: var(--primary); font-weight: 600; padding: 8px 10px;">Full platform, all sports, one app</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="grid-2" style="gap: 16px; margin-bottom: 12px;">
+            <div class="card" style="padding: 14px; border-color: rgba(239, 68, 68, 0.2);">
+                <h4 style="font-size: 14px; margin-bottom: 8px;">📢 TeamSnap: Ad-Driven, Expensive</h4>
+                <ul class="bullet-list bullet-list-sm" style="margin: 0;">
+                    <li>Aggressive in-app ads even for paying customers</li>
+                    <li>Users report "the app keeps getting worse" with each update</li>
+                    <li>No player data portability between organizations</li>
+                </ul>
+            </div>
+            <div class="card" style="padding: 14px; border-color: rgba(239, 68, 68, 0.2);">
+                <h4 style="font-size: 14px; margin-bottom: 8px;">🏢 SportsEngine: Enterprise-Heavy</h4>
+                <ul class="bullet-list bullet-list-sm" style="margin: 0;">
+                    <li>Built for large leagues, overkill for community clubs</li>
+                    <li>Complex onboarding &mdash; weeks to set up properly</li>
+                    <li>Owned by NBC Sports &mdash; focused on broadcast, not club ops</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid-3" style="gap: 12px;">
+            <div class="card card-highlight" style="text-align: center; padding: 14px;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">50-70%</p>
+                <p class="text-xs text-muted mt-4">Cheaper than incumbents</p>
+            </div>
+            <div class="card card-highlight" style="text-align: center; padding: 14px;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">&lt;24h</p>
+                <p class="text-xs text-muted mt-4">Full onboarding time</p>
+            </div>
+            <div class="card card-highlight" style="text-align: center; padding: 14px;">
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">0 ads</p>
+                <p class="text-xs text-muted mt-4">Clean, professional experience</p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">9</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 10: TRACTION -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> Traction &middot; All Organic, $0 Ad Spend</div>
+        <h2 style="font-size: 40px; margin-bottom: 16px;"><span class="text-green">100% organic</span> growth. Zero marketing spend. <span class="text-green">USA-first.</span></h2>
+        <p class="text-muted mb-24">9 active clubs across Colombia and the US &mdash; 1,100+ users and 580+ athletes &mdash; 3 paying annual subscriptions, a full year prepaid up front. First real revenue collected.</p>
+
+        <div class="grid-4" style="margin-bottom: 32px; gap: 12px;">
+            <div class="metric-card">
+                <div class="metric-value">9</div>
+                <div class="metric-label">Active Clubs (CO + US)</div>
+                <div class="metric-delta">1,100+ users &middot; 580+ athletes</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">3</div>
+                <div class="metric-label">Paying Clubs &mdash; Annual Plan</div>
+                <div class="metric-delta">Prepaid through April 2027</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">$0</div>
+                <div class="metric-label">Customer Acquisition Cost</div>
+                <div class="metric-delta">100% word of mouth</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" style="color: var(--accent-orange);">0%</div>
+                <div class="metric-label">Churn Rate</div>
+                <div class="metric-delta">No paying club has ever left</div>
+            </div>
+        </div>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div class="card">
+                <h4 class="mb-8">Why these numbers matter</h4>
+                <ul class="bullet-list bullet-list-sm">
+                    <li><strong>CAC = $0</strong> &mdash; Every club came without ads or outbound sales</li>
+                    <li><strong>Annual prepay</strong> &mdash; 3 clubs paid a full year up front: revenue in the bank, zero churn risk</li>
+                    <li><strong>0% churn</strong> &mdash; Once club data lives in Widdo, they stay</li>
+                    <li><strong>Already in the US</strong> &mdash; Sports academy in FL with active players</li>
+                    <li><strong>Payments live</strong> &mdash; C Corp created (Stripe Atlas, Delaware)</li>
+                </ul>
+            </div>
+            <div class="card card-highlight">
+                <h4 class="mb-8 text-green">Product-market fit signals</h4>
+                <ul class="bullet-list bullet-list-sm">
+                    <li>Directors <strong>actively request new features</strong></li>
+                    <li>Clubs <strong>refer other clubs</strong> without any incentive</li>
+                    <li>Instant adoption &mdash; <strong>full onboarding in &lt;24h</strong></li>
+                    <li>Daily active usage (coaches log attendance every session)</li>
+                    <li><strong>82% gross margin</strong> &mdash; infra costs only $47/month</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">10</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 11: BUSINESS MODEL -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-3"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> Business Model</div>
+        <h2 style="font-size: 38px; margin-bottom: 24px;">SaaS subscription<br>with <span class="text-green">tournaments as growth engine</span></h2>
+
+        <div class="grid-3 mb-24" style="gap: 16px;">
+            <div class="pricing-card">
+                <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Starter</p>
+                <div class="price">$99<span class="text-sm text-subtle"> USD</span></div>
+                <p class="text-xs text-subtle mb-16">/month</p>
+                <ul class="check-list" style="text-align: left;">
+                    <li><span class="check-icon">&#10003;</span> Up to 80 members</li>
+                    <li><span class="check-icon">&#10003;</span> 3 coaches</li>
+                    <li><span class="check-icon">&#10003;</span> Attendance &amp; calendar</li>
+                    <li><span class="check-icon">&#10003;</span> Billing &amp; payments</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Pro</p>
+                <div class="price text-green">$199<span class="text-sm text-subtle"> USD</span></div>
+                <p class="text-xs text-subtle mb-16">/month</p>
+                <ul class="check-list" style="text-align: left;">
+                    <li><span class="check-icon">&#10003;</span> Up to 200 members</li>
+                    <li><span class="check-icon">&#10003;</span> Advanced reports</li>
+                    <li><span class="check-icon">&#10003;</span> Documents &amp; compliance</li>
+                    <li><span class="check-icon">&#10003;</span> Priority support</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Enterprise</p>
+                <div class="price">$349<span class="text-sm text-subtle"> USD</span></div>
+                <p class="text-xs text-subtle mb-16">/month</p>
+                <ul class="check-list" style="text-align: left;">
+                    <li><span class="check-icon">&#10003;</span> Unlimited members</li>
+                    <li><span class="check-icon">&#10003;</span> Tournaments &amp; leagues</li>
+                    <li><span class="check-icon">&#10003;</span> Open API</li>
+                    <li><span class="check-icon">&#10003;</span> Priority support</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid-2" style="gap: 16px;">
+            <div class="card" style="text-align: center; padding: 18px;">
+                <p class="text-xs text-green" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Primary</p>
+                <h4 class="mt-8" style="font-size: 15px;">Club Subscriptions</h4>
+                <p class="text-xs text-muted mt-8">$99&ndash;$349/mo recurring. $0 platform fees &mdash; only Stripe 2.9%.</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 18px;">
+                <p class="text-xs" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--accent-blue);">Growth engine</p>
+                <h4 class="mt-8" style="font-size: 15px;">Tournaments (Free for Organizers)</h4>
+                <p class="text-xs text-muted mt-8">Free to organize. Each tournament brings 30+ new clubs into the ecosystem &rarr; converts to SaaS subscribers.</p>
+            </div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
+            <span style="background: rgba(0,0,0,0.04); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Premium Tournament Listing</span>
+            <span style="background: rgba(0,0,0,0.04); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Scout Dashboard $99/mo</span>
+            <span style="background: rgba(0,0,0,0.04); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Verified Player Profile</span>
+            <span style="background: rgba(0,0,0,0.04); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Sponsor Placement</span>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">11</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 12: UNIT ECONOMICS -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content" style="padding: 45px 80px;">
+        <div class="badge mb-24"><span class="badge-dot"></span> Unit Economics</div>
+        <h2 style="font-size: 34px; margin-bottom: 20px;">SaaS margins with <span class="text-green">near-zero CAC</span></h2>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div>
+                <div class="card" style="padding: 16px; margin-bottom: 12px;">
+                    <h4 class="mb-8" style="font-size: 15px;">Per-Club Metrics (current &mdash; Colombia)</h4>
+                    <table class="table-simple">
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">ARPC (Revenue per club/mo)</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">$34 USD</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">Cost to serve 1 club</td><td style="text-align:right; padding: 6px 8px; font-size: 13px;">$4 USD</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">Gross margin</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">88%</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">CAC (current / projected)</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">$0 / $50</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">LTV (24 mo, 0% churn)</td><td style="text-align:right; font-weight: 700; padding: 6px 8px; font-size: 13px;">$816 USD</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">LTV/CAC ratio</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">16x</td></tr>
+                    </table>
+                </div>
+                <div class="card" style="padding: 16px;">
+                    <h4 class="mb-8" style="font-size: 15px;">Infrastructure cost</h4>
+                    <table class="table-simple">
+                        <tr><td style="padding: 5px 8px; font-size: 13px;">DigitalOcean + MySQL + Storage</td><td style="text-align:right; padding: 5px 8px; font-size: 13px;">$32/mo</td></tr>
+                        <tr><td style="padding: 5px 8px; font-size: 13px;">Email (Resend)</td><td style="text-align:right; padding: 5px 8px; font-size: 13px;">$0/mo</td></tr>
+                        <tr><td style="padding: 5px 8px; font-size: 13px; font-weight: 700;">Total infra</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 5px 8px; font-size: 13px;">$32/mo</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="card card-highlight" style="padding: 16px; margin-bottom: 12px;">
+                    <h4 class="mb-12 text-green" style="font-size: 15px;">Revenue Projection (USA-first)</h4>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div>
+                            <div class="flex-between" style="margin-bottom: 4px;"><span class="text-xs">Q1 2026 &middot; 17 clubs</span><span class="text-xs" style="font-weight: 700;">$278/mo</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 3%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between" style="margin-bottom: 4px;"><span class="text-xs">Q2 2026 &middot; 35 clubs</span><span class="text-xs" style="font-weight: 700;">$900/mo</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 8%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between" style="margin-bottom: 4px;"><span class="text-xs">Q3 2026 &middot; 65 clubs</span><span class="text-xs" style="font-weight: 700;">$2,500/mo</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 16%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between" style="margin-bottom: 4px;"><span class="text-xs">Q4 2026 &middot; 100 clubs</span><span class="text-xs" style="font-weight: 700;">$4,500/mo</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 24%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between" style="margin-bottom: 4px;"><span class="text-xs">2027 &middot; 300 clubs</span><span class="text-xs" style="font-weight: 700;">$18,000/mo</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex-between" style="margin-bottom: 4px;"><span class="text-xs">2028 &middot; 1,000 clubs</span><span class="text-xs" style="font-weight: 700;">$50,000/mo</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding: 12px; text-align: center;">
+                    <p class="text-xs text-subtle" style="text-transform: uppercase; letter-spacing: 1px;">Break-even (USA)</p>
+                    <p style="font-size: 22px; font-weight: 800; color: var(--primary); margin-top: 2px;">~60 clubs</p>
+                    <p class="text-xs text-muted">With a team of 3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">12</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 13: PRODUCT SCREENSHOTS -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-center"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="flex-between mb-16">
+            <div>
+                <div class="badge mb-24"><span class="badge-dot"></span> Production-Ready Product</div>
+                <h2 style="font-size: 36px;">Full platform, <span class="text-green">live today</span></h2>
+            </div>
+            <div style="text-align: right;">
+                <p class="text-sm text-muted">widdo.co</p>
+                <p class="text-sm text-muted">api.widdo.co</p>
+            </div>
+        </div>
+        <div class="grid-3" style="flex: 1; gap: 12px;">
+            <div style="background: rgba(0,0,0,0.03); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 170px; background: linear-gradient(135deg, #f0fdf4, #f5f5f5); display: flex; align-items: center; justify-content: center;">
+                    <img src="../assets/dashboard-propietario.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Director<br>Dashboard</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Director Dashboard</p>
+                    <p class="text-xs text-muted">KPIs, billing, attendance, alerts</p>
+                </div>
+            </div>
+            <div style="background: rgba(0,0,0,0.03); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 170px; background: linear-gradient(135deg, #f0fdf4, #f5f5f5); display: flex; align-items: center; justify-content: center;">
+                    <img src="../assets/gestion-jugadores.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Player<br>Management</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Player Management</p>
+                    <p class="text-xs text-muted">Full CRUD, filters, export</p>
+                </div>
+            </div>
+            <div style="background: rgba(0,0,0,0.03); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 170px; background: linear-gradient(135deg, #f0fdf4, #f5f5f5); display: flex; align-items: center; justify-content: center;">
+                    <img src="../assets/gestion-pagos.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Payment<br>System</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Payment System</p>
+                    <p class="text-xs text-muted">Invoicing, discounts, reports</p>
+                </div>
+            </div>
+            <div style="background: rgba(0,0,0,0.03); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 170px; background: linear-gradient(135deg, #f0fdf4, #f5f5f5); display: flex; align-items: center; justify-content: center;">
+                    <img src="../assets/calendario.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Calendar</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Event Calendar</p>
+                    <p class="text-xs text-muted">Practices, games, meetings</p>
+                </div>
+            </div>
+            <div style="background: rgba(0,0,0,0.03); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 170px; background: linear-gradient(135deg, #f0fdf4, #f5f5f5); display: flex; align-items: center; justify-content: center;">
+                    <img src="../assets/control-asistencia.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Attendance<br>Tracking</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Attendance Tracking</p>
+                    <p class="text-xs text-muted">Per session, age group, player</p>
+                </div>
+            </div>
+            <div style="background: rgba(0,0,0,0.03); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
+                <div style="height: 170px; background: linear-gradient(135deg, #f0fdf4, #f5f5f5); display: flex; align-items: center; justify-content: center;">
+                    <img src="../assets/rol-padre.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Parent<br>Portal</div>'">
+                </div>
+                <div style="padding: 12px 16px;">
+                    <p class="text-sm" style="font-weight: 600;">Parent Portal</p>
+                    <p class="text-xs text-muted">Payments, attendance, documents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">13</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 14: TECH & MOAT (condensed) -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-16"><span class="badge-dot"></span> Technology &amp; Defensibility</div>
+        <h2 style="font-size: 34px; margin-bottom: 16px;">A <span class="text-green">production-grade</span> platform, not a prototype</h2>
+
+        <div class="grid-2" style="gap: 24px;">
+            <div>
+                <h4 class="mb-12">Production stack</h4>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(59,130,246,0.2); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Backend</span>
+                        <span class="text-sm">Laravel 12 + PHP 8.3 + MySQL</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(22,163,74,0.2); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Frontend</span>
+                        <span class="text-sm">React 18 + Vite + Tailwind CSS</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(139,92,246,0.2); color: var(--accent-purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Real-time</span>
+                        <span class="text-sm">Laravel Reverb (native WebSockets)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(249,115,22,0.2); color: var(--accent-orange); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Infra</span>
+                        <span class="text-sm">DigitalOcean + CI/CD GitHub Actions</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(249,115,22,0.2); color: var(--accent-orange); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Mobile</span>
+                        <span class="text-sm">React Native + Expo SDK 54 (iOS + Android)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(22,163,74,0.2); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Payments</span>
+                        <span class="text-sm">Stripe (USA) + multi-gateway architecture</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+                        <span style="font-size: 11px; background: rgba(59,130,246,0.2); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Testing</span>
+                        <span class="text-sm">Playwright E2E + PHPUnit + Sentry</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-12">Moat (defensibility)</h4>
+                <div class="card mb-8" style="border-color: rgba(22,163,74,0.3); padding: 16px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 20px;">🏅</div>
+                        <div>
+                            <h4 style="font-size: 14px;">Portable player profile = player lock-in</h4>
+                            <p class="text-xs text-muted">Player's history lives in Widdo across clubs and sports. Creates a unique network effect.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-8" style="padding: 16px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 20px;">🌐</div>
+                        <div>
+                            <h4 style="font-size: 14px;">Geographic network effect</h4>
+                            <p class="text-xs text-muted">Parents recommend. Local leagues require the same platform. Tournaments between Widdo clubs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-8" style="padding: 16px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 20px;">🌐</div>
+                        <div>
+                            <h4 style="font-size: 14px;">Multi-language (EN/ES, PT ready)</h4>
+                            <p class="text-xs text-muted">No competitor is truly bilingual. Opens US, LATAM, Brazil &amp; global markets from day one.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-8" style="padding: 16px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 20px;">🤖</div>
+                        <div>
+                            <h4 style="font-size: 14px;">AI assistant &mdash; 56 tools, production-ready</h4>
+                            <p class="text-xs text-muted">Built-in AI that answers questions, generates reports, and assists every role. Nobody else has this.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="padding: 16px;">
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <div style="font-size: 20px;">⚡</div>
+                        <div>
+                            <h4 style="font-size: 14px;">Production-grade &mdash; 124 models documented</h4>
+                            <p class="text-xs text-muted">80+ tables, 99 controllers, 61 services. All code on GitHub, AI-assisted &mdash; ready to scale team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">14</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 15: GO-TO-MARKET USA -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> Go-to-Market: USA First</div>
+        <h2 style="font-size: 38px; margin-bottom: 24px;">Land in <span class="text-green">community sports clubs</span>,<br>expand nationwide</h2>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <h4 class="mb-16">Phase 1: Beachhead (Q2-Q4 2026)</h4>
+                <div class="funnel-step">
+                    <div class="funnel-number">1</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Sponsor academies &amp; community clubs</p>
+                        <p class="text-xs text-muted">Soccer, basketball, cheer gyms, martial arts &mdash; in FL, TX, CA. Bilingual advantage opens doors faster.</p>
+                    </div>
+                </div>
+                <div class="funnel-step">
+                    <div class="funnel-number">2</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Tournaments as viral engine</p>
+                        <p class="text-xs text-muted">Non-Widdo clubs participate in Widdo tournaments. They see the platform in action. 1 tournament = 5-10 new clubs.</p>
+                    </div>
+                </div>
+                <div class="funnel-step">
+                    <div class="funnel-number">3</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Partner with local leagues</p>
+                        <p class="text-xs text-muted">When a league adopts Widdo, all affiliated clubs follow. One deal = 10-50 clubs.</p>
+                    </div>
+                </div>
+                <div class="funnel-step">
+                    <div class="funnel-number">4</div>
+                    <div>
+                        <p class="text-sm" style="font-weight: 600;">Parent-driven word of mouth</p>
+                        <p class="text-xs text-muted">"My nephew's club should use this too." Same viral loop proven in LATAM.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-16">Phase 2: Scale (2027+)</h4>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Celebrity / Ambassador Partnership</h4>
+                            <p class="text-xs text-muted">Leverage sports figure as brand ambassador. Direct connections in progress.</p>
+                        </div>
+                        <span class="badge" style="font-size: 11px; padding: 4px 12px;">In progress</span>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Content marketing + SEO</h4>
+                            <p class="text-xs text-muted">English blog, guides for club directors, YouTube tutorials.</p>
+                        </div>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">Q3 2026</span>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Scale nationwide across all sports</h4>
+                            <p class="text-xs text-muted">From initial clusters to every state. Multi-sport platform serves any community.</p>
+                        </div>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">2027</span>
+                    </div>
+                </div>
+                <div class="card" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <h4 style="font-size: 14px;">Scale LATAM from US credibility</h4>
+                            <p class="text-xs text-muted">Same platform, same language. US brand = instant trust in LATAM.</p>
+                        </div>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">2027</span>
+                    </div>
+                </div>
+
+                <div class="card card-highlight mt-16" style="padding: 16px;">
+                    <p class="text-sm"><strong class="text-green">Target:</strong> 100 USA clubs by end of 2026.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">15</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 16: ROADMAP -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> Roadmap</div>
+        <h2 style="font-size: 38px; margin-bottom: 24px;">Built fast. <span class="text-green">Already ahead of schedule.</span></h2>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <p class="text-xs text-subtle mb-12" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Completed &mdash; Q1 2026</p>
+                <div class="timeline-item">
+                    <div class="timeline-dot current"></div>
+                    <div>
+                        <h4>Widdo Clubs &mdash; Full Platform</h4>
+                        <p class="text-sm text-muted">124 models, 80+ tables, multi-tenant, multi-language (EN/ES), multi-gateway payments. Live with 17+ clubs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot current"></div>
+                    <div>
+                        <h4>AI Assistant &mdash; Production</h4>
+                        <p class="text-sm text-muted">56 tools, 8 roles, conversational. "Show me players with attendance below 70%." Nobody else has this.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot current"></div>
+                    <div>
+                        <h4>Widdo Tournaments &mdash; Live</h4>
+                        <p class="text-sm text-muted">AI-powered brackets, live scoring, verified stats, public standings. The viral engine is ready.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot current"></div>
+                    <div>
+                        <h4>Full i18n &amp; USA Ready</h4>
+                        <p class="text-sm text-muted">Complete English interface. Stripe integration. C Corp Delaware created (Stripe Atlas).</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="text-xs text-subtle mb-12" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Next &mdash; Q2-Q4 2026</p>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">April 2026</p>
+                        <h4>Payments Go Live</h4>
+                        <p class="text-sm text-muted">Activate subscriptions in Colombia + USA. First revenue.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q2 2026</p>
+                        <h4>Mobile App Published (iOS + Android)</h4>
+                        <p class="text-sm text-muted">React Native + Expo. Push notifications, offline-ready. One app for every club and tournament.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q3 2026</p>
+                        <h4>Verified Stats &amp; College-Ready Profile</h4>
+                        <p class="text-sm text-muted">Transparency Score, verified stats across 12+ sports. Free for athletes. Scout dashboard $99/mo.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot future"></div>
+                    <div>
+                        <p class="text-sm text-subtle">Q4 2026</p>
+                        <h4>Tournament Directory + SEO Programmatic Pages</h4>
+                        <p class="text-sm text-muted">Public tournament directory with automatic SEO pages. Organic growth engine for new users and clubs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-flex; gap: 40px; padding: 12px 32px;">
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Clubs</p>
+                    <p class="text-xs text-green mt-4" style="font-weight: 700;">LIVE</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Tournaments</p>
+                    <p class="text-xs text-green mt-4" style="font-weight: 700;">LIVE</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">AI Agent</p>
+                    <p class="text-xs text-green mt-4" style="font-weight: 700;">LIVE</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">i18n EN/ES</p>
+                    <p class="text-xs text-green mt-4" style="font-weight: 700;">LIVE</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Mobile App</p>
+                    <p class="text-xs" style="color: var(--accent-orange); font-weight: 700; margin-top: 4px;">Q2 2026</p>
+                </div>
+                <div style="text-align: center;">
+                    <p class="text-xs text-subtle">Directory</p>
+                    <p class="text-xs" style="color: var(--accent-orange); font-weight: 700; margin-top: 4px;">Q4 2026</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">16</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 17: TEAM -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-3"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div class="badge mb-24"><span class="badge-dot"></span> Team</div>
+        <h2 style="font-size: 40px; margin-bottom: 32px;">Domain experts who <span class="text-green">build and sell</span></h2>
+
+        <div class="grid-2" style="gap: 32px; max-width: 1000px;">
+            <div class="card" style="padding: 32px; text-align: center;">
+                <div style="width: 70px; height: 70px; background: rgba(22, 163, 74, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 28px; font-weight: 900; color: var(--primary);">
+                    MC
+                </div>
+                <h3 style="margin-bottom: 2px;">Miguel Cano</h3>
+                <p class="text-green text-sm" style="font-weight: 600; margin-bottom: 12px;">Founder &amp; CEO / CTO</p>
+                <p class="text-muted text-sm" style="max-width: 380px; margin: 0 auto; text-align: left;">
+                    25+ years senior full-stack developer for major US companies and startups worldwide. Professional basketball player in Colombia. Athletic scholarship recipient. Sports dad. Built the entire Widdo platform solo &mdash; 124 models, 80+ tables, AI agent integrated. Domain expert from every angle.
+                </p>
+            </div>
+            <div class="card" style="padding: 32px; text-align: center;">
+                <div style="width: 70px; height: 70px; background: rgba(22, 163, 74, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 28px; font-weight: 900; color: var(--primary);">
+                    AP
+                </div>
+                <h3 style="margin-bottom: 2px;">Alwin Perez</h3>
+                <p class="text-green text-sm" style="font-weight: 600; margin-bottom: 12px;">Co-founder &amp; Global Business Development</p>
+                <p class="text-muted text-sm" style="max-width: 380px; margin: 0 auto; text-align: left;">
+                    International tattoo artist &amp; world event judge with direct access to pro athletes (NBA, MLB). Basketball player. Lived and built businesses across Argentina, Brazil, Germany &amp; the US. Previous tech ventures with Miguel. Based in Orlando, FL.
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-24" style="text-align: center;">
+            <div class="card card-highlight" style="display: inline-block; padding: 16px 32px; max-width: 800px;">
+                <p class="text-sm"><strong class="text-green">"We didn't meet on LinkedIn."</strong> We've built businesses together before. Miguel played pro basketball and has 25 years coding. Alwin played basketball across 4 countries and has a global network. We both lived this problem &mdash; that's why we're building the solution.</p>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">17</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 18: THE ASK -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient-right"></div>
+    <div class="bg-grid"></div>
+    <div class="content">
+        <div class="badge mb-24"><span class="badge-dot"></span> The Ask</div>
+        <h2 style="font-size: 40px; margin-bottom: 16px;">Raising <span class="text-green">$200K&ndash;$350K</span> Pre-Seed</h2>
+        <p class="text-muted mb-24">SAFE note (YC standard). Delaware C-Corp created via Stripe Atlas. First 100 US clubs, Tournaments viral engine, and team growth.</p>
+
+        <div class="grid-2" style="gap: 32px;">
+            <div>
+                <h4 class="mb-16">Use of funds</h4>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Team (salaries)</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">45%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 45%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Growth lead + Sr. Frontend + Customer Success</p>
+                    </div>
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Product (development)</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">25%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 25%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Mobile app, tournaments, AI agent, USA localization</p>
+                    </div>
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Growth &amp; marketing</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">20%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+                        <p class="text-xs text-muted mt-4">SEO, content, ads, sports events, ambassador program</p>
+                    </div>
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Infrastructure &amp; operations</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">10%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Servers, tools, legal</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h4 class="mb-16">Milestones</h4>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Month 6</p>
+                            <h4 style="font-size: 15px;">100 clubs (USA-first)</h4>
+                            <p class="text-xs text-muted">MRR: $6,000 USD. Focus on FL, TX, CA.</p>
+                        </div>
+                        <span style="font-size: 28px; font-weight: 900; color: var(--primary);">100</span>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Month 12</p>
+                            <h4 style="font-size: 15px;">300 clubs + App published</h4>
+                            <p class="text-xs text-muted">MRR: $18,000 USD. App on iOS/Android.</p>
+                        </div>
+                        <span style="font-size: 28px; font-weight: 900; color: var(--primary);">300</span>
+                    </div>
+                </div>
+                <div class="card mb-12" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Month 18</p>
+                            <h4 style="font-size: 15px;">500 clubs across key US states</h4>
+                            <p class="text-xs text-muted">MRR: $30,000 USD. Nationwide presence.</p>
+                        </div>
+                        <span style="font-size: 28px; font-weight: 900; color: var(--primary);">500</span>
+                    </div>
+                </div>
+                <div class="card card-highlight" style="padding: 16px;">
+                    <div class="flex-between">
+                        <div>
+                            <p class="text-xs text-subtle">Seed Round Target</p>
+                            <h4 style="font-size: 15px;">Raise $500K-$1M Seed</h4>
+                            <p class="text-xs text-muted">With validated unit economics across US + first LATAM expansion.</p>
+                        </div>
+                        <span style="font-size: 20px; font-weight: 900; color: var(--primary);">🎯</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">18</span>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDE 19: CLOSING -->
+<!-- ============================================ -->
+<div class="slide">
+    <div class="bg-gradient"></div>
+    <div class="bg-blur-1"></div>
+    <div class="bg-blur-2"></div>
+    <div class="bg-blur-3"></div>
+    <div class="bg-grid"></div>
+    <div class="content content-centered">
+        <div style="margin-bottom: 20px;">
+            <img src="widdo-logo.svg" style="width: 70px; height: 70px;" alt="Widdo">
+        </div>
+
+        <h1 style="font-size: 40px; margin-bottom: 12px;">
+            Every profile. Every stat. <span class="text-green">Forever.</span>
+        </h1>
+
+        <p class="subtitle" style="margin-bottom: 28px; font-size: 16px;">
+            2 verticals live. AI-powered. Multi-language. Mobile app ready. $10.2B market. No dominant player.
+        </p>
+
+        <div style="display: flex; gap: 16px; margin-bottom: 28px;">
+            <div>
+                <p class="text-xs text-subtle" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 8px;">USA Market</p>
+                <div style="display: flex; gap: 12px;">
+                    <div class="card" style="padding: 10px 18px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">150M+</div>
+                        <div style="font-size: 10px;" class="text-muted">Athletes (all ages)</div>
+                    </div>
+                    <div class="card" style="padding: 10px 18px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">300K+</div>
+                        <div style="font-size: 10px;" class="text-muted">Sports orgs</div>
+                    </div>
+                    <div class="card" style="padding: 10px 18px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">$10.2B</div>
+                        <div style="font-size: 10px;" class="text-muted">Market size</div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 1px; background: var(--border-subtle); margin: 0 8px;"></div>
+            <div>
+                <p class="text-xs text-subtle" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 8px;">Traction (CO + US &mdash; all organic)</p>
+                <div style="display: flex; gap: 12px;">
+                    <div class="card card-highlight" style="padding: 10px 18px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">9</div>
+                        <div style="font-size: 10px;" class="text-muted">Active clubs</div>
+                    </div>
+                    <div class="card card-highlight" style="padding: 10px 18px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">3</div>
+                        <div style="font-size: 10px;" class="text-muted">Paying (annual)</div>
+                    </div>
+                    <div class="card card-highlight" style="padding: 10px 18px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">$0</div>
+                        <div style="font-size: 10px;" class="text-muted">CAC</div>
+                    </div>
+                    <div class="card card-highlight" style="padding: 10px 18px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">0%</div>
+                        <div style="font-size: 10px;" class="text-muted">Churn</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 24px; align-items: center;">
+            <div style="background: var(--primary); padding: 12px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; color: white;">
+                widdo.co
+            </div>
+            <div style="color: var(--text-muted); font-size: 14px;">
+                Miguel Cano &amp; Alwin Perez &middot; Co-founders &middot; hey@widdo.co
+            </div>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <span>Clubs</span>
+        <span>Tournaments</span>
+        <span>AI</span>
+        <span>USA-first</span>
+    </div>
+    <span class="confidential">Confidential</span>
+    <span class="slide-number">19</span>
+</div>
+
+<script>
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presentationMode = false;
+
+    // Counter display
+    const counter = document.createElement('div');
+    counter.id = 'slide-counter';
+    counter.style.cssText = 'display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.7); color:#fff; padding:6px 16px; border-radius:20px; font-family:Red Hat Display,sans-serif; font-size:13px; z-index:9999; letter-spacing:1px;';
+    document.body.appendChild(counter);
+
+    // Help tooltip
+    const help = document.createElement('div');
+    help.id = 'presentation-help';
+    help.style.cssText = 'display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.9); color:#fff; padding:40px 50px; border-radius:16px; font-family:Red Hat Display,sans-serif; z-index:10000; text-align:center; border:1px solid rgba(22,163,74,0.3);';
+    help.innerHTML = `
+        <h3 style="color:#16a34a; margin-bottom:20px; font-size:22px;">Presentation Mode</h3>
+        <div style="font-size:15px; line-height:2; color:rgba(255,255,255,0.8);">
+            <b style="color:#fff;">F</b> or <b style="color:#fff;">F11</b> — Enter/exit fullscreen<br>
+            <b style="color:#fff;">&rarr;</b> or <b style="color:#fff;">Space</b> — Next slide<br>
+            <b style="color:#fff;">&larr;</b> or <b style="color:#fff;">Backspace</b> — Previous slide<br>
+            <b style="color:#fff;">Home</b> — First slide<br>
+            <b style="color:#fff;">End</b> — Last slide<br>
+            <b style="color:#fff;">Esc</b> — Exit presentation mode
+        </div>
+        <p style="margin-top:20px; font-size:12px; color:rgba(255,255,255,0.4);">Press any key to close this help</p>
+    `;
+    document.body.appendChild(help);
+
+    function goTo(index) {
+        if (index < 0 || index >= slides.length) return;
+        current = index;
+        if (presentationMode) {
+            slides.forEach((s, i) => {
+                s.style.display = i === current ? 'block' : 'none';
+            });
+        } else {
+            slides[current].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+
+    function enterPresentation() {
+        presentationMode = true;
+        document.body.style.overflow = 'hidden';
+        document.body.style.background = '#000';
+        slides.forEach((s, i) => {
+            s.style.display = i === current ? 'block' : 'none';
+            s.style.margin = '0 auto';
+            s.style.position = 'fixed';
+            s.style.top = '50%';
+            s.style.left = '50%';
+            s.style.transform = 'translate(-50%, -50%)';
+            s.style.boxShadow = 'none';
+        });
+        counter.style.display = 'block';
+        goTo(current);
+    }
+
+    function exitPresentation() {
+        presentationMode = false;
+        document.body.style.overflow = '';
+        document.body.style.background = '#f0f0f3';
+        slides.forEach(s => {
+            s.style.display = 'block';
+            s.style.position = 'relative';
+            s.style.top = '';
+            s.style.left = '';
+            s.style.transform = '';
+            s.style.margin = '20px auto';
+            s.style.boxShadow = '0 4px 24px rgba(0,0,0,0.08)';
+        });
+        counter.style.display = 'none';
+        if (document.fullscreenElement) document.exitFullscreen();
+    }
+
+    let helpVisible = false;
+
+    document.addEventListener('keydown', function(e) {
+        if (helpVisible) {
+            help.style.display = 'none';
+            helpVisible = false;
+            return;
+        }
+
+        switch(e.key) {
+            case 'f':
+            case 'F':
+                if (!presentationMode) {
+                    enterPresentation();
+                    document.documentElement.requestFullscreen().catch(() => {});
+                }
+                break;
+            case 'F11':
+                e.preventDefault();
+                if (!presentationMode) {
+                    enterPresentation();
+                    document.documentElement.requestFullscreen().catch(() => {});
+                }
+                break;
+            case 'Escape':
+                if (presentationMode) exitPresentation();
+                break;
+            case 'ArrowRight':
+            case ' ':
+                if (presentationMode) { e.preventDefault(); goTo(current + 1); }
+                break;
+            case 'ArrowLeft':
+            case 'Backspace':
+                if (presentationMode) { e.preventDefault(); goTo(current - 1); }
+                break;
+            case 'Home':
+                if (presentationMode) { e.preventDefault(); goTo(0); }
+                break;
+            case 'End':
+                if (presentationMode) { e.preventDefault(); goTo(slides.length - 1); }
+                break;
+            case 'h':
+            case 'H':
+            case '?':
+                if (presentationMode) {
+                    help.style.display = 'block';
+                    helpVisible = true;
+                }
+                break;
+        }
+    });
+
+    // Detect exit fullscreen
+    document.addEventListener('fullscreenchange', function() {
+        if (!document.fullscreenElement && presentationMode) {
+            exitPresentation();
+        }
+    });
+})();
+</script>
+
+</body>
+</html>

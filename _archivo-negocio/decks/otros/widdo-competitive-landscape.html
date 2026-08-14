@@ -1,0 +1,481 @@
+<!-- ARCHIVADO 13-ago-2026 — landscape competitivo con "17 clubs, 0% churn" (dato prohibido) y posicionamiento LATAM — sustituido por negocio/competitive-landscape.md -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo — Competitive Landscape & Market Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0; }
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #fff;
+            color: #18181b;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            max-height: 11in;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* HEADER */
+        .header {
+            background: #18181b;
+            color: #fff;
+            padding: 14px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header-logo {
+            width: 36px;
+            height: 36px;
+        }
+        .header-text h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+        .header-text p { font-size: 9px; color: rgba(255,255,255,0.55); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+        .header-right { text-align: right; }
+        .header-right .period { font-size: 13px; font-weight: 800; color: #22c55e; }
+        .header-right .date { font-size: 9px; color: rgba(255,255,255,0.5); }
+
+        /* TAGLINE */
+        .tagline-bar {
+            background: #16a34a;
+            color: #fff;
+            text-align: center;
+            padding: 6px 32px;
+            font-size: 11.5px;
+            font-weight: 700;
+        }
+
+        /* MAIN */
+        .main { padding: 12px 32px 8px; }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-size: 9.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #16a34a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: #e4e4e7; }
+
+        /* COMPETITOR TABLE */
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+            font-size: 8.5px;
+        }
+        .comp-table th {
+            background: #18181b;
+            color: #fff;
+            padding: 5px 6px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 7.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .comp-table td {
+            padding: 4px 6px;
+            border-bottom: 1px solid #f4f4f5;
+            vertical-align: top;
+            line-height: 1.35;
+        }
+        .comp-table tr:nth-child(even) td { background: #fafafa; }
+        .comp-table .company-name {
+            font-weight: 800;
+            color: #18181b;
+        }
+        .comp-table .status-live { color: #16a34a; font-weight: 700; }
+        .comp-table .status-acquired { color: #f97316; font-weight: 700; }
+        .comp-table .status-struggling { color: #dc2626; font-weight: 700; }
+        .comp-table .status-stagnant { color: #a1a1aa; font-weight: 700; }
+        .comp-table .funding { font-weight: 800; color: #18181b; }
+        .comp-table .gap { color: #dc2626; font-size: 8px; }
+
+        /* WIDDO ROW */
+        .comp-table tr.widdo-row td {
+            background: #f0fdf4;
+            border: 1.5px solid #16a34a;
+            font-weight: 600;
+        }
+
+        /* INSIGHTS GRID */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .insight-card {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 8px;
+            padding: 8px 10px;
+        }
+        .insight-card h4 {
+            font-size: 10px;
+            font-weight: 800;
+            color: #18181b;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .insight-card p, .insight-card li {
+            font-size: 8.5px;
+            color: #52525b;
+            line-height: 1.4;
+        }
+        .insight-card ul {
+            padding-left: 12px;
+            margin: 0;
+        }
+        .insight-card li { margin-bottom: 2px; }
+        .insight-card .highlight {
+            font-weight: 800;
+            color: #18181b;
+        }
+        .insight-card.warning { border-color: #fecaca; background: #fef2f2; }
+        .insight-card.success { border-color: #bbf7d0; background: #f0fdf4; }
+        .insight-card.info { border-color: #bfdbfe; background: #eff6ff; }
+
+        /* BNPL SECTION */
+        .bnpl-bar {
+            background: #18181b;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .bnpl-bar .bnpl-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+        .bnpl-bar h3 { font-size: 11px; font-weight: 800; color: #22c55e; margin-bottom: 2px; }
+        .bnpl-bar p { font-size: 9px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+        .bnpl-bar .bnpl-stat { font-weight: 900; color: #22c55e; }
+
+        /* REVENUE COMPARISON */
+        .rev-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .rev-box {
+            background: #18181b;
+            border-radius: 6px;
+            padding: 6px 8px;
+            text-align: center;
+        }
+        .rev-box .rv-label {
+            font-size: 7px;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .rev-box .rv-value {
+            font-size: 15px;
+            font-weight: 900;
+            color: #22c55e;
+            line-height: 1;
+        }
+        .rev-box .rv-desc {
+            font-size: 7px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
+        }
+        .rev-box.primary { border: 1.5px solid #22c55e; }
+
+        /* YC SECTION */
+        .yc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .yc-card {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 8px;
+            padding: 7px 9px;
+        }
+        .yc-card h4 {
+            font-size: 9.5px;
+            font-weight: 800;
+            color: #18181b;
+            margin-bottom: 2px;
+        }
+        .yc-card .yc-tag {
+            font-size: 7px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #f97316;
+            margin-bottom: 3px;
+        }
+        .yc-card p {
+            font-size: 8px;
+            color: #71717a;
+            line-height: 1.35;
+        }
+        .yc-card .apply {
+            font-size: 8px;
+            font-weight: 700;
+            color: #16a34a;
+            margin-top: 3px;
+        }
+
+        /* FOOTER */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #18181b;
+            color: rgba(255,255,255,0.4);
+            padding: 6px 32px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+        }
+        .footer a { color: #22c55e; text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="header-left">
+                <svg class="header-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#22c55e"/>
+                    <text x="50" y="62" text-anchor="middle" fill="#fff" font-family="Red Hat Display" font-weight="900" font-size="38">W</text>
+                </svg>
+                <div class="header-text">
+                    <h1>Widdo</h1>
+                    <p>Competitive Landscape</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="period">Market Intelligence</div>
+                <div class="date">Sports Tech &bull; BNPL &bull; Cross-Border &bull; March 2026</div>
+            </div>
+        </div>
+
+        <div class="tagline-bar">Nobody Owns All Three Layers: Club Management + Tournaments + Sports Fintech</div>
+
+        <div class="main">
+            <!-- COMPETITOR TABLE -->
+            <div class="section-title">Competitor Map &mdash; Funding &amp; Gaps</div>
+
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th style="width:14%">Company</th>
+                        <th style="width:10%">Funding</th>
+                        <th style="width:10%">Revenue</th>
+                        <th style="width:16%">What They Do</th>
+                        <th style="width:8%">Status</th>
+                        <th style="width:22%">What They DON'T Have</th>
+                        <th style="width:20%">Lesson for Widdo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="company-name">LeagueApps</span><br>USA, 2011</td>
+                        <td class="funding">$35M</td>
+                        <td>$20M/yr<br>3,000 clients</td>
+                        <td>Youth sports registration, payments, scheduling</td>
+                        <td><span class="status-live">Active</span></td>
+                        <td class="gap">No LATAM. No BNPL. No cross-border. No multi-language. No AI</td>
+                        <td>Proves market: $20M rev from clubs. ARPC ~$6,600/yr ($550/mo). Target to beat</td>
+                    </tr>
+                    <tr>
+                        <td><span class="company-name">PlayMetrics + Stack Sports</span><br>USA, merged 2025</td>
+                        <td class="funding">PE-backed<br>(Genstar Capital)</td>
+                        <td>N/A<br>2,700+ orgs</td>
+                        <td>Club OS, governing bodies, leagues, tournaments</td>
+                        <td><span class="status-live">800lb gorilla</span></td>
+                        <td class="gap">No LATAM. No BNPL. No cross-border. Consolidation = unhappy customers</td>
+                        <td>PE merger leaves mid-market gap. Displaced customers seeking alternatives NOW</td>
+                    </tr>
+                    <tr>
+                        <td><span class="company-name">Spond</span><br>Norway, 2016</td>
+                        <td class="funding">$17M</td>
+                        <td>N/A<br>3M+ MAU</td>
+                        <td>Team communication, scheduling, payments (Europe)</td>
+                        <td><span class="status-stagnant">No funding since 2021</span></td>
+                        <td class="gap">No BNPL. No cross-border. No tournaments. Europe only</td>
+                        <td>Freemium works for volume: 3M users with $17M. Widdo can replicate in LATAM</td>
+                    </tr>
+                    <tr>
+                        <td><span class="company-name">PlayVS</span><br>USA, 2018</td>
+                        <td class="funding">$115M</td>
+                        <td>N/A<br>Valuation: $46M</td>
+                        <td>Esports leagues for high schools</td>
+                        <td><span class="status-struggling">0.40x return</span></td>
+                        <td class="gap">Only esports. Value destroyed: worth less than capital raised</td>
+                        <td>CAUTIONARY TALE: raised too much without PMF. $115M in &rarr; $46M value. Don't over-raise</td>
+                    </tr>
+                    <tr>
+                        <td><span class="company-name">Heja</span><br>Sweden, 2016</td>
+                        <td class="funding">$6.9M</td>
+                        <td>N/A</td>
+                        <td>Social platform for youth sports teams</td>
+                        <td><span class="status-stagnant">No funding since 2021</span></td>
+                        <td class="gap">Communication only. No payments. No compliance. No tournaments</td>
+                        <td>Communication alone isn't enough for a big business. Need payments + data</td>
+                    </tr>
+                    <tr>
+                        <td><span class="company-name">Crossbar</span><br>USA, 2018</td>
+                        <td class="funding">$750K</td>
+                        <td>40+ clubs</td>
+                        <td>Club management for youth sports</td>
+                        <td><span class="status-acquired">Acquired by PlayMetrics 2023</span></td>
+                        <td class="gap">No longer independent. Absorbed into Stack Sports</td>
+                        <td>Small club management startups get acquired. Build ecosystem (not just features) to stay independent</td>
+                    </tr>
+                    <tr>
+                        <td><span class="company-name">Sezzle + Gridiron</span><br>USA, 2021</td>
+                        <td class="funding">Partnership</td>
+                        <td>N/A</td>
+                        <td>BNPL for youth football registration (USA only)</td>
+                        <td><span class="status-stagnant">No updates since 2021</span></td>
+                        <td class="gap">Football only. USA only. No platform. No cross-border</td>
+                        <td>First attempt at sports BNPL. Proved concept but didn't scale. Widdo = platform-native BNPL</td>
+                    </tr>
+                    <tr class="widdo-row">
+                        <td><span class="company-name" style="color:#16a34a">Widdo</span><br>CO+USA, 2025</td>
+                        <td class="funding" style="color:#16a34a">$0 (raising $250K)</td>
+                        <td style="color:#16a34a">Pre-revenue<br>17 clubs, 0% churn</td>
+                        <td style="color:#16a34a">Clubs + Tournaments + BNPL cross-border. Multi-sport, multi-language, AI</td>
+                        <td><span class="status-live">Building</span></td>
+                        <td style="color:#16a34a; font-weight:700">THE ONLY PLATFORM WITH ALL 3 LAYERS</td>
+                        <td style="color:#16a34a; font-weight:700">First mover in LATAM + BNPL + cross-border sports. No direct competitor</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- INSIGHTS -->
+            <div class="section-title">Key Insights &mdash; What to Apply at Widdo</div>
+
+            <div class="insights-grid">
+                <div class="insight-card success">
+                    <h4>&#9989; LeagueApps Proves the Market</h4>
+                    <ul>
+                        <li><span class="highlight">$20M revenue</span> from 3,000 youth sports clients</li>
+                        <li>ARPC: <span class="highlight">$550/month</span> &mdash; Widdo targets $99-349</li>
+                        <li>Backed by Arctos Sports Partners (sports-focused PE)</li>
+                        <li><span class="highlight">Apply:</span> Use their metrics in pitch. "LeagueApps does $20M with just USA. We do USA + LATAM + BNPL"</li>
+                    </ul>
+                </div>
+                <div class="insight-card warning">
+                    <h4>&#9888;&#65039; PlayVS: Don't Over-Raise</h4>
+                    <ul>
+                        <li>Raised <span class="highlight">$115M</span>, now valued at <span class="highlight">$46M</span> (0.40x)</li>
+                        <li>Scaling before product-market fit destroyed value</li>
+                        <li>Acquired competitors instead of building</li>
+                        <li><span class="highlight">Apply:</span> $250K is the right amount. Prove PMF first, then scale capital</li>
+                    </ul>
+                </div>
+                <div class="insight-card info">
+                    <h4>&#128161; Spond: Freemium Creates Volume</h4>
+                    <ul>
+                        <li><span class="highlight">3M+ monthly users</span> with only $17M funding</li>
+                        <li>Free for grassroots teams, monetize premium</li>
+                        <li>No funding since 2021 &mdash; likely profitable/sustaining</li>
+                        <li><span class="highlight">Apply:</span> Low/free pricing in LATAM to capture volume. Monetize via BNPL + referral commissions</li>
+                    </ul>
+                </div>
+                <div class="insight-card success">
+                    <h4>&#127919; LATAM = Zero Competition</h4>
+                    <ul>
+                        <li><span class="highlight">833 sports tech startups</span> in LATAM (Tracxn), only 51 funded</li>
+                        <li>ZERO doing club management + payments + cross-border</li>
+                        <li>61% of LATAM VC goes to fintech &mdash; Widdo fits perfectly</li>
+                        <li><span class="highlight">Apply:</span> Position as "the first sports fintech for LATAM" to VC audiences</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- REVENUE MODEL: WIDDO'S 5 STREAMS -->
+            <div class="section-title">Widdo Revenue &mdash; 5 Streams vs Competitors' 1-2</div>
+
+            <div class="rev-compare">
+                <div class="rev-box primary">
+                    <div class="rv-label">BNPL Cross-Border</div>
+                    <div class="rv-value">3-5%</div>
+                    <div class="rv-desc">Fee per financed transaction</div>
+                </div>
+                <div class="rev-box primary">
+                    <div class="rv-label">Referral Commission</div>
+                    <div class="rv-value">10%</div>
+                    <div class="rv-desc">Per player sent to camp/college</div>
+                </div>
+                <div class="rev-box">
+                    <div class="rv-label">SaaS USA</div>
+                    <div class="rv-value">$99-349</div>
+                    <div class="rv-desc">Monthly club subscription</div>
+                </div>
+                <div class="rev-box">
+                    <div class="rv-label">BNPL Local</div>
+                    <div class="rv-value">3-5%</div>
+                    <div class="rv-desc">Equipment &amp; enrollments LATAM</div>
+                </div>
+                <div class="rev-box">
+                    <div class="rv-label">SaaS LATAM</div>
+                    <div class="rv-value">$16-71</div>
+                    <div class="rv-desc">Monthly club subscription</div>
+                </div>
+            </div>
+
+            <!-- YC BENCHMARKS -->
+            <div class="section-title">YC Benchmarks &mdash; Where Widdo Stands</div>
+
+            <div class="yc-grid">
+                <div class="yc-card">
+                    <div class="yc-tag">Growth Target</div>
+                    <h4>5-7% Weekly Growth</h4>
+                    <p>YC standard for "good" startups. At 17 clubs, adding <strong>1 club/week = 6%</strong>. Adding 2/week = exceptional (10%).</p>
+                    <p class="apply">Widdo can hit this with tournaments as acquisition engine</p>
+                </div>
+                <div class="yc-card">
+                    <div class="yc-tag">North Star Metric</div>
+                    <h4>ONE Metric Weekly</h4>
+                    <p>Track revenue (or clubs if pre-revenue). Not features shipped. Every decision: <strong>"Does this grow the metric?"</strong></p>
+                    <p class="apply">Widdo North Star: verified player profiles (feeds all 3 verticals)</p>
+                </div>
+                <div class="yc-card">
+                    <div class="yc-tag">YC Sports Tech</div>
+                    <h4>No YC Company Does This</h4>
+                    <p><strong>Dropback</strong> (college front office) and <strong>Moonshot</strong> (athlete investing) are closest. Neither does clubs + BNPL + LATAM.</p>
+                    <p class="apply">Open lane for YC application post-Erica round</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>Widdo Inc. &bull; Delaware C-Corp &bull; <a href="https://widdo.co">widdo.co</a></span>
+            <span>Confidential &bull; March 2026 &bull; Sources: Tracxn, PitchBook, Sportico, Crunchbase, YC Library</span>
+        </div>
+    </div>
+</body>
+</html>

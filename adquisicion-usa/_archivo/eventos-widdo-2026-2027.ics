@@ -1,0 +1,62 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Widdo//Adquisicion USA Eventos//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Widdo — Eventos adquisición
+BEGIN:VEVENT
+UID:widdo-fysa-deadline-2026@widdo
+DTSTART;VALUE=DATE:20260713
+DTEND;VALUE=DATE:20260714
+SUMMARY:⚡ DEADLINE: pedir vendor showcase FYSA + exhibitor NTX AGM
+DESCRIPTION:1) Email a communications@fysa.com pidiendo vendor showcase del FYSA Summit (31 jul). 2) Rellenar formulario exhibitor NTX AGM: https://form.jotform.com/260407020985151
+END:VEVENT
+BEGIN:VEVENT
+UID:widdo-fysa-summit-2026@widdo
+DTSTART;VALUE=DATE:20260731
+DTEND;VALUE=DATE:20260803
+SUMMARY:FYSA Florida Youth Soccer Summit & AGM (Orlando)
+LOCATION:Renaissance Orlando at SeaWorld\, Orlando\, FL
+DESCRIPTION:Directivos de clubes/ligas de toda Florida. Vendor showcase de tecnología. https://www.fysa.com/florida-youth-soccer-summit-agm/ Contacto: communications@fysa.com. Preparar demo de torneo real + recurso gratis.
+END:VEVENT
+BEGIN:VEVENT
+UID:widdo-ntx-agm-2026@widdo
+DTSTART;VALUE=DATE:20260731
+DTEND;VALUE=DATE:20260802
+SUMMARY:North Texas Soccer AGM (Dallas)
+LOCATION:Westin Galleria\, Dallas\, TX
+DESCRIPTION:Clubes y asociaciones del norte de Texas. Exhibitor via https://form.jotform.com/260407020985151 · Delegados $85. https://www.ntxsoccer.org/events/2026-agm/
+END:VEVENT
+BEGIN:VEVENT
+UID:widdo-nextup-nyc-2026@widdo
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261015
+SUMMARY:NextUp NYC (LeagueApps) — operadores de clubes/ligas
+LOCATION:Nueva York\, NY
+DESCRIPTION:~400 líderes: operadores de clubes/ligas\, founders\, tech. Ir como operador\, no como vendor (LeagueApps es competidor parcial). https://nextupconference.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:widdo-aau-convention-2026@widdo
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261024
+SUMMARY:AAU National Convention (Orlando) — multi-deporte
+LOCATION:Orlando\, FL
+DESCRIPTION:500-1.000 club directors y district sport directors\, multi-deporte y multi-edad. Acceso vía membresía AAU. https://www.aausports.org/national-convention/
+END:VEVENT
+BEGIN:VEVENT
+UID:widdo-usc-convention-2027@widdo
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270124
+SUMMARY:United Soccer Coaches Convention + US Youth Soccer Workshop (Kansas City)
+LOCATION:Kansas City
+DESCRIPTION:Miles de coaches + directores de club/DOCs. Entrada individual barata + agendar reuniones antes. https://unitedsoccercoachesconvention.org/ · https://www.usyouthsoccer.org/workshop-and-award-gala/
+END:VEVENT
+BEGIN:VEVENT
+UID:widdo-sportseta-2027@widdo
+DTSTART;VALUE=DATE:20270412
+DTEND;VALUE=DATE:20270416
+SUMMARY:Sports ETA Symposium (Salt Lake City) — organizadores de eventos de todo deporte
+LOCATION:Salt Lake City\, UT
+DESCRIPTION:1.200+ asistentes\, 180+ rights holders (organizadores de eventos deportivos de cualquier deporte/edad)\, 92% con poder de decisión. Citas 1:1. Registro como industry partner. https://www.sportseta.org/events/symposium
+END:VEVENT
+END:VCALENDAR

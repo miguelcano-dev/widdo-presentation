@@ -1,0 +1,261 @@
+<!-- ARCHIVADO 13-ago-2026 — version EQUIVOCADA Cost+20% e internamente incoherente (L83 dice 15%, L131/146/242 dicen 20%) — sustituido por negocio/legales/transfer-pricing-agreement-final.md (Cost+15%) y 03-transfer-pricing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transfer Pricing Agreement — Widdo Inc / Widdo SAS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0A0A0F; color: #E8E8ED; line-height: 1.7; }
+  .draft-banner { background: linear-gradient(135deg, #FF6B35, #E53E3E); color: white; text-align: center; padding: 12px; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; position: sticky; top: 0; z-index: 100; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 60px 80px; }
+  .doc-header { text-align: center; border-bottom: 2px solid #00C853; padding-bottom: 30px; margin-bottom: 40px; }
+  .doc-header h1 { font-size: 26px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; }
+  .doc-header .subtitle { font-size: 16px; color: #00C853; font-weight: 500; }
+  .doc-header .date { font-size: 14px; color: #888; margin-top: 8px; }
+  h2 { font-size: 20px; font-weight: 700; color: #00C853; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #1a1a2e; counter-increment: section; }
+  h2::before { content: counter(section) ". "; }
+  h3 { font-size: 16px; font-weight: 600; color: #FFFFFF; margin: 24px 0 12px; }
+  p { margin-bottom: 14px; color: #ccc; text-align: justify; font-size: 15px; }
+  .fill-in { background: #1a1a2e; border: 1px dashed #00C853; padding: 2px 12px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00C853; }
+  .highlight { color: #00C853; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th { background: #12121A; color: #00C853; padding: 10px 12px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; }
+  td { padding: 10px 12px; border-bottom: 1px solid #1a1a2e; color: #ccc; }
+  ol, ul { margin: 12px 0 12px 24px; color: #ccc; }
+  li { margin-bottom: 8px; }
+  .party-block { background: #12121A; border: 1px solid #1a1a2e; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .party-block .label { font-size: 12px; color: #00C853; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; }
+  .party-block .name { font-size: 18px; font-weight: 600; color: #fff; }
+  .party-block .detail { font-size: 14px; color: #999; margin-top: 4px; }
+  .diagram { background: #12121A; border: 1px solid #1a1a2e; border-radius: 8px; padding: 24px; margin: 20px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00C853; white-space: pre; line-height: 1.5; }
+  .signature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; padding-top: 40px; border-top: 2px solid #1a1a2e; }
+  .sig-party { text-align: center; }
+  .sig-line { border-top: 1px solid #555; margin: 60px 0 8px; padding-top: 8px; }
+  .sig-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .sig-name { font-size: 16px; font-weight: 600; color: #fff; margin-top: 4px; }
+  .sig-title { font-size: 13px; color: #00C853; margin-top: 2px; }
+  .attorney-notes { background: #1a0a00; border: 1px solid #FF6B35; border-radius: 8px; padding: 20px; margin-top: 40px; }
+  .attorney-notes h3 { color: #FF6B35; }
+  .attorney-notes li { color: #FF6B35; font-size: 14px; }
+  .disclaimer { text-align: center; padding: 20px; margin-top: 40px; background: #12121A; border-radius: 8px; font-size: 12px; color: #666; }
+  @media print { body { background: white; color: black; } .draft-banner { background: #ccc; color: black; } h2 { color: #006622; } td, p, li { color: #333; } }
+</style>
+</head>
+<body>
+  <div class="draft-banner">DRAFT — FOR ATTORNEY REVIEW ONLY — NOT LEGAL ADVICE</div>
+
+  <div class="container">
+    <div class="doc-header">
+      <h1>INTERCOMPANY SERVICE & TRANSFER PRICING AGREEMENT</h1>
+      <div class="subtitle">Between Widdo Inc (USA) and Widdo SAS (Colombia)</div>
+      <div class="date">Effective Date: <span class="fill-in">[DATE — upon SAS incorporation]</span></div>
+    </div>
+
+    <p>This Intercompany Service Agreement (the <strong>"Agreement"</strong>) is entered into by and between:</p>
+
+    <div class="party-block">
+      <div class="label">Parent Company</div>
+      <div class="name">Widdo Inc</div>
+      <div class="detail">C Corporation, State of Delaware, USA</div>
+      <div class="detail">EIN: <span class="fill-in">35-2952499</span></div>
+    </div>
+
+    <div class="party-block">
+      <div class="label">Service Provider (Related Company)</div>
+      <div class="name">Widdo SAS</div>
+      <div class="detail">Sociedad por Acciones Simplificada, Colombia</div>
+      <div class="detail">NIT: 901.059.736-5 | RST: Pendiente inscripción DIAN</div>
+      <div class="detail">100% owned by MIGUEL ANGEL CANO QUINONEZ (controlling person of both entities)</div>
+    </div>
+
+    <h2>Purpose & Structure</h2>
+    <p>This Agreement governs the service relationship between Widdo Inc and Widdo SAS, both controlled by the same individual (MIGUEL ANGEL CANO QUINONEZ, who owns 70% of Widdo Inc and 100% of Widdo SAS). As related parties under IRC Section 482 and Colombian ET Articles 260-1 to 260-11, the parties establish arm's length pricing for all intercompany transactions. Widdo SAS provides software development and operational services to Widdo Inc, and Widdo Inc licenses its intellectual property to Widdo SAS for local operations.</p>
+
+    <div class="diagram">
+  REVENUE FLOW:
+  ┌─────────────────────────────────────────┐
+  │  USA/International Clients              │
+  │  Pay via Stripe → Widdo Inc (USA)       │
+  └─────────────┬───────────────────────────┘
+                │
+                │  Service Fee (Cost + 15%)
+                ▼
+  ┌─────────────────────────────────────────┐
+  │  Widdo SAS (Colombia)                   │
+  │  Provides development services          │
+  │  Taxed at RST 1.8%                      │
+  └─────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────┐
+  │  Colombian Clients                      │
+  │  Pay via Wompi → Widdo SAS (Colombia)   │
+  │  Revenue stays in SAS, taxed at RST     │
+  └─────────────────────────────────────────┘</div>
+
+    <h2>Services Provided by Widdo SAS to Widdo Inc</h2>
+    <p>The Subsidiary shall provide the following services to Widdo Inc:</p>
+    <ol type="a">
+      <li>Software development and engineering (backend, frontend, mobile, AI)</li>
+      <li>Platform maintenance, bug fixes, and technical support</li>
+      <li>Database administration and infrastructure management</li>
+      <li>Quality assurance and testing</li>
+      <li>Customer support for Spanish-speaking markets</li>
+      <li>Product design and user experience research</li>
+      <li>Data analysis and reporting</li>
+    </ol>
+
+    <h2>Services Provided by Widdo Inc to Widdo SAS</h2>
+    <p>The Parent Company shall provide the following to Widdo SAS:</p>
+    <ol type="a">
+      <li>License to use the Widdo platform intellectual property for Colombian operations</li>
+      <li>Brand and trademark licensing ("Widdo" name and identity)</li>
+      <li>Strategic direction, management oversight, and product roadmap</li>
+      <li>Access to international payment infrastructure (Stripe)</li>
+      <li>Investor relations and corporate governance</li>
+    </ol>
+
+    <h2>Pricing Methodology</h2>
+
+    <h3>4.1 Arm's Length Standard</h3>
+    <p>All intercompany transactions shall be priced in accordance with the arm's length principle as required by:</p>
+    <ul>
+      <li><strong>United States:</strong> Internal Revenue Code Section 482</li>
+      <li><strong>Colombia:</strong> Estatuto Tributario, Articles 260-1 through 260-11</li>
+      <li><strong>International:</strong> OECD Transfer Pricing Guidelines for Multinational Enterprises</li>
+    </ul>
+
+    <h3>4.2 Selected Method: Cost Plus</h3>
+    <p>The pricing for services provided by Widdo SAS to Widdo Inc shall be determined using the <span class="highlight">Cost Plus Method</span>:</p>
+    <p><strong>Service Fee = Total Direct and Indirect Costs + Markup of 20%</strong></p>
+
+    <h3>4.3 Cost Base</h3>
+    <p>The cost base includes all direct and indirect costs incurred by Widdo SAS in providing the services, including but not limited to:</p>
+    <table>
+      <tr><th>Cost Category</th><th>Examples</th><th>Allocation</th></tr>
+      <tr><td>Personnel</td><td>Salaries, benefits, payroll taxes</td><td>100% of development team</td></tr>
+      <tr><td>Infrastructure</td><td>DigitalOcean, cloud services</td><td>100% attributable to services</td></tr>
+      <tr><td>Tools & Licenses</td><td>Claude API, development tools</td><td>% used for Company services</td></tr>
+      <tr><td>Office & Facilities</td><td>Office rent, utilities, internet</td><td>% allocated to Company work</td></tr>
+      <tr><td>Travel</td><td>Business travel related to services</td><td>100% if Company-related</td></tr>
+      <tr><td>Depreciation</td><td>Equipment, computers</td><td>% used for Company services</td></tr>
+    </table>
+
+    <h3>4.4 Markup Justification</h3>
+    <p>The 20% markup is consistent with arm's length pricing for software development services in Latin America, as supported by:</p>
+    <ul>
+      <li>Comparable market data for outsourced software development services (LATAM to USA)</li>
+      <li>OECD benchmarking studies for IT service providers</li>
+      <li>Industry standard for captive service centers in developing countries (15-25% range)</li>
+    </ul>
+
+    <h3>4.5 Annual Review</h3>
+    <p>The pricing methodology and markup percentage shall be reviewed annually and adjusted if necessary to maintain arm's length compliance. Any adjustment shall be documented and justified.</p>
+
+    <h2>Revenue Allocation</h2>
+    <p><strong>5.1 USA and International Revenue:</strong> All revenue from clients outside of Colombia shall be collected by Widdo Inc (via Stripe). Widdo Inc pays Widdo SAS for development services as described herein.</p>
+    <p><strong>5.2 Colombian Revenue:</strong> Revenue from Colombian clients shall be collected directly by Widdo SAS (via Wompi/MercadoPago). This revenue is retained by Widdo SAS and is subject to Colombian taxation (RST 1.8%).</p>
+    <p><strong>5.3 No Double Counting:</strong> Colombian revenue shall not be included in the cost base or service fee calculations to avoid double counting.</p>
+
+    <h2>Payment Terms</h2>
+    <p><strong>6.1</strong> The Subsidiary shall issue monthly invoices to Widdo Inc for services rendered during the preceding calendar month.</p>
+    <p><strong>6.2</strong> Payment shall be due within thirty (30) days of invoice date (Net 30).</p>
+    <p><strong>6.3</strong> Payment shall be made via wire transfer from Widdo Inc's bank account (Mercury) to Widdo SAS's Colombian bank account (<span class="fill-in">[Bank Name]</span>).</p>
+    <p><strong>6.4</strong> Payments shall be denominated in <strong>US Dollars (USD)</strong> and converted to Colombian Pesos (COP) at the official TRM (Tasa Representativa del Mercado) published by the Banco de la Republica on the date of payment.</p>
+    <p><strong>6.5</strong> Wire transfer fees shall be borne by Widdo Inc.</p>
+
+    <h2>Intercompany Loans</h2>
+    <p><strong>7.1</strong> If Widdo Inc advances funds to Widdo SAS beyond the service fees described herein, such advances shall be treated as intercompany loans and documented accordingly.</p>
+    <p><strong>7.2</strong> Intercompany loans shall bear interest at the Applicable Federal Rate (AFR) published by the IRS, or the comparable Colombian market rate, whichever is higher.</p>
+    <p><strong>7.3</strong> Each loan shall be documented with a promissory note specifying the principal amount, interest rate, repayment schedule, and maturity date.</p>
+
+    <h2>Documentation & Record-Keeping</h2>
+    <p>Both parties shall maintain the following documentation for a minimum of seven (7) years:</p>
+
+    <h3>8.1 Widdo SAS (Subsidiary) shall maintain:</h3>
+    <ol type="a">
+      <li>Monthly invoices to Widdo Inc with detailed descriptions of services rendered</li>
+      <li>Time tracking records for all development and service activities</li>
+      <li>Cost allocation worksheets with supporting documentation</li>
+      <li>Annual transfer pricing documentation (functional analysis, economic analysis)</li>
+    </ol>
+
+    <h3>8.2 Widdo Inc (Parent) shall maintain:</h3>
+    <ol type="a">
+      <li>Copies of all intercompany invoices</li>
+      <li>Wire transfer records and bank statements</li>
+      <li>This Agreement and any amendments</li>
+      <li>Comparable company analysis supporting the markup percentage</li>
+    </ol>
+
+    <h2>Tax Compliance</h2>
+
+    <h3>9.1 United States</h3>
+    <ul>
+      <li><strong>Form 5471:</strong> NOT required under current structure (SAS owned by Miguel personally, not by C Corp). Required only if SAS ownership is transferred to Widdo Inc in the future.</li>
+      <li><strong>IRC Section 482:</strong> Applies to transactions between related parties controlled by the same person. IRS may adjust pricing if not at arm's length.</li>
+      <li><strong>Form 1120:</strong> Intercompany service fees are deductible expenses for Widdo Inc</li>
+    </ul>
+
+    <h3>9.2 Colombia</h3>
+    <ul>
+      <li><strong>RST (Regimen Simple de Tributacion):</strong> Service fee income is taxed at 1.8% of gross income (up to 6,000 UVT)</li>
+      <li><strong>Transfer Pricing Declaration:</strong> Required if gross income exceeds ~61,000 UVT (~$3.8M USD) OR gross assets exceed ~37,000 UVT (~$2.3M USD). Below thresholds: maintain basic documentation only</li>
+      <li><strong>Withholding Tax:</strong> Payments from the USA to Colombia may be subject to withholding tax under the US-Colombia Tax Treaty (verify rates with CPA)</li>
+    </ul>
+
+    <h3>9.3 CFC Rules (Controlled Foreign Corporation)</h3>
+    <p>Colombia's DIAN may classify Widdo Inc as a Controlled Foreign Corporation (CFC) under Estatuto Tributario Article 882-884 if a Colombian tax resident controls more than 10% of the entity. Mitigation: (a) Widdo Inc has real economic substance (USA clients, USA bank accounts, USA operations); (b) this risk is eliminated when Miguel Angel Cano becomes a US tax resident.</p>
+
+    <h2>Term & Termination</h2>
+    <p><strong>10.1</strong> This Agreement shall be effective from the date of incorporation of Widdo SAS and shall automatically renew for successive one-year periods.</p>
+    <p><strong>10.2</strong> Either party may terminate this Agreement with ninety (90) days written notice.</p>
+    <p><strong>10.3</strong> Termination shall not affect obligations accrued before the termination date, including outstanding invoices and payment obligations.</p>
+
+    <h2>Governing Law</h2>
+    <p>This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware for matters relating to Widdo Inc, and the laws of the Republic of Colombia for matters relating to Widdo SAS.</p>
+
+    <h2>Amendments</h2>
+    <p>This Agreement may be amended only by written consent of authorized representatives of both parties. The pricing methodology shall be reviewed and, if necessary, updated annually.</p>
+
+    <div class="signature-block">
+      <div class="sig-party">
+        <div class="sig-line"></div>
+        <div class="sig-label">Widdo Inc (Parent Company)</div>
+        <div class="sig-name">Miguel Angel Cano</div>
+        <div class="sig-title">CEO</div>
+        <div style="margin-top:20px"><div class="sig-line"></div><div class="sig-label">Date</div></div>
+      </div>
+      <div class="sig-party">
+        <div class="sig-line"></div>
+        <div class="sig-label">Widdo SAS (Subsidiary)</div>
+        <div class="sig-name">Miguel Angel Cano</div>
+        <div class="sig-title">Representante Legal</div>
+        <div style="margin-top:20px"><div class="sig-line"></div><div class="sig-label">Date</div></div>
+      </div>
+    </div>
+
+    <div class="attorney-notes">
+      <h3>Notes for Attorney Review</h3>
+      <ol>
+        <li>Verify arm's length pricing (20% markup) is defensible under both US IRC 482 and Colombian ET 260-1</li>
+        <li>Confirm US-Colombia Tax Treaty withholding rates for service payments</li>
+        <li>Review CFC implications for Miguel as Colombian tax resident controlling a US entity</li>
+        <li>Verify Form 5471 filing requirements for US parent with Colombian subsidiary (or reverse)</li>
+        <li>Determine if Colombian thin capitalization rules apply to intercompany loans</li>
+        <li>Confirm RST compatibility with transfer pricing rules</li>
+        <li>Review whether Widdo Inc licensing IP to Widdo SAS triggers royalty withholding</li>
+        <li>Confirm the legal relationship: is SAS 100% owned by C Corp, or by Miguel personally? (affects structure)</li>
+        <li>At current revenue levels (~$239 MRR), formal transfer pricing documentation is likely not required — confirm thresholds</li>
+      </ol>
+    </div>
+
+    <div class="disclaimer">
+      This document was drafted with AI assistance and is intended as a DRAFT for review by a licensed attorney and CPA.
+      Transfer pricing is a complex area of international tax law. Professional advice is essential.
+    </div>
+  </div>
+</body>
+</html>

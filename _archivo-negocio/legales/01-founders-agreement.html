@@ -1,0 +1,593 @@
+<!-- ARCHIVADO 13-ago-2026 — borrador con estructura dual-class de 7M Class A que NUNCA existio; Stripe Atlas emitio 9M de Common Stock single-class — sustituido por negocio/legales/para-firmar/founders-agreement.html (70/30 Miguel/Alwin) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Founders Agreement — Widdo Inc</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0A0A0F;
+    color: #E8E8ED;
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  .draft-banner {
+    background: linear-gradient(135deg, #FF6B35, #E53E3E);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 60px 80px;
+  }
+
+  .doc-header {
+    text-align: center;
+    border-bottom: 2px solid #00C853;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+  }
+
+  .doc-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+  }
+
+  .doc-header .subtitle {
+    font-size: 16px;
+    color: #00C853;
+    font-weight: 500;
+  }
+
+  .doc-header .date {
+    font-size: 14px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  .doc-header .entity {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 4px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00C853;
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1a1a2e;
+    counter-increment: section;
+  }
+
+  h2::before {
+    content: counter(section) ". ";
+    color: #00C853;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 24px 0 12px;
+  }
+
+  p {
+    margin-bottom: 14px;
+    color: #ccc;
+    text-align: justify;
+  }
+
+  .legal-text {
+    font-size: 15px;
+  }
+
+  .party-block {
+    background: #12121A;
+    border: 1px solid #1a1a2e;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .party-block .label {
+    font-size: 12px;
+    color: #00C853;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .party-block .name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .party-block .detail {
+    font-size: 14px;
+    color: #999;
+    margin-top: 4px;
+  }
+
+  .fill-in {
+    background: #1a1a2e;
+    border: 1px dashed #00C853;
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #00C853;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  th {
+    background: #12121A;
+    color: #00C853;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1a1a2e;
+    color: #ccc;
+  }
+
+  tr:hover td {
+    background: #12121A;
+  }
+
+  ol, ul {
+    margin: 12px 0 12px 24px;
+    color: #ccc;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  .signature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px solid #1a1a2e;
+  }
+
+  .sig-party {
+    text-align: center;
+  }
+
+  .sig-line {
+    border-top: 1px solid #555;
+    margin: 60px 0 8px;
+    padding-top: 8px;
+  }
+
+  .sig-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .sig-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 4px;
+  }
+
+  .sig-title {
+    font-size: 13px;
+    color: #00C853;
+    margin-top: 2px;
+  }
+
+  .attorney-notes {
+    background: #1a0a00;
+    border: 1px solid #FF6B35;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  .attorney-notes h3 {
+    color: #FF6B35;
+  }
+
+  .attorney-notes li {
+    color: #FF6B35;
+    font-size: 14px;
+  }
+
+  .highlight {
+    color: #00C853;
+    font-weight: 600;
+  }
+
+  .disclaimer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: #12121A;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #666;
+  }
+
+  @media print {
+    body { background: white; color: black; }
+    .draft-banner { background: #ccc; color: black; }
+    .container { padding: 20px; }
+    h2 { color: #006622; }
+    .party-block { border: 1px solid #ccc; background: #f9f9f9; }
+    .fill-in { border: 1px dashed #006622; background: #f0f0f0; }
+    td, p, li { color: #333; }
+  }
+</style>
+</head>
+<body>
+  <div class="draft-banner">DRAFT — FOR ATTORNEY REVIEW ONLY — NOT LEGAL ADVICE</div>
+
+  <div class="container legal-text">
+    <div class="doc-header">
+      <h1>FOUNDERS AGREEMENT</h1>
+      <div class="subtitle">Widdo Inc — A Delaware C Corporation</div>
+      <div class="entity">EIN: [Pending — via Stripe Atlas]</div>
+      <div class="date">Effective Date: <span class="fill-in">[FECHA DE FIRMA — pendiente abogado]</span></div>
+    </div>
+
+    <p>This Founders Agreement (the <strong>"Agreement"</strong>) is entered into as of the Effective Date set forth above, by and between the following parties (each a <strong>"Founder"</strong> and collectively, the <strong>"Founders"</strong>), in connection with the formation and operation of <strong>Widdo Inc</strong>, a Delaware C Corporation (the <strong>"Company"</strong>).</p>
+
+    <h2>Parties</h2>
+
+    <div class="party-block">
+      <div class="label">Founder 1 — CEO / CTO</div>
+      <div class="name">Miguel Angel Cano Quinonez</div>
+      <div class="detail">Colombian Citizen | Passport No. BD131033</div>
+      <div class="detail">Address: Cra 22A #13-119 Torre 1 Apto 501, Conjunto Torres de Santa Ana, Fusagasuga, Cundinamarca, Colombia</div>
+      <div class="detail">Email: miguelbas@gmail.com</div>
+    </div>
+
+    <div class="party-block">
+      <div class="label">Founder 2 — Co-Founder / BD USA</div>
+      <div class="name">Alwin Alexis Perez Montero</div>
+      <div class="detail">Colombian Citizen residing in the United States | SSN: 013-83-4361</div>
+      <div class="detail">Address: 420 E Church St, Apt 905, Orlando, FL 32801, USA</div>
+      <div class="detail">Email: alwinperez813@gmail.com</div>
+    </div>
+
+    <h2>Recitals</h2>
+    <p><strong>WHEREAS</strong>, the Founders desire to establish the terms and conditions of their relationship as co-founders of the Company;</p>
+    <p><strong>WHEREAS</strong>, Founder 1 has developed a cloud-based software platform known as "Widdo" for sports club management, including source code, brand identity, customer relationships, and related intellectual property;</p>
+    <p><strong>WHEREAS</strong>, Founder 2 brings business development capabilities, a network of high-level contacts in the U.S. sports industry, physical presence in the United States (Orlando, Florida), and the ability to facilitate the Company's expansion into the U.S. market;</p>
+    <p><strong>WHEREAS</strong>, the Company has been incorporated in the State of Delaware via Stripe Atlas;</p>
+    <p><strong>NOW, THEREFORE</strong>, in consideration of the mutual covenants and agreements contained herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Founders agree as follows:</p>
+
+    <h2>Equity Structure</h2>
+
+    <h3>3.1 Authorized Capital</h3>
+    <p>The Company is authorized to issue <span class="highlight">10,000,000 shares</span> of Common Stock, divided into two classes:</p>
+    <ul>
+      <li><strong>Class A Common Stock:</strong> 7,000,000 shares authorized. Each share carries <span class="highlight">ten (10) votes</span>. Held exclusively by Founder 1 (Miguel Angel Cano).</li>
+      <li><strong>Class B Common Stock:</strong> 3,000,000 shares authorized (expandable). Each share carries <span class="highlight">one (1) vote</span>. Held by Founder 2, future investors, and ESOP recipients.</li>
+    </ul>
+
+    <h3>3.2 Initial Share Issuance</h3>
+    <table>
+      <tr><th>Founder</th><th>Shares</th><th>Class</th><th>Ownership %</th><th>Voting %</th></tr>
+      <tr><td>Miguel Angel Cano</td><td>7,000,000</td><td>Class A</td><td>70%</td><td>95.9%</td></tr>
+      <tr><td>Alwin Alexis Perez Montero</td><td>3,000,000</td><td>Class B</td><td>30%</td><td>4.1%</td></tr>
+    </table>
+
+    <h3>3.3 Par Value</h3>
+    <p>The par value of each share of Common Stock (both Class A and Class B) shall be <strong>$0.00001</strong> per share.</p>
+
+    <h3>3.4 Class A Automatic Conversion</h3>
+    <p>Class A Common Stock shall automatically convert to Class B Common Stock on a one-for-one (1:1) basis upon any transfer to any person other than Miguel Angel Cano, except for permitted transfers to trusts or estate planning entities controlled by Miguel Angel Cano. Class B Common Stock shall not convert to Class A Common Stock under any circumstances.</p>
+
+    <h3>3.5 Economic Rights</h3>
+    <p>Class A and Class B Common Stock shall have identical economic rights, including but not limited to dividends, distributions, and liquidation preferences. The sole difference between the classes is voting power.</p>
+
+    <h2>Contributions</h2>
+
+    <h3>4.1 Founder 1 Contributions</h3>
+    <p>Founder 1 contributes to the Company the following:</p>
+    <ol type="a">
+      <li><strong>Intellectual Property:</strong> All existing source code, software, designs, brand identity (including the "Widdo" name and logo), domain name (widdo.co), and related intellectual property, as detailed in the IP Assignment Agreement executed concurrently herewith. Valued at approximately <strong>$150,000 USD</strong> based on 1,364 hours of development at $100/hour plus 10 years of domain expertise.</li>
+      <li><strong>Cash Invested:</strong> USD $749.65 in infrastructure, tools, licenses, and operational expenses advanced prior to incorporation (Jul&ndash;Dec 2025), prorated for shared use. Expenses advanced from January 1, 2026 onward (USD $1,476.46) are <em>not</em> a capital contribution: they are documented as a Founder Loan under a separate Promissory Note and are repayable by the Company.</li>
+      <li><strong>Ongoing Services:</strong> Full-time dedication as CEO and CTO of the Company.</li>
+    </ol>
+
+    <h3>4.2 Founder 2 Contributions</h3>
+    <p>Founder 2 contributes to the Company the following:</p>
+    <ol type="a">
+      <li><strong>Cash Contribution:</strong> <span class="highlight">$15,000 USD</span>, to be deposited into the Company's bank account within thirty (30) days of the execution of this Agreement. This contribution is non-refundable and constitutes capital of the Company.</li>
+      <li><strong>Business Development:</strong> Active engagement in business development activities in the United States, particularly in the Orlando, Florida market and broader Southeast region.</li>
+      <li><strong>Network & Contacts:</strong> Introduction to and facilitation of relationships with sports industry contacts, potential investors, legal professionals, financial advisors, and pilot customers in the United States.</li>
+      <li><strong>Infrastructure:</strong> Facilitation of U.S. legal and financial infrastructure, including connections with attorneys, CPAs, and banking relationships.</li>
+      <li><strong>Ongoing Services:</strong> Part-time dedication (minimum four (4) days per week) to Company business development.</li>
+    </ol>
+
+    <h2>Vesting</h2>
+
+    <h3>5.1 Founder 1 — Fully Vested</h3>
+    <p>Founder 1's shares shall be <span class="highlight">fully vested from the date of issuance</span> and shall not be subject to any vesting schedule or repurchase right. This is in recognition of Founder 1's contribution of pre-existing intellectual property valued at $150,000 USD and 1,364 hours of prior development work.</p>
+
+    <h3>5.2 Founder 2 — Reverse Vesting</h3>
+    <p>Founder 2's shares shall be subject to a <span class="highlight">reverse vesting schedule</span> over a period of forty-eight (48) months as follows:</p>
+
+    <table>
+      <tr><th>Period</th><th>Cumulative Vested</th><th>Company Repurchase Right</th><th>Condition</th></tr>
+      <tr><td>Months 0–12 (Cliff)</td><td>0%</td><td>100% (all 3,000,000 shares)</td><td>Must meet Cliff Milestones (Section 5.3)</td></tr>
+      <tr><td>Month 12 (Cliff Satisfied)</td><td>25% (750,000 shares)</td><td>75% (2,250,000 shares)</td><td>At least 2 of 4 milestones met</td></tr>
+      <tr><td>Months 13–48</td><td>+2.083%/month</td><td>Decreasing monthly</td><td>Continued service in good standing</td></tr>
+      <tr><td>Month 48</td><td>100% (3,000,000 shares)</td><td>0%</td><td>Fully vested</td></tr>
+    </table>
+
+    <h3>5.3 Cliff Milestones</h3>
+    <p>For the twelve-month cliff to be satisfied, Founder 2 must achieve <span class="highlight">at least two (2) of the following four (4) milestones</span> within the first twelve (12) months from the Effective Date:</p>
+
+    <table>
+      <tr><th>#</th><th>Milestone</th><th>Metric</th><th>Verification Method</th></tr>
+      <tr><td>1</td><td>USA Clubs Acquired</td><td>&ge;10 active paying clubs in the USA</td><td>Widdo platform dashboard</td></tr>
+      <tr><td>2</td><td>USA Monthly Recurring Revenue</td><td>&ge;$3,000 USD MRR from USA clients</td><td>Stripe payment records</td></tr>
+      <tr><td>3</td><td>Celebrity/Influencer Deal</td><td>&ge;1 closed investment or ambassador deal</td><td>Signed contract</td></tr>
+      <tr><td>4</td><td>Capital Raised</td><td>&ge;$50,000 USD raised for the Company</td><td>Executed SAFE or investment agreement</td></tr>
+    </table>
+
+    <h3>5.4 Failure to Meet Cliff</h3>
+    <p>If Founder 2 fails to achieve at least two (2) of the four (4) milestones within twelve (12) months from the Effective Date, the Company shall have the right to repurchase all 3,000,000 unvested shares at the original purchase price of $0.00001 per share. The $15,000 cash contribution shall not be refundable.</p>
+
+    <h3>5.5 Post-Cliff Accelerators (Optional, at Board Discretion)</h3>
+    <p>The Board of Directors may, at its sole discretion, grant accelerated vesting to Founder 2 upon achievement of the following extraordinary milestones:</p>
+    <ul>
+      <li>50 active USA clubs: 6 months of accelerated vesting</li>
+      <li>$10,000 USD MRR from USA: 6 months of accelerated vesting</li>
+      <li>Seed round closed (&gt;$500,000): 12 months of accelerated vesting</li>
+    </ul>
+
+    <h3>5.6 Repurchase Mechanics</h3>
+    <p>Upon separation of Founder 2 for any reason, the Company shall have the right (but not the obligation) to repurchase all unvested shares at the par value ($0.00001 per share). This right must be exercised within ninety (90) days of separation. Vested shares are retained by Founder 2, subject to the Right of First Refusal (Section 11).</p>
+
+    <h2>Roles & Responsibilities</h2>
+
+    <h3>6.1 Founder 1 — Miguel Angel Cano</h3>
+    <p><strong>Title:</strong> Chief Executive Officer (CEO) and Chief Technology Officer (CTO)</p>
+    <ul>
+      <li>Overall company strategy, vision, and direction</li>
+      <li>Product development, technology, and engineering — <span class="highlight">sole decision-making authority</span></li>
+      <li>Day-to-day operations and management</li>
+      <li>Hiring, team management, and organizational structure</li>
+      <li>Investor relations (co-lead with Founder 2 for USA investors)</li>
+      <li>Colombian operations (Widdo SAS subsidiary)</li>
+      <li>Final decision-making authority on all matters not requiring unanimous Board approval</li>
+    </ul>
+
+    <h3>6.2 Founder 2 — Alwin Alexis Perez Montero</h3>
+    <p><strong>Title:</strong> Co-Founder and Head of Business Development, USA</p>
+    <ul>
+      <li>Business development in the United States (clubs, schools, academies)</li>
+      <li>Client acquisition and relationship management in Florida and broader USA</li>
+      <li>Facilitation of connections with sports industry contacts, investors, and service providers</li>
+      <li>Support for U.S. legal and financial infrastructure (attorneys, CPAs, banks)</li>
+      <li>Consultative input on USA market strategy (non-binding, advisory only)</li>
+      <li><span class="highlight">No authority</span> over product, technology, or engineering decisions</li>
+      <li><span class="highlight">No authority</span> to make binding commitments on behalf of the Company without prior written approval from Founder 1, except for routine business development activities</li>
+    </ul>
+
+    <h3>6.3 Minimum Time Commitment</h3>
+    <ul>
+      <li>Founder 1: Full-time (minimum 40 hours/week)</li>
+      <li>Founder 2: Part-time (minimum 4 days/week, approximately 32 hours/week)</li>
+    </ul>
+
+    <h2>Compensation</h2>
+    <p><strong>7.1 Initial Salaries.</strong> Founder salaries shall commence upon the earlier of: (a) the Closing of a Qualified Financing of at least $200,000, or (b) the Company achieving $5,000 USD in Monthly Recurring Revenue (MRR). Initial salaries shall be:</p>
+    <table>
+      <thead><tr><th>Phase</th><th>Company Revenue (MRR)</th><th>Founder 1 (CEO/CTO)</th><th>Founder 2 (COO/BD)</th></tr></thead>
+      <tbody>
+        <tr><td>Launch</td><td>$0 — $2,000</td><td><strong>$3,000</strong> USD/month</td><td><strong>$1,500</strong> USD/month</td></tr>
+        <tr><td>Traction</td><td>$2,000 — $5,000</td><td><strong>$4,000</strong> USD/month</td><td><strong>$2,000</strong> USD/month</td></tr>
+        <tr><td>Growth</td><td>$5,000 — $10,000</td><td><strong>$5,000</strong> USD/month</td><td><strong>$2,500</strong> USD/month</td></tr>
+        <tr><td>Scale</td><td>$10,000+</td><td>Board-approved increase</td><td>Board-approved increase</td></tr>
+      </tbody>
+    </table>
+    <p><strong>7.2 Payment Structure.</strong> Founder 1 shall be compensated through Widdo SAS (Colombia) as an employee under a salario integral arrangement, with funds transferred from the Company to Widdo SAS pursuant to the Master Services Agreement. Founder 2 shall be compensated as a W-2 employee of the Company directly.</p>
+    <p><strong>7.3 Bootstrapping Phase.</strong> Prior to the triggering event in Section 7.1, neither Founder shall receive compensation unless otherwise unanimously agreed by the Board.</p>
+    <p><strong>7.4 Adjustments.</strong> Salary increases beyond the schedule in Section 7.1 require unanimous Board approval. Any increase exceeding 20% above the then-current phase requires approval of the Class A stockholder.</p>
+
+    <h2>Governance</h2>
+
+    <h3>8.1 Board of Directors</h3>
+    <p>The initial Board of Directors shall consist of two (2) members:</p>
+    <ol>
+      <li><strong>Miguel Angel Cano</strong> — Chairman of the Board</li>
+      <li><strong>Alwin Alexis Perez Montero</strong> — Director</li>
+    </ol>
+    <p>The Board may be expanded to three (3) or more seats. Any additional seats shall be filled as designated by the Class A stockholder (Miguel Angel Cano).</p>
+
+    <h3>8.2 Tie-Breaking</h3>
+    <p>In the event of a tie vote of the Board, the Chairman (Miguel Angel Cano) shall have a casting vote.</p>
+
+    <h3>8.3 Matters Requiring Unanimous Board Approval</h3>
+    <ol type="a">
+      <li>Issuance of new shares or equity instruments (including SAFEs, convertible notes, warrants, or options)</li>
+      <li>Sale, merger, acquisition, or dissolution of the Company</li>
+      <li>Incurrence of debt exceeding $25,000 USD</li>
+      <li>Annual budget approval</li>
+      <li>Hiring of C-level executives or key employees with annual compensation exceeding $50,000</li>
+      <li>Related-party transactions</li>
+      <li>Material changes to the Certificate of Incorporation or Bylaws</li>
+      <li>Entry into exclusive contracts or partnerships with a term exceeding 12 months</li>
+    </ol>
+
+    <h3>8.4 Class A Protective Provisions</h3>
+    <p>The following actions require the approval of the holder(s) of a majority of the outstanding Class A Common Stock, regardless of any Board vote:</p>
+    <ol type="a">
+      <li>Any amendment that adversely affects the rights of Class A stockholders</li>
+      <li>Any reclassification affecting Class A voting rights</li>
+      <li>Authorization of any stock with voting rights superior to or equal to Class A</li>
+      <li>Changes to the authorized number of directors</li>
+    </ol>
+
+    <h2>Intellectual Property</h2>
+    <p><strong>9.1</strong> All intellectual property created by either Founder before or after the incorporation of the Company, in connection with the Company's business, is and shall be the sole and exclusive property of the Company.</p>
+    <p><strong>9.2</strong> Founder 1 hereby assigns to the Company all existing intellectual property related to Widdo, including but not limited to: source code, software, databases, designs, brand identity, domain name (widdo.co), marketing materials, and business plans, as further detailed in the IP Assignment Agreement executed concurrently herewith.</p>
+    <p><strong>9.3</strong> Each Founder agrees that all work product, inventions, discoveries, improvements, and creative works made by such Founder during the term of this Agreement, in connection with the Company's business, shall be works made for hire and the sole property of the Company.</p>
+    <p><strong>9.4</strong> Neither Founder may use Company intellectual property for personal purposes or for any other business, except as necessary to perform their duties under this Agreement.</p>
+
+    <h2>Confidentiality</h2>
+    <p><strong>10.1</strong> Each Founder agrees to maintain the confidentiality of all Confidential Information of the Company. "Confidential Information" includes but is not limited to: source code, algorithms, business plans, financial data, customer data, investor discussions, trade secrets, pricing strategies, and any information designated as confidential by the Company.</p>
+    <p><strong>10.2</strong> This obligation of confidentiality shall survive the termination of this Agreement and shall be perpetual.</p>
+    <p><strong>10.3</strong> Exceptions: Information that (a) is or becomes publicly available through no fault of the receiving Founder; (b) was known to the receiving Founder prior to the Company's formation; (c) is received from a third party without restriction; or (d) is required to be disclosed by law or legal process.</p>
+
+    <h2>Transfer Restrictions & Stockholder Rights</h2>
+
+    <h3>11.1 Right of First Refusal (ROFR)</h3>
+    <p>If Founder 2 wishes to sell, transfer, or otherwise dispose of any vested shares, the Company shall have the right of first refusal to purchase such shares on the same terms as the proposed transaction. If the Company declines, Founder 1 shall have the right of first refusal. Notice of the proposed sale must be given at least thirty (30) days prior to the intended transaction.</p>
+
+    <h3>11.2 Drag-Along Rights</h3>
+    <p>If stockholders holding more than fifty percent (50%) of the voting power of the Company approve a sale, merger, or other change of control transaction, all other stockholders shall be obligated to participate in such transaction on the same terms and conditions.</p>
+
+    <h3>11.3 Tag-Along Rights</h3>
+    <p>If Founder 1 proposes to sell more than fifty percent (50%) of his shares to a third party, Founder 2 shall have the right (but not the obligation) to sell a proportional number of his vested shares in the same transaction, on the same terms and conditions.</p>
+
+    <h3>11.4 Change of Control</h3>
+    <p>There shall be no automatic acceleration of vesting upon a Change of Control (defined as a sale, merger, or IPO). The Board may, at its discretion, negotiate double-trigger acceleration for Founder 2: acceleration occurs only if (1) a Change of Control occurs AND (2) Founder 2 is terminated without Cause within twelve (12) months of the Change of Control.</p>
+
+    <h2>Non-Competition</h2>
+    <p><strong>12.1</strong> During the term of this Agreement and for a period of <strong>twelve (12) months</strong> following separation, each Founder agrees not to directly or indirectly engage in, own, manage, operate, consult for, or be employed by any business that competes with the Company in the field of sports club management software, sports technology SaaS, or tournament management platforms.</p>
+    <p><strong>12.2</strong> This restriction applies worldwide.</p>
+    <p><strong>12.3</strong> Exception: Passive ownership of less than five percent (5%) of the shares of a publicly traded company shall not constitute a violation of this Section.</p>
+
+    <h2>Non-Solicitation</h2>
+    <p><strong>13.1</strong> For a period of <strong>twenty-four (24) months</strong> following separation, neither Founder shall directly or indirectly solicit, recruit, or hire any employee, contractor, client, investor, or business partner of the Company.</p>
+
+    <h2>Cause for Removal</h2>
+    <p><strong>14.1</strong> A Founder may be removed for "Cause," defined as any of the following:</p>
+    <ol type="a">
+      <li>Fraud, embezzlement, misappropriation of Company assets, or criminal conduct</li>
+      <li>Material breach of this Agreement that remains uncured for fifteen (15) days after written notice</li>
+      <li>Directly or indirectly competing with the Company</li>
+      <li>Abandonment of duties: more than thirty (30) consecutive days without meaningful activity and without prior written notice or justified reason</li>
+      <li>Gross negligence or willful misconduct in the performance of duties</li>
+      <li>Conviction of a felony or crime involving moral turpitude</li>
+    </ol>
+
+    <h2>Separation & Termination</h2>
+    <p><strong>15.1 Voluntary Resignation:</strong> Either Founder may resign from their role with sixty (60) days written notice to the other Founder and the Board.</p>
+    <p><strong>15.2 Effect of Separation:</strong> Upon separation of a Founder for any reason:</p>
+    <ol type="a">
+      <li>Unvested shares are subject to repurchase by the Company at par value ($0.00001/share)</li>
+      <li>Vested shares are retained by the departing Founder, subject to the Right of First Refusal</li>
+      <li>Non-competition (12 months) and non-solicitation (24 months) obligations survive</li>
+      <li>Confidentiality obligations survive perpetually</li>
+      <li>All Company property (devices, accounts, credentials, materials) must be returned within seven (7) business days</li>
+      <li>The departing Founder resigns from the Board of Directors effective upon separation</li>
+    </ol>
+    <p><strong>15.3 Founder 2 Cash Contribution:</strong> In the event of separation, the $15,000 USD contribution made by Founder 2 shall not be refundable, as it constitutes capital of the Company invested for shares and operational use.</p>
+
+    <h2>Subsidiary — Widdo SAS (Colombia)</h2>
+    <p><strong>16.1</strong> The Company shall establish or acquire a wholly-owned subsidiary in Colombia, organized as a Sociedad por Acciones Simplificada (SAS) under Colombian law (hereinafter "Widdo SAS").</p>
+    <p><strong>16.2</strong> Widdo SAS shall serve as the operational entity for Colombian clients and the development team.</p>
+    <p><strong>16.3</strong> The financial relationship between the Company and Widdo SAS shall be governed by a Transfer Pricing Agreement executed concurrently or subsequently.</p>
+    <p><strong>16.4</strong> Founder 1 shall manage Widdo SAS as its legal representative.</p>
+
+    <h2>Dispute Resolution</h2>
+    <p><strong>17.1</strong> The Founders shall first attempt to resolve any dispute arising under this Agreement through good faith negotiation for a period of thirty (30) days.</p>
+    <p><strong>17.2</strong> If the dispute is not resolved through negotiation, it shall be submitted to binding arbitration administered by JAMS in Orlando, Florida, in accordance with JAMS Comprehensive Arbitration Rules.</p>
+    <p><strong>17.3</strong> The arbitration shall be conducted by a single arbitrator. The decision of the arbitrator shall be final and binding on both parties.</p>
+    <p><strong>17.4</strong> Each party shall bear their own legal costs and fees, unless the arbitrator determines that one party acted in bad faith, in which case the arbitrator may award reasonable attorneys' fees to the prevailing party.</p>
+
+    <h2>General Provisions</h2>
+    <p><strong>18.1 Governing Law:</strong> This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles.</p>
+    <p><strong>18.2 Entire Agreement:</strong> This Agreement, together with the IP Assignment Agreement, the Restricted Stock Purchase Agreement, and the Certificate of Incorporation, constitutes the entire agreement between the Founders with respect to the subject matter hereof.</p>
+    <p><strong>18.3 Amendments:</strong> This Agreement may be amended only by a written instrument signed by both Founders.</p>
+    <p><strong>18.4 Severability:</strong> If any provision of this Agreement is held to be unenforceable, the remaining provisions shall continue in full force and effect.</p>
+    <p><strong>18.5 Notices:</strong> All notices under this Agreement shall be in writing and shall be deemed delivered when sent by email to the addresses set forth above, or by certified mail to the physical addresses set forth above.</p>
+    <p><strong>18.6 Counterparts:</strong> This Agreement may be executed in counterparts, including electronic counterparts (e.g., DocuSign), each of which shall be deemed an original.</p>
+    <p><strong>18.7 Waiver:</strong> The failure of either party to enforce any provision of this Agreement shall not constitute a waiver of such provision or the right to enforce it at a later time.</p>
+
+    <div class="signature-block">
+      <div class="sig-party">
+        <div class="sig-line"></div>
+        <div class="sig-label">Signature</div>
+        <div class="sig-name">Miguel Angel Cano</div>
+        <div class="sig-title">Founder 1 — CEO / CTO</div>
+        <div style="margin-top: 20px;">
+          <div class="sig-line"></div>
+          <div class="sig-label">Date</div>
+        </div>
+      </div>
+      <div class="sig-party">
+        <div class="sig-line"></div>
+        <div class="sig-label">Signature</div>
+        <div class="sig-name">Alwin Alexis Perez Montero</div>
+        <div class="sig-title">Founder 2 — Co-Founder / BD USA</div>
+        <div style="margin-top: 20px;">
+          <div class="sig-line"></div>
+          <div class="sig-label">Date</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="attorney-notes">
+      <h3>Notes for Attorney Review</h3>
+      <ol>
+        <li>Verify dual-class share structure complies with Delaware General Corporation Law (DGCL Sec. 151)</li>
+        <li>Confirm reverse vesting mechanics align with Restricted Stock Purchase Agreement from Stripe Atlas</li>
+        <li>Review milestone conditions for enforceability and measurability</li>
+        <li>Confirm non-compete scope is reasonable under Florida and Delaware law</li>
+        <li>Review tax implications of IP assignment for both parties (Colombian citizen assigning IP to US entity)</li>
+        <li>Ensure compatibility with anticipated SAFE note fundraising (YC post-money SAFE)</li>
+        <li>Review international aspects: both founders are Colombian citizens, cross-border operations</li>
+        <li>Confirm arbitration clause enforceability for parties in different countries</li>
+        <li>Review Founder 2's part-time status and implications for employment classification (contractor vs. employee)</li>
+        <li>Consider whether E-2 visa implications require specific language (Miguel as CEO of 91% Colombian-owned C Corp)</li>
+      </ol>
+    </div>
+
+    <div class="disclaimer">
+      This document was drafted with AI assistance and is intended as a DRAFT for review by a licensed attorney.
+      It does not constitute legal advice. All terms should be reviewed, modified as necessary, and approved by
+      qualified legal counsel in the relevant jurisdictions (Delaware, Florida, Colombia) before execution.
+    </div>
+  </div>
+</body>
+</html>

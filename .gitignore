@@ -3,3 +3,17 @@ node_modules/
 .DS_Store
 .claude/
 package-lock.json
+.gstack/
+
+# Secretos y credenciales — nunca commitear
+negocio/datos do.txt
+*.env
+.env*
+*.pem
+*.key
+*.p12
+**/credentials*
+**/*secret*
+
+# Salidas de graphify (grafo de conocimiento, regenerable)
+graphify-out/

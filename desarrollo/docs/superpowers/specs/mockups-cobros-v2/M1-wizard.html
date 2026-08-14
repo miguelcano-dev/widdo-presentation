@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M1 · Wizard de cobros v2 (Sheet)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#16a34a; --accent:#dcfce7; --ring:#16a34a;
+    --green-50:#f0fdf4; --green-200:#bbf7d0; --green-700:#15803d;
+    --amber-50:#fffbeb; --amber-200:#fde68a; --amber-700:#b45309;
+    --red-50:#fef2f2; --red-700:#b91c1c;
+    --blue-50:#eff6ff; --blue-200:#bfdbfe; --blue-700:#1d4ed8;
+    --gray-50:#f9fafb; --gray-100:#f3f4f6; --gray-200:#e5e7eb; --gray-400:#9ca3af; --gray-600:#4b5563; --gray-900:#111827;
+    --radius:.5rem; --footer-h:104px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Red Hat Display',system-ui,sans-serif;background:var(--gray-100);color:var(--gray-900);font-size:14px}
+  .backdrop{position:fixed;inset:0;background:rgba(15,23,42,.5)}
+  /* SHEET lateral */
+  .sheet{position:fixed;top:0;right:0;bottom:0;width:min(560px,100vw);background:#fff;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.12)}
+  @media(max-width:640px){ .sheet{width:100vw} }
+  .head{padding:18px 22px 0;flex-shrink:0}
+  h1{font-size:17px;font-weight:800}
+  .sub{color:var(--gray-400);font-size:12px;margin-top:2px}
+  .steps{display:flex;gap:6px;margin:14px 0}
+  .steps div{height:3px;flex:1;border-radius:2px;background:var(--gray-200)}
+  .steps div.on{background:var(--primary)}
+  /* el scroll vive aquí; scroll-padding evita que el pie tape lo enfocado */
+  .scrollwrap{flex:1;position:relative;min-height:0}
+  .body{position:absolute;inset:0;overflow-y:auto;padding:6px 22px 22px;scroll-padding-bottom:24px}
+  /* aviso de scroll: degradado + flecha, solo cuando queda contenido abajo */
+  .fade{position:absolute;left:0;right:0;bottom:0;height:56px;pointer-events:none;
+        background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,.95) 70%,#fff 100%);
+        opacity:0;transition:opacity .18s}
+  .fade.on{opacity:1}
+  .fade::after{content:'↓ hay más abajo';position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
+        font-size:10.5px;font-weight:700;color:var(--gray-400);background:#fff;padding:2px 10px;border-radius:999px;border:1px solid var(--gray-200)}
+  /* FOCO visible en todo lo interactivo */
+  :is(button,input,select,[tabindex]):focus-visible{outline:none;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--ring);border-radius:var(--radius)}
+  label,.lbl{display:block;font-size:12.5px;font-weight:700;margin:16px 0 7px}
+  .lbl small{font-weight:400;color:var(--gray-400)}
+  input[type=text],input[type=date]{border:1px solid var(--gray-200);border-radius:var(--radius);padding:9px 11px;font:inherit;width:100%}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  /* radiogroup de conceptos: UNA parada de tab, flechas para moverse */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  @media(max-width:520px){ .cards{grid-template-columns:1fr} }
+  .card{border:2px solid var(--gray-200);border-radius:calc(var(--radius)*1.5);padding:13px;background:#fff;text-align:left;cursor:pointer;font:inherit}
+  .card[aria-checked=true]{border-color:var(--primary);background:var(--green-50)}
+  .card .ico{font-size:19px}
+  .card b{display:block;margin:5px 0 2px;font-size:13.5px}
+  .card span{font-size:11.5px;color:var(--gray-600);line-height:1.35;display:block}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1.5px solid var(--gray-200);border-radius:999px;padding:6px 14px;background:#fff;font:inherit;font-size:12.5px;cursor:pointer}
+  .chip[aria-checked=true]{border-color:var(--primary);background:var(--green-50);color:var(--green-700);font-weight:700}
+  .opt{display:flex;gap:10px;align-items:flex-start;border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:10px 12px;background:#fff;margin-bottom:8px;cursor:pointer;font:inherit;text-align:left;width:100%}
+  .opt[aria-checked=true]{border-color:var(--primary);background:var(--green-50)}
+  .opt .dot{width:15px;height:15px;border:2px solid var(--gray-400);border-radius:50%;flex-shrink:0;margin-top:2px;position:relative}
+  .opt[aria-checked=true] .dot{border-color:var(--primary)}
+  .opt[aria-checked=true] .dot::after{content:'';position:absolute;inset:2.5px;background:var(--primary);border-radius:50%}
+  .opt b{font-size:13px;display:block}
+  .opt p{font-size:11.5px;color:var(--gray-600);margin-top:1px}
+  .info{display:flex;gap:8px;background:var(--blue-50);border:1px solid var(--blue-200);color:var(--blue-700);border-radius:var(--radius);padding:10px 12px;font-size:12.5px;margin-top:12px}
+  .warn{display:flex;gap:8px;align-items:center;background:var(--amber-50);border:1px solid var(--amber-200);color:var(--amber-700);border-radius:var(--radius);padding:10px 12px;font-size:12.5px;margin-top:12px}
+  .warn button{margin-left:auto;border:1px solid var(--amber-200);background:#fff;border-radius:var(--radius);padding:5px 12px;font:inherit;font-weight:700;color:var(--amber-700);cursor:pointer;white-space:nowrap}
+  .cruce{border:1px solid var(--amber-200);background:var(--amber-50);border-radius:var(--radius);padding:14px;margin-top:10px}
+  .cruce table{width:100%;border-collapse:collapse;margin:9px 0;font-size:12.5px;background:#fff;border-radius:var(--radius);overflow:hidden}
+  .cruce th{text-align:left;padding:7px 10px;color:var(--gray-400);font-size:11px;text-transform:uppercase;border-bottom:1px solid var(--gray-200)}
+  .cruce td{padding:7px 10px;border-bottom:1px solid var(--gray-100)}
+  .tag{background:var(--blue-50);border:1px solid var(--blue-200);color:var(--blue-700);border-radius:6px;padding:1px 8px;font-size:11px;font-weight:700}
+  /* PIE fijo: informativo, aria-live, NO focusable */
+  .proj{flex-shrink:0;background:#0f172a;color:#e2e8f0;padding:12px 22px;min-height:var(--footer-h)}
+  .proj .net{font-size:19px;font-weight:800;color:#4ade80}
+  .proj .net small{font-size:12px;color:#94a3b8;font-weight:400}
+  .proj .math{font-size:11.5px;color:#94a3b8;margin-top:2px;line-height:1.4}
+  .proj .meta{display:flex;gap:16px;font-size:11px;color:#94a3b8;margin-top:7px;flex-wrap:wrap}
+  .proj .meta b{color:#e2e8f0;font-weight:700}
+  .actions{flex-shrink:0;display:flex;justify-content:space-between;gap:10px;padding:12px 22px;border-top:1px solid var(--gray-200);background:var(--gray-50)}
+  .btn{border:1px solid var(--gray-200);border-radius:var(--radius);padding:10px 20px;font:inherit;font-weight:700;cursor:pointer;background:#fff;color:var(--gray-600)}
+  .btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .note{font-size:11px;color:var(--gray-400);margin-top:9px}
+  select{border:1px solid var(--gray-200);border-radius:var(--radius);padding:9px 11px;font:inherit;width:100%;background:#fff}
+  .acc{width:100%;display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding:11px 13px;
+       border:1px solid var(--gray-200);border-radius:var(--radius);background:var(--gray-50);font:inherit;font-weight:700;font-size:12.5px;color:var(--gray-600);cursor:pointer}
+  .acc .chev{transition:transform .18s}
+  .acc[aria-expanded=true] .chev{transform:rotate(180deg)}
+  .accbody{border:1px solid var(--gray-200);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:4px 14px 16px;margin-top:-1px}
+  .hide{display:none!important}
+  .kbd{position:fixed;left:16px;bottom:16px;background:#0f172a;color:#e2e8f0;padding:10px 14px;border-radius:var(--radius);font-size:11.5px;max-width:330px;line-height:1.6}
+  .kbd b{color:#4ade80}
+</style>
+</head>
+<body>
+
+<div class="kbd">
+  <b>Prueba el teclado:</b><br>
+  <b>Tab</b> — entra al grupo, no recorre las 5 tarjetas<br>
+  <b>← →</b> — mueve dentro del grupo<br>
+  <b>Espacio</b> — selecciona<br>
+  <b>Enter</b> — avanza de paso, nunca envía antes de tiempo<br>
+  <b>Esc</b> — cierra
+</div>
+
+<div class="backdrop"></div>
+
+<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="ttl">
+  <div class="head">
+    <h1 id="ttl">Nuevo cobro</h1>
+    <div class="sub" id="sub">Paso 1 de 3 · ¿Qué vas a cobrar?</div>
+    <div class="steps"><div class="on" id="s1"></div><div id="s2"></div><div id="s3"></div></div>
+  </div>
+
+  <div class="scrollwrap">
+  <div class="body" id="body">
+
+    <!-- PASO 1 · concepto -->
+    <div id="p1">
+      <div class="cards" role="radiogroup" aria-label="Tipo de cobro" id="conceptos">
+        <button class="card" role="radio" aria-checked="true"  tabindex="0"  data-k="cuota"><span class="ico">💪</span><b>Cuota de entrenamiento</b><span>Mensual, trimestral o semestral. La cuota recurrente.</span></button>
+        <button class="card" role="radio" aria-checked="false" tabindex="-1" data-k="matricula"><span class="ico">📋</span><b>Matrícula</b><span>Anual, renueva con tu año deportivo.</span></button>
+        <button class="card" role="radio" aria-checked="false" tabindex="-1" data-k="unico"><span class="ico">👕</span><b>Uniforme</b><span>Una sola vez a quien lo reciba.</span></button>
+        <button class="card" role="radio" aria-checked="false" tabindex="-1" data-k="evento"><span class="ico">🏆</span><b>Evento o torneo</b><span>Una sola vez, ligado a una fecha.</span></button>
+        <button class="card" role="radio" aria-checked="false" tabindex="-1" data-k="unico"><span class="ico">➕</span><b>Otro</b><span>Cualquier otro cobro puntual.</span></button>
+      </div>
+      <p class="note">Una sola parada de tabulación para las 5 tarjetas. Dentro te mueves con flechas — el patrón estándar de un grupo de opciones.</p>
+    </div>
+
+    <!-- PASO 2a · cuota -->
+    <div id="p2-cuota" class="hide">
+      <div class="row">
+        <div><label for="nom">Nombre</label><input type="text" id="nom" value="Mensualidad Tipo 2"></div>
+        <div><label for="val">Valor</label><input type="text" id="val" value="$ 140.000"></div>
+      </div>
+
+      <span class="lbl">¿Cómo se paga? <small>· puedes ofrecer varias</small></span>
+      <div class="chips" role="group" aria-label="Modalidades">
+        <button class="chip" role="checkbox" aria-checked="true"  onclick="modal(this,0)">Mensual</button>
+        <button class="chip" role="checkbox" aria-checked="true"  onclick="modal(this,1)">Trimestral</button>
+        <button class="chip" role="checkbox" aria-checked="false" onclick="modal(this,2)">Semestral</button>
+        <button class="chip" role="checkbox" aria-checked="false" onclick="modal(this,3)">Por sesión asistida</button>
+      </div>
+      <p class="note" id="notaModal">Cada jugador queda en UNA modalidad. Quien paga trimestre no recibe mensualidades.</p>
+
+      <div id="porSesionInfo" class="info hide">⚡ <span><b>Pago por sesión:</b> se genera un cobro cada vez que el jugador asiste. Desaparecen día de vencimiento, fecha de fin y meses sin cobro — no aplican. Requiere que el club tome asistencia.</span></div>
+
+      <div id="blqRecurrente">
+        <label for="dia" style="margin-top:16px">Día de vencimiento <small style="font-weight:400;color:var(--gray-400)">· del 1 al 31</small></label>
+        <input type="text" id="dia" value="10" style="max-width:130px" onchange="render()">
+
+      <span class="lbl" id="lbl-fin">¿Hasta cuándo va este cobro?</span>
+      <div role="radiogroup" aria-labelledby="lbl-fin" id="grupo-fin">
+        <button class="opt" role="radio" aria-checked="true"  tabindex="0"  data-i="0"><span class="dot"></span><span><b>Fin de temporada — 30 nov 2026</b><p>Al cerrar el año creas la versión 2027 con su nuevo precio. Esta queda archivada con toda su historia intacta.</p></span></button>
+        <button class="opt" role="radio" aria-checked="false" tabindex="-1" data-i="1"><span class="dot"></span><span style="flex:1"><b>Hasta una fecha específica</b></span></button>
+        <div id="dw" class="hide" style="margin:-2px 0 10px 34px"><label for="fecha" style="font-size:11.5px;margin:0 0 5px">Fecha de fin</label><input type="date" id="fecha" value="2026-10-31" onchange="setFin(this.value)"></div>
+        <button class="opt" role="radio" aria-checked="false" tabindex="-1" data-i="2"><span class="dot"></span><span><b>Indefinido</b><p style="color:var(--amber-700)">⚠ Se generará todos los meses hasta que alguien lo detenga.</p></span></button>
+      </div>
+
+      <span class="lbl">Meses que NO se cobran <small>· vacaciones</small></span>
+      <div class="chips" role="group" aria-label="Meses sin cobro">
+        <button class="chip" role="checkbox" aria-checked="true"  onclick="tog(this)">Diciembre</button>
+        <button class="chip" role="checkbox" aria-checked="false" onclick="tog(this)">Enero</button>
+      </div>
+      </div><!-- fin bloque recurrente -->
+
+      <button class="acc" id="accBtn" aria-expanded="false" aria-controls="acc" onclick="acc()">
+        <span>⚙️ Ajustes finos</span><span class="chev">▾</span>
+      </button>
+      <div class="accbody hide" id="acc">
+        <span class="lbl" id="lbl-mora" style="margin-top:6px">Recargo por mora</span>
+        <div role="radiogroup" aria-labelledby="lbl-mora">
+          <button class="opt" role="radio" aria-checked="true" tabindex="0" onclick="rad(this)"><span class="dot"></span><span><b>Usar la escala del club</b><p>Día 6-10: +$10.000 · día 11-15: +$10.000 más, acumulable</p></span></button>
+          <button class="opt" role="radio" aria-checked="false" tabindex="-1" onclick="rad(this)"><span class="dot"></span><span><b>Personalizar solo para este cobro</b></span></button>
+          <button class="opt" role="radio" aria-checked="false" tabindex="-1" onclick="rad(this)"><span class="dot"></span><span><b>Sin recargo</b></span></button>
+        </div>
+
+        <span class="lbl">Descuentos que aplican a este cobro</span>
+        <div class="chips" role="group" aria-label="Descuentos">
+          <button class="chip" role="checkbox" aria-checked="true"  onclick="tog(this)">Plan Familiar −29%</button>
+          <button class="chip" role="checkbox" aria-checked="true"  onclick="tog(this)">Beca −100%</button>
+          <button class="chip" role="checkbox" aria-checked="false" onclick="tog(this)">Beca 2 −50%</button>
+          <button class="chip" role="checkbox" aria-checked="false" onclick="tog(this)">Individual −$40.000</button>
+        </div>
+        <p class="note">Del catálogo de descuentos del club. Aplican al jugador que los tenga asignado.</p>
+
+        <label for="desc">Descripción <small style="font-weight:400;color:var(--gray-400)">· la ve la familia</small></label>
+        <input type="text" id="desc" placeholder="Ej: incluye 3 entrenamientos semanales">
+
+        <label for="notas">Notas internas <small style="font-weight:400;color:var(--gray-400)">· solo staff</small></label>
+        <input type="text" id="notas" placeholder="No visible para las familias">
+
+        <label for="metodo">Método de pago a mostrar</label>
+        <select id="metodo"><option>Todos los habilitados</option><option>Transferencia Bancolombia</option><option>Efectivo en sede</option></select>
+
+        <label for="maxrep">Máximo de repeticiones <small style="font-weight:400;color:var(--gray-400)">· opcional</small></label>
+        <input type="text" id="maxrep" placeholder="Sin límite" style="max-width:170px">
+
+        <span class="lbl">Enlace de inscripción pública</span>
+        <button class="opt" role="checkbox" aria-checked="false" onclick="tog(this)"><span class="dot" style="border-radius:4px"></span><span><b>Mostrar este cobro en el enlace</b><p>La familia lo ve y lo paga al inscribirse.</p></span></button>
+      </div>
+    </div>
+
+    <!-- PASO 2b · matrícula -->
+    <div id="p2-matricula" class="hide">
+      <div class="row">
+        <div><label for="nm">Nombre</label><input type="text" id="nm" value="Matrícula 2026"></div>
+        <div><label for="vm">Valor</label><input type="text" id="vm" value="$ 160.000"></div>
+      </div>
+      <div class="info" style="margin-top:16px">📅 Renovará con tu año deportivo: <b>&nbsp;1 ene 2027&nbsp;</b> a los jugadores activos. Desde el <b>&nbsp;1 dic&nbsp;</b> te avisamos y podrás <b>&nbsp;ajustar el precio&nbsp;</b> antes de que se genere.</div>
+      <button class="opt" role="checkbox" aria-checked="false" onclick="tog(this)" style="margin-top:12px"><span class="dot" style="border-radius:4px"></span><span><b>Cobrarla también a los jugadores actuales</b><p>Si ya la cobraste por fuera al montar el club, déjala sin marcar.</p></span></button>
+      <p class="note">Nunca se prorratea: quien entra en noviembre paga la matrícula completa.</p>
+    </div>
+
+    <!-- PASO 2c · único -->
+    <div id="p2-unico" class="hide">
+      <div class="row">
+        <div><label for="nu">Nombre</label><input type="text" id="nu" value="Uniforme Competencia"></div>
+        <div><label for="vu">Valor</label><input type="text" id="vu" value="$ 160.000"></div>
+      </div>
+      <span class="lbl" id="lbl-venc">Vencimiento</span>
+      <div role="radiogroup" aria-labelledby="lbl-venc">
+        <button class="opt" role="radio" aria-checked="true"  tabindex="0"  onclick="rad(this)"><span class="dot"></span><span><b>30 días después de generarse</b></span></button>
+        <button class="opt" role="radio" aria-checked="false" tabindex="-1" onclick="rad(this)"><span class="dot"></span><span><b>Fecha fija</b></span></button>
+      </div>
+      <div class="info">ℹ️ Cobro de una sola vez: se genera a quien elijas y ahí termina. No se repite ni renueva.</div>
+    </div>
+
+    <!-- PASO 2d · evento -->
+    <div id="p2-evento" class="hide">
+      <div class="row">
+        <div><label for="ne">Nombre</label><input type="text" id="ne" value="Copa Diciembre"></div>
+        <div><label for="ve">Valor</label><input type="text" id="ve" value="$ 120.000"></div>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <div><label for="fe">Fecha del evento</label><input type="date" id="fe" value="2026-12-12"></div>
+        <div><label for="fl">Se paga hasta</label><input type="date" id="fl" value="2026-12-05"></div>
+      </div>
+      <div class="info">ℹ️ Pasada la fecha límite no se generan más pagos de este cobro.</div>
+    </div>
+
+    <!-- PASO 3 · alcance -->
+    <div id="p3" class="hide">
+      <span class="lbl" id="lbl-alc">¿A quién aplica?</span>
+      <div class="cards" role="radiogroup" aria-labelledby="lbl-alc" id="grupo-alc" style="grid-template-columns:repeat(3,1fr)">
+        <button class="card" role="radio" aria-checked="false" tabindex="-1" data-m="all" style="padding:10px"><b style="margin:0 0 2px">Todos</b><span>Todo el club</span></button>
+        <button class="card" role="radio" aria-checked="false" tabindex="-1" data-m="dep" style="padding:10px"><b style="margin:0 0 2px">Por deporte</b><span>Si hay varios</span></button>
+        <button class="card" role="radio" aria-checked="true"  tabindex="0"  data-m="cat" style="padding:10px"><b style="margin:0 0 2px">Por categoría</b><span>Una o varias</span></button>
+        <button class="card" role="radio" aria-checked="false" tabindex="-1" data-m="esp" style="padding:10px"><b style="margin:0 0 2px">Específicos</b><span>Uno a uno</span></button>
+      </div>
+
+      <div id="sc-cat">
+        <span class="lbl">Categorías</span>
+        <div class="chips" role="group" aria-label="Categorías">
+          <button class="chip" role="checkbox" aria-checked="true" onclick="tog(this)">Sub 14 M</button>
+          <button class="chip" role="checkbox" aria-checked="true" onclick="tog(this)">Sub 14 F</button>
+          <button class="chip" role="checkbox" aria-checked="true" onclick="tog(this)">Sub 15 M</button>
+          <button class="chip" role="checkbox" aria-checked="true" onclick="tog(this)">Sub 15 F</button>
+          <button class="chip" role="checkbox" aria-checked="true" onclick="tog(this)">Sub 15-16 F</button>
+          <button class="chip" role="checkbox" aria-checked="true" onclick="tog(this)">Sub 17-18</button>
+        </div>
+      </div>
+
+      <div id="sc-esp" class="hide">
+        <label for="busca">Buscar jugador <small style="font-weight:400;color:var(--gray-400)">· nombre, documento o email</small></label>
+        <input type="text" id="busca" placeholder="Escribe 2 letras o más…">
+        <div class="chips" style="margin-top:10px" role="group" aria-label="Jugadores seleccionados">
+          <button class="chip" aria-checked="true" role="checkbox" onclick="tog(this)">Juan Pablo Castro ✕</button>
+          <button class="chip" aria-checked="true" role="checkbox" onclick="tog(this)">Lauren Sofia Londoño ✕</button>
+        </div>
+      </div>
+
+      <div id="sc-dep" class="hide">
+        <span class="lbl">Deportes</span>
+        <div class="chips" role="group" aria-label="Deportes">
+          <button class="chip" role="checkbox" aria-checked="true"  onclick="tog(this)">Baloncesto</button>
+          <button class="chip" role="checkbox" aria-checked="false" onclick="tog(this)">Voleibol</button>
+        </div>
+        <p class="note">Solo aparece si el club maneja más de un deporte.</p>
+      </div>
+
+      <div id="sc-all" class="hide">
+        <div class="warn">⚠ Aplicará a <b>&nbsp;136 jugadores&nbsp;</b> — todos los activos, incluidos los que entren después.</div>
+      </div>
+
+      <span class="lbl">Excluir jugadores concretos <small>· opcional</small></span>
+      <div class="chips" role="group" aria-label="Excluidos">
+        <button class="chip" role="checkbox" aria-checked="true" onclick="tog(this)">Miguel Ángel ✕</button>
+        <button class="chip" style="border-style:dashed;color:var(--gray-400)">+ Buscar jugador</button>
+      </div>
+
+      <span class="lbl" id="lbl-gen">¿Cuándo generar los pagos?</span>
+      <div role="radiogroup" aria-labelledby="lbl-gen">
+        <button class="opt" role="radio" aria-checked="true"  tabindex="0"  onclick="rad(this)"><span class="dot"></span><span><b>Ahora, al crear el cobro</b></span></button>
+        <button class="opt" role="radio" aria-checked="false" tabindex="-1" onclick="rad(this)"><span class="dot"></span><span><b>Programar para una fecha</b></span></button>
+        <button class="opt" role="radio" aria-checked="false" tabindex="-1" onclick="rad(this)"><span class="dot"></span><span><b>Solo cuando yo lo dispare</b><p>Queda creado pero no genera nada hasta que uses "Generar pagos".</p></span></button>
+      </div>
+
+      <button class="opt" role="checkbox" aria-checked="true" onclick="tog(this)" style="margin-top:12px"><span class="dot" style="border-radius:4px"></span><span><b>Cobrar automáticamente a los jugadores nuevos</b><p>Quien entre después lo recibe sin que tengas que acordarte.</p></span></button>
+
+      <div class="warn" id="cruceWarn">⚠ <b>6 ya pagan otra cuota</b><button onclick="toggleCruce()" aria-expanded="false" aria-controls="cruce">Resolver</button></div>
+
+      <div class="cruce hide" id="cruce">
+        <b style="font-size:13px">Tienen una cuota vigente que se cruza:</b>
+        <table>
+          <tr><th>Jugador</th><th>Cuota</th><th>Vigente hasta</th></tr>
+          <tr><td>Juan Pablo Castro</td><td><span class="tag">Trimestre</span></td><td>31 oct 2026</td></tr>
+          <tr><td>Lauren Sofia Londoño</td><td><span class="tag">Trimestre</span></td><td>31 oct 2026</td></tr>
+          <tr><td colspan="3" style="color:var(--gray-400)">… y 4 más</td></tr>
+        </table>
+        <div role="radiogroup" aria-label="Qué hacer con los cruces">
+          <button class="opt" role="radio" aria-checked="true"  tabindex="0"  onclick="rad(this)"><span class="dot"></span><span><b>Excluirlos de este cobro</b><p>Siguen con su cuota actual. Recomendado.</p></span></button>
+          <button class="opt" role="radio" aria-checked="false" tabindex="-1" onclick="rad(this)"><span class="dot"></span><span><b>Cambiarlos a esta cuota</b><p>Cancela la anterior desde hoy y genera esta. Queda auditado.</p></span></button>
+          <button class="opt" role="radio" aria-checked="false" tabindex="-1" onclick="rad(this)"><span class="dot"></span><span><b>Cobrarles ambas</b><p style="color:var(--red-700)">Pagarán dos cuotas el mismo periodo.</p></span></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="fade" id="fade"></div>
+  </div>
+
+  <!-- PIE: solo en el último paso, cuando el alcance ya está decidido -->
+  <div class="proj" id="proj" aria-live="polite" aria-atomic="true">
+    <div class="net" id="pNet"></div>
+    <div class="math" id="pMath"></div>
+    <div class="meta" id="pMeta"></div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" id="back" onclick="go(-1)">Atrás</button>
+    <button class="btn primary" id="next" onclick="go(1)">Continuar</button>
+  </div>
+</div>
+
+<script>
+let step=1, concept='cuota', finTxt='<b>30 nov 2026</b>', alcance='cat';
+
+const CONF={
+  cuota:{t:'Nueva cuota de entrenamiento',p:'p2-cuota',cruce:true,
+    net:()=>porSesion ? '$ 140.000 <small>por sesión · ~$ 1.680.000/mes estimado</small>'
+      : ({all:'$ 17.980.000 <small>/ mes (neto)</small>',dep:'$ 15.400.000 <small>/ mes (neto)</small>',cat:'$ 12.640.000 <small>/ mes (neto)</small>',esp:'$ 280.000 <small>/ mes (neto)</small>'}[alcance]),
+    math:()=>porSesion ? 'Estimado: 98 jugadores × 12 sesiones programadas en agosto. El real depende de la asistencia.'
+      : ({all:'136 jugadores · bruto $19.040.000 − Plan Familiar y Becas $620.000 − exentos $440.000',
+          dep:'112 del deporte · bruto $15.680.000 − descuentos $280.000',
+          cat:'98 jugadores · bruto $13.720.000 − descuentos $640.000 (9) − exentos $440.000 (3) · 6 excluidos por cruce · 1 excluido a mano',
+          esp:'2 jugadores seleccionados · $140.000 c/u'}[alcance]),
+    meta:()=>porSesion
+      ? `<span>Genera: <b>al registrar cada asistencia</b></span><span>Vence: <b>al momento</b></span><span>Repite: <b>por sesión</b></span>`
+      : `<span>Genera: <b>día 1 de cada mes</b></span><span>Vence: <b>día ${(document.getElementById('dia')||{}).value||10}</b></span><span>No cobra: <b>diciembre</b></span><span>Termina: <span id="finVal">${finTxt}</span></span>`},
+  matricula:{t:'Nueva matrícula',p:'p2-matricula',cruce:false,
+    net:()=>'$ 160.000 <small>por jugador, una vez al año</small>',
+    math:()=>'Se cobra al inscribirse. Hoy no genera nada a los 136 actuales.',
+    meta:()=>`<span>Renueva: <b>1 ene 2027</b></span><span>Aviso para ajustar precio: <b>1 dic 2026</b></span><span>Prorrateo: <b>nunca</b></span>`},
+  unico:{t:'Nuevo cobro único',p:'p2-unico',cruce:false,
+    net:()=>'$ 20.960.000 <small>una sola vez (neto)</small>',
+    math:()=>'131 jugadores · $160.000 c/u',
+    meta:()=>`<span>Se genera: <b>al confirmar</b></span><span>Vence: <b>30 días después</b></span><span>Repite: <b>nunca</b></span>`},
+  evento:{t:'Nuevo cobro de evento',p:'p2-evento',cruce:false,
+    net:()=>'$ 4.800.000 <small>una sola vez (neto)</small>',
+    math:()=>'40 jugadores · $120.000 c/u',
+    meta:()=>`<span>Evento: <b>12 dic 2026</b></span><span>Se paga hasta: <b>5 dic 2026</b></span><span>Repite: <b>nunca</b></span>`},
+};
+
+function render(){
+  const c=CONF[concept];
+  ['p1','p2-cuota','p2-matricula','p2-unico','p2-evento','p3'].forEach(i=>document.getElementById(i).classList.add('hide'));
+  if(step===1) document.getElementById('p1').classList.remove('hide');
+  if(step===2) document.getElementById(c.p).classList.remove('hide');
+  if(step===3) document.getElementById('p3').classList.remove('hide');
+  ['s1','s2','s3'].forEach((id,i)=>document.getElementById(id).classList.toggle('on',i<step));
+  document.getElementById('ttl').textContent = step===1?'Nuevo cobro':c.t;
+  document.getElementById('sub').textContent = `Paso ${step} de 3 · ` + ['¿Qué vas a cobrar?','Configúralo','¿A quién aplica?'][step-1];
+  document.getElementById('next').textContent = step===3?'Crear cobro':'Continuar';
+  document.getElementById('back').style.visibility = step===1?'hidden':'visible';
+  document.getElementById('proj').style.display = step===3?'block':'none';
+  document.getElementById('cruceWarn').style.display = (c.cruce && alcance!=='esp' && step===3)?'flex':'none';
+  document.getElementById('pNet').innerHTML=c.net();
+  document.getElementById('pMath').innerHTML=c.math();
+  document.getElementById('pMeta').innerHTML=c.meta();
+  document.getElementById('body').scrollTop=0;
+  setTimeout(checkScroll,40);
+  // foco al primer campo con sentido de cada paso
+  setTimeout(()=>{
+    if(step===1) document.querySelector('#conceptos [aria-checked=true]').focus();
+    else if(step===2){ const f=document.querySelector(`#${c.p} input`); f&&f.focus(); }
+    else document.querySelector('#grupo-alc [aria-checked=true]').focus();
+  },30);
+}
+function go(d){ step=Math.max(1,Math.min(3,step+d)); render(); }
+function tog(el){ el.setAttribute('aria-checked', el.getAttribute('aria-checked')!=='true'); }
+let porSesion=false;
+function modal(el,i){
+  const chips=[...document.querySelectorAll('[aria-label=Modalidades] .chip')];
+  if(i===3){
+    porSesion = el.getAttribute('aria-checked')!=='true';
+    chips.forEach((c,j)=>c.setAttribute('aria-checked', j===3 ? String(porSesion) : (porSesion?'false':c.getAttribute('aria-checked'))));
+    if(!porSesion) chips[0].setAttribute('aria-checked','true');
+  }else{
+    if(porSesion){ porSesion=false; chips[3].setAttribute('aria-checked','false'); }
+    tog(el);
+  }
+  document.getElementById('porSesionInfo').classList.toggle('hide',!porSesion);
+  document.getElementById('blqRecurrente').classList.toggle('hide',porSesion);
+  document.getElementById('notaModal').textContent = porSesion
+    ? 'Se genera un cobro por cada asistencia registrada.'
+    : 'Cada jugador queda en UNA modalidad. Quien paga trimestre no recibe mensualidades.';
+  render();
+}
+function acc(){
+  const b=document.getElementById('accBtn'), d=document.getElementById('acc');
+  const open=d.classList.toggle('hide')===false;
+  b.setAttribute('aria-expanded',open);
+  setTimeout(checkScroll,50);
+}
+function rad(el){
+  el.closest('[role=radiogroup]').querySelectorAll('[role=radio]').forEach(r=>{r.setAttribute('aria-checked','false');r.tabIndex=-1});
+  el.setAttribute('aria-checked','true'); el.tabIndex=0;
+}
+function toggleCruce(){
+  const c=document.getElementById('cruce'), b=event.currentTarget;
+  const open=c.classList.toggle('hide')===false;
+  b.setAttribute('aria-expanded',open);
+  if(open) setTimeout(()=>c.querySelector('[role=radio]').focus(),30);
+}
+function setFin(v){
+  const d=new Date(v+'T12:00:00'),m=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][d.getMonth()];
+  finTxt=`<b>${d.getDate()} ${m} ${d.getFullYear()}</b>`;
+  const f=document.getElementById('finVal'); if(f) f.innerHTML=finTxt;
+}
+function checkScroll(){
+  const b=document.getElementById('body');
+  const queda = b.scrollHeight - b.scrollTop - b.clientHeight > 12;
+  document.getElementById('fade').classList.toggle('on', queda);
+}
+document.getElementById('body').addEventListener('scroll',checkScroll);
+window.addEventListener('resize',checkScroll);
+
+// navegación por flechas dentro de cada radiogroup (patrón estándar)
+function wireGroup(sel, onPick){
+  const g=document.getElementById(sel);
+  g.addEventListener('keydown',e=>{
+    const items=[...g.querySelectorAll('[role=radio]')];
+    const i=items.indexOf(document.activeElement); if(i<0) return;
+    let n=null;
+    if(['ArrowRight','ArrowDown'].includes(e.key)) n=(i+1)%items.length;
+    if(['ArrowLeft','ArrowUp'].includes(e.key)) n=(i-1+items.length)%items.length;
+    if(n!==null){ e.preventDefault(); items.forEach(x=>x.tabIndex=-1); items[n].tabIndex=0; items[n].focus(); items[n].click(); }
+  });
+  g.querySelectorAll('[role=radio]').forEach(b=>b.addEventListener('click',()=>{ rad(b); onPick&&onPick(b); }));
+}
+wireGroup('conceptos', b=>{ concept=b.dataset.k; });
+wireGroup('grupo-fin', b=>{
+  const i=+b.dataset.i;
+  document.getElementById('dw').classList.toggle('hide', i!==1);
+  if(i===0) finTxt='<b>30 nov 2026</b>';
+  if(i===1){ setFin(document.getElementById('fecha').value); setTimeout(()=>document.getElementById('fecha').focus(),30); return; }
+  if(i===2) finTxt='<b style="color:#fbbf24">nunca ⚠</b>';
+  const f=document.getElementById('finVal'); if(f) f.innerHTML=finTxt;
+});
+wireGroup('grupo-alc', b=>{
+  alcance=b.dataset.m;
+  ['all','dep','cat','esp'].forEach(k=>document.getElementById('sc-'+k).classList.toggle('hide',k!==alcance));
+  render();
+});
+// Enter avanza; nunca envía el formulario antes de tiempo
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter' && e.target.tagName==='INPUT'){ e.preventDefault(); go(1); }
+  if(e.key==='Escape') alert('Cerrar (con confirmación si hay cambios sin guardar)');
+});
+render();
+</script>
+</body>
+</html>

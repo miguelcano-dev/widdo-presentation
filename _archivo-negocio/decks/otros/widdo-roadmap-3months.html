@@ -1,0 +1,815 @@
+<!-- ARCHIVADO 13-ago-2026 — roadmap de 3 meses vencido (feb-abr 2026) — sustituido por usa/USA-PROGRESS.md -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo — Ruta 90 Dias (Abr-Jul 2026)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #fff;
+            color: #18181b;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            max-height: 11in;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #18181b;
+            color: #fff;
+            padding: 12px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-logo {
+            width: 32px;
+            height: 32px;
+        }
+
+        .header-text h1 {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .header-text p {
+            font-size: 8px;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right .period {
+            font-size: 12px;
+            font-weight: 800;
+            color: #22c55e;
+        }
+
+        .header-right .date {
+            font-size: 8px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ===== STATUS BAR ===== */
+        .status-bar {
+            background: #f0fdf4;
+            border-bottom: 1.5px solid #bbf7d0;
+            padding: 7px 28px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .stat-item .stat-value {
+            font-size: 13px;
+            font-weight: 900;
+            color: #166534;
+        }
+
+        .stat-item .stat-label {
+            font-size: 7px;
+            color: #52525b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== MAIN ===== */
+        .main {
+            padding: 10px 28px 6px;
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 8.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #16a34a;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e4e4e7;
+        }
+
+        /* ===== TIMELINE 3 MONTHS ===== */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .month-card {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .month-card.current {
+            border-color: #22c55e;
+        }
+
+        .month-header {
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1.5px solid #e4e4e7;
+        }
+
+        .month-card.current .month-header {
+            background: #f0fdf4;
+            border-bottom-color: #bbf7d0;
+        }
+
+        .month-header h3 {
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .month-header .month-theme {
+            font-size: 7px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: #f4f4f5;
+            color: #52525b;
+        }
+
+        .month-card.current .month-header .month-theme {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .month-body {
+            padding: 8px 10px;
+        }
+
+        .vertical-block {
+            margin-bottom: 7px;
+        }
+
+        .vertical-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .vb-title {
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .vb-title.clubs { color: #16a34a; }
+        .vb-title.tournaments { color: #2563eb; }
+        .vb-title.pathways { color: #9333ea; }
+        .vb-title.legal { color: #f97316; }
+
+        .vb-item {
+            font-size: 8px;
+            color: #3f3f46;
+            line-height: 1.4;
+            margin-bottom: 2px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .vb-item::before {
+            content: '';
+            position: absolute;
+            left: 1px;
+            top: 4px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #d4d4d8;
+        }
+
+        .vb-item.done::before { background: #22c55e; }
+        .vb-item.in-progress::before { background: #f59e0b; }
+
+        .vb-item .owner {
+            font-weight: 800;
+            font-size: 7px;
+            padding: 0 3px;
+            border-radius: 2px;
+            margin-left: 2px;
+        }
+
+        .owner.miguel { background: #dbeafe; color: #1d4ed8; }
+        .owner.alwin { background: #fce7f3; color: #be185d; }
+        .owner.both { background: #fef3c7; color: #92400e; }
+
+        .month-kpi {
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px solid #f4f4f5;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+        }
+
+        .mkpi {
+            text-align: center;
+        }
+
+        .mkpi .mkpi-value {
+            font-size: 13px;
+            font-weight: 900;
+            color: #18181b;
+        }
+
+        .mkpi .mkpi-label {
+            font-size: 6.5px;
+            color: #71717a;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* ===== ROLES ===== */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .role-card {
+            border: 1.5px solid #e4e4e7;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .role-header {
+            padding: 6px 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid #e4e4e7;
+        }
+
+        .role-card.miguel .role-header { background: #eff6ff; }
+        .role-card.alwin .role-header { background: #fdf2f8; }
+
+        .role-header h3 {
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        .role-header .role-badge {
+            font-size: 7px;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .role-card.miguel .role-badge { background: #dbeafe; color: #1d4ed8; }
+        .role-card.alwin .role-badge { background: #fce7f3; color: #be185d; }
+
+        .role-header .role-location {
+            margin-left: auto;
+            font-size: 7.5px;
+            color: #71717a;
+        }
+
+        .role-body {
+            padding: 7px 10px;
+        }
+
+        .role-section-title {
+            font-size: 7px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #a1a1aa;
+            margin-bottom: 2px;
+            margin-top: 5px;
+        }
+
+        .role-section-title:first-child { margin-top: 0; }
+
+        .role-item {
+            font-size: 8px;
+            color: #3f3f46;
+            line-height: 1.4;
+            margin-bottom: 1px;
+            padding-left: 8px;
+            position: relative;
+        }
+
+        .role-item::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: #d4d4d8;
+        }
+
+        /* ===== WHAT EXISTS ===== */
+        .exists-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .exists-card {
+            border-radius: 8px;
+            padding: 7px 10px;
+        }
+
+        .exists-card.done { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .exists-card.partial { background: #fffbeb; border: 1px solid #fde68a; }
+        .exists-card.todo { background: #fef2f2; border: 1px solid #fecaca; }
+
+        .exists-card h4 {
+            font-size: 9px;
+            font-weight: 800;
+            margin-bottom: 3px;
+        }
+
+        .exists-card.done h4 { color: #166534; }
+        .exists-card.partial h4 { color: #92400e; }
+        .exists-card.todo h4 { color: #991b1b; }
+
+        .exists-item {
+            font-size: 7.5px;
+            color: #52525b;
+            line-height: 1.35;
+            margin-bottom: 1px;
+        }
+
+        /* ===== REVENUE TARGETS ===== */
+        .revenue-bar {
+            background: #18181b;
+            border-radius: 8px;
+            padding: 8px 14px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .rev-item { text-align: center; }
+
+        .rev-item .rev-value {
+            font-size: 15px;
+            font-weight: 900;
+            color: #22c55e;
+        }
+
+        .rev-item .rev-label {
+            font-size: 7px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 600;
+        }
+
+        .rev-item .rev-sub {
+            font-size: 6.5px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ===== BLOCKERS ===== */
+        .blockers {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 7px 14px;
+            margin-bottom: 8px;
+        }
+
+        .blockers h4 {
+            font-size: 8.5px;
+            font-weight: 800;
+            color: #991b1b;
+            margin-bottom: 3px;
+        }
+
+        .blockers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .blocker-item {
+            font-size: 7.5px;
+            color: #71717a;
+            line-height: 1.35;
+        }
+
+        .blocker-item strong {
+            color: #18181b;
+            display: block;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #18181b;
+            color: rgba(255,255,255,0.4);
+            padding: 5px 28px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.5px;
+        }
+
+        .footer a {
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .legend {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 5px;
+            font-size: 7px;
+            color: #a1a1aa;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .legend-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.green { background: #22c55e; }
+        .legend-dot.yellow { background: #f59e0b; }
+        .legend-dot.gray { background: #d4d4d8; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-left">
+                <svg class="header-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="48" fill="#22c55e"/>
+                    <text x="50" y="62" text-anchor="middle" fill="#fff" font-family="Red Hat Display" font-weight="900" font-size="38">W</text>
+                </svg>
+                <div class="header-text">
+                    <h1>Widdo</h1>
+                    <p>Ruta de Ejecucion 90 Dias</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="period">Abril 15 &mdash; Julio 15, 2026</div>
+                <div class="date">Plan Operativo &bull; 3 Verticales &bull; 2 Founders &bull; Metas Medibles</div>
+            </div>
+        </div>
+
+        <!-- STATUS BAR: WHERE WE ARE TODAY -->
+        <div class="status-bar">
+            <div class="stat-item">
+                <div class="stat-value">17</div>
+                <div class="stat-label">Clubes Activos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">1,050+</div>
+                <div class="stat-label">Usuarios</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">550+</div>
+                <div class="stat-label">Jugadores</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">$0</div>
+                <div class="stat-label">MRR Actual</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">0%</div>
+                <div class="stat-label">Churn</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">$177</div>
+                <div class="stat-label">Burn/Mes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">282K</div>
+                <div class="stat-label">Lineas Codigo</div>
+            </div>
+        </div>
+
+        <div class="main">
+
+            <!-- WHAT EXISTS vs WHAT'S NEEDED -->
+            <div class="section-title">Estado Actual por Vertical</div>
+            <div class="exists-grid">
+                <div class="exists-card done">
+                    <h4>Clubs &mdash; 95% Listo</h4>
+                    <div class="exists-item">124 modelos, 80+ tablas, 99 controllers</div>
+                    <div class="exists-item">Pagos: Stripe + Wompi + dLocal (codigo listo)</div>
+                    <div class="exists-item">Paywall activo con trial 14 dias</div>
+                    <div class="exists-item">AI Assistant: 56 tools en produccion</div>
+                    <div class="exists-item">Compliance dashboard completo</div>
+                    <div class="exists-item">Multi-idioma EN/ES/PT</div>
+                </div>
+                <div class="exists-card partial">
+                    <h4>Tournaments &mdash; 0% Codigo</h4>
+                    <div class="exists-item">342 tareas planificadas en 21 fases</div>
+                    <div class="exists-item">~40% del CRUD base ya existe (reutilizable)</div>
+                    <div class="exists-item">42 deportes definidos, 7 tipos de scoring</div>
+                    <div class="exists-item">Arquitectura documentada completa</div>
+                    <div class="exists-item">0 lineas de codigo escritas</div>
+                </div>
+                <div class="exists-card todo">
+                    <h4>Pathways &mdash; 0% Codigo</h4>
+                    <div class="exists-item">Concepto validado por Academy CFL (Orlando)</div>
+                    <div class="exists-item">Director confirmo comision 8-15% referral</div>
+                    <div class="exists-item">dLocal integrado (gateway, no flujo BNPL)</div>
+                    <div class="exists-item">0 camps registrados</div>
+                    <div class="exists-item">0 transacciones cross-border</div>
+                </div>
+            </div>
+
+            <!-- 3 MONTH TIMELINE -->
+            <div class="section-title">Plan Mes a Mes</div>
+
+            <div class="legend">
+                <div class="legend-item"><div class="legend-dot green"></div> Hecho</div>
+                <div class="legend-item"><div class="legend-dot yellow"></div> En progreso</div>
+                <div class="legend-item"><div class="legend-dot gray"></div> Pendiente</div>
+                <div class="legend-item"><span class="owner miguel" style="font-size:7px;font-weight:800;background:#dbeafe;color:#1d4ed8;padding:0 3px;border-radius:2px;">M</span> Miguel</div>
+                <div class="legend-item"><span class="owner alwin" style="font-size:7px;font-weight:800;background:#fce7f3;color:#be185d;padding:0 3px;border-radius:2px;">A</span> Alwin</div>
+            </div>
+
+            <div class="timeline-grid">
+                <!-- MES 1: ABRIL 15 - MAYO 15 -->
+                <div class="month-card current">
+                    <div class="month-header">
+                        <h3>Mes 1: Abr 15 &mdash; May 15</h3>
+                        <span class="month-theme">ACTIVAR REVENUE</span>
+                    </div>
+                    <div class="month-body">
+                        <div class="vertical-block">
+                            <div class="vb-title legal">Legal &amp; Fundamentos</div>
+                            <div class="vb-item in-progress">SAS &rarr; RST en DIAN + razon social <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Firmar Founders Agreement <span class="owner both">M+A</span></div>
+                            <div class="vb-item">Alwin deposita $14,500 en Mercury <span class="owner alwin">A</span></div>
+                            <div class="vb-item">83(b) Election presentada al IRS <span class="owner alwin">A</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title clubs">Clubs</div>
+                            <div class="vb-item">Cobrar 3-5 clubes CO (transferencia/Wompi) <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Stripe live mode (EIN recibido) <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Credenciales Wompi produccion <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Comunicar fin de periodo gratuito a 17 clubes <span class="owner miguel">M</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title tournaments">Tournaments</div>
+                            <div class="vb-item">Fase 0: modelos base + migraciones <span class="owner miguel">M</span></div>
+                            <div class="vb-item">CRUD crear torneo + registrar equipos <span class="owner miguel">M</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title pathways">Pathways / USA</div>
+                            <div class="vb-item">Contactar 10 camps en Orlando area <span class="owner alwin">A</span></div>
+                            <div class="vb-item">Compliance: templates FDLE + SafeSport <span class="owner miguel">M</span></div>
+                        </div>
+                        <div class="month-kpi">
+                            <div class="mkpi"><div class="mkpi-value">$263+</div><div class="mkpi-label">MRR</div></div>
+                            <div class="mkpi"><div class="mkpi-value">5+</div><div class="mkpi-label">Clubes Pagando</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MES 2: MAYO 15 - JUNIO 15 -->
+                <div class="month-card">
+                    <div class="month-header">
+                        <h3>Mes 2: May 15 &mdash; Jun 15</h3>
+                        <span class="month-theme">ESCALAR + TOURNAMENTS</span>
+                    </div>
+                    <div class="month-body">
+                        <div class="vertical-block">
+                            <div class="vb-title clubs">Clubs</div>
+                            <div class="vb-item">10+ clubes CO pagando (Wompi + Stripe) <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Primeros 2-3 clubes USA (compliance hook) <span class="owner alwin">A</span></div>
+                            <div class="vb-item">Landing page /us/compliance <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Email campaign: "60 dias para ley julio 1" <span class="owner both">M+A</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title tournaments">Tournaments</div>
+                            <div class="vb-item">Brackets + scheduling + resultados en vivo <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Primer torneo piloto en Colombia <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Vista publica de torneo (SEO, compartible) <span class="owner miguel">M</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title pathways">Pathways / USA</div>
+                            <div class="vb-item">Primer acuerdo firmado con camp (referral 10%) <span class="owner alwin">A</span></div>
+                            <div class="vb-item">Landing page camps/showcases <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Perfil publico de jugador (college-ready) <span class="owner miguel">M</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title legal">Fundraising</div>
+                            <div class="vb-item">Follow-up Erica con datos de revenue <span class="owner alwin">A</span></div>
+                            <div class="vb-item">Outreach 5-10 angels adicionales <span class="owner both">M+A</span></div>
+                        </div>
+                        <div class="month-kpi">
+                            <div class="mkpi"><div class="mkpi-value">$800+</div><div class="mkpi-label">MRR</div></div>
+                            <div class="mkpi"><div class="mkpi-value">15+</div><div class="mkpi-label">Clubes Pagando</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MES 3: JUNIO 15 - JULIO 15 -->
+                <div class="month-card">
+                    <div class="month-header">
+                        <h3>Mes 3: Jun 15 &mdash; Jul 15</h3>
+                        <span class="month-theme">USA + CROSS-BORDER</span>
+                    </div>
+                    <div class="month-body">
+                        <div class="vertical-block">
+                            <div class="vb-title clubs">Clubs</div>
+                            <div class="vb-item">5+ clubes USA pagando (ley background checks) <span class="owner alwin">A</span></div>
+                            <div class="vb-item">25+ clubes totales pagando (CO + USA) <span class="owner both">M+A</span></div>
+                            <div class="vb-item">Compliance reminder emails automaticos <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Case study: The Academy CFL <span class="owner alwin">A</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title tournaments">Tournaments</div>
+                            <div class="vb-item">3+ torneos realizados en Colombia <span class="owner miguel">M</span></div>
+                            <div class="vb-item">Primer showcase/torneo en Florida <span class="owner alwin">A</span></div>
+                            <div class="vb-item">500+ perfiles nuevos via torneos <span class="owner both">M+A</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title pathways">Pathways / USA</div>
+                            <div class="vb-item">3+ camps publicados aceptando jugadores LATAM <span class="owner alwin">A</span></div>
+                            <div class="vb-item">Primeros 5-10 jugadores referidos a camps <span class="owner both">M+A</span></div>
+                            <div class="vb-item">Primera transaccion cross-border (BNPL o directa) <span class="owner miguel">M</span></div>
+                        </div>
+                        <div class="vertical-block">
+                            <div class="vb-title legal">Fundraising</div>
+                            <div class="vb-item">Deck actualizado con revenue + traccion real <span class="owner both">M+A</span></div>
+                            <div class="vb-item">Decision: SAFE cerrado o plan B angels <span class="owner both">M+A</span></div>
+                        </div>
+                        <div class="month-kpi">
+                            <div class="mkpi"><div class="mkpi-value">$1,500+</div><div class="mkpi-label">MRR</div></div>
+                            <div class="mkpi"><div class="mkpi-value">25+</div><div class="mkpi-label">Clubes Pagando</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROLES -->
+            <div class="section-title">Responsabilidades por Founder</div>
+
+            <div class="roles-grid">
+                <div class="role-card miguel">
+                    <div class="role-header">
+                        <h3>Miguel Cano</h3>
+                        <span class="role-badge">CEO / CTO</span>
+                        <span class="role-location">Colombia &bull; 100% dedicado</span>
+                    </div>
+                    <div class="role-body">
+                        <div class="role-section-title">Producto &amp; Tecnologia</div>
+                        <div class="role-item">Todo el desarrollo: backend, frontend, infraestructura, IA</div>
+                        <div class="role-item">Tournaments MVP: de 0 a produccion en 60 dias</div>
+                        <div class="role-item">Compliance polish para campana USA (templates, reminders)</div>
+                        <div class="role-item">Perfil publico de jugador (college-ready profile)</div>
+                        <div class="role-section-title">Operaciones Colombia</div>
+                        <div class="role-item">Activar cobros y convertir 17 clubes a pagos</div>
+                        <div class="role-item">SAS: cambio a RST, razon social, credenciales Wompi</div>
+                        <div class="role-item">Organizar primeros torneos piloto en Colombia</div>
+                        <div class="role-section-title">Metricas semanales</div>
+                        <div class="role-item">MRR, clubes pagando, features shipped, bugs criticos</div>
+                    </div>
+                </div>
+
+                <div class="role-card alwin">
+                    <div class="role-header">
+                        <h3>Alwin</h3>
+                        <span class="role-badge">COO / BD USA</span>
+                        <span class="role-location">Orlando, FL &bull; 25 hrs/semana</span>
+                    </div>
+                    <div class="role-body">
+                        <div class="role-section-title">Business Development USA</div>
+                        <div class="role-item">Contactar 10-15 camps/academias en Orlando area</div>
+                        <div class="role-item">Cerrar primer acuerdo de referral (10% por jugador)</div>
+                        <div class="role-item">Demos presenciales a clubes usando compliance como gancho</div>
+                        <div class="role-item">Organizar primer showcase/torneo en Florida</div>
+                        <div class="role-section-title">Inversores &amp; Partners</div>
+                        <div class="role-item">Follow-up con Erica Berman (con data de revenue)</div>
+                        <div class="role-item">Outreach a angels en red deportiva</div>
+                        <div class="role-item">Case study con The Academy CFL</div>
+                        <div class="role-section-title">Reporte mensual</div>
+                        <div class="role-item">Clubs contactados, demos, pipeline, deals, horas dedicadas</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOCKERS -->
+            <div class="blockers">
+                <h4>Blockers Criticos (resolver antes de avanzar)</h4>
+                <div class="blockers-grid">
+                    <div class="blocker-item">
+                        <strong>Founders Agreement</strong>
+                        Sin firma = no se puede levantar capital. Alwin NO debe depositar $14.5K sin acuerdo firmado.
+                    </div>
+                    <div class="blocker-item">
+                        <strong>SAS &rarr; RST</strong>
+                        Sin RST se paga 35% en vez de 1.8%. Ir a DIAN esta semana. Bloquea cobros legales en CO.
+                    </div>
+                    <div class="blocker-item">
+                        <strong>Stripe Live Mode</strong>
+                        Productos/precios de test no sirven en live. Recrear en live + actualizar BD + webhook.
+                    </div>
+                    <div class="blocker-item">
+                        <strong>83(b) Election</strong>
+                        Alwin tiene 30 dias desde emision de shares. Sin esto, impacto fiscal grave. Necesita abogado.
+                    </div>
+                </div>
+            </div>
+
+            <!-- REVENUE TARGET -->
+            <div class="revenue-bar">
+                <div class="rev-item">
+                    <div class="rev-value">$1.5K+</div>
+                    <div class="rev-label">MRR Meta Jul 15</div>
+                    <div class="rev-sub">25+ clubes CO+USA</div>
+                </div>
+                <div class="rev-item">
+                    <div class="rev-value">25+</div>
+                    <div class="rev-label">Clubes Pagando</div>
+                    <div class="rev-sub">~17 CO + ~8 USA</div>
+                </div>
+                <div class="rev-item">
+                    <div class="rev-value">3+</div>
+                    <div class="rev-label">Torneos Realizados</div>
+                    <div class="rev-sub">CO + 1 showcase FL</div>
+                </div>
+                <div class="rev-item">
+                    <div class="rev-value">3+</div>
+                    <div class="rev-label">Camps con Acuerdo</div>
+                    <div class="rev-sub">Referral 10% firmado</div>
+                </div>
+                <div class="rev-item">
+                    <div class="rev-value">2K+</div>
+                    <div class="rev-label">Usuarios Totales</div>
+                    <div class="rev-sub">Organico + torneos</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <span>Widdo Inc. &bull; C-Corp Delaware &bull; <a href="https://widdo.co">widdo.co</a></span>
+            <span>Confidencial &bull; Abril 2026 &bull; Plan interno de ejecucion</span>
+        </div>
+    </div>
+</body>
+</html>

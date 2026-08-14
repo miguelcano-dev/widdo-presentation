@@ -1,0 +1,2070 @@
+{
+    "created_at_note": "backup pre-lockdown club 6 Alfa Basketball",
+    "club": {
+        "id": 6,
+        "name": "Alfa Basketball",
+        "status": "ACT",
+        "enrollment_enabled": 1,
+        "enrollment_token": "L1oJC4tr",
+        "suspended_at": null,
+        "suspended_reason": null,
+        "suspended_by": null,
+        "email": "alfabasketball2024@gmail.com"
+    },
+    "memberships": [
+        {
+            "id": 8,
+            "user_id": 18,
+            "role": "owner",
+            "status": "ACT"
+        },
+        {
+            "id": 768,
+            "user_id": 729,
+            "role": "owner",
+            "status": "ACT"
+        },
+        {
+            "id": 97,
+            "user_id": 19,
+            "role": "trainer",
+            "status": "ACT"
+        },
+        {
+            "id": 1461,
+            "user_id": 1402,
+            "role": "trainer",
+            "status": "ACT"
+        },
+        {
+            "id": 129,
+            "user_id": 136,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 131,
+            "user_id": 138,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 133,
+            "user_id": 139,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 137,
+            "user_id": 143,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 139,
+            "user_id": 145,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 141,
+            "user_id": 147,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 143,
+            "user_id": 149,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 145,
+            "user_id": 151,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 147,
+            "user_id": 153,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 153,
+            "user_id": 159,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 165,
+            "user_id": 171,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 173,
+            "user_id": 179,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 175,
+            "user_id": 181,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 177,
+            "user_id": 183,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 189,
+            "user_id": 194,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 191,
+            "user_id": 196,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 199,
+            "user_id": 204,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 207,
+            "user_id": 212,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 219,
+            "user_id": 224,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 239,
+            "user_id": 244,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 253,
+            "user_id": 258,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 255,
+            "user_id": 260,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 259,
+            "user_id": 264,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 267,
+            "user_id": 271,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 287,
+            "user_id": 286,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 289,
+            "user_id": 288,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 309,
+            "user_id": 309,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 311,
+            "user_id": 311,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 331,
+            "user_id": 326,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 334,
+            "user_id": 328,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 342,
+            "user_id": 334,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 394,
+            "user_id": 382,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 438,
+            "user_id": 426,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 505,
+            "user_id": 489,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 594,
+            "user_id": 566,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 596,
+            "user_id": 568,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 598,
+            "user_id": 570,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 600,
+            "user_id": 572,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 608,
+            "user_id": 581,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 621,
+            "user_id": 593,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 623,
+            "user_id": 595,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 644,
+            "user_id": 615,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 775,
+            "user_id": 734,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 849,
+            "user_id": 808,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1028,
+            "user_id": 978,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1052,
+            "user_id": 1001,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1160,
+            "user_id": 1108,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1162,
+            "user_id": 1110,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1244,
+            "user_id": 1191,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1354,
+            "user_id": 1295,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1366,
+            "user_id": 1311,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1368,
+            "user_id": 1313,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1370,
+            "user_id": 1315,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1372,
+            "user_id": 1317,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1374,
+            "user_id": 1319,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1376,
+            "user_id": 1321,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1448,
+            "user_id": 1389,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1450,
+            "user_id": 1391,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1457,
+            "user_id": 1398,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1459,
+            "user_id": 1400,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1462,
+            "user_id": 1403,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1479,
+            "user_id": 1420,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1570,
+            "user_id": 1510,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1574,
+            "user_id": 1514,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1584,
+            "user_id": 1524,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1605,
+            "user_id": 1545,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1608,
+            "user_id": 1549,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1620,
+            "user_id": 1561,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1624,
+            "user_id": 1565,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1632,
+            "user_id": 1573,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 1637,
+            "user_id": 1576,
+            "role": "player",
+            "status": "ACT"
+        },
+        {
+            "id": 161,
+            "user_id": 167,
+            "role": "player",
+            "status": "INA"
+        },
+        {
+            "id": 384,
+            "user_id": 372,
+            "role": "player",
+            "status": "INA"
+        },
+        {
+            "id": 130,
+            "user_id": 137,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 132,
+            "user_id": 137,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 134,
+            "user_id": 140,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 138,
+            "user_id": 144,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 140,
+            "user_id": 146,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 142,
+            "user_id": 148,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 144,
+            "user_id": 150,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 146,
+            "user_id": 152,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 148,
+            "user_id": 154,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 154,
+            "user_id": 160,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 162,
+            "user_id": 168,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 166,
+            "user_id": 172,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 174,
+            "user_id": 180,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 176,
+            "user_id": 182,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 178,
+            "user_id": 182,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 190,
+            "user_id": 195,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 192,
+            "user_id": 195,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 200,
+            "user_id": 205,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 208,
+            "user_id": 213,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 220,
+            "user_id": 225,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 240,
+            "user_id": 245,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 254,
+            "user_id": 259,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 256,
+            "user_id": 261,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 260,
+            "user_id": 261,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 268,
+            "user_id": 272,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 288,
+            "user_id": 287,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 290,
+            "user_id": 289,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 310,
+            "user_id": 310,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 312,
+            "user_id": 312,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 332,
+            "user_id": 327,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 335,
+            "user_id": 329,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 343,
+            "user_id": 335,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 385,
+            "user_id": 373,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 395,
+            "user_id": 383,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 439,
+            "user_id": 427,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 506,
+            "user_id": 490,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 595,
+            "user_id": 567,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 597,
+            "user_id": 569,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 599,
+            "user_id": 571,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 601,
+            "user_id": 573,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 609,
+            "user_id": 582,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 622,
+            "user_id": 594,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 624,
+            "user_id": 596,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 645,
+            "user_id": 616,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 776,
+            "user_id": 735,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 850,
+            "user_id": 809,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1029,
+            "user_id": 979,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1053,
+            "user_id": 1002,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1161,
+            "user_id": 1109,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1163,
+            "user_id": 1109,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1245,
+            "user_id": 1192,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1355,
+            "user_id": 1296,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1367,
+            "user_id": 1312,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1369,
+            "user_id": 1314,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1371,
+            "user_id": 1316,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1373,
+            "user_id": 1318,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1375,
+            "user_id": 1320,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1377,
+            "user_id": 1322,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1449,
+            "user_id": 1390,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1451,
+            "user_id": 1392,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1458,
+            "user_id": 1399,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1460,
+            "user_id": 1401,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1463,
+            "user_id": 1404,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1480,
+            "user_id": 1421,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1571,
+            "user_id": 1511,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1575,
+            "user_id": 1515,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1585,
+            "user_id": 1525,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1606,
+            "user_id": 1546,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1609,
+            "user_id": 1550,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1621,
+            "user_id": 1562,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1625,
+            "user_id": 1566,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1633,
+            "user_id": 383,
+            "role": "parent",
+            "status": "ACT"
+        },
+        {
+            "id": 1638,
+            "user_id": 1577,
+            "role": "parent",
+            "status": "ACT"
+        }
+    ],
+    "users": [
+        {
+            "id": 18,
+            "name": "Geraldine",
+            "email": "alfabasketball2024@gmail.com",
+            "password": "$2y$12$yBkFgawCuJleYV2lzxaasubRbIDQ18kmLKENgGgqJxFYdG66aCOFy",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 19,
+            "name": "Luis Miguel",
+            "email": "vilorialuis270399@gmail.com",
+            "password": "$2y$12$iQts8DljGze0L7cld\/WPD.n73i5KWbkym84jhZxHI0CY14LLkQpza",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 136,
+            "name": "Matias",
+            "email": null,
+            "password": "$2y$12$IVoooKEUyZvNocsz3m3F9OOQIH\/RqD2Vj\/DlzyIstUdS4h9d7cBj.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 137,
+            "name": "Leidy Tatiana",
+            "email": "tatianazapata2008@hotmail.com",
+            "password": "$2y$12$pRgs4Ed5CibfoShC6di5t.AcxQREaDViBPo\/ElKoJkEeWlLEepjr6",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 138,
+            "name": "Lucia",
+            "email": null,
+            "password": "$2y$12$\/kPpUyKHLJAlLe\/FI4Glq.H4e9BmSpDYS.Kk1xXnyfteVw7SkRaOO",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 139,
+            "name": "Emmanuel",
+            "email": null,
+            "password": "$2y$12$JtyotoqhHKWPVGNunefrl.OVTFy\/p3zySyfors.\/x.mvdzDbX2BLW",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 140,
+            "name": "Luis Fernando",
+            "email": "emmanuelbellesteros@gmail.com",
+            "password": "$2y$12$8OVX3mPn5vAOH8cmPLY.5.Ydrkp9uP78aeNuv2kcE3GAQh\/SmohXy",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 143,
+            "name": "Martin Andres",
+            "email": null,
+            "password": "$2y$12$HYPNhM\/bCDu\/2btLyHY4pex8vFx1AQOkn0omSt8FHZG3cX5GDtaf6",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 144,
+            "name": "Andres Aicardo",
+            "email": "andres.espinal.herrera@gmail.com",
+            "password": "$2y$12$fUT62TtB2hNhzA2yQFKOb.sMSYnBtEjeFY8M\/9xqBp9Dj8MXa\/ft6",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 145,
+            "name": "Maximiliano",
+            "email": null,
+            "password": "$2y$12$2FlOufriA\/s2cu5\/ejZjreEMLoahPHUPIce\/L0iW2z.zfrkeeVo1.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 146,
+            "name": "Adriana Patricia",
+            "email": "maxidres1419@gmail.com",
+            "password": "$2y$12$hsaaxDWQUvHdCwcZstRiheB\/lPgFF\/uR.dNWs3At8jt\/9eKjZ\/06a",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 147,
+            "name": "Matías",
+            "email": null,
+            "password": "$2y$12$LSgKHDhS4Rc2xzOXT77X..PXIiuJBIxkoqsDSqWo0jjaj32AdTgY.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 148,
+            "name": "Natalia Andrea",
+            "email": "beyotandrea15@gmail.com",
+            "password": "$2y$12$GEbqF1n7UQ.erIhn269avunc3FkcIEGWV0MAd5e.EcF6gdlLW.t\/K",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 149,
+            "name": "Maria Paz",
+            "email": null,
+            "password": "$2y$12$OUTGXDbVzWqzmEiD.vZPd.XM1NATEVXXT2grmARTs43jI1N3M2dJ6",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 150,
+            "name": "Alexie Ivanov",
+            "email": "alexienougues@gmail.com",
+            "password": "$2y$12$e5tMp8i3g.hE\/w0d76HHCuBaLqed9X2oICpD8zMwEr6q6np92YGOy",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 151,
+            "name": "Danna",
+            "email": null,
+            "password": "$2y$12$0UQF4\/1lL7aUHIffCsOuWephXtD2WB96dt0T1xGBosRgmTWscg6SW",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 152,
+            "name": "Juliana",
+            "email": "julidannnaruru@gmail.com",
+            "password": "$2y$12$1bNOKtiq494pequBNmFgAu6JdtfrgtP.c\/5ZGfxGb2l6a9tdjCWwq",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 153,
+            "name": "Alan",
+            "email": null,
+            "password": "$2y$12$gLDmEgDcorKtR4qrm.DtE.z6h\/ZuV99M3l495F1u.cejzPXhswOWi",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 154,
+            "name": "Luz Elena",
+            "email": "helenac03@hotmail.com",
+            "password": "$2y$12$pkOa4ip\/R0vccBE99vO0wu99LaGI\/7kOjOusbRksO86Q2toy0MGPy",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 159,
+            "name": "Matias David",
+            "email": null,
+            "password": "$2y$12$K05Jnmvos4U39.VP5G9xGezSFBUKGkO2L7saqllv1n9ihBvRt1wOS",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 160,
+            "name": "Elkin Jose",
+            "email": "elkinjimenez3757@hotmail.com",
+            "password": "$2y$12$lmdhiW52njtB9bh65WvH2edvJcBOwfkyzUzmBX0CGGsxT6\/BLz2Gm",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 167,
+            "name": "Pepito",
+            "email": null,
+            "password": "$2y$12$791rHGAUvCxtZKxh25P\/v.s\/sOvmaICulMDRONDun3ak0oAJKVdNi",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 168,
+            "name": "Maria",
+            "email": "alfabasketball13@gmail.com",
+            "password": "$2y$12$stR5mPiht8tPzNJB.kJKPew7KagDXPId.WluQ64ijOJkgoXUfTONS",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 171,
+            "name": "Cristian Daniel",
+            "email": null,
+            "password": "$2y$12$fsFesRyu2Z1AIn72qZRDROfqBtLOpRA2MMqBEIejDdwZDIS8lZVX.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 172,
+            "name": "Esmeralda",
+            "email": "esmeralda.monsalve1972@gmail.com",
+            "password": "$2y$12$N7bBunUaxBPmcxO3NH0u9emvGDskAPFHer\/gNER29QKeJq2NMHgEC",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 179,
+            "name": "Emanuel",
+            "email": null,
+            "password": "$2y$12$202xa0KhAe5H5iOauIDkKucKMWQYds\/ESK6Eqn4da9lUgAEj80Vuu",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 180,
+            "name": "Maria Fernanda",
+            "email": "mariafospina89@gmail.com",
+            "password": "$2y$12$uO7DX8g6eNp6znDf.pQf\/OyYGtknLKk88kngXvpV8L2Ljp.ymaiA2",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 181,
+            "name": "David",
+            "email": null,
+            "password": "$2y$12$FLa2FClidEyUVkcMCuaCy.4tTgu2VtZKT4WTRXK0YxBO1oc2U6ECG",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 182,
+            "name": "Makyerlin",
+            "email": "mayebm@yahoo.com",
+            "password": "$2y$12$CjoehAjcF0u98flSJhMyceFS5.fc70GmPBCQlm6AGoso6iXtYnrTa",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 183,
+            "name": "Joshua",
+            "email": null,
+            "password": "$2y$12$zaOv99vU4qIccwBxB56BX.EberdBFO25V2yOmxnRh4m7tMpBAeIoC",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 194,
+            "name": "Miguel Angel",
+            "email": null,
+            "password": "$2y$12$6ZOj\/ca.PFOEF\/eCxEPnc.6qtStvLvfAPNRPh3swrT4f5Tq23D55O",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 195,
+            "name": "Valentina",
+            "email": "valentina-2604@hotmail.com",
+            "password": "$2y$12$bER7vf9Yhs9fOfrp24FI\/ubHyUovkDVnOhcdIvkfMAPasf4yLD272",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 196,
+            "name": "Gabriela",
+            "email": null,
+            "password": "$2y$12$kzzobS\/tKvZrD3q9KiBXrOJW1p6ZvE2xqs8sWvD\/fYN4Vr34OOgEm",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 204,
+            "name": "Matias",
+            "email": null,
+            "password": "$2y$12$saUeIyrUMIOSyzG6Si8RceF98hg2cPq9K7wF7fuiEAhEzVXqqxvme",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 205,
+            "name": "María Alejandra",
+            "email": "alejajimenez54@gmail.com",
+            "password": "$2y$12$DmsvOV.FIP1ZV8hcs1UXduHjRe4vZAzYnXEgBdDuLBJ0KXOOBF6su",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 212,
+            "name": "Maria Fernanda",
+            "email": null,
+            "password": "$2y$12$\/TaRWQ8na5iHE7Az9IYatuHp5a.rSh3de\/8a8zxo6uVsKS6XlcorG",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 213,
+            "name": "Mauricio",
+            "email": "mauvel24@hotmail.com",
+            "password": "$2y$12$8XwyM59ciabaNjKDKRbJ\/.yD1AWBOoFC.dyFuu3WnpnxVAWBUm3J.",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 224,
+            "name": "Angel",
+            "email": null,
+            "password": "$2y$12$QDt1QBuutFN9P7hk0rvwJuncSivUpdqvT6Hs62dS0g.sFn7VUUbve",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 225,
+            "name": "María Magdalena",
+            "email": "ceiba10@hotmail.com",
+            "password": "$2y$12$q0s5d1qhQhmR2e\/shLhM5u1iBPxWzcgllcC6nsiGg32\/27q7opriC",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 244,
+            "name": "Daniel Alejandro",
+            "email": null,
+            "password": "$2y$12$IaWP5fkYp57ajWwH1ef5cey.tWpOBRYRU14l0GIXyzNnueAuZBC4.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 245,
+            "name": "Anyohely",
+            "email": "anyohelydefernandez@gmail.com",
+            "password": "$2y$12$RfaYVMZnUpu2XyIi.cl\/ueskB6zfjYLvf7OTyj861i7uesS18.o..",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 258,
+            "name": "Susana",
+            "email": null,
+            "password": "$2y$12$MD5Cq\/ajyE\/d\/OkcPaC9H..La\/ve0LsRaopCe.Zlqu\/k6RmP70KEe",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 259,
+            "name": "Héctor",
+            "email": "hectorajp@gmail.com",
+            "password": "$2y$12$2PzXwc3wg3QpYFIz5lmFyuMIVOYoPMrYuuXMwsanF3Wps6\/Gz2P1.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 260,
+            "name": "Isabella",
+            "email": null,
+            "password": "$2y$12$myM5RkVs4T4fY0bMyBplBeaWbNmqrGsDAQuKE9kKZ2UTrEu7eAkre",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 261,
+            "name": "Maribel",
+            "email": "maribelobando12@hotmail.com",
+            "password": "$2y$12$emsz.AkpncBCTgUQSOBLeuul28lf5bj2aiYIYagi9.KUExjMOtiby",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 264,
+            "name": "Emanuel",
+            "email": null,
+            "password": "$2y$12$yRZP8FqrhAoRTEuwzePOMOnFfaUph8lojsLXtWS5H5.GPDLOoZ3uS",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 271,
+            "name": "Valery",
+            "email": null,
+            "password": "$2y$12$u.8woxzAzPKjrd7\/bFU.ZuJJ8DI2LjruYdpK64snjihpHGFbz5z7O",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 272,
+            "name": "Johan Jahir",
+            "email": "johancano424@gmail.com",
+            "password": "$2y$12$drQdszK82ZR9vcVK3ShsWeFPOl8tTnttJL23bytsrJnnfgMHrSVH6",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 286,
+            "name": "Jacobo",
+            "email": null,
+            "password": "$2y$12$FxbV9DkiFCYc5AR.O9OJXeRI6fFpA3hNM452cl\/\/TLMCtF1mNCABC",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 287,
+            "name": "Yenni",
+            "email": "yenniandrade@hotmail.com",
+            "password": "$2y$12$f9.lBwzp.YFm.IUh.XO78.J2syo9E2KOeq.q60XAv5xv1nSjZfmjW",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 288,
+            "name": "Dominic",
+            "email": null,
+            "password": "$2y$12$PI4KoE7XafJNMGkDQU2ukOaQwgOA20167vu4LVYQJ0Xi.WvC5TxjG",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 289,
+            "name": "Dominic",
+            "email": "wendymar.travels@gmail.com",
+            "password": "$2y$12$eoX5zyubKXW5ev1LwmXqJOWLJbar7qK2kPXO1O7rhWtLQo6FXl3wa",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 309,
+            "name": "Cristian",
+            "email": null,
+            "password": "$2y$12$FTOLhOZ3o.6z0rrdzGuF1ebXo9BjWgL7X7qypjmKs8xz\/1bRIBhIu",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 310,
+            "name": "Clara Andrea",
+            "email": "csuaza27@hotmail.com",
+            "password": "$2y$12$5mlvopWLxcZguR.t6FtG4eQd.NI9zgZ6ShofXwVokoyOADbegCcfq",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 311,
+            "name": "Salomé",
+            "email": null,
+            "password": "$2y$12$jAJ.oCcEnuV7PPUvHuLrSOGW7VKa\/s95n5c7guXGVcOKndfruizuO",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 312,
+            "name": "Yuly",
+            "email": "elineybolivar2017@hotmail.com",
+            "password": "$2y$12$JSY\/ImKFXtjBEb0FGbYcXO7HVSP7vMpOGuYx\/J6ei3772esr6.aXK",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 326,
+            "name": "Ezequiel Aaron",
+            "email": null,
+            "password": "$2y$12$g3gmeadh0mSi4BeLNN2VR.Qz0slFG7mj1mSxAJ5ZNFKCgAVZS1ggC",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 327,
+            "name": "Jesús Eduardo",
+            "email": "jesusemorenom22@gmail.com",
+            "password": "$2y$12$5oh6k0KVXNjaSp8rD1.LGufDLte9xwjY5jxJB8D09HWhZ3hug6xBS",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 328,
+            "name": "María Fernanda",
+            "email": null,
+            "password": "$2y$12$5QXEk0qnswRm\/BLqwSJ6sOYT4cjVDcnIK1JHFYsBIVAWewwfqWO.q",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 329,
+            "name": "Mary Luz",
+            "email": "morch2m@gmail.com",
+            "password": "$2y$12$00iaD.6kOcUyVFHSkdO2GOVVuBybEN5J.LGpOBUcUuy8bhIZw3Cxe",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 334,
+            "name": "Juan José",
+            "email": null,
+            "password": "$2y$12$VnR4\/mGpA1Jbt7\/WTIS05u12K\/bU7wA.dg2zo.Q.iTiOQGJwl\/X8e",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 335,
+            "name": "Mabel Yadira",
+            "email": "myadira20@hotmail.com",
+            "password": "$2y$12$2W52Twxry4Ptmjhmg0RyG.wg2C.7pLD7X69jPoerwDSZgG5IeoZPm",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 372,
+            "name": "Juan Manuel",
+            "email": null,
+            "password": "$2y$12$XLRyXJLjKn.nwjRwGvFMPusl1R\/UaKi8sHXjoGUM4WN3N0FZtu7UG",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 373,
+            "name": "Laura Carolina",
+            "email": "roldanlc1984@gmail.com",
+            "password": "$2y$12$EdjJXJUQ.grklgf\/Lave9OSa3N5TfzFTfLauXivLB7M7aIDlqn7si",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 382,
+            "name": "Ismael",
+            "email": null,
+            "password": "$2y$12$uulf7AXOeO4GWQMilyol8ObuR5e1kbmcAxyQE6JeCz7Lhsqm.L\/vK",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 383,
+            "name": "Luisa Fernanda",
+            "email": "lutomar86@gmail.com",
+            "password": "$2y$12$o93.Q4hfXSYlDNKiFOWz2.DKGyPnSfPTQO1PxIdzdkOzd8lE84rtO",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 426,
+            "name": "Mariangel",
+            "email": null,
+            "password": "$2y$12$9eFLQuLL3xyzneco8h4EkuQCyPUZLwshfEmlbTTf.WVv2J7fzvNs.",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 427,
+            "name": "Andrea",
+            "email": "andreavcossio@gmail.com",
+            "password": "$2y$12$FQrr5l3RTBenRG67IC9X4.RdkZDijsw9ca40Uw8DVX31StouNNnNG",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 489,
+            "name": "Joseph David",
+            "email": null,
+            "password": "$2y$12$ifUiX7Ho\/AQYSOvpFWtmUuOgVRJRmO6l3LTq8UGhOSv8YpVu\/qIma",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 490,
+            "name": "Diana Carolina",
+            "email": "yanezjoseph409@gmail.com",
+            "password": "$2y$12$4xNMfI2T0udk90EaV4h2jutiEaY99YsS3vbC46SneFhysSA3VtbMi",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 566,
+            "name": "Jeronimo",
+            "email": null,
+            "password": "$2y$12$bTFfjo.YyOc1QiUNbmpe3OhYtNwC602MZMjr7Tv\/HmgGdASPe736q",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 567,
+            "name": "Diego",
+            "email": "rincondiego30@gmail.com",
+            "password": "$2y$12$LS5z7WHuzAernj7yNKA4Z.A1aN2p\/7qgoHJ5Hpq3jVIGZDrMGl7Rq",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 568,
+            "name": "Ethan",
+            "email": null,
+            "password": "$2y$12$BCP9jdl93fq\/NBTUu8a7Bu032ntYoLmbIryxcrlSsnVMXCjmVPkP2",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 569,
+            "name": "Ahiza",
+            "email": "ahizaalvarado@gmail.com",
+            "password": "$2y$12$RMbHqgPZV0thGmrOQ8RZLORD3rhx3H02.TT4..CwWKo4BkCr6Zqgu",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 570,
+            "name": "Juan Manuel",
+            "email": null,
+            "password": "$2y$12$7\/bIfFe0eXEPXFyLt5zQUOq9P1yfjuEv\/cATr1C9OiDBMBJy0drQi",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 571,
+            "name": "Sindy",
+            "email": "cindygv2502@gmail.com",
+            "password": "$2y$12$lmkYDyr93p9pCVByp8IvsuVo6pds0PMOXkKpPwnjlEEFrKUzgsMrm",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 572,
+            "name": "Samuel",
+            "email": null,
+            "password": "$2y$12$M6I12ft1O2QIvY4XmAuuIeQTCsLoQbFFPy4rDD7pk3T4E58UCEEUW",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 573,
+            "name": "Natalia",
+            "email": "nataagu@hotmail.com",
+            "password": "$2y$12$yKwtKyvbEu0ukd0HP6JGpuG2HzhK5Snz4M1nArbH7i2Y7Mo0x6MxC",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 581,
+            "name": "Matías",
+            "email": null,
+            "password": "$2y$12$Xl1M0UughDZOe6s9aZxq9Oe34\/5bO5CJVCigeyI28dC8OpQbHVzmC",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 582,
+            "name": "Sirley",
+            "email": "sirleybedu@gmail.com",
+            "password": "$2y$12$eouaXJnb1UvXKHQwVch\/JOPtK47g.fe6QbelEF6ejoukQsJgBKYL6",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 593,
+            "name": "Emanuel",
+            "email": null,
+            "password": "$2y$12$lXLXDi5DTQrP8qSEM1tV2O2cLnHxQCWQbg\/K0pGgLeYtmnQ210D9q",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 594,
+            "name": "Yaqueline",
+            "email": "yaque.bedo@gmail.com",
+            "password": "$2y$12$OI1jvPHrFp2T5Gl858BYH.E6N\/Z.2TvQPYggdOytL3Gfdg1FHSUj2",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 595,
+            "name": "Emilio",
+            "email": null,
+            "password": "$2y$12$6WkT4.rVf.1lX3ZPof2uU.h7vSgEkuNPh2\/T0qu2gdEojPwnfoBq2",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 596,
+            "name": "Adriana",
+            "email": "luguermarin@gmail.com",
+            "password": "$2y$12$3d7dBdfxomMaRMCyUp\/Ig.XsOTkWJCsdOs07zhW00jqEDYLUTZlKG",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 615,
+            "name": "Emanuel",
+            "email": null,
+            "password": "$2y$12$6NzPMip8wB8KxMV5FYPBwuX6AzXEQzr\/OPR6vHLYYrFiXMCC0K2k6",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 616,
+            "name": "Diana Marcela",
+            "email": "diana.garcia.clavijo@gmail.com",
+            "password": "$2y$12$esFv6V9ttEiHXxwawN2fm.wwMskZIUSON9zm0Tgt53wD\/DYsX73cu",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 729,
+            "name": "Test",
+            "email": "test.owner.alfa@widdo.co",
+            "password": "$2y$12$B2YaMXIK6vHXVwpJFhstGOrENSf\/Lo8jdVbjJL0bD3kgE5g1p9eqG",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 734,
+            "name": "Luciana",
+            "email": null,
+            "password": "$2y$12$VJKuX424bUMKDz8TXJzU9.aObrqtcHmWls46Tl9my1wqydM3cEADC",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 735,
+            "name": "Andrea",
+            "email": "andreazaplon@gmail.com",
+            "password": "$2y$12$AqG72AfgGo2YpsYfAmu6oOtmEow8RpetnUVXiKIdvjOgjF7C1QHuq",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 808,
+            "name": "Juliana",
+            "email": null,
+            "password": "$2y$12$BGK4\/u7u6f5sV\/3nbV11a.O.OgpSSSDzLaEakvV8Gcx7CSWVZx3zu",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 809,
+            "name": "Liliana Andrea",
+            "email": "lianc2-1276@hotmail.com",
+            "password": "$2y$12$K6qPki5ILi0U0cqivi4lWOH\/mFt9pV5JC7f.f2b5W7p9PS9YjfKL.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 978,
+            "name": "Emmanuel",
+            "email": null,
+            "password": "$2y$12$cg2318VNIcqfQgOnreiDlOQN.3gt8fqsRi6owePUeB6btBXDkMwH.",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 979,
+            "name": "Joanna Andrea",
+            "email": "joannaortiz.52079@gmail.com",
+            "password": "$2y$12$lbzvbzu83E5actOHt4L9I.Jfk5a4hHMEh4BiLSs\/xAcmHKzJPBqBe",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1001,
+            "name": "Guillermo Enrique",
+            "email": null,
+            "password": "$2y$12$7bqnj2C0P\/ORJ7Jf1qgKv.377qPM5Axau4SJQhpKckb4hTfGZLRy2",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1002,
+            "name": "Lisbeth Del Carmen",
+            "email": "lisbethmontiel943@gmail.com",
+            "password": "$2y$12$JxPKsKZlcyjytdLAe1xfUecS90sD72YJA4Q9pDu7ni.KFECcQ7S.2",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1108,
+            "name": "Maía",
+            "email": null,
+            "password": "$2y$12$zZbMt34ixYd9Y62F\/eRJq.7XHPGavWwYNrqDT1AKWkDRXy4mKSlr.",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1109,
+            "name": "Juan Carlos",
+            "email": "jcbuitrago23@yahoo.es",
+            "password": "$2y$12$9fOKn4tO\/DzRM\/JCcY9ix.K22QuPOf1EFLxiOXJqUa71ZWGWGPKnO",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1110,
+            "name": "Martín",
+            "email": null,
+            "password": "$2y$12$7ERUdzcURH\/mJR\/ETe8gL.VezzNN7nqgNCM2pIrAsyPBY17rnaNpy",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1191,
+            "name": "David",
+            "email": null,
+            "password": "$2y$12$5kiOpd3bmMqKySWX.Q1aEOAVCgNMV1Nh5W4DFKw7yJ\/mkd9dU.VHS",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1192,
+            "name": "Milena",
+            "email": "mieuge30@gmail.com",
+            "password": "$2y$12$KB6vNObEmn2aKt.LNixPnevf0M4Vbpm8IXr9Nu9ZJzthXcRH\/bIJO",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1295,
+            "name": "Juan Pablo",
+            "email": null,
+            "password": "$2y$12$S0iZRvfcHbthnNybEMNFOOGhBzLGZiEXAbTjfQYAb1AiA4EQKtQ7G",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1296,
+            "name": "Irlene Judith",
+            "email": "irlenyscs15@gmail.com",
+            "password": "$2y$12$5OjAmRyC5jqug37.rCcDye1TniJH63h4iyvCwwKyX4UKI.Yr.Iv.S",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1311,
+            "name": "Luciana",
+            "email": null,
+            "password": "$2y$12$d9DcdzNjipZeKKgYD4Q6uOS99dbFR\/BzDOQ4f34HY0wzoKf7FWP1K",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1312,
+            "name": "Oscar Eduardo",
+            "email": "oscarvidarte81@gmail.com",
+            "password": "$2y$12$GmO7vFVUPDhTgfwa8SXPoOSFXDhrFsyiIkYQ8ZMeBFmvxg3gQaW.u",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1313,
+            "name": "Deivis Jesus",
+            "email": null,
+            "password": "$2y$12$.W2\/U6gdYSpcOu2gYrcQHuGcWUObArbqk2Dg40EJVFGJQI1P9s2lq",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1314,
+            "name": "Yulimar Del Carmen",
+            "email": "yulimarcc02@gmail.com",
+            "password": "$2y$12$C\/wxnvtXazw8.OhN8g.8q.OaBUx5OetoAlzymQyOtpMviJzY1rw\/2",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1315,
+            "name": "Anthony",
+            "email": null,
+            "password": "$2y$12$ydLt9JHvh1V9K1J.3UI1xugdPmbotBrBx6s.llt1L0hSiCtpRaRs6",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1316,
+            "name": "Deimer Alberto",
+            "email": "iamdeimer@hotmail.com",
+            "password": "$2y$12$OVUbWrjyfRKhdXfGcQrJX..vxnKwyam.nKzbXjiHYDz3JW1UFz35K",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1317,
+            "name": "Allen Jafeth",
+            "email": null,
+            "password": "$2y$12$VB.UzSJeKxrVXP1L1c6WNex\/B.eb8pLfCgWI2HUsQMm5GPCIpMweK",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1318,
+            "name": "Dellys Beatriz",
+            "email": "dellysayala63@gmail.com",
+            "password": "$2y$12$DlS6aFA0KcTK0gABEucFPOLEbOK0M6vpzbunt83ptmFmPCXh25AzC",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1319,
+            "name": "Tomás",
+            "email": null,
+            "password": "$2y$12$CAwjazFK38dcSPoXbwBrK.4kvOQA9ygOtOPjuU90FGpEp26PNkqRq",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1320,
+            "name": "Angelica María",
+            "email": "amol_062816@hotmail.com",
+            "password": "$2y$12$Il9WiG1UMD\/EvAX1Zg.nce3n1vmmC1owQ81MUZXa.HT5pSxqd8rja",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1321,
+            "name": "Isaac",
+            "email": null,
+            "password": "$2y$12$FhK0APK7ZFsthT.wX\/W7I.WLwX1P5AL0sz925xkfJaD6SBGWcI0Ji",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1322,
+            "name": "Isaac",
+            "email": "isaacvargas1513@icloud.com",
+            "password": "$2y$12$gy4nMBfbukIW12iauQqzuOyI4gWPip1gQyKnW7vRnGw1NJoQAfr5.",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1389,
+            "name": "Julieta",
+            "email": null,
+            "password": "$2y$12$xtbzkq8LFta9ktTmtTftHOVXooeMBixNhk7Q.iWDFBl.kZpRq3IOa",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1390,
+            "name": "Daniela",
+            "email": "daniela.03v@gmail.com",
+            "password": "$2y$12$sGQw.Emnyf\/0pC89doyAOeE2cZSplRGvEAf3jrbvXZTsYvO7JrARe",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1391,
+            "name": "Hicker Smith",
+            "email": null,
+            "password": "$2y$12$3oqdaI5Az6zt8nzQS8.8Iu4ehPdIOwh4aa7CSYMU\/.8l7tld1Lphq",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1392,
+            "name": "Carmen Yirlesa",
+            "email": "yirleza1107@gmail.com",
+            "password": "$2y$12$a3I2DIR4sWOq1lOxIfKL5.j2iaklYwa0PWG8jtAsS546\/0EfqMOhm",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1398,
+            "name": "Christian Raúl",
+            "email": null,
+            "password": "$2y$12$0fGAB45evCQamD54TzR\/euGf7vDFGc4VEs8Ylu2Me\/O4pK6tuPjQG",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1399,
+            "name": "Jennifer",
+            "email": "jennidibe@gmail.com",
+            "password": "$2y$12$fSM0Wt4FZKNyDlPFC0gb2uc11f4jc5uQNQNFr9v0pOwUS2xP0hN6C",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1400,
+            "name": "Dilan Matias",
+            "email": null,
+            "password": "$2y$12$0sOmf.HGdamr5QdWo4DNeugbpGhS43a0rWiO7qV3OC15QnjlaUzom",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1401,
+            "name": "Marelbi",
+            "email": "maremurillo1995@gmail.com",
+            "password": "$2y$12$z\/WIlItMANaXDkIod2984eMisj7GaWMsrJISk0iqPUS.EAxMkhl1K",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1402,
+            "name": "Katerine",
+            "email": "katerinejimenezpiedrahita@gmail.com",
+            "password": "$2y$12$hk4xYWH\/RYoRppm9ALHc1ewaF1b8OEVG7LgqjH7bdXyDQyedjx2Qa",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1403,
+            "name": "Miguel Angel",
+            "email": null,
+            "password": "$2y$12$gup\/BdVmbGBwLmzBuI2qeOyBjuBb9uEspSbo52YB9vqrkG5QNW3s6",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1404,
+            "name": "Marlyn",
+            "email": "malysor01@hotmail.com",
+            "password": "$2y$12$rRm0abGOYs3WXYJnic3c1uxx5l3ijGLAu8wqFiC9NVHeaIcSCDHFi",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1420,
+            "name": "Dilan Mauricio",
+            "email": null,
+            "password": "$2y$12$FzRZLgznGcu5a5WsL2TCF.\/9IGYnDQqC8j2ghd0O\/KMt2kXQRLVAy",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1421,
+            "name": "Jessica Andrea",
+            "email": "jezyx.2g@gmail.com",
+            "password": "$2y$12$fT0tKBA1h9F9PpH2Oq0GzeaUdDiSM3hcfLlGKw80dxAwRbz0rfgfW",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1510,
+            "name": "Paulina",
+            "email": null,
+            "password": "$2y$12$jWdWKcNVvZcBb6.hjwGe6urP.35t.dELjnZHU3E4iGFc4rwT9ha9K",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1511,
+            "name": "Luz Enith",
+            "email": "enith.sanchez1325@gmail.com",
+            "password": "$2y$12$H0aH\/ukY3sykk0\/I5FHACuJdmDD.YCtA.QLxVT9sePU25fmBedkqy",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1514,
+            "name": "Darwin Stiwar",
+            "email": null,
+            "password": "$2y$12$s3XMdp0dllzuU\/WC7McBUub7Tyq9Uy6FuR25SnJCldhkJn1xptEDW",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1515,
+            "name": "Clari Darleidy",
+            "email": "pereaclari8@gmail.com",
+            "password": "$2y$12$oGfUH9VY2qIxXft1DH\/ZT.bc5kAsSTBQlXWUkpG6KwdbiF5ubky5m",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1524,
+            "name": "Johan Stiven",
+            "email": null,
+            "password": "$2y$12$UiC6Ld1yVEVoMiCshDii2eCJPW.BC199z4N8L6c3q1SPfHcAYLV0G",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1525,
+            "name": "Leydy Johana",
+            "email": "l.johanavarro@gmail.com",
+            "password": "$2y$12$sgW9g\/LUu94wu.PzHOD2pu4aaNrpcG5BL21Lw7QYUIFpIrqKy9td2",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1545,
+            "name": "Karla Marieth",
+            "email": null,
+            "password": "$2y$12$2esoHOQ3HySe22OOuYs39e0FI6Fa2phN9fI.2GzT8MFxLcAcgjmJy",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1546,
+            "name": "Yira Helena",
+            "email": "yirakeka28@gmail.com",
+            "password": "$2y$12$6eccFtBdpFnfridocnFMS.8MZpTJ3aqohw5ChYYXjXXzd1OGOdm5y",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1549,
+            "name": "Maily Eliana",
+            "email": null,
+            "password": "$2y$12$HUixtu9FsOgR.FfGl.XBfeYuLqKy1B2U\/GTv9NH2E0aMGAKNw0QP.",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1550,
+            "name": "Ana Rubilda",
+            "email": "anamoreno@iemfbotero.edu.co",
+            "password": "$2y$12$JX\/J\/lhs21ws7AhAA5FjEOX8BnOqRF9pTga.BQDWACpD4Eap4odfS",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1561,
+            "name": "Matías",
+            "email": null,
+            "password": "$2y$12$Nm83zJT6APpyRDxcvdHBR.pq9wTP5T1Nxbjrzp0z987CjjKH\/f032",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1562,
+            "name": "Claudia Marcela",
+            "email": "claudiajimal07@gmail.com",
+            "password": "$2y$12$LmQbv.LdPf75kxYhs6hViuwyF.y7ma22XGvlgoxKntYD\/92yL.aqG",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1565,
+            "name": "Alejandro",
+            "email": null,
+            "password": "$2y$12$EmqU6tsBbHDLgFmVJ2SlpOx0VS797\/mKDSV8otCUghgIui9RE3UKS",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1566,
+            "name": "Alexandra Cecilia",
+            "email": "alexandraarangojaramillo@gmail.com",
+            "password": "$2y$12$zDqR4J3uk75ccKTJYSXamuJhkuocV5sBYqLKd0lIuMyG1efpbfNV6",
+            "status": "ACT",
+            "current_club_id": 6
+        },
+        {
+            "id": 1573,
+            "name": "Elena",
+            "email": null,
+            "password": "$2y$12$eKsmgW.eABT1TOx.AYAcZeYbP\/U.vVjqRsTjHQmZb790dm483k9IS",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1576,
+            "name": "Carlos Manuel",
+            "email": null,
+            "password": "$2y$12$j3QTBZAc0PHsO8BKb0i2Put90\/sOT9nBureIn4apcUUyic\/MZOjWq",
+            "status": "PEN",
+            "current_club_id": 6
+        },
+        {
+            "id": 1577,
+            "name": "Mileidy",
+            "email": "morantemile84@gmail.com",
+            "password": "$2y$12$UpFbvzHsoVfmYdVKjRUzQ.e8NFFQI24IeUdjZxKJv5hfErhwsGSRq",
+            "status": "ACT",
+            "current_club_id": 6
+        }
+    ]
+}

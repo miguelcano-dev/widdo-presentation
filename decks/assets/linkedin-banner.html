@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1128">
+<title>Widdo LinkedIn Banner</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1128px;
+    height: 191px;
+    overflow: hidden;
+    background: #0A0A0F;
+    font-family: 'Red Hat Display', sans-serif;
+  }
+
+  .banner {
+    position: relative;
+    width: 1128px;
+    height: 191px;
+    overflow: hidden;
+    background: #0A0A0F;
+  }
+
+  /* Subtle grid pattern - like a tactical board */
+  .grid-layer {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 200, 83, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 200, 83, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Field lines - abstract sports court */
+  .field-lines {
+    position: absolute;
+    inset: 0;
+  }
+
+  .field-lines::before {
+    content: '';
+    position: absolute;
+    right: 180px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(0, 200, 83, 0.1);
+    border-radius: 50%;
+  }
+
+  .field-lines::after {
+    content: '';
+    position: absolute;
+    right: 100px;
+    top: -20px;
+    bottom: -20px;
+    width: 1px;
+    background: rgba(0, 200, 83, 0.08);
+  }
+
+  /* Horizontal accent line */
+  .accent-line {
+    position: absolute;
+    bottom: 38px;
+    left: 80px;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, #00C853, transparent);
+    opacity: 0.5;
+  }
+
+  /* Corner marks - like a pitch corner */
+  .corner-tl, .corner-br {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+  }
+  .corner-tl {
+    top: 16px;
+    left: 16px;
+    border-top: 1px solid rgba(0, 200, 83, 0.25);
+    border-left: 1px solid rgba(0, 200, 83, 0.25);
+  }
+  .corner-br {
+    bottom: 16px;
+    right: 16px;
+    border-bottom: 1px solid rgba(0, 200, 83, 0.25);
+    border-right: 1px solid rgba(0, 200, 83, 0.25);
+  }
+
+  /* Dot grid - player formation pattern */
+  .dot-formation {
+    position: absolute;
+    right: 300px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00C853;
+  }
+
+  .dot.bright { opacity: 0.5; }
+  .dot.mid { opacity: 0.25; }
+  .dot.dim { opacity: 0.12; }
+
+  /* Connection lines between dots */
+  .connection {
+    position: absolute;
+    height: 1px;
+    background: rgba(0, 200, 83, 0.08);
+    transform-origin: left center;
+  }
+
+  /* Glow orb */
+  .glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 200, 83, 0.12) 0%, transparent 70%);
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .glow-right {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 200, 83, 0.07) 0%, transparent 70%);
+    top: 50%;
+    right: 100px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  /* Logo */
+  .logo-area {
+    position: absolute;
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .logo-mark {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-mark svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .logo-text h1 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #E8E8ED;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .tagline {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: rgba(232, 232, 237, 0.55);
+    letter-spacing: 0.3px;
+    line-height: 1;
+  }
+
+  /* Right side - data visualization feel */
+  .data-strip {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .metric-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .metric-icon {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0, 200, 83, 0.25);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .metric-icon svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: rgba(0, 200, 83, 0.7);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .metric-label {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 8.5px;
+    color: rgba(232, 232, 237, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Separator dots between metrics */
+  .sep-dot {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(0, 200, 83, 0.2);
+  }
+
+  /* Noise texture overlay */
+  .noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Subtle scan line */
+  .scanline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 200, 83, 0.1) 20%, rgba(0, 200, 83, 0.1) 80%, transparent);
+  }
+
+  /* Top edge accent */
+  .top-edge {
+    position: absolute;
+    top: 0;
+    left: 80px;
+    width: 60px;
+    height: 2px;
+    background: #00C853;
+    opacity: 0.6;
+    border-radius: 0 0 2px 2px;
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="grid-layer"></div>
+  <div class="field-lines"></div>
+  <div class="glow"></div>
+  <div class="glow-right"></div>
+
+  <!-- Corner marks -->
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
+
+  <!-- Dot formation pattern (abstract player positions) -->
+  <div class="dot-formation">
+    <!-- Formation dots - like a 4-3-3 -->
+    <div class="dot bright" style="left: 0; top: -40px;"></div>
+    <div class="dot mid" style="left: 30px; top: -20px;"></div>
+    <div class="dot bright" style="left: 60px; top: -50px;"></div>
+    <div class="dot dim" style="left: 20px; top: 10px;"></div>
+    <div class="dot mid" style="left: 70px; top: 0;"></div>
+    <div class="dot bright" style="left: 100px; top: -30px;"></div>
+    <div class="dot dim" style="left: 45px; top: 30px;"></div>
+    <div class="dot mid" style="left: 90px; top: 25px;"></div>
+    <div class="dot dim" style="left: 130px; top: -10px;"></div>
+    <div class="dot bright" style="left: 110px; top: 15px;"></div>
+    <div class="dot dim" style="left: 50px; top: -65px;"></div>
+
+    <!-- Connection lines -->
+    <svg style="position:absolute;left:-10px;top:-80px;width:170px;height:140px;overflow:visible;">
+      <line x1="10" y1="40" x2="40" y2="60" stroke="rgba(0,200,83,0.06)" stroke-width="1"/>
+      <line x1="40" y1="60" x2="70" y2="30" stroke="rgba(0,200,83,0.06)" stroke-width="1"/>
+      <line x1="70" y1="30" x2="110" y2="50" stroke="rgba(0,200,83,0.06)" stroke-width="1"/>
+      <line x1="30" y1="90" x2="80" y2="80" stroke="rgba(0,200,83,0.04)" stroke-width="1"/>
+      <line x1="80" y1="80" x2="120" y2="95" stroke="rgba(0,200,83,0.04)" stroke-width="1"/>
+      <line x1="110" y1="50" x2="140" y2="70" stroke="rgba(0,200,83,0.05)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <!-- Logo area -->
+  <div class="logo-area">
+    <div class="logo-mark">
+      <svg viewBox="0 0 375 375" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="187.5" cy="187.5" r="176.7" fill="#16a34a"/>
+        <path fill="#ffffff" d="M 265.17 107.99 L 231.99 189.65 L 187.39 103.9 L 142.57 189.65 L 121.31 230.34 L 138.27 271.09 L 187.39 177.58 L 236.09 271.09 L 304.6 107.99 Z"/>
+        <path fill="#ffffff" d="M 136.86 175.39 L 109.83 107.99 L 70.4 107.99 L 115.47 216.31 Z"/>
+        <circle cx="306.8" cy="270.05" r="9.46" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <h1>Widdo</h1>
+      <span class="tagline">The operating system for youth sports clubs</span>
+    </div>
+  </div>
+
+  <!-- Right side - feature icons -->
+  <div class="data-strip">
+    <div class="metric-block">
+      <div class="metric-icon">
+        <!-- Players icon -->
+        <svg viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <span class="metric-label">Players</span>
+    </div>
+
+    <div class="sep-dot"></div>
+
+    <div class="metric-block">
+      <div class="metric-icon">
+        <!-- Payments icon -->
+        <svg viewBox="0 0 24 24">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+          <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>
+      </div>
+      <span class="metric-label">Payments</span>
+    </div>
+
+    <div class="sep-dot"></div>
+
+    <div class="metric-block">
+      <div class="metric-icon">
+        <!-- Tournament bracket icon -->
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4v5h5"/>
+          <path d="M4 9h3a3 3 0 0 0 3-3V4"/>
+          <path d="M4 15v5h5"/>
+          <path d="M4 20h3a3 3 0 0 1 3-3v-2"/>
+          <path d="M14 12h6"/>
+          <path d="M10 9v6"/>
+        </svg>
+      </div>
+      <span class="metric-label">Tournaments</span>
+    </div>
+
+    <div class="sep-dot"></div>
+
+    <div class="metric-block">
+      <div class="metric-icon">
+        <!-- AI icon -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.27A7 7 0 0 1 14 22h-4a7 7 0 0 1-6.73-3H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 12 2z"/>
+          <circle cx="10" cy="15" r="1"/>
+          <circle cx="14" cy="15" r="1"/>
+        </svg>
+      </div>
+      <span class="metric-label">AI</span>
+    </div>
+  </div>
+
+  <!-- Accent elements -->
+  <div class="accent-line"></div>
+  <div class="top-edge"></div>
+  <div class="scanline"></div>
+  <div class="noise"></div>
+</div>
+</body>
+</html>

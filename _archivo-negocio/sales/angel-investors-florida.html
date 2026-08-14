@@ -1,0 +1,2066 @@
+<!-- ARCHIVADO 13-ago-2026 — metricas falsas: '21 sports clubs with zero churn' y '14 clubes' (real 13-ago-2026: 9 clubes, 3 pagando, MRR $101) — sustituido por metrics.json + decks/usa/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Angel Investors & Funding Pipeline (Florida)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0A0A0F;
+  --card: #12121A;
+  --card-hover: #1A1A25;
+  --border: #1E1E2A;
+  --green: #00C853;
+  --green-dim: rgba(0, 200, 83, 0.15);
+  --green-glow: rgba(0, 200, 83, 0.3);
+  --yellow: #FFB300;
+  --yellow-dim: rgba(255, 179, 0, 0.15);
+  --orange: #FF6D00;
+  --orange-dim: rgba(255, 109, 0, 0.15);
+  --blue: #2979FF;
+  --blue-dim: rgba(41, 121, 255, 0.15);
+  --purple: #AA00FF;
+  --purple-dim: rgba(170, 0, 255, 0.15);
+  --red: #FF1744;
+  --red-dim: rgba(255, 23, 68, 0.15);
+  --cyan: #00E5FF;
+  --cyan-dim: rgba(0, 229, 255, 0.15);
+  --text: #E8E8ED;
+  --text-secondary: #9898A6;
+  --text-dim: #5A5A6E;
+  --font: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #2A2A3A; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3A3A4A; }
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 32px;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header h1 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.header h1 span { color: var(--green); }
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.header-meta .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--green-glow); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px transparent; }
+}
+
+/* Metrics bar */
+.metrics-bar {
+  max-width: 1400px;
+  margin: 24px auto 0;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.metric-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.metric-card:hover {
+  border-color: var(--green);
+  box-shadow: 0 0 20px rgba(0, 200, 83, 0.08);
+}
+
+.metric-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.metric-value {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.metric-value.yellow { color: var(--yellow); }
+.metric-value.blue { color: var(--blue); }
+.metric-value.cyan { color: var(--cyan); }
+
+/* Main */
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px 60px;
+}
+
+/* Navigation tabs */
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-tab {
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: var(--font);
+}
+
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+/* Sections */
+.section { display: none; }
+.section.active { display: block; }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* Investor cards */
+.investor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.investor-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.investor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--green);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.investor-card:hover {
+  border-color: rgba(0, 200, 83, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.investor-card:hover::before { opacity: 1; }
+
+.investor-card.priority-max::before { background: var(--red); opacity: 1; }
+.investor-card.priority-high::before { background: var(--green); opacity: 1; }
+.investor-card.priority-medium::before { background: var(--yellow); opacity: 1; }
+
+.investor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.investor-name {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.investor-location {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge-max { background: var(--red-dim); color: var(--red); }
+.badge-high { background: var(--green-dim); color: var(--green); }
+.badge-medium { background: var(--yellow-dim); color: var(--yellow); }
+.badge-low { background: var(--blue-dim); color: var(--blue); }
+.badge-angel { background: var(--purple-dim); color: var(--purple); }
+.badge-vc { background: var(--cyan-dim); color: var(--cyan); }
+.badge-accel { background: var(--orange-dim); color: var(--orange); }
+.badge-sports { background: var(--red-dim); color: #FF5252; }
+
+.investor-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text-secondary);
+}
+
+.investor-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-dim);
+}
+
+.detail-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  font-family: var(--mono);
+}
+
+.detail-value.green { color: var(--green); }
+
+.investor-why {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 10px 12px;
+  background: rgba(0, 200, 83, 0.04);
+  border-left: 2px solid var(--green);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 14px;
+}
+
+.investor-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: #00E65C;
+  box-shadow: 0 0 20px var(--green-glow);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--text-dim);
+}
+
+.btn-email {
+  background: var(--blue-dim);
+  color: var(--blue);
+}
+
+.btn-email:hover { background: rgba(41, 121, 255, 0.25); }
+
+.btn-call {
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+.btn-call:hover { background: rgba(0, 200, 83, 0.25); }
+
+/* Tier headers */
+.tier-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tier-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tier-header .tier-count {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: rgba(255,255,255,0.06);
+  padding: 2px 10px;
+  border-radius: 10px;
+  color: var(--text-secondary);
+}
+
+.tier-header.tier-1 h3 { color: var(--green); }
+.tier-header.tier-2 h3 { color: var(--yellow); }
+.tier-header.tier-3 h3 { color: var(--orange); }
+.tier-header.tier-sports h3 { color: #FF5252; }
+.tier-header.tier-vc h3 { color: var(--cyan); }
+
+/* Execution plan */
+.plan-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.plan-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--green), var(--yellow), var(--orange));
+  border-radius: 1px;
+}
+
+.plan-day {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.plan-day::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+}
+
+.plan-day-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.plan-day-action {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.plan-day-who {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Valuation section */
+.val-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.val-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.val-table td {
+  font-size: 13px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text);
+}
+
+.val-table tr:hover td { background: rgba(0, 200, 83, 0.03); }
+
+.val-table .mono {
+  font-family: var(--mono);
+  font-weight: 600;
+}
+
+.val-table .green { color: var(--green); }
+.val-table .yellow { color: var(--yellow); }
+.val-table .red { color: var(--red); }
+
+/* Collapsible */
+.collapsible-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 2px;
+}
+
+.collapsible-header:hover {
+  background: var(--card-hover);
+  border-color: rgba(0, 200, 83, 0.2);
+}
+
+.collapsible-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.collapsible-arrow {
+  font-size: 12px;
+  color: var(--text-dim);
+  transition: transform 0.2s;
+}
+
+.collapsible-header.open .collapsible-arrow { transform: rotate(180deg); }
+.collapsible-header.open {
+  border-radius: 10px 10px 0 0;
+  border-bottom-color: transparent;
+  border-color: rgba(0, 200, 83, 0.2);
+}
+
+.collapsible-body {
+  display: none;
+  padding: 16px 18px;
+  background: var(--card);
+  border: 1px solid rgba(0, 200, 83, 0.2);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 10px;
+}
+
+.collapsible-body.open { display: block; }
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.check-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-box:hover { border-color: var(--green); }
+
+.check-box.checked {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.check-box.checked::after {
+  content: '\2713';
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Status tracker */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.status-item:hover { border-color: var(--text-dim); }
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.pending { background: var(--text-dim); }
+.status-dot.applied { background: var(--yellow); }
+.status-dot.contacted { background: var(--blue); }
+.status-dot.meeting { background: var(--purple); }
+.status-dot.closed { background: var(--green); }
+.status-dot.passed { background: var(--red); }
+
+/* Info blocks */
+.info-block {
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.info-block h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.info-block p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.highlight-box {
+  padding: 16px 20px;
+  background: var(--green-dim);
+  border: 1px solid rgba(0, 200, 83, 0.2);
+  border-radius: 10px;
+  margin: 16px 0;
+}
+
+.highlight-box p {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.highlight-box strong { color: var(--green); }
+
+/* Search/filter */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus { border-color: var(--green); }
+.search-input::placeholder { color: var(--text-dim); }
+
+.filter-btn {
+  padding: 10px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover { border-color: var(--text-dim); color: var(--text); }
+.filter-btn.active { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .header { padding: 12px 16px; }
+  .metrics-bar, .main { padding-left: 16px; padding-right: 16px; }
+  .investor-grid { grid-template-columns: 1fr; }
+  .investor-details { grid-template-columns: 1fr; }
+  .header-meta { display: none; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .header { position: static; background: #fff; border-bottom: 2px solid #000; }
+  .investor-card { break-inside: avoid; border: 1px solid #ccc; }
+  .btn { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1><span>W</span>iddo Funding Pipeline</h1>
+    <div class="header-meta">
+      <div class="dot"></div>
+      <span>Florida Angel Investors & Funding Sources</span>
+      <span style="color: var(--text-dim)">|</span>
+      <span>Last updated: May 21, 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="metrics-bar">
+  <div class="metric-card">
+    <div class="metric-label">Target Raise</div>
+    <div class="metric-value">$250K</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Valuation Cap</div>
+    <div class="metric-value yellow">$3M</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Instrument</div>
+    <div class="metric-value blue" style="font-size:16px">SAFE YC</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Investors Found</div>
+    <div class="metric-value cyan">27</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Applied</div>
+    <div class="metric-value" style="color: var(--yellow)">0</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Dilution @ $3M</div>
+    <div class="metric-value" style="color: var(--text-secondary); font-size:16px">~8.3%</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSection('pipeline')">Pipeline</button>
+    <button class="nav-tab" onclick="showSection('angel-groups')">Angel Groups</button>
+    <button class="nav-tab" onclick="showSection('vcs')">VCs Orlando</button>
+    <button class="nav-tab" onclick="showSection('sports-tech')">Sports-Tech</button>
+    <button class="nav-tab" onclick="showSection('competitions')">Pitch Competitions</button>
+    <button class="nav-tab" onclick="showSection('valuation')">Valuation Guide</button>
+    <button class="nav-tab" onclick="showSection('execution')">Execution Plan</button>
+    <button class="nav-tab" onclick="showSection('checklist')">Checklist</button>
+  </div>
+
+  <!-- ==================== PIPELINE ==================== -->
+  <div class="section active" id="pipeline">
+    <div class="section-title">Funding Pipeline Overview</div>
+    <div class="section-subtitle">Status tracker for all investor contacts. Click any status to cycle through stages.</div>
+
+    <div class="highlight-box">
+      <p><strong>Strategy:</strong> $250K SAFE @ $3M cap. Can split across multiple angels ($50K + $100K + $100K = $250K). Prioritize sports angels and Florida-based groups. Erica Berman is warm but hasn't committed — diversify pipeline.</p>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:700; margin:20px 0 12px; color:var(--green);">Status Legend</h3>
+    <div style="display:flex; gap:20px; flex-wrap:wrap; margin-bottom:20px; font-size:12px;">
+      <span style="display:flex; align-items:center; gap:6px;"><span class="status-dot pending"></span> Pending</span>
+      <span style="display:flex; align-items:center; gap:6px;"><span class="status-dot applied"></span> Applied</span>
+      <span style="display:flex; align-items:center; gap:6px;"><span class="status-dot contacted"></span> Contacted</span>
+      <span style="display:flex; align-items:center; gap:6px;"><span class="status-dot meeting"></span> Meeting</span>
+      <span style="display:flex; align-items:center; gap:6px;"><span class="status-dot closed"></span> Closed</span>
+      <span style="display:flex; align-items:center; gap:6px;"><span class="status-dot passed"></span> Passed</span>
+    </div>
+
+    <div class="status-grid" id="statusGrid">
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>SeedFunders Orlando</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Florida Angel Nexus</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>New World Angels</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>venVelo</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Tamiami Angel Funds</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>DeepWork Capital</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Bridge Angels</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Winter Park Angels</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Florida Funders</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Orlando Magic Venture</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Stadia Ventures</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Athlete Angels Fund</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>SeventySix Capital</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Erica Berman</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Platanus Ventures</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>Start-Up Chile Ignite</div>
+      <div class="status-item" onclick="cycleStatus(this)" data-status="pending"><span class="status-dot pending"></span>YC Late S26</div>
+    </div>
+  </div>
+
+  <!-- ==================== ANGEL GROUPS ==================== -->
+  <div class="section" id="angel-groups">
+    <div class="section-title">Florida Angel Groups</div>
+    <div class="section-subtitle">Organized by priority. All accept applications from Florida-based startups.</div>
+
+    <div class="search-bar">
+      <input type="text" class="search-input" placeholder="Search investors..." oninput="filterCards(this.value, 'angel-groups')">
+      <button class="filter-btn active" onclick="filterByPriority('all', 'angel-groups', this)">All</button>
+      <button class="filter-btn" onclick="filterByPriority('priority-high', 'angel-groups', this)">High</button>
+      <button class="filter-btn" onclick="filterByPriority('priority-medium', 'angel-groups', this)">Medium</button>
+    </div>
+
+    <div class="tier-header tier-1">
+      <h3>Tier 1 — Apply This Week</h3>
+      <span class="tier-count">4 investors</span>
+    </div>
+
+    <div class="investor-grid">
+      <!-- SeedFunders -->
+      <div class="investor-card priority-high" data-priority="priority-high" data-name="SeedFunders Orlando">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">SeedFunders Orlando</div>
+            <div class="investor-location">Orlando, FL (Central Florida)</div>
+          </div>
+          <span class="badge badge-high">Best Fit</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Angel Group</span>
+          <span class="tag">Pre/Early Revenue</span>
+          <span class="tag">MVP Required</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$50K - $150K</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Application</span>
+            <span class="detail-value">Via Dealum</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Process</span>
+            <span class="detail-value">Screening &rarr; Interview &rarr; Bi-weekly pitch</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Deadline</span>
+            <span class="detail-value green">Rolling</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          <strong>Perfect fit:</strong> The ONLY fund in Florida that specifically targets startups with MVP built but little/no revenue. Widdo matches exactly: product built, 21 clubs, $0 revenue transitioning to paid.
+        </div>
+        <div class="investor-actions">
+          <a href="https://seedfunders.com/orlando/" target="_blank" class="btn btn-primary">Apply Now</a>
+          <a href="https://seedfunders.com/orlando/" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+
+      <!-- Florida Angel Nexus -->
+      <div class="investor-card priority-high" data-priority="priority-high" data-name="Florida Angel Nexus FAN">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Florida Angel Nexus (FAN)</div>
+            <div class="investor-location">Statewide (based in Orlando/Central FL)</div>
+          </div>
+          <span class="badge badge-high">Multiplier</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Hub/Network</span>
+          <span class="tag">Statewide</span>
+          <span class="tag">1 Apply = Many Groups</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value">Varies by group</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">How It Works</span>
+            <span class="detail-value">Distributes to groups</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          <strong>Force multiplier:</strong> One application gets distributed to multiple angel groups across Florida. Maximum reach with minimum effort.
+        </div>
+        <div class="investor-actions">
+          <a href="https://floridaangelnexus.org/" target="_blank" class="btn btn-primary">Apply Now</a>
+        </div>
+      </div>
+
+      <!-- New World Angels -->
+      <div class="investor-card priority-high" data-priority="priority-high" data-name="New World Angels Miami Angels">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">New World Angels</div>
+            <div class="investor-location">Statewide (Miami, Tampa, Orlando, Space Coast)</div>
+          </div>
+          <span class="badge badge-high">High</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Angel Group</span>
+          <span class="tag">Merged w/ Miami Angels 2026</span>
+          <span class="tag">Industry Agnostic</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$250K - $2M</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Total Invested</span>
+            <span class="detail-value">$30M+</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Events</span>
+            <span class="detail-value">Quarterly showcases</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Founded</span>
+            <span class="detail-value">2003</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Quarterly showcases in Orlando, Tampa, Miami, Space Coast. Industry agnostic (NOT real estate). Merged with Miami Angels in March 2026 = larger network. Could fund the entire $250K raise alone.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.newworldangels.com/entrepreneurs" target="_blank" class="btn btn-primary">Apply Now</a>
+          <a href="https://www.newworldangels.com/" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+
+      <!-- venVelo -->
+      <div class="investor-card priority-high" data-priority="priority-high" data-name="venVelo Orlando">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">venVelo</div>
+            <div class="investor-location">Orlando, FL</div>
+          </div>
+          <span class="badge badge-high">Quick Reply</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Early Stage</span>
+          <span class="tag">Local Orlando</span>
+          <span class="tag">~1 Week Response</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value">Early stage (undisclosed)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Values</span>
+            <span class="detail-value">Coachability</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Direct email access. Response in ~1 week. Orlando-based = local relationship. Values "coachability" of founder — Miguel's story + execution speed is perfect for this.
+        </div>
+        <div class="investor-actions">
+          <a href="mailto:pitch@venvelo.com" class="btn btn-email">pitch@venvelo.com</a>
+          <a href="https://venvelo.com/application-form/" target="_blank" class="btn btn-secondary">Apply Form</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-header tier-2">
+      <h3>Tier 2 — Apply This Month</h3>
+      <span class="tier-count">4 investors</span>
+    </div>
+
+    <div class="investor-grid">
+      <!-- Tamiami -->
+      <div class="investor-card priority-medium" data-priority="priority-medium" data-name="Tamiami Angel Funds">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Tamiami Angel Funds</div>
+            <div class="investor-location">Naples, FL (Southwest Florida)</div>
+          </div>
+          <span class="badge badge-medium">Largest in FL</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Angel Fund</span>
+          <span class="tag">Shark Tank Format</span>
+          <span class="tag">Fintech/SaaS</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$500K - $10M</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Total Deployed</span>
+            <span class="detail-value">$36.6M in 48 startups</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Track Record</span>
+            <span class="detail-value">100+ investments / 17 yrs</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Format</span>
+            <span class="detail-value">Competitive pitch</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          The largest and most active angel fund in Florida. "Shark Tank" style competitive pitch. SaaS + fintech focus matches Widdo. Check size is larger than needed — could fund the entire round.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.tamiamiangels.com/" target="_blank" class="btn btn-primary">Apply</a>
+        </div>
+      </div>
+
+      <!-- DeepWork -->
+      <div class="investor-card priority-medium" data-priority="priority-medium" data-name="DeepWork Capital Orlando">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">DeepWork Capital</div>
+            <div class="investor-location">Orlando, FL</div>
+          </div>
+          <span class="badge badge-medium">Medium</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">VC (Seed/A)</span>
+          <span class="tag">B2B SaaS</span>
+          <span class="tag">Underserved Markets</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$500K - $2M</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Portfolio</span>
+            <span class="detail-value">41 companies</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Recent Activity</span>
+            <span class="detail-value green">5 new in 12 months</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Focus</span>
+            <span class="detail-value">Tech in underserved markets</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Orlando-based VC. B2B SaaS focus. "Underserved markets" is exactly what youth sports tech is. Very active (5 deals recently). Might be too large for $250K raise but could lead a bigger round.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.deepworkcapital.com/" target="_blank" class="btn btn-primary">Contact</a>
+        </div>
+      </div>
+
+      <!-- Bridge Angels -->
+      <div class="investor-card priority-medium" data-priority="priority-medium" data-name="Bridge Angel Investors Sarasota">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Bridge Angel Investors</div>
+            <div class="investor-location">Sarasota-Bradenton, FL</div>
+          </div>
+          <span class="badge badge-medium">Medium</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Angel Group</span>
+          <span class="tag">Growing Fast</span>
+          <span class="tag">Via Gust</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$100K - $1M</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Members</span>
+            <span class="detail-value">44 (+50% growth)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Requires</span>
+            <span class="detail-value">PoC + PMF</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Apply Via</span>
+            <span class="detail-value">Gust platform</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Requires proof of concept + product-market fit. Widdo has both (21 clubs, 0% churn). Group doubled membership recently = hungry for deals.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.bridgeangelinvestors.com/apply-for-funding" target="_blank" class="btn btn-primary">Apply via Gust</a>
+        </div>
+      </div>
+
+      <!-- Winter Park Angels -->
+      <div class="investor-card priority-medium" data-priority="priority-medium" data-name="Winter Park Angels NewGate Capital">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Winter Park Angels / NewGate Capital</div>
+            <div class="investor-location">Winter Park, FL (10 min from Downtown Orlando)</div>
+          </div>
+          <span class="badge badge-medium">Local</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Angel + Syndicate</span>
+          <span class="tag">Very Local</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$50K - $250K (up to $2M syndicate)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Phone</span>
+            <span class="detail-value">407-647-8752</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Very local — 10 minutes from downtown Orlando. Alwin can meet in person. Individual checks up to $250K, syndicate up to $2M. Early and expansion stage.
+        </div>
+        <div class="investor-actions">
+          <a href="tel:4076478752" class="btn btn-call">407-647-8752</a>
+          <a href="https://newgatecapitalpartners.com/capital-angels" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== VCs ORLANDO ==================== -->
+  <div class="section" id="vcs">
+    <div class="section-title">VCs in Orlando / Central Florida</div>
+    <div class="section-subtitle">These are larger funds. Better for when you have revenue or need a bigger raise. Good to build relationships now.</div>
+
+    <div class="investor-grid">
+      <!-- Florida Funders -->
+      <div class="investor-card priority-medium" data-priority="priority-medium" data-name="Florida Funders">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Florida Funders</div>
+            <div class="investor-location">Orlando/Tampa, FL</div>
+          </div>
+          <span class="badge badge-vc">VC</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Pre-seed to Series B</span>
+          <span class="tag">2,000+ Investors</span>
+          <span class="tag">Most Active SE VC</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$1M - $5M</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Total Deployed</span>
+            <span class="detail-value">$300M+ in 100+ companies</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Fund III</span>
+            <span class="detail-value">$75-$100M target</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Focus</span>
+            <span class="detail-value">B2B: Fintech, AI, Health</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          The most active VC in the Southeast USA. Hybrid crowd-funding model with 2,000+ accredited investors. Founder Summit brings 200+ investors. B2B SaaS + fintech focus = great fit for Widdo's club subscriptions + payment processing model.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.floridafunders.com/" target="_blank" class="btn btn-primary">Pitch Online</a>
+        </div>
+      </div>
+
+      <!-- Kirenaga -->
+      <div class="investor-card" data-priority="priority-medium" data-name="Kirenaga Partners Orlando">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Kirenaga Partners</div>
+            <div class="investor-location">Orlando, FL</div>
+          </div>
+          <span class="badge badge-vc">VC</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Disruptive Tech</span>
+          <span class="tag">18-24 mo runway</span>
+          <span class="tag">AI/EdTech</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value">18-24 months runway</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Target</span>
+            <span class="detail-value">&lt;$25M rev, 10x potential</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Post-technical-validation, pre-commercialization stage. More oriented to deep tech (AI, robotics) but edtech angle could work. Orlando-based. Good long-term relationship.
+        </div>
+        <div class="investor-actions">
+          <a href="https://kirenaga.com/approach/" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+
+      <!-- Orlando Opportunity Fund -->
+      <div class="investor-card" data-priority="priority-medium" data-name="Orlando Opportunity Fund">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Orlando Opportunity Fund</div>
+            <div class="investor-location">Orlando, FL</div>
+          </div>
+          <span class="badge badge-vc">VC</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">SaaS/Fintech</span>
+          <span class="tag">Requires Opportunity Zone</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value green">$250K - $500K</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Phone</span>
+            <span class="detail-value">407-494-0988</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Limitation</span>
+            <span class="detail-value" style="color:var(--yellow)">Must be in Opportunity Zone</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Perfect check size ($250K-$500K) and SaaS/Fintech focus. BUT requires being in or relocating to an Opportunity Zone. Check if Alwin's address qualifies.
+        </div>
+        <div class="investor-actions">
+          <a href="tel:4074940988" class="btn btn-call">407-494-0988</a>
+          <a href="https://www.orlandoopportunityfund.com/startups/" target="_blank" class="btn btn-secondary">Apply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SPORTS-TECH ==================== -->
+  <div class="section" id="sports-tech">
+    <div class="section-title">Sports-Tech Investors & Accelerators</div>
+    <div class="section-subtitle">National funds focused on sports technology. Apply remotely. These understand the market natively.</div>
+
+    <div class="investor-grid">
+      <!-- Orlando Magic Venture Challenge -->
+      <div class="investor-card priority-max" data-priority="priority-max" data-name="Orlando Magic Venture Challenge">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Orlando Magic Venture Challenge</div>
+            <div class="investor-location">Kia Center, Orlando, FL</div>
+          </div>
+          <span class="badge badge-max">Max Priority</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Sports + Health + Wellness</span>
+          <span class="tag">DeVos Family</span>
+          <span class="tag">LEAD VC</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Prize Pool</span>
+            <span class="detail-value green">$750K total</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Individual</span>
+            <span class="detail-value green">$50K - $200K</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">2025 Stats</span>
+            <span class="detail-value">300+ applicants, 5 selected</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Status 2026</span>
+            <span class="detail-value" style="color:var(--yellow)">Not announced yet</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          <strong>DREAM SCENARIO:</strong> Sports, health, wellness startups ONLY. Backed by DeVos family (Orlando Magic owners) + LEAD Venture Corp. $50K-$200K per startup. Alwin may have connection via Orlando Magic network. Inaugural round was March 2025 — MONITOR for 2026 round.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.orlandomagicventure.com/" target="_blank" class="btn btn-primary">Monitor Website</a>
+        </div>
+      </div>
+
+      <!-- Stadia Ventures -->
+      <div class="investor-card priority-high" data-priority="priority-high" data-name="Stadia Ventures Sports Accelerator">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Stadia Ventures</div>
+            <div class="investor-location">St. Louis, MO (+ Frisco, TX)</div>
+          </div>
+          <span class="badge badge-accel">Accelerator</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Sports-Tech Only</span>
+          <span class="tag">2 Cohorts/Year</span>
+          <span class="tag">Most Established</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Investment</span>
+            <span class="detail-value green">$100K equity</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Program</span>
+            <span class="detail-value">Intensive + mentoring</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Recent Cohort</span>
+            <span class="detail-value">Cohort 15: 6 companies</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Network</span>
+            <span class="detail-value">Sports execs + esports</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          THE most established sports-tech accelerator in USA. $100K + mentoring + direct access to sports industry executives. 2 cohorts per year. Next cohort likely H2 2026.
+        </div>
+        <div class="investor-actions">
+          <a href="http://www.stadiaventures.com/accelerator" target="_blank" class="btn btn-primary">Apply</a>
+        </div>
+      </div>
+
+      <!-- Athlete Angels -->
+      <div class="investor-card priority-high" data-priority="priority-high" data-name="Athlete Angels Fund AngelList">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Athlete Angels Fund</div>
+            <div class="investor-location">USA (AngelList Syndicate)</div>
+          </div>
+          <span class="badge badge-sports">Sports</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">AngelList</span>
+          <span class="tag">Ex-Athletes</span>
+          <span class="tag">Seed to Pre-IPO</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Leaders</span>
+            <span class="detail-value">Mike Fingado (ex-NFL agent)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Partner</span>
+            <span class="detail-value">Brian Dzingai (2x Olympian)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Deal Flow</span>
+            <span class="detail-value">29 partner syndicates</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Focus</span>
+            <span class="detail-value">Sports, health, fintech</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          AngelList syndicate run by sports insiders. Ex-Amazon + ex-NFL agent + 2x Olympian. Deal flow from 29 partner syndicates + accelerators + leagues. Sports + health + fintech = exact Widdo overlap. Miguel's "ex-professional basketball player" story resonates here.
+        </div>
+        <div class="investor-actions">
+          <a href="https://venture.angellist.com/athleteangels/syndicate" target="_blank" class="btn btn-primary">Apply on AngelList</a>
+        </div>
+      </div>
+
+      <!-- SeventySix Capital -->
+      <div class="investor-card priority-high" data-priority="priority-high" data-name="SeventySix Capital Philadelphia">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">SeventySix Capital</div>
+            <div class="investor-location">Philadelphia, PA</div>
+          </div>
+          <span class="badge badge-sports">Sports VC</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Pure Sports</span>
+          <span class="tag">Athlete Venture Group</span>
+          <span class="tag">Notable Exits</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Focus</span>
+            <span class="detail-value">Sports, media, entertainment</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Special</span>
+            <span class="detail-value">Athletes invest in startups</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Exits</span>
+            <span class="detail-value">VSiN &rarr; DraftKings</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Exit 2</span>
+            <span class="detail-value">Team Whistle &rarr; DAZN</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Pure sports tech VC. Has an "Athlete Venture Group" where professional athletes invest in startups — similar to what Erica offers but institutionalized. Notable exits to DraftKings and DAZN. Advisory services included.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.seventysixcapital.com/" target="_blank" class="btn btn-primary">Apply</a>
+        </div>
+      </div>
+
+      <!-- Drive by DraftKings -->
+      <div class="investor-card" data-priority="priority-medium" data-name="Drive by DraftKings">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Drive by DraftKings</div>
+            <div class="investor-location">Boston, MA</div>
+          </div>
+          <span class="badge badge-vc">VC</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">$60M Fund</span>
+          <span class="tag">Human Performance</span>
+          <span class="tag">NFL/NBA Owners LPs</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Fund Size</span>
+            <span class="detail-value green">$60M (oversubscribed)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">LPs Include</span>
+            <span class="detail-value">Kraft (Patriots), Jones (Cowboys)</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          More oriented to betting/gaming/media, but the "human performance" + "data analytics" angle could work for Widdo's player profile + stats platform. LPs are NFL team owners.
+        </div>
+        <div class="investor-actions">
+          <a href="https://drivebydraftkings.com/" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+
+      <!-- Courtside Ventures -->
+      <div class="investor-card" data-priority="priority-medium" data-name="Courtside Ventures">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Courtside Ventures</div>
+            <div class="investor-location">New York, NY</div>
+          </div>
+          <span class="badge badge-vc">VC</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">$150M AUM</span>
+          <span class="tag">Pre-Seed to B+</span>
+          <span class="tag">PlayVS in Portfolio</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">AUM</span>
+            <span class="detail-value green">$150M</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Portfolio</span>
+            <span class="detail-value">DraftKings, Overtime, PlayVS</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Has PlayVS in portfolio (adjacent competitor). Invests pre-seed. $150M AUM. Sports + lifestyle + gaming focus. Note: PlayVS raised $115M but valued at $46M — cautionary tale vs opportunity.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.courtsidevc.com/" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+
+      <!-- 359 Capital -->
+      <div class="investor-card" data-priority="priority-low" data-name="359 Capital Sapphire Sport">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">359 Capital (ex-Sapphire Sport)</div>
+            <div class="investor-location">New York, NY</div>
+          </div>
+          <span class="badge badge-low">Later Stage</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">$300M AUM</span>
+          <span class="tag">Series A/B</span>
+          <span class="tag">Adidas LP</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Check Size</span>
+            <span class="detail-value">$2M - $10M</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">LPs</span>
+            <span class="detail-value">City Football Group, Adidas</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Too large for now (Series A/B stage, $2M-$10M checks). BUT: great long-term target. Adidas + Manchester City as LPs = sports credibility. Build relationship now for Series A.
+        </div>
+        <div class="investor-actions">
+          <a href="#" class="btn btn-secondary">Bookmark for Later</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PITCH COMPETITIONS ==================== -->
+  <div class="section" id="competitions">
+    <div class="section-title">Pitch Competitions & Programs</div>
+    <div class="section-subtitle">Events, accelerators, and programs in Florida. Mix of investment + exposure + networking.</div>
+
+    <div class="investor-grid">
+      <!-- Florida Venture Forum -->
+      <div class="investor-card" data-name="Florida Venture Forum">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Florida Venture Forum</div>
+            <div class="investor-location">Miami (main) + Orlando events</div>
+          </div>
+          <span class="badge badge-medium">Next Cycle</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Format</span>
+            <span class="detail-value">40-50 startups selected by VC committee</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">2026 Status</span>
+            <span class="detail-value" style="color:var(--red)">Deadline passed (Jan 12)</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          2 conferences per year (Early Stage + Venture Capital). 2026 deadline already passed. Monitor for 2027 cycle.
+        </div>
+        <div class="investor-actions">
+          <a href="https://flventure.org/presenter-application/" target="_blank" class="btn btn-secondary">Monitor for 2027</a>
+        </div>
+      </div>
+
+      <!-- StarterStudio -->
+      <div class="investor-card" data-name="StarterStudio Orlando">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">StarterStudio</div>
+            <div class="investor-location">Orlando, FL</div>
+          </div>
+          <span class="badge badge-medium">Events</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Non-Profit</span>
+          <span class="tag">Zero Equity</span>
+          <span class="tag">Quick Pitch Nights</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Programs</span>
+            <span class="detail-value" style="color:var(--red)">2026 deadlines passed</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Recurring Events</span>
+            <span class="detail-value green">Quick Pitch Nights, Demo Days</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Non-profit, ZERO equity taken. Programs for 2026 deadlines passed, but Quick Pitch Nights and Demo Days are recurring. Good for pitch practice + networking with Orlando investors. Graduates get eligibility for $25K pre-seed.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.starterstudio.org/" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+
+      <!-- Orlando Innovation League -->
+      <div class="investor-card" data-name="Orlando Innovation League">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Orlando Innovation League</div>
+            <div class="investor-location">Tech Hub Orlando (36 W Pine St)</div>
+          </div>
+          <span class="badge badge-high">Go Now</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Quick Pitch Night</span>
+          <span class="tag">Startup Weekend</span>
+          <span class="tag">Recurring Events</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Events</span>
+            <span class="detail-value green">Quick Pitch Night (recurring)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Other</span>
+            <span class="detail-value">Startup Weekend Orlando</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Recurring events = Alwin can attend regularly. Quick Pitch Nights are great for practice + meeting local investors. Low commitment, high exposure. Downtown Orlando location.
+        </div>
+        <div class="investor-actions">
+          <a href="https://www.meetup.com/orlando-innovation-league/" target="_blank" class="btn btn-primary">Join Meetup</a>
+        </div>
+      </div>
+
+      <!-- Embarc Collective -->
+      <div class="investor-card" data-name="Embarc Collective Tampa">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">Embarc Collective</div>
+            <div class="investor-location">Tampa, FL (32,000 sqft hub)</div>
+          </div>
+          <span class="badge badge-medium">Hub</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">135+ Startups</span>
+          <span class="tag">Coaching</span>
+          <span class="tag">Investor Connections</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Next Program</span>
+            <span class="detail-value">Ambition Accelerated (Fall 2026)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Members</span>
+            <span class="detail-value">135+ startups</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Tampa's biggest startup hub. 135+ startups, coaching, investor connections. Not direct investment but the best Tampa networking. "Ambition Accelerated" program opens applications Summer 2026 (healthcare focus though).
+        </div>
+        <div class="investor-actions">
+          <a href="https://embarccollective.com/" target="_blank" class="btn btn-secondary">Website</a>
+        </div>
+      </div>
+
+      <!-- UCF Incubator -->
+      <div class="investor-card" data-name="UCF Business Incubation">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">UCF Business Incubation Program</div>
+            <div class="investor-location">Orlando (3259 Progress Dr + Tech Hub downtown)</div>
+          </div>
+          <span class="badge badge-medium">Program</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">Traction Program</span>
+          <span class="tag">Rolling Applications</span>
+          <span class="tag">Go-to-Market Coaching</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Programs</span>
+            <span class="detail-value green">Traction (rolling)</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Value</span>
+            <span class="detail-value">Coaching + GTM strategy</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Not direct investment but coaching + go-to-market strategy + networking in Orlando ecosystem. Rolling applications = apply anytime. Good supplement to funding search.
+        </div>
+        <div class="investor-actions">
+          <a href="https://incubator.ucf.edu/launch-your-startup/" target="_blank" class="btn btn-secondary">Apply</a>
+        </div>
+      </div>
+
+      <!-- FireSpring -->
+      <div class="investor-card" data-name="FireSpring Fund Orlando">
+        <div class="investor-header">
+          <div>
+            <div class="investor-name">FireSpring Fund</div>
+            <div class="investor-location">Orlando, FL (Central Florida counties)</div>
+          </div>
+          <span class="badge badge-angel">Angel</span>
+        </div>
+        <div class="investor-tags">
+          <span class="tag">$25K + up to $200K</span>
+          <span class="tag">Requires Accelerator</span>
+          <span class="tag">Central FL Only</span>
+        </div>
+        <div class="investor-details">
+          <div class="detail-item">
+            <span class="detail-label">Initial Check</span>
+            <span class="detail-value green">$25K</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Follow-On</span>
+            <span class="detail-value green">Up to $200K</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Requires</span>
+            <span class="detail-value" style="color:var(--yellow)">Accelerator enrollment</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Counties</span>
+            <span class="detail-value">Orange, Osceola, Seminole, etc.</span>
+          </div>
+        </div>
+        <div class="investor-why">
+          Must be in Central Florida (Alwin is in Orange County = qualifies). Requires accelerator enrollment. Prefers StarterStudio or UCF I-Corps graduates. $25K initial + up to $200K follow-on.
+        </div>
+        <div class="investor-actions">
+          <a href="#" class="btn btn-secondary">After Accelerator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== VALUATION ==================== -->
+  <div class="section" id="valuation">
+    <div class="section-title">Valuation Guide</div>
+    <div class="section-subtitle">How the SAFE cap works and how to negotiate with angels.</div>
+
+    <div class="info-block">
+      <h4>What is a "cap" in a SAFE?</h4>
+      <p>When an angel gives you $250K with a SAFE @ $3M cap, you're saying: "Give me $250K now. When I raise a big round later (Series A), your $250K converts to shares <strong style="color:var(--green)">as if the company was worth $3M</strong> — even if by then it's worth $10M, $20M or more." It's a guaranteed discount for investing early.</p>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:700; margin:20px 0 12px;">Dilution by Cap</h3>
+    <table class="val-table">
+      <thead>
+        <tr>
+          <th>Cap</th>
+          <th>$250K buys...</th>
+          <th>% of Company</th>
+          <th>Recommendation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono green">$3M</td>
+          <td class="mono">$250K / $3M</td>
+          <td class="mono green">8.3%</td>
+          <td>Target — YC standard for pre-seed with built product</td>
+        </tr>
+        <tr>
+          <td class="mono yellow">$2.5M</td>
+          <td class="mono">$250K / $2.5M</td>
+          <td class="mono yellow">10.0%</td>
+          <td>Floor — if angel pushes back, this is still reasonable</td>
+        </tr>
+        <tr>
+          <td class="mono red">$2M</td>
+          <td class="mono">$250K / $2M</td>
+          <td class="mono red">12.5%</td>
+          <td>Absolute minimum — below this you're giving away the company</td>
+        </tr>
+        <tr>
+          <td class="mono" style="color:var(--text-dim)">$1.5M</td>
+          <td class="mono" style="color:var(--text-dim)">$250K / $1.5M</td>
+          <td class="mono" style="color:var(--text-dim)">16.7%</td>
+          <td style="color:var(--red)">WALK AWAY — predatory for a product this built</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:14px; font-weight:700; margin:28px 0 12px;">Why $3M Cap is Justified</h3>
+    <table class="val-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Cost to replicate product (282K LOC)</td><td class="mono green">$500K+</td></tr>
+        <tr><td>21 clubs, 0% churn, $0 CAC</td><td>Product-market fit pre-revenue</td></tr>
+        <tr><td>Market validated by Fastbreak ($53M raised)</td><td>Market exists</td></tr>
+        <tr><td>C Corp Delaware + EIN + Mercury + 83(b)</td><td>Structure ready</td></tr>
+        <tr><td>Technical founder full-time, 25+ yrs exp</td><td>Low execution risk</td></tr>
+        <tr><td>Sweat equity invested</td><td class="mono green">~$150K+</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:14px; font-weight:700; margin:28px 0 12px;">Negotiation Playbook</h3>
+    <table class="val-table">
+      <thead>
+        <tr>
+          <th>Angel Says</th>
+          <th>You Respond</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"OK, $3M"</td>
+          <td>"Perfect"</td>
+          <td class="mono green">8.3% dilution</td>
+        </tr>
+        <tr>
+          <td>"That's high, lower it"</td>
+          <td>"I can do $2.5M"</td>
+          <td class="mono yellow">10% dilution</td>
+        </tr>
+        <tr>
+          <td>"I want $1.5M cap"</td>
+          <td>"$2M is my floor, non-negotiable"</td>
+          <td class="mono red">12.5% max or walk</td>
+        </tr>
+        <tr>
+          <td>"I want $500K cap"</td>
+          <td class="red"><strong>Walk away.</strong> This is predatory.</td>
+          <td>No deal</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:14px; font-weight:700; margin:28px 0 12px;">Burn Analysis with $250K</h3>
+    <table class="val-table">
+      <thead>
+        <tr>
+          <th>Expense</th>
+          <th>Monthly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Miguel salary (minimum)</td><td class="mono">$3,000 - $4,000</td></tr>
+        <tr><td>Alwin salary (partial)</td><td class="mono">$2,000 - $3,000</td></tr>
+        <tr><td>Infrastructure + tools</td><td class="mono">$500</td></tr>
+        <tr><td>Legal / accounting USA</td><td class="mono">$300</td></tr>
+        <tr><td>Marketing / ads</td><td class="mono">$500 - $1,000</td></tr>
+        <tr><td>Travel (Miguel to USA)</td><td class="mono">$500</td></tr>
+        <tr style="border-top:2px solid var(--green)">
+          <td><strong>Total Burn</strong></td>
+          <td class="mono green"><strong>$7,000 - $9,000/mo</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Runway @ $8K/mo</strong></td>
+          <td class="mono green"><strong>~31 months</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top:20px">
+      <p><strong>Bottom line:</strong> $250K gives you 2.5+ years of runway. Enough to activate payments, reach 50 paying clubs, and arrive at YC or Series A with real traction. You do NOT need $500K now.</p>
+    </div>
+  </div>
+
+  <!-- ==================== EXECUTION PLAN ==================== -->
+  <div class="section" id="execution">
+    <div class="section-title">10-Day Execution Plan</div>
+    <div class="section-subtitle">Step-by-step actions to build the investor pipeline.</div>
+
+    <div class="plan-timeline">
+      <div class="plan-day">
+        <div class="plan-day-label">Days 1-2</div>
+        <div class="plan-day-action">Apply to SeedFunders Orlando + Florida Angel Nexus</div>
+        <div class="plan-day-who">Who: Miguel | Both rolling deadlines, apply via Dealum + FAN website</div>
+      </div>
+      <div class="plan-day">
+        <div class="plan-day-label">Day 3</div>
+        <div class="plan-day-action">Email venVelo (pitch@venvelo.com)</div>
+        <div class="plan-day-who">Who: Alwin | ~1 week response time. Short pitch email + one-pager attached</div>
+      </div>
+      <div class="plan-day">
+        <div class="plan-day-label">Days 4-5</div>
+        <div class="plan-day-action">Apply to New World Angels + Tamiami Angel Funds</div>
+        <div class="plan-day-who">Who: Miguel | NWA has quarterly Orlando showcase. Tamiami is "Shark Tank" format</div>
+      </div>
+      <div class="plan-day">
+        <div class="plan-day-label">Days 6-7</div>
+        <div class="plan-day-action">Contact DeepWork Capital + Bridge Angel Investors</div>
+        <div class="plan-day-who">Who: Miguel | DeepWork via website. Bridge via Gust platform</div>
+      </div>
+      <div class="plan-day">
+        <div class="plan-day-label">Day 8</div>
+        <div class="plan-day-action">Call Winter Park Angels (407-647-8752)</div>
+        <div class="plan-day-who">Who: Alwin | 10 min from downtown Orlando. Request in-person meeting</div>
+      </div>
+      <div class="plan-day">
+        <div class="plan-day-label">Days 9-10</div>
+        <div class="plan-day-action">Apply to Athlete Angels + Stadia Ventures</div>
+        <div class="plan-day-who">Who: Miguel | AngelList syndicate + sports-tech accelerator</div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:24px">
+      <p><strong>In parallel:</strong> Alwin monitors Orlando Magic Venture Challenge for 2026 round. Attends Orlando Innovation League events for local networking. Ask Erica for intros ("Would you know anyone in your network who invests in sports-tech?").</p>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:700; margin:28px 0 12px;">What You Need Ready Before Applying</h3>
+    <div class="info-block">
+      <h4>Materials Checklist</h4>
+      <p>1. <strong>One-pager for angels</strong> (different from Erica's — shorter, clearer numbers)<br>
+      2. <strong>Updated deck</strong> with NIL slide (per Erica's feedback)<br>
+      3. <strong>3-minute demo video</strong> of the product (most groups request this)<br>
+      4. <strong>Gust profile</strong> (several platforms use it for submission)<br>
+      5. <strong>AngelList profile</strong> (for Athlete Angels syndicate)</p>
+    </div>
+  </div>
+
+  <!-- ==================== CHECKLIST ==================== -->
+  <div class="section" id="checklist">
+    <div class="section-title">Pre-Application Checklist</div>
+    <div class="section-subtitle">Complete these before applying. Click to mark as done (state persists in session only).</div>
+
+    <div class="info-block">
+      <h4>Materials to Prepare</h4>
+      <ul class="checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>One-pager for angel investors (simpler than VC version)</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Updated deck with NIL slide (Erica feedback)</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>3-minute product demo video (screen recording)</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Create Gust profile (gust.com)</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Create AngelList profile (angellist.com)</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>30-second pitch memorized in English</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Financial projections (simple: burn, runway, revenue targets)</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Cap table clean (current + post-SAFE scenarios)</span></li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h4>Applications to Submit</h4>
+      <ul class="checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>SeedFunders Orlando</strong> — via Dealum</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Florida Angel Nexus</strong> — floridaangelnexus.org</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>New World Angels</strong> — newworldangels.com/entrepreneurs</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>venVelo</strong> — email pitch@venvelo.com</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Tamiami Angel Funds</strong> — tamiamiangels.com</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>DeepWork Capital</strong> — deepworkcapital.com</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Bridge Angel Investors</strong> — via Gust</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Winter Park Angels</strong> — call 407-647-8752</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Athlete Angels Fund</strong> — AngelList syndicate</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Stadia Ventures</strong> — stadiaventures.com/accelerator</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>SeventySix Capital</strong> — seventysixcapital.com</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Orlando Innovation League</strong> — join Meetup</span></li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h4>Alwin On-Ground Actions (Orlando)</h4>
+      <ul class="checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Attend next Orlando Innovation League Quick Pitch Night</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Visit StarterStudio for networking event</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Call Winter Park Angels for in-person meeting</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Monitor Orlando Magic Venture Challenge for 2026 round</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Ask Erica for warm intros to her sports investor network</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span>Check if 420 E Church St is in an Opportunity Zone (for Orlando Opportunity Fund)</span></li>
+      </ul>
+    </div>
+
+    <div class="info-block">
+      <h4>Accelerators (In Parallel)</h4>
+      <ul class="checklist">
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Platanus Ventures</strong> — Already applied, waiting response</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Start-Up Chile Ignite (BIG 12)</strong> — Deadline May 25, 2026</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>YC Late Summer 2026</strong> — Open until batch closes</span></li>
+        <li><div class="check-box" onclick="toggleCheck(this)"></div><span><strong>Techstars Anywhere</strong> — Deadline June 10, 2026</span></li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <p><strong>Angel Pitch (30 seconds):</strong> "We built a platform used by 21 sports clubs with zero churn and zero marketing spend. The $53M competitor Fastbreak.ai does tournaments but can't manage clubs. We do both &mdash; clubs, tournaments, and player profiles in one ecosystem. We're raising $250K to go to market in the US. The product is built, the clubs are real, and the market is validated."</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Tab navigation
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Status cycling
+const statuses = ['pending', 'applied', 'contacted', 'meeting', 'closed', 'passed'];
+function cycleStatus(el) {
+  const current = el.dataset.status;
+  const next = statuses[(statuses.indexOf(current) + 1) % statuses.length];
+  el.dataset.status = next;
+  const dot = el.querySelector('.status-dot');
+  dot.className = 'status-dot ' + next;
+}
+
+// Checkbox toggle
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+}
+
+// Search/filter
+function filterCards(query, sectionId) {
+  const section = document.getElementById(sectionId);
+  const cards = section.querySelectorAll('.investor-card');
+  const q = query.toLowerCase();
+  cards.forEach(card => {
+    const name = (card.dataset.name || '').toLowerCase();
+    const text = card.textContent.toLowerCase();
+    card.style.display = (name.includes(q) || text.includes(q)) ? '' : 'none';
+  });
+}
+
+function filterByPriority(priority, sectionId, btn) {
+  const section = document.getElementById(sectionId);
+  const cards = section.querySelectorAll('.investor-card');
+  const buttons = btn.parentElement.querySelectorAll('.filter-btn');
+
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  cards.forEach(card => {
+    if (priority === 'all') {
+      card.style.display = '';
+    } else {
+      card.style.display = card.dataset.priority === priority ? '' : 'none';
+    }
+  });
+}
+
+// Collapsible sections
+document.querySelectorAll('.collapsible-header').forEach(header => {
+  header.addEventListener('click', () => {
+    header.classList.toggle('open');
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

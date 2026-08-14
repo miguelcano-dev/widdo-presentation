@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIDDO — The All-in-One Sports Club Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        void: '#0A0A0F',
+        slab: '#12121A',
+        slate: '#1A1A25',
+        edge: '#242433',
+        glow: '#00C853',
+        glow2: '#00E676',
+        ember: '#FF3D57',
+        amber: '#FFB300',
+        ice: '#3D8BFF',
+        txt: '#E8E8ED',
+        dim: '#8888A0',
+        faint: '#55556A',
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0A0A0F;
+    color: #E8E8ED;
+    overflow-x: hidden;
+  }
+  .font-display { font-family: 'Syne', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Noise overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  /* Nav */
+  .nav-link {
+    position: relative;
+    padding: 6px 0;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #55556A;
+    transition: color 0.3s;
+  }
+  .nav-link:hover, .nav-link.active { color: #00C853; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #00C853;
+    transition: width 0.3s;
+  }
+  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+  /* Scroll animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.08s; }
+  .reveal-delay-2 { transition-delay: 0.16s; }
+  .reveal-delay-3 { transition-delay: 0.24s; }
+  .reveal-delay-4 { transition-delay: 0.32s; }
+  .reveal-delay-5 { transition-delay: 0.40s; }
+  .reveal-delay-6 { transition-delay: 0.48s; }
+  .reveal-delay-7 { transition-delay: 0.56s; }
+  .reveal-delay-8 { transition-delay: 0.64s; }
+  .reveal-delay-9 { transition-delay: 0.72s; }
+  .reveal-delay-10 { transition-delay: 0.80s; }
+
+  /* Cards */
+  .card {
+    background: #12121A;
+    border: 1px solid #242433;
+    border-radius: 14px;
+    transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+  }
+  .card:hover {
+    border-color: #00C85330;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,200,83,0.06);
+  }
+
+  /* Pain card red glow */
+  .pain-card {
+    background: #12121A;
+    border: 1px solid #FF3D5720;
+    border-radius: 14px;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+  .pain-card:hover {
+    border-color: #FF3D5740;
+    box-shadow: 0 4px 24px rgba(255,61,87,0.08);
+  }
+
+  /* Module section accent bar */
+  .module-accent {
+    position: relative;
+  }
+  .module-accent::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #00C853, #00C85300);
+  }
+
+  /* Traffic light dots */
+  .dot-green {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #00C853;
+    box-shadow: 0 0 8px #00C85380;
+    display: inline-block;
+  }
+  .dot-yellow {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #FFB300;
+    box-shadow: 0 0 8px #FFB30080;
+    display: inline-block;
+  }
+  .dot-red {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #FF3D57;
+    box-shadow: 0 0 8px #FF3D5780;
+    display: inline-block;
+  }
+
+  /* Glow pulse */
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 8px #00C85340; }
+    50% { box-shadow: 0 0 20px #00C85360; }
+  }
+
+  /* Hero gradient orbs */
+  .hero-orb-1 {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #00C85310 0%, transparent 70%);
+    top: -200px; right: -100px;
+    border-radius: 50%;
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .hero-orb-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, #3D8BFF08 0%, transparent 70%);
+    bottom: -100px; left: -50px;
+    border-radius: 50%;
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #242433 30%, #242433 70%, transparent);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0A0F; }
+  ::-webkit-scrollbar-thumb { background: #242433; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #55556A; }
+
+  /* Flow arrow */
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00C853;
+    font-size: 20px;
+    min-width: 32px;
+  }
+
+  /* Pricing popular */
+  .pricing-popular {
+    border-color: #00C853;
+    box-shadow: 0 0 40px #00C85312;
+    position: relative;
+  }
+  .pricing-popular::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00C853;
+    color: #0A0A0F;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 16px;
+    border-radius: 20px;
+  }
+
+  /* Mock UI table */
+  .mock-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+  }
+  .mock-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #55556A;
+    border-bottom: 1px solid #242433;
+  }
+  .mock-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #1A1A25;
+    color: #E8E8ED;
+  }
+  .mock-table tr:last-child td { border-bottom: none; }
+
+  /* Ecosystem card hover */
+  .eco-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .eco-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .eco-clubs::after { background: linear-gradient(135deg, #00C85308, transparent 60%); }
+  .eco-tournaments::after { background: linear-gradient(135deg, #3D8BFF08, transparent 60%); }
+  .eco-academy::after { background: linear-gradient(135deg, #FFB30008, transparent 60%); }
+  .eco-card:hover::after { opacity: 1; }
+
+  /* Counter animation */
+  .counter { display: inline-block; }
+
+  /* Comparison table */
+  .comp-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .comp-table th {
+    padding: 14px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #55556A;
+    border-bottom: 1px solid #242433;
+    text-align: left;
+  }
+  .comp-table th.highlight { color: #00C853; }
+  .comp-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #1A1A25;
+    font-size: 14px;
+  }
+  .comp-table td.highlight {
+    color: #00C853;
+    font-weight: 600;
+  }
+  .comp-table tr:last-child td { border-bottom: none; }
+
+  /* Section number */
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: #00C853;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* Widdo badge in hero */
+  @keyframes hero-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl" style="background: #0A0A0Fdd; border-bottom: 1px solid #242433;">
+  <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="#hero" class="font-display font-800 text-glow tracking-wider text-base">WIDDO</a>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="#problem" class="nav-link">Problem</a>
+      <a href="#platform" class="nav-link">Platform</a>
+      <a href="#usa-modules" class="nav-link">USA Modules</a>
+      <a href="#compliance" class="nav-link">Compliance</a>
+      <a href="#payments" class="nav-link">Payments</a>
+      <a href="#ecosystem" class="nav-link">Ecosystem</a>
+      <a href="#differentiators" class="nav-link">Why Widdo</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+    </div>
+    <a href="mailto:hey@widdo.co" class="font-mono text-xs text-dim hover:text-glow transition-colors hidden md:block">hey@widdo.co</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero" class="relative min-h-screen flex items-center pt-14 overflow-hidden">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+
+  <!-- Subtle grid -->
+  <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(#242433 1px, transparent 1px), linear-gradient(90deg, #242433 1px, transparent 1px); background-size: 80px 80px; opacity: 0.04;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 py-24 w-full relative z-10">
+    <div class="max-w-4xl">
+      <!-- Badge -->
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-edge mb-8" style="background: #12121A80;">
+        <span class="w-2 h-2 rounded-full bg-glow" style="animation: glow-pulse 2s infinite;"></span>
+        <span class="font-mono text-xs text-dim">Sports Club Management Platform</span>
+      </div>
+
+      <!-- Logo -->
+      <h1 class="reveal reveal-delay-1 font-display font-800 tracking-tight" style="font-size: clamp(56px, 10vw, 120px); line-height: 0.9; color: #00C853;">
+        WIDDO
+      </h1>
+
+      <!-- Tagline -->
+      <p class="reveal reveal-delay-2 font-display font-600 text-2xl md:text-4xl text-txt mt-4 tracking-tight" style="line-height: 1.15;">
+        The All-in-One<br>Sports Club Platform
+      </p>
+
+      <!-- Subtitle -->
+      <p class="reveal reveal-delay-3 text-dim text-lg mt-6 max-w-xl leading-relaxed">
+        Everything your academy needs. In one place.<br>
+        <span class="text-txt font-500">Starting at <span class="font-mono text-glow">$99</span>/mo.</span>
+      </p>
+
+      <!-- CTA -->
+      <a href="#platform" class="reveal reveal-delay-4 inline-flex items-center gap-3 mt-10 px-8 py-4 bg-glow text-void font-display font-700 text-sm tracking-wide rounded-full hover:bg-glow2 transition-colors">
+        See What's Inside
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M8 13l4-4M8 13l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <!-- Hero Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20">
+      <div class="reveal reveal-delay-4 card px-5 py-5">
+        <p class="font-mono text-3xl font-700 text-glow">$54B</p>
+        <p class="text-dim text-xs mt-1 font-mono uppercase tracking-wider">US Youth Sports Market</p>
+      </div>
+      <div class="reveal reveal-delay-5 card px-5 py-5">
+        <p class="font-mono text-3xl font-700 text-txt">55M</p>
+        <p class="text-dim text-xs mt-1 font-mono uppercase tracking-wider">Youth Athletes</p>
+      </div>
+      <div class="reveal reveal-delay-6 card px-5 py-5">
+        <p class="font-mono text-3xl font-700 text-ember">73%</p>
+        <p class="text-dim text-xs mt-1 font-mono uppercase tracking-wider">No Software</p>
+      </div>
+      <div class="reveal reveal-delay-7 card px-5 py-5">
+        <p class="font-mono text-3xl font-700 text-ice">300K+</p>
+        <p class="text-dim text-xs mt-1 font-mono uppercase tracking-wider">Sports Orgs</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+    <span class="font-mono text-[10px] text-dim uppercase tracking-widest">Scroll</span>
+    <div class="w-px h-8 bg-gradient-to-b from-glow to-transparent"></div>
+  </div>
+</section>
+
+<!-- ==================== THE PROBLEM ==================== -->
+<section id="problem" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">01 — The Problem</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      This Is How Most Clubs<br>Operate Today
+    </h2>
+    <p class="reveal text-dim mt-4 text-lg max-w-2xl">Manual processes, scattered tools, zero visibility. Sound familiar?</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-14">
+      <!-- Pain 1 -->
+      <div class="reveal reveal-delay-1 pain-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-lg bg-ember/10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3D57" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-sm">Triple Data Entry</h3>
+        </div>
+        <p class="text-dim text-sm leading-relaxed">Google Forms → Excel → another Excel. Registration chaos. Every new athlete means copying data three times.</p>
+      </div>
+
+      <!-- Pain 2 -->
+      <div class="reveal reveal-delay-2 pain-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-lg bg-ember/10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3D57" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-sm">Payment Chaos</h3>
+        </div>
+        <p class="text-dim text-sm leading-relaxed">Venmo, Zelle, checks, cash. No tracking. Parents say "I already paid." You can't prove otherwise.</p>
+      </div>
+
+      <!-- Pain 3 -->
+      <div class="reveal reveal-delay-3 pain-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-lg bg-ember/10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3D57" stroke-width="2" stroke-linecap="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-sm">Compliance Nightmare</h3>
+        </div>
+        <p class="text-dim text-sm leading-relaxed">Physical folders, Google Drive. Documents expire without notice. Audit = panic. Who has an expired physical? Nobody knows.</p>
+      </div>
+
+      <!-- Pain 4 -->
+      <div class="reveal reveal-delay-4 pain-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-lg bg-ember/10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3D57" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-sm">Chaotic Communication</h3>
+        </div>
+        <p class="text-dim text-sm leading-relaxed">GroupMe, iMessage, email. Info gets lost. Parents ask the same thing 50 times. No single source of truth.</p>
+      </div>
+
+      <!-- Pain 5 -->
+      <div class="reveal reveal-delay-5 pain-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-lg bg-ember/10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3D57" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-sm">NCAA in Coach's Head</h3>
+        </div>
+        <p class="text-dim text-sm leading-relaxed">GPA, core courses, college interests — all in the coach's memory. Parents have zero visibility. Discovered too late.</p>
+      </div>
+
+      <!-- Pain 6 -->
+      <div class="reveal reveal-delay-6 pain-card p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-lg bg-ember/10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3D57" stroke-width="2" stroke-linecap="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-sm">Tryout Disaster</h3>
+        </div>
+        <p class="text-dim text-sm leading-relaxed">Paper evaluations, manual emails, then re-enter everything into the roster. The most important event of the year, run on paper.</p>
+      </div>
+    </div>
+
+    <!-- Bottom callout -->
+    <div class="reveal mt-12 p-6 rounded-xl border border-ember/20 bg-ember/5 text-center">
+      <p class="font-mono text-sm">
+        <span class="text-ember font-700">10+ hours/week</span>
+        <span class="text-dim"> on admin tasks.</span>
+        <span class="text-faint mx-2">·</span>
+        <span class="text-dim">Zero visibility.</span>
+        <span class="text-faint mx-2">·</span>
+        <span class="text-dim">Zero automation.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHAT WIDDO DOES TODAY ==================== -->
+<section id="platform" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">02 — The Platform</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      What Your Club Gets<span class="text-glow"> — Day One</span>
+    </h2>
+    <p class="reveal text-dim mt-4 text-lg max-w-2xl">10 core modules. Already built, tested, and running in production with 14 clubs and 834 users.</p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-3 mt-14">
+      <!-- Feature 1: Player Management -->
+      <div class="reveal reveal-delay-1 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center mb-4 group-hover:bg-glow/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Player Management</h3>
+        <p class="text-dim text-xs leading-relaxed">Complete profiles, medical data, emergency contacts, documents. Organized by team.</p>
+      </div>
+
+      <!-- Feature 2: Billing -->
+      <div class="reveal reveal-delay-2 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center mb-4 group-hover:bg-glow/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Billing & Payments</h3>
+        <p class="text-dim text-xs leading-relaxed">Charges per team, real-time status, automatic reminders. Know who paid instantly.</p>
+      </div>
+
+      <!-- Feature 3: Attendance -->
+      <div class="reveal reveal-delay-3 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center mb-4 group-hover:bg-glow/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Attendance Tracking</h3>
+        <p class="text-dim text-xs leading-relaxed">Check-in per session. Attendance % per athlete. Reports for parents and coaches.</p>
+      </div>
+
+      <!-- Feature 4: Calendar -->
+      <div class="reveal reveal-delay-4 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center mb-4 group-hover:bg-glow/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Calendar</h3>
+        <p class="text-dim text-xs leading-relaxed">Practices, games, events. Parents see everything. Auto reminders before sessions.</p>
+      </div>
+
+      <!-- Feature 5: Teams -->
+      <div class="reveal reveal-delay-5 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center mb-4 group-hover:bg-glow/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Team Management</h3>
+        <p class="text-dim text-xs leading-relaxed">Organize by sport, age, skill. Assign coaches. Transfer players between teams.</p>
+      </div>
+
+      <!-- Feature 6: Coach Dashboard -->
+      <div class="reveal reveal-delay-6 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-ice/10 flex items-center justify-center mb-4 group-hover:bg-ice/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Coach Dashboard</h3>
+        <p class="text-dim text-xs leading-relaxed">Each coach sees only their teams. Attendance, profiles, session notes. Mobile-ready.</p>
+      </div>
+
+      <!-- Feature 7: Parent Portal -->
+      <div class="reveal reveal-delay-7 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-ice/10 flex items-center justify-center mb-4 group-hover:bg-ice/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Parent Portal</h3>
+        <p class="text-dim text-xs leading-relaxed">Profile, attendance, payments, calendar, documents. Zero phone calls to the office.</p>
+      </div>
+
+      <!-- Feature 8: Financial Reports -->
+      <div class="reveal reveal-delay-8 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center mb-4 group-hover:bg-amber/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB300" stroke-width="1.5" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Financial Reports</h3>
+        <p class="text-dim text-xs leading-relaxed">Income vs expenses, P&L, overdue payments. Know exactly where your money is.</p>
+      </div>
+
+      <!-- Feature 9: Roles -->
+      <div class="reveal reveal-delay-9 card p-5 group">
+        <div class="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center mb-4 group-hover:bg-amber/20 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB300" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2">Role-Based Access</h3>
+        <p class="text-dim text-xs leading-relaxed">Owner, Admin, Coach, Accountant, Player, Parent. Each sees what they need.</p>
+      </div>
+
+      <!-- Feature 10: AI Assistant -->
+      <div class="reveal reveal-delay-10 card p-5 group relative overflow-hidden" style="border-color: #00C85330;">
+        <div class="absolute top-0 right-0 w-20 h-20 bg-glow/5 rounded-full blur-2xl"></div>
+        <div class="w-10 h-10 rounded-lg bg-glow/15 flex items-center justify-center mb-4 group-hover:bg-glow/25 transition-colors" style="animation: glow-pulse 3s infinite;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4z"/><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 14h.01M15 14h.01M9 17s1.5 1 3 1 3-1 3-1"/></svg>
+        </div>
+        <h3 class="font-display font-700 text-sm mb-2 text-glow">AI Assistant</h3>
+        <p class="text-dim text-xs leading-relaxed">"Who hasn't paid?" "Attendance for U14?" "Expired documents?" Ask in natural language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== USA MODULES ==================== -->
+<section id="usa-modules" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">03 — USA Modules</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      Built for the<span class="text-glow"> US Market</span>
+    </h2>
+    <p class="reveal text-dim mt-4 text-lg max-w-2xl">5 new modules designed for what American clubs actually need. Compliance, waivers, credentials, NCAA, and tryouts.</p>
+
+    <!-- Module 1: Compliance Dashboard -->
+    <div class="reveal mt-20 module-accent pl-8">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="font-mono text-xs text-glow bg-glow/10 px-3 py-1 rounded-full">Module 01</span>
+      </div>
+      <h3 class="font-display font-800 text-2xl md:text-3xl">Compliance Dashboard</h3>
+      <p class="text-dim mt-2 max-w-2xl">US clubs are legally required to keep athlete and coach documents current. Sports physicals, background checks, concussion protocols. <span class="text-ember font-600">Missing one = fines, lawsuits, loss of license.</span></p>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-8">
+        <!-- Mock table -->
+        <div class="card p-0 overflow-hidden">
+          <div class="px-5 py-3 border-b border-edge flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-ember/60"></div>
+            <div class="w-3 h-3 rounded-full bg-amber/60"></div>
+            <div class="w-3 h-3 rounded-full bg-glow/60"></div>
+            <span class="font-mono text-[10px] text-faint ml-2">COMPLIANCE OVERVIEW</span>
+          </div>
+          <table class="mock-table">
+            <thead>
+              <tr>
+                <th>Athlete</th>
+                <th>Physical</th>
+                <th>Concussion</th>
+                <th>Background</th>
+                <th>ECG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-500">Marcus Johnson</td>
+                <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Nov 2026</span></td>
+                <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Aug 2026</span></td>
+                <td><span class="text-faint text-xs">N/A</span></td>
+                <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Done</span></td>
+              </tr>
+              <tr>
+                <td class="font-500">Sophia Williams</td>
+                <td><span class="dot-yellow"></span> <span class="text-amber text-xs ml-1">21 days</span></td>
+                <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Sep 2026</span></td>
+                <td><span class="text-faint text-xs">N/A</span></td>
+                <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Done</span></td>
+              </tr>
+              <tr>
+                <td class="font-500">David Martinez</td>
+                <td><span class="dot-red"></span> <span class="text-ember text-xs ml-1">Expired</span></td>
+                <td><span class="dot-red"></span> <span class="text-ember text-xs ml-1">Expired</span></td>
+                <td><span class="text-faint text-xs">N/A</span></td>
+                <td><span class="dot-yellow"></span> <span class="text-amber text-xs ml-1">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="px-5 py-3 border-t border-edge bg-slab/50">
+            <p class="text-xs text-dim flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2" stroke-linecap="round"><path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4z"/><rect x="3" y="8" width="18" height="12" rx="2"/></svg>
+              <span class="text-glow">AI:</span> "2 athletes need immediate attention — David's physical and concussion protocol expired."
+            </p>
+          </div>
+        </div>
+
+        <!-- Features -->
+        <div class="space-y-3">
+          <div class="card p-4 flex items-start gap-3">
+            <div class="dot-green mt-1.5 flex-shrink-0"></div>
+            <div>
+              <p class="font-500 text-sm">Traffic Light Per Athlete</p>
+              <p class="text-dim text-xs mt-0.5">Green = current. Yellow = expiring in 30 days. Red = expired. Instant visibility.</p>
+            </div>
+          </div>
+          <div class="card p-4 flex items-start gap-3">
+            <div class="dot-yellow mt-1.5 flex-shrink-0"></div>
+            <div>
+              <p class="font-500 text-sm">Automatic Expiration Alerts</p>
+              <p class="text-dim text-xs mt-0.5">30-day and 7-day warnings to parents and owner. Daily cron check. Never miss a deadline.</p>
+            </div>
+          </div>
+          <div class="card p-4 flex items-start gap-3">
+            <div class="dot-red mt-1.5 flex-shrink-0"></div>
+            <div>
+              <p class="font-500 text-sm">Configurable Per Club</p>
+              <p class="text-dim text-xs mt-0.5">Each club toggles which requirements apply. Physical, concussion, background check, ECG, SafeSport, insurance, custom types.</p>
+            </div>
+          </div>
+          <div class="card p-4 flex items-start gap-3">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="2" stroke-linecap="round" class="mt-1.5 flex-shrink-0"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+            <div>
+              <p class="font-500 text-sm">Audit-Ready Exports</p>
+              <p class="text-dim text-xs mt-0.5">PDF and Excel export with full compliance history. Ready for any audit, any time.</p>
+            </div>
+          </div>
+          <div class="text-xs text-faint font-mono mt-4 p-3 bg-slab/50 rounded-lg border border-edge">
+            DEFAULT TYPES: Sports Physical (365d) · Concussion Protocol (365d) · Background Check (365d) · ECG Screening (once) · SafeSport (365d) · Insurance (365d) · CPR/First Aid (730d)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 2: Digital Waivers -->
+    <div class="reveal mt-20 module-accent pl-8">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="font-mono text-xs text-glow bg-glow/10 px-3 py-1 rounded-full">Module 02</span>
+      </div>
+      <h3 class="font-display font-800 text-2xl md:text-3xl">Digital Waivers</h3>
+      <p class="text-dim mt-2 max-w-2xl">Before any minor steps on a court, parents MUST sign legal documents. <span class="text-ember font-600">Without signed waivers, the club is liable for everything.</span></p>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-8">
+        <!-- Mock waiver flow -->
+        <div class="card p-0 overflow-hidden">
+          <div class="px-5 py-3 border-b border-edge flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-glow/60"></div>
+            <span class="font-mono text-[10px] text-faint ml-2">ENROLLMENT WAIVER SIGNING</span>
+          </div>
+          <div class="p-5 space-y-4">
+            <!-- Step 1 -->
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-glow/5 border border-glow/20">
+              <div class="w-7 h-7 rounded-full bg-glow/20 flex items-center justify-center font-mono text-xs text-glow font-700">1</div>
+              <div>
+                <p class="text-sm font-500">Read Liability Waiver</p>
+                <p class="text-xs text-dim">Parent reads full text on their phone</p>
+              </div>
+              <span class="ml-auto dot-green"></span>
+            </div>
+            <!-- Step 2 -->
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-glow/5 border border-glow/20">
+              <div class="w-7 h-7 rounded-full bg-glow/20 flex items-center justify-center font-mono text-xs text-glow font-700">2</div>
+              <div>
+                <p class="text-sm font-500">Sign Digitally</p>
+                <p class="text-xs text-dim">Touch signature on canvas — works on mobile</p>
+              </div>
+              <span class="ml-auto dot-green"></span>
+            </div>
+            <!-- Step 3 -->
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-ice/5 border border-ice/20">
+              <div class="w-7 h-7 rounded-full bg-ice/20 flex items-center justify-center font-mono text-xs text-ice font-700">3</div>
+              <div>
+                <p class="text-sm font-500">PDF Generated</p>
+                <p class="text-xs text-dim">Full text + visible signature + timestamp</p>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="2" stroke-linecap="round" class="ml-auto"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+            </div>
+            <!-- Step 4 -->
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-slate border border-edge">
+              <div class="w-7 h-7 rounded-full bg-edge flex items-center justify-center font-mono text-xs text-dim font-700">4</div>
+              <div>
+                <p class="text-sm font-500">Linked to Player Profile</p>
+                <p class="text-xs text-dim">PDF saved in Documents tab, email copy to parent</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Default templates -->
+        <div class="space-y-3">
+          <p class="font-mono text-xs text-faint uppercase tracking-wider mb-3">5 Default Templates</p>
+          <div class="card p-4 flex items-center gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <span class="text-sm">Liability Waiver</span>
+          </div>
+          <div class="card p-4 flex items-center gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <span class="text-sm">Medical Release & Emergency Authorization</span>
+          </div>
+          <div class="card p-4 flex items-center gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <span class="text-sm">Photo / Video Consent</span>
+          </div>
+          <div class="card p-4 flex items-center gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <span class="text-sm">Concussion Acknowledgment</span>
+          </div>
+          <div class="card p-4 flex items-center gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <span class="text-sm">NIL Consent (minors)</span>
+          </div>
+          <div class="mt-4 p-3 rounded-lg bg-slab/50 border border-edge">
+            <p class="text-xs text-dim"><span class="text-glow font-600">+ Custom waivers:</span> Owner creates and edits templates. Toggle required/optional per waiver. Full control.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 3: Coach Credentials -->
+    <div class="reveal mt-20 module-accent pl-8">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="font-mono text-xs text-glow bg-glow/10 px-3 py-1 rounded-full">Module 03</span>
+      </div>
+      <h3 class="font-display font-800 text-2xl md:text-3xl">Coach Credentials</h3>
+      <p class="text-dim mt-2 max-w-2xl">Florida law (effective <span class="text-ember font-600">July 2026</span>): every adult with contact with minors in a sports org MUST have Background Check Level 2 (fingerprinting). Plus SafeSport if NGB-affiliated.</p>
+
+      <div class="card p-0 overflow-hidden mt-8 max-w-2xl">
+        <div class="px-5 py-3 border-b border-edge flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-ember/60"></div>
+          <div class="w-3 h-3 rounded-full bg-amber/60"></div>
+          <div class="w-3 h-3 rounded-full bg-glow/60"></div>
+          <span class="font-mono text-[10px] text-faint ml-2">COACH CREDENTIALS</span>
+        </div>
+        <table class="mock-table">
+          <thead>
+            <tr>
+              <th>Coach</th>
+              <th>Background Check L2</th>
+              <th>SafeSport</th>
+              <th>CPR / First Aid</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-500">Coach Sarah Miller</td>
+              <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Dec 2026</span></td>
+              <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Oct 2026</span></td>
+              <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Mar 2028</span></td>
+              <td><span class="text-xs font-mono font-600 text-glow bg-glow/10 px-2 py-0.5 rounded">CLEARED</span></td>
+            </tr>
+            <tr>
+              <td class="font-500">Coach James Lee</td>
+              <td><span class="dot-yellow"></span> <span class="text-amber text-xs ml-1">18 days</span></td>
+              <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Aug 2026</span></td>
+              <td><span class="dot-green"></span> <span class="text-dim text-xs ml-1">Jan 2027</span></td>
+              <td><span class="text-xs font-mono font-600 text-amber bg-amber/10 px-2 py-0.5 rounded">WARNING</span></td>
+            </tr>
+            <tr>
+              <td class="font-500">Coach Mike Torres</td>
+              <td><span class="dot-red"></span> <span class="text-ember text-xs ml-1">Expired</span></td>
+              <td><span class="dot-red"></span> <span class="text-ember text-xs ml-1">Missing</span></td>
+              <td><span class="dot-yellow"></span> <span class="text-amber text-xs ml-1">25 days</span></td>
+              <td><span class="text-xs font-mono font-600 text-ember bg-ember/10 px-2 py-0.5 rounded">BLOCKED</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="px-5 py-3 border-t border-edge bg-ember/5">
+          <p class="text-xs text-ember flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF3D57" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Coach Torres should NOT have contact with minors until credentials are resolved.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 4: NCAA Eligibility Tracker -->
+    <div class="reveal mt-20 module-accent pl-8">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="font-mono text-xs text-glow bg-glow/10 px-3 py-1 rounded-full">Module 04</span>
+      </div>
+      <h3 class="font-display font-800 text-2xl md:text-3xl">NCAA Eligibility Tracker</h3>
+      <p class="text-dim mt-2 max-w-2xl">Academies preparing athletes for college scholarships need to track GPA, core courses, and NCAA requirements. <span class="text-amber font-600">Coaches track this in their head. Parents have zero visibility.</span></p>
+
+      <div class="grid lg:grid-cols-2 gap-6 mt-8">
+        <!-- Mock NCAA profile -->
+        <div class="card p-0 overflow-hidden">
+          <div class="px-5 py-3 border-b border-edge flex items-center justify-between">
+            <span class="font-mono text-[10px] text-faint">NCAA ELIGIBILITY — PLAYER PROFILE</span>
+            <span class="font-mono text-[10px] text-glow">Target: D1</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <p class="font-display font-700 text-lg">Marcus Johnson</p>
+                <p class="text-xs text-dim">Junior · Basketball · The Academy CFL</p>
+              </div>
+              <div class="text-right">
+                <p class="font-mono text-2xl font-700 text-glow">3.4</p>
+                <p class="text-xs text-dim">GPA (req: 2.3)</p>
+              </div>
+            </div>
+
+            <!-- Core courses progress -->
+            <div class="mb-5">
+              <div class="flex justify-between text-xs mb-2">
+                <span class="text-dim">Core Courses</span>
+                <span class="font-mono text-glow">13/16</span>
+              </div>
+              <div class="w-full h-2 bg-edge rounded-full overflow-hidden">
+                <div class="h-full bg-glow rounded-full" style="width: 81.25%;"></div>
+              </div>
+            </div>
+
+            <!-- Course breakdown -->
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="flex justify-between p-2 rounded bg-slab border border-edge">
+                <span class="text-dim">English</span>
+                <span class="font-mono text-glow">4/4 ✓</span>
+              </div>
+              <div class="flex justify-between p-2 rounded bg-slab border border-edge">
+                <span class="text-dim">Math</span>
+                <span class="font-mono text-glow">3/3 ✓</span>
+              </div>
+              <div class="flex justify-between p-2 rounded bg-slab border border-edge">
+                <span class="text-dim">Science</span>
+                <span class="font-mono text-glow">2/2 ✓</span>
+              </div>
+              <div class="flex justify-between p-2 rounded bg-slab border border-edge">
+                <span class="text-dim">Social Science</span>
+                <span class="font-mono text-glow">2/2 ✓</span>
+              </div>
+              <div class="flex justify-between p-2 rounded bg-slab border border-amber/30">
+                <span class="text-dim">Additional</span>
+                <span class="font-mono text-amber">2/5 ⚠</span>
+              </div>
+              <div class="flex justify-between p-2 rounded bg-slab border border-edge">
+                <span class="text-dim">Rule 10/7</span>
+                <span class="font-mono text-glow">10 ✓</span>
+              </div>
+            </div>
+
+            <!-- College interests -->
+            <div class="mt-5 pt-4 border-t border-edge">
+              <p class="text-xs text-faint font-mono uppercase tracking-wider mb-2">College Interests</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs px-2 py-1 rounded bg-glow/10 border border-glow/20 text-glow">UCF — Contacted</span>
+                <span class="text-xs px-2 py-1 rounded bg-ice/10 border border-ice/20 text-ice">Florida State — Interested</span>
+                <span class="text-xs px-2 py-1 rounded bg-edge text-dim">Miami — Watching</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Requirements table -->
+        <div>
+          <p class="font-mono text-xs text-faint uppercase tracking-wider mb-3">NCAA Requirements by Division</p>
+          <div class="card p-0 overflow-hidden">
+            <table class="mock-table">
+              <thead>
+                <tr>
+                  <th>Division</th>
+                  <th>Min GPA</th>
+                  <th>Core Courses</th>
+                  <th>Rule 10/7</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-mono font-600 text-glow">D1</td>
+                  <td class="font-mono">2.3</td>
+                  <td class="font-mono">16</td>
+                  <td class="font-mono text-amber">Yes</td>
+                </tr>
+                <tr>
+                  <td class="font-mono font-600 text-ice">D2</td>
+                  <td class="font-mono">2.2</td>
+                  <td class="font-mono">16</td>
+                  <td class="font-mono text-dim">No</td>
+                </tr>
+                <tr>
+                  <td class="font-mono font-600 text-dim">D3</td>
+                  <td class="font-mono text-dim">Varies</td>
+                  <td class="font-mono text-dim">N/A</td>
+                  <td class="font-mono text-dim">No</td>
+                </tr>
+                <tr>
+                  <td class="font-mono font-600 text-amber">NAIA</td>
+                  <td class="font-mono">2.0</td>
+                  <td class="font-mono text-dim">N/A</td>
+                  <td class="font-mono text-dim">No</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4 p-4 rounded-lg bg-slab/50 border border-edge">
+            <p class="text-xs text-dim"><span class="font-mono text-glow">Rule 10/7:</span> D1 athletes must complete 10 of 16 core courses before their 7th semester of high school. Miss it and they can't qualify.</p>
+          </div>
+          <div class="mt-3 p-4 rounded-lg bg-slab/50 border border-edge">
+            <p class="text-xs text-dim"><span class="font-mono text-ice">Also includes:</span> PDF recruiting profile, automatic alerts when GPA drops below requirement, college interest tracking with status flow (Watching → Interested → Contacted → Committed).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module 5: Tryout Management -->
+    <div class="reveal mt-20 module-accent pl-8">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="font-mono text-xs text-glow bg-glow/10 px-3 py-1 rounded-full">Module 05</span>
+      </div>
+      <h3 class="font-display font-800 text-2xl md:text-3xl">Tryout Management</h3>
+      <p class="text-dim mt-2 max-w-2xl">Tryouts are the most important event of the year. Today: Google Forms → Excel → paper evaluation → individual emails → triple data entry to roster.</p>
+
+      <!-- Flow -->
+      <div class="flex flex-col md:flex-row items-stretch gap-3 mt-8">
+        <div class="card p-5 flex-1 text-center">
+          <div class="w-12 h-12 rounded-full bg-glow/10 flex items-center justify-center mx-auto mb-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+          </div>
+          <p class="font-display font-700 text-sm">Register</p>
+          <p class="text-dim text-xs mt-1">Public link, no login needed. Name, age, position, contact.</p>
+        </div>
+
+        <div class="flow-arrow hidden md:flex">→</div>
+
+        <div class="card p-5 flex-1 text-center">
+          <div class="w-12 h-12 rounded-full bg-ice/10 flex items-center justify-center mx-auto mb-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="1.5" stroke-linecap="round"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </div>
+          <p class="font-display font-700 text-sm">Evaluate</p>
+          <p class="text-dim text-xs mt-1">Score 1-5: Athleticism, Skill, Attitude, Coachability. Add notes.</p>
+        </div>
+
+        <div class="flow-arrow hidden md:flex">→</div>
+
+        <div class="card p-5 flex-1 text-center">
+          <div class="w-12 h-12 rounded-full bg-amber/10 flex items-center justify-center mx-auto mb-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB300" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <p class="font-display font-700 text-sm">Communicate</p>
+          <p class="text-dim text-xs mt-1">Mass email: Accepted, Waitlist, or Not Selected. One click.</p>
+        </div>
+
+        <div class="flow-arrow hidden md:flex">→</div>
+
+        <div class="card p-5 flex-1 text-center relative overflow-hidden" style="border-color: #00C85330;">
+          <div class="absolute inset-0 bg-glow/3 pointer-events-none"></div>
+          <div class="w-12 h-12 rounded-full bg-glow/15 flex items-center justify-center mx-auto mb-3 relative">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </div>
+          <p class="font-display font-700 text-sm text-glow relative">Convert to Player</p>
+          <p class="text-dim text-xs mt-1 relative">One click → on the roster. <span class="text-glow font-600">Zero double entry.</span></p>
+        </div>
+      </div>
+
+      <div class="mt-6 p-4 rounded-xl bg-glow/5 border border-glow/20 text-center">
+        <p class="text-sm"><span class="text-glow font-600">The key value:</span> <span class="text-dim">Convert to Player eliminates the triple data entry that wastes hours every tryout season.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COMPLIANCE ==================== -->
+<section id="compliance" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">04 — Compliance</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      Florida Compliance<span class="text-ember"> Requirements</span>
+    </h2>
+    <p class="reveal text-dim mt-4 text-lg max-w-2xl">What your club must track — or face consequences. These are not optional.</p>
+
+    <div class="reveal mt-12 card p-0 overflow-hidden">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Requirement</th>
+            <th>Who Must Comply</th>
+            <th>Deadline</th>
+            <th>Consequence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-600 flex items-center gap-2">
+              <span class="dot-red"></span> Background Check Level 2
+            </td>
+            <td class="text-dim">Every adult with minor contact</td>
+            <td><span class="font-mono text-ember font-600">July 1, 2026</span></td>
+            <td class="text-ember text-sm">Fines, lawsuits, loss of license</td>
+          </tr>
+          <tr>
+            <td class="font-600 flex items-center gap-2">
+              <span class="dot-yellow"></span> Sports Physical
+            </td>
+            <td class="text-dim">Every athlete</td>
+            <td class="font-mono text-dim">Annual (365 days)</td>
+            <td class="text-amber text-sm">Cannot participate</td>
+          </tr>
+          <tr>
+            <td class="font-600 flex items-center gap-2">
+              <span class="dot-yellow"></span> Concussion Protocol
+            </td>
+            <td class="text-dim">Every athlete</td>
+            <td class="font-mono text-dim">Annual</td>
+            <td class="text-amber text-sm">Cannot play, need medical clearance</td>
+          </tr>
+          <tr>
+            <td class="font-600 flex items-center gap-2">
+              <span class="dot-red"></span> ECG Screening
+            </td>
+            <td class="text-dim">Grades 9-12 (FHSAA)</td>
+            <td><span class="font-mono text-ember font-600">July 1, 2026</span></td>
+            <td class="text-ember text-sm">Cannot try out or practice</td>
+          </tr>
+          <tr>
+            <td class="font-600 flex items-center gap-2">
+              <span class="dot-yellow"></span> SafeSport Certification
+            </td>
+            <td class="text-dim">Coaches (NGB-affiliated orgs)</td>
+            <td class="font-mono text-dim">Annual</td>
+            <td class="text-amber text-sm">Cannot coach</td>
+          </tr>
+          <tr>
+            <td class="font-600 flex items-center gap-2">
+              <span class="dot-yellow"></span> Signed Waivers
+            </td>
+            <td class="text-dim">Every athlete (signed by parent)</td>
+            <td class="font-mono text-dim">At enrollment</td>
+            <td class="text-ember text-sm">Club liable for injuries</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="reveal mt-8 p-6 rounded-xl border border-ember/20 bg-ember/5">
+      <p class="font-display font-700 text-lg text-center">
+        How are you tracking this today?
+      </p>
+      <p class="text-dim text-center mt-2">
+        Folders? Google Drive? An Excel sheet? <span class="text-ember font-600">What happens when an auditor shows up?</span>
+      </p>
+      <p class="text-center mt-4 text-sm text-dim">
+        Widdo gives you a single dashboard with automatic alerts. Green means current. Red means stop. <span class="text-glow">That simple.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PAYMENTS ==================== -->
+<section id="payments" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">05 — Payments</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      Get Paid.<span class="text-glow"> Automatically.</span>
+    </h2>
+    <p class="reveal text-dim mt-4 text-lg max-w-2xl">Stripe Connect marketplace — money goes directly to your bank. No chasing parents. No manual tracking.</p>
+
+    <!-- Flow -->
+    <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-3 mt-12">
+      <div class="card p-5 text-center">
+        <div class="font-mono text-xl font-700 text-glow mb-2">1</div>
+        <p class="text-sm font-600">Parent Pays</p>
+        <p class="text-xs text-dim mt-1">Credit card via Stripe checkout. Simple, secure.</p>
+      </div>
+      <div class="card p-5 text-center">
+        <div class="font-mono text-xl font-700 text-ice mb-2">2</div>
+        <p class="text-sm font-600">Money → Your Account</p>
+        <p class="text-xs text-dim mt-1">Direct to your Stripe Connected Account. Not ours.</p>
+      </div>
+      <div class="card p-5 text-center">
+        <div class="font-mono text-xl font-700 text-amber mb-2">3</div>
+        <p class="text-sm font-600">Widdo Fee</p>
+        <p class="text-xs text-dim mt-1">Small application fee deducted automatically. Transparent.</p>
+      </div>
+      <div class="card p-5 text-center">
+        <div class="font-mono text-xl font-700 text-glow mb-2">4</div>
+        <p class="text-sm font-600">Payout to Bank</p>
+        <p class="text-xs text-dim mt-1">Stripe deposits to your bank. You see everything in dashboard.</p>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="reveal mt-12 card p-0 overflow-hidden">
+      <div class="px-5 py-3 border-b border-edge">
+        <span class="font-mono text-[10px] text-faint uppercase tracking-wider">Real Cost Comparison</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="comp-table min-w-[640px]">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="highlight">Widdo</th>
+              <th>TeamSnap</th>
+              <th>SportsEngine</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-dim font-500">Monthly fee</td>
+              <td class="highlight font-mono">$99 — $349</td>
+              <td class="font-mono text-dim">$50 — $400+</td>
+              <td class="font-mono text-dim">$79 — $310+</td>
+            </tr>
+            <tr>
+              <td class="text-dim font-500">Transaction fee</td>
+              <td class="highlight font-mono text-sm">2.9% + $0.30<br><span class="text-xs text-dim font-normal">(Stripe standard — no extra)</span></td>
+              <td class="font-mono text-dim text-sm">3.25% + $1.50</td>
+              <td class="font-mono text-dim text-sm">~3.25% + hidden fees</td>
+            </tr>
+            <tr>
+              <td class="text-dim font-500">Real cost at $5K/mo</td>
+              <td class="highlight font-mono">$244</td>
+              <td class="font-mono text-dim">$227+</td>
+              <td class="font-mono text-dim">$275 — $310</td>
+            </tr>
+            <tr>
+              <td class="text-dim font-500">Real cost at $10K/mo</td>
+              <td class="highlight font-mono">$389</td>
+              <td class="font-mono text-ember">$400+</td>
+              <td class="font-mono text-ember">$450+</td>
+            </tr>
+            <tr>
+              <td class="text-dim font-500">Ads to parents</td>
+              <td class="highlight">No</td>
+              <td class="text-ember font-600">YES</td>
+              <td class="text-dim">No</td>
+            </tr>
+            <tr>
+              <td class="text-dim font-500">AI Assistant</td>
+              <td class="highlight">Yes</td>
+              <td class="text-dim">No</td>
+              <td class="text-dim">No</td>
+            </tr>
+            <tr>
+              <td class="text-dim font-500">Compliance Dashboard</td>
+              <td class="highlight">Yes</td>
+              <td class="text-dim">No</td>
+              <td class="text-dim">Basic</td>
+            </tr>
+            <tr>
+              <td class="text-dim font-500">NCAA Tracker</td>
+              <td class="highlight">Yes</td>
+              <td class="text-dim">No</td>
+              <td class="text-dim">No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ECOSYSTEM ==================== -->
+<section id="ecosystem" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">06 — Ecosystem</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      Not Just a Club App.<br><span class="text-glow">An Ecosystem.</span>
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-14">
+      <!-- Clubs -->
+      <div class="reveal reveal-delay-1 card eco-card eco-clubs p-7 relative z-10">
+        <div class="w-12 h-12 rounded-xl bg-glow/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="font-display font-800 text-xl text-glow mb-2">Widdo Clubs</h3>
+        <p class="text-dim text-sm leading-relaxed">Manage your club: players, billing, attendance, compliance, calendar, coaches, families. Everything in one place.</p>
+        <div class="mt-4 pt-4 border-t border-edge">
+          <p class="font-mono text-xs text-glow/70">AVAILABLE NOW</p>
+        </div>
+      </div>
+
+      <!-- Tournaments -->
+      <div class="reveal reveal-delay-2 card eco-card eco-tournaments p-7 relative z-10">
+        <div class="w-12 h-12 rounded-xl bg-ice/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+        </div>
+        <h3 class="font-display font-800 text-xl text-ice mb-2">Widdo Tournaments</h3>
+        <p class="text-dim text-sm leading-relaxed">Organize tournaments: registrations, brackets, live scores, payments. Every tournament brings new clubs into the ecosystem.</p>
+        <div class="mt-4 pt-4 border-t border-edge">
+          <p class="font-mono text-xs text-ice/70">COMING SOON</p>
+        </div>
+      </div>
+
+      <!-- Academy -->
+      <div class="reveal reveal-delay-3 card eco-card eco-academy p-7 relative z-10">
+        <div class="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFB300" stroke-width="1.5" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <h3 class="font-display font-800 text-xl text-amber mb-2">Widdo Academy</h3>
+        <p class="text-dim text-sm leading-relaxed">Training platform: coaching courses, sports nutrition, club management, sports psychology. Coaches grow. Experts monetize.</p>
+        <div class="mt-4 pt-4 border-t border-edge">
+          <p class="font-mono text-xs text-amber/70">COMING SOON</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal mt-8 p-6 rounded-xl bg-slab border border-edge text-center">
+      <p class="text-sm text-dim leading-relaxed max-w-2xl mx-auto">
+        Your club operates in <span class="text-glow font-600">Clubs</span>. Your teams compete in <span class="text-ice font-600">Tournaments</span>. Your coaches learn in <span class="text-amber font-600">Academy</span>.
+        <span class="block mt-2 text-txt font-display font-600">All connected. One platform. Network effects.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DIFFERENTIATORS ==================== -->
+<section id="differentiators" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">07 — Why Widdo</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      What Nobody Else Has
+    </h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-14">
+      <div class="reveal reveal-delay-1 card p-6 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center group-hover:bg-glow/20 transition-colors" style="animation: glow-pulse 3s infinite;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a4 4 0 014 4v2H8V6a4 4 0 014-4z"/><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 14h.01M15 14h.01"/></svg>
+          </div>
+          <h3 class="font-display font-700">AI Assistant</h3>
+        </div>
+        <p class="text-dim text-sm">Ask your club anything. Get instant answers. "Who hasn't paid?" "Show me compliance for U16." <span class="text-glow font-600">No competitor has this.</span></p>
+      </div>
+
+      <div class="reveal reveal-delay-2 card p-6 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center group-hover:bg-glow/20 transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="font-display font-700">Compliance Dashboard</h3>
+        </div>
+        <p class="text-dim text-sm">Traffic light for every athlete and coach. Configure what applies to your club and your state. Automatic alerts. Audit-ready.</p>
+      </div>
+
+      <div class="reveal reveal-delay-3 card p-6 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-ice/10 flex items-center justify-center group-hover:bg-ice/20 transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3 class="font-display font-700">Multi-Sport</h3>
+        </div>
+        <p class="text-dim text-sm">PlayMetrics = only soccer. GameChanger = only baseball. <span class="text-ice font-600">Widdo = every sport, same depth.</span> Basketball, soccer, volleyball, baseball, tennis, swimming — you name it.</p>
+      </div>
+
+      <div class="reveal reveal-delay-4 card p-6 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center group-hover:bg-amber/20 transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB300" stroke-width="1.5" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3 class="font-display font-700">Zero Platform Fees</h3>
+        </div>
+        <p class="text-dim text-sm">Just standard Stripe processing (2.9% + $0.30). No hidden charges on top. TeamSnap charges 3.25% + $1.50 per transaction.</p>
+      </div>
+
+      <div class="reveal reveal-delay-5 card p-6 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-glow/10 flex items-center justify-center group-hover:bg-glow/20 transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="1.5" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3 class="font-display font-700">Public Enrollment</h3>
+        </div>
+        <p class="text-dim text-sm">Share a link. Parents register, sign waivers, and pay — in one flow. No printing, no scanning, no emailing back PDFs.</p>
+      </div>
+
+      <div class="reveal reveal-delay-6 card p-6 group">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-ice/10 flex items-center justify-center group-hover:bg-ice/20 transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D8BFF" stroke-width="1.5" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h3 class="font-display font-700">Mobile-Ready</h3>
+        </div>
+        <p class="text-dim text-sm">Coaches check attendance on their phone. Parents see everything from theirs. Works on any device, any browser.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section id="pricing" class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20">
+    <div class="reveal section-num">08 — Pricing</div>
+    <h2 class="reveal font-display font-800 text-3xl md:text-5xl tracking-tight">
+      Simple Pricing.<span class="text-glow"> No Surprises.</span>
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-14">
+      <!-- Starter -->
+      <div class="reveal reveal-delay-1 card p-7">
+        <p class="font-mono text-xs text-faint uppercase tracking-wider">Starter</p>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="font-display font-800 text-4xl">$99</span>
+          <span class="text-dim text-sm">/mo</span>
+        </div>
+        <p class="text-dim text-xs mt-1">Up to 80 athletes</p>
+
+        <div class="mt-6 space-y-3">
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            All core features
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Stripe payments
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Compliance dashboard
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Parent & coach portals
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            AI Assistant
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Digital waivers
+          </div>
+        </div>
+      </div>
+
+      <!-- Pro -->
+      <div class="reveal reveal-delay-2 card pricing-popular p-7">
+        <p class="font-mono text-xs text-glow uppercase tracking-wider">Pro</p>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="font-display font-800 text-4xl text-glow">$199</span>
+          <span class="text-dim text-sm">/mo</span>
+        </div>
+        <p class="text-dim text-xs mt-1">Up to 200 athletes</p>
+
+        <div class="mt-6 space-y-3">
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Everything in Starter
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Tournaments integration
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Advanced reports
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            NCAA Eligibility Tracker
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Tryout management
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Coach credentials
+          </div>
+        </div>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="reveal reveal-delay-3 card p-7">
+        <p class="font-mono text-xs text-faint uppercase tracking-wider">Enterprise</p>
+        <div class="mt-3 flex items-baseline gap-1">
+          <span class="font-display font-800 text-4xl">$349</span>
+          <span class="text-dim text-sm">/mo</span>
+        </div>
+        <p class="text-dim text-xs mt-1">Unlimited athletes</p>
+
+        <div class="mt-6 space-y-3">
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Everything in Pro
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Multi-sport facility
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Priority support
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Custom integrations
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Dedicated onboarding
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C853" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Custom compliance types
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal mt-8 text-center">
+      <p class="font-mono text-sm text-glow">Pay annually and get one extra month free.</p>
+      <div class="mt-6 p-5 rounded-xl bg-slab border border-edge inline-block">
+        <p class="text-sm text-dim">
+          <span class="text-faint">TeamSnap:</span> <span class="font-mono">$227+/mo</span> real cost
+          <span class="text-faint mx-3">·</span>
+          <span class="text-faint">SportsEngine:</span> <span class="font-mono">$275+/mo</span>
+          <span class="text-faint mx-3">·</span>
+          <span class="text-glow font-600">Widdo Pro:</span> <span class="font-mono text-glow">$199/mo</span> <span class="text-dim">with 10x more features</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== CTA / FOOTER ==================== -->
+<section class="py-28 relative">
+  <div class="section-divider"></div>
+  <div class="max-w-7xl mx-auto px-6 pt-20 text-center">
+    <div class="reveal">
+      <h2 class="font-display font-800 text-3xl md:text-5xl tracking-tight">
+        Ready to see it<span class="text-glow"> in action?</span>
+      </h2>
+      <p class="text-dim mt-6 text-lg max-w-lg mx-auto">
+        Let's talk. See how Widdo replaces Google Forms, Venmo, Excel, and paper folders — with one platform.
+      </p>
+      <a href="mailto:hey@widdo.co" class="inline-flex items-center gap-3 mt-10 px-10 py-5 bg-glow text-void font-display font-700 text-base tracking-wide rounded-full hover:bg-glow2 transition-colors">
+        Get Started
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="font-mono text-sm text-dim mt-6">hey@widdo.co</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-24 pt-8 border-t border-edge flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="font-display font-800 text-glow text-lg tracking-wider">WIDDO</span>
+        <span class="text-faint">·</span>
+        <span class="text-dim text-sm">The All-in-One Sports Club Platform</span>
+      </div>
+      <p class="text-faint text-xs font-mono">© 2026 Widdo SAS · All rights reserved</p>
+    </div>
+  </div>
+</section>
+
+<script>
+// Scroll-triggered reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active nav link
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 120;
+    if (window.scrollY >= top) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>

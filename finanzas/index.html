@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Centro Financiero</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface2: #242834; --border: #2e3348;
+    --text: #e4e6f0; --text2: #8b8fa8; --accent: #6c5ce7; --accent2: #a29bfe;
+    --green: #00b894; --red: #ff6b6b; --yellow: #feca57; --blue: #54a0ff; --orange: #f39c12;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); padding: 2rem; line-height: 1.5;
+    max-width: 1200px; margin: 0 auto;
+  }
+  h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.2rem; font-weight: 600; color: var(--accent2); margin-bottom: 1rem; }
+  .subtitle { color: var(--text2); font-size: 0.9rem; margin-bottom: 2rem; }
+
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+  }
+  .logo { display: flex; align-items: center; gap: 0.75rem; }
+  .logo-icon {
+    width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent), var(--blue));
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; font-weight: 900; color: #fff;
+  }
+  .header-right { text-align: right; }
+  .header-right .date { color: var(--text2); font-size: 0.85rem; }
+
+  /* Status bar */
+  .status-bar {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;
+    padding: 1rem 1.5rem; background: var(--surface); border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .status-item { flex: 1; min-width: 120px; text-align: center; }
+  .status-value { font-size: 1.1rem; font-weight: 700; }
+  .status-label { font-size: 0.7rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* Cards */
+  .grid { display: grid; gap: 1.5rem; margin-bottom: 2rem; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  .doc-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.75rem; text-decoration: none; color: var(--text);
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .doc-card:hover {
+    border-color: var(--accent); transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(108, 92, 231, 0.15);
+  }
+  .doc-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--blue));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .doc-card:hover::before { opacity: 1; }
+
+  .doc-icon {
+    width: 52px; height: 52px; border-radius: 12px; display: flex;
+    align-items: center; justify-content: center; font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .doc-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .doc-desc { font-size: 0.85rem; color: var(--text2); margin-bottom: 1rem; line-height: 1.5; }
+  .doc-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tag {
+    display: inline-block; padding: 3px 10px; border-radius: 6px;
+    font-size: 0.7rem; font-weight: 600;
+  }
+  .tag-purple { background: rgba(108,92,231,0.15); color: var(--accent2); }
+  .tag-green { background: rgba(0,184,148,0.15); color: var(--green); }
+  .tag-yellow { background: rgba(254,202,87,0.15); color: var(--yellow); }
+  .tag-blue { background: rgba(84,160,255,0.15); color: var(--blue); }
+  .tag-red { background: rgba(255,107,107,0.15); color: var(--red); }
+
+  /* Checklist */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem;
+  }
+  .check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.65rem; }
+  .check.done { background: var(--green); border-color: var(--green); color: #fff; }
+  .check.pending { border-color: var(--yellow); }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+
+  .priority-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+  }
+  .priority-critical { background: rgba(255,107,107,0.15); color: var(--red); }
+  .priority-high { background: rgba(254,202,87,0.15); color: var(--yellow); }
+  .priority-medium { background: rgba(84,160,255,0.15); color: var(--blue); }
+
+  .footer {
+    text-align: center; padding: 2rem 0; margin-top: 2rem;
+    border-top: 1px solid var(--border); color: var(--text2); font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon">W</div>
+    <div>
+      <h1>Centro Financiero</h1>
+      <p class="subtitle" style="margin:0">Widdo Inc (Delaware) — Fundamentos Financieros</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="date">Actualizado: 13 agosto 2026</div>
+    <div style="color:var(--green);font-size:0.8rem;margin-top:0.25rem;">Estado: 9 clubes &middot; 3 pagando &middot; MRR $101</div>
+  </div>
+</div>
+
+<!-- Status Bar -->
+<div class="status-bar">
+  <div class="status-item">
+    <div class="status-value" style="color:var(--blue)">16</div>
+    <div class="status-label">Clubs (prueba)</div>
+  </div>
+  <div class="status-item">
+    <div class="status-value" style="color:var(--green)">$101</div>
+    <div class="status-label">MRR (3 clubes pagando)</div>
+  </div>
+  <div class="status-item">
+    <div class="status-value" style="color:var(--green)">$32</div>
+    <div class="status-label">Burn infra/mes (medido 28-jul)</div>
+  </div>
+  <div class="status-item">
+    <div class="status-value">$0</div>
+    <div class="status-label">Deuda</div>
+  </div>
+  <div class="status-item">
+    <div class="status-value" style="color:var(--accent2)">$200K</div>
+    <div class="status-label">Raising (tent.)</div>
+  </div>
+  <div class="status-item">
+    <div class="status-value" style="color:var(--green)">82%</div>
+    <div class="status-label">Margen Bruto</div>
+  </div>
+  <div class="status-item">
+    <div class="status-value" style="color:var(--yellow)">915</div>
+    <div class="status-label">Usuarios</div>
+  </div>
+</div>
+
+<!-- Documents -->
+<h2>Documentos Financieros</h2>
+<div class="grid grid-2">
+  <a href="modelo-financiero.html" class="doc-card">
+    <div class="doc-icon" style="background:rgba(108,92,231,0.15);">&#128200;</div>
+    <div class="doc-title">Modelo Financiero 3 Años</div>
+    <div class="doc-desc">
+      P&L mes a mes, proyecciones de revenue, costos desglosados, cash flow acumulado.
+      3 escenarios (conservador, base, optimista). Toggle USD/COP. Análisis de sensibilidad.
+    </div>
+    <div class="doc-tags">
+      <span class="tag tag-purple">Interactivo</span>
+      <span class="tag tag-green">3 escenarios</span>
+      <span class="tag tag-blue">Charts</span>
+    </div>
+  </a>
+
+  <a href="use-of-funds.html" class="doc-card">
+    <div class="doc-icon" style="background:rgba(0,184,148,0.15);">&#128176;</div>
+    <div class="doc-title">Use of Funds ($200K)</div>
+    <div class="doc-desc">
+      Desglose detallado de la ronda Pre-Seed. Salarios escalonados ($4.5K→$7.5K/mes), distribución por categoría,
+      calendario mensual, milestones, timeline de ejecución. Buffer $52K contingencia.
+    </div>
+    <div class="doc-tags">
+      <span class="tag tag-green">$200K detallado</span>
+      <span class="tag tag-yellow">Milestones</span>
+      <span class="tag tag-blue">Timeline</span>
+    </div>
+  </a>
+
+  <a href="aportes-fundador.html" class="doc-card">
+    <div class="doc-icon" style="background:rgba(108,92,231,0.15);">&#128170;</div>
+    <div class="doc-title">Aportes del Fundador</div>
+    <div class="doc-desc">
+      Registro de todo lo invertido: cash atribuible ($749.65 USD — jul–dic 2025, uso real prorrateado), sweat equity
+      ($150K en 8 meses de desarrollo), inventario del producto construido, cap table, co-founder.
+    </div>
+    <div class="doc-tags">
+      <span class="tag tag-purple">Sweat Equity $150K</span>
+      <span class="tag tag-blue">Cash $1.2K</span>
+      <span class="tag tag-green">Due Diligence</span>
+    </div>
+  </a>
+
+  <a href="iva-pricing-internacional.html" class="doc-card">
+    <div class="doc-icon" style="background:rgba(255,159,67,0.15);">&#127758;</div>
+    <div class="doc-title">IVA, Pricing e Impacto en Revenue</div>
+    <div class="doc-desc">
+      Cómo funciona el IVA por país, pricing real después de impuestos, ARPC corregido,
+      estructura de facturación (SAS para CO, C Corp para el resto). Documento para founders.
+    </div>
+    <div class="doc-tags">
+      <span class="tag tag-red">Interno</span>
+      <span class="tag tag-yellow">IVA incluido</span>
+      <span class="tag tag-green">ARPC corregido</span>
+    </div>
+  </a>
+
+  <a href="../_archivo-negocio/finanzas/estados-financieros.html" class="doc-card">
+    <div class="doc-icon" style="background:rgba(254,202,87,0.15);">&#128209;</div>
+    <div class="doc-title">Estados Financieros Pro-Forma (ARCHIVADO)</div>
+    <div class="doc-desc">
+      Balance General, P&amp;L, Flujo de Efectivo, Ratios SaaS, análisis RST vs Ordinario, Cap Table.
+      <strong>Archivado 13-ago-2026:</strong> está montado sobre "Widdo SAS (NIT por confirmar)" —
+      la entidad operativa es Widdo Inc (Delaware) — usa 16 clubs (real: 9) y un cap table
+      Clase A/Clase B que nunca existió. Se conserva solo como referencia histórica.
+    </div>
+    <div class="doc-tags">
+      <span class="tag tag-red">ARCHIVADO</span>
+      <span class="tag tag-yellow">Solo histórico</span>
+    </div>
+  </a>
+</div>
+
+<!-- Quick Reference -->
+<div class="grid grid-2">
+  <div class="card">
+    <h2>Data Room — Checklist</h2>
+    <ul class="checklist">
+      <li><span class="check done">&#10003;</span><span>Pitch Deck (USA, LATAM, ES, EN)</span></li>
+      <li><span class="check done">&#10003;</span><span>One-Pager USA</span></li>
+      <li><span class="check done">&#10003;</span><span>Pitch Script + Q&A</span></li>
+      <li><span class="check done">&#10003;</span><span>Market Research (USA, TAM/SAM/SOM)</span></li>
+      <li><span class="check done">&#10003;</span><span>Unit Economics documentados</span></li>
+      <li><span class="check done">&#10003;</span><span>Partnership Term Sheet</span></li>
+      <li><span class="check done">&#10003;</span><span>Modelo Financiero 3 años</span></li>
+      <li><span class="check done">&#10003;</span><span>Use of Funds detallado</span></li>
+      <li><span class="check done">&#10003;</span><span>Estados Financieros pro-forma</span></li>
+      <li><span class="check done">&#10003;</span><span>Análisis tributario (RST/Ordinario)</span></li>
+      <li><span class="check done">&#10003;</span><span>Cap Table</span></li>
+      <li><span class="check pending"></span><span style="color:var(--yellow)">Demo video del producto</span></li>
+      <li><span class="check pending"></span><span style="color:var(--yellow)">Incorporación USA (Delaware)</span></li>
+      <li><span class="check pending"></span><span style="color:var(--yellow)">IP Assignment formal</span></li>
+      <li><span class="check pending"></span><span style="color:var(--yellow)">Revenue real (clubs pagando)</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Prioridades (CTO + CFO View)</h2>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="priority-badge priority-critical">&#9888; URGENTE</span>
+        <span style="font-size:0.9rem;">Cerrar Gate 0: Stripe en live (bloquea el cobro en USA)</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="priority-badge priority-critical">&#9888; URGENTE</span>
+        <span style="font-size:0.9rem;">Onboarding de clubes USA desde enero 2027</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="priority-badge priority-critical">&#9888; URGENTE</span>
+        <span style="font-size:0.9rem;">Abrir cuenta bancaria empresarial</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="priority-badge priority-high">&#9733; ALTA</span>
+        <span style="font-size:0.9rem;">Viaje a Orlando ANTES de abril (caída de ingreso)</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="priority-badge priority-high">&#9733; ALTA</span>
+        <span style="font-size:0.9rem;">Asegurar freelance a $2K/mes post-abril</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="priority-badge priority-medium">&#9679; MEDIA</span>
+        <span style="font-size:0.9rem;">Demo video para inversores</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <span class="priority-badge priority-medium">&#9679; MEDIA</span>
+        <span style="font-size:0.9rem;">Incorporar Delaware (después de validar USA)</span>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);">
+      <h3 style="margin-bottom:0.5rem;">Números Clave para Inversores</h3>
+      <div style="font-size:0.85rem;color:var(--text2);display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+        <div>ARPC CO: <strong style="color:var(--text)">$16 USD</strong></div>
+        <div>Margen: <strong style="color:var(--text)">82%</strong></div>
+        <div>LTV/CAC: <strong style="color:var(--text)">8x</strong></div>
+        <div>Churn: <strong style="color:var(--text)">0%</strong></div>
+        <div>Breakeven: <strong style="color:var(--text)">60 clubs</strong></div>
+        <div>TAM: <strong style="color:var(--text)">$10.2B</strong></div>
+        <div>Raising: <strong style="color:var(--text)">$200K (tent.)</strong></div>
+        <div>SAFE cap: <strong style="color:var(--text)">$2M post</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Links to other dashboards -->
+<div class="card" style="margin-top:1rem;">
+  <h2>Otros Dashboards</h2>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+    <a href="../index.html" style="color:var(--accent2);text-decoration:none;padding:0.5rem 1rem;background:var(--surface2);border-radius:8px;font-size:0.85rem;">&#8592; Dashboard Principal (Decks, Pitch, Clubes)</a>
+    <a href="../DATOS_CONTABLES.md" style="color:var(--accent2);text-decoration:none;padding:0.5rem 1rem;background:var(--surface2);border-radius:8px;font-size:0.85rem;">Datos Contables Completos</a>
+    <a href="../negocio/" style="color:var(--accent2);text-decoration:none;padding:0.5rem 1rem;background:var(--surface2);border-radius:8px;font-size:0.85rem;">Documentos de Negocio</a>
+  </div>
+</div>
+
+<div class="footer">
+  Widdo Inc (Delaware) &mdash; Centro Financiero<br>
+  Actualizado 13 agosto 2026 | Los modelos financieros son pro-forma de marzo 2026; las cifras vivas estan en <code>metrics.json</code>
+</div>
+
+</body>
+</html>

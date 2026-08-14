@@ -1,0 +1,318 @@
+<!-- ARCHIVADO 13-ago-2026 — chuleta de reunion de feb-2026: 17 clubs, "zero churn", pagos "live en abril" — sustituido por negocio/pitch/TOUGH-QUESTIONS.md -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet — Alwin × Erica | March 19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter; margin: 0; }
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #fff;
+            color: #18181b;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            max-height: 11in;
+            margin: 0 auto;
+            padding: 28px 36px;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 2px;
+        }
+        h1 span { color: #16a34a; }
+        .subtitle {
+            font-size: 10px;
+            color: #71717a;
+            margin-bottom: 14px;
+        }
+        .section {
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #16a34a;
+            margin-bottom: 5px;
+            padding-bottom: 3px;
+            border-bottom: 1.5px solid #e4e4e7;
+        }
+        .section-title.red { color: #dc2626; border-color: #fecaca; }
+        .context-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+        .context-box strong { color: #166534; }
+        .hooks-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 0;
+        }
+        .hook-card {
+            background: #18181b;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+        .hook-card h3 {
+            font-size: 10px;
+            font-weight: 800;
+            color: #22c55e;
+            margin-bottom: 4px;
+        }
+        .hook-card p {
+            font-size: 9px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.4;
+        }
+        .hook-card .say {
+            font-size: 9px;
+            color: #fff;
+            font-style: italic;
+            margin-top: 4px;
+            padding-top: 4px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .qa-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.5px;
+        }
+        .qa-table td {
+            padding: 4px 8px;
+            border-bottom: 1px solid #f4f4f5;
+            vertical-align: top;
+        }
+        .qa-table td:first-child {
+            font-weight: 700;
+            width: 32%;
+            color: #52525b;
+        }
+        .qa-table td:last-child {
+            color: #18181b;
+        }
+        .qa-table tr:last-child td { border-bottom: none; }
+        .dont-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 16px;
+            font-size: 9.5px;
+        }
+        .dont-list .item {
+            display: flex;
+            gap: 5px;
+            align-items: flex-start;
+            padding: 2px 0;
+        }
+        .dont-list .x { color: #dc2626; font-weight: 900; font-size: 10px; flex-shrink: 0; }
+        .flow-strip {
+            display: flex;
+            gap: 4px;
+            align-items: stretch;
+        }
+        .flow-step {
+            flex: 1;
+            background: #fafafa;
+            border: 1px solid #e4e4e7;
+            border-radius: 6px;
+            padding: 6px 8px;
+            text-align: center;
+        }
+        .flow-step .time {
+            font-size: 8px;
+            font-weight: 700;
+            color: #16a34a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .flow-step p {
+            font-size: 8.5px;
+            color: #3f3f46;
+            line-height: 1.3;
+            margin-top: 2px;
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            color: #d4d4d8;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .killer-box {
+            background: #18181b;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-top: 8px;
+            text-align: center;
+        }
+        .killer-box p {
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .killer-box p span { color: #22c55e; font-weight: 900; }
+        .footer-note {
+            position: absolute;
+            bottom: 16px;
+            left: 36px;
+            right: 36px;
+            font-size: 8px;
+            color: #a1a1aa;
+            text-align: center;
+        }
+        @media print {
+            body { margin: 0; padding: 0; }
+            .page { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>Cheat Sheet: <span>Alwin × Erica</span></h1>
+    <div class="subtitle">Wednesday March 19, 2026 &mdash; Before tattoo session &mdash; Orlando, FL &mdash; CONFIDENTIAL</div>
+
+    <!-- CONTEXT -->
+    <div class="context-box">
+        <strong>Contexto:</strong> Erica es tu clienta de tatuaje. Ya la has tatuado antes. Se ven en el lounge de los Magic. Tienen amigos en común (Cole Anthony y otros). <strong>Esto NO es un pitch frío &mdash; es una conversación entre conocidos.</strong> Tono: casual, auténtico, confiado. Muestra el producto, cuenta la visión, no pidas nada.
+    </div>
+
+    <!-- 3 HOOKS -->
+    <div class="section">
+        <div class="section-title">3 Hooks que le van a resonar</div>
+        <div class="hooks-grid">
+            <div class="hook-card">
+                <h3>1. Payments + Sports = Her DNA</h3>
+                <p>CardWorks serves people banks don't reach. Widdo does the same for sports families on both sides &mdash; Klarna/Affirm in the US for expensive programs, local BNPL in LATAM for the unbanked.</p>
+                <div class="say">"In the US, a camp costs $3,000 &mdash; we offer Klarna and Affirm so families can split it. In Latin America, 80% don't even have credit cards &mdash; we plug in local BNPL. Same concept your family built at CardWorks: make it accessible."</div>
+            </div>
+            <div class="hook-card">
+                <h3>2. The Talent Pipeline She Needs</h3>
+                <p>She's building WNBA Charlotte Sting. She needs youth infrastructure. Widdo = verified stats + College-Ready Profiles + rankings.</p>
+                <div class="say">"Imagine if the next JuJu Watkins had her verified stats since age 12, all in one place. That's what we're building &mdash; free for the athlete."</div>
+            </div>
+            <div class="hook-card">
+                <h3>3. Network Effect, Not Just SaaS</h3>
+                <p>Like Unrivaled creating a new league ecosystem. Widdo connects clubs, tournaments, and athletes. Each feeds the other.</p>
+                <div class="say">"One tournament brings 2,000 users in a weekend. Those users take Widdo to their clubs. The clubs enter more tournaments. It compounds."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHAT SHE'LL ASK -->
+    <div class="section">
+        <div class="section-title">What she'll ask &amp; how to answer</div>
+        <table class="qa-table">
+            <tr>
+                <td>"So what is Widdo exactly?"</td>
+                <td>"It's the platform where every athlete's career lives &mdash; stats, payments, attendance, everything. Multi-language — English and Spanish live, Portuguese ready to go. Clubs pay us to manage their operations, but the player's profile is permanent. Think LinkedIn for sports. Let me show you." <strong>&rarr; Open app on phone</strong></td>
+            </tr>
+            <tr>
+                <td>"Are people paying for this?"</td>
+                <td>"We launched as a free pilot to get it perfect with real users &mdash; 17 clubs, 1,000+ users, zero churn, all organic. Payments go live first week of April. We wanted the product right before we charged."</td>
+            </tr>
+            <tr>
+                <td>"Is this just in Colombia?"</td>
+                <td>"We already have an academy in the US with 50 players, and 10+ clubs joining this week. Strategy is USA first, then scale to LATAM and beyond from US credibility."</td>
+            </tr>
+            <tr>
+                <td>"It's just the two of you?"</td>
+                <td>"Miguel built the entire platform &mdash; he's a 25-year senior dev who's worked for major US companies and startups worldwide. He also played pro basketball in Colombia. I handle business and growth. The code is fully documented and AI-assisted &mdash; we can onboard developers fast."</td>
+            </tr>
+            <tr>
+                <td>"How do you compete with TeamSnap?"</td>
+                <td>"TeamSnap charges $400-600/month with ads and no AI. Crossbar is the closest &mdash; $995/year with tournaments &mdash; but they charge transaction fees on top, no AI, no BNPL, no bilingual. We're $99/month flat with AI, BNPL, and the player's profile stays forever."</td>
+            </tr>
+            <tr>
+                <td>"What would you do with investment?"</td>
+                <td>"First 100 US clubs, hire 2-3 developers, and build out the tournament viral loop. We hit breakeven in about 11 months. But honestly &mdash; I'd rather show you what we've built and get your thoughts first."</td>
+            </tr>
+            <tr>
+                <td>"How can I get involved?"</td>
+                <td>"We're raising a small pre-seed via SAFE. I'll have Miguel send you the full deck and details &mdash; but your experience in sports infrastructure and payments is what excites us most."</td>
+            </tr>
+            <tr>
+                <td>"What about Cole / the Magic guys?"</td>
+                <td>"Imagine if Cole had this when he was 14 &mdash; verified stats, his whole career tracked, coaches finding him through the platform instead of expensive showcases. That's what we're giving every kid."</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- DO NOT SAY -->
+    <div class="section">
+        <div class="section-title red">Do NOT say / do</div>
+        <div class="dont-list">
+            <div class="item"><span class="x">&times;</span> Don't mention specific equity percentages (70/30)</div>
+            <div class="item"><span class="x">&times;</span> Don't mention the $15K investment amount</div>
+            <div class="item"><span class="x">&times;</span> Don't ask for money &mdash; let HER ask how to get involved</div>
+            <div class="item"><span class="x">&times;</span> Don't say "we need money" or "we're looking for investors"</div>
+            <div class="item"><span class="x">&times;</span> Don't exaggerate &mdash; 17 clubs not "almost 20", $0 revenue not "revenue starting"</div>
+            <div class="item"><span class="x">&times;</span> Don't mention valuation or cap table unless she specifically asks</div>
+            <div class="item"><span class="x">&times;</span> Don't promise features that don't exist yet (Academy is planned)</div>
+            <div class="item"><span class="x">&times;</span> Don't spend more than 15 min &mdash; leave her wanting more</div>
+        </div>
+    </div>
+
+    <!-- CONVERSATION FLOW -->
+    <div class="section">
+        <div class="section-title">Conversation flow (15-20 min max)</div>
+        <div class="flow-strip">
+            <div class="flow-step">
+                <div class="time">0&ndash;3 min</div>
+                <p>Normal chat. "Before we start the tattoo, let me show you something we're building."</p>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+                <div class="time">3&ndash;8 min</div>
+                <p><strong>Demo on phone.</strong> Show a real club. Players, payments, AI assistant asking a question live.</p>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+                <div class="time">8&ndash;13 min</div>
+                <p>The vision: Tournaments viral loop, BNPL, verified stats. Use the 3 hooks.</p>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+                <div class="time">13&ndash;15 min</div>
+                <p>Ask HER: "What do you see as the biggest gap in youth sports?" Then listen.</p>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-step">
+                <div class="time">Close</div>
+                <p>"I'll send you our one-pager. If you're curious, Miguel can walk you through the full thing."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- KILLER LINE -->
+    <div class="killer-box">
+        <p>The one line she'll remember:<br>
+        <span>"One tournament brings 2,000 users in a single weekend.<br>
+        We don't need ads &mdash; we need tournaments."</span></p>
+    </div>
+
+    <div class="footer-note">For Alwin's eyes only &mdash; Do NOT share this document &mdash; Widdo 2026</div>
+
+</div>
+</body>
+</html>

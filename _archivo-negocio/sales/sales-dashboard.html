@@ -1,0 +1,982 @@
+<!-- ARCHIVADO 13-ago-2026 — '21 clubs' x4 en plantillas de outreach (real: 9 clubes, 3 pagando) — sustituido por adquisicion-usa/emails/ + adquisicion-usa/DASHBOARD.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo Tournaments — Sales Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A0A0F;--card:#12121A;--card-hover:#181824;
+  --green:#00C853;--green-dim:#00C85330;--green-glow:#00C85318;
+  --red:#FF4C6A;--red-dim:#FF4C6A25;
+  --amber:#FFB020;--amber-dim:#FFB02025;
+  --blue:#3B82F6;--blue-dim:#3B82F620;
+  --purple:#A855F7;--purple-dim:#A855F720;
+  --text:#E8E8ED;--text-dim:#8B8B9E;--text-muted:#55556A;
+  --border:#1E1E2E;--border-hover:#2A2A3E;
+  --radius:10px;--radius-sm:6px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* Subtle grid bg */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:60px 60px;opacity:.15;
+}
+
+.container{max-width:1280px;margin:0 auto;padding:24px 20px;position:relative;z-index:1}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+.header h1{font-size:1.6rem;font-weight:800;letter-spacing:-.03em}
+.header h1 span{color:var(--green)}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--text-dim);background:var(--card);padding:6px 14px;border-radius:20px;border:1px solid var(--border)}
+
+/* Nav */
+.nav{display:flex;gap:6px;margin-bottom:28px;flex-wrap:wrap}
+.nav a{
+  font-size:.8rem;font-weight:600;color:var(--text-dim);text-decoration:none;
+  padding:8px 16px;border-radius:20px;border:1px solid var(--border);
+  transition:all .2s;
+}
+.nav a:hover,.nav a.active{color:var(--green);border-color:var(--green);background:var(--green-glow)}
+
+/* Metric Cards */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:32px}
+.metric-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px 20px;transition:border-color .2s;
+}
+.metric-card:hover{border-color:var(--border-hover)}
+.metric-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:6px}
+.metric-value{font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:700;color:var(--green)}
+.metric-value.zero{color:var(--text-muted)}
+.metric-sub{font-size:.7rem;color:var(--text-muted);margin-top:4px}
+
+/* Section */
+.section{margin-bottom:36px}
+.section-title{
+  font-size:1.1rem;font-weight:700;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title::before{
+  content:'';width:3px;height:20px;background:var(--green);border-radius:2px;
+}
+
+/* Filters */
+.filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.filter-btn{
+  font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;
+  padding:6px 14px;border-radius:16px;border:1px solid var(--border);
+  background:transparent;color:var(--text-dim);cursor:pointer;transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{border-color:var(--green);color:var(--green);background:var(--green-glow)}
+.search-input{
+  font-family:'Inter',sans-serif;font-size:.8rem;
+  padding:7px 14px 7px 34px;border-radius:16px;border:1px solid var(--border);
+  background:var(--card);color:var(--text);outline:none;width:220px;
+  transition:border-color .2s;
+}
+.search-input:focus{border-color:var(--green)}
+.search-wrap{position:relative}
+.search-wrap::before{
+  content:'';position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;border:2px solid var(--text-dim);border-radius:50%;
+}
+.search-wrap::after{
+  content:'';position:absolute;left:24px;top:60%;
+  width:5px;height:2px;background:var(--text-dim);transform:rotate(45deg);border-radius:1px;
+}
+
+/* CRM Table */
+.crm-table{width:100%;border-collapse:separate;border-spacing:0}
+.crm-table thead th{
+  font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--text-dim);padding:10px 12px;text-align:left;
+  border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:2;
+}
+.crm-table tbody tr{transition:background .15s;cursor:default}
+.crm-table tbody tr:hover{background:var(--card-hover)}
+.crm-table tbody tr.hidden{display:none}
+.crm-table td{
+  padding:12px;font-size:.82rem;border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.crm-table .org-name{font-weight:700;color:var(--text);white-space:nowrap}
+.crm-table .org-sport{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+.crm-table .contact-link{color:var(--green);text-decoration:none;font-size:.78rem;display:block;line-height:1.7}
+.crm-table .contact-link:hover{text-decoration:underline}
+.crm-table .pain{font-size:.75rem;color:var(--text-dim);line-height:1.5;max-width:260px}
+
+/* Badges */
+.badge{
+  display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  padding:3px 10px;border-radius:10px;
+}
+.badge-new{background:var(--blue-dim);color:var(--blue)}
+.badge-contacted{background:var(--amber-dim);color:var(--amber)}
+.badge-demo{background:var(--purple-dim);color:var(--purple)}
+.badge-pilot{background:var(--green-dim);color:var(--green)}
+.badge-active{background:var(--green);color:var(--bg)}
+.badge-discarded{background:var(--red-dim);color:var(--red)}
+.badge-warm{background:#F59E0B20;color:#F59E0B}
+
+.priority-high{color:var(--red);font-weight:700;font-size:.72rem}
+.priority-medium{color:var(--amber);font-weight:600;font-size:.72rem}
+.priority-low{color:var(--text-muted);font-size:.72rem}
+
+.tier-label{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:600;
+  color:var(--green);background:var(--green-dim);padding:2px 8px;border-radius:8px;
+  margin-left:8px;
+}
+.tier-label.t2{color:var(--amber);background:var(--amber-dim)}
+.tier-label.warm{color:#F59E0B;background:#F59E0B20}
+
+/* Email Cards */
+.email-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:12px;overflow:hidden;transition:border-color .2s;
+}
+.email-card:hover{border-color:var(--border-hover)}
+.email-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;cursor:pointer;user-select:none;gap:12px;
+}
+.email-header:hover{background:var(--card-hover)}
+.email-header h3{font-size:.9rem;font-weight:700;flex:1}
+.email-header .email-to{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim)}
+.email-chevron{
+  width:20px;height:20px;color:var(--text-dim);transition:transform .25s;flex-shrink:0;
+}
+.email-card.open .email-chevron{transform:rotate(180deg)}
+.email-body{
+  display:none;padding:0 20px 20px;
+  border-top:1px solid var(--border);
+}
+.email-card.open .email-body{display:block}
+.email-subject{
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--amber);
+  padding:14px 0 12px;
+}
+.email-content{
+  font-size:.85rem;line-height:1.75;color:var(--text);
+  white-space:pre-wrap;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:20px;margin-bottom:14px;
+}
+.copy-btn{
+  font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;
+  padding:8px 18px;border-radius:var(--radius-sm);border:1px solid var(--green);
+  background:transparent;color:var(--green);cursor:pointer;
+  transition:all .2s;display:inline-flex;align-items:center;gap:6px;
+}
+.copy-btn:hover{background:var(--green);color:var(--bg)}
+.copy-btn.copied{background:var(--green);color:var(--bg);border-color:var(--green)}
+
+/* Knowledge Base */
+.kb-section{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:8px;overflow:hidden;
+}
+.kb-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;cursor:pointer;user-select:none;
+  transition:background .15s;
+}
+.kb-header:hover{background:var(--card-hover)}
+.kb-header h3{font-size:.88rem;font-weight:600}
+.kb-chevron{width:18px;height:18px;color:var(--text-dim);transition:transform .25s;flex-shrink:0}
+.kb-section.open .kb-chevron{transform:rotate(180deg)}
+.kb-body{display:none;padding:0 20px 20px;border-top:1px solid var(--border)}
+.kb-section.open .kb-body{display:block}
+.kb-body p,.kb-body li{font-size:.84rem;line-height:1.7;color:var(--text)}
+.kb-body ul{padding-left:20px;margin:8px 0}
+.kb-body li{margin-bottom:4px}
+.kb-body strong{color:var(--green)}
+
+.pitch-box{
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:18px 20px;margin:12px 0;font-size:.85rem;line-height:1.75;
+  font-style:italic;color:var(--text);
+}
+.pitch-copy{
+  font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;
+  padding:5px 12px;border-radius:12px;border:1px solid var(--border);
+  background:transparent;color:var(--text-dim);cursor:pointer;
+  margin-top:8px;transition:all .2s;
+}
+.pitch-copy:hover{border-color:var(--green);color:var(--green)}
+.pitch-copy.copied{color:var(--green);border-color:var(--green)}
+
+/* Mini table */
+.kb-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.8rem}
+.kb-table th{
+  text-align:left;padding:8px 10px;font-size:.7rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);
+  border-bottom:1px solid var(--border);
+}
+.kb-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.kb-table tr:hover{background:var(--card-hover)}
+
+/* Warm leads */
+.warm-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px 22px;margin-bottom:10px;
+  display:flex;align-items:flex-start;gap:16px;justify-content:space-between;
+  flex-wrap:wrap;
+}
+.warm-card h4{font-size:.9rem;font-weight:700;margin-bottom:4px}
+.warm-card .warm-detail{font-size:.8rem;color:var(--text-dim);line-height:1.6}
+.warm-card a{color:var(--green);text-decoration:none;font-size:.8rem}
+.warm-card a:hover{text-decoration:underline}
+.warm-note{font-size:.75rem;color:var(--amber);font-style:italic;margin-top:4px}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--green);color:var(--bg);
+  font-size:.82rem;font-weight:600;
+  padding:12px 22px;border-radius:var(--radius);
+  opacity:0;transform:translateY(10px);
+  transition:all .3s;z-index:999;pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* Responsive */
+@media(max-width:768px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .crm-table{font-size:.75rem}
+  .crm-table .hide-mobile{display:none}
+  .email-header{flex-wrap:wrap}
+  .container{padding:16px 12px}
+  .header h1{font-size:1.3rem}
+}
+@media(max-width:480px){
+  .metrics{grid-template-columns:1fr 1fr}
+  .metric-value{font-size:1.4rem}
+  .search-input{width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1><span>Widdo</span> Tournaments &mdash; Sales Ops</h1>
+    <span class="header-meta">Updated 2026-05-20</span>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="#pipeline" class="active" onclick="scrollTo(event,'pipeline')">Pipeline</a>
+    <a href="#crm" onclick="scrollTo(event,'crm')">CRM</a>
+    <a href="#emails" onclick="scrollTo(event,'emails')">Emails</a>
+    <a href="#knowledge" onclick="scrollTo(event,'knowledge')">Knowledge Base</a>
+    <a href="#warm" onclick="scrollTo(event,'warm')">Warm Leads</a>
+  </nav>
+
+  <!-- ==================== PIPELINE ==================== -->
+  <section id="pipeline" class="section">
+    <h2 class="section-title">Pipeline Overview</h2>
+    <div class="metrics">
+      <div class="metric-card">
+        <div class="metric-label">Total Prospects</div>
+        <div class="metric-value">12</div>
+        <div class="metric-sub">3 Tier 1 &middot; 7 Tier 2 &middot; 2 Warm</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Contacted</div>
+        <div class="metric-value zero">0</div>
+        <div class="metric-sub">Emails ready to send</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Demos Scheduled</div>
+        <div class="metric-value zero">0</div>
+        <div class="metric-sub">&mdash;</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Pilots Active</div>
+        <div class="metric-value zero">0</div>
+        <div class="metric-sub">&mdash;</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Response Rate</div>
+        <div class="metric-value zero">&mdash;</div>
+        <div class="metric-sub">No outreach yet</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Discarded</div>
+        <div class="metric-value" style="color:var(--red)">1</div>
+        <div class="metric-sub">Prospect Wire (has Playbook365)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CRM ==================== -->
+  <section id="crm" class="section">
+    <h2 class="section-title">CRM Pipeline</h2>
+    <div class="filters">
+      <div class="search-wrap">
+        <input type="text" class="search-input" id="crmSearch" placeholder="Search prospects..." oninput="filterCRM()">
+      </div>
+      <button class="filter-btn active" onclick="setFilter(this,'all')">All</button>
+      <button class="filter-btn" onclick="setFilter(this,'tier1')">Tier 1</button>
+      <button class="filter-btn" onclick="setFilter(this,'tier2')">Tier 2</button>
+      <button class="filter-btn" onclick="setFilter(this,'warm')">Warm</button>
+      <button class="filter-btn" onclick="setFilter(this,'discarded')">Discarded</button>
+    </div>
+    <div style="overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius)">
+    <table class="crm-table">
+      <thead>
+        <tr>
+          <th>Organization</th>
+          <th>City</th>
+          <th>Contact</th>
+          <th>Status</th>
+          <th class="hide-mobile">Pain Points</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody id="crmBody">
+        <!-- TIER 1 -->
+        <tr data-tier="tier1" data-name="fusion elite basketball">
+          <td>
+            <div class="org-name">Fusion Elite Basketball <span class="tier-label">T1</span></div>
+            <div class="org-sport">Basketball &middot; 5th&ndash;HS</div>
+          </td>
+          <td>Orlando, FL</td>
+          <td>
+            <span style="font-size:.75rem;color:var(--text-muted)">(find via web/social)</span><br>
+            <a class="contact-link" href="http://fusionbasketball.net" target="_blank">fusionbasketball.net</a>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">Website HTTP sin SSL, 5 payment methods (Venmo, CashApp, Zelle, checks, cash). No brackets. Next tournament: Jul 22-26</td>
+          <td><span class="priority-high">HIGH</span></td>
+        </tr>
+        <tr data-tier="tier1" data-name="kissimmee all stars">
+          <td>
+            <div class="org-name">Kissimmee All Stars <span class="tier-label">T1</span></div>
+            <div class="org-sport">Basketball &middot; Youth</div>
+          </td>
+          <td>Kissimmee, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:mickey.kbl@gmail.com">mickey.kbl@gmail.com</a>
+            <a class="contact-link" href="tel:+14077159025">(407) 715-9025</a>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">Gmail personal, LeagueApps free tier, Facebook > website. Jr. NBA affiliate + Orlando Magic partner</td>
+          <td><span class="priority-high">HIGH</span></td>
+        </tr>
+        <tr data-tier="tier1" data-name="rising stars basketball academy">
+          <td>
+            <div class="org-name">Rising Stars Academy <span class="tier-label">T1</span></div>
+            <div class="org-sport">Basketball &middot; Ages 6-19</div>
+          </td>
+          <td>Kissimmee, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:info@basketballrisingstars.com">info@basketballrisingstars.com</a>
+            <a class="contact-link" href="tel:+13214240040">(321) 424-0040</a>
+            <span style="font-size:.72rem;color:var(--text-dim)">IG: @risingstarsacademyfl</span>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">100% manual registration (waiver + payment one by one). Instagram-first. No tech</td>
+          <td><span class="priority-high">HIGH</span></td>
+        </tr>
+        <!-- TIER 2 -->
+        <tr data-tier="tier2" data-name="impress me basketball">
+          <td>
+            <div class="org-name">Impress Me Basketball <span class="tier-label t2">T2</span></div>
+            <div class="org-sport">Basketball &middot; Youth</div>
+          </td>
+          <td>Tampa Bay, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:Director@impressmebasketball.org">Director@impressmebasketball.org</a>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">Uses SHOPIFY as tournament website. No real sports platform</td>
+          <td><span class="priority-medium">MED-HIGH</span></td>
+        </tr>
+        <tr data-tier="tier2" data-name="legacy youth sports">
+          <td>
+            <div class="org-name">Legacy Youth Sports FL <span class="tier-label t2">T2</span></div>
+            <div class="org-sport">Basketball &middot; Leagues/Tournaments</div>
+          </td>
+          <td>Orlando, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:legacyyouthsports@gmail.com">legacyyouthsports@gmail.com</a>
+            <a class="contact-link" href="tel:+13212458413">321-245-8413</a>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">Gmail, QuickScores free, Facebook > website. Nonprofit</td>
+          <td><span class="priority-medium">MEDIUM</span></td>
+        </tr>
+        <tr data-tier="tier2" data-name="jacksonville magic basketball">
+          <td>
+            <div class="org-name">Jacksonville Magic <span class="tier-label t2">T2</span></div>
+            <div class="org-sport">Basketball &middot; Youth</div>
+          </td>
+          <td>Jacksonville, FL</td>
+          <td>
+            <a class="contact-link" href="tel:+19045203252">904-520-3252</a>
+            <span style="font-size:.72rem;color:var(--text-dim)">Lenzy Hancock</span><br>
+            <span style="font-size:.72rem;color:var(--red)">CashApp: $LenzyLHancock (personal!)</span>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">Payments to PERSONAL CashApp &amp; Zelle. Manual schedules</td>
+          <td><span class="priority-medium">MEDIUM</span></td>
+        </tr>
+        <tr data-tier="tier2" data-name="north florida hoop group">
+          <td>
+            <div class="org-name">North FL Hoop Group <span class="tier-label t2">T2</span></div>
+            <div class="org-sport">Basketball</div>
+          </td>
+          <td>Jacksonville, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:northfloridahoopgroup@gmail.com">northfloridahoopgroup@gmail.com</a>
+            <a class="contact-link" href="tel:+19044725899">904-472-5899</a>
+            <span style="font-size:.72rem;color:var(--text-dim)">IG: @northfloridahoopgroup</span>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">3 fragmented platforms (Blue Sombrero + Tourney Pro + Exposure Events) + Venmo/Zelle</td>
+          <td><span class="priority-medium">MEDIUM</span></td>
+        </tr>
+        <tr data-tier="tier2" data-name="panhandle basketball association">
+          <td>
+            <div class="org-name">Panhandle Basketball <span class="tier-label t2">T2</span></div>
+            <div class="org-sport">Basketball &middot; Grades 3-12</div>
+          </td>
+          <td>Pensacola, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:panhandlebasketball@gmail.com">panhandlebasketball@gmail.com</a>
+            <a class="contact-link" href="tel:+18503800818">(850) 380-0818</a>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">CashApp + Venmo + LeagueLineup free + Exposure Events. Fragmented</td>
+          <td><span class="priority-low">LOW</span></td>
+        </tr>
+        <tr data-tier="tier2" data-name="bazooka soccer">
+          <td>
+            <div class="org-name">Bazooka Soccer <span class="tier-label t2">T2</span></div>
+            <div class="org-sport">Soccer &middot; Showcases/Camps</div>
+          </td>
+          <td>Apopka, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:boni@bazookasoccer.com">boni@bazookasoccer.com</a>
+            <a class="contact-link" href="tel:+18503562996">850-356-2996</a>
+            <span style="font-size:.72rem;color:var(--text-dim)">Contact: Boni</span>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">Outdated website, 1-person operation, minimal tech. College Showcase + camps</td>
+          <td><span class="priority-medium">MEDIUM</span></td>
+        </tr>
+        <tr data-tier="tier2" data-name="n3xt 3on3 basketball">
+          <td>
+            <div class="org-name">N3XT 3on3 <span class="tier-label t2">T2</span></div>
+            <div class="org-sport">Basketball 3x3</div>
+          </td>
+          <td>Central FL</td>
+          <td>
+            <span style="font-size:.72rem;color:var(--text-dim)">IG: @n3xt_3on3</span><br>
+            <span style="font-size:.72rem;color:var(--text-dim)">FB: facebook.com/n3xt3on3</span>
+          </td>
+          <td><span class="badge badge-new">New</span></td>
+          <td class="pain hide-mobile">No sophisticated brackets system. 3x3 format = high team turnover</td>
+          <td><span class="priority-medium">MEDIUM</span></td>
+        </tr>
+        <!-- WARM -->
+        <tr data-tier="warm" data-name="academy cfl">
+          <td>
+            <div class="org-name">Academy CFL <span class="tier-label warm">Warm</span></div>
+            <div class="org-sport">Multi-sport &middot; 5 sports</div>
+          </td>
+          <td>Orlando, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:info@theacademycfl.com">info@theacademycfl.com</a>
+            <a class="contact-link" href="tel:+14072555459">(407) 255-5459</a>
+            <span style="font-size:.72rem;color:var(--text-dim)">Richie Dalmau + Carlos Morales</span>
+          </td>
+          <td><span class="badge badge-warm">Warm Lead</span></td>
+          <td class="pain hide-mobile">Google Forms + Wufoo + manual payments. Relationship via Alwin</td>
+          <td><span style="font-size:.72rem;color:#F59E0B;font-weight:600">BACKUP</span></td>
+        </tr>
+        <tr data-tier="warm" data-name="sepa hank waters">
+          <td>
+            <div class="org-name">SEPA <span class="tier-label warm">Warm</span></div>
+            <div class="org-sport">Multi-sport &middot; 6 sports</div>
+          </td>
+          <td>Orlando, FL</td>
+          <td>
+            <a class="contact-link" href="mailto:admin@southeasternpreparatoryacademy.com">admin@sepa...academy.com</a>
+            <a class="contact-link" href="tel:+14079606009">(407) 960-6009</a>
+            <span style="font-size:.72rem;color:var(--text-dim)">Hank Waters (CEO)</span>
+          </td>
+          <td><span class="badge badge-warm">Warm Lead</span></td>
+          <td class="pain hide-mobile">6 sports x multiple levels. $1.5M revenue. Orlando Magic VIP fan</td>
+          <td><span style="font-size:.72rem;color:#F59E0B;font-weight:600">BACKUP</span></td>
+        </tr>
+        <!-- DISCARDED -->
+        <tr data-tier="discarded" data-name="prospect wire" style="opacity:.5">
+          <td>
+            <div class="org-name" style="text-decoration:line-through">Prospect Wire</div>
+            <div class="org-sport">Baseball &middot; 40+ events/yr</div>
+          </td>
+          <td>Sanford, FL</td>
+          <td><span style="font-size:.75rem;color:var(--text-muted)">brian@prospectwire.com</span></td>
+          <td><span class="badge badge-discarded">Discarded</span></td>
+          <td class="pain hide-mobile">Already uses Playbook365 (complete platform). Part of DS Sports Ventures</td>
+          <td><span style="font-size:.72rem;color:var(--text-muted)">&mdash;</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ==================== EMAILS ==================== -->
+  <section id="emails" class="section">
+    <h2 class="section-title">Emails Ready to Send</h2>
+
+    <!-- Email 1 -->
+    <div class="email-card" id="email1">
+      <div class="email-header" onclick="toggleEmail('email1')">
+        <h3>01 &mdash; Fusion Elite Basketball</h3>
+        <span class="email-to">(find contact via web)</span>
+        <svg class="email-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="email-body">
+        <div class="email-subject">Subject: Free tournament platform for Fusion Elite &mdash; registration, brackets, payments in one place</div>
+        <div class="email-content" id="emailContent1">Hi,
+
+I'm Miguel Cano — former professional basketball player and founder of Widdo, a sports technology platform used by 21 clubs in the US and Latin America.
+
+I came across Fusion Elite and your July tournament in Orlando. I noticed you're managing registration and payments across multiple channels (Venmo, CashApp, Zelle, checks). I know how chaotic that gets — I've been in youth sports for over 20 years as a player, coach, and parent.
+
+We built Widdo Tournaments specifically for organizers like you — one platform that handles registration, brackets, live scoring, and payments. And it's 100% free for organizers. No fees, no catch.
+
+Here's what it looks like in practice:
+- Parents register and pay online (no more chasing Venmo payments)
+- You see who paid and who didn't in real time
+- Brackets and schedules update automatically
+- Live scores on mobile (parents and players can follow from anywhere)
+
+We're launching in Florida and looking for a few local organizers to partner with. You'd get early access, direct input on the product, and our full support at your next event — in person.
+
+Would you be open to a quick call this week? I'm based nearby and happy to meet in person too.
+
+Best,
+Miguel Cano
+Co-Founder, Widdo
+widdo.co</div>
+        <button class="copy-btn" onclick="copyEmail('emailContent1',this)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy Email
+        </button>
+      </div>
+    </div>
+
+    <!-- Email 2 -->
+    <div class="email-card" id="email2">
+      <div class="email-header" onclick="toggleEmail('email2')">
+        <h3>02 &mdash; Kissimmee All Stars</h3>
+        <span class="email-to">mickey.kbl@gmail.com</span>
+        <svg class="email-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="email-body">
+        <div class="email-subject">Subject: Free tournament platform for Kissimmee All Stars &mdash; upgrade your events</div>
+        <div class="email-content" id="emailContent2">Hi,
+
+I'm Miguel Cano — former professional basketball player from Colombia and founder of Widdo, a sports platform used by 21 clubs across the US and Latin America.
+
+I saw that Kissimmee All Stars is a Jr. NBA affiliate and Orlando Magic partner — that's impressive for a community organization. You're clearly doing great work with kids in the area.
+
+I wanted to reach out because we built something I think could help you take your tournaments to the next level — a free platform that handles registration, brackets, live scoring, and payments in one place.
+
+No cost to you. Ever. We built it specifically for organizers who are doing amazing work but don't have access to the expensive platforms that big organizations use.
+
+What you'd get:
+- Professional online registration (parents sign up and pay in one step)
+- Automatic brackets and scheduling
+- Live scores on mobile
+- Payment tracking (no more chasing who paid)
+- Your own tournament page that looks professional
+
+We're based in Orlando and launching with a few local partners. I'd love for Kissimmee All Stars to be one of them.
+
+Would you have 15 minutes for a quick call? I can also come by in person if that's easier.
+
+Best,
+Miguel Cano
+Co-Founder, Widdo
+widdo.co</div>
+        <button class="copy-btn" onclick="copyEmail('emailContent2',this)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy Email
+        </button>
+      </div>
+    </div>
+
+    <!-- Email 3 -->
+    <div class="email-card" id="email3">
+      <div class="email-header" onclick="toggleEmail('email3')">
+        <h3>03 &mdash; Rising Stars Academy</h3>
+        <span class="email-to">info@basketballrisingstars.com</span>
+        <svg class="email-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="email-body">
+        <div class="email-subject">Subject: Free registration + brackets platform for Rising Stars tournaments</div>
+        <div class="email-content" id="emailContent3">Hi,
+
+I'm Miguel Cano — former professional basketball player and founder of Widdo, a sports platform used by 21 clubs across the US and Latin America.
+
+I found Rising Stars on Instagram and saw the work you're doing with young athletes in the Orlando area. I also noticed your registration process is manual — waivers and payments handled one by one.
+
+We built a free platform that would save you hours on every tournament:
+
+- Online registration — parents fill out info + sign waiver + pay in one step
+- Automatic brackets — no more building them by hand
+- Live scoring — scores update in real time on everyone's phone
+- Payment tracking — see who paid instantly, no spreadsheets
+
+It's 100% free for organizers. No fees, no contracts, no catch.
+
+We're launching in Orlando and looking for a few local academies to partner with. You'd get early access and our full support — including someone on-site at your first event using the platform.
+
+Interested in a quick 15-minute demo?
+
+Best,
+Miguel Cano
+Co-Founder, Widdo
+widdo.co</div>
+        <button class="copy-btn" onclick="copyEmail('emailContent3',this)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy Email
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KNOWLEDGE BASE ==================== -->
+  <section id="knowledge" class="section">
+    <h2 class="section-title">Knowledge Base</h2>
+
+    <!-- Pitch 30s -->
+    <div class="kb-section" id="kb-pitch30">
+      <div class="kb-header" onclick="toggleKB('kb-pitch30')">
+        <h3>Pitch &mdash; 30 Seconds</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <div class="pitch-box" id="pitch30">"We built a free tournament platform that handles registration, brackets, live scoring, and payments. Zero cost to organizers. We're looking for one organizer in Florida to be our launch partner."</div>
+        <button class="pitch-copy" onclick="copyPitch('pitch30',this)">Copy pitch</button>
+      </div>
+    </div>
+
+    <!-- Pitch 2min -->
+    <div class="kb-section" id="kb-pitch2">
+      <div class="kb-header" onclick="toggleKB('kb-pitch2')">
+        <h3>Pitch &mdash; 2 Minutes</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <div class="pitch-box" id="pitch2">"Tournament organizers use 5-6 different tools to run a single event — one for registration, one for brackets, one for payments, one for communication. It's a nightmare.
+
+We built Widdo Tournaments to replace all of that with one platform. Registration, brackets, smart scheduling, live scoring, payments — all in one place. And it's 100% free for organizers.
+
+What makes us different: every athlete who plays in a tournament gets a verified profile with their stats. Think of it as a sports LinkedIn. For showcase organizers, this means colleges can discover players through your events — with NIL compliance built in.
+
+We already have 21 clubs using Widdo for club management. Now we're launching tournaments and we're looking for one organizer in Florida to be our first partner. You'd get early access, direct input on the product, and our full support at your next event."</div>
+        <button class="pitch-copy" onclick="copyPitch('pitch2',this)">Copy pitch</button>
+      </div>
+    </div>
+
+    <!-- Diferenciadores -->
+    <div class="kb-section" id="kb-diff">
+      <div class="kb-header" onclick="toggleKB('kb-diff')">
+        <h3>Differentiators</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <table class="kb-table">
+          <thead><tr><th>#</th><th>Differentiator</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>100% free</strong></td><td>Exposure Events charges $2/team. SportsEngine charges fees. Us: $0</td></tr>
+            <tr><td>2</td><td><strong>NIL compliance</strong></td><td>Verified athlete profiles colleges can discover. No competitor has this</td></tr>
+            <tr><td>3</td><td><strong>Multi-sport</strong></td><td>Basketball, soccer, baseball, volleyball, football, 42+ sports</td></tr>
+            <tr><td>4</td><td><strong>Live scoring</strong></td><td>Real-time results, not spreadsheets</td></tr>
+            <tr><td>5</td><td><strong>Player profiles</strong></td><td>Permanent verified stats profile (sports LinkedIn)</td></tr>
+            <tr><td>6</td><td><strong>Smart scheduling</strong></td><td>Auto-assign courts + time slots</td></tr>
+            <tr><td>7</td><td><strong>Mobile-first</strong></td><td>90% of tournament usage is on mobile</td></tr>
+            <tr><td>8</td><td><strong>Multi-language</strong></td><td>EN/ES/PT &mdash; only one in the US market</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Competitors -->
+    <div class="kb-section" id="kb-comp">
+      <div class="kb-header" onclick="toggleKB('kb-comp')">
+        <h3>Competitors</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <table class="kb-table">
+          <thead><tr><th>Competitor</th><th>What they do</th><th>Weakness</th><th>Our angle</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Exposure Events</strong></td><td>Tournament software ($2/team)</td><td>Charges fees, no NIL, no player profiles</td><td>"Free + NIL + verified profiles"</td></tr>
+            <tr><td><strong>SportsEngine</strong> (NBC)</td><td>Large platform, leagues + tournaments</td><td>High fees, terrible UX, coaches hate it</td><td>"Modern UX, free, no lock-in"</td></tr>
+            <tr><td><strong>GotSport</strong></td><td>Dominant in soccer</td><td>Soccer only, outdated UX</td><td>"Multi-sport + modern"</td></tr>
+            <tr><td><strong>LeagueApps</strong></td><td>Club + league mgmt ($20M rev)</td><td>No dedicated tournaments</td><td>"Specialized for tournaments"</td></tr>
+            <tr><td><strong>TeamSnap</strong></td><td>Consumer app</td><td>3.25%+$1.50/tx, no tournaments</td><td>"Built for tournaments, not teams"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Pain Points -->
+    <div class="kb-section" id="kb-pain">
+      <div class="kb-header" onclick="toggleKB('kb-pain')">
+        <h3>Organizer Pain Points (Verified)</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <ul>
+          <li><strong>5-6 different software</strong> &mdash; registration in one, brackets in another, payments in another, communication in another</li>
+          <li><strong>Scheduling is a 3D puzzle</strong> &mdash; courts, time slots, referees, conflicts. Done in Excel</li>
+          <li><strong>Scattered payments</strong> &mdash; Venmo, Zelle, checks, cash. Don't know who paid</li>
+          <li><strong>Live communication</strong> &mdash; schedule changes, cancellations, results. WhatsApp groups of 200 people</li>
+          <li><strong>Google Forms for registration</strong> &mdash; no proper software, ugly forms, no integrated payments</li>
+          <li><strong>No post-tournament data</strong> &mdash; no stats, no profiles, everything lost after the event</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Objections -->
+    <div class="kb-section" id="kb-obj">
+      <div class="kb-header" onclick="toggleKB('kb-obj')">
+        <h3>Objections &amp; Responses</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <table class="kb-table">
+          <thead><tr><th>Objection</th><th>Response</th></tr></thead>
+          <tbody>
+            <tr><td>"How do you make money if it's free?"</td><td>"We only make money from payment processing. When parents pay registration through Widdo, we charge a small processing fee. You don't pay anything."</td></tr>
+            <tr><td>"I already use Exposure Events"</td><td>"Exposure charges $2/team. We're free. Plus we give every athlete a verified profile that colleges can discover."</td></tr>
+            <tr><td>"Why should I trust a new platform?"</td><td>"We already have 21 clubs running on Widdo. As our first tournament partner, you get direct access to our team &mdash; we'll be at your event in person."</td></tr>
+            <tr><td>"What if it breaks during my tournament?"</td><td>"We'll have someone on-site at your first event. Real-time support. We're as invested in this working as you are."</td></tr>
+            <tr><td>"I don't need NIL stuff"</td><td>"Totally fine &mdash; the core value is free registration, brackets, live scoring, and payments in one place. Player profiles are a bonus."</td></tr>
+            <tr><td>"Can I see a demo?"</td><td>"Absolutely. 15 minutes on Zoom or I can come to your office. What works better?"</td></tr>
+            <tr><td>"I need to think about it"</td><td>"Of course. When's your next tournament? We could do a no-commitment trial &mdash; one event, zero risk."</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Widdo Stats -->
+    <div class="kb-section" id="kb-stats">
+      <div class="kb-header" onclick="toggleKB('kb-stats')">
+        <h3>Widdo Stats (Credibility)</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px">
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--green)">21</div>
+            <div style="font-size:.75rem;color:var(--text-dim)">Active clubs (CO + US)</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--green)">1,274</div>
+            <div style="font-size:.75rem;color:var(--text-dim)">Registered users</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--green)">640</div>
+            <div style="font-size:.75rem;color:var(--text-dim)">Athletes on platform</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--green)">0%</div>
+            <div style="font-size:.75rem;color:var(--text-dim)">Churn rate</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--green)">$0</div>
+            <div style="font-size:.75rem;color:var(--text-dim)">Customer acquisition cost</div>
+          </div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--green)">282K</div>
+            <div style="font-size:.75rem;color:var(--text-dim)">Lines of code</div>
+          </div>
+        </div>
+        <ul style="margin-top:14px">
+          <li><strong>Multi-role:</strong> owner, coach, parent, player, accountant</li>
+          <li><strong>AI integrated:</strong> 56-tool assistant + voice onboarding</li>
+          <li><strong>Native mobile app</strong> in TestFlight</li>
+          <li><strong>Investor in talks:</strong> Erica Berman (WNBA, Unrivaled, Steph Curry network)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NIL -->
+    <div class="kb-section" id="kb-nil">
+      <div class="kb-header" onclick="toggleKB('kb-nil')">
+        <h3>NIL Angle (Name, Image, Likeness)</h3>
+        <svg class="kb-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"/></svg>
+      </div>
+      <div class="kb-body">
+        <p style="margin-bottom:10px"><strong>What is NIL:</strong> Since 2021, college athletes (and increasingly high school) can monetize their name, image, and likeness. It's a $1.17B+ market.</p>
+        <p style="margin-bottom:10px"><strong>Why it matters for showcases:</strong></p>
+        <ul>
+          <li>Showcases exist for scouts and colleges to see athletes</li>
+          <li>But showcase data is lost after the event</li>
+          <li>Widdo converts that data into <strong>permanent verified profiles</strong></li>
+          <li>Colleges can discover athletes on the platform</li>
+          <li>NIL compliance built-in = organizer is legally covered</li>
+        </ul>
+        <div class="pitch-box" id="pitchNIL">"Your showcase generates athlete data that's worth gold. We convert it into verified profiles that colleges can discover, with NIL compliance. Free for you."</div>
+        <button class="pitch-copy" onclick="copyPitch('pitchNIL',this)">Copy NIL pitch</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WARM LEADS ==================== -->
+  <section id="warm" class="section">
+    <h2 class="section-title">Warm Leads (Backup)</h2>
+    <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:16px">Activate if cold outreach doesn't work within 2 weeks. Existing relationship via Alwin.</p>
+
+    <div class="warm-card">
+      <div>
+        <h4>Academy CFL</h4>
+        <div class="warm-detail">
+          <strong>Contact:</strong> Richie Dalmau + Carlos Morales (Hispanic founders, speak Spanish)<br>
+          <strong>Sports:</strong> Basketball, Baseball, Soccer, Volleyball (5 sports)<br>
+          <strong>Location:</strong> 1865 N Econlockhatchee Trail, Orlando, FL 32817<br>
+          <strong>Current tech:</strong> Google Forms + Wufoo + manual payments<br>
+          <strong>Achievement:</strong> 60+ athletes placed in top US colleges<br>
+        </div>
+        <div class="warm-note">Backup &mdash; activate if cold outreach fails in 2 weeks</div>
+      </div>
+      <div style="text-align:right">
+        <a href="mailto:info@theacademycfl.com">info@theacademycfl.com</a><br>
+        <a href="tel:+14072555459">(407) 255-5459</a><br>
+        <a href="tel:+14077329358">(407) 732-9358</a>
+      </div>
+    </div>
+
+    <div class="warm-card">
+      <div>
+        <h4>SEPA &mdash; Southeastern Preparatory Academy</h4>
+        <div class="warm-detail">
+          <strong>Contact:</strong> Hank Waters (CEO) &mdash; Orlando Magic "Super Fan #1"<br>
+          <strong>Sports:</strong> Basketball, Baseball, Volleyball, Tennis, Soccer (6 sports)<br>
+          <strong>Location:</strong> 8701 Maitland Summit Blvd, Orlando, FL 32810<br>
+          <strong>Revenue:</strong> $1.5M USD (2024)<br>
+          <strong>Notable:</strong> Beckham Black (ESPN #9 ranked 2027 class) studies here<br>
+        </div>
+        <div class="warm-note">Potential investor too &mdash; "use the product first, invest later"</div>
+      </div>
+      <div style="text-align:right">
+        <a href="mailto:admin@southeasternpreparatoryacademy.com">admin@sepa...academy.com</a><br>
+        <a href="tel:+14079606009">(407) 960-6009</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// Nav scroll
+function scrollTo(e,id){
+  e.preventDefault();
+  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  e.target.classList.add('active');
+}
+
+// CRM Filter
+let currentFilter='all';
+function setFilter(btn,tier){
+  currentFilter=tier;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  filterCRM();
+}
+function filterCRM(){
+  const q=document.getElementById('crmSearch').value.toLowerCase();
+  document.querySelectorAll('#crmBody tr').forEach(tr=>{
+    const tierMatch=currentFilter==='all'||tr.dataset.tier===currentFilter;
+    const nameMatch=!q||tr.dataset.name.includes(q)||tr.textContent.toLowerCase().includes(q);
+    tr.classList.toggle('hidden',!(tierMatch&&nameMatch));
+  });
+}
+
+// Email toggle
+function toggleEmail(id){
+  document.getElementById(id).classList.toggle('open');
+}
+
+// KB toggle
+function toggleKB(id){
+  document.getElementById(id).classList.toggle('open');
+}
+
+// Copy email
+function copyEmail(id,btn){
+  const text=document.getElementById(id).textContent.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.classList.add('copied');
+    btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+    showToast('Email copied to clipboard');
+    setTimeout(()=>{
+      btn.classList.remove('copied');
+      btn.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Email';
+    },2000);
+  });
+}
+
+// Copy pitch
+function copyPitch(id,btn){
+  const text=document.getElementById(id).textContent.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.classList.add('copied');
+    btn.textContent='Copied!';
+    showToast('Pitch copied');
+    setTimeout(()=>{btn.classList.remove('copied');btn.textContent='Copy pitch'},1500);
+  });
+}
+
+// Toast
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// Scroll spy
+const sections=document.querySelectorAll('.section');
+const navLinks=document.querySelectorAll('.nav a');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const target=document.querySelector(`.nav a[href="#${e.target.id}"]`);
+      if(target) target.classList.add('active');
+    }
+  });
+},{threshold:0.3});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>

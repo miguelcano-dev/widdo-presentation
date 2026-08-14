@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Visa USA — Opciones para Miguel — Widdo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#10B981',
+            'accent-dark': '#059669',
+            'accent-light': '#34D399',
+            dark: {
+              900: '#0f0f0f',
+              800: '#1a1a1a',
+              700: '#242424',
+              600: '#2e2e2e',
+              500: '#3a3a3a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f0f;
+      color: #e5e5e5;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10B981; }
+
+    .section-card {
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 12px;
+      transition: border-color 0.3s ease;
+    }
+    .section-card:hover { border-color: #3a3a3a; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-red { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-private { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+    .badge-yellow { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .badge-blue { background: rgba(96, 165, 250, 0.15); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.3); }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    table th {
+      background: #242424;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    table th:first-child { border-radius: 8px 0 0 0; }
+    table th:last-child { border-radius: 0 8px 0 0; }
+    table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #2e2e2e;
+      font-size: 0.875rem;
+      vertical-align: top;
+    }
+    table tr:last-child td { border-bottom: none; }
+    table tr:hover td { background: rgba(16, 185, 129, 0.03); }
+
+    .info-callout {
+      background: rgba(16, 185, 129, 0.06);
+      border-left: 3px solid #10B981;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .warning-callout {
+      background: rgba(251, 191, 36, 0.06);
+      border-left: 3px solid #fbbf24;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .danger-callout {
+      background: rgba(239, 68, 68, 0.06);
+      border-left: 3px solid #ef4444;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
+      border: 1px solid #2e2e2e;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .stat-card .value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #10B981;
+      line-height: 1;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 32px;
+      bottom: -20px;
+      width: 2px;
+      background: #2e2e2e;
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #10B981;
+      border: 3px solid #1a1a1a;
+    }
+
+    .number-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .visa-card {
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid #2e2e2e;
+      transition: border-color 0.3s ease;
+    }
+    .visa-card:hover { border-color: #3a3a3a; }
+    .visa-card-no {
+      background: linear-gradient(135deg, #1a1a1a 0%, rgba(239, 68, 68, 0.04) 100%);
+    }
+    .visa-card-yes {
+      background: linear-gradient(135deg, #1a1a1a 0%, rgba(16, 185, 129, 0.04) 100%);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <header class="border-b border-dark-600 bg-dark-800/80 backdrop-blur-sm sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 py-6">
+      <div class="flex items-start justify-between flex-wrap gap-4">
+        <div>
+          <a href="legales/index.html" class="text-xs text-gray-500 hover:text-accent transition-colors mb-2 inline-block">&larr; Volver al Centro Legal</a>
+          <h1 class="text-2xl lg:text-3xl font-bold text-white leading-tight">
+            Visa USA &mdash; Opciones para Miguel
+          </h1>
+          <p class="text-gray-400 mt-1 text-sm lg:text-base">Analisis detallado de opciones migratorias para mudarse a Orlando</p>
+        </div>
+        <span class="badge badge-private">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="8" height="6" rx="1"/><path d="M5 7V5a2 2 0 014 0v2"/></svg>
+          No indexado
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 py-10 space-y-12">
+
+    <!-- CONTEXTO -->
+    <section>
+      <div class="danger-callout mb-6">
+        <p class="text-sm text-red-300 font-semibold mb-1">Estrategia: NO aplicar visa sin revenue</p>
+        <p class="text-sm text-gray-400">Primero cobrar en Colombia + cerrar clubes USA, LUEGO aplicar visa (Jul-Sep 2026) cuando hay un caso fuerte con revenue real en 2 paises.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="stat-card text-center">
+          <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Situacion actual</div>
+          <div class="value text-lg">B1/B2</div>
+          <div class="text-xs text-gray-400 mt-2">Visa de turismo</div>
+        </div>
+        <div class="stat-card text-center">
+          <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Ahorros</div>
+          <div class="value text-lg">$20K</div>
+          <div class="text-xs text-gray-400 mt-2">No alcanza para E-2 Investor</div>
+        </div>
+        <div class="stat-card text-center">
+          <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Destino</div>
+          <div class="value text-lg">Orlando</div>
+          <div class="text-xs text-gray-400 mt-2">Florida, USA</div>
+        </div>
+        <div class="stat-card text-center">
+          <div class="text-xs text-gray-500 uppercase tracking-wider mb-2">Costo minimo vida</div>
+          <div class="value text-lg">$5K/mes</div>
+          <div class="text-xs text-gray-400 mt-2">$4,100 base + buffer</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 OPCIONES -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="number-circle text-base w-8 h-8 min-w-[32px]">1</span>
+        <h2 class="text-xl font-bold text-white">Las 3 opciones de visa</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <!-- E-2 Investor: NO -->
+        <div class="visa-card visa-card-no">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-red-400 font-bold text-2xl">X</span>
+            <div>
+              <h3 class="text-white font-bold">E-2 Investor</h3>
+              <span class="badge badge-red text-[10px]">NO viable</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-2">
+              <span class="text-red-400 mt-0.5">X</span>
+              <span class="text-gray-400">Requiere $50K-$100K+ de <strong class="text-gray-300">fondos propios</strong></span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-red-400 mt-0.5">X</span>
+              <span class="text-gray-400">El dinero del SAFE de inversores <strong class="text-gray-300">NO cuenta</strong></span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-red-400 mt-0.5">X</span>
+              <span class="text-gray-400">Miguel solo tiene $20K ahorrados</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-red-400 mt-0.5">X</span>
+              <span class="text-gray-400">El dinero debe ser <strong class="text-gray-300">rastreable</strong> como personal (no prestado)</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-dark-600">
+            <p class="text-xs text-gray-500">Conclusion: Descartada. No hay forma de reunir fondos propios suficientes en el corto plazo.</p>
+          </div>
+        </div>
+
+        <!-- E-2 Employee: SI -->
+        <div class="visa-card visa-card-yes border-accent/30">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-accent font-bold text-2xl">&#10003;</span>
+            <div>
+              <h3 class="text-white font-bold">E-2 Employee</h3>
+              <span class="badge badge-green text-[10px]">Recomendada</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300">Miguel entra como <strong class="text-white">CEO/executive</strong> de la C Corp</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300">C Corp es >50% colombiana (Miguel 61% + Co-founder 30% = <strong class="text-white">91%</strong>)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300">Usa la inversion de la empresa ($200K SAFE + $15K co-founder)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300"><strong class="text-white">No requiere dinero personal</strong></span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300">Tratado Colombia-USA aplica para E-2</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-accent/20">
+            <p class="text-xs text-accent">Mejor opcion. Mas rapida, menos compleja, usa la inversion del SAFE.</p>
+          </div>
+        </div>
+
+        <!-- L-1A: SI -->
+        <div class="visa-card visa-card-yes">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-accent font-bold text-2xl">&#10003;</span>
+            <div>
+              <h3 class="text-white font-bold">L-1A Intracompany</h3>
+              <span class="badge badge-green text-[10px]">Viable</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300">SAS Colombia transfiere a Miguel como <strong class="text-white">CEO</strong> a C Corp USA</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300">Requiere 1+ año trabajando en la SAS (cumple, desde 2017)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#10003;</span>
+              <span class="text-gray-300">C Corp debe ser <strong class="text-white">subsidiaria</strong> de la SAS (o relacion filial)</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-0.5">!</span>
+              <span class="text-gray-400">Mas fuerte si la SAS tiene <strong class="text-gray-300">revenue real</strong></span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-yellow-400 mt-0.5">!</span>
+              <span class="text-gray-400">Proceso mas largo y documentacion mas exigente</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-dark-600">
+            <p class="text-xs text-gray-500">Plan B solido. Especialmente si hay complicaciones con E-2 Employee.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLA COMPARATIVA DETALLADA -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="number-circle text-base w-8 h-8 min-w-[32px]">2</span>
+        <h2 class="text-xl font-bold text-white">Comparativa detallada</h2>
+      </div>
+
+      <div class="section-card overflow-hidden mb-6">
+        <div class="overflow-x-auto">
+          <table>
+            <thead>
+              <tr>
+                <th class="w-48">Criterio</th>
+                <th class="text-center">E-2 Investor</th>
+                <th class="text-center" style="background:rgba(16,185,129,0.08)">E-2 Employee</th>
+                <th class="text-center">L-1A</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-gray-300 font-medium">Viable para Miguel</td>
+                <td class="text-center"><span class="text-red-400 font-bold text-lg">NO</span></td>
+                <td class="text-center" style="background:rgba(16,185,129,0.03)"><span class="text-accent font-bold text-lg">SI</span></td>
+                <td class="text-center"><span class="text-accent font-bold text-lg">SI</span></td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Razon</td>
+                <td class="text-gray-500 text-xs">Requiere $50K-$100K fondos propios</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">CEO de C Corp 91% colombiana</td>
+                <td class="text-gray-500 text-xs">SAS transfiere a C Corp como subsidiaria</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Requisito clave</td>
+                <td class="text-gray-500 text-xs">Fondos personales rastreables</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">C Corp con inversion real + revenue</td>
+                <td class="text-gray-500 text-xs">1+ año en la SAS + relacion filial</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Costo total</td>
+                <td class="text-gray-500">N/A</td>
+                <td class="text-white font-semibold" style="background:rgba(16,185,129,0.03)">~$8,500</td>
+                <td class="text-gray-500">~$8,500</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Desglose costo</td>
+                <td class="text-gray-500 text-xs">N/A</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">Abogado ~$7K + USCIS filing ~$1.5K</td>
+                <td class="text-gray-500 text-xs">Abogado ~$7K + USCIS filing ~$1.5K</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Timing recomendado</td>
+                <td class="text-gray-500">N/A</td>
+                <td class="text-accent font-semibold" style="background:rgba(16,185,129,0.03)">Jul-Sep 2026</td>
+                <td class="text-gray-500">Jul-Sep 2026</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Tiempo de procesamiento</td>
+                <td class="text-gray-500">N/A</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">2-4 meses (consulado). Premium Processing disponible (~$2,805 extra, 15 dias)</td>
+                <td class="text-gray-500 text-xs">2-4 meses (USCIS). Premium Processing disponible (~$2,805 extra, 15 dias)</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Duracion de la visa</td>
+                <td class="text-gray-500">N/A</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">5 años (tratado Colombia). Renovable indefinidamente</td>
+                <td class="text-gray-500 text-xs">1-3 años (inicial). Renovable hasta 7 años total</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Puede traer familia</td>
+                <td class="text-gray-500">N/A</td>
+                <td class="text-accent" style="background:rgba(16,185,129,0.03)">Si (E-2 dependientes)</td>
+                <td class="text-gray-500">Si (L-2 dependientes)</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Esposa puede trabajar</td>
+                <td class="text-gray-500">N/A</td>
+                <td class="text-accent" style="background:rgba(16,185,129,0.03)">Si (EAD para E-2 spouse)</td>
+                <td class="text-gray-500">Si (EAD para L-2 spouse)</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Camino a Green Card</td>
+                <td class="text-gray-500">N/A</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">No directamente, pero puede cambiar a otra categoria (EB-1C, EB-5)</td>
+                <td class="text-gray-500 text-xs">Si, via EB-1C (mas facil desde L-1A)</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Que fortalece el caso</td>
+                <td class="text-gray-500 text-xs">N/A</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">Revenue real en USA, empleados contratados, oficina fisica, inversion en la empresa</td>
+                <td class="text-gray-500 text-xs">Revenue real en SAS Colombia, empleados, relacion clara SAS&rarr;C Corp, años de operacion</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Riesgo principal</td>
+                <td class="text-gray-500 text-xs">N/A</td>
+                <td class="text-gray-400 text-xs" style="background:rgba(16,185,129,0.03)">Si la empresa no muestra crecimiento, renovacion puede ser complicada</td>
+                <td class="text-gray-500 text-xs">Documentacion mas pesada, USCIS mas exigente, relacion filial debe ser clara</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- E-2 EMPLOYEE EN DETALLE -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="number-circle text-base w-8 h-8 min-w-[32px]">3</span>
+        <h2 class="text-xl font-bold text-white">E-2 Employee en detalle (opcion recomendada)</h2>
+      </div>
+
+      <div class="section-card p-6 mb-6">
+        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Por que funciona para Miguel</h3>
+        <div class="info-callout mb-6">
+          <p class="text-sm text-gray-300">La E-2 Employee permite que un ciudadano del pais del tratado (Colombia) trabaje en una empresa USA que es >50% propiedad de nacionales de ese pais. Miguel es dueno del 61% de la C Corp + co-founder colombiano tiene 30% = <strong class="text-white">91% colombiana</strong>.</p>
+        </div>
+
+        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Requisitos que Miguel cumple</h4>
+        <div class="space-y-2 text-sm mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-accent font-bold mt-0.5">&#10003;</span>
+            <span class="text-gray-300"><strong class="text-white">Nacionalidad:</strong> Colombiano (Colombia tiene tratado E-2 con USA)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent font-bold mt-0.5">&#10003;</span>
+            <span class="text-gray-300"><strong class="text-white">Rol ejecutivo:</strong> CEO y CTO de Widdo</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent font-bold mt-0.5">&#10003;</span>
+            <span class="text-gray-300"><strong class="text-white">Empresa califica:</strong> C Corp Delaware con >50% propiedad colombiana</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent font-bold mt-0.5">&#10003;</span>
+            <span class="text-gray-300"><strong class="text-white">Inversion real:</strong> $200K SAFE + $15K co-founder cash + $150K sweat equity</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent font-bold mt-0.5">&#10003;</span>
+            <span class="text-gray-300"><strong class="text-white">Conocimiento especializado:</strong> Unica persona que construyo el producto (107 modelos, 80+ tablas)</span>
+          </div>
+        </div>
+
+        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Que necesita tener antes de aplicar</h4>
+        <div class="space-y-2 text-sm">
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 font-bold mt-0.5">!</span>
+            <span class="text-gray-300"><strong class="text-white">Revenue real:</strong> Clubes pagando en Colombia + al menos 1-2 clubes USA pagando</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 font-bold mt-0.5">!</span>
+            <span class="text-gray-300"><strong class="text-white">C Corp activa:</strong> Con cuenta bancaria, Stripe funcionando, transacciones reales</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 font-bold mt-0.5">!</span>
+            <span class="text-gray-300"><strong class="text-white">Plan de negocios:</strong> Mostrando por que Miguel necesita estar en USA (reuniones, ventas, operaciones)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 font-bold mt-0.5">!</span>
+            <span class="text-gray-300"><strong class="text-white">Abogado de inmigracion:</strong> Contratado, con experiencia en E-2 para startups</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documentos necesarios -->
+      <div class="section-card p-6 mb-6">
+        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Documentos para la aplicacion E-2 Employee</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
+          <div class="mb-4">
+            <h4 class="text-xs font-semibold text-accent uppercase tracking-wider mb-3">De la empresa</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Certificate of Incorporation (C Corp Delaware)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">EIN (IRS)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Operating Agreement / Bylaws</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Prueba de inversion ($200K SAFE, $15K co-founder, bank statements)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Plan de negocios detallado (5 años)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Cap table mostrando >50% propiedad colombiana</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Financial statements / P&L</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Prueba de revenue (Stripe dashboard, invoices)</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <h4 class="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Personales de Miguel</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Pasaporte colombiano vigente</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">CV / resume mostrando calificaciones ejecutivas</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Carta de la empresa ofreciendo el puesto de CEO</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Descripcion del puesto (responsabilidades ejecutivas)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Fotos tamano pasaporte</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">DS-160 (formulario online)</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-accent mt-0.5">></span>
+                <span class="text-gray-300">Prueba de que volvera a Colombia o tiene lazos (si aplica desde consulado)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- L-1A COMO PLAN B -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="number-circle text-base w-8 h-8 min-w-[32px]">4</span>
+        <h2 class="text-xl font-bold text-white">L-1A como Plan B</h2>
+      </div>
+
+      <div class="section-card p-6 mb-6">
+        <div class="info-callout mb-4">
+          <p class="text-sm text-gray-300">La L-1A es para transferencias intracompany: la SAS Colombia (empresa extranjera) transfiere a Miguel como CEO a la C Corp USA (subsidiaria). Ventaja: camino mas directo a Green Card via EB-1C.</p>
+        </div>
+
+        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Por que es Plan B y no Plan A</h4>
+        <div class="space-y-2 text-sm mb-6">
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 mt-0.5">!</span>
+            <span class="text-gray-300">Requiere que la SAS Colombia tenga <strong class="text-white">revenue real y empleados</strong> (no solo papel)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 mt-0.5">!</span>
+            <span class="text-gray-300">La relacion SAS&rarr;C Corp debe ser <strong class="text-white">filial clara</strong> (subsidiaria o afiliada)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 mt-0.5">!</span>
+            <span class="text-gray-300">Documentacion mas pesada que E-2 (USCIS es mas exigente que consulado)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-yellow-400 mt-0.5">!</span>
+            <span class="text-gray-300">Si la C Corp es nueva (&lt;1 año), solo dan <strong class="text-white">1 año inicial</strong> (vs 5 años E-2)</span>
+          </div>
+        </div>
+
+        <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Cuando conviene L-1A sobre E-2</h4>
+        <div class="space-y-2 text-sm">
+          <div class="flex items-start gap-3">
+            <span class="text-accent mt-0.5">></span>
+            <span class="text-gray-300">Si la SAS tiene <strong class="text-white">revenue fuerte en Colombia</strong> (>$10K/mes) y empleados</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent mt-0.5">></span>
+            <span class="text-gray-300">Si quiere <strong class="text-white">Green Card rapida</strong> (EB-1C es mas directo desde L-1A)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent mt-0.5">></span>
+            <span class="text-gray-300">Si hay algun problema con el requisito de >50% propiedad del pais tratado (improbable)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="number-circle text-base w-8 h-8 min-w-[32px]">5</span>
+        <h2 class="text-xl font-bold text-white">Timeline recomendado</h2>
+      </div>
+
+      <div class="section-card p-6">
+        <div class="space-y-8">
+          <!-- AHORA -->
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#f97316"></div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="badge badge-yellow">Mar 2026</span>
+                <span class="text-xs text-gray-500">AHORA &mdash; NO aplicar visa todavia</span>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-orange-400 mt-0.5">></span>
+                  <span class="text-gray-300">Crear C Corp via Stripe Atlas (durante viaje a Orlando)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-orange-400 mt-0.5">></span>
+                  <span class="text-gray-300">Reunion con abogado de inmigracion (consulta inicial)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-orange-400 mt-0.5">></span>
+                  <span class="text-gray-300">Empezar a cobrar clubes Colombia</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-orange-400 mt-0.5">></span>
+                  <span class="text-gray-300">Cerrar pilotos USA (2 colegios gratis)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ABR-JUN -->
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#fbbf24"></div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="badge badge-yellow">Abr-Jun 2026</span>
+                <span class="text-xs text-gray-500">Construir el caso</span>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-yellow-400 mt-0.5">></span>
+                  <span class="text-gray-300">Revenue real en Colombia (14+ clubes pagando)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-yellow-400 mt-0.5">></span>
+                  <span class="text-gray-300">Pilotos USA convierten a pagos ($99/mes)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-yellow-400 mt-0.5">></span>
+                  <span class="text-gray-300">Levantar pre-seed $200K SAFE (fortalece caso E-2)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-yellow-400 mt-0.5">></span>
+                  <span class="text-gray-300">Preparar business plan formal para la visa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JUL-SEP -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-accent/30">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="badge badge-green">Jul-Sep 2026</span>
+                <span class="text-xs text-gray-500">APLICAR VISA</span>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-accent mt-0.5">></span>
+                  <span class="text-gray-300"><strong class="text-white">Aplicar E-2 Employee</strong> con caso fuerte: revenue en 2 paises, inversion real, producto completo</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-accent mt-0.5">></span>
+                  <span class="text-gray-300">Procesamiento: 2-4 meses (o 15 dias con Premium Processing)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-accent mt-0.5">></span>
+                  <span class="text-gray-300">Si aprobada: mudarse a Orlando con familia</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- POST-APROBACION -->
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#60a5fa"></div>
+            <div class="bg-dark-700 rounded-lg p-5 border border-dark-500">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="badge badge-blue">Oct-Dic 2026</span>
+                <span class="text-xs text-gray-500">Post-aprobacion</span>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-400 mt-0.5">></span>
+                  <span class="text-gray-300">Mudanza a Orlando</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-400 mt-0.5">></span>
+                  <span class="text-gray-300">Oficina fisica (fortalece futuras renovaciones)</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-400 mt-0.5">></span>
+                  <span class="text-gray-300">Ventas presenciales en Florida</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-400 mt-0.5">></span>
+                  <span class="text-gray-300">Evaluar timeline para Green Card (EB-1C si cambio a L-1A, u otra via)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COSTOS -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="number-circle text-base w-8 h-8 min-w-[32px]">6</span>
+        <h2 class="text-xl font-bold text-white">Costos estimados</h2>
+      </div>
+
+      <div class="section-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Concepto</th>
+                <th class="text-center">E-2 Employee</th>
+                <th class="text-center">L-1A</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-gray-300 font-medium">Abogado de inmigracion</td>
+                <td class="text-center text-white">$5,000 - $7,000</td>
+                <td class="text-center text-gray-400">$5,000 - $8,000</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Filing fee USCIS</td>
+                <td class="text-center text-white">~$1,500</td>
+                <td class="text-center text-gray-400">~$1,500</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Premium Processing (opcional)</td>
+                <td class="text-center text-white">$2,805</td>
+                <td class="text-center text-gray-400">$2,805</td>
+              </tr>
+              <tr>
+                <td class="text-gray-300 font-medium">Costos consulado (DS-160, cita)</td>
+                <td class="text-center text-white">~$205</td>
+                <td class="text-center text-gray-400">~$205</td>
+              </tr>
+              <tr class="font-bold">
+                <td class="text-gray-200">Total sin Premium</td>
+                <td class="text-center text-accent">~$7,000 - $8,700</td>
+                <td class="text-center text-gray-300">~$7,000 - $9,700</td>
+              </tr>
+              <tr class="font-bold">
+                <td class="text-gray-200">Total con Premium</td>
+                <td class="text-center text-accent">~$9,800 - $11,500</td>
+                <td class="text-center text-gray-300">~$9,800 - $12,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTAS IMPORTANTES -->
+    <section>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="number-circle text-base w-8 h-8 min-w-[32px]">7</span>
+        <h2 class="text-xl font-bold text-white">Notas importantes</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="warning-callout">
+          <p class="text-sm text-yellow-300 font-semibold mb-1">NO trabajar en USA con visa de turismo</p>
+          <p class="text-xs text-gray-400">La B1/B2 permite reuniones, demos, y conferencias. NO permite trabajo remunerado ni operar la empresa desde USA. Mientras tenga B1/B2, todo el trabajo real se hace desde Colombia.</p>
+        </div>
+
+        <div class="warning-callout">
+          <p class="text-sm text-yellow-300 font-semibold mb-1">Mientras tanto: Co-founder hace ground work en Orlando</p>
+          <p class="text-xs text-gray-400">El co-founder (residente en USA) puede hacer ventas, reuniones, demos, y operar la C Corp legalmente. Miguel dirige desde Colombia + viajes cortos con visa turismo.</p>
+        </div>
+
+        <div class="info-callout">
+          <p class="text-sm text-accent font-semibold mb-1">Costo de vida en Orlando</p>
+          <p class="text-xs text-gray-400">Renta 2BR: ~$1,800-$2,200/mes. Utilities: ~$200. Seguro salud: ~$600-$1,000/mes (familia). Comida: ~$800. Auto: ~$400-$600. Total: ~$4,100-$5,000/mes base.</p>
+        </div>
+
+        <div class="info-callout">
+          <p class="text-sm text-accent font-semibold mb-1">Abogado de inmigracion: buscar en Orlando</p>
+          <p class="text-xs text-gray-400">Pedir recomendacion al co-founder o al abogado corporativo. Idealmente alguien con experiencia en E-2 para startups/tech. Reunion inicial durante el viaje de Marzo.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-dark-600 mt-12">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-600">
+        <div class="flex items-center gap-3">
+          <div class="w-6 h-6 bg-accent rounded flex items-center justify-center font-bold text-white text-xs">W</div>
+          <span>Documento privado &mdash; Widdo 2026</span>
+        </div>
+        <a href="legales/index.html" class="text-gray-500 hover:text-accent transition-colors">&larr; Volver al Centro Legal</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

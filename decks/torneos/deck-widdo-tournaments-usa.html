@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo Tournaments — Run the tournament, skip the spreadsheet weekend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           This stylesheet is the clubs deck's stylesheet (decks/clubes/
+           deck-widdo-clubs-usa.html) reused verbatim, minus the .plan
+           pricing block — this deck has no plan tiers. The two decks are
+           meant to read as siblings, so do not diverge the tokens here.
+           ============================================================ */
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green: #16a34a;
+            --green-dark: #0f7a37;
+            --text: #18181b;
+            --muted: rgba(24, 24, 27, 0.65);
+            --faint: rgba(24, 24, 27, 0.40);
+            --bg: #ffffff;
+            --card: #f4f4f5;
+            --border: rgba(24, 24, 27, 0.12);
+        }
+
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------- Slide shell ---------- */
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg);
+            page-break-after: always;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            padding: 64px 80px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Green veil — slides 2, 13 and 14 only. Deliberately near-invisible. */
+        .veil {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 900px 620px at 12% 0%, rgba(22, 163, 74, 0.055) 0%, rgba(22, 163, 74, 0) 68%);
+        }
+        .veil-center {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 1000px 700px at 50% 45%, rgba(22, 163, 74, 0.05) 0%, rgba(22, 163, 74, 0) 70%);
+        }
+
+        .cover-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #16a34a 0%, #0f7a37 100%);
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 24px;
+            right: 32px;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--faint);
+            z-index: 20;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- Type ---------- */
+        h1 { font-size: 60px; font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; }
+        h2 { font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -0.8px; }
+        h3 { font-size: 20px; font-weight: 700; line-height: 1.3; }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 14px;
+        }
+        .deck { font-size: 18px; color: var(--muted); line-height: 1.55; }
+        .deck-lg { font-size: 21px; color: var(--muted); line-height: 1.5; }
+        .rule { width: 52px; height: 3px; background: var(--green); border-radius: 2px; }
+
+        /* ---------- Cards ---------- */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 26px 26px 28px;
+        }
+        .card h3 { margin-bottom: 8px; }
+        .card p { font-size: 15px; color: var(--muted); line-height: 1.5; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 18px; }
+
+        /* ---------- Icons (inline SVG, monochrome) ---------- */
+        .icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: rgba(22, 163, 74, 0.10);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 16px;
+        }
+        .icon svg {
+            width: 20px; height: 20px;
+            stroke: var(--green); fill: none;
+            stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ---------- Capability map (slide 3) ---------- */
+        .cap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr 1fr;
+            gap: 16px;
+            margin: auto 0;
+        }
+        .cap {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px 18px;
+        }
+        .cap-head { display: flex; align-items: center; gap: 8px; margin-bottom: 11px; }
+        .cap-head svg {
+            width: 15px; height: 15px;
+            stroke: var(--green); fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+        .cap-title {
+            font-size: 11.5px; font-weight: 800; letter-spacing: 1.3px;
+            text-transform: uppercase; color: var(--green);
+        }
+        .cap ul { list-style: none; }
+        .cap li {
+            font-size: 13px; color: var(--muted); line-height: 1.55;
+            white-space: nowrap;
+        }
+
+        /* ---------- Bullets ---------- */
+        .bullets { list-style: none; }
+        .bullets li {
+            display: flex; align-items: flex-start; gap: 12px;
+            font-size: 17px; color: var(--muted); line-height: 1.45;
+            padding: 9px 0;
+        }
+        .bullets li::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            margin-top: 9px;
+            flex-shrink: 0;
+        }
+        .bullets strong { color: var(--text); font-weight: 600; }
+        .bullets-sm li { font-size: 15.5px; padding: 7px 0; }
+        .bullets-sm li::before { margin-top: 8px; }
+
+        /* ---------- Screenshot frames ----------
+           Fixed size + gray fill so a missing image leaves a clean
+           placeholder instead of collapsing the layout (the <img> removes
+           itself on error, so no broken-image icon either). The demo
+           tournament screenshots land in ../assets/torneos-en/ later; every
+           slide below is laid out to look finished without them.
+
+           Frame aspect ratios match the capture sizes in the spec:
+             desktop shots  1440x900  -> 1.600  (frames 700x437, 660x412)
+             mobile shots    390x844  -> 0.462  (frames 262x567)
+
+           Assets referenced: public-tournament-page, bracket, schedule,
+           check-in, standings-live, ai-chat. */
+        .shot {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .shot img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* ---------- Big number ---------- */
+        .stat { font-size: 82px; font-weight: 900; line-height: 1; color: var(--green); letter-spacing: -3px; }
+        .stat-label { font-size: 16px; color: var(--muted); margin-top: 6px; }
+
+        /* ---------- Quoted AI commands (slide 10) ---------- */
+        .cmd {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--green);
+            border-radius: 8px;
+            padding: 11px 16px;
+            font-size: 14.5px;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        /* ---------- Before / after table ---------- */
+        .ba { width: 100%; border-collapse: collapse; }
+        .ba th {
+            font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+            padding: 0 22px 12px; text-align: left; color: var(--faint);
+        }
+        .ba td {
+            font-size: 17px; padding: 19px 22px; vertical-align: top;
+            border-top: 1px solid var(--border);
+        }
+        .ba td.before { color: var(--muted); width: 44%; }
+        .ba td.after { color: var(--text); font-weight: 600; width: 44%; background: rgba(22, 163, 74, 0.04); }
+        .ba td.label { font-size: 13px; font-weight: 600; color: var(--faint); width: 12%; padding-left: 0; }
+        .ba tr:last-child td.after { border-radius: 0 0 10px 10px; }
+        .ba tr:first-child td.after { border-radius: 10px 10px 0 0; border-top-color: transparent; }
+        .ba-head-after { color: var(--green) !important; }
+
+        /* ---------- Steps strip (slide 13) ---------- */
+        .step {
+            display: flex; align-items: baseline; gap: 10px;
+            font-size: 14.5px; color: var(--muted); line-height: 1.4;
+        }
+        .step b { font-size: 12px; font-weight: 800; color: var(--green); letter-spacing: 1px; flex-shrink: 0; }
+        .step strong { color: var(--text); font-weight: 700; }
+
+        /* ---------- Print ---------- */
+        @page { size: 1280px 720px; margin: 0; }
+
+        @media print {
+            body { background: none; margin: 0; padding: 0; }
+            .slide {
+                margin: 0;
+                page-break-after: always;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            #slide-counter, #presentation-help { display: none !important; }
+        }
+
+        @media screen {
+            body { background: #f0f0f3; padding: 20px 0; }
+            .slide { margin: 0 auto 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1 — COVER (only slide with a solid background)          -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="cover-bg"></div>
+    <div class="content" style="justify-content: center;">
+        <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 56px;">
+            <div style="width: 76px; height: 76px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center;">
+                <img src="widdo-logo.svg" alt="Widdo" style="width: 76px; height: 76px; display: block;">
+            </div>
+            <span style="font-size: 38px; font-weight: 800; color: #fff; letter-spacing: -0.5px;">widdo</span>
+        </div>
+        <h1 style="color: #fff; max-width: 940px;">
+            Run the tournament.<br>Skip the spreadsheet weekend.
+        </h1>
+        <p style="font-size: 23px; color: rgba(255,255,255,0.88); font-weight: 400; margin-top: 26px; max-width: 760px; line-height: 1.45;">
+            Registration, brackets, schedule and entry fees in one place.
+        </p>
+        <div style="width: 52px; height: 3px; background: rgba(255,255,255,0.5); border-radius: 2px; margin-top: 44px;"></div>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 22px; letter-spacing: 0.4px;">
+            widdo.co
+        </p>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2 — THE PROBLEM (green veil)                            -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="veil"></div>
+    <div class="content">
+        <div class="eyebrow">The problem</div>
+        <h2 style="max-width: 860px;">The tournament is the easy part.</h2>
+        <p class="deck" style="margin-top: 16px; max-width: 720px;">
+            It's the two weeks around it that take your evenings.
+        </p>
+
+        <div class="grid-2" style="margin: auto 0; row-gap: 20px;">
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+                </div>
+                <h3>Registration is a form and an inbox</h3>
+                <p>Teams sign up in a Google Form. You retype every roster into a spreadsheet.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 4h18v4H3zM3 12h8v8H3zM15 12h6v8h-6z"/></svg>
+                </div>
+                <h3>Brackets get built at midnight</h3>
+                <p>Two withdrawals the day before, and you redraw the whole thing by hand.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+                </div>
+                <h3>&ldquo;What time do we play?&rdquo; &times; 200</h3>
+                <p>The same four questions, from every coach and every parent, all weekend.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>You collect entry fees one team at a time</h3>
+                <p>Checks, transfers, a coach who pays at the gate. You reconcile it yourself.</p>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">2</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3 — CAPABILITY MAP                                      -->
+<!--                                                              -->
+<!-- Module names are the product's own English labels, verified in -->
+<!-- frontend/src/i18n/locales/en/menu.json (organizer_menu),       -->
+<!-- organizer.json (detail.tab_*, brackets.format_*, venues,       -->
+<!-- rankings, h2h, series, templates, weather, gate tickets) and   -->
+<!-- publicTournaments.json.                                       -->
+<!--                                                              -->
+<!-- DELIBERATELY NOT LISTED: "SMS notifications" — the service     -->
+<!-- (app/Services/Tournaments/SmsNotificationService.php) only     -->
+<!-- logs messages; there is no provider wired, so it is not        -->
+<!-- sellable. Email notifications are real (7 tournament           -->
+<!-- Mailables in app/Mail/). "Payouts" is not a screen either —    -->
+<!-- Stripe Connect is, and that is the name used here.             -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content" style="padding: 46px 80px;">
+        <div class="eyebrow">The platform</div>
+        <h2 style="font-size: 36px;">Everything a tournament needs, already built.</h2>
+        <p class="deck" style="margin-top: 10px; font-size: 17px;">
+            One login. Nothing here is a paid add-on.
+        </p>
+
+        <div class="cap-grid">
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg>
+                    <span class="cap-title">Registration</span>
+                </div>
+                <ul>
+                    <li>Create Tournament</li>
+                    <li>Registrations</li>
+                    <li>Categories</li>
+                    <li>Required Documents</li>
+                    <li>Waivers</li>
+                    <li>Team Invitations</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><path d="M3 4h7v6H3zM3 14h7v6H3zM14 9h7v6h-7zM10 7h4M10 17h4M14 12h-2V7"/></svg>
+                    <span class="cap-title">Brackets &amp; schedule</span>
+                </div>
+                <ul>
+                    <li>Brackets &mdash; 6 formats</li>
+                    <li>Schedule</li>
+                    <li>Venues &amp; Courts</li>
+                    <li>Seeding</li>
+                    <li>Reschedule notices</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17h7"/></svg>
+                    <span class="cap-title">Game day</span>
+                </div>
+                <ul>
+                    <li>Roster check-in</li>
+                    <li>Live</li>
+                    <li>Standings</li>
+                    <li>Stats</li>
+                    <li>Weather</li>
+                    <li>Disputes</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                    <span class="cap-title">Money</span>
+                </div>
+                <ul>
+                    <li>Payments</li>
+                    <li>Stripe Connect</li>
+                    <li>Entry fees</li>
+                    <li>Gate Tickets</li>
+                    <li>Ticket Sales</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg>
+                    <span class="cap-title">Communication</span>
+                </div>
+                <ul>
+                    <li>Tournament Alerts</li>
+                    <li>Email notifications</li>
+                    <li>Social Posts</li>
+                    <li>Reviews</li>
+                    <li>Volunteers</li>
+                    <li>Sponsors</li>
+                </ul>
+            </div>
+
+            <div class="cap">
+                <div class="cap-head">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>
+                    <span class="cap-title">Your public page</span>
+                </div>
+                <ul>
+                    <li>Public tournament page</li>
+                    <li>Online registration</li>
+                    <li>QR credential</li>
+                    <li>Rankings</li>
+                    <li>Head-to-Head</li>
+                    <li>Series</li>
+                    <li>My Templates</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 4px;">
+            <p style="font-size: 17px; color: var(--muted);">
+                And your teams' clubs run on Widdo too &mdash;
+                <strong style="color: var(--text); font-weight: 600;">same platform, same rosters.</strong>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">3</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4 — PUBLIC TOURNAMENT PAGE                              -->
+<!-- Routes verified in frontend/src/routes/publicRoutes.jsx:       -->
+<!--   /t/:tournamentId · /t/:tournamentId/register                 -->
+<!--   /t/:tournamentId/credential/:qrCode                          -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Your public tournament page</div>
+        <h2>One link. Teams sign themselves up.</h2>
+        <div style="display: flex; gap: 48px; align-items: flex-start; margin: auto 0;">
+            <div style="width: 366px; flex-shrink: 0;">
+                <div class="rule" style="margin-bottom: 22px;"></div>
+                <ul class="bullets bullets-sm">
+                    <li><span>A <strong>page you can send anywhere</strong> &mdash; text, email, your league's site.</span></li>
+                    <li><span>Coaches register their team, <strong>enter their roster and pay</strong>, in one pass.</span></li>
+                    <li><span>You <strong>approve or reject</strong> each registration. Nothing gets in behind your back.</span></li>
+                    <li><span>Dates, venues, categories, entry fee and deadline, all on the page.</span></li>
+                </ul>
+            </div>
+            <div class="shot" style="width: 700px; height: 437px;">
+                <img src="../assets/torneos-en/public-tournament-page.png" alt="Public tournament page in Widdo" onerror="this.remove()">
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">4</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5 — YOU KEEP 100% (the slide that closes the deal)       -->
+<!--                                                              -->
+<!-- Verified: app/Services/Tournaments/TournamentPaymentService    -->
+<!-- .php:80 — "No application_fee_amount — Widdo charges ZERO     -->
+<!-- commission". Stripe Connect Express, direct charges, so the    -->
+<!-- funds settle in the organizer's own Stripe account and never   -->
+<!-- pass through Widdo (see negocio/widdo-marketplace-payment-     -->
+<!-- architecture.md).                                             -->
+<!--                                                              -->
+<!-- Deliberately NOT said: PayPal (PayPalService exists but is not -->
+<!-- a validated sellable flow), any card-processing percentage,    -->
+<!-- and any "start charging today" promise.                        -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Entry fees</div>
+        <h2>You keep 100%.</h2>
+        <p class="deck" style="margin-top: 14px; max-width: 780px;">
+            Every dollar a team pays to enter your tournament is a dollar that lands in your account.
+        </p>
+
+        <div style="display: flex; gap: 56px; align-items: center; margin: auto 0;">
+            <div style="width: 430px; flex-shrink: 0;">
+                <div class="stat" style="font-size: 150px;">0%</div>
+                <div class="stat-label" style="font-size: 19px; margin-top: 10px;">platform fee on entry fees</div>
+            </div>
+            <div style="flex: 1;">
+                <div class="rule" style="margin-bottom: 22px;"></div>
+                <ul class="bullets">
+                    <li><span><strong>No platform fee.</strong> Widdo does not take a cut of your entry fees.</span></li>
+                    <li><span><strong>Stripe Connect payouts go straight to your account</strong>, in your name.</span></li>
+                    <li><span><strong>The money never sits with Widdo.</strong> We don't hold it, so we can't be slow returning it.</span></li>
+                    <li><span><strong>You set the entry fee.</strong> Per team, per category, your number.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 18px;">
+            <p class="deck" style="font-size: 16px;">
+                Card processing is charged by the processor, not by us.
+                <strong style="color: var(--text); font-weight: 600;">Widdo's share of your entry fees is zero.</strong>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">5</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6 — BRACKETS, 6 FORMATS                                 -->
+<!-- Format constants verified in app/Models/PlaTournamentBracket   -->
+<!-- .php:20-31; display names from organizer.json brackets.format_*-->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Brackets</div>
+        <h2>Six formats. Generated, not drawn.</h2>
+
+        <div style="display: flex; gap: 44px; align-items: center; margin: auto 0;">
+            <div style="width: 430px; flex-shrink: 0;">
+                <div class="cap" style="margin-bottom: 24px;">
+                    <div class="cap-head">
+                        <svg viewBox="0 0 24 24"><path d="M3 4h7v6H3zM3 14h7v6H3zM14 9h7v6h-7zM10 7h4M10 17h4M14 12h-2V7"/></svg>
+                        <span class="cap-title">Formats</span>
+                    </div>
+                    <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px;">
+                        <li style="font-size: 14px; color: var(--text); line-height: 1.75;">Single Elimination</li>
+                        <li style="font-size: 14px; color: var(--text); line-height: 1.75;">Double Elimination</li>
+                        <li style="font-size: 14px; color: var(--text); line-height: 1.75;">Round Robin</li>
+                        <li style="font-size: 14px; color: var(--text); line-height: 1.75;">Group Stage</li>
+                        <li style="font-size: 14px; color: var(--text); line-height: 1.75;">Swiss System</li>
+                        <li style="font-size: 14px; color: var(--text); line-height: 1.75;">Groups + Elimination</li>
+                    </ul>
+                </div>
+                <ul class="bullets bullets-sm">
+                    <li><span>Seed <strong>manually, at random, or by rating</strong>.</span></li>
+                    <li><span>Group winners <strong>advance into the knockout</strong> on their own.</span></li>
+                    <li><span>A team pulls out? <strong>Reset and regenerate</strong> in a click.</span></li>
+                </ul>
+            </div>
+            <div class="shot" style="width: 660px; height: 412px;">
+                <img src="../assets/torneos-en/bracket.png" alt="Generated tournament bracket in Widdo" onerror="this.remove()">
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">6</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7 — AUTO-SCHEDULING                                     -->
+<!-- SchedulingService.php + ConstraintCheckerService.php           -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Scheduling</div>
+        <h2>The schedule that used to take a weekend.</h2>
+        <div style="display: flex; gap: 48px; align-items: flex-start; margin: auto 0;">
+            <div class="shot" style="width: 700px; height: 437px;">
+                <img src="../assets/torneos-en/schedule.png" alt="Generated tournament schedule in Widdo" onerror="this.remove()">
+            </div>
+            <div style="width: 366px; flex-shrink: 0;">
+                <div class="rule" style="margin-bottom: 18px;"></div>
+                <ul class="bullets bullets-sm">
+                    <li><span>Widdo lays out every match across <strong>your venues and courts</strong>.</span></li>
+                    <li><span>It respects the <strong>constraints you set</strong>: rest between games, blocked hours, court availability.</span></li>
+                    <li><span>Conflicts are flagged <strong>before</strong> you publish, not by an angry coach after.</span></li>
+                    <li><span>Move a game and <strong>the affected teams get told</strong>.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">7</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8 — GAME DAY / CHECK-IN                                 -->
+<!-- RosterCheckInService.php — tournament-specific, distinct from   -->
+<!-- the club attendance check-in. Waivers: PlaTournamentWaiver +    -->
+<!-- PlaTournamentWaiverSignature.                                  -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Game day</div>
+        <h2 style="font-size: 36px;">Check in a roster at the table, not in a binder.</h2>
+
+        <div style="display: flex; align-items: center; gap: 44px; margin: auto 0;">
+            <div style="width: 430px; flex-shrink: 0;">
+                <div class="rule" style="margin-bottom: 22px;"></div>
+                <ul class="bullets bullets-sm">
+                    <li><span><strong>Scan the QR credential.</strong> The roster comes up with photos.</span></li>
+                    <li><span>Waivers are <strong>signed online before anyone travels</strong> &mdash; you see who's still missing one.</span></li>
+                    <li><span>Check in a <strong>whole team or one player</strong> at a time.</span></li>
+                    <li><span>Missing documents show up <strong>as a list, not as a surprise</strong>.</span></li>
+                </ul>
+            </div>
+            <div style="flex: 1; display: flex; justify-content: center;">
+                <div class="shot" style="width: 660px; height: 412px;">
+                    <img src="../assets/torneos-en/check-in.png" alt="Roster check-in screen in Widdo" onerror="this.remove()">
+                </div>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 18px;">
+            <p class="deck" style="font-size: 16px;">
+                Eligibility is settled the week before.
+                <strong style="color: var(--text); font-weight: 600;">Saturday morning is just scanning.</strong>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">8</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9 — LIVE SCORES & STANDINGS                             -->
+<!-- MatchResultService, RankingService, HeadToHeadService,          -->
+<!-- StatsAggregationService                                        -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Live scores &amp; standings</div>
+        <h2>Parents check their phone instead of finding you.</h2>
+        <div style="display: flex; gap: 48px; align-items: flex-start; margin: auto 0;">
+            <div class="shot" style="width: 700px; height: 437px;">
+                <img src="../assets/torneos-en/standings-live.png" alt="Live standings for a tournament in Widdo" onerror="this.remove()">
+            </div>
+            <div style="width: 366px; flex-shrink: 0;">
+                <div class="rule" style="margin-bottom: 18px;"></div>
+                <ul class="bullets bullets-sm">
+                    <li><span>Enter a score and <strong>the standings update themselves</strong>.</span></li>
+                    <li><span>Tables, <strong>tiebreakers and head-to-head</strong> worked out for you.</span></li>
+                    <li><span>Player and team <strong>stats</strong>, per game and per tournament.</span></li>
+                    <li><span>Everything visible on your <strong>public page, live</strong>.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <span class="slide-number">9</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10 — WIDDO AI                                           -->
+<!-- 27 = ToolDefinitions::TOURNAMENT_TOOL_NAMES, counted           -->
+<!-- (app/Services/Assistant/ToolDefinitions.php:12-22). The        -->
+<!-- docblock above that array still says 26 — it is stale, the      -->
+<!-- array holds 27 entries. The organizer role gets those 27 plus   -->
+<!-- updateOwnerProfile.                                            -->
+<!-- Each command below maps to a real tool in that list:           -->
+<!--   publishTournament · generateBracket · recordMatchResult ·     -->
+<!--   getTournamentCheckInStatus · approveRegistration ·            -->
+<!--   notifyScheduleToTeams                                        -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Widdo AI</div>
+        <h2>27 tournament tools you can just ask for.</h2>
+        <p class="deck" style="margin-top: 12px; max-width: 900px;">
+            Type it the way you'd say it to an assistant. It reads your tournament's real
+            data, and it can act on it.
+        </p>
+
+        <div style="display: flex; gap: 44px; align-items: center; margin: auto 0;">
+            <div style="width: 470px; flex-shrink: 0; display: flex; flex-direction: column; gap: 9px;">
+                <div class="cmd">&ldquo;Publish the tournament.&rdquo;</div>
+                <div class="cmd">&ldquo;Generate the bracket.&rdquo;</div>
+                <div class="cmd">&ldquo;Record 3-1 for the U12 final.&rdquo;</div>
+                <div class="cmd">&ldquo;Who hasn't checked in?&rdquo;</div>
+                <div class="cmd">&ldquo;Approve the Riverside FC registration.&rdquo;</div>
+                <div class="cmd">&ldquo;Send the schedule to all teams.&rdquo;</div>
+            </div>
+            <div class="shot" style="width: 606px; height: 379px;">
+                <img src="../assets/torneos-en/ai-chat.png" alt="Widdo AI assistant for tournament organizers" onerror="this.remove()">
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 18px;">
+            <p style="font-size: 16px; color: var(--muted);">
+                It only reaches the tournaments on your own organizer account.
+                <strong style="color: var(--text); font-weight: 600;">Nobody else's tournament is in scope.</strong>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">10</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11 — BEFORE / AFTER                                     -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Before &amp; after</div>
+        <h2>What actually changes.</h2>
+
+        <table class="ba" style="margin: auto 0;">
+            <thead>
+                <tr>
+                    <th style="padding-left: 0;"></th>
+                    <th>A form, a spreadsheet and a bank transfer</th>
+                    <th class="ba-head-after">Widdo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="label">Sign-ups</td>
+                    <td class="before">You retype every roster you receive</td>
+                    <td class="after">Teams enter their own, you approve</td>
+                </tr>
+                <tr>
+                    <td class="label">Entry fees</td>
+                    <td class="before">You chase each team and reconcile by hand</td>
+                    <td class="after">Paid at registration, straight to your account</td>
+                </tr>
+                <tr>
+                    <td class="label">Brackets</td>
+                    <td class="before">Redrawn every time a team pulls out</td>
+                    <td class="after">Regenerated in a click</td>
+                </tr>
+                <tr>
+                    <td class="label">Schedule</td>
+                    <td class="before">A weekend of moving cells around</td>
+                    <td class="after">Generated against your constraints</td>
+                </tr>
+                <tr>
+                    <td class="label">Game day</td>
+                    <td class="before">Binders, paper waivers, a folding table</td>
+                    <td class="after">Scan the QR, roster on screen</td>
+                </tr>
+                <tr>
+                    <td class="label">Results</td>
+                    <td class="before">You post a photo of a table, hours later</td>
+                    <td class="after">Standings update as scores come in</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <span class="slide-number">11</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12 — SERIES & TEMPLATES                                 -->
+<!-- SeriesService.php, TemplateService.php, RankingService.php      -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="content">
+        <div class="eyebrow">Series &amp; templates</div>
+        <h2>The second time you run it, it's already set up.</h2>
+        <p class="deck" style="margin-top: 14px; max-width: 780px;">
+            Most organizers don't run one tournament. They run the same one every year, and
+            three more in between.
+        </p>
+
+        <div class="grid-3" style="margin: auto 0; gap: 20px;">
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+                </div>
+                <h3>Save it as a template</h3>
+                <p>Categories, entry fees, required documents, waivers and format. Next edition starts filled in.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7"/></svg>
+                </div>
+                <h3>Group them into a series</h3>
+                <p>Several tournaments, one standings table across the whole season.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h2a2 2 0 0 1 0 4h-2M7 5H5a2 2 0 0 0 0 4h2"/></svg>
+                </div>
+                <h3>Rankings that carry over</h3>
+                <p>Teams keep a record with you across editions, instead of starting from zero every year.</p>
+            </div>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 22px;">
+            <p style="font-size: 19px; font-weight: 700;">
+                Your tournament stops being a one-off. <span style="color: var(--green);">It becomes a circuit.</span>
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">12</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13 — GET STARTED + PRICING (green veil)                 -->
+<!--                                                              -->
+<!-- No plan table on purpose. Free for organizers with a 0%        -->
+<!-- platform fee is the actual state of the code                   -->
+<!-- (TournamentPaymentService.php:80) and the acquisition thesis:  -->
+<!-- every tournament brings clubs into Widdo. Do NOT add tiers     -->
+<!-- here without Miguel.                                          -->
+<!--                                                              -->
+<!-- Deliberately NOT said: any date, any "start charging today".    -->
+<!-- Stripe live keys are not configured yet (Gate 0).              -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="veil"></div>
+    <div class="content" style="padding: 56px 80px;">
+        <div class="eyebrow">Getting started</div>
+        <h2 style="font-size: 36px;">Three steps to an open tournament.</h2>
+
+        <div class="grid-3" style="margin-top: 34px; gap: 22px;">
+            <div class="card">
+                <div class="step" style="margin-bottom: 14px;"><b>01</b></div>
+                <h3>Create the tournament</h3>
+                <p>Sport, dates, venues, categories and your entry fee.</p>
+            </div>
+            <div class="card">
+                <div class="step" style="margin-bottom: 14px;"><b>02</b></div>
+                <h3>Publish the link</h3>
+                <p>You get a public page. Send it to the clubs you want in.</p>
+            </div>
+            <div class="card">
+                <div class="step" style="margin-bottom: 14px;"><b>03</b></div>
+                <h3>Teams register and pay</h3>
+                <p>Rosters, documents and entry fees come in on their own. You approve.</p>
+            </div>
+        </div>
+
+        <div style="margin: auto 0; text-align: center;">
+            <p style="font-size: 44px; font-weight: 900; color: var(--green); letter-spacing: -1.4px; line-height: 1.15;">
+                Free for organizers.<br>0% platform fee. You keep 100%.
+            </p>
+        </div>
+
+        <div style="border-top: 1px solid var(--border); padding-top: 18px;">
+            <p style="font-size: 13px; color: var(--faint);">
+                You set the entry fee. Card processing is charged by the processor, not by us.
+            </p>
+        </div>
+    </div>
+    <span class="slide-number">13</span>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14 — CLOSE (green veil)                                 -->
+<!-- ============================================================ -->
+<div class="slide">
+    <div class="veil-center"></div>
+    <div class="content" style="justify-content: center; align-items: center; text-align: center;">
+        <img src="widdo-logo.svg" alt="Widdo" style="width: 56px; height: 56px; display: block; margin-bottom: 44px;">
+        <h2 style="font-size: 46px; max-width: 900px;">
+            Your next tournament,<br>without the spreadsheet.
+        </h2>
+        <p class="deck-lg" style="margin-top: 22px; max-width: 640px;">
+            Tell us the tournament you run. We'll set it up in Widdo and walk you through it.
+        </p>
+        <div class="rule" style="margin: 48px auto 40px;"></div>
+        <p style="font-size: 34px; font-weight: 800; letter-spacing: -0.8px;">hey@widdo.co</p>
+        <p style="font-size: 30px; font-weight: 700; color: var(--green); letter-spacing: -0.5px; margin-top: 10px;">widdo.co</p>
+    </div>
+    <span class="slide-number">14</span>
+</div>
+
+<script>
+/* Presentation navigation — screen only. Hidden in print via CSS. */
+(function() {
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let presentationMode = false;
+
+    const counter = document.createElement('div');
+    counter.id = 'slide-counter';
+    counter.style.cssText = 'display:none; position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.7); color:#fff; padding:6px 16px; border-radius:20px; font-family:Red Hat Display,sans-serif; font-size:13px; z-index:9999; letter-spacing:1px;';
+    document.body.appendChild(counter);
+
+    const help = document.createElement('div');
+    help.id = 'presentation-help';
+    help.style.cssText = 'display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.9); color:#fff; padding:40px 50px; border-radius:16px; font-family:Red Hat Display,sans-serif; z-index:10000; text-align:center; border:1px solid rgba(22,163,74,0.3);';
+    help.innerHTML = `
+        <h3 style="color:#16a34a; margin-bottom:20px; font-size:22px;">Presentation Mode</h3>
+        <div style="font-size:15px; line-height:2; color:rgba(255,255,255,0.8);">
+            <b style="color:#fff;">F</b> or <b style="color:#fff;">F11</b> — Enter/exit fullscreen<br>
+            <b style="color:#fff;">&rarr;</b> or <b style="color:#fff;">Space</b> — Next slide<br>
+            <b style="color:#fff;">&larr;</b> or <b style="color:#fff;">Backspace</b> — Previous slide<br>
+            <b style="color:#fff;">Home</b> — First slide<br>
+            <b style="color:#fff;">End</b> — Last slide<br>
+            <b style="color:#fff;">Esc</b> — Exit presentation mode
+        </div>
+        <p style="margin-top:20px; font-size:12px; color:rgba(255,255,255,0.4);">Press any key to close this help</p>
+    `;
+    document.body.appendChild(help);
+
+    function goTo(index) {
+        if (index < 0 || index >= slides.length) return;
+        current = index;
+        if (presentationMode) {
+            slides.forEach((s, i) => { s.style.display = i === current ? 'block' : 'none'; });
+        } else {
+            slides[current].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        counter.textContent = (current + 1) + ' / ' + slides.length;
+    }
+
+    function enterPresentation() {
+        presentationMode = true;
+        document.body.style.overflow = 'hidden';
+        document.body.style.background = '#000';
+        document.body.style.padding = '0';
+        slides.forEach((s, i) => {
+            s.style.display = i === current ? 'block' : 'none';
+            s.style.margin = '0 auto';
+            s.style.position = 'fixed';
+            s.style.top = '50%';
+            s.style.left = '50%';
+            s.style.transform = 'translate(-50%, -50%)';
+            s.style.boxShadow = 'none';
+        });
+        counter.style.display = 'block';
+        goTo(current);
+    }
+
+    function exitPresentation() {
+        presentationMode = false;
+        document.body.style.overflow = '';
+        document.body.style.background = '#f0f0f3';
+        document.body.style.padding = '20px 0';
+        slides.forEach(s => {
+            s.style.display = 'block';
+            s.style.position = 'relative';
+            s.style.top = '';
+            s.style.left = '';
+            s.style.transform = '';
+            s.style.margin = '0 auto 20px';
+            s.style.boxShadow = '0 4px 24px rgba(0,0,0,0.08)';
+        });
+        counter.style.display = 'none';
+        if (document.fullscreenElement) document.exitFullscreen();
+    }
+
+    let helpVisible = false;
+
+    document.addEventListener('keydown', function(e) {
+        if (helpVisible) {
+            help.style.display = 'none';
+            helpVisible = false;
+            return;
+        }
+
+        switch (e.key) {
+            case 'f':
+            case 'F':
+            case 'F11':
+                e.preventDefault();
+                if (!presentationMode) {
+                    enterPresentation();
+                    document.documentElement.requestFullscreen().catch(() => {});
+                }
+                break;
+            case 'Escape':
+                if (presentationMode) exitPresentation();
+                break;
+            case 'ArrowRight':
+            case ' ':
+                if (presentationMode) { e.preventDefault(); goTo(current + 1); }
+                break;
+            case 'ArrowLeft':
+            case 'Backspace':
+                if (presentationMode) { e.preventDefault(); goTo(current - 1); }
+                break;
+            case 'Home':
+                if (presentationMode) { e.preventDefault(); goTo(0); }
+                break;
+            case 'End':
+                if (presentationMode) { e.preventDefault(); goTo(slides.length - 1); }
+                break;
+            case 'h':
+            case 'H':
+            case '?':
+                if (presentationMode) { help.style.display = 'block'; helpVisible = true; }
+                break;
+        }
+    });
+
+    document.addEventListener('fullscreenchange', function() {
+        if (!document.fullscreenElement && presentationMode) exitPresentation();
+    });
+})();
+</script>
+
+</body>
+</html>

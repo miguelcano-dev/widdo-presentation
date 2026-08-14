@@ -1,0 +1,28 @@
+{
+  "name": "widdo-hero-video",
+  "version": "1.0.0",
+  "description": "Widdo landing page hero video - Remotion",
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion render HeroVideo out/hero-video.mp4",
+    "build:webm": "remotion render HeroVideo out/hero-video.webm --codec=vp8",
+    "build:all": "npm run build && npm run build:webm",
+    "build:demo": "remotion render DemoVideo out/demo-video.mp4",
+    "build:demo:ig": "remotion render DemoVideoInstagram out/demo-video-ig.mp4",
+    "build:promo": "remotion render SaasPromo out/saas-promo.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.242",
+    "@remotion/google-fonts": "4.0.242",
+    "@remotion/transitions": "4.0.242",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "4.0.242"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.7.2"
+  }
+}

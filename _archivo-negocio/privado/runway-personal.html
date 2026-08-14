@@ -1,0 +1,387 @@
+<!-- ARCHIVADO 13-ago-2026 — runway de febrero-2026: asume ingreso de $8K/mes hasta marzo y lista 'Configurar Wompi' como pendiente. Salario founder vigente = $2.000/mes x3 con sunset 31-oct (amendment-01) — sustituido por negocio/legales/para-firmar/amendment-01-founder-compensation.html + finanzas/ -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Runway Personal del Founder</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:#0f1117; --surface:#1a1d27; --surface2:#242834; --border:#2e3348;
+    --text:#e4e6f0; --text2:#8b8fa8; --accent:#6c5ce7; --accent2:#a29bfe;
+    --green:#00b894; --red:#ff6b6b; --yellow:#feca57; --blue:#54a0ff; --orange:#f39c12;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:2rem;line-height:1.5;}
+  h1{font-size:1.8rem;font-weight:700;} h2{font-size:1.2rem;font-weight:600;color:var(--accent2);margin-bottom:1rem;} h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem;}
+  .subtitle{color:var(--text2);font-size:0.9rem;margin-bottom:2rem;}
+  .nav-back{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent2);text-decoration:none;font-size:0.85rem;margin-bottom:1.5rem;}
+  .nav-back:hover{color:var(--accent);}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;}
+  .card-alert{border-color:var(--red);} .card-warn{border-color:var(--yellow);} .card-ok{border-color:var(--green);}
+  .grid{display:grid;gap:1.5rem;margin-bottom:1.5rem;} .grid-2{grid-template-columns:1fr 1fr;} .grid-3{grid-template-columns:repeat(3,1fr);} .grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+  @media(max-width:768px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+  .kpi{text-align:center;} .kpi-value{font-size:2rem;font-weight:800;margin:0.5rem 0 0.25rem;} .kpi-label{font-size:0.8rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.05em;} .kpi-sub{font-size:0.75rem;color:var(--text2);}
+  .chart-container{position:relative;height:300px;}
+  table{width:100%;border-collapse:collapse;font-size:0.85rem;} th{text-align:left;padding:0.6rem 0.5rem;color:var(--text2);font-weight:600;border-bottom:2px solid var(--border);} td{padding:0.5rem;border-bottom:1px solid var(--border);} tr:hover td{background:var(--surface2);} .num{text-align:right;font-variant-numeric:tabular-nums;} .total-row td{font-weight:700;border-top:2px solid var(--border);background:var(--surface2);}
+  .tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:0.7rem;font-weight:600;text-transform:uppercase;}
+  .tag-green{background:rgba(0,184,148,0.15);color:var(--green);} .tag-red{background:rgba(255,107,107,0.15);color:var(--red);} .tag-yellow{background:rgba(254,202,87,0.15);color:var(--yellow);}
+  .slider-group{margin-bottom:1.5rem;}
+  .slider-label{display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:0.5rem;}
+  input[type="range"]{width:100%;accent-color:var(--accent);}
+  .insight{padding:1rem;border-radius:8px;margin-bottom:0.75rem;font-size:0.9rem;}
+  .insight-red{background:rgba(255,107,107,0.1);border-left:3px solid var(--red);}
+  .insight-yellow{background:rgba(254,202,87,0.1);border-left:3px solid var(--yellow);}
+  .insight-green{background:rgba(0,184,148,0.1);border-left:3px solid var(--green);}
+  .progress-bar{height:12px;background:var(--surface2);border-radius:6px;overflow:hidden;margin:0.5rem 0;}
+  .progress-fill{height:100%;border-radius:6px;transition:width 0.5s;}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back">&#8592; Volver al Dashboard</a>
+
+<h1>Runway Personal del Founder</h1>
+<p class="subtitle">Análisis de sostenibilidad financiera personal | Miguel Angel Cano | Feb 2026</p>
+
+<!-- Current Situation -->
+<div class="card card-warn">
+  <h2 style="color:var(--yellow);">Situación Actual — La Verdad Cruda</h2>
+  <div class="grid grid-4">
+    <div class="kpi">
+      <div class="kpi-label">Ingreso Actual</div>
+      <div class="kpi-value green">$8,000</div>
+      <div class="kpi-sub">USD/mes (hasta marzo 2026)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Ingreso desde Abril</div>
+      <div class="kpi-value yellow">$2,000</div>
+      <div class="kpi-sub">USD/mes (freelance reducido)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Ahorros</div>
+      <div class="kpi-value" style="color:var(--blue)">$20,000</div>
+      <div class="kpi-sub">USD (colchón actual)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Revenue Widdo</div>
+      <div class="kpi-value red">$0</div>
+      <div class="kpi-sub">Clubs en fase de prueba</div>
+    </div>
+  </div>
+</div>
+
+<!-- Interactive Simulator -->
+<div class="card">
+  <h2>Simulador de Runway</h2>
+  <p class="subtitle" style="margin-bottom:1.5rem;">Ajusta los parámetros para ver cómo cambia tu runway</p>
+
+  <div class="grid grid-2">
+    <div>
+      <div class="slider-group">
+        <div class="slider-label"><span>Gastos mensuales (personal)</span><span id="expense-val">$2,500</span></div>
+        <input type="range" id="expense-slider" min="1500" max="5000" step="100" value="2500" oninput="updateSim()">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label"><span>Ingreso freelance (desde abril)</span><span id="freelance-val">$2,000</span></div>
+        <input type="range" id="freelance-slider" min="0" max="5000" step="500" value="2000" oninput="updateSim()">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label"><span>Mes en que Widdo empieza a generar revenue</span><span id="revenue-start-val">Mes 2</span></div>
+        <input type="range" id="revenue-start-slider" min="1" max="6" step="1" value="2" oninput="updateSim()">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label"><span>Revenue mensual de Widdo inicial</span><span id="widdo-rev-val">$300</span></div>
+        <input type="range" id="widdo-rev-slider" min="0" max="2000" step="100" value="300" oninput="updateSim()">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label"><span>Crecimiento mensual revenue</span><span id="growth-val">20%</span></div>
+        <input type="range" id="growth-slider" min="5" max="50" step="5" value="20" oninput="updateSim()">
+      </div>
+    </div>
+    <div>
+      <div class="card" style="background:var(--bg);">
+        <h3>Resultado</h3>
+        <div id="sim-result" style="margin-top:0.5rem;"></div>
+        <div class="chart-container" style="height:250px; margin-top:1rem;">
+          <canvas id="simChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Three Scenarios -->
+<div class="card">
+  <h2>3 Escenarios Detallados</h2>
+  <div class="grid grid-3">
+    <div class="card card-alert" style="margin-bottom:0;">
+      <h3 style="color:var(--red);">Pesimista</h3>
+      <p style="font-size:0.8rem;color:var(--text2);margin-bottom:1rem;">Revenue tarda, freelance baja más</p>
+      <div style="font-size:0.85rem;">
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Freelance</span><strong>$1,000/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Gastos</span><strong>$3,000/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Widdo revenue</span><strong>Mes 4 ($200)</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Crecimiento</span><strong>10%/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Deficit mensual</span><strong style="color:var(--red)">-$2,000</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.5rem 0;font-size:1.1rem;"><span>Runway</span><strong style="color:var(--red)">10 meses</strong></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:42%;background:var(--red);"></div></div>
+        <div style="font-size:0.75rem;color:var(--text2);">Se acaba ~Dic 2026</div>
+      </div>
+    </div>
+
+    <div class="card card-warn" style="margin-bottom:0;">
+      <h3 style="color:var(--yellow);">Base (probable)</h3>
+      <p style="font-size:0.8rem;color:var(--text2);margin-bottom:1rem;">Revenue moderado, freelance estable</p>
+      <div style="font-size:0.85rem;">
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Freelance</span><strong>$2,000/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Gastos</span><strong>$2,500/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Widdo revenue</span><strong>Mes 2 ($300)</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Crecimiento</span><strong>20%/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Deficit inicial</span><strong style="color:var(--yellow)">-$500</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.5rem 0;font-size:1.1rem;"><span>Runway</span><strong style="color:var(--yellow)">18+ meses</strong></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:75%;background:var(--yellow);"></div></div>
+        <div style="font-size:0.75rem;color:var(--text2);">Revenue complementa desde mes 6-8</div>
+      </div>
+    </div>
+
+    <div class="card card-ok" style="margin-bottom:0;">
+      <h3 style="color:var(--green);">Optimista</h3>
+      <p style="font-size:0.8rem;color:var(--text2);margin-bottom:1rem;">Revenue rápido, freelance se mantiene</p>
+      <div style="font-size:0.85rem;">
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Freelance</span><strong>$2,000/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Gastos</span><strong>$2,500/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Widdo revenue</span><strong>Mes 1 ($500)</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Crecimiento</span><strong>30%/mes</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--border);"><span>Breakeven personal</span><strong style="color:var(--green)">Mes 5</strong></div>
+        <div style="display:flex;justify-content:space-between;padding:0.5rem 0;font-size:1.1rem;"><span>Runway</span><strong style="color:var(--green)">Indefinido</strong></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--green);"></div></div>
+        <div style="font-size:0.75rem;color:var(--text2);">Autosustentable desde mes 5-6</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Monthly Table -->
+<div class="card">
+  <h2>Flujo de Caja Personal — Mes a Mes (Escenario Base)</h2>
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Mes</th><th>Periodo</th>
+          <th class="num">Freelance</th><th class="num">Widdo Rev</th>
+          <th class="num">Total Ingreso</th><th class="num">Gastos</th>
+          <th class="num">Neto</th><th class="num">Ahorros</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody id="monthly-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Chart -->
+<div class="card">
+  <h2>Evolución de Ahorros (3 Escenarios)</h2>
+  <div class="chart-container" style="height:350px;">
+    <canvas id="scenarioChart"></canvas>
+  </div>
+</div>
+
+<!-- Key Insights -->
+<div class="card">
+  <h2>Insights Clave</h2>
+  <div class="insight insight-red">
+    <strong>El viaje a Orlando consume $3,000-5,000.</strong> Si viajas en marzo con $8K de ingreso, el impacto es menor. Si viajas en abril+ con $2K de ingreso, representa 1.5-2.5 meses de runway perdido. Planifica el viaje ANTES de abril.
+  </div>
+  <div class="insight insight-yellow">
+    <strong>Cada mes sin cobrar a los clubs = $300-500 perdidos.</strong> Si los 15 clubs pagaran solo el plan básico ($49K COP ~ $12 USD), serían $180/mes. No es mucho, pero son meses de runway extra y la señal más importante para inversores.
+  </div>
+  <div class="insight insight-yellow">
+    <strong>El freelance a $2K/mes es tu seguro.</strong> No lo dejes ir completamente hasta que Widdo genere al menos $1,500/mes. La combinación freelance + Widdo te da tiempo sin quemar ahorros.
+  </div>
+  <div class="insight insight-green">
+    <strong>Con 60 clubs pagando ~$50 USD/mes = $3,000 MRR.</strong> Eso cubre tus gastos personales completamente. 60 clubs es tu "freedom number" — el punto donde ya no dependes de ahorros ni freelance.
+  </div>
+  <div class="insight insight-green">
+    <strong>Levantando $100K cambia todo.</strong> Tu runway personal se extiende a 18+ meses incluso sin revenue, porque puedes asignarte un anticipo de $2K/mes desde la empresa. Pero los $100K son para la EMPRESA, no para ti.
+  </div>
+</div>
+
+<!-- Action Items -->
+<div class="card" style="border-color:var(--accent);">
+  <h2>Acciones Inmediatas (esta semana)</h2>
+  <table>
+    <thead><tr><th>#</th><th>Acción</th><th>Impacto en Runway</th><th>Esfuerzo</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Llamar a los 15 clubs y ofrecer Founder's Deal</strong><br><span style="color:var(--text2);font-size:0.8rem;">Plan Pro a precio de Básico de por vida ($49K COP/mes)</span></td><td style="color:var(--green);">+$180/mes ($12 USD x 15)</td><td><span class="tag tag-green">1 día</span></td></tr>
+      <tr><td>2</td><td><strong>Configurar pasarela de pago (Wompi)</strong><br><span style="color:var(--text2);font-size:0.8rem;">Ya está integrada, solo activar cobros</span></td><td style="color:var(--green);">Habilita revenue</td><td><span class="tag tag-green">2 horas</span></td></tr>
+      <tr><td>3</td><td><strong>Planificar viaje Orlando para MARZO (antes del drop)</strong><br><span style="color:var(--text2);font-size:0.8rem;">Mientras ganas $8K/mes puedes absorber el costo</span></td><td style="color:var(--yellow);">-$3,000 pero con ingreso alto</td><td><span class="tag tag-yellow">1 semana</span></td></tr>
+      <tr><td>4</td><td><strong>Asegurar freelance a $2K/mes post-abril</strong><br><span style="color:var(--text2);font-size:0.8rem;">Mantener al menos 1 cliente que cubra gastos base</span></td><td style="color:var(--green);">+$2K/mes estables</td><td><span class="tag tag-yellow">1 semana</span></td></tr>
+      <tr><td>5</td><td><strong>Cortar gastos no esenciales</strong><br><span style="color:var(--text2);font-size:0.8rem;">Cada $200/mes ahorrados = 1 mes más de runway</span></td><td style="color:var(--green);">+1-3 meses runway</td><td><span class="tag tag-green">1 día</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+let simChart;
+
+function fmt(n) {
+  return n < 0 ? '-$' + Math.abs(Math.round(n)).toLocaleString() : '$' + Math.round(n).toLocaleString();
+}
+
+function calculateScenario(freelance, expenses, revenueStartMonth, initialRevenue, growthPct) {
+  const months = [];
+  let savings = 20000;
+  let widdoRev = 0;
+  const growth = growthPct / 100;
+
+  for (let m = 0; m < 24; m++) {
+    const income = m < 1 ? 8000 : freelance; // March still at $8K
+    if (m >= revenueStartMonth - 1) {
+      if (m === revenueStartMonth - 1) widdoRev = initialRevenue;
+      else widdoRev = widdoRev * (1 + growth);
+    }
+    const totalIncome = income + widdoRev;
+    const net = totalIncome - expenses;
+    savings += net;
+    if (savings < 0) savings = 0;
+
+    const monthNames = ['Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene','Feb'];
+    const years = monthNames.map((_,i) => i < 10 ? '26' : i < 22 ? '27' : '28');
+
+    months.push({
+      label: monthNames[m] + ' ' + years[m],
+      freelance: income,
+      widdoRev: Math.round(widdoRev),
+      totalIncome: Math.round(totalIncome),
+      expenses,
+      net: Math.round(net),
+      savings: Math.round(savings),
+    });
+  }
+  return months;
+}
+
+function updateSim() {
+  const expenses = +document.getElementById('expense-slider').value;
+  const freelance = +document.getElementById('freelance-slider').value;
+  const revStart = +document.getElementById('revenue-start-slider').value;
+  const widdoRev = +document.getElementById('widdo-rev-slider').value;
+  const growth = +document.getElementById('growth-slider').value;
+
+  document.getElementById('expense-val').textContent = '$' + expenses.toLocaleString();
+  document.getElementById('freelance-val').textContent = '$' + freelance.toLocaleString();
+  document.getElementById('revenue-start-val').textContent = 'Mes ' + revStart;
+  document.getElementById('widdo-rev-val').textContent = '$' + widdoRev.toLocaleString();
+  document.getElementById('growth-val').textContent = growth + '%';
+
+  const data = calculateScenario(freelance, expenses, revStart, widdoRev, growth);
+
+  // Find when savings hit 0
+  const zeroMonth = data.findIndex(d => d.savings <= 0);
+  // Find when net >= 0
+  const breakeven = data.findIndex(d => d.net >= 0 && data.indexOf(d) > 0);
+
+  let html = '';
+  if (zeroMonth >= 0) {
+    html += `<div class="insight insight-red" style="margin-bottom:0.5rem;"><strong>Runway: ${zeroMonth + 1} meses</strong> — Ahorros se agotan en ${data[zeroMonth].label}</div>`;
+  } else {
+    html += `<div class="insight insight-green" style="margin-bottom:0.5rem;"><strong>Runway: 24+ meses</strong> — Ahorros no se agotan en el horizonte</div>`;
+  }
+  if (breakeven >= 0) {
+    html += `<div class="insight insight-green" style="margin:0;"><strong>Breakeven personal: Mes ${breakeven + 1}</strong> — Desde ${data[breakeven].label} ingresos >= gastos</div>`;
+  }
+  document.getElementById('sim-result').innerHTML = html;
+
+  // Chart
+  if (simChart) simChart.destroy();
+  simChart = new Chart(document.getElementById('simChart'), {
+    type: 'line',
+    data: {
+      labels: data.map(d => d.label),
+      datasets: [{
+        label: 'Ahorros',
+        data: data.map(d => d.savings),
+        borderColor: data.map(d => d.savings > 5000 ? '#00b894' : d.savings > 0 ? '#feca57' : '#ff6b6b'),
+        segment: {
+          borderColor: ctx => {
+            const v = ctx.p1.parsed.y;
+            return v > 5000 ? '#00b894' : v > 0 ? '#feca57' : '#ff6b6b';
+          }
+        },
+        backgroundColor: 'rgba(108,92,231,0.1)',
+        fill: true, tension: 0.3, pointRadius: 2,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#8b8fa8', font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
+        y: { ticks: { color: '#8b8fa8', callback: v => '$' + (v/1000).toFixed(0) + 'K' }, grid: { color: 'rgba(46,51,72,0.3)' } }
+      }
+    }
+  });
+}
+
+// Render monthly table (base scenario)
+function renderMonthlyTable() {
+  const data = calculateScenario(2000, 2500, 2, 300, 20);
+  const tbody = document.getElementById('monthly-body');
+  const monthNames = ['Mar 2026','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene 2027','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+
+  data.slice(0, 22).forEach((d, i) => {
+    const status = d.savings > 10000 ? '<span class="tag tag-green">OK</span>' :
+                   d.savings > 3000 ? '<span class="tag tag-yellow">Ajustado</span>' :
+                   d.savings > 0 ? '<span class="tag tag-red">Crítico</span>' :
+                   '<span class="tag tag-red">Agotado</span>';
+    tbody.innerHTML += `<tr>
+      <td>${i + 1}</td><td>${d.label}</td>
+      <td class="num">${fmt(d.freelance)}</td>
+      <td class="num" style="color:var(--green)">${d.widdoRev > 0 ? fmt(d.widdoRev) : '-'}</td>
+      <td class="num">${fmt(d.totalIncome)}</td>
+      <td class="num" style="color:var(--red)">${fmt(-d.expenses)}</td>
+      <td class="num" style="color:${d.net >= 0 ? 'var(--green)' : 'var(--red)'}">${fmt(d.net)}</td>
+      <td class="num" style="font-weight:600">${fmt(d.savings)}</td>
+      <td>${status}</td>
+    </tr>`;
+  });
+}
+
+// Three scenarios chart
+function renderScenarioChart() {
+  const pessimistic = calculateScenario(1000, 3000, 4, 200, 10);
+  const base = calculateScenario(2000, 2500, 2, 300, 20);
+  const optimistic = calculateScenario(2000, 2500, 1, 500, 30);
+
+  new Chart(document.getElementById('scenarioChart'), {
+    type: 'line',
+    data: {
+      labels: base.map(d => d.label),
+      datasets: [
+        { label: 'Pesimista', data: pessimistic.map(d => d.savings), borderColor: '#ff6b6b', backgroundColor: 'rgba(255,107,107,0.05)', fill: false, tension: 0.3, borderDash: [5,5] },
+        { label: 'Base', data: base.map(d => d.savings), borderColor: '#feca57', backgroundColor: 'rgba(254,202,87,0.1)', fill: true, tension: 0.3 },
+        { label: 'Optimista', data: optimistic.map(d => d.savings), borderColor: '#00b894', backgroundColor: 'rgba(0,184,148,0.05)', fill: false, tension: 0.3, borderDash: [5,5] },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#8b8fa8' } } },
+      scales: {
+        x: { ticks: { color: '#8b8fa8', font: { size: 9 }, maxRotation: 45 }, grid: { color: 'rgba(46,51,72,0.3)' } },
+        y: { ticks: { color: '#8b8fa8', callback: v => '$' + (v/1000).toFixed(0) + 'K' }, grid: { color: 'rgba(46,51,72,0.3)' } }
+      }
+    }
+  });
+}
+
+// Init
+updateSim();
+renderMonthlyTable();
+renderScenarioChart();
+</script>
+</body>
+</html>

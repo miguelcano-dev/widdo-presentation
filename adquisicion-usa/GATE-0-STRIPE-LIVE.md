@@ -1,7 +1,8 @@
 # Gate 0 — Poner Stripe en LIVE (paso a paso)
 
-**Estado:** ⏳ pendiente. Bloquea TODO el outreach USA — no se contacta a nadie antes.
-**Última actualización:** 8 ago 2026
+**Estado:** 🔄 **en curso.** La parte manual de Miguel está en marcha y casi lista.
+La **tanda 1 está en envío desde el 13-ago-2026** — el outreach ya no espera a este gate; lo que espera es cobrar.
+**Última actualización:** 13 ago 2026
 
 ---
 
@@ -14,7 +15,7 @@
 | Landing con pricing $99/$199/$349 + hero 0% fee | ✅ en prod | — |
 | Dirección física Orlando (CAN-SPAM) | ✅ resuelto | — |
 | Email `miguel@widdo.co` (Brevo + Gmail Send-As) | ✅ funcionando | — |
-| 10 emails de la tanda 1 | ✅ escritos, NADA enviado | `adquisicion-usa/emails/` |
+| 10 emails de la tanda 1 | ✅ escritos · **EN ENVÍO desde 13-ago-2026** (Brevo) | `adquisicion-usa/emails/` |
 
 ### El fix `9a07ddc` — qué arregló y por qué importa
 

@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Guía de Pruebas de Pagos</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0A0A0F;
+    --card: #12121A;
+    --card-hover: #16161F;
+    --border: #1F1F2B;
+    --green: #00C853;
+    --green-dim: #00C85320;
+    --text: #E8E8ED;
+    --text-dim: #8B8B95;
+    --text-muted: #5A5A66;
+    --accent: #00C853;
+    --warning: #FFB800;
+    --danger: #FF4757;
+    --blue: #5B8DEF;
+    --purple: #A855F7;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 32px 120px;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 40px;
+    margin-bottom: 60px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--green-dim);
+    border: 1px solid var(--green);
+    border-radius: 6px;
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #8B8B95 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 700px;
+  }
+
+  .meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .meta span::before {
+    content: '● ';
+    color: var(--green);
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 60px;
+  }
+
+  .toc h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .toc li:last-child { border-bottom: none; }
+
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--green);
+    font-size: 12px;
+    margin-right: 16px;
+    font-weight: 600;
+  }
+
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .toc a:hover { color: var(--green); }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 80px;
+    scroll-margin-top: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 32px 0 16px;
+    color: var(--text);
+  }
+
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 20px 0 12px;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+  }
+
+  p {
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* CODE BLOCKS */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--green);
+  }
+
+  pre {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto;
+    margin: 16px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text);
+  }
+
+  .code-label {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    background: var(--border);
+    color: var(--text-dim);
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover { border-color: var(--green); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    h1 { font-size: 32px; }
+    .container { padding: 40px 20px 80px; }
+  }
+
+  /* STEPS */
+  .step {
+    display: flex;
+    gap: 20px;
+    margin: 24px 0;
+    padding: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--green-dim);
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: var(--green);
+    font-size: 14px;
+  }
+
+  .step-body {
+    flex: 1;
+  }
+
+  .step-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .step-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th {
+    background: var(--border);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+
+  td {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  td code {
+    font-size: 12px;
+    background: var(--bg);
+  }
+
+  tr:hover { background: var(--card-hover); }
+
+  /* ALERTS */
+  .alert {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin: 16px 0;
+    border-left: 3px solid;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .alert-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .alert-success {
+    background: rgba(0, 200, 83, 0.08);
+    border-color: var(--green);
+  }
+  .alert-success .alert-icon { color: var(--green); }
+
+  .alert-warning {
+    background: rgba(255, 184, 0, 0.08);
+    border-color: var(--warning);
+  }
+  .alert-warning .alert-icon { color: var(--warning); }
+
+  .alert-danger {
+    background: rgba(255, 71, 87, 0.08);
+    border-color: var(--danger);
+  }
+  .alert-danger .alert-icon { color: var(--danger); }
+
+  .alert-info {
+    background: rgba(91, 141, 239, 0.08);
+    border-color: var(--blue);
+  }
+  .alert-info .alert-icon { color: var(--blue); }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .checklist li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--text-muted);
+    border-radius: 4px;
+    background: transparent;
+  }
+
+  .checklist li.done::before {
+    border-color: var(--green);
+    background: var(--green);
+  }
+
+  .checklist li.done::after {
+    content: '✓';
+    position: absolute;
+    left: 4px;
+    top: 13px;
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* STATUS PILLS */
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .pill-green { background: var(--green-dim); color: var(--green); border: 1px solid var(--green); }
+  .pill-yellow { background: rgba(255, 184, 0, 0.15); color: var(--warning); border: 1px solid var(--warning); }
+  .pill-gray { background: var(--border); color: var(--text-dim); border: 1px solid var(--text-muted); }
+
+  /* GATEWAY CARDS */
+  .gateway {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+
+  .gateway-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gateway-name {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .gateway-countries {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  /* TEST CARD */
+  .test-card {
+    background: linear-gradient(135deg, #1a1a28 0%, #12121a 100%);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 12px 0;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .test-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, var(--green-dim) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .test-card-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .test-card-number {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 12px;
+    user-select: all;
+    cursor: pointer;
+  }
+
+  .test-card-number:hover { color: var(--green); }
+
+  .test-card-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .test-card-meta strong {
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 100px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  .footer strong { color: var(--green); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <span class="badge">Widdo · Documentación Interna</span>
+    <h1>Guía de Pruebas de Pagos</h1>
+    <p class="subtitle">Paso a paso para probar, configurar y activar el sistema de pagos multi-gateway: Stripe, Wompi y dLocal.</p>
+    <div class="meta">
+      <span>Última actualización: 10 Abril 2026</span>
+      <span>Stripe: Test Mode Activo</span>
+      <span>Wompi: Pendiente Keys</span>
+      <span>dLocal: Pendiente Keys</span>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <h3>Tabla de Contenido</h3>
+    <ol>
+      <li><a href="#estado">Estado Actual del Sistema</a></li>
+      <li><a href="#probar-stripe">Cómo Probar Stripe (Test Mode)</a></li>
+      <li><a href="#tarjetas">Tarjetas de Prueba</a></li>
+      <li><a href="#flujo-completo">Flujo Completo de Prueba</a></li>
+      <li><a href="#configurar-wompi">Configurar Wompi (Colombia)</a></li>
+      <li><a href="#configurar-dlocal">Configurar dLocal (LATAM)</a></li>
+      <li><a href="#live-mode">Pasar Stripe a Live Mode</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#comandos-utiles">Comandos Útiles</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. ESTADO -->
+  <section id="estado" class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2>Estado Actual del Sistema</h2>
+    </div>
+
+    <p>El sistema de pagos está 100% implementado en código. Stripe ya funciona en test mode. Wompi y dLocal tienen el código listo y están esperando que configures las credenciales desde tus cuentas.</p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4>Stripe</h4>
+        <span class="pill pill-green">Operativo</span>
+        <p style="margin-top: 12px; font-size: 13px;">Test mode activo con 3 productos y 18 precios (USD/COP/MXN × monthly/yearly). Webhook configurado.</p>
+      </div>
+      <div class="card">
+        <h4>Wompi</h4>
+        <span class="pill pill-yellow">Pendiente Keys</span>
+        <p style="margin-top: 12px; font-size: 13px;">Código implementado. Placeholder en BD. Esperando credenciales desde comercios.wompi.co</p>
+      </div>
+      <div class="card">
+        <h4>dLocal</h4>
+        <span class="pill pill-yellow">Pendiente Keys</span>
+        <p style="margin-top: 12px; font-size: 13px;">Gateway implementado con 430 líneas de código. Esperando credenciales desde dlocal.com</p>
+      </div>
+    </div>
+
+    <h3>Configuración de Países Activa</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>País</th>
+          <th>ID</th>
+          <th>Pasarela Default</th>
+          <th>payments_enabled</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Colombia</strong> 🇨🇴</td>
+          <td><code>22</code></td>
+          <td>Stripe <span class="pill pill-green">Activo</span></td>
+          <td><code>true</code></td>
+        </tr>
+        <tr>
+          <td><strong>México</strong> 🇲🇽</td>
+          <td><code>65</code></td>
+          <td>Stripe <span class="pill pill-green">Activo</span></td>
+          <td><code>true</code></td>
+        </tr>
+        <tr>
+          <td><strong>Estados Unidos</strong> 🇺🇸</td>
+          <td><code>104</code></td>
+          <td>Stripe <span class="pill pill-green">Activo</span></td>
+          <td><code>true</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info">
+      <span class="alert-icon">ℹ</span>
+      <div>
+        <strong>Paywall activado:</strong> Los clubes nuevos reciben trial automático de 14 días. Al expirar, deben suscribirse para crear jugadores/cobros/sesiones. Las lecturas siguen funcionando (modo read-only).
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROBAR STRIPE -->
+  <section id="probar-stripe" class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2>Cómo Probar Stripe (Test Mode)</h2>
+    </div>
+
+    <p>Puedes probar el flujo completo de pago <strong>ahora mismo en producción</strong>. Las keys que están configuradas son de test mode, así que puedes cobrarte mil veces sin que te llegue dinero real.</p>
+
+    <div class="alert alert-success">
+      <span class="alert-icon">✓</span>
+      <div>
+        <strong>Importante:</strong> Las tarjetas de prueba solo funcionan con keys <code>sk_test_...</code>. Cuando pases a live mode, necesitarás tarjetas reales.
+      </div>
+    </div>
+
+    <h3>Opciones para probar</h3>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4>Opción A · Club Nuevo</h4>
+        <p style="font-size: 14px;">Regístrate con un email nuevo. Obtienes 14 días de trial automático. Ve a <code>/home/subscription</code> y paga antes de que expire.</p>
+      </div>
+      <div class="card">
+        <h4>Opción B · Club Existente</h4>
+        <p style="font-size: 14px;">Entra con cualquiera de los 9 clubes expirados en producción. Al intentar crear algo, el paywall te lleva a la suscripción.</p>
+      </div>
+    </div>
+
+    <h3>Credenciales en uso</h3>
+    <pre><span class="code-label">Producción .env</span>
+STRIPE_KEY=pk_test_51TAgiTEoVDxOLii0X7zHV4...
+STRIPE_SECRET=sk_test_51TAgiTEoVDxOLii0W81m...
+STRIPE_WEBHOOK_SECRET=whsec_idAAgV4UjXDRL7L8DbImFENNXQgzJJx7</pre>
+
+    <p>El webhook ya está configurado en Stripe Dashboard apuntando a <code>https://api.widdo.co/api/webhooks/stripe</code> con 8 eventos escuchando.</p>
+  </section>
+
+  <!-- 3. TARJETAS -->
+  <section id="tarjetas" class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2>Tarjetas de Prueba</h2>
+    </div>
+
+    <p>Estas son las tarjetas oficiales de Stripe para modo de pruebas. Puedes copiar el número haciendo click.</p>
+
+    <h3>Débito (las que necesitas para Colombia)</h3>
+
+    <div class="test-card">
+      <div class="test-card-label">Visa Débito · Siempre aprueba</div>
+      <div class="test-card-number">4000 0566 5566 5556</div>
+      <div class="test-card-meta">
+        <span>CVV: <strong>123</strong></span>
+        <span>Fecha: <strong>12/29</strong></span>
+        <span>ZIP: <strong>110111</strong></span>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="test-card-label">Mastercard Débito · Siempre aprueba</div>
+      <div class="test-card-number">5200 8282 8282 8210</div>
+      <div class="test-card-meta">
+        <span>CVV: <strong>123</strong></span>
+        <span>Fecha: <strong>12/29</strong></span>
+        <span>ZIP: <strong>110111</strong></span>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="test-card-label">Visa Débito · Emitida en Colombia</div>
+      <div class="test-card-number">4000 0017 0000 0003</div>
+      <div class="test-card-meta">
+        <span>CVV: <strong>123</strong></span>
+        <span>Fecha: <strong>12/29</strong></span>
+        <span>ZIP: <strong>110111</strong></span>
+      </div>
+    </div>
+
+    <h3>Crédito</h3>
+
+    <div class="test-card">
+      <div class="test-card-label">Visa · La clásica de pruebas</div>
+      <div class="test-card-number">4242 4242 4242 4242</div>
+      <div class="test-card-meta">
+        <span>CVV: <strong>123</strong></span>
+        <span>Fecha: <strong>12/29</strong></span>
+        <span>ZIP: <strong>110111</strong></span>
+      </div>
+    </div>
+
+    <div class="test-card">
+      <div class="test-card-label">Mastercard</div>
+      <div class="test-card-number">5555 5555 5555 4444</div>
+      <div class="test-card-meta">
+        <span>CVV: <strong>123</strong></span>
+        <span>Fecha: <strong>12/29</strong></span>
+        <span>ZIP: <strong>110111</strong></span>
+      </div>
+    </div>
+
+    <h3>Escenarios de Error (útil para probar manejo de errores)</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Escenario</th>
+          <th>Número</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rechazada (declined)</td>
+          <td><code>4000 0000 0000 0002</code></td>
+        </tr>
+        <tr>
+          <td>Fondos insuficientes</td>
+          <td><code>4000 0000 0000 9995</code></td>
+        </tr>
+        <tr>
+          <td>Requiere 3D Secure</td>
+          <td><code>4000 0027 6000 3184</code></td>
+        </tr>
+        <tr>
+          <td>Tarjeta expirada</td>
+          <td><code>4000 0000 0000 0069</code></td>
+        </tr>
+        <tr>
+          <td>CVC incorrecto</td>
+          <td><code>4000 0000 0000 0127</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info">
+      <span class="alert-icon">ℹ</span>
+      <div>Doc oficial completa: <a href="https://docs.stripe.com/testing" target="_blank">docs.stripe.com/testing</a></div>
+    </div>
+  </section>
+
+  <!-- 4. FLUJO COMPLETO -->
+  <section id="flujo-completo" class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2>Flujo Completo de Prueba</h2>
+    </div>
+
+    <p>Sigue estos pasos para verificar que todo el ciclo de pago funciona end-to-end.</p>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <div class="step-title">Iniciar sesión en Widdo</div>
+        <div class="step-desc">Ve a <a href="https://app.widdo.co" target="_blank">app.widdo.co</a> y entra con un club expirado o crea uno nuevo.</div>
+        <pre>URL: https://app.widdo.co/login</pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <div class="step-title">Ir a la página de suscripción</div>
+        <div class="step-desc">Desde el menú lateral, click en <strong>"Suscripción"</strong> o navega directamente a la URL.</div>
+        <pre>URL: https://app.widdo.co/home/subscription</pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <div class="step-title">Seleccionar plan</div>
+        <div class="step-desc">Elige uno de los 3 planes (Básico, Pro, Enterprise). Recomendado: <strong>Básico mensual</strong> porque es el monto más pequeño y más rápido de verificar.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <div class="step-title">Seleccionar pasarela</div>
+        <div class="step-desc">Aparecerá el selector con los gateways disponibles según tu país. En test mode solo verás <strong>Stripe</strong> (hasta que actives Wompi/dLocal).</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <div class="step-title">Click "Suscribirse"</div>
+        <div class="step-desc">El sistema te redirige a <code>checkout.stripe.com</code> con el precio correcto según tu país.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">06</div>
+      <div class="step-body">
+        <div class="step-title">Rellenar tarjeta de prueba</div>
+        <div class="step-desc">Usa alguna de las tarjetas del punto 3. Email/nombre/dirección pueden ser cualquier cosa.</div>
+        <pre>Tarjeta:  4000 0566 5566 5556
+CVV:      123
+Fecha:    12/29
+Nombre:   Test Widdo
+Email:    test@widdo.co
+ZIP:      110111</pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">07</div>
+      <div class="step-body">
+        <div class="step-title">Verificar activación automática</div>
+        <div class="step-desc">Stripe te redirige de vuelta a Widdo. En menos de 5 segundos, el webhook debe activar la suscripción. Ve al dashboard y verifica que puedes crear jugadores de nuevo.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">08</div>
+      <div class="step-body">
+        <div class="step-title">Verificar en BD (opcional)</div>
+        <div class="step-desc">Desde el servidor, verifica que la suscripción quedó registrada con <code>gateway_subscription_id</code> correcto.</div>
+        <pre>ssh root@167.71.88.31
+cd /var/www/widdo
+php artisan tinker --execute="
+\$sub = DB::table('pla_club_teams_subscriptions')
+    ->where('club_id', [TU_CLUB_ID])
+    ->orderBy('id', 'desc')
+    ->first();
+print_r(\$sub);
+"</pre>
+      </div>
+    </div>
+
+    <div class="alert alert-success">
+      <span class="alert-icon">✓</span>
+      <div>Si todo funciona, deberías ver <code>status: 'active'</code>, <code>gateway_customer_id: 'cus_...'</code> y <code>gateway_subscription_id: 'sub_...'</code> en la base de datos.</div>
+    </div>
+  </section>
+
+  <!-- 5. CONFIGURAR WOMPI -->
+  <section id="configurar-wompi" class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2>Configurar Wompi (Colombia)</h2>
+    </div>
+
+    <p>Wompi es la mejor opción para Colombia porque acepta PSE, Nequi, Bancolombia y Daviplata — que usa el 80% de la gente en Colombia.</p>
+
+    <div class="gateway">
+      <div class="gateway-header">
+        <div>
+          <div class="gateway-name">Wompi</div>
+          <div class="gateway-countries">Colombia · PSE · Nequi · Bancolombia · Daviplata · Tarjetas</div>
+        </div>
+        <span class="pill pill-yellow">Pendiente Keys</span>
+      </div>
+
+      <h3>Paso 1 · Crear cuenta en Wompi</h3>
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-desc">
+            Ve a <a href="https://comercios.wompi.co" target="_blank">comercios.wompi.co</a> y crea una cuenta. <strong>Solo necesitas tu cédula</strong>. No piden datos bancarios para sandbox.
+          </div>
+        </div>
+      </div>
+
+      <h3>Paso 2 · Obtener las 4 llaves API</h3>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-desc">
+            Dentro del dashboard de Wompi, ve a <strong>Desarrolladores → Llaves API</strong> y copia las 4 credenciales de <strong>Sandbox</strong>:
+          </div>
+          <pre>pub_test_xxxxxxxxxxxxxxxx       (Public Key)
+prv_test_xxxxxxxxxxxxxxxx       (Private Key)
+integridad_test_xxxxxxxxx       (Integrity Secret)
+eventos_test_xxxxxxxxxxxxx      (Events Secret)</pre>
+        </div>
+      </div>
+
+      <h3>Paso 3 · Configurar Webhook en Wompi</h3>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-desc">
+            En el dashboard de Wompi, ve a <strong>Desarrolladores → Webhooks → Agregar Endpoint</strong>:
+          </div>
+          <pre>URL:       https://api.widdo.co/api/webhooks/wompi/CO
+Eventos:   transaction.updated
+           nequi_token.updated
+           bancolombia_transfer_token.updated</pre>
+        </div>
+      </div>
+
+      <h3>Paso 4 · Activar en Widdo</h3>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <div class="step-desc">
+            Pásame las 4 keys o ejecuta este comando en el servidor de producción reemplazando los valores:
+          </div>
+          <pre><span class="code-label">Producción</span>
+ssh root@167.71.88.31
+cd /var/www/widdo
+php artisan tinker --execute="
+DB::table('bas_country_payment_config')
+  ->where('country_id', 22)
+  ->where('gateway_id', 1)
+  ->update([
+    'public_key' => 'pub_test_XXXXX',
+    'private_key' => 'prv_test_XXXXX',
+    'webhook_secret' => 'eventos_test_XXXXX',
+    'extra_credentials' => json_encode([
+      'integrity_secret' => 'integridad_test_XXXXX'
+    ]),
+    'is_active' => 1,
+  ]);
+echo 'Wompi activado ✓';
+"
+php artisan cache:clear</pre>
+        </div>
+      </div>
+
+      <h3>Paso 5 · Probar Wompi</h3>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <div class="step-desc">
+            Ve a <code>/home/subscription</code> desde un club colombiano. Ahora verás <strong>2 gateways</strong>: Stripe y Wompi. Elige Wompi, selecciona PSE y prueba con el banco de pruebas que proporciona Wompi.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-info">
+      <span class="alert-icon">ℹ</span>
+      <div>Wompi Sandbox incluye un <strong>banco de pruebas</strong> para PSE donde puedes simular aprobación/rechazo sin necesidad de cuenta bancaria real.</div>
+    </div>
+  </section>
+
+  <!-- 6. CONFIGURAR DLOCAL -->
+  <section id="configurar-dlocal" class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2>Configurar dLocal (LATAM Completo)</h2>
+    </div>
+
+    <p>dLocal cubre los países donde Stripe no tiene métodos locales fuertes: Argentina (Rapipago), Brasil (PIX, Boleto), Perú, Chile, Ecuador y más.</p>
+
+    <div class="gateway">
+      <div class="gateway-header">
+        <div>
+          <div class="gateway-name">dLocal</div>
+          <div class="gateway-countries">AR · BR · CL · CO · EC · MX · PE · UY · DO · GT · PA · CR · BO</div>
+        </div>
+        <span class="pill pill-yellow">Pendiente Keys</span>
+      </div>
+
+      <h3>Paso 1 · Crear cuenta en dLocal</h3>
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <div class="step-desc">
+            Ve a <a href="https://dlocal.com" target="_blank">dlocal.com</a> y aplica para una cuenta merchant. <strong>Importante:</strong> dLocal requiere documentos formales de tu C Corp (EIN, incorporación, bank statement de Mercury). El proceso de aprobación toma 3-7 días hábiles.
+          </div>
+        </div>
+      </div>
+
+      <h3>Paso 2 · Obtener credenciales de Sandbox</h3>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <div class="step-desc">
+            Una vez aprobada la cuenta, ve a <strong>Settings → Integration → Credentials</strong> y selecciona Sandbox:
+          </div>
+          <pre>x_login:       XXXXXXXXXXXXX    (API Login)
+x_trans_key:   XXXXXXXXXXXXX    (Trans Key)
+secret_key:    XXXXXXXXXXXXX    (HMAC Secret)</pre>
+        </div>
+      </div>
+
+      <h3>Paso 3 · Configurar Webhook en dLocal</h3>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <div class="step-desc">
+            En dLocal Dashboard, ve a <strong>Settings → Webhooks</strong>:
+          </div>
+          <pre>URL:       https://api.widdo.co/api/webhooks/dlocal
+Eventos:   payment.created
+           payment.updated
+           payment.refunded</pre>
+        </div>
+      </div>
+
+      <h3>Paso 4 · Activar por país</h3>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <div class="step-desc">
+            dLocal se activa por país. Por ejemplo, para habilitarlo en <strong>Argentina</strong>:
+          </div>
+          <pre><span class="code-label">Producción</span>
+ssh root@167.71.88.31
+cd /var/www/widdo
+php artisan tinker --execute="
+DB::table('bas_country_payment_config')->insert([
+  'country_id' => 6,  // 6=AR, 33=BR, 65=MX, 22=CO, etc
+  'gateway_id' => 8,  // dLocal
+  'is_default' => true,
+  'is_active' => true,
+  'environment' => 'sandbox',
+  'public_key' => 'XLOGIN',
+  'private_key' => 'XTRANSKEY',
+  'webhook_secret' => null,
+  'extra_credentials' => json_encode([
+    'secret_key' => 'SECRETKEY'
+  ]),
+  'enabled_methods' => json_encode([
+    'card', 'rapipago', 'pagofacil'
+  ]),
+  'created_at' => now(),
+  'updated_at' => now(),
+]);
+echo 'dLocal AR activado ✓';
+"
+php artisan cache:clear</pre>
+        </div>
+      </div>
+
+      <h3>Métodos por País</h3>
+      <table>
+        <thead>
+          <tr><th>País</th><th>Métodos dLocal</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>🇦🇷 Argentina</td><td>card, rapipago, pagofacil</td></tr>
+          <tr><td>🇧🇷 Brasil</td><td>card, pix, boleto</td></tr>
+          <tr><td>🇲🇽 México</td><td>card, oxxo, spei</td></tr>
+          <tr><td>🇨🇴 Colombia</td><td>card, pse, efecty</td></tr>
+          <tr><td>🇵🇪 Perú</td><td>card, pagoefectivo</td></tr>
+          <tr><td>🇨🇱 Chile</td><td>card, webpay</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7. LIVE MODE -->
+  <section id="live-mode" class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2>Pasar Stripe a Live Mode</h2>
+    </div>
+
+    <p>Cuando tengas tu primer cliente real pagando, necesitas cambiar de test mode a live mode.</p>
+
+    <div class="alert alert-warning">
+      <span class="alert-icon">⚠</span>
+      <div>
+        <strong>No pases a live mode hasta que:</strong> (1) hayas probado TODO el flujo en test, (2) tengas al menos 1 cliente confirmado, (3) tu C Corp esté verificada en Stripe, (4) Mercury esté conectado para recibir payouts.
+      </div>
+    </div>
+
+    <h3>Checklist para activar Live Mode</h3>
+    <ul class="checklist">
+      <li>Activar Live Mode en Stripe Dashboard (verifica C Corp)</li>
+      <li>Copiar nuevas keys live: <code>pk_live_...</code> y <code>sk_live_...</code></li>
+      <li>Crear webhook LIVE con los mismos 8 eventos apuntando a <code>api.widdo.co/api/webhooks/stripe</code></li>
+      <li>Copiar el nuevo <code>whsec_...</code> del webhook live</li>
+      <li>Recrear productos y precios en Live Mode (los de test mode NO funcionan en live)</li>
+      <li>Actualizar <code>stripe_product_id</code> y <code>stripe_price_id</code> en BD con los IDs live</li>
+      <li>Actualizar <code>.env</code> producción con las nuevas keys live</li>
+      <li>Actualizar <code>bas_country_payment_config</code> con <code>environment = 'production'</code></li>
+      <li>Ejecutar <code>php artisan config:clear && php artisan config:cache</code></li>
+      <li>Hacer una prueba con tarjeta real (puede ser tu propia tarjeta, cobrarte $1 y reembolsarlo)</li>
+    </ul>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">!</span>
+      <div>
+        <strong>En live mode NO uses tarjetas de prueba.</strong> Solo funcionan tarjetas reales. Si intentas <code>4242...</code> en live mode, Stripe la rechaza.
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TROUBLESHOOTING -->
+  <section id="troubleshooting" class="section">
+    <div class="section-header">
+      <span class="section-number">08</span>
+      <h2>Troubleshooting</h2>
+    </div>
+
+    <h3>Problema: "Los pagos no están habilitados para tu país"</h3>
+    <div class="card">
+      <p><strong>Causa:</strong> El club no tiene ciudad asignada o el país no tiene <code>payments_enabled = 1</code> o no hay gateway configurado.</p>
+      <p><strong>Solución:</strong></p>
+      <pre>php artisan tinker --execute="
+// Verificar que el club tiene ciudad
+\$club = DB::table('pla_club_teams')->find([CLUB_ID]);
+echo 'city_id: ' . \$club->city_id . PHP_EOL;
+
+// Verificar que el país tiene pagos habilitados
+\$countryId = DB::table('bas_cities as c')
+  ->join('bas_states as s', 'c.state_id', '=', 's.id')
+  ->where('c.id', \$club->city_id)
+  ->value('s.country_id');
+echo 'country_id: ' . \$countryId . PHP_EOL;
+
+\$enabled = DB::table('bas_countries')
+  ->where('id', \$countryId)
+  ->value('payments_enabled');
+echo 'payments_enabled: ' . \$enabled . PHP_EOL;
+
+// Verificar gateway configurado
+\$gw = DB::table('bas_country_payment_config')
+  ->where('country_id', \$countryId)
+  ->where('is_active', true)
+  ->first();
+print_r(\$gw);
+"</pre>
+    </div>
+
+    <h3>Problema: Webhook no llega después de pagar</h3>
+    <div class="card">
+      <p><strong>Causa:</strong> Webhook mal configurado en Stripe Dashboard, secret incorrecto, o firewall bloqueando.</p>
+      <p><strong>Solución:</strong></p>
+      <pre># Ver eventos recientes del webhook en Stripe Dashboard
+https://dashboard.stripe.com/test/webhooks
+
+# Ver logs del servidor
+ssh root@167.71.88.31
+tail -f /var/www/widdo/storage/logs/laravel.log | grep -i stripe
+
+# Verificar que el secret coincide
+cd /var/www/widdo
+grep STRIPE_WEBHOOK_SECRET .env</pre>
+    </div>
+
+    <h3>Problema: Paywall no aparece después del trial</h3>
+    <div class="card">
+      <p><strong>Causa:</strong> El middleware no está aplicado a las rutas o la suscripción sigue activa.</p>
+      <p><strong>Solución:</strong></p>
+      <pre># Forzar expiración de trial en un club
+php artisan tinker --execute="
+DB::table('pla_club_teams_subscriptions')
+  ->where('club_id', [CLUB_ID])
+  ->update([
+    'status' => 'expired',
+    'current_period_end' => now()->subDay(),
+    'trial_ends_at' => now()->subDay(),
+  ]);
+"</pre>
+    </div>
+
+    <h3>Problema: Tarjeta de prueba "rechazada"</h3>
+    <div class="card">
+      <p><strong>Causa:</strong> Estás usando keys live en vez de test, o la tarjeta es una de las de error intencional.</p>
+      <p><strong>Solución:</strong> Verifica que las keys empiezan con <code>sk_test_</code> / <code>pk_test_</code>. Usa <code>4000 0566 5566 5556</code> o <code>4242 4242 4242 4242</code> que siempre aprueban.</p>
+    </div>
+  </section>
+
+  <!-- 9. COMANDOS UTILES -->
+  <section id="comandos-utiles" class="section">
+    <div class="section-header">
+      <span class="section-number">09</span>
+      <h2>Comandos Útiles</h2>
+    </div>
+
+    <h3>Ver estado de todas las suscripciones</h3>
+    <pre>ssh root@167.71.88.31
+cd /var/www/widdo
+php artisan tinker --execute="
+\$subs = DB::table('pla_club_teams_subscriptions as s')
+  ->join('pla_club_teams as c', 's.club_id', '=', 'c.id')
+  ->select('c.id', 'c.name', 's.status', 's.current_period_end',
+           's.gateway_subscription_id')
+  ->orderBy('s.status')
+  ->get();
+foreach(\$subs as \$s) {
+  echo sprintf('%3d | %-30s | %-10s | %s | %s',
+    \$s->id, substr(\$s->name, 0, 30),
+    \$s->status, \$s->current_period_end,
+    \$s->gateway_subscription_id ?? 'sin gateway'
+  ) . PHP_EOL;
+}
+"</pre>
+
+    <h3>Forzar expiración de trial en un club (para probar paywall)</h3>
+    <pre>php artisan tinker --execute="
+DB::table('pla_club_teams_subscriptions')
+  ->where('club_id', 19)
+  ->update([
+    'status' => 'expired',
+    'current_period_end' => now()->subDay(),
+  ]);
+"</pre>
+
+    <h3>Restaurar un club (darle trial nuevo de 14 días)</h3>
+    <pre>php artisan tinker --execute="
+DB::table('pla_club_teams_subscriptions')
+  ->where('club_id', 19)
+  ->update([
+    'status' => 'trial',
+    'current_period_start' => now(),
+    'current_period_end' => now()->addDays(14),
+    'trial_ends_at' => now()->addDays(14),
+  ]);
+"</pre>
+
+    <h3>Ver logs de webhooks recientes</h3>
+    <pre>php artisan tinker --execute="
+\$events = DB::table('pla_club_teams_webhook_events')
+  ->orderBy('id', 'desc')
+  ->limit(10)
+  ->get(['gateway', 'event_type', 'status', 'created_at']);
+foreach(\$events as \$e) {
+  echo \$e->gateway . ' | ' . \$e->event_type . ' | ' . \$e->status . ' | ' . \$e->created_at . PHP_EOL;
+}
+"</pre>
+
+    <h3>Limpiar cache después de cambiar config</h3>
+    <pre>php artisan config:clear
+php artisan cache:clear
+php artisan config:cache</pre>
+
+    <h3>Verificar que un gateway está configurado correctamente</h3>
+    <pre>php artisan tinker --execute="
+\$factory = app(\\App\\Services\\Payments\\PaymentGatewayFactory::class);
+try {
+  \$gw = \$factory->getGateway('stripe', 22);
+  echo 'Stripe CO: OK (' . \$gw->getName() . ')' . PHP_EOL;
+} catch (Exception \$e) {
+  echo 'Stripe CO: ERROR - ' . \$e->getMessage() . PHP_EOL;
+}
+try {
+  \$gw = \$factory->getGateway('wompi', 22);
+  echo 'Wompi CO: OK' . PHP_EOL;
+} catch (Exception \$e) {
+  echo 'Wompi CO: ERROR - ' . \$e->getMessage() . PHP_EOL;
+}
+"</pre>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      <strong>Widdo Payment System</strong> · Creado: 10 Abril 2026<br>
+      Stripe + Wompi + dLocal · Paywall con Trial 14 días<br>
+      Para soporte, consultar <code>payment-system-status.md</code> en memory.
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>

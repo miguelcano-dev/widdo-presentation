@@ -1,0 +1,13 @@
+{
+  "name": "generador-qr-widdo",
+  "version": "1.0.0",
+  "description": "Generador de código QR estilizado para Widdo",
+  "main": "generate-qr.js",
+  "scripts": {
+    "generate": "node generate-qr.js",
+    "png": "npx svgexport qr-widdo.svg qr-widdo.png 1000:1000"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.3"
+  }
+}

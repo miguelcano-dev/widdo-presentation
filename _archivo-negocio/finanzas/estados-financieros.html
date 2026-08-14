@@ -1,0 +1,580 @@
+<!-- ARCHIVADO 13-ago-2026 — estados pro-forma de marzo-2026 sobre 'Widdo SAS (NIT por confirmar)' — entidad operativa real = Widdo Inc (Delaware, EIN 35-2952499); usa 16 clubs (real: 9) y un cap table Clase A/Clase B que nunca existio (Atlas emitio 9M Common single-class) — sustituido por finanzas/modelo-financiero.html + DATOS_CONTABLES.md (raiz) -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Estados Financieros Pro-Forma</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{--bg:#0f1117;--surface:#1a1d27;--surface2:#242834;--border:#2e3348;--text:#e4e6f0;--text2:#8b8fa8;--accent:#6c5ce7;--accent2:#a29bfe;--green:#00b894;--red:#ff6b6b;--yellow:#feca57;--blue:#54a0ff;--orange:#f39c12;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:2rem;line-height:1.5;}
+  h1{font-size:1.8rem;font-weight:700;} h2{font-size:1.2rem;font-weight:600;color:var(--accent2);margin-bottom:1rem;} h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem;}
+  .subtitle{color:var(--text2);font-size:0.9rem;margin-bottom:2rem;}
+  .nav-back{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent2);text-decoration:none;font-size:0.85rem;margin-bottom:1.5rem;} .nav-back:hover{color:var(--accent);}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;}
+  .grid{display:grid;gap:1.5rem;margin-bottom:1.5rem;} .grid-2{grid-template-columns:1fr 1fr;} .grid-3{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:768px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+  .chart-container{position:relative;height:300px;}
+  table{width:100%;border-collapse:collapse;font-size:0.85rem;} th{text-align:left;padding:0.6rem 0.5rem;color:var(--text2);font-weight:600;border-bottom:2px solid var(--border);} td{padding:0.5rem;border-bottom:1px solid var(--border);} tr:hover td{background:var(--surface2);} .num{text-align:right;font-variant-numeric:tabular-nums;}
+  .total-row td{font-weight:700;border-top:2px solid var(--border);background:var(--surface2);}
+  .subtotal-row td{font-weight:600;border-top:1px solid var(--accent);color:var(--accent2);}
+  .indent{padding-left:1.5rem;}
+  .section-label{color:var(--text2);font-weight:700;text-transform:uppercase;font-size:0.75rem;letter-spacing:0.05em;}
+  .positive{color:var(--green);} .negative{color:var(--red);}
+  .tabs{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:2px solid var(--border);}
+  .tab{padding:0.7rem 1.5rem;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--text2);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
+  .tab.active{color:var(--accent2);border-bottom-color:var(--accent);} .tab:hover:not(.active){color:var(--text);}
+  .tab-content{display:none;} .tab-content.active{display:block;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:0.75rem;font-weight:600;}
+  .badge-current{background:rgba(108,92,231,0.2);color:var(--accent2);}
+  .badge-projected{background:rgba(0,184,148,0.15);color:var(--green);}
+  .note{font-size:0.8rem;color:var(--text2);font-style:italic;margin-top:0.5rem;}
+  .kpi{text-align:center;padding:1rem;} .kpi-value{font-size:1.8rem;font-weight:800;margin:0.25rem 0;} .kpi-label{font-size:0.8rem;color:var(--text2);text-transform:uppercase;}
+  .currency-toggle{display:flex;gap:0.25rem;background:var(--surface);border-radius:8px;padding:3px;font-size:0.75rem;}
+  .currency-btn{padding:4px 10px;border:none;border-radius:6px;cursor:pointer;font-weight:600;background:transparent;color:var(--text2);transition:all 0.2s;}
+  .currency-btn.active{background:var(--surface2);color:var(--text);}
+  .currency-badge{font-size:0.75rem;color:var(--text2);background:var(--surface2);padding:2px 8px;border-radius:4px;margin-left:0.5rem;}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back">&#8592; Volver al Dashboard</a>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+  <h1>Estados Financieros Pro-Forma</h1>
+  <div style="display:flex;align-items:center;gap:0.75rem;">
+    <span class="currency-badge" id="currencyLabel">Cifras en USD</span>
+    <div class="currency-toggle">
+      <button class="currency-btn active" onclick="setCurrency('usd')">USD</button>
+      <button class="currency-btn" onclick="setCurrency('cop')">COP</button>
+    </div>
+  </div>
+</div>
+<p class="subtitle">Widdo SAS | NIT: Por confirmar | Feb 2026 — Proyectado a Dic 2028 <span id="trmNote" style="display:none;"> | TRM: $4,200 COP/USD</span></p>
+
+<!-- Current State Warning -->
+<div class="card" style="border-color:var(--yellow);background:rgba(254,202,87,0.05);">
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <span style="font-size:2rem;">&#9888;</span>
+    <div>
+      <strong>Estado actual: Pre-revenue</strong>
+      <p style="font-size:0.85rem;color:var(--text2);">Widdo SAS está en fase de prueba con 16 clubs y 915 usuarios. Revenue = $0. Los estados financieros actuales son pro-forma (estimados). Los proyectados se basan en el modelo financiero con escenario base.</p>
+    </div>
+  </div>
+</div>
+
+<!-- KPI Row -->
+<div class="grid grid-3" style="margin-top:1rem;">
+  <div class="card kpi">
+    <div class="kpi-label">Software Desarrollado (intangible)</div>
+    <div class="kpi-value" style="color:var(--blue);">$100,000</div>
+    <div style="font-size:0.75rem;color:var(--text2);">124 modelos, 95+ tablas, 8 meses full-time + IA</div>
+  </div>
+  <div class="card kpi">
+    <div class="kpi-label">Pasivos</div>
+    <div class="kpi-value" style="color:var(--green);">$0</div>
+    <div style="font-size:0.75rem;color:var(--text2);">Sin deuda, sin inversionistas</div>
+  </div>
+  <div class="card kpi">
+    <div class="kpi-label">Burn Rate Actual</div>
+    <div class="kpi-value" style="color:var(--yellow);">$81/mes</div>
+    <div style="font-size:0.75rem;color:var(--text2);">Solo infraestructura</div>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('balance')">Balance General</div>
+  <div class="tab" onclick="showTab('pl')">Estado de Resultados</div>
+  <div class="tab" onclick="showTab('cashflow')">Flujo de Efectivo</div>
+  <div class="tab" onclick="showTab('ratios')">Ratios Financieros</div>
+  <div class="tab" onclick="showTab('tax')">Análisis Tributario</div>
+</div>
+
+<!-- Balance General -->
+<div id="balance" class="tab-content active">
+  <div class="grid grid-2">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 style="margin:0;">Balance General</h2>
+        <span class="badge badge-current">Feb 2026 (Actual)</span>
+      </div>
+      <table>
+        <thead><tr><th colspan="2">ACTIVOS</th></tr></thead>
+        <tbody>
+          <tr><td class="section-label" colspan="2">Activos Corrientes</td></tr>
+          <tr><td class="indent">Caja y bancos (SAS)</td><td class="num">$0</td></tr>
+          <tr><td class="indent">Cuentas por cobrar</td><td class="num">$0</td></tr>
+          <tr class="subtotal-row"><td>Total Activos Corrientes</td><td class="num">$0</td></tr>
+
+          <tr><td class="section-label" colspan="2">Activos No Corrientes</td></tr>
+          <tr><td class="indent">Software desarrollado (intangible)*</td><td class="num">$100,000</td></tr>
+          <tr><td class="indent">Equipos de cómputo</td><td class="num">$2,000</td></tr>
+          <tr><td class="indent">Dominio widdo.co</td><td class="num">$100</td></tr>
+          <tr class="subtotal-row"><td>Total Activos No Corrientes</td><td class="num">$102,100</td></tr>
+
+          <tr class="total-row"><td>TOTAL ACTIVOS</td><td class="num">$102,100</td></tr>
+        </tbody>
+      </table>
+      <br>
+      <table>
+        <thead><tr><th colspan="2">PASIVOS Y PATRIMONIO</th></tr></thead>
+        <tbody>
+          <tr><td class="section-label" colspan="2">Pasivos Corrientes</td></tr>
+          <tr><td class="indent">Cuentas por pagar</td><td class="num">$0</td></tr>
+          <tr><td class="indent">Impuestos por pagar</td><td class="num">$0</td></tr>
+          <tr class="subtotal-row"><td>Total Pasivos</td><td class="num">$0</td></tr>
+
+          <tr><td class="section-label" colspan="2">Patrimonio</td></tr>
+          <tr><td class="indent">Capital social</td><td class="num">$1,000</td></tr>
+          <tr><td class="indent">Utilidades retenidas</td><td class="num">-$972</td></tr>
+          <tr><td class="indent">Aportes del fundador (trabajo)</td><td class="num">$102,072</td></tr>
+          <tr class="subtotal-row"><td>Total Patrimonio</td><td class="num">$102,100</td></tr>
+
+          <tr class="total-row"><td>TOTAL PASIVOS + PATRIMONIO</td><td class="num">$102,100</td></tr>
+        </tbody>
+      </table>
+      <p class="note">* Software valorado a costo de reemplazo estimado ($100K = 4-5 meses de desarrollo FTE senior)</p>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h2 style="margin:0;">Balance General</h2>
+        <span class="badge badge-projected">Dic 2026 (Proyectado)</span>
+      </div>
+      <table>
+        <thead><tr><th colspan="2">ACTIVOS</th></tr></thead>
+        <tbody>
+          <tr><td class="section-label" colspan="2">Activos Corrientes</td></tr>
+          <tr><td class="indent">Caja y bancos</td><td class="num positive">$85,000</td></tr>
+          <tr><td class="indent">Cuentas por cobrar</td><td class="num">$12,000</td></tr>
+          <tr class="subtotal-row"><td>Total Activos Corrientes</td><td class="num">$97,000</td></tr>
+
+          <tr><td class="section-label" colspan="2">Activos No Corrientes</td></tr>
+          <tr><td class="indent">Software desarrollado (intangible)</td><td class="num">$150,000</td></tr>
+          <tr><td class="indent">Equipos de cómputo</td><td class="num">$2,000</td></tr>
+          <tr><td class="indent">Dominio + marca</td><td class="num">$500</td></tr>
+          <tr class="subtotal-row"><td>Total Activos No Corrientes</td><td class="num">$152,500</td></tr>
+
+          <tr class="total-row"><td>TOTAL ACTIVOS</td><td class="num">$249,500</td></tr>
+        </tbody>
+      </table>
+      <br>
+      <table>
+        <thead><tr><th colspan="2">PASIVOS Y PATRIMONIO</th></tr></thead>
+        <tbody>
+          <tr><td class="section-label" colspan="2">Pasivos</td></tr>
+          <tr><td class="indent">Cuentas por pagar</td><td class="num">$2,000</td></tr>
+          <tr><td class="indent">Impuestos por pagar</td><td class="num">$3,500</td></tr>
+          <tr><td class="indent">Ingresos diferidos (prepagos)</td><td class="num">$6,000</td></tr>
+          <tr class="subtotal-row"><td>Total Pasivos</td><td class="num">$11,500</td></tr>
+
+          <tr><td class="section-label" colspan="2">Patrimonio</td></tr>
+          <tr><td class="indent">Capital social</td><td class="num">$1,000</td></tr>
+          <tr><td class="indent">Inversión recibida (tentativo)</td><td class="num">$200,000</td></tr>
+          <tr><td class="indent">Utilidades retenidas</td><td class="num">-$15,072</td></tr>
+          <tr><td class="indent">Aportes del fundador</td><td class="num">$102,072</td></tr>
+          <tr class="subtotal-row"><td>Total Patrimonio</td><td class="num">$238,000</td></tr>
+
+          <tr class="total-row"><td>TOTAL PASIVOS + PATRIMONIO</td><td class="num">$249,500</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Proyectado asumiendo ronda de $200K (SAFE cap $2M) y escenario base de crecimiento. Inversión NO confirmada — es tentativa.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Estado de Resultados -->
+<div id="pl" class="tab-content">
+  <div class="card">
+    <h2>Estado de Resultados (P&L)</h2>
+    <table>
+      <thead>
+        <tr><th>Concepto</th><th class="num">Feb 2026<br><small>(actual)</small></th><th class="num">Jun 2026<br><small>(Q2)</small></th><th class="num">Dic 2026<br><small>(Q4)</small></th><th class="num">Dic 2027<br><small>(Y2)</small></th><th class="num">Dic 2028<br><small>(Y3)</small></th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="section-label" colspan="6">Ingresos</td></tr>
+        <tr><td class="indent">Suscripciones Colombia</td><td class="num">$0</td><td class="num">$1,764</td><td class="num">$5,586</td><td class="num">$22,050</td><td class="num">$42,000</td></tr>
+        <tr><td class="indent">Suscripciones USA</td><td class="num">$0</td><td class="num">$59</td><td class="num">$6,490</td><td class="num">$68,440</td><td class="num">$258,400</td></tr>
+        <tr class="subtotal-row"><td>Ingresos Totales</td><td class="num">$0</td><td class="num">$1,823</td><td class="num">$12,076</td><td class="num">$90,490</td><td class="num">$300,400</td></tr>
+
+        <tr><td colspan="6" style="height:8px;border:none;"></td></tr>
+        <tr><td class="section-label" colspan="6">Costo de Ventas (COGS)</td></tr>
+        <tr><td class="indent">Infraestructura (hosting)</td><td class="num">$81</td><td class="num">$144</td><td class="num">$250</td><td class="num">$400</td><td class="num">$580</td></tr>
+        <tr><td class="indent">Payment processing (2.5%)</td><td class="num">$0</td><td class="num">$46</td><td class="num">$302</td><td class="num">$2,262</td><td class="num">$7,510</td></tr>
+        <tr class="subtotal-row"><td>Total COGS</td><td class="num">$81</td><td class="num">$190</td><td class="num">$552</td><td class="num">$2,662</td><td class="num">$8,090</td></tr>
+
+        <tr><td colspan="6" style="height:4px;border:none;"></td></tr>
+        <tr class="subtotal-row"><td>UTILIDAD BRUTA</td><td class="num negative">-$81</td><td class="num positive">$1,633</td><td class="num positive">$11,524</td><td class="num positive">$87,828</td><td class="num positive">$292,310</td></tr>
+        <tr><td class="indent" style="color:var(--text2)">Margen Bruto</td><td class="num">N/A</td><td class="num">89.6%</td><td class="num">95.4%</td><td class="num">97.1%</td><td class="num">97.3%</td></tr>
+
+        <tr><td colspan="6" style="height:8px;border:none;"></td></tr>
+        <tr><td class="section-label" colspan="6">Gastos Operativos</td></tr>
+        <tr><td class="indent">Salarios y equipo</td><td class="num">$0</td><td class="num">$3,500</td><td class="num">$6,300</td><td class="num">$12,800</td><td class="num">$18,000</td></tr>
+        <tr><td class="indent">Marketing</td><td class="num">$0</td><td class="num">$800</td><td class="num">$2,000</td><td class="num">$4,000</td><td class="num">$6,000</td></tr>
+        <tr><td class="indent">Legal y contable</td><td class="num">$100</td><td class="num">$600</td><td class="num">$300</td><td class="num">$500</td><td class="num">$800</td></tr>
+        <tr><td class="indent">Herramientas y servicios</td><td class="num">$0</td><td class="num">$50</td><td class="num">$150</td><td class="num">$250</td><td class="num">$300</td></tr>
+        <tr><td class="indent">App Stores</td><td class="num">$10</td><td class="num">$10</td><td class="num">$10</td><td class="num">$10</td><td class="num">$10</td></tr>
+        <tr class="subtotal-row"><td>Total Gastos Operativos</td><td class="num">$110</td><td class="num">$4,960</td><td class="num">$8,760</td><td class="num">$17,560</td><td class="num">$25,110</td></tr>
+
+        <tr><td colspan="6" style="height:8px;border:none;"></td></tr>
+        <tr class="total-row"><td>EBITDA</td><td class="num negative">-$191</td><td class="num negative">-$3,327</td><td class="num positive">$2,764</td><td class="num positive">$70,268</td><td class="num positive">$267,200</td></tr>
+        <tr><td class="indent" style="color:var(--text2)">Margen EBITDA</td><td class="num">N/A</td><td class="num negative">-182%</td><td class="num positive">22.9%</td><td class="num positive">77.7%</td><td class="num positive">89.0%</td></tr>
+
+        <tr><td colspan="6" style="height:4px;border:none;"></td></tr>
+        <tr><td class="indent">(-) Impuestos (RST ~1.8%)</td><td class="num">$0</td><td class="num">$0</td><td class="num">$217</td><td class="num">$1,629</td><td class="num">$5,407</td></tr>
+        <tr class="total-row"><td>UTILIDAD NETA</td><td class="num negative">-$191</td><td class="num negative">-$3,327</td><td class="num positive">$2,547</td><td class="num positive">$68,639</td><td class="num positive">$261,793</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Evolución P&L</h3>
+    <div class="chart-container">
+      <canvas id="plChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Flujo de Efectivo -->
+<div id="cashflow" class="tab-content">
+  <div class="card">
+    <h2>Estado de Flujo de Efectivo</h2>
+    <table>
+      <thead>
+        <tr><th>Concepto</th><th class="num">2026 (10m)</th><th class="num">2027</th><th class="num">2028</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="section-label" colspan="4">Actividades de Operación</td></tr>
+        <tr><td class="indent">Utilidad neta</td><td class="num negative">-$14,072</td><td class="num positive">$68,639</td><td class="num positive">$261,793</td></tr>
+        <tr><td class="indent">Depreciación software</td><td class="num">$5,000</td><td class="num">$6,000</td><td class="num">$6,000</td></tr>
+        <tr><td class="indent">Cambio en cuentas por cobrar</td><td class="num negative">-$12,000</td><td class="num negative">-$18,000</td><td class="num negative">-$30,000</td></tr>
+        <tr><td class="indent">Cambio en ingresos diferidos</td><td class="num positive">$6,000</td><td class="num positive">$12,000</td><td class="num positive">$20,000</td></tr>
+        <tr><td class="indent">Cambio en cuentas por pagar</td><td class="num positive">$2,000</td><td class="num positive">$3,000</td><td class="num positive">$5,000</td></tr>
+        <tr class="subtotal-row"><td>Flujo de Operación</td><td class="num negative">-$13,072</td><td class="num positive">$71,639</td><td class="num positive">$262,793</td></tr>
+
+        <tr><td colspan="4" style="height:8px;border:none;"></td></tr>
+        <tr><td class="section-label" colspan="4">Actividades de Inversión</td></tr>
+        <tr><td class="indent">Desarrollo de software</td><td class="num negative">-$6,000</td><td class="num negative">-$36,000</td><td class="num negative">-$60,000</td></tr>
+        <tr><td class="indent">Equipo</td><td class="num">$0</td><td class="num negative">-$2,000</td><td class="num negative">-$3,000</td></tr>
+        <tr class="subtotal-row"><td>Flujo de Inversión</td><td class="num negative">-$6,000</td><td class="num negative">-$38,000</td><td class="num negative">-$63,000</td></tr>
+
+        <tr><td colspan="4" style="height:8px;border:none;"></td></tr>
+        <tr><td class="section-label" colspan="4">Actividades de Financiamiento</td></tr>
+        <tr><td class="indent">Inversión Pre-Seed (tentativo)</td><td class="num positive">$200,000</td><td class="num">$0</td><td class="num">$0</td></tr>
+        <tr><td class="indent">Distribución de dividendos</td><td class="num">$0</td><td class="num">$0</td><td class="num negative">-$50,000</td></tr>
+        <tr class="subtotal-row"><td>Flujo de Financiamiento</td><td class="num positive">$100,000</td><td class="num">$0</td><td class="num negative">-$50,000</td></tr>
+
+        <tr><td colspan="4" style="height:8px;border:none;"></td></tr>
+        <tr class="total-row"><td>CAMBIO NETO EN EFECTIVO</td><td class="num positive">$130,928</td><td class="num positive">$33,639</td><td class="num positive">$149,793</td></tr>
+        <tr><td style="color:var(--text2)">Efectivo inicio</td><td class="num">$0</td><td class="num">$130,928</td><td class="num">$164,567</td></tr>
+        <tr class="total-row"><td>EFECTIVO FINAL</td><td class="num positive">$130,928</td><td class="num positive">$164,567</td><td class="num positive">$314,360</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Proyectado con inversión Pre-Seed de $200K (TENTATIVO — no se ha levantado). Sin inversión, el flujo de operación sería el único ingreso de caja.</p>
+  </div>
+</div>
+
+<!-- Ratios -->
+<div id="ratios" class="tab-content">
+  <div class="card">
+    <h2>Ratios Financieros Clave</h2>
+    <table>
+      <thead><tr><th>Ratio</th><th>Qué mide</th><th class="num">Actual</th><th class="num">Dic 2026</th><th class="num">Dic 2027</th><th class="num">Dic 2028</th><th>Benchmark SaaS</th></tr></thead>
+      <tbody>
+        <tr><td colspan="7" class="section-label">Rentabilidad</td></tr>
+        <tr><td class="indent">Margen Bruto</td><td style="color:var(--text2)">Revenue - COGS</td><td class="num">N/A</td><td class="num positive">95%</td><td class="num positive">97%</td><td class="num positive">97%</td><td>70-80% (bueno &gt;80%)</td></tr>
+        <tr><td class="indent">Margen EBITDA</td><td style="color:var(--text2)">Eficiencia operativa</td><td class="num">N/A</td><td class="num positive">23%</td><td class="num positive">78%</td><td class="num positive">89%</td><td>20-30% (maduro)</td></tr>
+        <tr><td class="indent">Margen Neto</td><td style="color:var(--text2)">Bottom line</td><td class="num">N/A</td><td class="num positive">21%</td><td class="num positive">76%</td><td class="num positive">87%</td><td>10-20% (maduro)</td></tr>
+
+        <tr><td colspan="7" style="height:8px;border:none;"></td></tr>
+        <tr><td colspan="7" class="section-label">Crecimiento</td></tr>
+        <tr><td class="indent">MRR Growth (MoM)</td><td style="color:var(--text2)">Velocidad de crecimiento</td><td class="num">0%</td><td class="num positive">25%</td><td class="num positive">15%</td><td class="num positive">10%</td><td>15-20% (early stage)</td></tr>
+        <tr><td class="indent">Revenue Growth (YoY)</td><td style="color:var(--text2)">Crecimiento anual</td><td class="num">N/A</td><td class="num">N/A</td><td class="num positive">649%</td><td class="num positive">232%</td><td>100%+ (Serie A ready)</td></tr>
+        <tr><td class="indent">Net Revenue Retention</td><td style="color:var(--text2)">Expansión vs churn</td><td class="num">N/A</td><td class="num positive">98%</td><td class="num positive">105%</td><td class="num positive">110%</td><td>&gt;100% (excelente)</td></tr>
+
+        <tr><td colspan="7" style="height:8px;border:none;"></td></tr>
+        <tr><td colspan="7" class="section-label">Unit Economics</td></tr>
+        <tr><td class="indent">ARPC</td><td style="color:var(--text2)">Revenue por club</td><td class="num">$0</td><td class="num">$59</td><td class="num">$59</td><td class="num">$62</td><td>$50-100 (SMB SaaS)</td></tr>
+        <tr><td class="indent">CAC</td><td style="color:var(--text2)">Costo adquisición</td><td class="num">$0</td><td class="num">$30</td><td class="num">$50</td><td class="num">$75</td><td>&lt;1/3 LTV</td></tr>
+        <tr><td class="indent">LTV</td><td style="color:var(--text2)">Valor de vida</td><td class="num">N/A</td><td class="num">$1,416</td><td class="num">$1,770</td><td class="num">$2,360</td><td>&gt;3x CAC</td></tr>
+        <tr><td class="indent">LTV/CAC</td><td style="color:var(--text2)">Eficiencia adquisición</td><td class="num">N/A</td><td class="num positive">47x</td><td class="num positive">35x</td><td class="num positive">31x</td><td>&gt;3x (bueno), &gt;5x (excelente)</td></tr>
+        <tr><td class="indent">Payback Period</td><td style="color:var(--text2)">Meses para recuperar CAC</td><td class="num">N/A</td><td class="num positive">&lt;1 mes</td><td class="num positive">1 mes</td><td class="num positive">1.2 meses</td><td>&lt;12 meses</td></tr>
+
+        <tr><td colspan="7" style="height:8px;border:none;"></td></tr>
+        <tr><td colspan="7" class="section-label">Eficiencia</td></tr>
+        <tr><td class="indent">Rule of 40</td><td style="color:var(--text2)">Growth% + Margin%</td><td class="num">N/A</td><td class="num positive">48%</td><td class="num positive">93%</td><td class="num positive">99%</td><td>&gt;40% (excelente)</td></tr>
+        <tr><td class="indent">Magic Number</td><td style="color:var(--text2)">Revenue eficiency</td><td class="num">N/A</td><td class="num positive">2.4</td><td class="num positive">1.8</td><td class="num positive">1.5</td><td>&gt;0.75 (bueno), &gt;1.0 (excelente)</td></tr>
+        <tr><td class="indent">Burn Multiple</td><td style="color:var(--text2)">Cash burn vs ARR growth</td><td class="num">N/A</td><td class="num positive">0.8x</td><td class="num positive">0.3x</td><td class="num positive">0.1x</td><td>&lt;2x (bueno), &lt;1x (excelente)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Tax Analysis -->
+<div id="tax" class="tab-content">
+  <div class="card">
+    <h2>Comparación Tributaria — RST vs Ordinario</h2>
+    <p class="subtitle" style="margin-bottom:1rem;">Impacto en utilidades según el régimen fiscal de Widdo SAS</p>
+
+    <div class="grid grid-2">
+      <div>
+        <h3>Proyección a 3 Años — Régimen Ordinario (35%)</h3>
+        <table>
+          <tbody>
+            <tr><td>Ingresos brutos 2026</td><td class="num">$59,000</td></tr>
+            <tr><td>(-) Gastos operativos</td><td class="num negative">-$73,000</td></tr>
+            <tr><td>Utilidad gravable</td><td class="num negative">-$14,000</td></tr>
+            <tr><td>Impuesto renta (35%)</td><td class="num">$0</td></tr>
+            <tr><td colspan="2" style="height:4px;border:none;"></td></tr>
+            <tr><td>Ingresos brutos 2027</td><td class="num">$540,000</td></tr>
+            <tr><td>(-) Gastos operativos</td><td class="num negative">-$210,000</td></tr>
+            <tr><td>Utilidad gravable</td><td class="num positive">$330,000</td></tr>
+            <tr><td>Impuesto renta (35%)</td><td class="num negative">-$115,500</td></tr>
+            <tr><td colspan="2" style="height:4px;border:none;"></td></tr>
+            <tr><td>Ingresos brutos 2028</td><td class="num">$2,400,000</td></tr>
+            <tr><td>(-) Gastos operativos</td><td class="num negative">-$420,000</td></tr>
+            <tr><td>Utilidad gravable</td><td class="num positive">$1,980,000</td></tr>
+            <tr><td>Impuesto renta (35%)</td><td class="num negative">-$693,000</td></tr>
+            <tr class="total-row"><td>Total impuestos 3 años</td><td class="num negative">-$808,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h3>Proyección a 3 Años — RST (1.8-3.2%)</h3>
+        <table>
+          <tbody>
+            <tr><td>Ingresos brutos 2026</td><td class="num">$59,000</td></tr>
+            <tr><td>Tarifa RST (1.8%)</td><td class="num">1.8%</td></tr>
+            <tr><td>Impuesto RST</td><td class="num negative">-$1,062</td></tr>
+            <tr><td colspan="2" style="height:4px;border:none;"></td></tr>
+            <tr><td>Ingresos brutos 2027</td><td class="num">$540,000</td></tr>
+            <tr><td>Tarifa RST (1.8%)</td><td class="num">1.8%</td></tr>
+            <tr><td>Impuesto RST</td><td class="num negative">-$9,720</td></tr>
+            <tr><td colspan="2" style="height:4px;border:none;"></td></tr>
+            <tr><td>Ingresos brutos 2028</td><td class="num">$2,400,000</td></tr>
+            <tr><td>Tarifa RST (3.2%)*</td><td class="num">3.2%</td></tr>
+            <tr><td>Impuesto RST</td><td class="num negative">-$76,800</td></tr>
+            <tr><td colspan="2" style="height:4px;border:none;"></td></tr>
+            <tr class="total-row"><td>Total impuestos 3 años</td><td class="num negative">-$87,582</td></tr>
+          </tbody>
+        </table>
+        <p class="note">* Tarifa sube a 3.2% si ingresos > ~$75K USD/año (6,001+ UVT)</p>
+      </div>
+    </div>
+
+    <div class="card" style="background:var(--bg);border-color:var(--green);margin-top:1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <h3 style="color:var(--green);">Ahorro con RST en 3 años</h3>
+          <p style="color:var(--text2);font-size:0.85rem;">Diferencia entre Ordinario y RST</p>
+        </div>
+        <div class="num" style="font-size:2rem;font-weight:800;color:var(--green);">$720,918</div>
+      </div>
+      <p class="note" style="margin-top:1rem;">
+        ACCION REQUERIDA: Inscribir la SAS al RST antes del último día hábil de febrero de cada año.
+        Requiere visita presencial a la DIAN. Ver DATOS_CONTABLES.md sección 4 para el proceso.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cap Table -->
+  <div class="card">
+    <h2>Cap Table (Pre y Post Inversión)</h2>
+    <div class="grid grid-2">
+      <div>
+        <h3>Actual (Pre-inversión) — C Corp Delaware</h3>
+        <table>
+          <thead><tr><th>Accionista</th><th class="num">%</th><th class="num">Cash</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Miguel Angel Cano</td><td class="num">70%</td><td class="num">$749.65</td><td>Clase A (10 votos/acción)</td></tr>
+            <tr><td>Co-founder USA</td><td class="num">30%</td><td class="num">$15,000</td><td>Clase B — reverse vesting 4 años</td></tr>
+            <tr class="total-row"><td>Total</td><td class="num">100%</td><td class="num">$16,189</td><td></td></tr>
+          </tbody>
+        </table>
+        <p class="note">C Corp por constituir. Co-founder aporta $15K para incorporación + operación inicial</p>
+      </div>
+      <div>
+        <h3>Post Pre-Seed <span style="color:var(--yellow);font-size:0.8rem;">(TENTATIVO)</span> — SAFE $200K @ $2M cap</h3>
+        <table>
+          <thead><tr><th>Accionista</th><th class="num">%</th><th class="num">Valor</th></tr></thead>
+          <tbody>
+            <tr><td>Miguel Angel Cano</td><td class="num">~61%</td><td class="num">$1,220,000</td></tr>
+            <tr><td>Co-founder USA</td><td class="num">~27%</td><td class="num">$540,000</td></tr>
+            <tr><td>Inversor(es) Pre-Seed</td><td class="num">~9%</td><td class="num">$200,000</td></tr>
+            <tr><td style="color:var(--text2)">ESOP (reserva)</td><td class="num" style="color:var(--text2)">~3%</td><td class="num" style="color:var(--text2)">$60,000</td></tr>
+            <tr class="total-row"><td>Total</td><td class="num">100%</td><td class="num">$2,020,000</td></tr>
+          </tbody>
+        </table>
+        <p class="note">SAFE post-money cap $2M. No se ha levantado inversión aún — estos son proyecciones</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const COP_RATE = 4200;
+let currentCurrency = 'usd';
+let plChart = null;
+
+// Chart data in USD
+const chartDataUSD = {
+  revenue: [0, 1823, 12076, 40000, 90490, 180000, 300400],
+  costos:  [191, 5150, 9312, 14000, 20222, 28000, 33200],
+  ebitda:  [-191, -3327, 2764, 26000, 70268, 152000, 267200],
+};
+
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// On load: store original USD values in data-usd for all monetary cells
+document.querySelectorAll('.num, .kpi-value').forEach(el => {
+  const text = el.textContent.trim();
+
+  // Skip percentages, N/A, text like "<1 mes", etc.
+  if (!text.includes('$') || text.includes('%')) return;
+
+  // Handle range like "$80-120K"
+  const rangeMatch = text.match(/^\$([\d,]+)-([\d,]+)K$/);
+  if (rangeMatch) {
+    el.dataset.rangeLoUsd = parseFloat(rangeMatch[1].replace(/,/g, '')) * 1000;
+    el.dataset.rangeHiUsd = parseFloat(rangeMatch[2].replace(/,/g, '')) * 1000;
+    el.dataset.isRange = '1';
+    return;
+  }
+
+  // Handle "$81/mes" style values
+  const suffixMatch = text.match(/^(-?\$[\d,]+)(\/\w+)$/);
+  if (suffixMatch) {
+    const num = parseFloat(suffixMatch[1].replace(/[$,]/g, ''));
+    if (!isNaN(num)) {
+      el.dataset.usd = num;
+      el.dataset.suffix = suffixMatch[2];
+      el.dataset.isMonetary = '1';
+    }
+    return;
+  }
+
+  // Standard monetary: $123, $1,234, -$1,234
+  const match = text.match(/^-?\$[\d,]+$/);
+  if (match) {
+    const num = parseFloat(text.replace(/[$,]/g, ''));
+    if (!isNaN(num)) {
+      el.dataset.usd = num;
+      el.dataset.isMonetary = '1';
+    }
+  }
+});
+
+// Also handle note texts with $ amounts
+document.querySelectorAll('.note, p').forEach(el => {
+  const text = el.textContent;
+  if (text.includes('$750K') || text.includes('$150K') || text.includes('$900K') || text.includes('$100K')) {
+    el.dataset.originalText = el.innerHTML;
+    el.dataset.hasMoneyText = '1';
+  }
+});
+
+function formatMoney(n, currency) {
+  if (currency === 'cop') n = n * COP_RATE;
+  const abs = Math.abs(n);
+  const prefix = n < 0 ? '-' : '';
+  if (currency === 'cop') {
+    if (abs >= 1e9) return prefix + '$' + (abs / 1e9).toFixed(1) + 'B';
+    if (abs >= 1e6) return prefix + '$' + (abs / 1e6).toFixed(1) + 'M';
+    if (abs >= 1e3) return prefix + '$' + Math.round(abs).toLocaleString();
+    return prefix + '$' + Math.round(abs).toLocaleString();
+  }
+  return prefix + '$' + Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 });
+}
+
+function setCurrency(c) {
+  currentCurrency = c;
+  document.querySelectorAll('.currency-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent.toLowerCase() === c)
+  );
+  document.getElementById('currencyLabel').textContent = c === 'usd' ? 'Cifras en USD' : 'Cifras en COP (TRM $4,200)';
+  document.getElementById('trmNote').style.display = c === 'cop' ? 'inline' : 'none';
+
+  // Convert all monetary cells
+  document.querySelectorAll('[data-is-monetary="1"]').forEach(el => {
+    const usd = parseFloat(el.dataset.usd);
+    const suffix = el.dataset.suffix || '';
+    el.textContent = formatMoney(usd, c) + suffix;
+  });
+
+  // Convert range values (like $80-120K)
+  document.querySelectorAll('[data-is-range="1"]').forEach(el => {
+    const lo = parseFloat(el.dataset.rangeLoUsd);
+    const hi = parseFloat(el.dataset.rangeHiUsd);
+    if (c === 'cop') {
+      const loC = lo * COP_RATE, hiC = hi * COP_RATE;
+      el.textContent = '$' + (loC / 1e6).toFixed(0) + '-' + (hiC / 1e6).toFixed(0) + 'M';
+    } else {
+      el.textContent = '$' + (lo / 1000).toFixed(0) + '-' + (hi / 1000).toFixed(0) + 'K';
+    }
+  });
+
+  // Update note texts
+  document.querySelectorAll('[data-has-money-text="1"]').forEach(el => {
+    if (c === 'usd') {
+      el.innerHTML = el.dataset.originalText;
+    } else {
+      let html = el.dataset.originalText;
+      html = html.replace(/\$750K/g, '$' + ((750000 * COP_RATE) / 1e9).toFixed(2) + 'B');
+      html = html.replace(/\$900K/g, '$' + ((900000 * COP_RATE) / 1e9).toFixed(2) + 'B');
+      html = html.replace(/\$150K/g, '$' + ((150000 * COP_RATE) / 1e6).toFixed(0) + 'M');
+      html = html.replace(/\$100K/g, '$' + ((100000 * COP_RATE) / 1e6).toFixed(0) + 'M');
+      el.innerHTML = html;
+    }
+  });
+
+  // Update chart
+  updateChart(c);
+}
+
+function updateChart(c) {
+  if (!plChart) return;
+  const rate = c === 'cop' ? COP_RATE : 1;
+  plChart.data.datasets[0].data = chartDataUSD.revenue.map(v => v * rate);
+  plChart.data.datasets[1].data = chartDataUSD.costos.map(v => v * rate);
+  plChart.data.datasets[2].data = chartDataUSD.ebitda.map(v => v * rate);
+  plChart.options.scales.y.ticks.callback = c === 'cop'
+    ? (v => v >= 1e9 ? '$' + (v/1e9).toFixed(1) + 'B' : v >= 1e6 ? '$' + (v/1e6).toFixed(0) + 'M' : '$' + (v/1e3).toFixed(0) + 'K')
+    : (v => v >= 1000 ? '$' + (v/1000) + 'K' : '$' + v);
+  plChart.update();
+}
+
+// P&L Chart
+const plCtx = document.getElementById('plChart');
+if (plCtx) {
+  plChart = new Chart(plCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Feb 26', 'Jun 26', 'Dic 26', 'Jun 27', 'Dic 27', 'Jun 28', 'Dic 28'],
+      datasets: [
+        { label: 'Revenue', data: [...chartDataUSD.revenue], backgroundColor: 'rgba(0,184,148,0.7)', borderRadius: 4 },
+        { label: 'Costos', data: [...chartDataUSD.costos], backgroundColor: 'rgba(255,107,107,0.7)', borderRadius: 4 },
+        { label: 'EBITDA', data: [...chartDataUSD.ebitda], type: 'line', borderColor: '#6c5ce7', backgroundColor: 'transparent', tension: 0.3, pointRadius: 4 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#8b8fa8' } } },
+      scales: {
+        x: { ticks: { color: '#8b8fa8' }, grid: { display: false } },
+        y: { ticks: { color: '#8b8fa8', callback: v => v >= 1000 ? '$' + (v/1000) + 'K' : '$' + v }, grid: { color: 'rgba(46,51,72,0.3)' } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>

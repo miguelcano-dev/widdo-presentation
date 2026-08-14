@@ -1,0 +1,18 @@
+"MySQLWiddo": {
+    "command": "npx",
+    "args": [
+        "mcprunner",
+        "MYSQL_HOST=127.0.0.1",
+        "MYSQL_PORT=61919",
+        "MYSQL_USER=user",
+        "MYSQL_PASS=password",
+        "MYSQL_DB=db",
+        "ALLOW_INSERT_OPERATION=true",
+        "ALLOW_UPDATE_OPERATION=true",
+        "ALLOW_DELETE_OPERATION=false",
+        "--",
+        "npx",
+        "-y",
+        "@benborla29/mcp-server-mysql"
+    ]
+},

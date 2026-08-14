@@ -100,7 +100,7 @@
 - Contrato SFFA Florida: cdn1.sportngin.com/attachments/document/8549-2619315/SFFA_Boys_Contract_4_23_2022_jc.pdf
 - Mukilteo FC Team Manager Handbook: mysc.gotsportsites.com/wp-content/uploads/2024/04/Team-Manager-Handbook.pdf
 - AYSO National Tournament Handbook · FYSA registration · Capterra/G2/BBB/App Store (citas verbatim en informes de agentes)
-- Docs relacionados previos: `reseñas-teamsnap.md`, `reseñas-sportsengine-leagueapps.md`, `00-TORNEOS-MASTER.md`, `01-MENSAJES-TORNEOS.md`
+- Docs relacionados previos: `reseñas-teamsnap.md`, `reseñas-sportsengine-leagueapps.md`, `torneos/00-TORNEOS-MASTER.md`, `torneos/01-MENSAJES-TORNEOS.md`
 
 ⚠️ Citas de Trustpilot (TeamSnap 1.1, GotSport 2.3) vienen de extractos de buscador (403 al scrape) — verificar a mano en navegador antes de meterlas en un deck.
 

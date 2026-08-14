@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — IVA, Pricing e Impacto en Revenue</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root {
+    --bg: #0A0A0F; --surface: #12121A; --surface2: #1a1a2e; --border: #2a2a3e;
+    --text: #E8E8ED; --text2: #888; --green: #00C853; --red: #FF6B6B;
+    --yellow: #FECA57; --blue: #54A0FF; --purple: #A29BFE; --orange: #FF9F43;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 40px; max-width: 1000px; margin: 0 auto; }
+
+  .badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-red { background: rgba(255,107,107,0.15); color: var(--red); }
+  .badge-green { background: rgba(0,200,83,0.15); color: var(--green); }
+  .badge-yellow { background: rgba(254,202,87,0.15); color: var(--yellow); }
+  .badge-blue { background: rgba(84,160,255,0.15); color: var(--blue); }
+
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+  h1 span { color: var(--green); }
+  .subtitle { color: var(--text2); font-size: 14px; margin-bottom: 32px; }
+  h2 { font-size: 20px; font-weight: 700; color: var(--green); margin: 40px 0 16px; padding-top: 20px; border-top: 1px solid var(--border); }
+  h2:first-of-type { border-top: none; }
+  h3 { font-size: 16px; font-weight: 600; color: #fff; margin: 24px 0 10px; }
+  p { margin-bottom: 12px; color: #ccc; font-size: 14px; }
+  strong { color: #fff; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .card-green { border-color: var(--green); background: rgba(0,200,83,0.05); }
+  .card-yellow { border-color: var(--yellow); background: rgba(254,202,87,0.05); }
+  .card-red { border-color: var(--red); background: rgba(255,107,107,0.05); }
+  .card-blue { border-color: var(--blue); background: rgba(84,160,255,0.05); }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  th { background: var(--surface); color: var(--green); padding: 10px 12px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: #ccc; }
+  tr:hover td { background: var(--surface2); }
+  .num { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .highlight { background: rgba(0,200,83,0.08); }
+  .negative { color: var(--red); }
+  .positive { color: var(--green); }
+
+  .diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 16px 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green); white-space: pre; line-height: 1.6; overflow-x: auto; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .tldr { background: linear-gradient(135deg, rgba(0,200,83,0.1), rgba(84,160,255,0.1)); border: 1px solid var(--green); border-radius: 12px; padding: 24px; margin: 24px 0; }
+  .tldr h3 { color: var(--green); margin-top: 0; }
+  .tldr ul { list-style: none; padding: 0; }
+  .tldr li { padding: 6px 0; color: #ccc; font-size: 14px; }
+  .tldr li::before { content: '→ '; color: var(--green); font-weight: 700; }
+
+  .footer { text-align: center; padding: 24px 0; margin-top: 40px; border-top: 1px solid var(--border); color: var(--text2); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;">
+  <div>
+    <h1>IVA, Pricing e <span>Impacto en Revenue</span></h1>
+    <p class="subtitle">Documento interno para founders — Cómo cambian los números reales con IVA incluido</p>
+  </div>
+  <div style="text-align:right;">
+    <span class="badge badge-red">INTERNO</span>
+    <div style="color:var(--text2);font-size:12px;margin-top:4px;">Marzo 2026</div>
+  </div>
+</div>
+
+<!-- TL;DR -->
+<div class="tldr">
+  <h3>TL;DR para Alwin</h3>
+  <ul>
+    <li><strong>El precio al club NO cambia.</strong> Siguen viendo $129K COP/mes o $99 USD/mes.</li>
+    <li><strong>Pero el IVA 19% ya está incluido</strong> en el precio de Colombia. No lo sabíamos.</li>
+    <li><strong>Eso significa que recibimos ~16% menos</strong> de lo que pensábamos por club colombiano.</li>
+    <li><strong>Un club Pro en Colombia</strong> nos deja $108K COP (~$26 USD), no $129K (~$31 USD).</li>
+    <li><strong>En USA no cambia nada.</strong> El sales tax se agrega aparte (Stripe lo maneja).</li>
+    <li><strong>Todo se cobra con Stripe.</strong> Una sola pasarela, una sola cuenta, todo a la C Corp.</li>
+    <li><strong>La SAS Colombia</strong> actúa como distribuidor local (emite factura electrónica con IVA).</li>
+    <li><strong>Impacto total:</strong> ~$5 USD menos por club CO/mes. Con 20 clubes CO = -$100/mes. Manejable.</li>
+  </ul>
+</div>
+
+<!-- ============================================ -->
+<h2>1. El problema: IVA en Colombia</h2>
+
+<p>Cuando un club en Colombia compra una suscripción de software, <strong>hay que cobrar IVA 19%</strong>. Es obligatorio por ley (Decreto 2179 de 2020). Netflix, Spotify, Rappi — todos lo hacen.</p>
+
+<p>Nosotros publicamos estos precios:</p>
+
+<table>
+  <thead><tr><th>Plan</th><th class="num">Precio publicado</th><th class="num">Lo que pensábamos que recibíamos</th></tr></thead>
+  <tbody>
+    <tr><td>Básico</td><td class="num">$49,000 COP/mes</td><td class="num">$49,000 COP (~$12 USD)</td></tr>
+    <tr><td><strong>Pro</strong></td><td class="num"><strong>$129,000 COP/mes</strong></td><td class="num"><strong>$129,000 COP (~$31 USD)</strong></td></tr>
+    <tr><td>Enterprise</td><td class="num">$299,000 COP/mes</td><td class="num">$299,000 COP (~$71 USD)</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Pero el IVA ya debe estar incluido.</strong> Si cobramos $129K, la DIAN espera que $20,597 de esos $129K sean IVA. El ingreso real es:</p>
+
+<table>
+  <thead><tr><th>Plan</th><th class="num">Precio publicado</th><th class="num">Base (lo que recibimos)</th><th class="num">IVA 19% (para DIAN)</th><th class="num">En USD</th></tr></thead>
+  <tbody>
+    <tr><td>Básico</td><td class="num">$49,000</td><td class="num">$41,176</td><td class="num">$7,824</td><td class="num">~$10 USD</td></tr>
+    <tr class="highlight"><td><strong>Pro</strong></td><td class="num"><strong>$129,000</strong></td><td class="num"><strong>$108,403</strong></td><td class="num"><strong>$20,597</strong></td><td class="num"><strong>~$26 USD</strong></td></tr>
+    <tr><td>Enterprise</td><td class="num">$299,000</td><td class="num">$251,261</td><td class="num">$47,739</td><td class="num">~$60 USD</td></tr>
+  </tbody>
+</table>
+
+<div class="card card-yellow">
+  <h3>Decisión tomada</h3>
+  <p><strong>NO subimos el precio al club.</strong> El precio sigue siendo $129K COP. El IVA está incluido. El club nunca ve un cobro diferente. Simplemente nosotros recibimos menos de lo que pensábamos.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>2. Impacto en los números (Colombia)</h2>
+
+<h3>ARPC (Average Revenue Per Club) — Colombia</h3>
+
+<div class="grid-2">
+  <div class="card card-red">
+    <h3>Antes (sin considerar IVA)</h3>
+    <table>
+      <tr><td>ARPC mensual</td><td class="num">$31 USD</td></tr>
+      <tr><td>ARPC anual (desc 17%)</td><td class="num">$26 USD/mes</td></tr>
+      <tr><td>ARPC blended</td><td class="num"><strong>$28 USD</strong></td></tr>
+    </table>
+  </div>
+  <div class="card card-green">
+    <h3>Ahora (IVA incluido, correcto)</h3>
+    <table>
+      <tr><td>ARPC mensual</td><td class="num">$26 USD</td></tr>
+      <tr><td>ARPC anual (desc 17%)</td><td class="num">$21.5 USD/mes</td></tr>
+      <tr><td>ARPC blended</td><td class="num"><strong>$23 USD</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<h3>Proyección con 20 clubes Colombia pagando (escenario abril 2026)</h3>
+
+<table>
+  <thead><tr><th>Métrica</th><th class="num">Sin IVA (viejo)</th><th class="num">Con IVA incluido (real)</th><th class="num">Diferencia</th></tr></thead>
+  <tbody>
+    <tr><td>MRR Colombia (20 clubes)</td><td class="num">$560</td><td class="num">$460</td><td class="num negative">-$100/mes</td></tr>
+    <tr><td>ARR Colombia</td><td class="num">$6,720</td><td class="num">$5,520</td><td class="num negative">-$1,200/año</td></tr>
+    <tr><td>Margen bruto</td><td class="num">92%</td><td class="num">90%</td><td class="num">-2pp</td></tr>
+  </tbody>
+</table>
+
+<div class="card card-green">
+  <h3>¿Es grave?</h3>
+  <p><strong>No.</strong> La diferencia es ~$100/mes con 20 clubes. Y a medida que crecen los clubes USA ($99-$349 sin este problema), el impacto se diluye. Con 10 clubes USA el revenue USA ya supera todo Colombia.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>3. USA: No cambia nada</h2>
+
+<p>En USA, el <strong>sales tax se agrega encima del precio</strong>, no está incluido. El club ve el precio base y en checkout se agrega el tax de su estado.</p>
+
+<table>
+  <thead><tr><th>Plan USA</th><th class="num">Precio base</th><th class="num">Sales tax (varía)</th><th class="num">Revenue para Widdo</th></tr></thead>
+  <tbody>
+    <tr><td>Starter</td><td class="num">$99/mes</td><td class="num">$0-10 (paga el club)</td><td class="num positive"><strong>$99/mes</strong></td></tr>
+    <tr><td>Pro</td><td class="num">$199/mes</td><td class="num">$0-20</td><td class="num positive"><strong>$199/mes</strong></td></tr>
+    <tr><td>Enterprise</td><td class="num">$349/mes</td><td class="num">$0-35</td><td class="num positive"><strong>$349/mes</strong></td></tr>
+  </tbody>
+</table>
+
+<p>Stripe Tax calcula y cobra el sales tax automático. No afecta nuestro revenue. <strong>Los $99 son $99 netos para nosotros.</strong></p>
+
+<!-- ============================================ -->
+<h2>4. Otros países LATAM</h2>
+
+<table>
+  <thead><tr><th>País</th><th>IVA</th><th>Cómo funciona</th><th>Impacto para Widdo</th></tr></thead>
+  <tbody>
+    <tr><td>México</td><td>16%</td><td>Retenido por plataforma de pago o banco</td><td>Mínimo (Stripe maneja)</td></tr>
+    <tr><td>Brasil</td><td>~9.25% (PIS/COFINS)</td><td>El comprador maneja internamente</td><td>Ninguno directo</td></tr>
+    <tr><td>Argentina</td><td>21% + PAIS 8%</td><td>Percepción bancaria al comprador</td><td>Ninguno directo</td></tr>
+    <tr><td>Chile</td><td>19%</td><td>Registro ante SII cuando haya volumen</td><td>Futuro — no ahora</td></tr>
+    <tr><td>Perú</td><td>18%</td><td>El comprador retiene</td><td>Ninguno directo</td></tr>
+  </tbody>
+</table>
+
+<p>Para países que no sean Colombia: <strong>la C Corp factura directamente vía Stripe</strong>, el club paga en USD o moneda local, y los impuestos locales los maneja el comprador o el procesador de pagos. No necesitamos entidad local.</p>
+
+<!-- ============================================ -->
+<h2>5. Estructura de facturación</h2>
+
+<div class="diagram">
+COLOMBIA (SAS es distribuidor local):
+
+  Club CO ──→ paga $129K COP ──→ Widdo SAS (factura electrónica + IVA)
+                                      │
+                                      ├─ $20,597 → DIAN (IVA bimestral)
+                                      ├─ ~$16,260 → Widdo SAS (comisión 15%)
+                                      └─ ~$92,143 → Widdo Inc (wire USD)
+                                                     = ~$22 USD neto
+
+USA + INTERNACIONAL:
+
+  Club ──→ paga $99+ USD ──→ Stripe ──→ Widdo Inc (Mercury)
+                                │
+                                └─ Sales tax → Stripe Tax remite al estado
+                                   Revenue para Widdo = precio base completo</div>
+
+<h3>¿Por qué la SAS factura en Colombia?</h3>
+<ul style="color:#ccc;font-size:14px;padding-left:20px;margin:12px 0;">
+  <li>Los clubes colombianos necesitan <strong>factura electrónica</strong> (DIAN) para deducir el gasto</li>
+  <li>La C Corp no puede emitir factura electrónica colombiana</li>
+  <li>La SAS cobra IVA, lo declara bimestral, y transfiere el resto a la C Corp</li>
+  <li>La SAS se queda con <strong>15% de comisión de distribución</strong> (se queda en Colombia, RST 1.8%)</li>
+</ul>
+
+<!-- ============================================ -->
+<h2>6. Ejemplo real: Club paga Plan Pro anual</h2>
+
+<div class="card">
+  <h3>Club "Siempre Fuertes" — Plan Pro Anual</h3>
+  <table>
+    <tr><td>Plan</td><td class="num">Pro</td></tr>
+    <tr><td>Precio mensual</td><td class="num">$129,000 COP (IVA incluido)</td></tr>
+    <tr><td>Descuento anual</td><td class="num">17%</td></tr>
+    <tr><td>Precio anual</td><td class="num"><strong>$1,284,840 COP</strong> (~$308 USD)</td></tr>
+    <tr style="border-top:2px solid var(--border);"><td colspan="2" style="color:var(--green);font-weight:600;">Desglose interno:</td></tr>
+    <tr><td>Base (revenue real)</td><td class="num">$1,079,697 COP (~$259 USD)</td></tr>
+    <tr><td>IVA 19% (para DIAN)</td><td class="num">$205,143 COP (~$49 USD)</td></tr>
+    <tr><td>Comisión SAS 15%</td><td class="num">$161,955 COP (~$39 USD)</td></tr>
+    <tr><td>Revenue neto C Corp</td><td class="num positive"><strong>$917,742 COP (~$220 USD)</strong></td></tr>
+    <tr><td>Stripe fees (~3%)</td><td class="num negative">-$38,545 COP (~-$9 USD)</td></tr>
+    <tr class="highlight"><td><strong>Neto final en Mercury</strong></td><td class="num positive"><strong>~$211 USD/año = ~$17.5 USD/mes</strong></td></tr>
+  </table>
+</div>
+
+<!-- ============================================ -->
+<h2>7. Impacto en el modelo financiero</h2>
+
+<h3>ARPC corregido por mercado</h3>
+
+<table>
+  <thead><tr><th>Mercado</th><th class="num">ARPC viejo</th><th class="num">ARPC corregido</th><th class="num">Cambio</th><th>Nota</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Colombia</strong></td><td class="num">$28 USD</td><td class="num"><strong>$23 USD</strong></td><td class="num negative">-18%</td><td>IVA 19% incluido en precio</td></tr>
+    <tr><td><strong>USA</strong></td><td class="num">$99 USD</td><td class="num"><strong>$99 USD</strong></td><td class="num">0%</td><td>Sales tax aparte, no afecta revenue</td></tr>
+  </tbody>
+</table>
+
+<h3>Proyección comparada — Escenario Base (34 meses)</h3>
+
+<table>
+  <thead><tr><th>Métrica</th><th class="num">Modelo viejo</th><th class="num">Modelo corregido</th><th class="num">Diferencia</th></tr></thead>
+  <tbody>
+    <tr><td>ARPC CO blended</td><td class="num">$28/mes</td><td class="num">$23/mes</td><td class="num negative">-$5</td></tr>
+    <tr><td>MRR Mes 12 (Dic 2026)</td><td class="num">~$3,800</td><td class="num">~$3,500</td><td class="num negative">-8%</td></tr>
+    <tr><td>MRR Mes 24 (Dic 2027)</td><td class="num">~$28K</td><td class="num">~$27K</td><td class="num negative">-3.5%</td></tr>
+    <tr><td>ARR Mes 34 (Feb 2029)</td><td class="num">~$1.2M</td><td class="num">~$1.15M</td><td class="num negative">-4%</td></tr>
+    <tr><td>Breakeven</td><td class="num">Mes 5</td><td class="num">Mes 5-6</td><td class="num">~igual</td></tr>
+  </tbody>
+</table>
+
+<div class="card card-green">
+  <h3>Conclusión: impacto mínimo</h3>
+  <p>El IVA solo afecta Colombia, que es el mercado de entrada pero <strong>no el mercado principal</strong>. A medida que USA crece (ARPC $99-$349), Colombia se vuelve <5% del revenue total. La diferencia de $5/club/mes en CO es irrelevante cuando tienes 100+ clubes USA a $99+.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>8. Plan de acción (paso a paso)</h2>
+
+<table>
+  <thead><tr><th>Cuándo</th><th>Qué hacer</th><th>Quién</th><th>Estado</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Ahora</strong></td><td>Entender que el precio $129K ya incluye IVA</td><td>Ambos</td><td><span class="badge badge-green">Hecho</span></td></tr>
+    <tr><td><strong>Ahora</strong></td><td>NO cambiar precios a los clubes</td><td>—</td><td><span class="badge badge-green">Decidido</span></td></tr>
+    <tr><td><strong>Abril</strong></td><td>Cobrar primer pago vía Stripe (C Corp)</td><td>Miguel</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+    <tr><td><strong>Abril</strong></td><td>Registrar internamente: base + IVA por cada pago</td><td>Miguel</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+    <tr><td><strong>Abril-Mayo</strong></td><td>Crear SAS Colombia con RST</td><td>Miguel</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+    <tr><td><strong>Mayo</strong></td><td>Activar facturación electrónica en la SAS</td><td>Contador</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+    <tr><td><strong>Mayo+</strong></td><td>SAS emite facturas a clubes CO, declara IVA bimestral</td><td>Contador</td><td><span class="badge badge-yellow">Pendiente</span></td></tr>
+    <tr><td><strong>Cuando haya vol.</strong></td><td>Activar Stripe Tax para sales tax USA</td><td>Miguel</td><td><span class="badge badge-blue">Futuro</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ============================================ -->
+<h2>9. Regla simple para recordar</h2>
+
+<div class="grid-2">
+  <div class="card card-green">
+    <h3 style="color:var(--green);">Colombia</h3>
+    <p>Precio = <strong>IVA incluido</strong></p>
+    <p>SAS factura con IVA desglosado</p>
+    <p>Revenue real = precio ÷ 1.19</p>
+    <p>ARPC neto: <strong>~$23 USD</strong></p>
+  </div>
+  <div class="card card-blue">
+    <h3 style="color:var(--blue);">USA + Internacional</h3>
+    <p>Precio = <strong>base, tax aparte</strong></p>
+    <p>C Corp factura directo (Stripe)</p>
+    <p>Revenue real = precio completo</p>
+    <p>ARPC neto: <strong>$99+ USD</strong></p>
+  </div>
+</div>
+
+<div class="diagram">
+RESUMEN RÁPIDO:
+
+  Colombia:   Club paga $129K COP → Widdo recibe $108K (~$26 USD) → IVA $21K a DIAN
+  USA:        Club paga $99 USD   → Widdo recibe $99 USD           → Tax aparte (Stripe)
+  Otros:      Club paga en USD    → Widdo recibe 100%              → Tax local del comprador
+
+  ¿Quién factura?
+    Colombia → Widdo SAS (factura electrónica DIAN)
+    Todo lo demás → Widdo Inc (C Corp, Stripe)</div>
+
+<div class="footer">
+  Widdo — Documento interno para founders<br>
+  Actualizado Marzo 2026 | <strong>NO compartir con inversores</strong> — solo para alinear internamente
+</div>
+
+</body>
+</html>

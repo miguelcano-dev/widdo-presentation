@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo vs Flywire — Análisis Comparativo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: letter portrait; margin: 0; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .page { page-break-after: always; }
+            .page:last-child { page-break-after: avoid; }
+        }
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #f4f4f5;
+            color: #18181b;
+            line-height: 1.45;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            page-break-inside: avoid;
+        }
+        @media screen {
+            .page { margin: 20px auto; box-shadow: 0 4px 24px rgba(0,0,0,0.12); break-after: page; }
+        }
+
+        /* HEADER */
+        .header {
+            background: #18181b;
+            color: #fff;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-left { display: flex; align-items: center; gap: 14px; }
+        .header-logo { width: 38px; height: 38px; }
+        .header-text h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+        .header-text p { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1.8px; text-transform: uppercase; font-weight: 600; }
+        .header-right { text-align: right; }
+        .header-right .label { font-size: 9px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+        .header-right .value { font-size: 14px; font-weight: 800; color: #22c55e; }
+
+        /* GREEN BAR */
+        .green-bar {
+            background: #16a34a;
+            color: #fff;
+            text-align: center;
+            padding: 7px 40px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* CONTENT */
+        .content { padding: 20px 40px 16px; }
+        .content-tight { padding: 14px 40px 16px; }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #16a34a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: #e4e4e7; }
+
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+        th {
+            background: #f4f4f5;
+            font-size: 8.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #71717a;
+            padding: 6px 10px;
+            text-align: left;
+            border-bottom: 2px solid #e4e4e7;
+        }
+        td {
+            font-size: 10.5px;
+            padding: 7px 10px;
+            border-bottom: 1px solid #f4f4f5;
+            vertical-align: top;
+        }
+        tr:last-child td { border-bottom: none; }
+        .highlight-row { background: #f0fdf4; }
+        .highlight-row td { font-weight: 700; color: #16a34a; }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .card-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .card {
+            background: #fafafa;
+            border: 1px solid #e4e4e7;
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+        .card-dark {
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: #fff;
+        }
+        .card-green {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+        .card h3 { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #71717a; margin-bottom: 4px; }
+        .card-dark h3 { color: rgba(255,255,255,0.5); }
+        .card-green h3 { color: #16a34a; }
+        .card .big { font-size: 22px; font-weight: 900; color: #18181b; }
+        .card-dark .big { color: #22c55e; }
+        .card-green .big { color: #16a34a; }
+        .card .sub { font-size: 9px; color: #a1a1aa; margin-top: 2px; }
+        .card-dark .sub { color: rgba(255,255,255,0.4); }
+
+        /* TIMELINE */
+        .timeline { position: relative; padding-left: 20px; margin-bottom: 14px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background: linear-gradient(to bottom, #16a34a, #22c55e, #86efac);
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; padding-bottom: 8px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -19px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background: #16a34a;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+        .timeline-item .year { font-size: 9px; font-weight: 800; color: #16a34a; text-transform: uppercase; letter-spacing: 1px; }
+        .timeline-item .desc { font-size: 10.5px; color: #3f3f46; line-height: 1.4; }
+        .timeline-item .amount { font-size: 10.5px; font-weight: 800; color: #18181b; }
+
+        /* QUOTE */
+        .quote-box {
+            background: #18181b;
+            color: #fff;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+            position: relative;
+        }
+        .quote-box::before {
+            content: '"';
+            font-size: 48px;
+            color: #22c55e;
+            position: absolute;
+            top: -4px;
+            left: 14px;
+            font-weight: 900;
+            opacity: 0.4;
+        }
+        .quote-box p {
+            font-size: 11.5px;
+            font-weight: 600;
+            line-height: 1.5;
+            padding-left: 24px;
+            font-style: italic;
+        }
+
+        /* MOAT ITEMS */
+        .moat-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .moat-number {
+            background: #16a34a;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 800;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .moat-text h4 { font-size: 11px; font-weight: 800; color: #18181b; }
+        .moat-text p { font-size: 9.5px; color: #71717a; line-height: 1.35; }
+
+        /* FOOTER */
+        .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #18181b;
+            color: rgba(255,255,255,0.4);
+            padding: 8px 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer .green { color: #22c55e; }
+
+        /* VERSUS */
+        .vs-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #18181b;
+            color: #22c55e;
+            font-size: 11px;
+            font-weight: 900;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin: 0 8px;
+        }
+
+        /* COMPARISON HEADER */
+        .comp-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .comp-name {
+            font-size: 20px;
+            font-weight: 900;
+            color: #18181b;
+        }
+        .comp-name.green { color: #16a34a; }
+        .comp-ticker {
+            font-size: 9px;
+            font-weight: 700;
+            color: #71717a;
+            background: #f4f4f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 4px;
+        }
+
+        /* PILL */
+        .pill {
+            display: inline-block;
+            font-size: 8px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pill-green { background: #dcfce7; color: #16a34a; }
+        .pill-gray { background: #f4f4f5; color: #71717a; }
+        .pill-dark { background: #27272a; color: #a1a1aa; }
+
+        /* FLOW */
+        .flow-box {
+            background: #fafafa;
+            border: 1px solid #e4e4e7;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            color: #3f3f46;
+            padding: 3px 0;
+        }
+        .flow-arrow { color: #16a34a; font-weight: 900; font-size: 12px; }
+
+        /* TEXT SIZES */
+        .text-xs { font-size: 9px; }
+        .text-sm { font-size: 10.5px; }
+        .text-md { font-size: 12px; }
+        .text-muted { color: #71717a; }
+        .text-green { color: #16a34a; }
+        .text-bold { font-weight: 800; }
+        .mb-4 { margin-bottom: 4px; }
+        .mb-8 { margin-bottom: 8px; }
+        .mb-12 { margin-bottom: 12px; }
+        .mb-16 { margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- PAGE 1: COVER + OVERVIEW                      -->
+<!-- ============================================ -->
+<div class="page">
+    <div class="header">
+        <div class="header-left">
+            <svg class="header-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="10" fill="#22c55e"/>
+                <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Red Hat Display" font-weight="900" font-size="18" fill="#fff">W</text>
+            </svg>
+            <div class="header-text">
+                <h1>Widdo vs Flywire</h1>
+                <p>Análisis Comparativo &amp; Oportunidad de Mercado</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="label">Documento interno</div>
+            <div class="value">Marzo 2026</div>
+        </div>
+    </div>
+    <div class="green-bar">
+        Flywire resolvió pagos cross-border para educación y vale $1.3B — Nadie lo ha hecho para deportes
+    </div>
+
+    <div class="content">
+        <!-- Comparison Header -->
+        <div class="comp-header">
+            <span class="comp-name">Flywire</span>
+            <span class="comp-ticker">NASDAQ: FLYW</span>
+            <span class="vs-badge">vs</span>
+            <span class="comp-name green">Widdo</span>
+            <span class="comp-ticker">Pre-seed</span>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="section-title">Métricas Clave — Flywire Hoy</div>
+        <div class="card-grid-3">
+            <div class="card-dark">
+                <h3>Market Cap</h3>
+                <div class="big">$1.3B</div>
+                <div class="sub">Pico: $6B (Oct 2021)</div>
+            </div>
+            <div class="card-dark">
+                <h3>Revenue Anual</h3>
+                <div class="big">$580M</div>
+                <div class="sub">+18% YoY (2025)</div>
+            </div>
+            <div class="card-dark">
+                <h3>Total Levantado</h3>
+                <div class="big">$527M</div>
+                <div class="sub">$263M pre-IPO + $264M IPO</div>
+            </div>
+        </div>
+        <div class="card-grid-3">
+            <div class="card">
+                <h3>Clientes</h3>
+                <div class="big">4,600+</div>
+                <div class="sub">Instituciones globales</div>
+            </div>
+            <div class="card">
+                <h3>Alcance</h3>
+                <div class="big">240 países</div>
+                <div class="sub">140+ monedas</div>
+            </div>
+            <div class="card">
+                <h3>TPV Q4 2025</h3>
+                <div class="big">$9.3B</div>
+                <div class="sub">+35.6% YoY</div>
+            </div>
+        </div>
+
+        <!-- Side by Side -->
+        <div class="section-title">Comparación Directa</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Aspecto</th>
+                    <th style="width: 39%;">Flywire</th>
+                    <th style="width: 39%;">Widdo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-bold">Origen</td>
+                    <td>Dolor propio: pagar matrícula cross-border desde España</td>
+                    <td>Dolor propio: gestionar club deportivo + pagos</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Core</td>
+                    <td>Pagos cross-border para educación</td>
+                    <td>Pagos cross-border + gestión para deporte amateur</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Revenue Model</td>
+                    <td>Fee por transacción + margen FX</td>
+                    <td>BNPL fee (3-5%) + referral (10%) + SaaS</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Vertical Inicial</td>
+                    <td>Universidades (2,800+)</td>
+                    <td>Clubes deportivos (17+ activos)</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Expansión</td>
+                    <td>Educación → Healthcare → Travel → B2B</td>
+                    <td>Clubs → Tournaments → Pathways → Academy</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Revenue Streams</td>
+                    <td><span class="pill pill-gray">2 streams</span> Fees + FX margin</td>
+                    <td><span class="pill pill-green">5 streams</span> BNPL + Referral + SaaS × 2 + BNPL local</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Data Asset</td>
+                    <td>Solo datos de pago del estudiante</td>
+                    <td>Perfil permanente del jugador (stats, médico, compliance)</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Competencia</td>
+                    <td>Western Union, bancos, TransferWise</td>
+                    <td>Nadie en BNPL deportivo cross-border</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <span>Widdo — Confidencial</span>
+        <span>Página <span class="green">1</span> de 4</span>
+        <span>widdo.co</span>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- PAGE 2: FLYWIRE HISTORY + FUNDING             -->
+<!-- ============================================ -->
+<div class="page">
+    <div class="header">
+        <div class="header-left">
+            <svg class="header-logo" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#22c55e"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Red Hat Display" font-weight="900" font-size="18" fill="#fff">W</text></svg>
+            <div class="header-text">
+                <h1>Historia de Flywire</h1>
+                <p>De peerTransfer a $1.3 Billones — 16 años de crecimiento</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="label">Fundada</div>
+            <div class="value">2009</div>
+        </div>
+    </div>
+    <div class="green-bar">
+        Un estudiante español en MIT que no podía pagar matrícula → empresa de $1.3B en NASDAQ
+    </div>
+
+    <div class="content-tight">
+        <!-- Origin Story -->
+        <div class="section-title">El Origen</div>
+        <div class="quote-box">
+            <p>Iker Marcaide, un estudiante español en el MIT, experimentó de primera mano lo difícil, opaco y costoso que era pagar matrícula universitaria desde una cuenta bancaria extranjera. Fundó peerTransfer en 2009 para resolver ese dolor.</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="section-title">Hitos Clave</div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="year">2009 — Fundación</div>
+                <div class="desc">Iker Marcaide funda <strong>peerTransfer</strong> en Boston desde el MIT</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2010-2011 — Primeras rondas</div>
+                <div class="desc">Seed $1.1M (Spark Capital) + Serie A $7.5M (Accel Partners)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2013 — Nuevo CEO</div>
+                <div class="desc"><strong>Mike Massaro</strong> asume como CEO. Escala agresivamente. Serie B $6.4M (QED Investors — co-founder de Capital One)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2015 — Rebranding</div>
+                <div class="desc">peerTransfer → <strong>Flywire</strong>. Serie C $22M (Bain Capital Ventures)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2018 — Gran escala</div>
+                <div class="desc">Serie D <strong>$100M</strong> (Temasek + Fidelity). Expansión a healthcare y travel</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2020 — Unicornio</div>
+                <div class="desc">Serie E <strong>$120M</strong> (Goldman Sachs + Tiger). Valuación > $1B. Adquiere Simplee (healthcare)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2021 — IPO</div>
+                <div class="desc"><strong>NASDAQ: FLYW</strong> a $24/acción. Recauda $264M. Valuación día 1: $3.5B. Pico: $6B</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2022-2023 — Adquisiciones</div>
+                <div class="desc">WPM (UK), Cohort Go + StudyLink (Australia). Expansión vertical agresiva</div>
+            </div>
+            <div class="timeline-item">
+                <div class="year">2025 — Hoy</div>
+                <div class="desc">$580M revenue. 4,600+ clientes. 240 países. Market cap $1.3B</div>
+            </div>
+        </div>
+
+        <!-- Funding Rounds Table -->
+        <div class="section-title">Todas las Rondas de Inversión</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ronda</th>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                    <th>Inversores Líderes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="pill pill-gray">Seed</span></td>
+                    <td>Oct 2010</td>
+                    <td class="text-bold">$1.1M</td>
+                    <td>Spark Capital, Dave McClure (PayPal)</td>
+                </tr>
+                <tr>
+                    <td><span class="pill pill-gray">Serie A</span></td>
+                    <td>Ago 2011</td>
+                    <td class="text-bold">$7.5M</td>
+                    <td>Spark + Accel Partners, Maveron</td>
+                </tr>
+                <tr>
+                    <td><span class="pill pill-gray">Serie B</span></td>
+                    <td>Jun 2013</td>
+                    <td class="text-bold">$6.4M</td>
+                    <td>QED Investors (co-founder Capital One)</td>
+                </tr>
+                <tr>
+                    <td><span class="pill pill-gray">Serie C</span></td>
+                    <td>Ene 2015</td>
+                    <td class="text-bold">$22M</td>
+                    <td>Bain Capital Ventures</td>
+                </tr>
+                <tr>
+                    <td><span class="pill pill-green">Serie D</span></td>
+                    <td>Jul 2018</td>
+                    <td class="text-bold">$100M</td>
+                    <td>Temasek + F-Prime (Fidelity)</td>
+                </tr>
+                <tr>
+                    <td><span class="pill pill-green">Serie E</span></td>
+                    <td>Feb 2020</td>
+                    <td class="text-bold">$120M</td>
+                    <td>Goldman Sachs + Tiger Management</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><span class="pill pill-green">IPO</span></td>
+                    <td>May 2021</td>
+                    <td class="text-bold">$264M</td>
+                    <td>NASDAQ @ $24/acción</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 2px;">
+            <span class="text-xs text-muted">Total capital levantado: </span>
+            <span class="text-md text-bold text-green">$527M</span>
+            <span class="text-xs text-muted"> ($263M privado + $264M público)</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>Widdo — Confidencial</span>
+        <span>Página <span class="green">2</span> de 4</span>
+        <span>widdo.co</span>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- PAGE 3: REVENUE + MOAT + BUSINESS MODEL       -->
+<!-- ============================================ -->
+<div class="page">
+    <div class="header">
+        <div class="header-left">
+            <svg class="header-logo" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#22c55e"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Red Hat Display" font-weight="900" font-size="18" fill="#fff">W</text></svg>
+            <div class="header-text">
+                <h1>Modelo de Negocio & Moat</h1>
+                <p>Por qué Flywire vale billones y cómo Widdo replica el patrón</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="label">Revenue 2025</div>
+            <div class="value">$580M</div>
+        </div>
+    </div>
+    <div class="green-bar">
+        Mismo modelo: pagos verticales especializados + integración profunda + expansión multi-vertical
+    </div>
+
+    <div class="content-tight">
+        <!-- Revenue Growth -->
+        <div class="section-title">Crecimiento de Revenue — Flywire</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Año</th>
+                    <th>Revenue</th>
+                    <th>Crecimiento YoY</th>
+                    <th>Hito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2020</td>
+                    <td class="text-bold">$130M</td>
+                    <td>—</td>
+                    <td><span class="pill pill-gray">Unicornio</span></td>
+                </tr>
+                <tr>
+                    <td>2021</td>
+                    <td class="text-bold">$200M</td>
+                    <td class="text-green text-bold">+53%</td>
+                    <td><span class="pill pill-green">IPO — $3.5B</span></td>
+                </tr>
+                <tr>
+                    <td>2022</td>
+                    <td class="text-bold">$280M</td>
+                    <td class="text-green text-bold">+44%</td>
+                    <td>Adquisiciones Australia</td>
+                </tr>
+                <tr>
+                    <td>2023</td>
+                    <td class="text-bold">$400M</td>
+                    <td class="text-green text-bold">+39%</td>
+                    <td>StudyLink ($39M)</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td class="text-bold">$490M</td>
+                    <td class="text-green text-bold">+22%</td>
+                    <td>Healthcare crece</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>2025</td>
+                    <td class="text-bold">~$580M</td>
+                    <td class="text-green text-bold">+18%</td>
+                    <td>4,600+ clientes</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- How Flywire Makes Money -->
+        <div class="section-title">Cómo Gana Dinero Flywire</div>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Fee por Transacción</h3>
+                <p class="text-sm">% de cada pago procesado. Más volumen = más revenue sin costos lineales. Modelo altamente escalable.</p>
+            </div>
+            <div class="card">
+                <h3>Margen FX (Cambio de Divisa)</h3>
+                <p class="text-sm">Cuando el pagador paga en una moneda y el receptor en otra, Flywire se queda con el spread del tipo de cambio.</p>
+            </div>
+            <div class="card">
+                <h3>Software Vertical</h3>
+                <p class="text-sm">Software especializado por industria integrado en cuentas por cobrar. Una vez embebido, el switching cost es altísimo.</p>
+            </div>
+            <div class="card">
+                <h3>Land & Expand</h3>
+                <p class="text-sm">Un cliente empieza en una vertical y escala a más productos. Unit economics mejoran con cada año.</p>
+            </div>
+        </div>
+
+        <!-- Verticales -->
+        <div class="section-title">Expansión por Verticales</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vertical</th>
+                    <th>Clientes</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-bold">Educación <span class="pill pill-green">Original</span></td>
+                    <td>2,800+</td>
+                    <td>Universidades y colleges. $320M+ en matrículas vencidas recuperadas</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Healthcare</td>
+                    <td>90+</td>
+                    <td>4 de los 10 mayores sistemas de salud de USA</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Travel</td>
+                    <td>900+</td>
+                    <td>Hoteles, agencias, tour operators</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">B2B</td>
+                    <td>En crecimiento</td>
+                    <td>Pagos corporativos cross-border, integración con ERPs</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- MOAT -->
+        <div class="section-title">El Moat — Por Qué es Difícil de Replicar</div>
+        <div class="moat-item">
+            <div class="moat-number">1</div>
+            <div class="moat-text">
+                <h4>Integración Profunda (Switching Costs)</h4>
+                <p>Se embeben en los sistemas de cuentas por cobrar. Una vez integrado, cambiar de proveedor cuesta meses de trabajo.</p>
+            </div>
+        </div>
+        <div class="moat-item">
+            <div class="moat-number">2</div>
+            <div class="moat-text">
+                <h4>Network de 2 Lados</h4>
+                <p>Instituciones dependen de ellos para cobrar, pagadores dependen de ellos para pagar. Cada lado refuerza al otro.</p>
+            </div>
+        </div>
+        <div class="moat-item">
+            <div class="moat-number">3</div>
+            <div class="moat-text">
+                <h4>Infraestructura Bancaria Global</h4>
+                <p>240 países, 140 monedas, red bancaria propia. 15 años construyendo relaciones que no se replican rápido.</p>
+            </div>
+        </div>
+        <div class="moat-item">
+            <div class="moat-number">4</div>
+            <div class="moat-text">
+                <h4>Especialización Vertical + Compliance</h4>
+                <p>No son procesador genérico. Regulaciones de educación y healthcare son barreras de entrada enormes.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>Widdo — Confidencial</span>
+        <span>Página <span class="green">3</span> de 4</span>
+        <span>widdo.co</span>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- PAGE 4: WIDDO = FLYWIRE DEL DEPORTE           -->
+<!-- ============================================ -->
+<div class="page">
+    <div class="header">
+        <div class="header-left">
+            <svg class="header-logo" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#22c55e"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Red Hat Display" font-weight="900" font-size="18" fill="#fff">W</text></svg>
+            <div class="header-text">
+                <h1>Widdo = Flywire del Deporte</h1>
+                <p>La misma tesis, mercado diferente, ventajas adicionales</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="label">Raising</div>
+            <div class="value">$250K SAFE</div>
+        </div>
+    </div>
+    <div class="green-bar">
+        Mismo dolor, mismo modelo, misma expansión — pero con software operativo integrado y 5 revenue streams
+    </div>
+
+    <div class="content-tight">
+        <!-- The Parallel -->
+        <div class="section-title">El Paralelo Perfecto</div>
+        <div class="card-grid">
+            <div class="card" style="padding: 10px 12px;">
+                <h3>Flywire — Educación</h3>
+                <p class="text-sm">Estudiante internacional → pagar matrícula cross-border → opaco y costoso → Flywire lo resuelve</p>
+                <p class="text-xs text-muted" style="margin-top: 3px;">Resultado: $580M revenue, $1.3B market cap</p>
+            </div>
+            <div class="card-green" style="padding: 10px 12px;">
+                <h3>Widdo — Deportes</h3>
+                <p class="text-sm">Familia LATAM → pagar camp USA → sin crédito cross-border → Widdo financia con BNPL end-to-end</p>
+                <p class="text-xs text-green text-bold" style="margin-top: 3px;">Mercado: 189,000+ familias, ticket $3K-$5K</p>
+            </div>
+        </div>
+
+        <!-- Why Widdo Has MORE -->
+        <div class="section-title">Ventajas de Widdo vs Flywire</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 28%;">Dimensión</th>
+                    <th style="width: 36%;">Flywire</th>
+                    <th style="width: 36%;">Widdo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-bold">Revenue Streams</td>
+                    <td>2 (fees + FX)</td>
+                    <td class="text-green text-bold">5 (BNPL + referral + SaaS ×2 + BNPL local)</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Software Operativo</td>
+                    <td>Solo pagos</td>
+                    <td class="text-green text-bold">Gestión completa del club + pagos</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Data Asset</td>
+                    <td>Datos de pago</td>
+                    <td class="text-green text-bold">Perfil permanente: stats, médico, compliance</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Lifetime Value</td>
+                    <td>4 años (carrera universitaria)</td>
+                    <td class="text-green text-bold">10+ años (jugador de 8 a 18+)</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Revenue/Usuario</td>
+                    <td>Fee único por transacción</td>
+                    <td class="text-green text-bold">BNPL 3-5% + referral 10% = ~14%/ticket</td>
+                </tr>
+                <tr>
+                    <td class="text-bold">Competencia</td>
+                    <td>Western Union, TransferWise</td>
+                    <td class="text-green text-bold">Nadie — whitespace total</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Flywheel -->
+        <div class="section-title">El Flywheel de Widdo</div>
+        <div class="flow-box" style="padding: 10px 14px; margin-bottom: 10px;">
+            <div class="flow-step"><span class="flow-arrow">→</span> Más clubes LATAM (precio bajo, tournaments gratis) → más jugadores con perfil permanente</div>
+            <div class="flow-step"><span class="flow-arrow">→</span> Más data verificada (stats, compliance, médico) → más atractivo para camps/colleges USA</div>
+            <div class="flow-step"><span class="flow-arrow">→</span> Más camps se registran → más familias usan BNPL ($3K-$5K) → más revenue (~14%/jugador)</div>
+            <div class="flow-step"><span class="flow-arrow">→</span> <strong>Más inversión en producto → ciclo se repite y se acelera</strong></div>
+        </div>
+
+        <!-- The Pitch Line -->
+        <div class="section-title">La Narrativa para Inversores</div>
+        <div class="quote-box" style="padding: 14px 18px; margin-bottom: 10px;">
+            <p style="font-size: 10.5px; line-height: 1.45;">Flywire resolvió pagos cross-border para educación y hoy vale $1.3B con $580M de revenue. Nadie ha hecho lo mismo para deportes. Widdo es esa empresa — pero con software operativo integrado, datos permanentes del jugador, y 5 revenue streams en vez de 2.</p>
+        </div>
+
+        <!-- Bottom cards -->
+        <div class="card-grid-3">
+            <div class="card-dark" style="padding: 10px 12px;">
+                <h3>Raising</h3>
+                <div class="big" style="font-size: 20px;">$250K</div>
+                <div class="sub">SAFE @ $3M cap</div>
+            </div>
+            <div class="card-dark" style="padding: 10px 12px;">
+                <h3>TAM</h3>
+                <div class="big" style="font-size: 20px;">$10.2B</div>
+                <div class="sub">Youth sports + cross-border</div>
+            </div>
+            <div class="card-dark" style="padding: 10px 12px;">
+                <h3>Comparable</h3>
+                <div class="big" style="font-size: 20px;">$1.3B</div>
+                <div class="sub">Flywire market cap hoy</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <span>Widdo — Confidencial</span>
+        <span>Página <span class="green">4</span> de 4</span>
+        <span>widdo.co</span>
+    </div>
+</div>
+
+</body>
+</html>

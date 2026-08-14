@@ -1,5 +1,14 @@
 # Widdo Start Script Test Modes Design
 
+> ## ✅ EJECUTADO Y EN USO (estado al 13-ago-2026)
+>
+> Verificado: `/Users/miguelcano/Desktop/todo/Widdo/start.sh` existe con los tres modos
+> (`./start.sh`, `--test`, `--e2e`) y su arnés `Widdo/tests/start-script-modes.test.sh`.
+> Commits `ce69be6` (docs) y `b92272c` (feat) en el repo raíz de Widdo.
+>
+> Ojo: el script vive en la **raíz de `Widdo/`**, no en `desarrollo/`.
+
+
 **Date:** 2026-07-17
 
 ## Goal

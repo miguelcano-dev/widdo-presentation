@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Modelo Financiero 3 Años</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242834;
+    --border: #2e3348;
+    --text: #e4e6f0;
+    --text2: #8b8fa8;
+    --accent: #6c5ce7;
+    --accent2: #a29bfe;
+    --green: #00b894;
+    --green-dim: rgba(0,184,148,0.15);
+    --red: #ff6b6b;
+    --red-dim: rgba(255,107,107,0.15);
+    --yellow: #feca57;
+    --yellow-dim: rgba(254,202,87,0.15);
+    --blue: #54a0ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 2rem;
+  }
+  h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--accent2); }
+  h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .subtitle { color: var(--text2); font-size: 0.9rem; margin-bottom: 2rem; }
+  .header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; }
+  .header-left { flex:1; }
+  .scenario-switcher {
+    display: flex; gap: 0.5rem; background: var(--surface); border-radius: 10px; padding: 4px;
+  }
+  .scenario-btn {
+    padding: 0.5rem 1.2rem; border: none; border-radius: 8px; cursor: pointer;
+    font-size: 0.85rem; font-weight: 600; background: transparent; color: var(--text2);
+    transition: all 0.2s;
+  }
+  .scenario-btn.active { background: var(--accent); color: #fff; }
+  .scenario-btn:hover:not(.active) { color: var(--text); background: var(--surface2); }
+
+  .grid { display: grid; gap: 1.5rem; margin-bottom: 2rem; }
+  .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+  .kpi-card { text-align: center; }
+  .kpi-value { font-size: 2rem; font-weight: 800; margin: 0.5rem 0 0.25rem; }
+  .kpi-label { font-size: 0.8rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.05em; }
+  .kpi-sub { font-size: 0.75rem; color: var(--text2); }
+  .green { color: var(--green); }
+  .red { color: var(--red); }
+  .yellow { color: var(--yellow); }
+
+  .section { margin-bottom: 2.5rem; }
+  .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  th { text-align: left; padding: 0.6rem 0.5rem; color: var(--text2); font-weight: 600; border-bottom: 2px solid var(--border); position: sticky; top: 0; background: var(--surface); }
+  td { padding: 0.5rem; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: var(--surface2); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .total-row td { font-weight: 700; border-top: 2px solid var(--border); background: var(--surface2); }
+  .subtotal-row td { font-weight: 600; border-top: 1px solid var(--accent); color: var(--accent2); }
+  .negative { color: var(--red); }
+  .positive { color: var(--green); }
+
+  .table-scroll { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+  .table-scroll table { min-width: 1400px; }
+  .table-scroll th:first-child, .table-scroll td:first-child {
+    position: sticky; left: 0; background: var(--surface); z-index: 1;
+    border-right: 2px solid var(--border); min-width: 160px;
+  }
+  .table-scroll tr:hover td:first-child { background: var(--surface2); }
+
+  .chart-container { position: relative; height: 320px; }
+  .assumptions { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .assumption-item {
+    display: flex; justify-content: space-between; padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border); font-size: 0.85rem;
+  }
+  .assumption-label { color: var(--text2); }
+  .assumption-value { font-weight: 600; }
+
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 6px;
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  }
+  .tag-green { background: var(--green-dim); color: var(--green); }
+  .tag-red { background: var(--red-dim); color: var(--red); }
+  .tag-yellow { background: var(--yellow-dim); color: var(--yellow); }
+
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: var(--accent2); text-decoration: none; font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  .nav-back:hover { color: var(--accent); }
+
+  .tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); }
+  .tab {
+    padding: 0.7rem 1.5rem; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+    color: var(--text2); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+  }
+  .tab.active { color: var(--accent2); border-bottom-color: var(--accent); }
+  .tab:hover:not(.active) { color: var(--text); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .currency-toggle {
+    display: flex; gap: 0.25rem; background: var(--surface); border-radius: 8px; padding: 3px;
+    font-size: 0.75rem;
+  }
+  .currency-btn {
+    padding: 4px 10px; border: none; border-radius: 6px; cursor: pointer;
+    font-weight: 600; background: transparent; color: var(--text2); transition: all 0.2s;
+  }
+  .currency-btn.active { background: var(--surface2); color: var(--text); }
+
+  .waterfall { display: flex; align-items: flex-end; gap: 2px; height: 200px; margin: 1rem 0; }
+  .waterfall-bar {
+    flex: 1; border-radius: 4px 4px 0 0; min-width: 20px; position: relative;
+    transition: height 0.5s;
+  }
+  .waterfall-label {
+    position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+    font-size: 0.6rem; color: var(--text2); white-space: nowrap;
+  }
+
+  .print-only { display: none; }
+  @media print {
+    body { background: #fff; color: #000; padding: 1rem; }
+    .card { border: 1px solid #ddd; }
+    .no-print { display: none; }
+    .print-only { display: block; }
+    .scenario-switcher, .currency-toggle, .tabs, .nav-back { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="nav-back no-print">&#8592; Volver al Dashboard</a>
+<div style="background:rgba(254,202,87,0.12);border:1px solid #FECA57;border-radius:10px;padding:1rem 1.25rem;margin:1rem 0 1.5rem;font-size:0.85rem;line-height:1.6;">
+  <strong style="color:#FECA57;">MODELO DE marzo 2026 — no es el estado actual.</strong>
+  Las cifras internas de este documento son coherentes entre sí pero corresponden a la foto de marzo 2026.
+  <strong>Estado real a 13-ago-2026:</strong> 9 clubes, 3 pagando, MRR $101, 1.476 usuarios, 701 jugadores,
+  burn de infraestructura <strong>$32/mes</strong> medido en DigitalOcean el 28-jul-2026
+  (droplet $12 + MySQL $15 + Spaces $5). Fuente única de verdad: <code>metrics.json</code>.
+  Entidad operativa: <strong>Widdo Inc (Delaware)</strong>; la SAS Colombia está inactiva.
+  Pasarela de pago única: <strong>Stripe</strong> (USA, Canadá, México).
+</div>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Modelo Financiero — Widdo</h1>
+    <p class="subtitle">Proyección 36 meses | Mar 2026 — Feb 2029 | Última actualización: Mar 2026</p>
+  </div>
+  <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+    <div class="currency-toggle no-print">
+      <button class="currency-btn active" onclick="setCurrency('usd')">USD</button>
+      <button class="currency-btn" onclick="setCurrency('cop')">COP</button>
+    </div>
+    <div class="scenario-switcher no-print">
+      <button class="scenario-btn" data-scenario="conservative" onclick="setScenario('conservative')">Conservador</button>
+      <button class="scenario-btn active" data-scenario="base" onclick="setScenario('base')">Base</button>
+      <button class="scenario-btn" data-scenario="optimistic" onclick="setScenario('optimistic')">Optimista</button>
+    </div>
+  </div>
+</div>
+
+<!-- KPIs Summary -->
+<div class="grid grid-4 section" id="kpi-section">
+  <div class="card kpi-card">
+    <div class="kpi-label">MRR Año 1</div>
+    <div class="kpi-value green" id="kpi-mrr-y1">$12,000</div>
+    <div class="kpi-sub" id="kpi-mrr-y1-sub">200 clubs | Dic 2026</div>
+  </div>
+  <div class="card kpi-card">
+    <div class="kpi-label">MRR Año 2</div>
+    <div class="kpi-value green" id="kpi-mrr-y2">$90,000</div>
+    <div class="kpi-sub" id="kpi-mrr-y2-sub">1,500 clubs | Dic 2027</div>
+  </div>
+  <div class="card kpi-card">
+    <div class="kpi-label">ARR Año 3</div>
+    <div class="kpi-value green" id="kpi-arr-y3">$3.6M</div>
+    <div class="kpi-sub" id="kpi-arr-y3-sub">5,000 clubs | Dic 2028</div>
+  </div>
+  <div class="card kpi-card">
+    <div class="kpi-label">Breakeven</div>
+    <div class="kpi-value yellow" id="kpi-breakeven">Mes 8</div>
+    <div class="kpi-sub" id="kpi-breakeven-sub">~60 clubs | Oct 2026</div>
+  </div>
+</div>
+
+<!-- Charts -->
+<div class="section">
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Revenue vs Costos (mensual)</h3>
+      <div class="chart-container">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Cash Flow Acumulado</h3>
+      <div class="chart-container">
+        <canvas id="cashflowChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>Clubs por Mercado</h3>
+      <div class="chart-container">
+        <canvas id="clubsChart"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Margen Bruto %</h3>
+      <div class="chart-container">
+        <canvas id="marginChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tabs for detailed tables -->
+<div class="section">
+  <div class="tabs no-print">
+    <div class="tab active" onclick="showTab('tab-pl')">P&L Mensual</div>
+    <div class="tab" onclick="showTab('tab-cashflow')">Cash Flow</div>
+    <div class="tab" onclick="showTab('tab-clubs')">Clubs & Revenue</div>
+    <div class="tab" onclick="showTab('tab-costs')">Costos Detallados</div>
+    <div class="tab" onclick="showTab('tab-annual')">Resumen Anual</div>
+  </div>
+
+  <div id="tab-pl" class="tab-content active">
+    <div class="card">
+      <h3>Estado de Resultados (P&L) — Mensual</h3>
+      <div class="table-scroll" id="pl-table"></div>
+    </div>
+  </div>
+
+  <div id="tab-cashflow" class="tab-content">
+    <div class="card">
+      <h3>Flujo de Caja — Mensual</h3>
+      <div class="table-scroll" id="cashflow-table"></div>
+    </div>
+  </div>
+
+  <div id="tab-clubs" class="tab-content">
+    <div class="card">
+      <h3>Clubs & Revenue por Mercado</h3>
+      <div class="table-scroll" id="clubs-table"></div>
+    </div>
+  </div>
+
+  <div id="tab-costs" class="tab-content">
+    <div class="card">
+      <h3>Desglose de Costos — Mensual</h3>
+      <div class="table-scroll" id="costs-table"></div>
+    </div>
+  </div>
+
+  <div id="tab-annual" class="tab-content">
+    <div class="card">
+      <h3>Resumen Anual Comparado</h3>
+      <div id="annual-table"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Assumptions -->
+<div class="section">
+  <div class="card">
+    <h2>Supuestos del Modelo</h2>
+    <div class="assumptions" id="assumptions-grid"></div>
+  </div>
+</div>
+
+<!-- Sensitivity Analysis -->
+<div class="section">
+  <div class="card">
+    <h2>Análisis de Sensibilidad</h2>
+    <p class="subtitle" style="margin-bottom:1rem;">¿Qué pasa si cambian los supuestos clave?</p>
+    <div class="table-scroll" id="sensitivity-table"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA MODEL
+// ============================================================
+const COP_RATE = 4200;
+let currentCurrency = 'usd';
+let currentScenario = 'base';
+
+const months = ['Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene','Feb',
+                'Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene','Feb',
+                'Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic','Ene','Feb'];
+const monthYears = months.map((m,i) => {
+  const year = i < 10 ? 2026 : i < 22 ? 2027 : 2028;
+  return `${m} ${year}`;
+});
+
+// Scenario definitions
+// ARPC Colombia: $129K COP/mes IVA INCLUIDO = base $108,403 COP = $25.81 USD/mes
+// Con descuento anual 17%: $107K COP effective = base $89,916 COP = ~$21.4 USD/mes
+// Blended ARPC CO: ~$23 USD (mix mensual $26 y anual $21.5, IVA descontado)
+// USA: precio base completo (sales tax aparte, no afecta revenue)
+// Infra real: $27/mes DO + $20/mes Resend = $47/mes base
+// Burn real actual: $177/mes (incl Claude $100)
+const scenarios = {
+  conservative: {
+    name: 'Conservador',
+    // Monthly new clubs (Colombia)
+    colNewClubs: [2,2,3,3,4,4,5,5,6,7, 8,8,9,10,10,11,12,12,13,14,15,15, 16,17,18,18,19,20,20,21,22,22,23,24],
+    // Monthly new clubs (USA) - starts month 4
+    usaNewClubs: [0,0,0,0,1,1,2,2,3,3, 4,5,5,6,7,8,9,10,12,14,16,18, 20,22,25,28,30,33,36,40,44,48,52,56],
+    churnRate: 0.03, // 3% monthly
+    arpcCol: 23, // USD blended, IVA incluido ($129K / 1.19 = $108K COP = ~$26, con mix anual ~$23)
+    arpcUsa: 99, // USD Starter tier $99/mes (sales tax aparte)
+    infraBase: 47, // DO $27 + Resend $20
+    hireMonth: 6, // when first hire
+  },
+  base: {
+    name: 'Base',
+    colNewClubs: [3,4,5,6,8,10,12,14,16,18, 12,14,16,18,20,22,24,26,28,30,32,34, 20,22,24,26,28,30,32,34,36,38,40,42],
+    usaNewClubs: [0,0,0,1,2,3,5,7,10,12, 8,10,14,18,22,26,30,35,40,46,52,58, 40,45,50,56,62,68,75,82,90,98,106,115],
+    churnRate: 0.02, // 2% monthly
+    arpcCol: 26, // $129K COP / 1.19 = $108K = $25.81 USD, rounded (mensual puro)
+    arpcUsa: 129, // mix Starter $99 + Pro $199 (sales tax aparte)
+    infraBase: 47,
+    hireMonth: 5,
+  },
+  optimistic: {
+    name: 'Optimista',
+    colNewClubs: [5,6,8,10,14,18,20,24,28,32, 18,22,26,30,34,38,42,46,50,54,58,62, 30,34,38,42,46,50,54,58,62,66,70,74],
+    usaNewClubs: [0,0,1,3,5,8,12,16,20,25, 15,20,28,36,44,52,60,70,80,90,100,110, 60,70,80,90,100,110,120,130,140,150,160,170],
+    churnRate: 0.01, // 1% monthly
+    arpcCol: 29, // mix con plan Premium $199K COP, IVA descontado
+    arpcUsa: 179, // mayoria Pro $199 + Enterprise $349
+    infraBase: 47,
+    hireMonth: 4,
+  }
+};
+
+// Cost structure (monthly, in USD) — ACTUALIZADO con costos REALES verificados Feb 2026
+function getMonthlyCosts(month, totalClubs, scenario) {
+  const s = scenarios[scenario];
+  let costs = {};
+
+  // Infrastructure scales with clubs (base real: DO $27 + Resend $20 = $47)
+  if (totalClubs < 50) costs.infra = 47;
+  else if (totalClubs < 150) costs.infra = 100;
+  else if (totalClubs < 400) costs.infra = 200;
+  else if (totalClubs < 1000) costs.infra = 350;
+  else costs.infra = 500;
+
+  // Tools & services (Claude Code $200 real, baja cuando no sea necesario para dev intensivo)
+  if (month < 6) costs.tools = 200; // Claude Code $200 (desarrollo activo)
+  else if (month < 12) costs.tools = 100; // Reduce a $100 (mantenimiento)
+  else costs.tools = totalClubs < 200 ? 100 : 200;
+
+  // Team — Salarios escalonados: Miguel $3K→$4K→$5K + Alwin $1.5K→$2K→$2.5K
+  costs.founder = 0;
+  if (month >= 1) costs.founder = 4500; // Miguel $3K + Alwin $1.5K (launch)
+  if (month >= 5) costs.founder = 6000; // Miguel $4K + Alwin $2K (traction)
+  if (month >= 9) costs.founder = 7500; // Miguel $5K + Alwin $2.5K (growth)
+  if (month >= 22) costs.founder = 10000; // Ajuste post-scale
+  if (month >= 30) costs.founder = 12000;
+
+  costs.bd1 = month >= s.hireMonth ? 1500 : 0; // BD Colombia
+  costs.bd2 = month >= s.hireMonth + 3 ? 2000 : 0; // BD USA
+  costs.support = month >= 10 ? 800 : 0; // Soporte
+  costs.dev2 = month >= 16 ? 3000 : 0; // Segundo developer
+  costs.marketing_person = month >= 20 ? 2500 : 0; // Marketing hire
+
+  // Marketing spend
+  if (month < 3) costs.marketing = 200;
+  else if (month < 8) costs.marketing = 800;
+  else if (month < 14) costs.marketing = 2000;
+  else if (month < 22) costs.marketing = 4000;
+  else costs.marketing = 6000;
+
+  // Legal & accounting
+  costs.legal = month < 6 ? 100 : 300;
+  if (month >= 3 && month < 6) costs.legal += 500; // USA incorporation
+
+  // Payment processing (Stripe ~2.9% USA, ~4.4% cross-border CO, blended ~3.5%)
+  costs.processing = 0; // calculated separately
+
+  // Licencias + Internet (Apple Dev $8 + Dominio $0.25 + Internet 50% $22)
+  costs.licenses = 30;
+
+  return costs;
+}
+
+// ============================================================
+// CALCULATIONS
+// ============================================================
+function calculateModel(scenario) {
+  const s = scenarios[scenario];
+  const data = [];
+  let colClubs = 16; // Starting clubs (testing)
+  let usaClubs = 0;
+  let cumulativeCash = 0;
+  let initialCash = 0; // Widdo has no cash, founder has $20K personal
+
+  for (let m = 0; m < 34; m++) {
+    // Churn
+    const colChurn = Math.floor(colClubs * s.churnRate);
+    const usaChurn = Math.floor(usaClubs * s.churnRate);
+
+    // New clubs
+    const colNew = s.colNewClubs[m] || 0;
+    const usaNew = s.usaNewClubs[m] || 0;
+
+    // End-of-month clubs
+    colClubs = colClubs + colNew - colChurn;
+    usaClubs = usaClubs + usaNew - usaChurn;
+    const totalClubs = colClubs + usaClubs;
+
+    // Revenue
+    const colRevenue = colClubs * s.arpcCol;
+    const usaRevenue = usaClubs * s.arpcUsa;
+    const totalRevenue = colRevenue + usaRevenue;
+
+    // Costs
+    const costs = getMonthlyCosts(m, totalClubs, scenario);
+    costs.processing = Math.round(totalRevenue * 0.035); // Stripe ~2.9% USA + ~4.4% cross-border CO, blended 3.5%
+    const totalCosts = Object.values(costs).reduce((a,b) => a+b, 0);
+
+    // Net
+    const netIncome = totalRevenue - totalCosts;
+    cumulativeCash += netIncome;
+
+    // Gross margin
+    const cogs = costs.infra + costs.processing;
+    const grossMargin = totalRevenue > 0 ? ((totalRevenue - cogs) / totalRevenue * 100) : 0;
+
+    data.push({
+      month: m,
+      label: monthYears[m],
+      colClubs, usaClubs, totalClubs,
+      colNew, usaNew, colChurn, usaChurn,
+      colRevenue, usaRevenue, totalRevenue,
+      costs, totalCosts,
+      grossMargin: Math.round(grossMargin),
+      netIncome,
+      cumulativeCash,
+      teamCost: (costs.founder||0) + (costs.bd1||0) + (costs.bd2||0) + (costs.support||0) + (costs.dev2||0) + (costs.marketing_person||0),
+    });
+  }
+  return data;
+}
+
+// ============================================================
+// RENDERING
+// ============================================================
+function fmt(n, decimals = 0) {
+  if (currentCurrency === 'cop') n = n * COP_RATE;
+  if (Math.abs(n) >= 1000000) return (n < 0 ? '-' : '') + '$' + (Math.abs(n)/1000000).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1000) return (n < 0 ? '-' : '') + '$' + Math.round(Math.abs(n)).toLocaleString('en-US');
+  return '$' + n.toFixed(decimals);
+}
+
+function fmtShort(n) {
+  if (currentCurrency === 'cop') n = n * COP_RATE;
+  if (Math.abs(n) >= 1000000) return (n < 0 ? '-' : '') + '$' + (Math.abs(n)/1000000).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1000) return (n < 0 ? '-' : '') + '$' + (Math.abs(n)/1000).toFixed(1) + 'K';
+  return '$' + Math.round(n);
+}
+
+function renderKPIs(data) {
+  const y1 = data[9]; // Dec 2026 (month index 9)
+  const y2 = data[21]; // Dec 2027
+  const y3 = data[33]; // Dec 2028 (or last)
+  const lastData = data[data.length - 1];
+
+  document.getElementById('kpi-mrr-y1').textContent = fmtShort(y1.totalRevenue);
+  document.getElementById('kpi-mrr-y1-sub').textContent = `${y1.totalClubs} clubs | Dic 2026`;
+  document.getElementById('kpi-mrr-y2').textContent = fmtShort(y2.totalRevenue);
+  document.getElementById('kpi-mrr-y2-sub').textContent = `${y2.totalClubs} clubs | Dic 2027`;
+  document.getElementById('kpi-arr-y3').textContent = fmtShort(lastData.totalRevenue * 12);
+  document.getElementById('kpi-arr-y3-sub').textContent = `${lastData.totalClubs} clubs | Feb 2029`;
+
+  const beMonth = data.findIndex(d => d.netIncome >= 0);
+  if (beMonth >= 0) {
+    document.getElementById('kpi-breakeven').textContent = `Mes ${beMonth + 1}`;
+    document.getElementById('kpi-breakeven-sub').textContent = `~${data[beMonth].totalClubs} clubs | ${data[beMonth].label}`;
+  } else {
+    document.getElementById('kpi-breakeven').textContent = 'N/A';
+    document.getElementById('kpi-breakeven-sub').textContent = 'No alcanzado en 34 meses';
+  }
+}
+
+let revenueChartInst, cashflowChartInst, clubsChartInst, marginChartInst;
+
+function renderCharts(data) {
+  const labels = data.map(d => d.label);
+  const chartOpts = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#8b8fa8', font: { size: 11 } } } },
+    scales: {
+      x: { ticks: { color: '#8b8fa8', font: { size: 9 }, maxRotation: 45 }, grid: { color: 'rgba(46,51,72,0.5)' } },
+      y: { ticks: { color: '#8b8fa8', callback: v => fmtShort(v) }, grid: { color: 'rgba(46,51,72,0.5)' } }
+    }
+  };
+
+  // Revenue vs Costs
+  if (revenueChartInst) revenueChartInst.destroy();
+  revenueChartInst = new Chart(document.getElementById('revenueChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Revenue', data: data.map(d => d.totalRevenue), borderColor: '#00b894', backgroundColor: 'rgba(0,184,148,0.1)', fill: true, tension: 0.3 },
+        { label: 'Costos', data: data.map(d => d.totalCosts), borderColor: '#ff6b6b', backgroundColor: 'rgba(255,107,107,0.1)', fill: true, tension: 0.3 },
+      ]
+    },
+    options: chartOpts
+  });
+
+  // Cash Flow
+  if (cashflowChartInst) cashflowChartInst.destroy();
+  cashflowChartInst = new Chart(document.getElementById('cashflowChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Cash Acumulado',
+        data: data.map(d => d.cumulativeCash),
+        borderColor: '#6c5ce7',
+        backgroundColor: data.map(d => d.cumulativeCash >= 0 ? 'rgba(0,184,148,0.2)' : 'rgba(255,107,107,0.2)'),
+        fill: true, tension: 0.3, pointRadius: 2
+      }]
+    },
+    options: {...chartOpts, plugins: {...chartOpts.plugins, annotation: {}}}
+  });
+
+  // Clubs by market
+  if (clubsChartInst) clubsChartInst.destroy();
+  clubsChartInst = new Chart(document.getElementById('clubsChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Colombia', data: data.map(d => d.colClubs), backgroundColor: '#6c5ce7', borderRadius: 2 },
+        { label: 'USA', data: data.map(d => d.usaClubs), backgroundColor: '#54a0ff', borderRadius: 2 },
+      ]
+    },
+    options: {...chartOpts, scales: {...chartOpts.scales, x: {...chartOpts.scales.x}, y: {...chartOpts.scales.y, stacked: true}}, plugins: {...chartOpts.plugins}}
+  });
+
+  // Margin
+  if (marginChartInst) marginChartInst.destroy();
+  marginChartInst = new Chart(document.getElementById('marginChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Margen Bruto %',
+        data: data.map(d => d.grossMargin),
+        borderColor: '#feca57',
+        backgroundColor: 'rgba(254,202,87,0.1)',
+        fill: true, tension: 0.3
+      }]
+    },
+    options: {
+      ...chartOpts,
+      scales: {
+        ...chartOpts.scales,
+        y: { ...chartOpts.scales.y, ticks: { ...chartOpts.scales.y.ticks, callback: v => v + '%' }, min: 0, max: 100 }
+      }
+    }
+  });
+}
+
+function renderPLTable(data) {
+  // Show every 3rd month for readability, plus first and last
+  const indices = [0,2,5,8,11,14,17,20,23,26,29,32,33].filter(i => i < data.length);
+  let html = '<table><thead><tr><th>Concepto</th>';
+  indices.forEach(i => html += `<th class="num">${data[i].label}</th>`);
+  html += '</tr></thead><tbody>';
+
+  const rows = [
+    { label: 'Revenue Colombia', key: d => d.colRevenue, cls: 'positive' },
+    { label: 'Revenue USA', key: d => d.usaRevenue, cls: 'positive' },
+    { label: 'REVENUE TOTAL', key: d => d.totalRevenue, cls: 'subtotal-row' },
+    { label: '', key: () => '', cls: '' },
+    { label: 'Infraestructura', key: d => -d.costs.infra },
+    { label: 'Equipo (salarios)', key: d => -d.teamCost },
+    { label: 'Marketing', key: d => -d.costs.marketing },
+    { label: 'Herramientas', key: d => -d.costs.tools },
+    { label: 'Legal & Contable', key: d => -d.costs.legal },
+    { label: 'Payment Processing', key: d => -d.costs.processing },
+    { label: 'App Stores', key: d => -d.costs.appstore },
+    { label: 'COSTOS TOTALES', key: d => -d.totalCosts, cls: 'subtotal-row' },
+    { label: '', key: () => '', cls: '' },
+    { label: 'UTILIDAD NETA', key: d => d.netIncome, cls: 'total-row' },
+    { label: 'Margen Bruto', key: d => d.grossMargin + '%', cls: '', raw: true },
+    { label: 'Cash Acumulado', key: d => d.cumulativeCash, cls: '' },
+  ];
+
+  rows.forEach(row => {
+    if (row.label === '') { html += '<tr><td colspan="' + (indices.length+1) + '" style="height:8px;border:none;"></td></tr>'; return; }
+    const rowCls = row.cls === 'subtotal-row' || row.cls === 'total-row' ? ` class="${row.cls}"` : '';
+    html += `<tr${rowCls}><td>${row.label}</td>`;
+    indices.forEach(i => {
+      const val = row.key(data[i]);
+      if (row.raw) {
+        html += `<td class="num">${val}</td>`;
+      } else if (val === '') {
+        html += '<td></td>';
+      } else {
+        const cls = typeof val === 'number' ? (val < 0 ? 'num negative' : 'num positive') : 'num';
+        html += `<td class="${cls}">${typeof val === 'number' ? fmt(val) : val}</td>`;
+      }
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('pl-table').innerHTML = html;
+}
+
+function renderCashFlowTable(data) {
+  const indices = [0,2,5,8,11,14,17,20,23,26,29,32,33].filter(i => i < data.length);
+  let html = '<table><thead><tr><th>Concepto</th>';
+  indices.forEach(i => html += `<th class="num">${data[i].label}</th>`);
+  html += '</tr></thead><tbody>';
+
+  const rows = [
+    { label: 'Cash Inicio', key: (d,i) => i === 0 ? 0 : data[indices[indices.indexOf(i)]-1]?.cumulativeCash || d.cumulativeCash - d.netIncome },
+    { label: '(+) Ingresos', key: d => d.totalRevenue, cls: 'positive' },
+    { label: '(-) Costos Operativos', key: d => -d.totalCosts },
+    { label: '= Flujo Neto', key: d => d.netIncome, cls: d => d.netIncome >= 0 ? 'positive' : 'negative' },
+    { label: 'Cash Final', key: d => d.cumulativeCash, cls: 'total-row' },
+    { label: '', key: () => '' },
+    { label: 'Clubs Totales', key: d => d.totalClubs, raw: true },
+    { label: 'Revenue/Club', key: d => d.totalClubs > 0 ? fmt(d.totalRevenue / d.totalClubs) : '-', raw: true },
+    { label: 'Costo/Club', key: d => d.totalClubs > 0 ? fmt(d.totalCosts / d.totalClubs) : '-', raw: true },
+  ];
+
+  rows.forEach(row => {
+    if (row.label === '') { html += '<tr><td colspan="' + (indices.length+1) + '" style="height:8px;border:none;"></td></tr>'; return; }
+    const rowCls = row.cls === 'total-row' ? ' class="total-row"' : '';
+    html += `<tr${rowCls}><td>${row.label}</td>`;
+    indices.forEach(idx => {
+      const d = data[idx];
+      const val = row.key(d, idx);
+      if (row.raw) {
+        html += `<td class="num">${val}</td>`;
+      } else {
+        const cls = typeof val === 'number' ? (val < 0 ? 'num negative' : 'num positive') : 'num';
+        html += `<td class="${cls}">${typeof val === 'number' ? fmt(val) : val}</td>`;
+      }
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('cashflow-table').innerHTML = html;
+}
+
+function renderClubsTable(data) {
+  const indices = [0,2,5,8,11,14,17,20,23,26,29,32,33].filter(i => i < data.length);
+  let html = '<table><thead><tr><th>Métrica</th>';
+  indices.forEach(i => html += `<th class="num">${data[i].label}</th>`);
+  html += '</tr></thead><tbody>';
+
+  const rows = [
+    { label: 'Clubs Colombia', key: d => d.colClubs, raw: true },
+    { label: '  (+) Nuevos', key: d => '+' + d.colNew, raw: true },
+    { label: '  (-) Churn', key: d => '-' + d.colChurn, raw: true },
+    { label: 'Clubs USA', key: d => d.usaClubs, raw: true },
+    { label: '  (+) Nuevos', key: d => '+' + d.usaNew, raw: true },
+    { label: '  (-) Churn', key: d => '-' + d.usaChurn, raw: true },
+    { label: 'TOTAL CLUBS', key: d => d.totalClubs, raw: true, cls: 'total-row' },
+    { label: '', key: () => '' },
+    { label: 'Revenue Colombia', key: d => d.colRevenue },
+    { label: 'Revenue USA', key: d => d.usaRevenue },
+    { label: 'REVENUE TOTAL', key: d => d.totalRevenue, cls: 'total-row' },
+    { label: 'ARPC Blended', key: d => d.totalClubs > 0 ? fmt(d.totalRevenue / d.totalClubs) : '-', raw: true },
+  ];
+
+  rows.forEach(row => {
+    if (row.label === '') { html += '<tr><td colspan="' + (indices.length+1) + '" style="height:8px;border:none;"></td></tr>'; return; }
+    const rowCls = row.cls === 'total-row' ? ' class="total-row"' : '';
+    html += `<tr${rowCls}><td>${row.label}</td>`;
+    indices.forEach(idx => {
+      const d = data[idx];
+      const val = row.key(d);
+      if (row.raw) {
+        html += `<td class="num">${val}</td>`;
+      } else {
+        const cls = typeof val === 'number' ? (val >= 0 ? 'num positive' : 'num negative') : 'num';
+        html += `<td class="${cls}">${typeof val === 'number' ? fmt(val) : val}</td>`;
+      }
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('clubs-table').innerHTML = html;
+}
+
+function renderCostsTable(data) {
+  const indices = [0,2,5,8,11,14,17,20,23,26,29,32,33].filter(i => i < data.length);
+  let html = '<table><thead><tr><th>Costo</th>';
+  indices.forEach(i => html += `<th class="num">${data[i].label}</th>`);
+  html += '</tr></thead><tbody>';
+
+  const costKeys = [
+    { label: 'Infraestructura', key: 'infra' },
+    { label: 'Founder (anticipo)', key: 'founder' },
+    { label: 'BD Colombia', key: 'bd1' },
+    { label: 'BD USA', key: 'bd2' },
+    { label: 'Soporte', key: 'support' },
+    { label: 'Dev #2', key: 'dev2' },
+    { label: 'Marketing (persona)', key: 'marketing_person' },
+    { label: 'Marketing (spend)', key: 'marketing' },
+    { label: 'Herramientas', key: 'tools' },
+    { label: 'Legal & Contable', key: 'legal' },
+    { label: 'Payment Processing', key: 'processing' },
+    { label: 'App Stores', key: 'appstore' },
+  ];
+
+  costKeys.forEach(ck => {
+    html += `<tr><td>${ck.label}</td>`;
+    indices.forEach(idx => {
+      const val = data[idx].costs[ck.key] || 0;
+      html += `<td class="num">${val > 0 ? fmt(val) : '-'}</td>`;
+    });
+    html += '</tr>';
+  });
+
+  html += '<tr class="total-row"><td>TOTAL COSTOS</td>';
+  indices.forEach(idx => html += `<td class="num negative">${fmt(data[idx].totalCosts)}</td>`);
+  html += '</tr>';
+
+  // Team count
+  html += '<tr><td style="color:var(--text2)">Personas en equipo</td>';
+  indices.forEach(idx => {
+    const d = data[idx];
+    let count = 1; // Miguel
+    if (d.costs.bd1 > 0) count++;
+    if (d.costs.bd2 > 0) count++;
+    if (d.costs.support > 0) count++;
+    if (d.costs.dev2 > 0) count++;
+    if (d.costs.marketing_person > 0) count++;
+    html += `<td class="num">${count}</td>`;
+  });
+  html += '</tr>';
+
+  html += '</tbody></table>';
+  document.getElementById('costs-table').innerHTML = html;
+}
+
+function renderAnnualTable(data) {
+  // Calculate annual summaries
+  function annualSum(startIdx, endIdx) {
+    const slice = data.slice(startIdx, endIdx + 1);
+    return {
+      revenue: slice.reduce((a,d) => a + d.totalRevenue, 0),
+      costs: slice.reduce((a,d) => a + d.totalCosts, 0),
+      net: slice.reduce((a,d) => a + d.netIncome, 0),
+      endClubs: slice[slice.length-1].totalClubs,
+      endMRR: slice[slice.length-1].totalRevenue,
+      avgMargin: Math.round(slice.reduce((a,d) => a + d.grossMargin, 0) / slice.length),
+    };
+  }
+
+  const y1 = annualSum(0, 9); // Mar-Dec 2026 (10 months)
+  const y2 = annualSum(10, 21); // Jan-Dec 2027
+  const y3 = annualSum(22, 33); // Jan-Dec 2028
+
+  let html = '<table><thead><tr><th>Métrica</th><th class="num">2026 (10m)</th><th class="num">2027</th><th class="num">2028</th></tr></thead><tbody>';
+  const rows = [
+    ['Revenue Total', fmt(y1.revenue), fmt(y2.revenue), fmt(y3.revenue)],
+    ['Costos Totales', fmt(y1.costs), fmt(y2.costs), fmt(y3.costs)],
+    ['Utilidad Neta', fmt(y1.net), fmt(y2.net), fmt(y3.net)],
+    ['', '', '', ''],
+    ['MRR (fin de año)', fmtShort(y1.endMRR), fmtShort(y2.endMRR), fmtShort(y3.endMRR)],
+    ['ARR (fin de año)', fmtShort(y1.endMRR*12), fmtShort(y2.endMRR*12), fmtShort(y3.endMRR*12)],
+    ['Clubs (fin de año)', y1.endClubs, y2.endClubs, y3.endClubs],
+    ['Margen Bruto Prom.', y1.avgMargin + '%', y2.avgMargin + '%', y3.avgMargin + '%'],
+  ];
+
+  rows.forEach(row => {
+    if (row[0] === '') { html += '<tr><td colspan="4" style="height:8px;border:none;"></td></tr>'; return; }
+    const iTotal = row[0].includes('Utilidad');
+    html += `<tr${iTotal ? ' class="total-row"' : ''}><td>${row[0]}</td>`;
+    for (let i = 1; i <= 3; i++) {
+      const val = row[i];
+      let cls = 'num';
+      if (typeof val === 'string' && val.startsWith('-')) cls += ' negative';
+      else if (typeof val === 'string' && val.startsWith('$')) cls += ' positive';
+      html += `<td class="${cls}">${val}</td>`;
+    }
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('annual-table').innerHTML = html;
+}
+
+function renderAssumptions() {
+  const s = scenarios[currentScenario];
+  const items = [
+    ['Escenario', s.name],
+    ['Clubs iniciales (Colombia)', '16 (en prueba)'],
+    ['Clubs iniciales (USA)', '0'],
+    ['ARPC Colombia', fmt(s.arpcCol) + '/mes'],
+    ['ARPC USA', fmt(s.arpcUsa) + '/mes'],
+    ['Churn mensual', (s.churnRate * 100) + '%'],
+    ['Infra base', fmt(s.infraBase) + '/mes'],
+    ['Primera contratación', 'Mes ' + s.hireMonth],
+    ['Payment processing', '3.5% del revenue (Stripe USA 2.9% + cross-border CO 4.4%)'],
+    ['TRM (COP/USD)', '$' + COP_RATE.toLocaleString()],
+    ['Inversión externa', '$0 (bootstrapped)'],
+    ['Pricing Colombia', '$129K COP/mes IVA incluido (Pro) — base real $108K COP (~$26 USD)'],
+    ['Pricing USA', '$99 / $199 / $349 USD/mes (sales tax aparte, no afecta revenue)'],
+    ['IVA Colombia', '19% incluido en precio — revenue real = precio ÷ 1.19'],
+    ['Founder salaries', '$4.5K→$6K→$7.5K/mes (escalonado con revenue)'],
+    ['Tools (Claude Code)', '$100/mes Widdo + $100/mes personal'],
+    ['Infra real', 'DO $27 + Resend $20 = $47/mes'],
+  ];
+
+  document.getElementById('assumptions-grid').innerHTML = items.map(([label, value]) =>
+    `<div class="assumption-item"><span class="assumption-label">${label}</span><span class="assumption-value">${value}</span></div>`
+  ).join('');
+}
+
+function renderSensitivity() {
+  const baseData = calculateModel('base');
+  const last = baseData[baseData.length - 1];
+
+  // Calculate variations
+  const variations = [
+    { label: 'Base (actual, IVA incl)', arpc: 26, churn: 2, cac: 0, clubs3y: last.totalClubs, mrr3y: last.totalRevenue, margin: last.grossMargin },
+  ];
+
+  // ARPC variations
+  const arpcVars = [18, 23, 35, 50];
+  arpcVars.forEach(arpc => {
+    const s = {...scenarios.base, arpcCol: arpc, arpcUsa: arpc + 20};
+    const tempScenarios = {...scenarios, temp: s};
+    // Simplified calculation
+    const estRevenue = last.totalClubs * arpc;
+    const estCosts = last.totalCosts;
+    variations.push({
+      label: `ARPC = $${arpc}`,
+      arpc, churn: 2, clubs3y: last.totalClubs, mrr3y: estRevenue, margin: Math.round((estRevenue - last.costs.infra - estRevenue*0.03) / estRevenue * 100)
+    });
+  });
+
+  let html = '<table><thead><tr><th>Escenario</th><th class="num">ARPC</th><th class="num">Churn</th><th class="num">Clubs Mes 34</th><th class="num">MRR Mes 34</th><th class="num">Margen</th><th>Estado</th></tr></thead><tbody>';
+
+  variations.forEach((v, i) => {
+    const cls = i === 0 ? ' style="background:var(--surface2)"' : '';
+    const status = v.mrr3y > 100000 ? '<span class="tag tag-green">Saludable</span>' :
+                   v.mrr3y > 30000 ? '<span class="tag tag-yellow">Viable</span>' :
+                   '<span class="tag tag-red">Riesgo</span>';
+    html += `<tr${cls}><td>${v.label}</td><td class="num">${fmt(v.arpc)}</td><td class="num">${v.churn}%</td><td class="num">${v.clubs3y}</td><td class="num positive">${fmtShort(v.mrr3y)}</td><td class="num">${v.margin}%</td><td>${status}</td></tr>`;
+  });
+
+  // Churn variations
+  [0, 1, 3, 5].forEach(churn => {
+    const estClubs = Math.round(last.totalClubs * Math.pow(1 - churn/100, 34) / Math.pow(1 - 0.02, 34) * last.totalClubs) || last.totalClubs;
+    // Simplified: more churn = fewer clubs
+    const factor = Math.pow((100 - churn) / 98, 34);
+    const adjClubs = Math.round(last.totalClubs * Math.max(0.3, Math.min(1.5, factor)));
+    const estRevenue = adjClubs * 31;
+    html += `<tr><td>Churn = ${churn}%</td><td class="num">$31</td><td class="num">${churn}%</td><td class="num">${adjClubs}</td><td class="num positive">${fmtShort(estRevenue)}</td><td class="num">90%+</td><td>${estRevenue > 100000 ? '<span class="tag tag-green">Saludable</span>' : estRevenue > 30000 ? '<span class="tag tag-yellow">Viable</span>' : '<span class="tag tag-red">Riesgo</span>'}</td></tr>`;
+  });
+
+  html += '</tbody></table>';
+  document.getElementById('sensitivity-table').innerHTML = html;
+}
+
+// ============================================================
+// CONTROLS
+// ============================================================
+function setScenario(s) {
+  currentScenario = s;
+  document.querySelectorAll('.scenario-btn').forEach(b => b.classList.toggle('active', b.dataset.scenario === s));
+  renderAll();
+}
+
+function setCurrency(c) {
+  currentCurrency = c;
+  document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === c));
+  renderAll();
+}
+
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function renderAll() {
+  const data = calculateModel(currentScenario);
+  renderKPIs(data);
+  renderCharts(data);
+  renderPLTable(data);
+  renderCashFlowTable(data);
+  renderClubsTable(data);
+  renderCostsTable(data);
+  renderAnnualTable(data);
+  renderAssumptions();
+  renderSensitivity();
+}
+
+// Init
+renderAll();
+</script>
+</body>
+</html>

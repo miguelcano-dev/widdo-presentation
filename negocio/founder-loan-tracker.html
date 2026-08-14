@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo — Founder Loan Tracker</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0A0A0F; --card: #12121A; --border: #1F1F2B; --green: #00C853;
+    --green-dim: #00C85320; --text: #E8E8ED; --text-dim: #8B8B95; --text-muted: #5A5A66;
+    --warning: #FFB800; --danger: #FF4757; --blue: #5B8DEF;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 14px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 32px 120px; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 32px; margin-bottom: 40px; }
+  .badge { display: inline-block; padding: 4px 10px; background: var(--green-dim); border: 1px solid var(--green); border-radius: 4px; color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+  .subtitle { font-size: 15px; color: var(--text-dim); }
+
+  /* METRICS BAR */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+  .metric { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
+  .metric-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; }
+  .metric-value { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; color: var(--green); }
+  .metric-sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+  /* SECTIONS */
+  h2 { font-size: 18px; font-weight: 700; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--green); }
+  h3 { font-size: 15px; font-weight: 600; margin: 24px 0 12px; }
+  p { color: var(--text-dim); margin-bottom: 12px; }
+  strong { color: var(--text); }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  th { background: var(--border); padding: 10px 14px; text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-weight: 600; }
+  td { padding: 12px 14px; border-top: 1px solid var(--border); font-size: 13px; }
+  tr:hover td { background: rgba(0,200,83,0.03); }
+  .amount { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--green); text-align: right; }
+  .date-col { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); }
+  .category { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .cat-infra { background: rgba(91,141,239,0.15); color: var(--blue); }
+  .cat-ai { background: rgba(168,85,247,0.15); color: #A855F7; }
+  .cat-email { background: rgba(255,184,0,0.15); color: var(--warning); }
+  .cat-legal { background: rgba(255,71,87,0.15); color: var(--danger); }
+  .cat-domain { background: rgba(0,200,83,0.15); color: var(--green); }
+  .cat-misc { background: var(--border); color: var(--text-dim); }
+  .total-row td { background: var(--border); font-weight: 700; font-size: 14px; }
+  .total-row .amount { color: #fff; font-size: 16px; }
+
+  /* PROCESS */
+  .process { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
+  .step { display: flex; gap: 16px; margin: 16px 0; padding: 16px; border-radius: 8px; background: rgba(0,200,83,0.03); border: 1px solid var(--border); }
+  .step-num { flex-shrink: 0; width: 32px; height: 32px; background: var(--green-dim); border: 1px solid var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--green); font-size: 13px; }
+  .step-body { flex: 1; }
+  .step-title { font-weight: 600; margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: var(--text-dim); }
+
+  pre { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; margin: 12px 0; color: var(--text); }
+  code { font-family: 'JetBrains Mono', monospace; background: var(--card); border: 1px solid var(--border); padding: 1px 6px; border-radius: 3px; font-size: 12px; color: var(--green); }
+
+  .alert { padding: 14px 18px; border-radius: 8px; margin: 16px 0; border-left: 3px solid; display: flex; gap: 10px; }
+  .alert-icon { font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .alert-success { background: rgba(0,200,83,0.08); border-color: var(--green); }
+  .alert-success .alert-icon { color: var(--green); }
+  .alert-warning { background: rgba(255,184,0,0.08); border-color: var(--warning); }
+  .alert-warning .alert-icon { color: var(--warning); }
+  .alert-danger { background: rgba(255,71,87,0.08); border-color: var(--danger); }
+  .alert-danger .alert-icon { color: var(--danger); }
+
+  .footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px; }
+
+  @media (max-width: 768px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 24px 16px 80px; }
+    h1 { font-size: 24px; }
+  }
+  @media print {
+    body { background: #fff; color: #111; }
+    .container { padding: 20px; }
+    .metric { border: 1px solid #ddd; }
+    .metric-value { color: #006622; }
+    h2 { color: #006622; }
+    td, p { color: #333; }
+    .alert { border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="header">
+  <span class="badge">Widdo Inc · Contabilidad Interna</span>
+  <h1>Founder Loan Tracker</h1>
+  <p class="subtitle">Registro de gastos pagados por Miguel Angel Cano a nombre de Widdo Inc (C Corp) y Widdo SAS. Estos gastos constituyen un préstamo del fundador (Founder Loan) que la empresa debe repagar.</p>
+</header>
+
+<!-- METRICS -->
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-label">Total Founder Loan</div>
+    <div class="metric-value" id="totalLoan">$0.00</div>
+    <div class="metric-sub">Adeudado a Miguel</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Gastos Recurrentes</div>
+    <div class="metric-value" id="monthlyRecurring">$0.00</div>
+    <div class="metric-sub">USD / mes</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Pagos Realizados</div>
+    <div class="metric-value" id="totalRepaid">$0.00</div>
+    <div class="metric-sub">Repagado por C Corp</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Balance Pendiente</div>
+    <div class="metric-value" id="balance">$0.00</div>
+    <div class="metric-sub">Por repagar</div>
+  </div>
+</div>
+
+<!-- GASTOS HISTORICOS -->
+<h2>1. Gastos Históricos (One-Time, Pre-Incorporación)</h2>
+<p>Gastos que Miguel pagó antes de que la C Corp existiera. Son parte del capital intelectual y operativo que aportó.</p>
+
+<table id="historical-table">
+  <thead>
+    <tr><th>Fecha</th><th>Concepto</th><th>Categoría</th><th>Beneficiario</th><th>Comprobante</th><th style="text-align:right">Monto USD</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="date-col">2025-08 a 2025-12</td>
+      <td>Claude/Anthropic (50% de $700.34 facturado ago–dic 2025)</td>
+      <td><span class="category cat-ai">AI/Dev</span></td>
+      <td>C Corp</td>
+      <td>Billing screenshots verificados</td>
+      <td class="amount">$350.17</td>
+    </tr>
+    <tr>
+      <td class="date-col">2025-07 a 2025-12</td>
+      <td>DigitalOcean (Droplet+MySQL+Spaces, 100% Widdo)</td>
+      <td><span class="category cat-infra">Infra</span></td>
+      <td>C Corp</td>
+      <td>DO invoices, cuenta weddoapp@gmail.com, MC *5072 — ago 2025 estimado</td>
+      <td class="amount">$112.30</td>
+    </tr>
+    <tr>
+      <td class="date-col">2025-07 a 2025-12</td>
+      <td>Internet 50% Widdo (celular 49K + hogar 139K COP × 6 meses) <strong style="color:#E5484D">⚠ sin comprobante</strong></td>
+      <td><span class="category cat-misc">Operativo</span></td>
+      <td>SAS</td>
+      <td>Recibos ISP — NO existen; servicio a nombre de la esposa</td>
+      <td class="amount">$134.25</td>
+    </tr>
+    <tr>
+      <td class="date-col">2025-07-12</td>
+      <td>Dominio widdo.co (Namecheap, registro anual)</td>
+      <td><span class="category cat-domain">Dominio</span></td>
+      <td>C Corp</td>
+      <td>Namecheap receipt verificado</td>
+      <td class="amount">$2.98</td>
+    </tr>
+    <tr>
+      <td class="date-col">2025-08 a 2025-12</td>
+      <td>ChatGPT Plus (30% Widdo × 5 meses)</td>
+      <td><span class="category cat-ai">AI/Dev</span></td>
+      <td>C Corp</td>
+      <td>Estimado — pendiente verificar historial</td>
+      <td class="amount">$30.00</td>
+    </tr>
+    <tr>
+      <td class="date-col">2025-07 a 2025-12</td>
+      <td>MacBook Pro M3 depreciación (60% Widdo × 6 meses × $33.32/mes)</td>
+      <td><span class="category cat-misc">Equipo</span></td>
+      <td>C Corp</td>
+      <td>Compra Nov 2023 $1,999, depreciación 5 años</td>
+      <td class="amount">$119.95</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td colspan="5"><strong>Subtotal Histórico (Jul 2025 — Dic 2025)</strong></td>
+      <td class="amount">$749.65</td>
+    </tr>
+  </tfoot>
+</table>
+
+<div style="background:#1A1A24;border-left:3px solid #00C853;padding:16px 20px;margin:20px 0;border-radius:6px;font-size:14px;line-height:1.6">
+  <strong style="color:#00C853">Corte en 31-dic-2025 (actualizado 3 ago 2026).</strong>
+  Esta sección llegaba hasta feb 2026 y contaba dos veces los gastos de enero y febrero, que
+  ya están en la <strong>Promissory Note</strong> (Schedule A, 21 líneas, USD $1,476.46).
+  Se recortó a jul–dic 2025 y se eliminaron las filas de Resend feb ($20), Apple ($99) y
+  Google Play ($25), que pertenecen al pagaré. Claude se recalculó sobre el <strong>facturado
+  real</strong> ($1,100.34 en la era Widdo, menos $400 de ene-feb 2026 que ya están en el pagaré
+  = $700.34 × 50%), en vez del estimado redondo de "$100/mes".<br><br>
+  <strong>El prorrateo por uso compartido aplica solo hasta el 31-dic-2025.</strong> Desde el
+  1-ene-2026 la dedicación es full-time y todo se cobra al 100%: por eso Claude figura aquí al
+  50% y en el pagaré al 100%. No es una contradicción, son dos periodos distintos.<br><br>
+  <span style="color:#E5484D">⚠ Internet:</span> sigue listado por coherencia histórica, pero
+  no tiene comprobante y el servicio está a nombre de la esposa. Por el mismo criterio con que
+  Miguel lo excluyó del pagaré el 21-jul-2026, debería salir también de aquí — decisión
+  pendiente. Sin él, el subtotal es <strong>$615.40</strong>.
+</div>
+
+<!-- GASTOS RECURRENTES -->
+<h2>2. Gastos Recurrentes Mensuales</h2>
+<p>Servicios que operan Widdo hoy. <small style="color:var(--text-muted)">(Tabla de referencia
+— desde ago 2026 los paga la empresa vía Mercury, ya no salen del bolsillo de Miguel.)</small></p>
+
+<table id="recurring-table">
+  <thead>
+    <tr><th>Servicio</th><th>Categoría</th><th>Paga</th><th>Proveedor</th><th>Desde</th><th style="text-align:right">USD/mes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Anthropic — API por consumo</strong><br><small style="color:var(--text-muted)">Desde jul-2026 ya no es plan fijo: se paga por uso. Jul-2026 = $173.46 (tres cargos: $133.46 + $20 + $20). Histórico: plan Max $200/mes hasta abril, $100 desde 30-may. <strong>Variable — el importe de abajo es solo referencia</strong></small></td>
+      <td><span class="category cat-ai">AI/Dev</span></td>
+      <td>Mercury</td>
+      <td>Anthropic</td>
+      <td class="date-col">2026-07</td>
+      <td class="amount">$173.46</td>
+    </tr>
+    <tr>
+      <td><strong>DigitalOcean</strong> (Droplet + MySQL + Spaces)<br><small style="color:var(--text-muted)">Varía por uso: $27–$35. Últimos 5 ciclos: $34.15</small></td>
+      <td><span class="category cat-infra">Infra</span></td>
+      <td>Mercury <small style="color:var(--text-muted)">(desde 3-ago-2026)</small></td>
+      <td>DigitalOcean</td>
+      <td class="date-col">2025-07</td>
+      <td class="amount">$34.15</td>
+    </tr>
+    <tr>
+      <td><strong>Resend Pro</strong> (emails transaccionales)</td>
+      <td><span class="category cat-email">Email</span></td>
+      <td>Mercury <small style="color:var(--text-muted)">(desde 3-ago-2026)</small></td>
+      <td>Resend</td>
+      <td class="date-col">2026-02</td>
+      <td class="amount">$20.00</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td colspan="5"><strong>Total Mensual Recurrente (desde ago 2026, con Anthropic de julio como referencia)</strong></td>
+      <td class="amount">$227.61</td>
+    </tr>
+  </tfoot>
+</table>
+
+<div style="background:#1A1A24;border-left:3px solid #00C853;padding:16px 20px;margin:20px 0;border-radius:6px;font-size:14px;line-height:1.6">
+  <strong style="color:#00C853">Corregido 3 ago 2026.</strong> Antes decía DigitalOcean $47/mes
+  fijo (nunca fue $47: real $27–$35 según uso) e Internet $22/mes, que Miguel decidió no cobrar
+  el 21-jul-2026. Anthropic dejó de ser plan fijo: desde jul-2026 se paga <strong>API por consumo</strong>, así que el burn ya no es un número estable. Base fija: DigitalOcean $34.15 + Resend $20 = <strong>$54.15/mes</strong>; encima va el consumo de Anthropic ($173.46 en julio). Antes esta tabla decía $189/mes con DigitalOcean a $47 fijo e Internet a $22 — ambos incorrectos.
+  Anuales aparte: Apple Developer $99/año (renueva feb-2027) y dominio widdo.co (Namecheap
+  $45.48, pagado por Mercury el 15-jul-2026).
+</div>
+
+<h2>3. Gastos 2026 — cubiertos por la Promissory Note</h2>
+<p>Desde el 1-ene-2026 la dedicación es full-time y <strong>todo se cobra al 100%</strong>, sin
+prorrateo. El detalle factura por factura vive en la <strong>Promissory Note</strong>
+(<code>negocio/legales/para-firmar/promissory-note.html</code>, Schedule A) para que no haya
+dos listas que se puedan desincronizar. Los comprobantes están en
+<code>negocio/recibos/2026-MM/</code>.</p>
+
+<table id="monthly-table">
+  <thead>
+    <tr><th>Periodo</th><th>Concepto</th><th>Categoría</th><th>Beneficiario</th><th>Comprobante</th><th style="text-align:right">Monto USD</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="date-col">2026-01 a 2026-07</td>
+      <td>Promissory Note — Schedule A (21 líneas: Anthropic $1,000.00 · DigitalOcean $232.46 · Resend $120.00 · Apple $99.00 · Google Play $25.00)</td>
+      <td><span class="category cat-ai">Varios</span></td>
+      <td>C Corp</td>
+      <td>21/21 con factura en <code>recibos/</code></td>
+      <td class="amount">$1,476.46</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td colspan="5"><strong>Total Promissory Note (1-ene-2026 — 31-jul-2026)</strong></td>
+      <td class="amount">$1,476.46</td>
+    </tr>
+  </tfoot>
+</table>
+
+<div style="background:#1A1A24;border-left:3px solid #00C853;padding:16px 20px;margin:20px 0;border-radius:6px;font-size:14px;line-height:1.6">
+  <strong style="color:#00C853">Por qué esta sección ya no lista mes a mes (3 ago 2026).</strong>
+  Tenía cifras propias que no cuadraban con las facturas reales: DigitalOcean a $47/mes fijo
+  (real: $27–$35, varía por uso) e Internet a $22/mes, que Miguel decidió no cobrar el
+  21-jul-2026. Mantener dos listas con números distintos del mismo gasto es justo lo que hace
+  que un CPA desconfíe de ambas. Manda el Schedule A.<br><br>
+  <strong>Cierre del préstamo:</strong> desde agosto 2026 todos los servicios cobran a la
+  tarjeta de Mercury (Anthropic y Namecheap desde julio; Resend y DigitalOcean desde el
+  3-ago). No se acumula deuda nueva. Si en un extracto reaparece <code>MC *5072</code> o
+  <code>BBVA *0968</code>, el préstamo se reabrió y hay que registrarlo aquí.
+</div>
+
+<!-- REPAGOS -->
+<h2>4. Repagos (C Corp → Miguel)</h2>
+<p>Cuando la C Corp repague parte o todo el Founder Loan, registrarlo aquí.</p>
+
+<table id="repaid-table">
+  <thead>
+    <tr><th>Fecha</th><th>Concepto</th><th>Método</th><th>Referencia</th><th style="text-align:right">Monto USD</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="date-col">2026-08-03</td>
+      <td>Repayment of Founder Loan — Promissory Note (ene–jul 2026, Schedule A, 21 líneas)</td>
+      <td>Transferencia Mercury → cuenta personal Miguel</td>
+      <td><span style="color:var(--warning)">⏳ pegar ID de transacción de Mercury</span></td>
+      <td class="amount">$1,476.46</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td colspan="4"><strong>Total Repagado</strong></td>
+      <td class="amount">$1,476.46</td>
+    </tr>
+  </tfoot>
+</table>
+
+<div style="background:#1A1A24;border-left:3px solid #00C853;padding:16px 20px;margin:20px 0;border-radius:6px;font-size:14px;line-height:1.6">
+  <strong style="color:#00C853">Founder Loan pagado — 3 ago 2026.</strong>
+  El pagaré queda saldado en su totalidad. Balance pendiente: <strong>$0.00</strong>.
+  El aporte pre-incorporación de $749.65 (jul–dic 2025) <em>no</em> se reembolsa: es aporte de
+  capital, no deuda.<br><br>
+  <strong>Cierre pendiente:</strong> pegar arriba el ID de la transferencia de Mercury,
+  marcar el pagaré <em>"PAID IN FULL"</em> y archivar pagaré + acta en
+  <code>negocio/legales/firmados/founder-loan/</code>.<br><br>
+  <strong>Contabilidad:</strong> este pago <strong>no es gasto</strong>. El gasto ocurrió
+  cuando Miguel pagó cada factura (ene–jul). La devolución solo baja efectivo y cancela el
+  pasivo <em>Due to Shareholder</em>, ambos en balance. Registrarlo como gasto sería deducir
+  dos veces lo mismo. Para el CPA: préstamo de accionista extranjero y su devolución son
+  transacción reportable en el <strong>Form 5472</strong> (multa $25.000 por no presentarlo).
+</div>
+
+<!-- PROCESO DE COBRO -->
+<h2>5. Cómo le cobra Miguel a la C Corp</h2>
+
+<div class="process">
+  <h3>Paso a paso para cobrar el Founder Loan</h3>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <div class="step-title">Mantener este registro actualizado</div>
+      <div class="step-desc">Cada mes agrega los gastos que pagaste. Guarda los recibos (screenshots de Stripe, emails de DigitalOcean, facturas de Resend, etc.) en una carpeta <code>Widdo/negocio/recibos/YYYY-MM/</code></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <div class="step-title">Crear una Promissory Note (opcional pero recomendado)</div>
+      <div class="step-desc">Un documento simple que dice: "Widdo Inc le debe a Miguel Angel Cano la suma de $X USD por gastos operativos adelantados. Sin intereses. Pagadero cuando la empresa tenga fondos disponibles." Firmado por ti como CEO de la C Corp. Esto formaliza el préstamo para el CPA.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <div class="step-title">Cuando la C Corp tenga fondos: hacer el repago</div>
+      <div class="step-desc">Opciones para repagar:</div>
+      <pre>Opción A: Wire desde Mercury → cuenta personal Miguel (USD)
+   Mercury → Add recipient → Miguel's bank account
+   Concepto: "Founder Loan Repayment — [monto] — [período]"
+   Sin impuestos (es repago de préstamo, no ingreso)
+
+Opción B: Transferencia parcial (ir pagando mes a mes)
+   Cada mes que la C Corp tenga surplus, repagar una parte
+   Registrar cada pago en la sección 4 de este documento
+
+Opción C: Offset contra salario (cuando se active nómina)
+   Cuando Miguel empiece a recibir salario ($3K-$5K/mes),
+   la C Corp puede agregar un bono de "loan repayment" por
+   encima del salario hasta saldar la deuda</pre>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <div class="step-title">Entregar al CPA USA para contabilidad</div>
+      <div class="step-desc">Cuando contrates CPA (antes de diciembre 2026), entregarle:
+        <ul style="margin-top: 8px;">
+          <li>Este documento (Founder Loan Tracker)</li>
+          <li>Carpeta de recibos por mes</li>
+          <li>Promissory Note si la creaste</li>
+        </ul>
+        El CPA lo registra como <strong>"Due to Shareholder"</strong> (pasivo en el balance sheet de la C Corp). Reduce el taxable income de la C Corp porque son gastos operativos legítimos.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGLAS -->
+<h2>6. Reglas Importantes</h2>
+
+<div class="alert alert-success">
+  <span class="alert-icon">✓</span>
+  <div>
+    <strong>SÍ registrar:</strong> Claude Code, servidores, dominio, email service, internet (% Widdo), herramientas de desarrollo, hosting, bases de datos, APIs, SSL certificates, cualquier servicio que sea 100% para operar Widdo.
+  </div>
+</div>
+
+<div class="alert alert-danger">
+  <span class="alert-icon">✗</span>
+  <div>
+    <strong>NO registrar:</strong> Comida personal, ropa, transporte personal, Netflix, Spotify, viajes no relacionados con Widdo, gastos de la casa que no son internet, celular (a menos que sea exclusivo para Widdo). Registrar gastos personales como empresariales es fraude fiscal.
+  </div>
+</div>
+
+<div class="alert alert-warning">
+  <span class="alert-icon">!</span>
+  <div>
+    <strong>Zona gris (parcial):</strong> Internet, teléfono, computador. Para estos, registra solo el <strong>porcentaje dedicado a Widdo</strong> (ej: internet 80%, celular 50%). El CPA te confirma qué % es razonable ante el IRS.
+  </div>
+</div>
+
+<!-- FLUJO VISUAL -->
+<h2>7. Flujo: De Dónde Sale y A Dónde Va el Dinero</h2>
+
+<div class="process">
+<pre style="font-size: 13px; line-height: 2;">
+HOY (sin revenue):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Miguel (bolsillo) ──→ paga Claude Code, DO, Resend, etc.
+                  ──→ registra como Founder Loan
+                  ──→ C Corp le debe ese dinero
+
+CUANDO LLEGUE INVERSIÓN O REVENUE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Inversión/Revenue ──→ Mercury (C Corp)
+Mercury ──→ repaga Founder Loan a Miguel (wire)
+Mercury ──→ paga directamente servicios (Claude, DO, etc.)
+         ──→ Miguel deja de pagar de su bolsillo
+
+CUANDO SE ACTIVE TRANSFER PRICING (SAS ↔ C Corp):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+C Corp ──→ paga a SAS (Cost + 15% margin)
+SAS ──→ paga salario Miguel (nómina colombiana)
+SAS ──→ paga gastos locales (internet, oficina, etc.)
+C Corp ──→ paga directamente servicios USD (Claude, DO, etc.)
+         ──→ Ya no hay Founder Loan, todo fluye por la empresa
+</pre>
+</div>
+
+<!-- TEMPLATE PROMISSORY NOTE -->
+<h2>8. Template: Promissory Note</h2>
+<p>Copia esto a un Google Doc, llena los espacios, firma como CEO, y guárdalo con los documentos legales.</p>
+
+<div class="process" style="background: #0d0d14;">
+<pre style="background: transparent; border: none; font-size: 13px; line-height: 1.8; color: var(--text);">
+PROMISSORY NOTE
+
+Date: ________________
+
+Borrower: Widdo Inc, a Delaware C Corporation
+          EIN: [TU EIN]
+          420 E Church St, Apt 905, Orlando, FL 32801
+
+Lender:   Miguel Angel Cano Quinonez
+          Cra 22A #13-119 Torre 1 Apto 501
+          Fusagasuga, Cundinamarca, Colombia
+
+FOR VALUE RECEIVED, the Borrower promises to pay to the Lender the
+principal sum of ________________ United States Dollars (USD $________),
+representing operational expenses advanced by the Lender on behalf of
+the Borrower from ________ to ________ (the "Loan Period").
+
+INTEREST RATE: Zero percent (0%) per annum.
+
+REPAYMENT: The principal shall be repaid at such time as the Borrower
+has sufficient funds available, at the sole discretion of the Borrower's
+Board of Directors. There is no fixed maturity date.
+
+PURPOSE: The funds were used for legitimate business expenses of the
+Borrower, including but not limited to: cloud infrastructure, AI
+development tools, email services, domain registration, and other
+operational costs necessary for the Company's software platform.
+
+This Note may be prepaid in whole or in part at any time without penalty.
+
+IN WITNESS WHEREOF, the Borrower has executed this Promissory Note.
+
+
+______________________________     Date: ________________
+Miguel Angel Cano Quinonez
+CEO, Widdo Inc
+</pre>
+</div>
+
+<footer class="footer">
+  <p><strong>Widdo Inc</strong> — Founder Loan Tracker<br>
+  Creado: Abril 18, 2026 · Actualizado: Junio 16, 2026 | Actualizar mensualmente<br>
+  Entregar al CPA USA antes de diciembre 2026</p>
+</footer>
+
+</div>
+
+<script>
+// Auto-calculate totals from tables
+document.addEventListener('DOMContentLoaded', () => {
+  const sum = (selector) => {
+    let t = 0;
+    document.querySelectorAll(selector).forEach(cell => {
+      t += parseFloat(cell.textContent.replace('$','').replace(/,/g,'')) || 0;
+    });
+    return t;
+  };
+
+  // Founder Loan = gastos históricos (one-time) + registro mensual real.
+  // NO incluye la tabla de recurrentes (#recurring-table es solo referencia).
+  const totalLoan = sum('#historical-table tbody .amount') + sum('#monthly-table tbody .amount');
+
+  // Repagos realizados por la C Corp
+  const totalRepaid = sum('#repaid-table tbody .amount');
+
+  const monthlyRecurring = 227.61;
+  const balance = totalLoan - totalRepaid;
+
+  document.getElementById('totalLoan').textContent = '$' + totalLoan.toFixed(2);
+  document.getElementById('monthlyRecurring').textContent = '$' + monthlyRecurring.toFixed(2);
+  document.getElementById('totalRepaid').textContent = '$' + totalRepaid.toFixed(2);
+  document.getElementById('balance').textContent = '$' + balance.toFixed(2);
+});
+</script>
+</body>
+</html>

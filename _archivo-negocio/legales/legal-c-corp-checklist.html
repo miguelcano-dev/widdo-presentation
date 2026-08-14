@@ -1,0 +1,1066 @@
+<!-- ARCHIVADO 13-ago-2026 — checklist PRE-incorporacion; Widdo Inc ya existe (EIN 35-2952499, 83(b) fileados mar-2026) — sustituido por negocio/legales/index.html y negocio/legales/para-firmar/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Legal Checklist — C Corp — Widdo Inc</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#10B981',
+            'accent-dark': '#059669',
+            'accent-light': '#34D399',
+            dark: {
+              900: '#0f0f0f',
+              800: '#1a1a1a',
+              700: '#242424',
+              600: '#2e2e2e',
+              500: '#3a3a3a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f0f;
+      color: #e5e5e5;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10B981; }
+
+    .section-card {
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 12px;
+      transition: border-color 0.3s ease;
+    }
+    .section-card:hover { border-color: #3a3a3a; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-red { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-yellow { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+    .badge-blue { background: rgba(96, 165, 250, 0.15); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.3); }
+    .badge-purple { background: rgba(167, 139, 250, 0.15); color: #a78bfa; border: 1px solid rgba(167, 139, 250, 0.3); }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    table th {
+      background: #242424;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    table th:first-child { border-radius: 8px 0 0 0; }
+    table th:last-child { border-radius: 0 8px 0 0; }
+    table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #2e2e2e;
+      font-size: 0.875rem;
+      vertical-align: top;
+    }
+    table tr:last-child td { border-bottom: none; }
+    table tr:hover td { background: rgba(16, 185, 129, 0.03); }
+
+    .info-callout {
+      background: rgba(16, 185, 129, 0.06);
+      border-left: 3px solid #10B981;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .warning-callout {
+      background: rgba(251, 191, 36, 0.06);
+      border-left: 3px solid #fbbf24;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .danger-callout {
+      background: rgba(239, 68, 68, 0.06);
+      border-left: 3px solid #ef4444;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
+      border: 1px solid #2e2e2e;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .doc-card {
+      background: #242424;
+      border: 1px solid #2e2e2e;
+      border-radius: 10px;
+      padding: 16px;
+      transition: all 0.2s ease;
+    }
+    .doc-card:hover {
+      border-color: #3a3a3a;
+      transform: translateY(-1px);
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(46, 46, 46, 0.5);
+    }
+    .check-item:last-child { border-bottom: none; }
+
+    .check-item input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 2px solid #3a3a3a;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 2px;
+      transition: all 0.2s ease;
+    }
+    .check-item input[type="checkbox"]:checked {
+      background: #10B981;
+      border-color: #10B981;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+    }
+    .check-item input[type="checkbox"]:checked + div { opacity: 0.5; }
+
+    .number-circle {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: #2e2e2e;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10B981, #34D399);
+      border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3a3a3a;
+      font-size: 1.5rem;
+      padding: 4px 0;
+    }
+
+    .dual-class-bar {
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    @media print {
+      body { background: white; color: #111; }
+      .section-card, .doc-card, .stat-card { background: #f9f9f9; border-color: #ddd; }
+      table th { background: #eee; color: #333; }
+      table td { color: #333; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Header -->
+  <header class="border-b border-dark-600 bg-dark-800/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center">
+          <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold">Widdo Inc</h1>
+          <p class="text-xs text-gray-500">Legal Checklist — C Corp Delaware</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="badge badge-yellow">Confidencial</span>
+        <span class="text-xs text-gray-600">Marzo 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-8 space-y-8">
+
+    <!-- Intro -->
+    <div class="text-center space-y-3">
+      <h2 class="text-3xl font-extrabold">Documentos Legales para Crear la C Corp</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Todo lo que necesitamos tener listo como co-founders para incorporar Widdo Inc en Delaware via Stripe Atlas, y lo que debemos hacer despues.</p>
+      <div class="flex justify-center gap-4 pt-2">
+        <div class="stat-card text-center px-6">
+          <div class="text-2xl font-extrabold text-accent">$500</div>
+          <div class="text-xs text-gray-500 mt-1">Costo Atlas</div>
+        </div>
+        <div class="stat-card text-center px-6">
+          <div class="text-2xl font-extrabold text-accent">14</div>
+          <div class="text-xs text-gray-500 mt-1">Docs generados</div>
+        </div>
+        <div class="stat-card text-center px-6">
+          <div class="text-2xl font-extrabold text-accent">2-4 dias</div>
+          <div class="text-xs text-gray-500 mt-1">Incorporacion</div>
+        </div>
+        <div class="stat-card text-center px-6">
+          <div class="text-2xl font-extrabold text-accent">100%</div>
+          <div class="text-xs text-gray-500 mt-1">Online</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SECCION 1 ==================== -->
+    <section class="section-card p-6 space-y-5" id="antes">
+      <div class="flex items-center gap-3">
+        <div class="number-circle">1</div>
+        <h3 class="text-xl font-bold">Lo que necesitamos ANTES de aplicar</h3>
+        <span class="badge badge-red">Tener listo</span>
+      </div>
+
+      <p class="text-sm text-gray-400">Informacion personal de cada founder que Stripe Atlas pide en el formulario. No necesitamos documentos fisicos — todo es online.</p>
+
+      <!-- Info por founder -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="doc-card space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">👤</span>
+            <span class="font-semibold">Miguel Angel Cano</span>
+            <span class="badge badge-green text-[10px]">CEO / Founder</span>
+          </div>
+          <div class="space-y-2 text-sm">
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="m-1">
+              <div>Nombre legal completo (como aparece en pasaporte)</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="m-2">
+              <div>Email personal</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="m-3">
+              <div>Fecha de nacimiento</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="m-4">
+              <div><strong>Numero de pasaporte colombiano</strong> (en vez de SSN)</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="m-5">
+              <div>Direccion de casa en Colombia</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="m-6">
+              <div>Telefono Colombia</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">👤</span>
+            <span class="font-semibold">Co-founder USA</span>
+            <span class="badge badge-blue text-[10px]">Co-founder / BD</span>
+          </div>
+          <div class="space-y-2 text-sm">
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="c-1">
+              <div>Nombre legal completo (como aparece en ID)</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="c-2">
+              <div>Email personal</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="c-3">
+              <div><strong>SSN (Social Security Number)</strong></div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="c-4">
+              <div>Direccion de casa en Orlando, FL</div>
+            </div>
+            <div class="check-item" style="border:none; padding: 6px 0;">
+              <input type="checkbox" data-task="c-5">
+              <div>Telefono USA</div>
+            </div>
+          </div>
+          <div class="info-callout text-xs mt-2">
+            <strong>Importante:</strong> Si el co-founder envia el formulario de Atlas (porque tiene SSN + direccion USA + telefono USA), el EIN llega en <strong>1-2 dias</strong> en vez de 15-30 dias.
+          </div>
+        </div>
+      </div>
+
+      <!-- Decisiones -->
+      <h4 class="font-semibold text-gray-300 pt-2">Decisiones que debemos acordar ANTES</h4>
+      <div class="overflow-x-auto rounded-lg border border-dark-600">
+        <table>
+          <thead>
+            <tr>
+              <th>Decision</th>
+              <th>Nuestra respuesta</th>
+              <th>Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Nombre legal</td>
+              <td class="text-accent font-semibold">Widdo Inc</td>
+              <td class="text-gray-500 text-xs">Verificar disponibilidad en Delaware</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Tipo de entidad</td>
+              <td class="text-accent font-semibold">C Corporation (Delaware)</td>
+              <td class="text-gray-500 text-xs">Estandar para startups tech con inversion</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Descripcion</td>
+              <td>"Sports club management SaaS platform"</td>
+              <td class="text-gray-500 text-xs">Breve, en ingles</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Equity split</td>
+              <td class="text-accent font-semibold">70% Miguel / 30% Co-founder</td>
+              <td class="text-gray-500 text-xs">Atlas emite acciones al incorporar</td>
+            </tr>
+            <tr>
+              <td class="font-medium">CEO</td>
+              <td>Miguel Angel Cano</td>
+              <td class="text-gray-500 text-xs">Officer principal</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Secretary</td>
+              <td>Co-founder</td>
+              <td class="text-gray-500 text-xs">Firma documentos corporativos</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Board of Directors</td>
+              <td>Miguel + Co-founder</td>
+              <td class="text-gray-500 text-xs">Minimo 1, recomendado los 2</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Ano fiscal</td>
+              <td>Enero — Diciembre</td>
+              <td class="text-gray-500 text-xs">Calendario estandar</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Direccion empresa</td>
+              <td>Direccion del registered agent en Delaware</td>
+              <td class="text-gray-500 text-xs">Atlas asigna uno automaticamente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="warning-callout text-sm">
+        <strong>Tarjeta de credito/debito:</strong> Atlas cobra los $500 USD despues de recibir el EIN. Tener tarjeta lista (puede ser de cualquiera de los dos).
+      </div>
+    </section>
+
+    <!-- ==================== SECCION 2 ==================== -->
+    <section class="section-card p-6 space-y-5" id="atlas-genera">
+      <div class="flex items-center gap-3">
+        <div class="number-circle">2</div>
+        <h3 class="text-xl font-bold">14 documentos que Atlas genera por nosotros</h3>
+        <span class="badge badge-green">Automatico</span>
+      </div>
+
+      <p class="text-sm text-gray-400">Stripe Atlas usa plantillas legales creadas con <strong>Cooley LLP</strong> (uno de los mejores bufetes de Silicon Valley). Ambos firmamos por DocuSign. No necesitamos abogado para esto.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">01</span>
+            <span class="font-semibold text-sm">Certificate of Incorporation</span>
+          </div>
+          <p class="text-xs text-gray-500">El "acta de nacimiento" de la empresa ante el estado de Delaware. Lo necesitas para abrir banco, recibir inversion, todo.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">02</span>
+            <span class="font-semibold text-sm">Action by Sole Incorporator</span>
+          </div>
+          <p class="text-xs text-gray-500">Nombra la primera junta directiva (board of directors).</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">03</span>
+            <span class="font-semibold text-sm">Bylaws</span>
+          </div>
+          <p class="text-xs text-gray-500">Las "reglas del juego" de la empresa: como funciona el board, como se aprueban acciones, como se hacen reuniones.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">04</span>
+            <span class="font-semibold text-sm">Certificate of Secretary</span>
+          </div>
+          <p class="text-xs text-gray-500">Certifica que los bylaws fueron adoptados formalmente. Requisito corporativo estandar.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">05</span>
+            <span class="font-semibold text-sm">Initial Board Action</span>
+          </div>
+          <p class="text-xs text-gray-500">Primera "reunion" del board: aprueba emision de acciones, elige officers (CEO, Secretary), fija ano fiscal.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">06</span>
+            <span class="font-semibold text-sm">Indemnification Agreement</span>
+          </div>
+          <p class="text-xs text-gray-500">Protege a los officers y directores si la empresa es demandada. Estandar en toda C Corp.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">07</span>
+            <span class="font-semibold text-sm">Stockholder Consent</span>
+          </div>
+          <p class="text-xs text-gray-500">Los accionistas (nosotros) aprobamos formalmente la proteccion del punto 6.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">08</span>
+            <span class="font-semibold text-sm">Form SS-4 (EIN)</span>
+          </div>
+          <p class="text-xs text-gray-500">Solicitud del EIN (numero fiscal) ante el IRS. Es como el NIT/RUT de USA. Atlas lo envia automaticamente.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">09</span>
+            <span class="font-semibold text-sm">Form 8821</span>
+          </div>
+          <p class="text-xs text-gray-500">Autoriza a Atlas a llamar al IRS por nosotros para agilizar el EIN. Evita retrasos.</p>
+        </div>
+
+        <div class="doc-card border-accent/30">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">10</span>
+            <span class="font-semibold text-sm">Restricted Stock Purchase Agreement</span>
+            <span class="badge badge-green text-[9px]">Clave</span>
+          </div>
+          <p class="text-xs text-gray-500">Define los terminos de nuestras acciones: vesting de 4 anos, cliff de 1 ano, precio $0.00001/accion. Cada founder aporta su IP a cambio de las acciones.</p>
+        </div>
+
+        <div class="doc-card border-accent/30">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">11</span>
+            <span class="font-semibold text-sm">Common Stock Certificate</span>
+            <span class="badge badge-green text-[9px]">Clave</span>
+          </div>
+          <p class="text-xs text-gray-500">Certificado oficial que dice cuantas acciones tiene cada uno. Miguel: 7,000,000 acciones (70%). Co-founder: 3,000,000 acciones (30%).</p>
+        </div>
+
+        <div class="doc-card border-accent/30">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">12</span>
+            <span class="font-semibold text-sm">Section 83(b) Election</span>
+            <span class="badge badge-green text-[9px]">Clave</span>
+          </div>
+          <p class="text-xs text-gray-500">Formulario fiscal CRITICO. Dice al IRS: "pago impuestos sobre mis acciones HOY (cuando valen $0)" en vez de cuando vestan (cuando valen mas). <strong>Nos ahorra miles de dolares en impuestos.</strong> Atlas lo envia al IRS por nosotros.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">13</span>
+            <span class="font-semibold text-sm">Stock Assignment Separate</span>
+          </div>
+          <p class="text-xs text-gray-500">Permite a la empresa recomprar acciones no vesteadas si alguien se va antes de completar el vesting.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-accent font-mono text-xs font-bold">14</span>
+            <span class="font-semibold text-sm">IP Assignment Agreement</span>
+          </div>
+          <p class="text-xs text-gray-500">Todo IP (codigo, disenos, marca) creado antes y despues de incorporar pertenece a Widdo Inc. Ambos firmamos.</p>
+        </div>
+
+      </div>
+
+      <div class="info-callout text-sm">
+        <strong>Lo que Atlas configura automaticamente:</strong>
+        <ul class="list-disc ml-5 mt-2 space-y-1 text-gray-400">
+          <li>10,000,000 acciones autorizadas (estandar para startups)</li>
+          <li>Vesting de 4 anos con cliff de 1 ano</li>
+          <li>70% Miguel = 7,000,000 acciones / 30% Co-founder = 3,000,000 acciones</li>
+          <li>Registered agent en Delaware (primer ano incluido)</li>
+          <li>Cuenta bancaria Mercury abierta automaticamente</li>
+          <li>83(b) enviado al IRS automaticamente</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== SECCION 3 ==================== -->
+    <section class="section-card p-6 space-y-5" id="despues">
+      <div class="flex items-center gap-3">
+        <div class="number-circle">3</div>
+        <h3 class="text-xl font-bold">Lo que Atlas NO cubre</h3>
+        <span class="badge badge-yellow">Hacer con abogado</span>
+      </div>
+
+      <p class="text-sm text-gray-400">Atlas genera documentos estandar pero no incluye acuerdos personalizados entre founders. Esto lo hacemos con un abogado corporativo en Orlando (~$1,500-$3,000).</p>
+
+      <!-- Founders Agreement -->
+      <div class="doc-card border-l-2 border-l-accent space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">📄</span>
+          <span class="font-bold">Founders Agreement (Acuerdo de Co-founders)</span>
+          <span class="badge badge-red text-[9px]">Necesario</span>
+        </div>
+        <p class="text-sm text-gray-400">El documento mas importante entre nosotros. Define quien pone que, quien recibe que, quien decide que, que pasa si alguien se va.</p>
+
+        <div class="bg-dark-900 rounded-lg p-4 space-y-2">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Que incluye</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Roles:</strong> Miguel = CEO, producto, tech, operacion. Co-founder = BD USA, contactos, presencia</div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Equity:</strong> 70/30 con reverse vesting 4 anos, cliff 12 meses</div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Milestones del cliff:</strong> cumplir 2 de 4 para desbloquear (10 clubs, $3K MRR, celebrity deal, $50K levantados)</div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Non-compete:</strong> no trabajar con competidores durante vesting + 12 meses</div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Non-solicitation:</strong> no llevarse clientes ni contactos por 24 meses</div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Salida:</strong> si alguien se va, la empresa recompra acciones no vesteadas a valor nominal</div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Drag-along:</strong> si Miguel vende >50%, puede obligar al co-founder a vender</div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-accent mt-0.5">&#9679;</span>
+              <div><strong>Confidencialidad:</strong> perpetua, todo lo interno es privado</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="warning-callout text-xs">
+          <strong>Por que no usar un template generico:</strong> Nuestro caso tiene condiciones especificas (milestones del cliff, reverse vesting con recompra, operacion binacional CO + USA) que un template no cubre. El abogado adapta todo a nuestra situacion.
+        </div>
+      </div>
+
+      <!-- Dual-Class Shares -->
+      <div class="doc-card border-l-2 border-l-purple-500 space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🏛️</span>
+          <span class="font-bold">Dual-Class Shares (Acciones con doble voto)</span>
+          <span class="badge badge-purple text-[9px]">Recomendado</span>
+        </div>
+        <p class="text-sm text-gray-400">Garantiza que Miguel SIEMPRE mantenga control de voto, sin importar cuanto se diluya la propiedad con inversiones futuras.</p>
+
+        <div class="bg-dark-900 rounded-lg p-4 space-y-3">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Como funciona</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-3 rounded-lg" style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2);">
+              <div class="text-xs text-gray-400 mb-1">Clase A — Miguel</div>
+              <div class="text-2xl font-extrabold text-accent">10 votos</div>
+              <div class="text-xs text-gray-500">por accion</div>
+            </div>
+            <div class="text-center p-3 rounded-lg" style="background: rgba(96, 165, 250, 0.08); border: 1px solid rgba(96, 165, 250, 0.2);">
+              <div class="text-xs text-gray-400 mb-1">Clase B — Co-founder + Inversores</div>
+              <div class="text-2xl font-extrabold text-blue-400">1 voto</div>
+              <div class="text-xs text-gray-500">por accion</div>
+            </div>
+          </div>
+
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider pt-2">Ejemplo: Cap table post-inversion</p>
+
+          <div class="space-y-3">
+            <!-- Ejemplo 1 -->
+            <div>
+              <div class="text-xs text-gray-500 mb-1">Hoy — Miguel 70%, Co-founder 30%</div>
+              <div class="dual-class-bar">
+                <div style="width: 95.9%" class="bg-accent flex items-center justify-center text-[10px] font-bold text-dark-900">Miguel: 700 votos (95.9%)</div>
+                <div style="width: 4.1%" class="bg-blue-500 flex items-center justify-center text-[10px] font-bold text-dark-900"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-gray-500 mt-1">
+                <span>70% ownership x 10 votos = 700</span>
+                <span>30% x 1 = 30</span>
+              </div>
+            </div>
+
+            <!-- Ejemplo 2 -->
+            <div>
+              <div class="text-xs text-gray-500 mb-1">Post Pre-Seed — Miguel 61%, Co-founder 30%, Inversores 9%</div>
+              <div class="dual-class-bar">
+                <div style="width: 94%" class="bg-accent flex items-center justify-center text-[10px] font-bold text-dark-900">Miguel: 610 votos (94%)</div>
+                <div style="width: 6%" class="bg-blue-500 flex items-center justify-center text-[10px] font-bold text-dark-900"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-gray-500 mt-1">
+                <span>61% x 10 = 610 votos</span>
+                <span>30+9 = 39 votos</span>
+              </div>
+            </div>
+
+            <!-- Ejemplo 3 -->
+            <div>
+              <div class="text-xs text-gray-500 mb-1">Post Seed — Miguel 49%, Co-founder 24%, Inversores 27%</div>
+              <div class="dual-class-bar">
+                <div style="width: 90.6%" class="bg-accent flex items-center justify-center text-[10px] font-bold text-dark-900">Miguel: 490 votos (90.6%)</div>
+                <div style="width: 9.4%" class="bg-blue-500 flex items-center justify-center text-[10px] font-bold text-dark-900"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-gray-500 mt-1">
+                <span>49% x 10 = 490 votos</span>
+                <span>51% x 1 = 51 votos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-callout text-xs">
+          <strong>Empresas que usan dual-class shares:</strong> Google, Meta (Facebook), Snap, Airbnb, Shopify, Lyft. Es comun en tech y 100% legal en Delaware. Se configura en el Founders Agreement o en un Amended Certificate of Incorporation.
+        </div>
+      </div>
+
+      <!-- IP Assignment -->
+      <div class="doc-card border-l-2 border-l-yellow-500 space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">💡</span>
+          <span class="font-bold">IP Assignment — Codigo existente</span>
+          <span class="badge badge-yellow text-[9px]">Importante</span>
+        </div>
+        <p class="text-sm text-gray-400">Atlas incluye IP Assignment para IP <em>futuro</em>, pero el codigo que Miguel ya escribio (107 modelos, 80+ tablas, 1,364 horas) necesita un Assignment separado: "Todo el IP de Widdo creado hasta la fecha se asigna a Widdo Inc."</p>
+        <p class="text-xs text-gray-500">Puede ser un documento simple de 1 pagina o el abogado lo incluye en el Founders Agreement.</p>
+      </div>
+
+      <!-- Transfer Pricing -->
+      <div class="doc-card border-l-2 border-l-blue-500 space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🔄</span>
+          <span class="font-bold">Transfer Pricing Agreement — SAS Colombia ↔ C Corp USA</span>
+          <span class="badge badge-blue text-[9px]">Despues</span>
+        </div>
+        <p class="text-sm text-gray-400">Documento que dice: "C Corp paga a SAS Colombia $X/mes por servicios de desarrollo." Esto permite que la SAS reciba ingresos legalmente y la C Corp deduzca esos pagos de impuestos.</p>
+        <p class="text-xs text-gray-500">Hacerlo DESPUES de incorporar. Necesita asesor fiscal que entienda ambos paises.</p>
+      </div>
+
+      <!-- SAFE -->
+      <div class="doc-card border-l-2 border-l-green-500 space-y-3">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">💰</span>
+          <span class="font-bold">SAFE Template — Para recibir inversion</span>
+          <span class="badge badge-green text-[9px]">Gratis</span>
+        </div>
+        <p class="text-sm text-gray-400">Simple Agreement for Future Equity. Template estandar de Y Combinator, gratis en <strong>ycombinator.com/documents</strong>. Es el instrumento que usaremos para recibir inversion ($200K con cap de $2M).</p>
+        <p class="text-xs text-gray-500">No necesita abogado para el template estandar. El abogado solo revisa si queremos personalizarlo.</p>
+      </div>
+    </section>
+
+    <!-- ==================== SECCION 4 ==================== -->
+    <section class="section-card p-6 space-y-5" id="timeline">
+      <div class="flex items-center gap-3">
+        <div class="number-circle">4</div>
+        <h3 class="text-xl font-bold">Timeline — Orden de ejecucion</h3>
+      </div>
+
+      <!-- Fase 1 -->
+      <div class="space-y-4">
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold text-sm">A</div>
+            <div class="w-0.5 flex-1 bg-dark-600 mt-2"></div>
+          </div>
+          <div class="flex-1 pb-6">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold">Ahora — Desde Colombia (online)</span>
+              <span class="badge badge-green text-[9px]">~30 min</span>
+            </div>
+            <div class="space-y-1 text-sm text-gray-400">
+              <div class="check-item">
+                <input type="checkbox" data-task="t-1">
+                <div>Acordar equity 70/30 y roles entre co-founders</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-2">
+                <div>Reunir datos personales de ambos founders (ver seccion 1)</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-3">
+                <div>Aplicar en <a href="https://stripe.com/atlas" target="_blank" class="text-accent underline">stripe.com/atlas</a> — Co-founder envia el formulario (tiene SSN)</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-4">
+                <div>Ambos firman DocuSign (14 documentos)</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-5">
+                <div>Pagar $500 USD (tarjeta de credito/debito)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold text-sm">B</div>
+            <div class="w-0.5 flex-1 bg-dark-600 mt-2"></div>
+          </div>
+          <div class="flex-1 pb-6">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold">2-4 dias despues — Atlas trabaja</span>
+              <span class="badge badge-blue text-[9px]">Automatico</span>
+            </div>
+            <div class="space-y-1 text-sm text-gray-400">
+              <div class="check-item">
+                <input type="checkbox" data-task="t-6">
+                <div>Incorporacion en Delaware completada</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-7">
+                <div>EIN (numero fiscal) recibido — 1-2 dias con SSN</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-8">
+                <div>Cuenta Mercury abierta automaticamente</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-9">
+                <div>83(b) enviado al IRS</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-10">
+                <div>Activar Stripe Payments (para recibir pagos de clientes USA)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-sm">C</div>
+            <div class="w-0.5 flex-1 bg-dark-600 mt-2"></div>
+          </div>
+          <div class="flex-1 pb-6">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold">Viaje a Orlando — Con abogado</span>
+              <span class="badge badge-yellow text-[9px]">$1,500-$3,000</span>
+            </div>
+            <div class="space-y-1 text-sm text-gray-400">
+              <div class="check-item">
+                <input type="checkbox" data-task="t-11">
+                <div>Reunion con abogado corporativo en Orlando</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-12">
+                <div>Firmar Founders Agreement personalizado (non-compete, milestones, reverse vesting)</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-13">
+                <div>Configurar Dual-Class Shares (Clase A: 10 votos / Clase B: 1 voto)</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-14">
+                <div>IP Assignment del codigo existente a Widdo Inc</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-15">
+                <div>Abrir cuenta Chase en persona (segundo banco, credit history)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">D</div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold">Despues del viaje — Para inversion</span>
+              <span class="badge badge-blue text-[9px]">Cuando sea necesario</span>
+            </div>
+            <div class="space-y-1 text-sm text-gray-400">
+              <div class="check-item">
+                <input type="checkbox" data-task="t-16">
+                <div>Descargar SAFE template de <a href="https://www.ycombinator.com/documents" target="_blank" class="text-accent underline">ycombinator.com/documents</a></div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-17">
+                <div>Transfer Pricing Agreement SAS ↔ C Corp (con asesor fiscal)</div>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" data-task="t-18">
+                <div>Buscar CPA (contador USA) para Form 1120 y taxes anuales</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECCION 5 ==================== -->
+    <section class="section-card p-6 space-y-5" id="costos">
+      <div class="flex items-center gap-3">
+        <div class="number-circle">5</div>
+        <h3 class="text-xl font-bold">Resumen de costos</h3>
+      </div>
+
+      <div class="overflow-x-auto rounded-lg border border-dark-600">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th>Costo</th>
+              <th>Cuando</th>
+              <th>Quien paga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Stripe Atlas (incorporacion + registered agent Y1)</td>
+              <td class="text-accent font-semibold">$500</td>
+              <td>Ahora</td>
+              <td class="text-gray-500">Widdo</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Abogado corporativo Orlando (Founders Agreement + Dual-Class)</td>
+              <td class="text-accent font-semibold">$1,500 - $3,000</td>
+              <td>Viaje</td>
+              <td class="text-gray-500">Widdo</td>
+            </tr>
+            <tr class="border-t-2 border-dark-500">
+              <td class="font-bold">Total para arrancar</td>
+              <td class="text-accent font-bold">$2,000 - $3,500</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="font-semibold text-gray-300 pt-2">Costos anuales recurrentes (despues del primer ano)</h4>
+      <div class="overflow-x-auto rounded-lg border border-dark-600">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th>Costo/ano</th>
+              <th>Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Registered Agent Delaware</td>
+              <td>$100</td>
+              <td class="text-gray-500 text-xs">Ano 1 incluido en Atlas</td>
+            </tr>
+            <tr>
+              <td>Delaware Franchise Tax</td>
+              <td>$400 - $550</td>
+              <td class="text-gray-500 text-xs">Impuesto anual del estado, toda C Corp lo paga</td>
+            </tr>
+            <tr>
+              <td>Filing Fee anual Delaware</td>
+              <td>$50</td>
+              <td class="text-gray-500 text-xs">Reporte anual obligatorio</td>
+            </tr>
+            <tr>
+              <td>CPA (Certified Public Accountant)</td>
+              <td>$500 - $2,000</td>
+              <td class="text-gray-500 text-xs">Contador USA. Presenta Form 1120 federal + state taxes. <strong>Obligatorio</strong> — sin esto el IRS multa $200/mes</td>
+            </tr>
+            <tr class="border-t-2 border-dark-500">
+              <td class="font-bold">Total anual</td>
+              <td class="text-accent font-bold">$1,050 - $2,700</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== SECCION 6 ==================== -->
+    <section class="section-card p-6 space-y-5" id="estructura">
+      <div class="flex items-center gap-3">
+        <div class="number-circle">6</div>
+        <h3 class="text-xl font-bold">Estructura final</h3>
+      </div>
+
+      <div class="bg-dark-900 rounded-xl p-6 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- C Corp -->
+          <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 rounded-full px-4 py-1">
+              <span class="text-accent font-bold text-sm">Widdo Inc</span>
+            </div>
+            <div class="text-xs text-gray-500">C Corp — Delaware, USA</div>
+            <div class="bg-dark-700 rounded-lg p-4 text-left space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-400">Holding / IP</span><span class="text-accent">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Clientes USA</span><span class="text-accent">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Cobra via Stripe</span><span class="text-accent">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Banco Mercury + Chase</span><span class="text-accent">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Recibe inversion (SAFE)</span><span class="text-accent">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Paga a SAS por servicios</span><span class="text-accent">✓</span></div>
+            </div>
+            <div class="text-xs text-gray-500">Miguel 70% | Co-founder 30%</div>
+          </div>
+
+          <!-- SAS -->
+          <div class="text-center space-y-3">
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-1">
+              <span class="text-blue-400 font-bold text-sm">Widdo SAS</span>
+            </div>
+            <div class="text-xs text-gray-500">SAS — Colombia</div>
+            <div class="bg-dark-700 rounded-lg p-4 text-left space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-gray-400">Equipo de desarrollo</span><span class="text-blue-400">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Clientes Colombia</span><span class="text-blue-400">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Cobra via Wompi</span><span class="text-blue-400">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Banco Bancolombia</span><span class="text-blue-400">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">RST 1.8% impuestos</span><span class="text-blue-400">✓</span></div>
+              <div class="flex justify-between"><span class="text-gray-400">Recibe pagos de C Corp</span><span class="text-blue-400">✓</span></div>
+            </div>
+            <div class="text-xs text-gray-500">Miguel 100%</div>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <div class="inline-flex items-center gap-3 bg-dark-700 rounded-lg px-4 py-2 text-xs text-gray-400">
+            <span>C Corp</span>
+            <span class="text-accent">→ paga por "servicios de desarrollo" →</span>
+            <span>SAS</span>
+          </div>
+          <p class="text-[11px] text-gray-600 mt-2">Transfer pricing: deducible en USA, SAS recibe a tasa RST 1.8%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress -->
+    <section class="section-card p-6 space-y-3" id="progress">
+      <div class="flex items-center justify-between">
+        <h4 class="font-semibold text-gray-300">Progreso general</h4>
+        <span id="progress-text" class="text-sm text-accent font-mono">0 / 18</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 space-y-2">
+      <p class="text-xs text-gray-600">Documento privado — Widdo Inc — Marzo 2026</p>
+      <p class="text-xs text-gray-600">
+        <a href="guia-inversion-estructura.html" class="text-accent/60 hover:text-accent">Guia de Inversion</a>
+        <span class="text-gray-700 mx-2">|</span>
+        <a href="visa-usa.html" class="text-accent/60 hover:text-accent">Visa USA</a>
+      </p>
+    </footer>
+
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'widdo-legal-checklist';
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      } catch { return {}; }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function updateProgress() {
+      const checks = document.querySelectorAll('input[data-task]');
+      const total = checks.length;
+      const done = Array.from(checks).filter(c => c.checked).length;
+      document.getElementById('progress-text').textContent = `${done} / ${total}`;
+      document.getElementById('progress-fill').style.width = `${(done / total) * 100}%`;
+    }
+
+    function init() {
+      const state = loadState();
+      const checks = document.querySelectorAll('input[data-task]');
+
+      checks.forEach(check => {
+        const task = check.getAttribute('data-task');
+        if (state[task]) check.checked = true;
+
+        check.addEventListener('change', () => {
+          const s = loadState();
+          s[task] = check.checked;
+          saveState(s);
+          updateProgress();
+        });
+      });
+
+      updateProgress();
+    }
+
+    init();
+  </script>
+
+</body>
+</html>

@@ -1,5 +1,22 @@
 # Widdo Tournaments — Design Specification
 
+> ## ✅ MOTOR IMPLEMENTADO — el «Implementation status: 0%» de abajo es FALSO (13-ago-2026)
+>
+> Este documento se quedó congelado en su versión de diseño. El motor de torneos **está
+> construido y desplegado**: verificado el 13-ago hay ~66 archivos de torneos en
+> `saas_sport/app` (`PlaTournament`, `PlaTournamentBracket`, `PlaTournamentMatch`,
+> `PlaTournamentSeed`, `PlaTournamentGroup`, `PlaTournamentRegistration`, series,
+> standings, check-in, staff, premios, carpooling) y 42 archivos que tocan brackets, más
+> 6 specs E2E en `frontend/tests/e2e/tournaments/`.
+>
+> **El estado real vive en su spec gemelo:**
+> `saas_sport/docs/superpowers/specs/2026-05-21-tournament-engine-design.md`.
+> Usa este archivo solo para entender el *diseño*, nunca para saber qué falta.
+>
+> 🔴 Lo que sí bloquea la venta no es código: son las **claves live de Stripe** sin
+> configurar (Gate 0).
+
+
 > **Date:** 2026-05-19
 > **Status:** Approved
 > **Author:** Miguel Cano + Claude Code
@@ -493,7 +510,7 @@ Tournament organizers can require staff background checks as part of tournament 
 
 - **Public player profiles** — explicitly rejected. All player data stays behind authentication
 - **BNPL / financing** — removed from Widdo's business model
-- **Pathways / Academy** — no longer Widdo verticals
+- **Pathways / Academy** — Academy remains a future Widdo vertical in standby and is outside the current product and production scope
 - **Revenue from tournaments** — tournaments are free. Revenue comes from club SaaS subscriptions
 - **Exposure Events integration** — no partnership or data import from competitors
 - **Referee management** — referees are modeled as a scheduling constraint, not a full management module

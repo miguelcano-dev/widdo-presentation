@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo USA — Overview</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        w: { 50:'#ecfdf5', 100:'#d1fae5', 200:'#a7f3d0', 300:'#6ee7b7', 400:'#34d399', 500:'#10B981', 600:'#059669', 700:'#047857', 800:'#065f46', 900:'#064e3b' },
+        dark: { 50:'#f8fafc', 100:'#e2e8f0', 200:'#cbd5e1', 300:'#94a3b8', 400:'#64748b', 500:'#475569', 600:'#334155', 700:'#1e293b', 800:'#0f172a', 900:'#020617' }
+      },
+      fontFamily: {
+        display: ['Outfit', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace']
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { font-family: 'Outfit', sans-serif; }
+  body { background: #0a0e17; }
+  .noise { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .gradient-text { background: linear-gradient(135deg, #10B981 0%, #34d399 50%, #6ee7b7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .card { background: linear-gradient(145deg, rgba(30,41,59,0.6) 0%, rgba(15,23,42,0.8) 100%); border: 1px solid rgba(148,163,184,0.08); backdrop-filter: blur(20px); }
+  .card-glow { box-shadow: 0 0 40px rgba(16,185,129,0.04), inset 0 1px 0 rgba(255,255,255,0.03); }
+  .stat-card { background: linear-gradient(160deg, rgba(16,185,129,0.08) 0%, rgba(16,185,129,0.02) 100%); border: 1px solid rgba(16,185,129,0.15); }
+  .pill { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: #34d399; }
+  .pain-card { background: linear-gradient(145deg, rgba(239,68,68,0.06) 0%, rgba(15,23,42,0.8) 100%); border: 1px solid rgba(239,68,68,0.12); }
+  .solution-card { background: linear-gradient(145deg, rgba(16,185,129,0.06) 0%, rgba(15,23,42,0.8) 100%); border: 1px solid rgba(16,185,129,0.12); }
+  .table-row { border-bottom: 1px solid rgba(148,163,184,0.06); }
+  .table-row:hover { background: rgba(16,185,129,0.03); }
+  .nav-link { position: relative; }
+  .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #10B981; transition: width 0.3s ease; }
+  .nav-link:hover::after { width: 100%; }
+  .widdo-row { background: rgba(16,185,129,0.08) !important; border-left: 3px solid #10B981; }
+  .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .section-line { width: 60px; height: 3px; background: linear-gradient(90deg, #10B981, transparent); }
+  @media print { .noise, nav { display: none !important; } body { background: #0f172a !important; } }
+</style>
+</head>
+<body class="text-dark-200 antialiased">
+<div class="noise"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-[#0a0e17]/80 backdrop-blur-xl border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-7 h-7 rounded-lg bg-w-500 flex items-center justify-center">
+        <span class="text-white font-bold text-sm">W</span>
+      </div>
+      <span class="font-semibold text-white text-sm tracking-wide">WIDDO USA</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-xs text-dark-300 font-medium tracking-wide uppercase">
+      <a href="#mercado" class="nav-link hover:text-white transition-colors">Mercado</a>
+      <a href="#clientes" class="nav-link hover:text-white transition-colors">Clientes</a>
+      <a href="#dolor" class="nav-link hover:text-white transition-colors">Problema</a>
+      <a href="#solucion" class="nav-link hover:text-white transition-colors">Solución</a>
+      <a href="#diferenciadores" class="nav-link hover:text-white transition-colors">Ventaja</a>
+      <a href="#compliance" class="nav-link hover:text-white transition-colors">Compliance</a>
+      <a href="#pilotos" class="nav-link hover:text-white transition-colors">Pilotos</a>
+      <a href="#pricing" class="nav-link hover:text-white transition-colors">Pricing</a>
+      <a href="#pasos" class="nav-link hover:text-white transition-colors">Pasos</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+  <div class="absolute inset-0">
+    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-w-500/5 blur-[120px]"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-w-600/4 blur-[100px]"></div>
+  </div>
+  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+    <div class="fade-in">
+      <div class="pill inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-w-400 animate-pulse"></span>
+        FEBRERO 2026 — ORLANDO, FLORIDA
+      </div>
+    </div>
+    <h1 class="fade-in stagger-1 text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-6">
+      WIDDO<br><span class="gradient-text">USA</span>
+    </h1>
+    <p class="fade-in stagger-2 text-lg md:text-xl text-dark-300 font-light max-w-2xl mx-auto mb-12">
+      The All-in-One Sports Club Platform<br>
+      <span class="text-dark-400 text-base">Gestión de clubes · Torneos · Compliance · AI Assistant</span>
+    </p>
+    <div class="fade-in stagger-3 grid grid-cols-3 gap-4 md:gap-8 max-w-xl mx-auto">
+      <div class="stat-card rounded-2xl p-4 md:p-6">
+        <div class="text-2xl md:text-4xl font-black text-white">$54B</div>
+        <div class="text-xs text-dark-400 mt-1 font-mono">MERCADO/AÑO</div>
+      </div>
+      <div class="stat-card rounded-2xl p-4 md:p-6">
+        <div class="text-2xl md:text-4xl font-black text-white">55M</div>
+        <div class="text-xs text-dark-400 mt-1 font-mono">ATLETAS</div>
+      </div>
+      <div class="stat-card rounded-2xl p-4 md:p-6">
+        <div class="text-2xl md:text-4xl font-black text-white">73%</div>
+        <div class="text-xs text-dark-400 mt-1 font-mono">SIN SOFTWARE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCADO -->
+<section id="mercado" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Oportunidad de mercado</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">Un mercado de $54 billones que se consolida arriba y deja un hueco masivo en el mid-market.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="card card-glow rounded-2xl p-6">
+        <h3 class="text-sm font-mono text-w-400 uppercase tracking-wider mb-6">Números clave</h3>
+        <div class="space-y-4">
+          <div class="flex justify-between items-center table-row pb-3">
+            <span class="text-dark-300">Software gestión deportiva</span>
+            <span class="text-white font-semibold font-mono">$1.36B</span>
+          </div>
+          <div class="flex justify-between items-center table-row pb-3">
+            <span class="text-dark-300">Crecimiento anual (CAGR)</span>
+            <span class="text-w-400 font-semibold font-mono">12.5%</span>
+          </div>
+          <div class="flex justify-between items-center table-row pb-3">
+            <span class="text-dark-300">Proyección 2034</span>
+            <span class="text-white font-semibold font-mono">$3.93B</span>
+          </div>
+          <div class="flex justify-between items-center table-row pb-3">
+            <span class="text-dark-300">Gasto por familia/año</span>
+            <span class="text-white font-semibold font-mono">$1,016 <span class="text-xs text-dark-400">+46%</span></span>
+          </div>
+          <div class="flex justify-between items-center pb-1">
+            <span class="text-dark-300">Ligas sin software especializado</span>
+            <span class="text-w-400 font-bold font-mono text-lg">73%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-glow rounded-2xl p-6">
+        <h3 class="text-sm font-mono text-w-400 uppercase tracking-wider mb-6">Lo que está pasando</h3>
+        <div class="space-y-5">
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span class="text-amber-400 text-sm">⚡</span>
+            </div>
+            <div>
+              <div class="text-white font-medium text-sm">PlayMetrics + Stack Sports se fusionaron</div>
+              <div class="text-dark-400 text-xs mt-0.5">Junio 2025 — consolidación arriba, hueco en mid-market</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span class="text-red-400 text-sm">🚨</span>
+            </div>
+            <div>
+              <div class="text-white font-medium text-sm">rSchool cierra 2026-2027</div>
+              <div class="text-dark-400 text-xs mt-0.5">Arbiter lo compró ene 2025. Miles de escuelas migrando</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span class="text-purple-400 text-sm">📢</span>
+            </div>
+            <div>
+              <div class="text-white font-medium text-sm">TeamSnap muestra ADS a padres</div>
+              <div class="text-dark-400 text-xs mt-0.5">Los padres lo odian — oportunidad de diferenciación</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span class="text-orange-400 text-sm">💸</span>
+            </div>
+            <div>
+              <div class="text-white font-medium text-sm">SportsEngine cobra fees altísimos</div>
+              <div class="text-dark-400 text-xs mt-0.5">3.25% + $1.50/tx encima del subscription — clubs se quejan</div>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-8 h-8 rounded-lg bg-w-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span class="text-w-400 text-sm">📋</span>
+            </div>
+            <div>
+              <div class="text-white font-medium text-sm">Ley Background Check FL — Julio 2026</div>
+              <div class="text-dark-400 text-xs mt-0.5">TODA org privada con menores necesita tracking. Timing perfecto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">¿Quién es nuestro cliente?</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">Cualquier deporte, cualquier edad, individual o colectivo. Desde un trainer con 10 clientes hasta una academia con 500+ atletas.</p>
+
+    <div class="card card-glow rounded-2xl overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/5">
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider">Tipo</th>
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider">Ejemplo</th>
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider hidden md:table-cell">Atletas</th>
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider hidden lg:table-cell">Cobra/atleta</th>
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider">Widdo</th>
+            </tr>
+          </thead>
+          <tbody class="text-dark-300">
+            <tr class="table-row">
+              <td class="p-4 font-medium text-white">Club deportivo</td>
+              <td class="p-4">Basketball, soccer, baseball</td>
+              <td class="p-4 hidden md:table-cell font-mono text-xs">50–300</td>
+              <td class="p-4 hidden lg:table-cell font-mono text-xs">$100–$300/mes</td>
+              <td class="p-4 font-mono text-w-400 font-medium">$99–$199</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-4 font-medium text-white">Trainer personal</td>
+              <td class="p-4">Prepara jugadores para college</td>
+              <td class="p-4 hidden md:table-cell font-mono text-xs">10–30</td>
+              <td class="p-4 hidden lg:table-cell font-mono text-xs">$50–$200/hora</td>
+              <td class="p-4 font-mono text-w-400 font-medium">$99</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-4 font-medium text-white">Travel / AAU team</td>
+              <td class="p-4">AAU basketball team</td>
+              <td class="p-4 hidden md:table-cell font-mono text-xs">12–50</td>
+              <td class="p-4 hidden lg:table-cell font-mono text-xs">$1.5K–$5K/temp</td>
+              <td class="p-4 font-mono text-w-400 font-medium">$99</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-4 font-medium text-white">Prep academy</td>
+              <td class="p-4">SEPA, The Academy CFL</td>
+              <td class="p-4 hidden md:table-cell font-mono text-xs">100–500</td>
+              <td class="p-4 hidden lg:table-cell font-mono text-xs">$5K–$50K/año</td>
+              <td class="p-4 font-mono text-w-400 font-medium">$199–$349</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-4 font-medium text-white">Rec league</td>
+              <td class="p-4">Liga municipal</td>
+              <td class="p-4 hidden md:table-cell font-mono text-xs">50–200</td>
+              <td class="p-4 hidden lg:table-cell font-mono text-xs">$100–$300/temp</td>
+              <td class="p-4 font-mono text-w-400 font-medium">$99</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-medium text-white">Multi-sport facility</td>
+              <td class="p-4">Complejo 3+ deportes</td>
+              <td class="p-4 hidden md:table-cell font-mono text-xs">200–1000+</td>
+              <td class="p-4 hidden lg:table-cell font-mono text-xs">Varía</td>
+              <td class="p-4 font-mono text-w-400 font-medium">$349</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOLOR -->
+<section id="dolor" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4" style="background: linear-gradient(90deg, #ef4444, transparent);"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">¿Qué usan hoy?</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">10+ horas/semana en tareas administrativas. Herramientas que no conectan entre sí.</p>
+
+    <div class="grid md:grid-cols-3 gap-4 mb-16">
+      <div class="pain-card rounded-2xl p-5">
+        <div class="text-2xl mb-3">📝</div>
+        <div class="text-white font-semibold text-sm mb-1">Google Forms</div>
+        <div class="text-dark-400 text-xs">Registro de atletas. No conecta con nada — triple data entry</div>
+      </div>
+      <div class="pain-card rounded-2xl p-5">
+        <div class="text-2xl mb-3">📊</div>
+        <div class="text-white font-semibold text-sm mb-1">Excel / Sheets</div>
+        <div class="text-dark-400 text-xs">Rosters, pagos, tracking. Manual, se pierde, no escala</div>
+      </div>
+      <div class="pain-card rounded-2xl p-5">
+        <div class="text-2xl mb-3">💳</div>
+        <div class="text-white font-semibold text-sm mb-1">Venmo / Zelle / Checks</div>
+        <div class="text-dark-400 text-xs">Sin tracking. Padres dicen "ya pagué". Sin recibos</div>
+      </div>
+      <div class="pain-card rounded-2xl p-5">
+        <div class="text-2xl mb-3">💬</div>
+        <div class="text-white font-semibold text-sm mb-1">GroupMe / iMessage</div>
+        <div class="text-dark-400 text-xs">Comunicación caótica. Info importante se pierde</div>
+      </div>
+      <div class="pain-card rounded-2xl p-5">
+        <div class="text-2xl mb-3">📁</div>
+        <div class="text-white font-semibold text-sm mb-1">Carpetas físicas</div>
+        <div class="text-dark-400 text-xs">Physicals, waivers, background checks. Se vencen sin aviso</div>
+      </div>
+      <div class="pain-card rounded-2xl p-5">
+        <div class="text-2xl mb-3">📱</div>
+        <div class="text-white font-semibold text-sm mb-1">Notas del teléfono</div>
+        <div class="text-dark-400 text-xs">Evaluaciones, recruiting notes. No compartible, se pierde</div>
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold text-white mb-6">Lo que más les duele</h3>
+    <div class="space-y-3">
+      <div class="flex items-start gap-4 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 font-mono font-bold text-sm mt-0.5">01</span>
+        <div>
+          <span class="text-white font-medium">Cobrar mensualidades</span>
+          <span class="text-dark-400 text-sm"> — perseguir padres, tracking manual, métodos fragmentados</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 font-mono font-bold text-sm mt-0.5">02</span>
+        <div>
+          <span class="text-white font-medium">Compliance</span>
+          <span class="text-dark-400 text-sm"> — physicals vencidos, coaches sin background check, pánico en auditoría</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 font-mono font-bold text-sm mt-0.5">03</span>
+        <div>
+          <span class="text-white font-medium">Registration</span>
+          <span class="text-dark-400 text-sm"> — Google Forms → Excel → otro Excel. Triple data entry</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 font-mono font-bold text-sm mt-0.5">04</span>
+        <div>
+          <span class="text-white font-medium">Comunicación</span>
+          <span class="text-dark-400 text-sm"> — padres preguntando lo mismo 50 veces. Emails individuales</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 font-mono font-bold text-sm mt-0.5">05</span>
+        <div>
+          <span class="text-white font-medium">NCAA / Recruiting</span>
+          <span class="text-dark-400 text-sm"> — GPA, core courses, universidades... todo en la cabeza del coach</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-4 rounded-xl bg-red-500/5 border border-red-500/10">
+        <span class="text-red-400 font-mono font-bold text-sm mt-0.5">06</span>
+        <div>
+          <span class="text-white font-medium">Tryouts</span>
+          <span class="text-dark-400 text-sm"> — evento más importante del año, todo en papel y email</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUCION -->
+<section id="solucion" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">¿Qué les da Widdo?</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">Todo en UN solo lugar. Cada pain point resuelto con ahorro real de tiempo.</p>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="solution-card rounded-2xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-w-500/15 flex items-center justify-center"><span class="text-w-400 text-sm">💰</span></div>
+          <div class="text-white font-semibold">Cobros automáticos</div>
+        </div>
+        <div class="text-dark-400 text-sm">Stripe, status en tiempo real, recibos automáticos. Reemplaza Venmo + Excel.</div>
+        <div class="mt-3 pill inline-block px-2.5 py-1 rounded-full text-xs font-mono">5+ hrs/semana ahorradas</div>
+      </div>
+
+      <div class="solution-card rounded-2xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-w-500/15 flex items-center justify-center"><span class="text-w-400 text-sm">🛡️</span></div>
+          <div class="text-white font-semibold">Compliance Dashboard</div>
+        </div>
+        <div class="text-dark-400 text-sm">Semáforo 🟢🟡🔴 por atleta, alertas 30 y 7 días antes de vencimiento.</div>
+        <div class="mt-3 pill inline-block px-2.5 py-1 rounded-full text-xs font-mono">Cero multas / sorpresas</div>
+      </div>
+
+      <div class="solution-card rounded-2xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-w-500/15 flex items-center justify-center"><span class="text-w-400 text-sm">📋</span></div>
+          <div class="text-white font-semibold">Registration online</div>
+        </div>
+        <div class="text-dark-400 text-sm">Link público → padre llena datos + firma waivers + paga. Todo automático.</div>
+        <div class="mt-3 pill inline-block px-2.5 py-1 rounded-full text-xs font-mono">Triple data entry → cero</div>
+      </div>
+
+      <div class="solution-card rounded-2xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-w-500/15 flex items-center justify-center"><span class="text-w-400 text-sm">🤖</span></div>
+          <div class="text-white font-semibold">AI Assistant</div>
+        </div>
+        <div class="text-dark-400 text-sm">Notificaciones automáticas, emails, y un asistente IA que responde todo.</div>
+        <div class="mt-3 pill inline-block px-2.5 py-1 rounded-full text-xs font-mono">Padres dejan de preguntar</div>
+      </div>
+
+      <div class="solution-card rounded-2xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-w-500/15 flex items-center justify-center"><span class="text-w-400 text-sm">🎓</span></div>
+          <div class="text-white font-semibold">NCAA Eligibility</div>
+        </div>
+        <div class="text-dark-400 text-sm">GPA, 16 core courses, regla 10/7, college interests. Todo trackeado.</div>
+        <div class="mt-3 pill inline-block px-2.5 py-1 rounded-full text-xs font-mono">Pitch a padres</div>
+      </div>
+
+      <div class="solution-card rounded-2xl p-5">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-8 h-8 rounded-lg bg-w-500/15 flex items-center justify-center"><span class="text-w-400 text-sm">🏃</span></div>
+          <div class="text-white font-semibold">Tryouts digitales</div>
+        </div>
+        <div class="text-dark-400 text-sm">Publicar, registrar, evaluar, comunicar resultados, convertir a jugador.</div>
+        <div class="mt-3 pill inline-block px-2.5 py-1 rounded-full text-xs font-mono">100% digital</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIADORES -->
+<section id="diferenciadores" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Lo que <span class="gradient-text">NADIE</span> más tiene</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">5 diferenciadores que ningún competidor puede replicar fácilmente.</p>
+
+    <!-- AI -->
+    <div class="card card-glow rounded-2xl p-6 md:p-8 mb-6">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-w-500 to-w-600 flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-xl">🤖</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-bold text-white mb-2">1. AI Assistant integrado</h3>
+          <p class="text-dark-400 text-sm mb-4">El director le pregunta al chat en lenguaje natural. Ningún competidor tiene esto — ni TeamSnap, ni SportsEngine, ni nadie.</p>
+          <div class="grid md:grid-cols-2 gap-2">
+            <div class="bg-dark-800/50 rounded-lg p-3 font-mono text-xs text-dark-300">
+              <span class="text-w-400">&gt;</span> "¿Quién tiene el physical vencido?"
+            </div>
+            <div class="bg-dark-800/50 rounded-lg p-3 font-mono text-xs text-dark-300">
+              <span class="text-w-400">&gt;</span> "¿Cuánto debe la familia Smith?"
+            </div>
+            <div class="bg-dark-800/50 rounded-lg p-3 font-mono text-xs text-dark-300">
+              <span class="text-w-400">&gt;</span> "¿Cuántos atletas vinieron esta semana?"
+            </div>
+            <div class="bg-dark-800/50 rounded-lg p-3 font-mono text-xs text-dark-300">
+              <span class="text-w-400">&gt;</span> "Show compliance status for John"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compliance -->
+    <div class="card card-glow rounded-2xl p-6 md:p-8 mb-6">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-xl">🛡️</span>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-white mb-2">2. Compliance Dashboard configurable</h3>
+          <p class="text-dark-400 text-sm mb-4">Todos los requisitos en UN semáforo por atleta. El owner configura cuáles aplican a su club — funciona en cualquier estado.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20">🟢 Physical vigente</span>
+            <span class="bg-amber-500/10 text-amber-400 text-xs px-3 py-1 rounded-full border border-amber-500/20">🟡 Vence en 20 días</span>
+            <span class="bg-red-500/10 text-red-400 text-xs px-3 py-1 rounded-full border border-red-500/20">🔴 Background check expirado</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING COMPARISON -->
+    <div class="card card-glow rounded-2xl p-6 md:p-8 mb-6">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-xl">💰</span>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-white mb-2">3. $0 platform transaction fees</h3>
+          <p class="text-dark-400 text-sm">Los competidores cobran 3-3.5% + fees por cada transacción ENCIMA del subscription. Widdo cobra $0 — solo pasa el fee de Stripe (2.9%).</p>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/5">
+              <th class="text-left p-3 text-xs font-mono text-dark-400 uppercase">Plataforma</th>
+              <th class="text-left p-3 text-xs font-mono text-dark-400 uppercase">Fee mensual</th>
+              <th class="text-left p-3 text-xs font-mono text-dark-400 uppercase hidden md:table-cell">Transaction fees</th>
+              <th class="text-right p-3 text-xs font-mono text-dark-400 uppercase">Costo REAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-row">
+              <td class="p-3 text-dark-300">TeamSnap</td>
+              <td class="p-3 font-mono text-xs text-dark-300">$50+</td>
+              <td class="p-3 font-mono text-xs text-dark-400 hidden md:table-cell">3.25% + $1.50/tx</td>
+              <td class="p-3 font-mono text-xs text-right text-red-400 font-semibold">~$227+</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-3 text-dark-300">SportsEngine</td>
+              <td class="p-3 font-mono text-xs text-dark-300">$79–$129</td>
+              <td class="p-3 font-mono text-xs text-dark-400 hidden md:table-cell">~3.25% + fees</td>
+              <td class="p-3 font-mono text-xs text-right text-red-400 font-semibold">~$275–310</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-3 text-dark-300">Jersey Watch</td>
+              <td class="p-3 font-mono text-xs text-dark-300">$29–$79</td>
+              <td class="p-3 font-mono text-xs text-dark-400 hidden md:table-cell">3.5% + $1.00/tx</td>
+              <td class="p-3 font-mono text-xs text-right text-red-400 font-semibold">~$264</td>
+            </tr>
+            <tr class="widdo-row rounded">
+              <td class="p-3 text-white font-semibold">Widdo</td>
+              <td class="p-3 font-mono text-xs text-w-400 font-semibold">$99</td>
+              <td class="p-3 font-mono text-xs text-w-400 hidden md:table-cell">$0 (solo Stripe 2.9%)</td>
+              <td class="p-3 font-mono text-xs text-right text-w-400 font-bold text-base">$244</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-dark-500 text-xs mt-3 font-mono">* Costo real calculado con $5K/mes procesados y ~10 transacciones</p>
+    </div>
+
+    <!-- 3 verticales + multi-sport -->
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card card-glow rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-xl">🔗</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">4. Tres verticales integradas</h3>
+            <div class="space-y-2 mt-3">
+              <div class="flex items-center gap-2 text-sm"><span class="text-w-400">◆</span><span class="text-dark-300"><strong class="text-white">Widdo Clubs</strong> — gestión del club</span></div>
+              <div class="flex items-center gap-2 text-sm"><span class="text-w-400">◆</span><span class="text-dark-300"><strong class="text-white">Widdo Tournaments</strong> — torneos y brackets</span></div>
+              <div class="flex items-center gap-2 text-sm"><span class="text-w-400">◆</span><span class="text-dark-300"><strong class="text-white">Widdo Academy</strong> — capacitación coaches</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-glow rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-xl">⚽</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white mb-2">5. Multi-sport real</h3>
+            <div class="space-y-2 mt-3 text-sm text-dark-400">
+              <div>PlayMetrics = <span class="text-red-400">solo soccer</span></div>
+              <div>GameChanger = <span class="text-red-400">solo baseball/softball</span></div>
+              <div>TeamSnap = <span class="text-amber-400">genérico pero básico</span></div>
+              <div>Widdo = <span class="text-w-400 font-semibold">cualquier deporte, misma profundidad</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section id="compliance" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4" style="background: linear-gradient(90deg, #f59e0b, transparent);"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Compliance en Florida</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">Lo que es obligatorio por ley y lo que Widdo trackea. Cada estado tiene requisitos diferentes — el dashboard es configurable por club.</p>
+
+    <div class="card card-glow rounded-2xl overflow-hidden mb-8">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/5">
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider">Requisito</th>
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider">Aplica a</th>
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider">Fecha</th>
+              <th class="text-left p-4 text-xs font-mono text-w-400 uppercase tracking-wider hidden md:table-cell">Ley</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-row">
+              <td class="p-4 text-white font-medium">Background Check Level 2</td>
+              <td class="p-4 text-dark-300"><strong class="text-amber-400">TODA org privada</strong> con menores</td>
+              <td class="p-4"><span class="bg-red-500/10 text-red-400 text-xs px-2 py-0.5 rounded font-mono font-semibold">Julio 2026</span></td>
+              <td class="p-4 text-dark-400 text-xs hidden md:table-cell font-mono">HB 975 / SB 1546</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-4 text-white font-medium">ECG Screening <span class="text-xs text-amber-400 font-mono ml-1">NUEVO</span></td>
+              <td class="p-4 text-dark-300">FHSAA, grados 9-12</td>
+              <td class="p-4"><span class="bg-red-500/10 text-red-400 text-xs px-2 py-0.5 rounded font-mono font-semibold">Julio 2026</span></td>
+              <td class="p-4 text-dark-400 text-xs hidden md:table-cell font-mono">FHSAA</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-4 text-white font-medium">Sports Physical EL-2</td>
+              <td class="p-4 text-dark-300">Escuelas FHSAA</td>
+              <td class="p-4"><span class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded font-mono">Ya vigente</span></td>
+              <td class="p-4 text-dark-400 text-xs hidden md:table-cell font-mono">FHSAA</td>
+            </tr>
+            <tr class="table-row">
+              <td class="p-4 text-white font-medium">Concussion Protocol</td>
+              <td class="p-4 text-dark-300">FHSAA + buena práctica</td>
+              <td class="p-4"><span class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded font-mono">Ya vigente</span></td>
+              <td class="p-4 text-dark-400 text-xs hidden md:table-cell font-mono">50 estados</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-white font-medium">SafeSport Certification</td>
+              <td class="p-4 text-dark-300">Orgs afiliadas a NGB</td>
+              <td class="p-4"><span class="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-0.5 rounded font-mono">Ya vigente</span></td>
+              <td class="p-4 text-dark-400 text-xs hidden md:table-cell font-mono">Ley federal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card card-glow rounded-2xl p-6">
+        <h3 class="text-sm font-mono text-amber-400 uppercase tracking-wider mb-4">Varía por estado</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex items-center gap-2"><span class="text-red-400">✗</span><span class="text-dark-300">Background checks — cada estado tiene su ley</span></div>
+          <div class="flex items-center gap-2"><span class="text-red-400">✗</span><span class="text-dark-300">Sports physical — cada estado su formulario</span></div>
+          <div class="flex items-center gap-2"><span class="text-red-400">✗</span><span class="text-dark-300">ECG — solo Florida por ahora</span></div>
+          <div class="flex items-center gap-2"><span class="text-red-400">✗</span><span class="text-dark-300">NIL high school — no todos lo permiten</span></div>
+        </div>
+      </div>
+      <div class="card card-glow rounded-2xl p-6">
+        <h3 class="text-sm font-mono text-w-400 uppercase tracking-wider mb-4">Igual en todo USA</h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex items-center gap-2"><span class="text-w-400">✓</span><span class="text-dark-300">SafeSport — ley federal</span></div>
+          <div class="flex items-center gap-2"><span class="text-w-400">✓</span><span class="text-dark-300">NCAA — reglas nacionales</span></div>
+          <div class="flex items-center gap-2"><span class="text-w-400">✓</span><span class="text-dark-300">Concussion — 50 estados tienen ley</span></div>
+          <div class="flex items-center gap-2"><span class="text-w-400">✓</span><span class="text-dark-300">Stripe/pagos — funciona en todo USA</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 p-4 rounded-xl bg-w-500/5 border border-w-500/10">
+      <p class="text-w-300 text-sm"><strong>Por eso el dashboard es configurable.</strong> Cada club activa los requisitos que aplican a su estado y su tipo de organización. Si Widdo se expande a Texas o California, no hay que cambiar código.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILOTOS -->
+<section id="pilotos" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pilotos Orlando</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">Dos academias que ya necesitan Widdo. La primera referencia USA desbloquea toda la credibilidad.</p>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <!-- The Academy CFL -->
+      <div class="card card-glow rounded-2xl p-6 md:p-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-w-500/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="relative">
+          <div class="pill inline-block px-3 py-1 rounded-full text-xs font-mono mb-4">PILOTO 1</div>
+          <h3 class="text-2xl font-bold text-white mb-4">The Academy CFL</h3>
+          <div class="space-y-3 text-sm mb-6">
+            <div class="flex items-center gap-2"><span class="text-w-400">◆</span><span class="text-dark-300">5 deportes: basketball, baseball, soccer, volleyball, tennis</span></div>
+            <div class="flex items-center gap-2"><span class="text-w-400">◆</span><span class="text-dark-300">Fundadores puertorriqueños (familia Dalmau)</span></div>
+            <div class="flex items-center gap-2"><span class="text-w-400">◆</span><span class="text-dark-300"><strong class="text-white">60+ atletas</strong> han llegado a universidades</span></div>
+            <div class="flex items-center gap-2"><span class="text-red-400">✗</span><span class="text-dark-300">Usan <strong class="text-red-400">Google Forms</strong> para registro</span></div>
+            <div class="flex items-center gap-2"><span class="text-amber-400">→</span><span class="text-dark-300">Demo la próxima semana</span></div>
+          </div>
+          <div class="bg-dark-800/50 rounded-xl p-4 border border-white/5">
+            <p class="text-xs text-dark-400 font-mono uppercase mb-2">Argumento de venta</p>
+            <p class="text-dark-200 text-sm italic">"Reemplacen Google Forms, cobren con tarjeta, vean compliance en un semáforo, y tengan un AI assistant — por $99/mes y $0 de transaction fees."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEPA -->
+      <div class="card card-glow rounded-2xl p-6 md:p-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="relative">
+          <div class="px-3 py-1 rounded-full text-xs font-mono mb-4 inline-block bg-blue-500/10 border border-blue-500/20 text-blue-400">PILOTO 2</div>
+          <h3 class="text-2xl font-bold text-white mb-4">SEPA</h3>
+          <div class="space-y-3 text-sm mb-6">
+            <div class="flex items-center gap-2"><span class="text-blue-400">◆</span><span class="text-dark-300">6 deportes, Pre-K a 12</span></div>
+            <div class="flex items-center gap-2"><span class="text-blue-400">◆</span><span class="text-dark-300">CEO: <strong class="text-white">Hank Waters</strong> — Super Fan #1 Orlando Magic</span></div>
+            <div class="flex items-center gap-2"><span class="text-blue-400">◆</span><span class="text-dark-300"><strong class="text-white">$1.5M revenue</strong></span></div>
+            <div class="flex items-center gap-2"><span class="text-blue-400">◆</span><span class="text-dark-300">Anthony Black (Magic guard) tiene hermano ahí</span></div>
+            <div class="flex items-center gap-2"><span class="text-amber-400">→</span><span class="text-dark-300">Approach: cliente primero → inversionista después</span></div>
+          </div>
+          <div class="bg-dark-800/50 rounded-xl p-4 border border-white/5">
+            <p class="text-xs text-dark-400 font-mono uppercase mb-2">Argumento de venta</p>
+            <p class="text-dark-200 text-sm italic">"Manejen 6 deportes, 500 atletas, compliance de Florida, y NCAA tracking para jugadores que van a college — todo en una sola app."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trainer -->
+    <div class="card card-glow rounded-2xl p-6 max-w-xl">
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+          <span class="text-purple-400">🏀</span>
+        </div>
+        <div>
+          <p class="text-xs text-dark-400 font-mono uppercase mb-1">Para trainers independientes</p>
+          <p class="text-dark-200 text-sm italic">"Muéstrele a cada padre el GPA de su hijo, las core courses que le faltan, y el perfil de recruiting — todo desde tu celular por $99/mes."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pricing USA</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">Tarifa plana. $0 platform transaction fees. Descuento anual 17%.</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card card-glow rounded-2xl p-6 md:p-8">
+        <div class="text-xs font-mono text-dark-400 uppercase tracking-wider mb-2">Starter</div>
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="text-4xl font-black text-white">$99</span>
+          <span class="text-dark-400 text-sm">/mes</span>
+        </div>
+        <p class="text-dark-500 text-xs mb-6">~$82/mes con plan anual</p>
+        <div class="space-y-2 text-sm text-dark-300">
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Clubs pequeños y trainers</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Travel teams y AAU</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Rec leagues</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Core: roster, pagos, asistencia</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Compliance dashboard</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Registration links</div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl p-6 md:p-8 relative overflow-hidden" style="background: linear-gradient(145deg, rgba(16,185,129,0.12) 0%, rgba(15,23,42,0.8) 100%); border: 1px solid rgba(16,185,129,0.25);">
+        <div class="absolute top-4 right-4 bg-w-500 text-white text-xs font-bold px-2 py-0.5 rounded">POPULAR</div>
+        <div class="text-xs font-mono text-w-400 uppercase tracking-wider mb-2">Pro</div>
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="text-4xl font-black text-white">$199</span>
+          <span class="text-dark-400 text-sm">/mes</span>
+        </div>
+        <p class="text-dark-500 text-xs mb-6">~$165/mes con plan anual</p>
+        <div class="space-y-2 text-sm text-dark-300">
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Todo de Starter</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> <strong class="text-white">AI Assistant</strong></div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> <strong class="text-white">Tournaments</strong></div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> NCAA Eligibility tracker</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Reportes financieros</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Clubs medianos</div>
+        </div>
+      </div>
+
+      <div class="card card-glow rounded-2xl p-6 md:p-8">
+        <div class="text-xs font-mono text-dark-400 uppercase tracking-wider mb-2">Enterprise</div>
+        <div class="flex items-baseline gap-1 mb-1">
+          <span class="text-4xl font-black text-white">$349</span>
+          <span class="text-dark-400 text-sm">/mes</span>
+        </div>
+        <p class="text-dark-500 text-xs mb-6">~$290/mes con plan anual</p>
+        <div class="space-y-2 text-sm text-dark-300">
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Todo de Pro</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Academias grandes y ligas</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> 200+ atletas</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Multi-sport facility</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Soporte prioritario</div>
+          <div class="flex items-center gap-2"><span class="text-w-400 text-xs">✓</span> Onboarding dedicado</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-dark-400 text-sm"><strong class="text-w-400 font-mono">$0 platform transaction fees</strong> — solo Stripe 2.9% + $0.30 que paga directo el padre</p>
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section id="pasos" class="py-24 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-line mb-4"></div>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Próximos pasos</h2>
+    <p class="text-dark-400 mb-12 max-w-2xl">11 fases de implementación. ~15-19 horas hasta demo con agentes en paralelo.</p>
+
+    <div class="space-y-3">
+      <div class="flex items-center gap-4 p-4 rounded-xl bg-w-500/5 border border-w-500/10">
+        <div class="w-8 h-8 rounded-lg bg-w-500 flex items-center justify-center flex-shrink-0">
+          <span class="text-white text-sm font-bold">✓</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-white font-medium">Plan de implementación completo</span>
+          <span class="text-dark-400 text-sm"> — 11 fases, compliance, NCAA, Stripe, i18n</span>
+        </div>
+        <span class="text-w-400 font-mono text-xs">LISTO</span>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-xl card">
+        <div class="w-8 h-8 rounded-lg bg-dark-600 flex items-center justify-center flex-shrink-0">
+          <span class="text-dark-300 text-sm font-bold font-mono">2</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-white font-medium">Implementar Fases 1-7</span>
+          <span class="text-dark-400 text-sm"> — ~15-19 horas con agentes en paralelo</span>
+        </div>
+        <span class="text-dark-500 font-mono text-xs">PENDIENTE</span>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-xl card">
+        <div class="w-8 h-8 rounded-lg bg-dark-600 flex items-center justify-center flex-shrink-0">
+          <span class="text-dark-300 text-sm font-bold font-mono">3</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-white font-medium">Demo con The Academy CFL</span>
+          <span class="text-dark-400 text-sm"> — primera referencia USA</span>
+        </div>
+        <span class="text-dark-500 font-mono text-xs">PENDIENTE</span>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-xl card">
+        <div class="w-8 h-8 rounded-lg bg-dark-600 flex items-center justify-center flex-shrink-0">
+          <span class="text-dark-300 text-sm font-bold font-mono">4</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-white font-medium">Feedback → ajustes → onboarding SEPA</span>
+        </div>
+        <span class="text-dark-500 font-mono text-xs">PENDIENTE</span>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-xl card">
+        <div class="w-8 h-8 rounded-lg bg-dark-600 flex items-center justify-center flex-shrink-0">
+          <span class="text-dark-300 text-sm font-bold font-mono">5</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-white font-medium">Primeras referencias USA → escalar en Florida</span>
+        </div>
+        <span class="text-dark-500 font-mono text-xs">PENDIENTE</span>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 rounded-xl card">
+        <div class="w-8 h-8 rounded-lg bg-dark-600 flex items-center justify-center flex-shrink-0">
+          <span class="text-dark-300 text-sm font-bold font-mono">6</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-white font-medium">Publicar caso de éxito → credibilidad para otros ADs</span>
+        </div>
+        <span class="text-dark-500 font-mono text-xs">PENDIENTE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 px-6 border-t border-white/5">
+  <div class="max-w-6xl mx-auto text-center">
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <div class="w-8 h-8 rounded-lg bg-w-500 flex items-center justify-center">
+        <span class="text-white font-bold text-sm">W</span>
+      </div>
+      <span class="font-bold text-white text-lg tracking-wide">WIDDO</span>
+    </div>
+    <p class="text-dark-500 text-sm mb-2">The All-in-One Sports Club Platform</p>
+    <p class="text-dark-600 text-xs font-mono">Documento interno — Feb 2026 — Orlando, FL</p>
+  </div>
+</footer>
+
+</body>
+</html>

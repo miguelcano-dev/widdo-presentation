@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widdo · Lanzamiento USA — Go/No-Go</title>
+<style>
+  :root {
+    --bg: #0A0A0F; --card: #12121A; --green: #00C853; --text: #E8E8ED;
+    --muted: #8A8A96; --border: #23232E; --amber: #FFB300; --red: #FF5252;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.55; padding: 40px 20px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 1.7rem; margin-bottom: 6px; }
+  h1 span { color: var(--green); }
+  .sub { color: var(--muted); margin-bottom: 28px; font-size: .95rem; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 24px; margin-bottom: 22px;
+  }
+  .gate-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+  .gate-head h2 { font-size: 1.15rem; }
+  .gate-head .num { color: var(--green); font-family: 'JetBrains Mono', monospace; }
+  .when { color: var(--muted); font-size: .85rem; margin-bottom: 14px; }
+  .pill {
+    font-family: 'JetBrains Mono', monospace; font-size: .72rem; padding: 4px 10px;
+    border-radius: 20px; border: 1px solid var(--border); color: var(--muted); white-space: nowrap;
+  }
+  .pill.go { color: #0A0A0F; background: var(--green); border-color: var(--green); font-weight: 700; }
+  .pill.curso { color: var(--amber); border-color: var(--amber); }
+  label.item {
+    display: flex; gap: 12px; align-items: flex-start; padding: 9px 10px;
+    border-radius: 8px; cursor: pointer; transition: background .15s;
+  }
+  label.item:hover { background: rgba(255,255,255,.03); }
+  label.item input { margin-top: 4px; accent-color: var(--green); width: 16px; height: 16px; flex-shrink: 0; }
+  label.item.done .txt { color: var(--muted); text-decoration: line-through; }
+  .txt small { display: block; color: var(--muted); font-size: .8rem; }
+  .criterio {
+    margin-top: 14px; padding: 12px 16px; border-left: 3px solid var(--green);
+    background: rgba(0,200,83,.06); border-radius: 0 8px 8px 0; font-size: .9rem;
+  }
+  .criterio b { color: var(--green); }
+  .criterio .nogo { display: block; margin-top: 4px; color: var(--muted); }
+  .criterio .nogo b { color: var(--red); }
+  .evidencia { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .badge {
+    font-family: 'JetBrains Mono', monospace; font-size: .78rem;
+    background: rgba(0,200,83,.1); color: var(--green);
+    border: 1px solid rgba(0,200,83,.35); padding: 5px 12px; border-radius: 8px;
+  }
+  .progress-outer { background: var(--border); border-radius: 20px; height: 10px; margin: 18px 0 6px; overflow: hidden; }
+  .progress-inner { background: var(--green); height: 100%; width: 0%; transition: width .3s; }
+  .progress-label { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--muted); }
+  .rutina td { padding: 6px 12px 6px 0; vertical-align: top; font-size: .9rem; }
+  .rutina td:first-child { color: var(--green); font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+  .nota { color: var(--muted); font-size: .82rem; margin-top: 16px; }
+  a { color: var(--green); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🚀 Lanzamiento USA — <span>Go / No-Go</span></h1>
+  <p class="sub">No es lanzar por lanzar: cada gate tiene un criterio medible. No pasas al siguiente sin cumplirlo. Los checks se guardan en este navegador.</p>
+
+  <div class="card">
+    <div class="gate-head"><h2>📊 Progreso total</h2><span class="pill" id="total-pill">0%</span></div>
+    <div class="progress-outer"><div class="progress-inner" id="total-bar"></div></div>
+    <p class="progress-label" id="total-label"></p>
+  </div>
+
+  <div class="card">
+    <div class="gate-head"><h2>✅ Evidencia técnica ya verificada <span class="num">(20 jul 2026)</span></h2></div>
+    <p class="when">Corrido hoy en local — el producto está listo, esto NO es lo que falta:</p>
+    <div class="evidencia">
+      <span class="badge">Suscripciones clubes · 36/36 ✓</span>
+      <span class="badge">Pagos torneos backend · 24/24 ✓</span>
+      <span class="badge">E2E navegador · 6/6 ✓ (incl. pago Stripe Connect)</span>
+      <span class="badge">Journey completo usuario→campeón ✓</span>
+    </div>
+  </div>
+
+  <!-- GATE 0 -->
+  <div class="card" data-gate="g0">
+    <div class="gate-head">
+      <h2><span class="num">GATE 0</span> · Listo para cobrar en vivo</h2>
+      <span class="pill curso">en curso</span>
+    </div>
+    <p class="when"><b>EN CURSO (13-ago-2026)</b> · la parte manual de Miguel está en marcha y casi lista · paso a paso en <code>GATE-0-STRIPE-LIVE.md</code></p>
+    <p class="when">⚠️ La regla de "no contactar a nadie antes" ya no aplica: la <b>tanda 1 está en envío desde el 13-ago</b>. Lo que sigue bloqueado es <b>cobrar</b>, no escribir.</p>
+
+    <label class="item"><input type="checkbox" data-k="g0-dashboard"><span class="txt">Stripe Dashboard: activar cuenta live (business Orlando, datos fiscales)</span></label>
+    <label class="item"><input type="checkbox" data-k="g0-keys"><span class="txt">Live keys (<code>pk_live/sk_live</code>) en el <code>.env</code> de producción<small>Hoy están en test: pk_test/sk_test</small></span></label>
+    <label class="item"><input type="checkbox" data-k="g0-webhook"><span class="txt">Webhook de prod recreado con signing secret live</span></label>
+    <label class="item"><input type="checkbox" data-k="g0-connect"><span class="txt">Stripe Connect: verificación de identidad para pagos live<small>La cuenta Express actual es solo test</small></span></label>
+    <label class="item"><input type="checkbox" data-k="g0-branding" checked><span class="txt">Branding Stripe: logo, colores, emails de recibo<small>✅ HECHO jul 20 — icono+logo W verde + #00C853 en onboarding/Dashboard/Express (configurado por Miguel, verificado en vivo)</small></span></label>
+    <label class="item"><input type="checkbox" data-k="g0-404" checked><span class="txt">Fix ruta SPA <code>/organizer/stripe-connect</code> (hoy da 404)<small>✅ HECHO jul 20 — faltaba el prefijo /home en los return URLs del backend; fix en main <code>8b684ad</code>, deployado</small></span></label>
+    <label class="item"><input type="checkbox" data-k="g0-landing" checked><span class="txt">Landing: pricing visible ($99/$199/$349) + CTA de pago + Calendly demo + hero "0% platform fee, money straight to your account"<small>✅ HECHO — <b>en producción</b> (verificado 13-ago-2026)</small></span></label>
+    <label class="item"><input type="checkbox" data-k="g0-canspam"><span class="txt">Dirección física de Widdo Inc. Orlando (o CMRA) para el pie CAN-SPAM de todos los emails</span></label>
+    <label class="item"><input type="checkbox" data-k="g0-smoke1"><span class="txt">🔥 Smoke test 1: suscripción de club real de $1 (o plan mínimo) → cobrada → reembolsada</span></label>
+    <label class="item"><input type="checkbox" data-k="g0-smoke2"><span class="txt">🔥 Smoke test 2: inscripción a torneo con fee real vía Connect → dinero llegó a la cuenta del organizador → reembolsada</span></label>
+
+    <div class="criterio"><b>GO =</b> dinero real entró y se reembolsó en ambos flujos sin tocar código.
+      <span class="nogo"><b>NO-GO:</b> no se contacta a NADIE hasta que esto pase. Vender con checkout roto quema los mejores prospectos.</span></div>
+  </div>
+
+  <!-- GATE 1 -->
+  <div class="card" data-gate="g1">
+    <div class="gate-head">
+      <h2><span class="num">GATE 1</span> · El mensaje resuena</h2>
+      <span class="pill">pendiente</span>
+    </div>
+    <p class="when">Semanas 1-2 · outreach dirigido, NO masivo</p>
+
+    <label class="item"><input type="checkbox" data-k="g1-tanda1"><span class="txt">Tanda 1 enviada: los 18 Tier 1 contactados 1-a-1<small>🔄 EN ENVÍO desde 13-ago-2026 por Brevo · copy canónico en <code>emails/</code> · orden en <code>MOTOR/calendario-envio.md</code></small></span></label>
+    <label class="item"><input type="checkbox" data-k="g1-ritmo"><span class="txt">Ritmo sostenido: 10-15 contactos personalizados/día (regla 10-10-10)</span></label>
+    <label class="item"><input type="checkbox" data-k="g1-li"><span class="txt">LinkedIn: 20-25 invitaciones/día a directores + primer post build-in-public</span></label>
+    <label class="item"><input type="checkbox" data-k="g1-dirs"><span class="txt">Listing gratis en G2 y Capterra</span></label>
+    <label class="item"><input type="checkbox" data-k="g1-fb"><span class="txt">Unido a 5-8 grupos FB de youth sports FL (incl. hispanos) — solo presencia, sin vender aún</span></label>
+    <label class="item"><input type="checkbox" data-k="g1-track"><span class="txt">Tracker al día: cada contacto registrado (quién, canal, fecha, respuesta)</span></label>
+
+    <div class="criterio"><b>GO =</b> ≥10% de reply rate y ≥3 demos agendadas en 2 semanas.
+      <span class="nogo"><b>NO-GO:</b> cambiar hook o segmento y repetir 1 semana. Jamás escalar un mensaje que no funciona en pequeño.</span></div>
+  </div>
+
+  <!-- GATE 2 -->
+  <div class="card" data-gate="g2">
+    <div class="gate-head">
+      <h2><span class="num">GATE 2</span> · Primer dólar real</h2>
+      <span class="pill">pendiente</span>
+    </div>
+    <p class="when">Semanas 2-4</p>
+
+    <label class="item"><input type="checkbox" data-k="g2-demos"><span class="txt">5+ demos hechas (grabadas para estudiar objeciones)</span></label>
+    <label class="item"><input type="checkbox" data-k="g2-faq"><span class="txt">Objeciones convertidas en FAQ de la landing</span></label>
+    <label class="item"><input type="checkbox" data-k="g2-cliente"><span class="txt">🏆 Primer organizador o club PAGANDO en Stripe live (precio en firme, sin gratis indefinido)</span></label>
+    <label class="item"><input type="checkbox" data-k="g2-operando"><span class="txt">Su torneo/operación corriendo en Widdo sin incidentes</span></label>
+    <label class="item"><input type="checkbox" data-k="g2-intro"><span class="txt">Pedida intro caliente al final de CADA conversación (cierre o no)</span></label>
+
+    <div class="criterio"><b>GO =</b> 1 cliente pagó y usa el producto sin que intervengas a diario.
+      <span class="nogo"><b>NO-GO:</b> si hay demos pero nadie paga → problema de propuesta/precio. Si pagan pero no usan → problema de onboarding. Arreglar ANTES de vender más.</span></div>
+  </div>
+
+  <!-- GATE 3 -->
+  <div class="card" data-gate="g3">
+    <div class="gate-head">
+      <h2><span class="num">GATE 3</span> · Repetible</h2>
+      <span class="pill">pendiente</span>
+    </div>
+    <p class="when">Meses 2-3</p>
+
+    <label class="item"><input type="checkbox" data-k="g3-cuentas"><span class="txt">5-10 cuentas pagando</span></label>
+    <label class="item"><input type="checkbox" data-k="g3-referido"><span class="txt">≥1 cierre venido de intro/referido (señal de word-of-mouth)</span></label>
+    <label class="item"><input type="checkbox" data-k="g3-playbook"><span class="txt">Playbook escrito: qué mensaje, a qué segmento, cuántos contactos por cierre, cuánto tarda</span></label>
+    <label class="item"><input type="checkbox" data-k="g3-seo"><span class="txt">SEO publicado: 2 páginas "GotSport/SportsEngine alternative" + 2 en español (nicho vacío)</span></label>
+    <label class="item"><input type="checkbox" data-k="g3-flywheel"><span class="txt">Flywheel activado: clubes participantes de cada torneo contactados post-evento para Widdo Clubs</span></label>
+
+    <div class="criterio"><b>GO =</b> puedes predecir cuántos cierres salen de X contactos. Recién AHORA tiene sentido invertir en volumen.
+      <span class="nogo"><b>NO-GO:</b> si los cierres son aleatorios, el playbook no existe todavía — más conversaciones, no más herramientas.</span></div>
+  </div>
+
+  <!-- GATE 4 -->
+  <div class="card" data-gate="g4">
+    <div class="gate-head">
+      <h2><span class="num">GATE 4</span> · Escala</h2>
+      <span class="pill">pendiente</span>
+    </div>
+    <p class="when">Mes 3+ · solo con Gate 3 en GO</p>
+
+    <label class="item"><input type="checkbox" data-k="g4-motor"><span class="txt">Motor de volumen: subir el límite diario por buzón y añadir buzones/dominios secundarios sobre el canal actual<small>Canal vigente = <b>Brevo</b> con sender miguel@widdo.co (ver <code>MOTOR/RUNBOOK.md</code>). Instantly/Smartlead quedaron descartados el 13-ago — no volver a proponerlos sin una razón nueva.</small></span></label>
+    <label class="item"><input type="checkbox" data-k="g4-expandir"><span class="txt">Expandir GA/TX con el playbook probado (TX ya mapeado en adquisicion-usa/texas/)</span></label>
+    <label class="item"><input type="checkbox" data-k="g4-ligas"><span class="txt">Primer deal liga/federación (1 deal = 50-200 clubes)</span></label>
+    <label class="item"><input type="checkbox" data-k="g4-agentes"><span class="txt">Agentes nocturnos programados: prospección + enriquecimiento + borradores listos cada mañana</span></label>
+
+    <div class="criterio"><b>Meta realista:</b> 30-50 cuentas en 6 meses · 150-300 en 12 · 1000 en 24-36 con flywheel + ligas.</div>
+  </div>
+
+  <div class="card">
+    <div class="gate-head"><h2>⏰ Rutina diaria (60-90 min, desde Gate 1)</h2></div>
+    <table class="rutina">
+      <tr><td>07:30</td><td>Revisar los 10-15 prospectos enriquecidos + borradores que dejaron los agentes → ajustar y enviar (30 min)</td></tr>
+      <tr><td>08:00</td><td>LinkedIn: 20-25 invitaciones + responder DMs (15 min)</td></tr>
+      <tr><td>Mediodía</td><td>Follow-ups a quienes no respondieron (día 3, día 7) (15 min)</td></tr>
+      <tr><td>Tarde</td><td>Demos agendadas (bloques de 15-30 min)</td></tr>
+      <tr><td>Viernes</td><td>Métricas de la semana: contactos, replies, demos, cierres → decidir gate</td></tr>
+    </table>
+    <p class="nota">Documentos hermanos: <b>MOTOR/RUNBOOK.md</b> (operación diaria, canal Brevo — la fuente correcta) · MOTOR/calendario-envio.md (orden de envío) · emails/ (copy canónico de la tanda 1) · GATE-0-STRIPE-LIVE.md · 00-LISTA-MAESTRA-FLORIDA.md · INDEX.md<br><small>DASHBOARD.html y PLAYBOOK-IMPLEMENTACION.html se archivaron el 13-ago: mandaban montar Instantly, canal descartado.</small></p>
+  </div>
+
+</div>
+<script>
+  const KEY = 'widdo-gonogo-';
+  const boxes = document.querySelectorAll('input[type=checkbox]');
+  boxes.forEach(b => {
+    const stored = localStorage.getItem(KEY + b.dataset.k);
+    // Sin valor guardado, respeta el `checked` del HTML (lo ya hecho no debe aparecer pendiente).
+    b.checked = stored === null ? b.hasAttribute('checked') : stored === '1';
+    b.closest('label').classList.toggle('done', b.checked);
+    b.addEventListener('change', () => {
+      localStorage.setItem(KEY + b.dataset.k, b.checked ? '1' : '0');
+      b.closest('label').classList.toggle('done', b.checked);
+      refresh();
+    });
+  });
+  function refresh() {
+    let total = 0, done = 0;
+    document.querySelectorAll('[data-gate]').forEach(card => {
+      const items = card.querySelectorAll('input[type=checkbox]');
+      const d = [...items].filter(i => i.checked).length;
+      total += items.length; done += d;
+      const pill = card.querySelector('.pill');
+      if (d === items.length) { pill.textContent = 'GO ✓'; pill.className = 'pill go'; }
+      else if (d > 0) { pill.textContent = d + '/' + items.length + ' en curso'; pill.className = 'pill curso'; }
+      else { pill.textContent = 'pendiente'; pill.className = 'pill'; }
+    });
+    const pct = total ? Math.round(done / total * 100) : 0;
+    document.getElementById('total-bar').style.width = pct + '%';
+    document.getElementById('total-pill').textContent = pct + '%';
+    document.getElementById('total-label').textContent = done + ' de ' + total + ' pasos completados';
+  }
+  refresh();
+</script>
+</body>
+</html>
