@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Red+Hat+Display:wght@400;500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #00C853; } a:hover { color: #16a34a; }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+      background-size: 160px 160px;
+    }
+    .tile-glyph { width: 44%; height: 44%; display: block; }
+  </style>
+</helmet>
+<div style="position: relative; width: 1080px; height: 1920px; overflow: hidden; background: linear-gradient(178deg, {{bgTop}} 0%, {{bgMid}} 52%, {{bgBot}} 100%); font-family: {{font}};">
+
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 50% 50%, {{bloom}} 0%, rgba(0,0,0,0) 70%);"></div>
+
+  <div style="position: absolute; inset: 0; background-image: linear-gradient({{gridLine}} 1px, transparent 1px), linear-gradient(90deg, {{gridLine}} 1px, transparent 1px); background-size: 90px 90px; -webkit-mask-image: radial-gradient(ellipse 62% 44% at 50% 50%, #000 10%, transparent 72%); mask-image: radial-gradient(ellipse 62% 44% at 50% 50%, #000 10%, transparent 72%);"></div>
+
+  <sc-for list="{{links}}" as="ln" hint-placeholder-count="6">
+    <div style="position: absolute; left: {{ln.x}}px; top: {{ln.y}}px; width: {{ln.w}}px; height: 1px; transform-origin: 0 0; transform: rotate({{ln.a}}deg); background: linear-gradient(90deg, {{linkFrom}}, rgba(255,255,255,0));"></div>
+  </sc-for>
+
+  <sc-for list="{{tiles}}" as="t" hint-placeholder-count="11">
+    <div style="position: absolute; left: {{t.x}}px; top: {{t.y}}px; width: {{t.s}}px; height: {{t.s}}px; transform: rotate({{t.r}}deg); border-radius: 30px; background: linear-gradient(158deg, {{surfHi}} 0%, {{surfLo}} 100%); border: 1px solid {{line}}; box-shadow: 0 26px 60px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center;">
+      <svg class="tile-glyph" viewBox="0 0 24 24" fill="none" stroke="{{glyphInk}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="{{t.d}}"></path></svg>
+      <sc-if value="{{t.badge}}" hint-placeholder-val="{{ true }}">
+        <div style="position: absolute; top: -10px; right: -10px; width: 34px; height: 34px; border-radius: 50%; background: {{alert}}; border: 4px solid {{surfLo}};"></div>
+      </sc-if>
+    </div>
+  </sc-for>
+
+  <div style="position: absolute; left: 0; right: 0; top: 1476px; display: flex; justify-content: center; padding: 0 96px;">
+    <div style="font-size: 52px; font-weight: 500; line-height: 1.24; letter-spacing: -0.02em; color: {{ink}}; text-align: center; max-width: 840px;">Spreadsheets. Group chats.<br>Screenshots of receipts.</div>
+  </div>
+
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 78% 55% at 50% 50%, rgba(0,0,0,0) 44%, {{vignette}} 100%);"></div>
+  <div class="grain"></div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1080,"height":1920},"palette":{"editor":"enum","default":"esmeralda","options":["bosque","grafito","esmeralda"],"section":"Paleta"},"font":{"editor":"enum","default":"jakarta","options":["jakarta","redhat"],"section":"Tipografía"},"count":{"editor":"range","default":11,"min":4,"max":14,"step":1,"section":"Caos"}}'>
+class Component extends DCLogic {
+  palettes() {
+    return {
+      bosque: {
+        bgTop: '#1A2A22', bgMid: '#132019', bgBot: '#0C1611',
+        surfHi: '#243629', surfLo: '#1A2A21', line: 'rgba(255,255,255,0.085)',
+        ink: '#EDF3EF', ink2: '#93A39A', neutral: '#93A79B',
+        accent: '#00C853', mark: '#16a34a', alert: '#FF5A52', vignette: 'rgba(9,17,13,0.86)'
+      },
+      grafito: {
+        bgTop: '#212227', bgMid: '#191A1E', bgBot: '#111215',
+        surfHi: '#2B2D33', surfLo: '#1E2024', line: 'rgba(255,255,255,0.10)',
+        ink: '#F2F3F4', ink2: '#9A9DA4', neutral: '#9CA0A7',
+        accent: '#00C853', mark: '#16a34a', alert: '#FF5A52', vignette: 'rgba(13,14,16,0.86)'
+      },
+      esmeralda: {
+        bgTop: '#20422F', bgMid: '#173323', bgBot: '#0E2118',
+        surfHi: '#2F5C46', surfLo: '#224134', line: 'rgba(255,255,255,0.14)',
+        ink: '#F4FAF6', ink2: '#A6BFB2', neutral: '#B4CCBF',
+        accent: '#00E676', mark: '#16a34a', alert: '#FF6B60', vignette: 'rgba(10,26,18,0.82)'
+      }
+    };
+  }
+
+  fonts() {
+    return {
+      jakarta: "'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
+      redhat: "'Red Hat Display', system-ui, -apple-system, 'Segoe UI', sans-serif"
+    };
+  }
+
+  hexA(hex, a) {
+    const h = String(hex || '#00C853').replace('#', '');
+    const s = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+    const n = parseInt(s, 16);
+    return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
+  }
+
+  slots() {
+    return [
+      { x: 128, y: 604,  s: 138, r: -12, k: 'grid',      badge: false },
+      { x: 634, y: 486,  s: 122, r: 9,   k: 'chat',      badge: true },
+      { x: 336, y: 792,  s: 152, r: 5,   k: 'receipt',   badge: false },
+      { x: 786, y: 728,  s: 116, r: -7,  k: 'envelope',  badge: true },
+      { x: 112, y: 1012, s: 128, r: 14,  k: 'clipboard', badge: false },
+      { x: 524, y: 930,  s: 144, r: -4,  k: 'grid',      badge: false },
+      { x: 848, y: 1024, s: 130, r: 11,  k: 'calendar',  badge: false },
+      { x: 268, y: 1214, s: 118, r: -10, k: 'cash',      badge: true },
+      { x: 646, y: 1266, s: 136, r: 6,   k: 'photo',     badge: false },
+      { x: 74,  y: 800,  s: 104, r: 3,   k: 'chat',      badge: false },
+      { x: 878, y: 522,  s: 110, r: -14, k: 'clock',     badge: false },
+      { x: 430, y: 1348, s: 126, r: 8,   k: 'phone',     badge: true },
+      { x: 806, y: 1330, s: 112, r: -6,  k: 'receipt',   badge: false },
+      { x: 176, y: 1342, s: 120, r: 12,  k: 'envelope',  badge: false }
+    ];
+  }
+
+  glyphs() {
+    return {
+      grid:      'M3 4h18v16H3z M3 9.3h18 M3 14.6h18 M9 4v16 M15 4v16',
+      chat:      'M3 5h18v11H10l-4 4v-4H3z M7.5 10.5h.01 M12 10.5h.01 M16.5 10.5h.01',
+      envelope:  'M3 6h18v12H3z M3 7.2l9 6.2 9-6.2',
+      receipt:   'M6 3h12v18l-2-1.6-2 1.6-2-1.6-2 1.6-2-1.6-2 1.6z M9 8.5h6 M9 12.5h6 M9 16.5h3',
+      calendar:  'M3 6.5h18V21H3z M3 11.4h18 M8 3v5 M16 3v5',
+      cash:      'M2 6h20v12H2z M12 9.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8 M5.2 9.2h.01 M18.8 14.8h.01',
+      clipboard: 'M8.5 4H6a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2.5 M9 2.4h6v3.6H9z M9 11h6 M9 15h4',
+      phone:     'M7 2.4h10v19.2H7z M10.4 5.2h3.2',
+      clock:     'M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6 M12 7.2v5l3.2 2',
+      photo:     'M3 6.6h4l2-2.2h6l2 2.2h4V20H3z M12 9.8a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2'
+    };
+  }
+
+  renderVals() {
+    const p = this.palettes()[this.props.palette] || this.palettes().bosque;
+    const font = this.fonts()[this.props.font] || this.fonts().jakarta;
+    const g = this.glyphs();
+    const all = this.slots();
+    const n = Math.max(4, Math.min(all.length, this.props.count ?? 11));
+
+    const tiles = all.slice(0, n).map((s) => ({
+      x: s.x, y: s.y, s: s.s, r: s.r,
+      d: g[s.k],
+      badge: s.badge
+    }));
+
+    const cx = 540, cy = 960;
+    const links = tiles.filter((t, i) => i % 2 === 0).map((t) => {
+      const px = t.x + t.s / 2;
+      const py = t.y + t.s / 2;
+      const dx = cx - px, dy = cy - py;
+      return {
+        x: Math.round(px), y: Math.round(py),
+        w: Math.round(Math.sqrt(dx * dx + dy * dy)),
+        a: Math.round(Math.atan2(dy, dx) * 180 / Math.PI)
+      };
+    });
+
+    return {
+      tiles, links, font,
+      bgTop: p.bgTop, bgMid: p.bgMid, bgBot: p.bgBot,
+      surfHi: p.surfHi, surfLo: p.surfLo, line: p.line, vignette: p.vignette,
+      glyphInk: p.neutral, alert: p.alert,
+      ink: p.ink,
+      gridLine: 'rgba(255,255,255,0.028)',
+      linkFrom: this.hexA(p.accent, 0.16),
+      bloom: this.hexA(p.accent, 0.07)
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo - Investment Summary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: legal; margin: 0; }
+
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #fff;
+            color: #18181b;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 14in;
+            max-height: 14in;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #18181b;
+            color: #fff;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-logo { width: 36px; height: 36px; }
+        .header-text h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+        .header-text p {
+            font-size: 9px; color: rgba(255,255,255,0.55);
+            letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+        }
+        .header-right { text-align: right; font-size: 10px; color: rgba(255,255,255,0.5); }
+        .header-right a { color: #22c55e; text-decoration: none; font-weight: 700; font-size: 12px; }
+
+        .tagline-bar {
+            background: #16a34a; color: #fff; text-align: center;
+            padding: 6px 32px; font-size: 12px; font-weight: 700; letter-spacing: 0.3px;
+        }
+
+        .main { padding: 8px 32px 0; }
+
+        .section-title {
+            font-size: 9.5px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 2px; color: #16a34a; margin-bottom: 5px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: #e4e4e7; }
+
+        .intro { font-size: 11px; color: #3f3f46; margin-bottom: 6px; }
+        .intro strong { color: #18181b; }
+
+        /* ===== ROUND ===== */
+        .round-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 8px; }
+        .round-card {
+            border: 1px solid #e4e4e7; border-radius: 8px; padding: 8px 10px;
+            font-size: 9.5px; color: #52525b; line-height: 1.35;
+        }
+        .round-card strong { display: block; font-size: 8.5px; color: #16a34a; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+        .round-card b { color: #18181b; font-weight: 800; }
+
+        /* ===== PROPOSAL ===== */
+        .common-banner {
+            background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 10px;
+            padding: 9px 13px; margin-bottom: 7px; font-size: 11px; color: #166534;
+        }
+        .common-banner strong { color: #14532d; }
+        .propose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+        .propose-card { border: 1.5px solid #e4e4e7; border-radius: 10px; padding: 8px 13px; background: #fafafa; }
+        .propose-card h3 { font-size: 13px; font-weight: 800; margin-bottom: 2px; }
+        .propose-card .role { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px;
+            font-weight: 700; color: #16a34a; margin-bottom: 6px; }
+        .propose-card .terms { font-size: 10px; color: #18181b; font-weight: 700; margin-bottom: 5px; }
+        .propose-card .list-item { display: flex; gap: 7px; margin-bottom: 3px; font-size: 10px; color: #52525b; line-height: 1.35; }
+        .propose-card .list-item::before { content: '\2713'; color: #16a34a; font-weight: 900; flex-shrink: 0; }
+        .note { font-size: 9.5px; color: #71717a; margin-bottom: 8px; }
+        .note strong { color: #3f3f46; }
+
+        /* ===== CHIPS ===== */
+        .chip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+        .chip {
+            border: 1px solid #e4e4e7; border-radius: 8px; padding: 8px 10px;
+            font-size: 9.5px; color: #52525b; line-height: 1.35;
+        }
+        .chip strong { display: block; font-size: 10px; color: #18181b; font-weight: 800; margin-bottom: 1px; }
+
+        /* ===== STATS ===== */
+        .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 8px; }
+        .stat {
+            background: #18181b; color: #fff; border-radius: 8px; padding: 10px 8px; text-align: center;
+        }
+        .stat .num { font-size: 19px; font-weight: 900; color: #22c55e; }
+        .stat .label { font-size: 8.5px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.6); font-weight: 600; margin-top: 2px; }
+        .mkt-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 8px; }
+        .mkt { border: 1px solid #e4e4e7; border-radius: 8px; padding: 6px 10px; background: #fafafa; }
+        .mkt .k { font-size: 8.5px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; color: #71717a; }
+        .mkt .v { font-size: 17px; font-weight: 900; color: #16a34a; line-height: 1.2; }
+        .mkt .m { font-size: 8.5px; color: #52525b; line-height: 1.3; margin-top: 2px; }
+        .stat-note { font-size: 10.5px; color: #3f3f46; margin-bottom: 8px; }
+        .stat-note strong { color: #18181b; }
+
+        /* ===== MONEY ROW ===== */
+        .money-row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; margin-bottom: 8px; }
+        table.funds { width: 100%; border-collapse: collapse; font-size: 10px; }
+        table.funds td { padding: 4px 0; border-bottom: 1px solid #f4f4f5; color: #52525b; }
+        table.funds td.amt { text-align: right; font-weight: 800; color: #18181b; font-variant-numeric: tabular-nums; }
+        table.funds tr.total td { border-bottom: none; border-top: 1.5px solid #18181b; padding-top: 6px;
+            font-weight: 900; color: #18181b; font-size: 11px; }
+
+        .cap-box { border: 1.5px solid #e4e4e7; border-radius: 10px; padding: 8px 13px; background: #fafafa; margin-bottom: 7px; }
+        .cap-line { display: flex; justify-content: space-between; font-size: 10px; color: #52525b; padding: 3px 0; }
+        .cap-line b { color: #18181b; font-weight: 800; }
+        .cap-head { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 800; color: #71717a; margin-bottom: 4px; }
+        .cap-divider { border-top: 1px solid #e4e4e7; margin: 6px 0; }
+        .cap-foot { font-size: 9.5px; color: #71717a; }
+
+        .question-box {
+            background: #18181b; border-radius: 10px; padding: 10px 15px;
+        }
+        .question-box .q-head { color: #22c55e; font-size: 8.5px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+        .question-box p { color: #fff; font-size: 12px; font-weight: 700; line-height: 1.35; }
+
+        /* ===== STEPS ===== */
+        .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 8px; }
+        .step { border: 1px solid #e4e4e7; border-radius: 8px; padding: 8px 10px; display: flex; gap: 9px; }
+        .step .n { font-size: 15px; font-weight: 900; color: #16a34a; line-height: 1; flex-shrink: 0; }
+        .step p { font-size: 9.5px; color: #52525b; line-height: 1.35; }
+
+        /* ===== TEAM ===== */
+        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .team-card { border: 1px solid #e4e4e7; border-radius: 8px; padding: 9px 12px; }
+        .team-card h4 { font-size: 11px; font-weight: 800; margin-bottom: 2px; }
+        .team-card p { font-size: 9.5px; color: #71717a; line-height: 1.35; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: #18181b; color: rgba(255,255,255,0.7);
+            padding: 10px 32px; display: flex; justify-content: space-between; align-items: center;
+            font-size: 10px;
+        }
+        .footer strong { color: #fff; }
+        .footer a { color: #22c55e; text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="header">
+        <div class="header-left">
+            <img src="widdo-logo.svg" alt="Widdo" class="header-logo">
+            <div class="header-text">
+                <h1>Widdo</h1>
+                <p>The AI-native OS for sports organizations · Investment summary · September 2026 · Confidential</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://widdo.co">widdo.co</a><br>
+            miguel@widdo.co
+        </div>
+    </div>
+
+    <div class="tagline-bar">Same platform. Same terms as our first investor. A seat at the table before the U.S. launch.</div>
+
+    <div class="main">
+
+        <div class="section-title">Why we're talking</div>
+        <p class="intro">
+            <strong>Widdo runs the program; GameUp helps families find it.</strong> Alwin knows Cole and Crystal personally, which
+            is why this conversation is happening in a room and not in an inbox. We're raising a small strategic round before the
+            Florida launch in January 2027, and we want partners whose network moves youth sports — not just capital.
+        </p>
+
+        <div class="section-title">The round</div>
+        <div class="round-grid">
+            <div class="round-card"><strong>Raising</strong><b>$350K</b> pre-seed, first close from <b>$250K</b>.</div>
+            <div class="round-card"><strong>Instrument</strong>Post-money SAFE, Y Combinator standard. MFN, no discount.</div>
+            <div class="round-card"><strong>Valuation cap</strong><b>$3M</b> post-money. Same number for everyone in this round.</div>
+            <div class="round-card"><strong>Use</strong>18 months of runway to the first <b>100 U.S. clubs</b>.</div>
+            <div class="round-card"><strong>Close</strong>Rolling, target November 30, 2026. Each SAFE funds on signature — no waiting for the round to fill.</div>
+        </div>
+
+        <div class="section-title">What we propose to you</div>
+        <div class="common-banner">
+            <strong>Both of you, same door:</strong> participate in the SAFE at the same cap as everyone else. Ticket size is yours
+            to set — $25K to $100K is the range most people in this round are writing, and we're not going to push you past what
+            feels right. On top of that, an advisor role for each of you, because the network is worth more to us than the check.
+        </div>
+        <div class="propose-grid">
+            <div class="propose-card">
+                <h3>Cole Anthony</h3>
+                <div class="role">The face of Widdo in Orlando &amp; the NBA world</div>
+                <div class="terms">Advisor equity 1.0% · 2-year monthly vesting · 3-month cliff</div>
+                <div class="list-item">Appear in launch content — two pieces a year, filmed on your schedule.</div>
+                <div class="list-item">Be present at one Florida event a year.</div>
+                <div class="list-item">Warm intros inside the NBA, NBL and youth basketball networks.</div>
+                <div class="list-item">Built around a season in Australia: mostly remote, nothing that needs you in Florida on short notice.</div>
+            </div>
+            <div class="propose-card">
+                <h3>Crystal McCrary McGuire</h3>
+                <div class="role">Media, parents and the New York network</div>
+                <div class="terms">Advisor equity 1.0% · 2-year monthly vesting · 3-month cliff</div>
+                <div class="list-item">Intros to media and youth-sports decision makers.</div>
+                <div class="list-item">Feedback on the parent experience — you are the user we most need to get right.</div>
+                <div class="list-item">One advisory call per quarter.</div>
+                <div class="list-item">A read on how we tell this story to families before we spend money telling it.</div>
+            </div>
+        </div>
+        <p class="note">
+            <strong>Advisor equity comes out of the 10% option pool, vests only against delivered work, and is documented with the
+            standard FAST advisor agreement.</strong> It is separate from the SAFE — investing is not a condition of advising, and
+            advising is not a condition of investing.
+        </p>
+
+        <div class="section-title">What you get</div>
+        <p class="stat-note" style="margin-bottom:8px;"><strong>Quarterly written update</strong> with the same numbers we look at · <strong>Pro-rata</strong> in the next round for tickets of $50K or more · <strong>Early input</strong> on the athlete record and the parent experience · <strong>First look</strong> at a GameUp ↔ Widdo integration, when both sides want it.</p>
+
+        <div class="section-title">Where we are</div>
+        <div class="stats">
+            <div class="stat"><div class="num">9</div><div class="label">Clubs live</div></div>
+            <div class="stat"><div class="num">3</div><div class="label">Paying, prepaid annual</div></div>
+            <div class="stat"><div class="num">1,476</div><div class="label">Users on platform</div></div>
+            <div class="stat"><div class="num">701</div><div class="label">Athletes managed</div></div>
+            <div class="stat"><div class="num">$0</div><div class="label">Customer acquisition cost</div></div>
+        </div>
+        <p class="stat-note">
+            <strong>U.S. launch: Florida, January 2027.</strong> The native app is in TestFlight. Tournaments, the AI agent and
+            club-to-family communications are live in production today. Every club we have came in by word of mouth.
+        </p>
+        <div class="section-title">Market — arithmetic shown</div>
+        <div class="mkt-row">
+            <div class="mkt"><div class="k">TAM</div><div class="v">$10.2B</div><div class="m">Global sports management software, 2025 (top-down). Bottom-up: 300K U.S. orgs × $184/mo × 12 = $662M.</div></div>
+            <div class="mkt"><div class="k">SAM</div><div class="v">$3.7B</div><div class="m">North America (top-down). Bottom-up: ~100K orgs of 50–500 athletes × $184 × 12 = $221M.</div></div>
+            <div class="mkt"><div class="k">SOM — 3 to 5 years</div><div class="v">$33.1M ARR</div><div class="m">15,000 clubs × $184/mo blended (60% Starter $99 / 30% Pro $249 / 10% Enterprise $499) × 12.</div></div>
+        </div>
+
+        <div class="money-row">
+            <div>
+                <div class="section-title">Use of funds — 18 months</div>
+                <table class="funds">
+                    <tr><td>Founder salary — CEO/CTO full-time, replaces current outside income</td><td class="amt">$115K</td></tr>
+                    <tr><td>U.S. sales hire, from month 6</td><td class="amt">$65K</td></tr>
+                    <tr><td>Growth &amp; marketing, Florida</td><td class="amt">$32K</td></tr>
+                    <tr><td>Co-founder, part-time business development</td><td class="amt">$18K</td></tr>
+                    <tr><td>Legal, accounting &amp; infrastructure</td><td class="amt">$25K</td></tr>
+                    <tr><td>Reserve</td><td class="amt">$95K</td></tr>
+                    <tr class="total"><td>Total</td><td class="amt">$350K</td></tr>
+                </table>
+            </div>
+            <div>
+                <div class="section-title">Cap table after the round</div>
+                <div class="cap-box">
+                    <div class="cap-head">Today</div>
+                    <div class="cap-line"><span>Miguel Cano</span><b>70%</b></div>
+                    <div class="cap-line"><span>Alwin Perez</span><b>30%</b></div>
+                    <div class="cap-divider"></div>
+                    <div class="cap-head">After $350K on a $3M cap</div>
+                    <div class="cap-line"><span>Investors</span><b>11.7%</b></div>
+                    <div class="cap-line"><span>Option pool reserved</span><b>10%</b></div>
+                    <div class="cap-line"><span>Founders</span><b>Keep control</b></div>
+                </div>
+                <p class="cap-foot">
+                    9,000,000 shares, Delaware C-Corp, 83(b) elections filed. Advisor grants come out of the option pool, not
+                    from the investors' share.
+                </p>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="q-head">The one question we'll ask you</div>
+            <p>"If you were us, who are the three people you'd want us in front of first?"</p>
+        </div>
+
+        <div class="section-title" style="margin-top:10px;">Next steps</div>
+        <p class="stat-note" style="margin-bottom:8px;"><strong>1.</strong> A 30-minute product walkthrough with Miguel, over video — the real platform, not a mockup. <strong>2.</strong> SAFE and advisor agreement drafts in your hands within 48 hours of that call. <strong>3.</strong> Sign and fund; your first investor update arrives the following quarter.</p>
+
+        <div class="section-title">Team</div>
+        <div class="team-grid">
+            <div class="team-card">
+                <h4>Miguel Cano — Founder, CEO &amp; CTO</h4>
+                <p>Former professional basketball player. 25+ years as a senior engineer. Built the entire platform himself — every
+                module in production today is his code.</p>
+            </div>
+            <div class="team-card">
+                <h4>Alwin Perez — Co-founder, U.S. business development</h4>
+                <p>National-level player in Colombia and tattoo artist to several NBA players. Based in Orlando, he opens the doors
+                on the ground in Florida.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div><strong>Widdo Inc</strong> · Delaware C-Corp · Orlando, FL &amp; Bogotá</div>
+        <div>Let's talk: <a href="mailto:miguel@widdo.co">miguel@widdo.co</a> · <a href="https://widdo.co">widdo.co</a></div>
+    </div>
+
+</div>
+</body>
+</html>

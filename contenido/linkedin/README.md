@@ -2,10 +2,15 @@
 
 ## Page Info
 - **Page:** linkedin.com/company/widdo
-- **Tagline:** "The operating system for youth sports clubs"
+- **Tagline:** "The AI-native operating system for youth sports clubs — it chases the dues so you can coach." (92/120 car. Sin "parents": es la única palabra que GameUp podría leer como su territorio)
 - **Industry:** Software Development
 - **Location:** Orlando, FL
-- **Banner:** fuente `decks/assets/linkedin-banner.html` — generar el PNG con `node decks/assets/generate-banner.js` (el .png no está versionado)
+- **Banner + logo:** `perfil/`. Regenerar con `node build.js` y luego `node export.js`.
+  Subir el de **4512x764** (a 2x se ve pixelado). Lienzo editable:
+  https://claude.ai/code/artifact/b5205c0e-5144-4b5d-a227-49c949a897a4
+  El banner v1 (`decks/assets/linkedin-banner.html`) quedó en `perfil/_v1-superado/`.
+- **Logo:** LinkedIn lo pasa a JPEG y lo aplana contra blanco — la transparencia no
+  sobrevive. Ver la sección de logo en `../BRAND-GUIDE.md` antes de tocarlo.
 
 ## Rules
 - All posts in English (target: USA investors, club owners, sports tech people)

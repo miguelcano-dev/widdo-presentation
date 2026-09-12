@@ -1,0 +1,188 @@
+{
+  "pages": [
+    {
+      "id": "secuencia",
+      "name": "Secuencia · 12 frames"
+    },
+    {
+      "id": "paletas",
+      "name": "Paletas y tipografía"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Hook.dc.html",
+      "title": "1 · Hook · 0–3.0 s",
+      "page": "secuencia",
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Main.dc.html",
+      "title": "2 · Caos · 3.0–6.2 s",
+      "page": "secuencia",
+      "x": 1200,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Colapso.dc.html",
+      "title": "3 · Colapso · 6.2–7.4 s",
+      "page": "secuencia",
+      "x": 2400,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Vacio.dc.html",
+      "title": "4 · Vacío · 7.4–7.7 s",
+      "page": "secuencia",
+      "x": 3600,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Logo.dc.html",
+      "title": "5 · Logo · 7.7–9.6 s",
+      "page": "secuencia",
+      "x": 4800,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Promesa.dc.html",
+      "title": "6 · Promesa · 9.6–12.4 s",
+      "page": "secuencia",
+      "x": 6000,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Parte.dc.html",
+      "title": "7 · El parte · 12.4–18.0 s",
+      "page": "secuencia",
+      "x": 0,
+      "y": 2160,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Hallazgo.dc.html",
+      "title": "8 · El hallazgo · 18.0–24.0 s",
+      "page": "secuencia",
+      "x": 1200,
+      "y": 2160,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Noche.dc.html",
+      "title": "9 · De noche · 24.0–29.5 s",
+      "page": "secuencia",
+      "x": 2400,
+      "y": 2160,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Limite.dc.html",
+      "title": "10 · El límite · 29.5–35.0 s",
+      "page": "secuencia",
+      "x": 3600,
+      "y": 2160,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Fee.dc.html",
+      "title": "11 · 0% · 35.0–39.5 s",
+      "page": "secuencia",
+      "x": 4800,
+      "y": 2160,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Cierre.dc.html",
+      "title": "12 · Cierre · 39.5–45.0 s",
+      "page": "secuencia",
+      "x": 6000,
+      "y": 2160,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Bosque.dc.html",
+      "title": "Bosque — verde oscuro",
+      "page": "paletas",
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Grafito.dc.html",
+      "title": "Grafito — neutro elevado",
+      "page": "paletas",
+      "x": 1200,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Esmeralda.dc.html",
+      "title": "Esmeralda — la elegida",
+      "page": "paletas",
+      "x": 2400,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    },
+    {
+      "file": "Tipografia.dc.html",
+      "title": "Tipografía y escala",
+      "page": "paletas",
+      "x": 3600,
+      "y": 0,
+      "w": 1080,
+      "h": 1920
+    }
+  ],
+  "annotations": [
+    {
+      "id": "nota-secuencia",
+      "page": "secuencia",
+      "x": 0,
+      "y": -820,
+      "w": 900,
+      "text": "Escaleta v2: el agente es el protagonista. Los frames 1 a 5 y el 11 y 12 vienen de la v1; del 6 al 10 son nuevos.\n\nLa historia de los frames 7 a 10 es una sola: el agente encuentra, avisa, actúa de noche, y se detiene donde debe. El frame 10 es el que hace que lo demás se pueda decir sin asustar a nadie.\n\nEl $8.400 del frame 8 sale de un caso real de producción (114 comprobantes sin abrir, el más viejo de tres meses), pero va como dato de demostración de un club ficticio: el caso real está en pesos."
+    },
+    {
+      "id": "nota-cifras",
+      "page": "secuencia",
+      "x": 3600,
+      "y": 1970,
+      "w": 900,
+      "text": "El interruptor de Finances es la mejor animación de la pieza: intenta moverse y vuelve solo. Dice «no puede» sin una palabra."
+    },
+    {
+      "id": "nota-paletas",
+      "page": "paletas",
+      "x": 0,
+      "y": -460,
+      "w": 900,
+      "text": "Esmeralda quedó. Las otras dos se dejan para poder volver a comparar: cada frame trae un control de paleta arriba."
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "secuencia"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "A - Claim + IA en accion (recomendado)",
+      "x": 0,
+      "y": 0,
+      "w": 1128,
+      "h": 191
+    },
+    {
+      "file": "Light.dc.html",
+      "title": "B - Claro (el recuadro del logo desaparece)",
+      "x": 0,
+      "y": 300,
+      "w": 1128,
+      "h": 191
+    },
+    {
+      "file": "Proof.dc.html",
+      "title": "C - Oscuro sin chip",
+      "x": 0,
+      "y": 600,
+      "w": 1128,
+      "h": 191
+    },
+    {
+      "file": "Preview.dc.html",
+      "title": "Verificacion en LinkedIn",
+      "x": 0,
+      "y": 900,
+      "w": 1128,
+      "h": 980
+    }
+  ],
+  "annotations": [
+    {
+      "id": "specs",
+      "x": 1210,
+      "y": 0,
+      "w": 300,
+      "text": "Banner de pagina de empresa en LinkedIn.\n1128 x 191 px, exportado a 2x (2256 x 382).\nPNG o JPG, maximo 8 MB.\n\nTipografia Red Hat Display, la misma de widdo.co, incrustada en el archivo.\nVerde de marca #00C853 sobre #0A1410."
+    },
+    {
+      "id": "opciones",
+      "x": 1210,
+      "y": 300,
+      "w": 300,
+      "text": "A y B son la misma pieza. A agrega a la derecha la prueba de que es AI-native: pregunta en ingles llano, deuda encontrada y recordatorios ya enviados. La IA actua, no solo responde.\n\nEn movil ese bloque queda fuera del recorte, asi que es decorativo: nada esencial vive ahi.\n\nTodo lo que afirma la pieza esta verificado contra produccion el 18-ago-2026:\n\n0% platform fee: el codigo no envia application_fee_amount.\n33 sports: /api/sports devuelve 33 activos, 30 marcados popular_us.\nEl chip: getDebtorsSummary y sendPaymentReminder existen en el agente."
+    },
+    {
+      "id": "reglas",
+      "x": 1210,
+      "y": 900,
+      "w": 300,
+      "text": "Dos recortes que impone LinkedIn:\n\n1. El logo de la pagina tapa la esquina inferior izquierda. Nada legible antes de x 232.\n\n2. En movil se recortan los lados. Todo lo importante vive entre x 225 y x 902."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

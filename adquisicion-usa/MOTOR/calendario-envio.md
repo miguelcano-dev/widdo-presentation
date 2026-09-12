@@ -1,5 +1,9 @@
 # CALENDARIO DE ENVÍO — 4 semanas (29 jul → 21 ago 2026)
 
+> ✅ **RECALENDARIZADO el 19-ago-2026 → ver `calendario-envio-v2.md`** (fechas reales desde
+> jue 20-ago, mismo orden de lotes). Este archivo queda como referencia del ORDEN y los
+> avisos por lote — las fechas de abajo NO valen.
+>
 > ⚠️ **CALENDARIO ORIGINAL VENCIDO (nota del 13-ago-2026).** Las semanas 1 a 3 pasaron sin ejecutarse:
 > **52 de los 54 emails nunca salieron en esas fechas.** Las fechas de abajo ya no valen como agenda.
 >

@@ -51,7 +51,7 @@ La pausa antes de la respuesta crea tension.
 | Numeros grandes | Voz LENTA y fuerte: "Ciento... cincuenta... millones." |
 | Datos tecnicos | Rapido y seguro: "88% gross margin, 16x LTV/CAC" |
 | El problema | Emocional, como contando una frustracion real |
-| El ask | Tranquilo y directo: "We're raising 200K. Here's why." |
+| El ask | Tranquilo y directo: "We're raising 350K on a post-money SAFE, $3M cap. Here's why." |
 | El cierre | Firme, con pausa al final |
 
 ---
@@ -74,6 +74,7 @@ Momentos donde hacer pausa:
 - Despues de "150 million Americans"
 - Despues de "88% gross margin"
 - Despues de "paid a full year up front"
+- Despues de "$350K on a $3M post-money cap"
 - Despues del cierre "Thank you"
 
 ⚠️ **Nunca usar "zero churn" / "0% churn" como dato.** Con 3 clubes pagando no es
@@ -116,6 +117,8 @@ Grabate y preguntate:
 | Pedir disculpas ("somos pequenos") | Suena a inseguridad | Reframe: "3 clubs pagaron el ano completo por adelantado" |
 | Dar demasiados datos | Sobrecarga cognitiva | Maximo 3 numeros por slide |
 | No tener un ask claro | No saben que hacer despues | Siempre terminar con "estamos levantando X para Y" |
+| Decir "pre-money" hablando de esta ronda | Es un cap post-money; confundirlos te hace ver poco preparado | "It's a $3M post-money cap on a YC standard SAFE" |
+| Pedir disculpas por tu salario | Es un tercio de la ronda: el inversor lo va a ver igual | "It replaces the outside income I live on today, so I'm 100% on Widdo" |
 | Hablar rapido por nervios | No procesan la info | Respirar antes de cada slide. Las pausas son tu amigo |
 
 ---
@@ -156,6 +159,19 @@ Antes de cada reunion con inversor:
 - [ ] Se el nombre del inversor y que tipo de deals hacen
 - [ ] Mi telefono esta en silencio
 - [ ] Respire 3 veces profundo antes de entrar
+
+### Los 6 numeros de la ronda, de memoria
+
+| Dato | Numero |
+|------|--------|
+| Ronda | $350K pre-seed |
+| Primer cierre | desde $250K |
+| Instrumento | SAFE post-money (YC standard), MFN, sin descuento |
+| Cap | $3M post-money |
+| Dilucion | 8,3% a $250K / 11,7% a $350K |
+| Pro-rata | solo tickets ≥ $50K |
+
+Y la partida grande, sin titubear: **$115K de salario del founder, $6.400/mes.**
 
 ---
 

@@ -30,7 +30,11 @@ Cada slide en los decks HTML sigue esta estructura:
 - Slide: **1280px × 720px** (16:9 HD)
 - Font: **Red Hat Display** (Google Fonts)
 - Color primario: **#16a34a** (verde)
-- Background: **#18181b** (dark)
+- Background: **depende del deck**. LATAM, clubes, torneos y espanol siguen en oscuro (`#18181b`).
+  El deck USA usa **tema claro**: slides de cuerpo en `#ffffff` con texto `#18181b` / `#52525b`,
+  bordes `#e4e4e7`, cards `#fafafa`, tintes verdes `#f0fdf4` / `#bbf7d0` y tiles de metricas oscuros.
+- Las variables de `:root` definen el tema claro; la clase **`.slide.dark`** las restaura en oscuro
+  y se aplica solo a las tapas del deck USA: portada, "The Ask" y cierre.
 
 ## CSS de los fondos
 

@@ -12,7 +12,7 @@ La **tanda 1 está en envío desde el 13-ago-2026** — el outreach ya no espera
 |---|---|---|
 | Fix: secret propio para webhook de Connect | ✅ EN PROD | commit `9a07ddc` en `saas_sport/main`, desplegado automáticamente |
 | Ruta SPA `/organizer/stripe-connect` | ✅ existe | `frontend/src/routes/organizerRoutes.jsx:152` |
-| Landing con pricing $99/$199/$349 + hero 0% fee | ✅ en prod | — |
+| Landing con pricing $99/$249/$499 + hero 0% fee | ✅ en prod | — |
 | Dirección física Orlando (CAN-SPAM) | ✅ resuelto | — |
 | Email `miguel@widdo.co` (Brevo + Gmail Send-As) | ✅ funcionando | — |
 | 10 emails de la tanda 1 | ✅ escritos · **EN ENVÍO desde 13-ago-2026** (Brevo) | `adquisicion-usa/emails/` |

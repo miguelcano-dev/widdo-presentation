@@ -17,14 +17,14 @@ Trabajas en el proyecto Next.js `desarrollo/landing` de Widdo (Next 16, React 19
 ### Copy y datos (NO inventar — usar estas fuentes del repo)
 - Diferenciadores oficiales: `negocio/sales/KNOWLEDGE-BASE.md`.
 - Quejas reales de competidores (para las filas de la tabla): `adquisicion-usa/reseñas-teamsnap.md` y `adquisicion-usa/reseñas-sportsengine-leagueapps.md`.
-- Pricing de competidores verificado: `negocio/MARKET-RESEARCH-USA.md` (TeamSnap $9.99-13.99/team; SportsEngine $79-499/mo; Widdo Starter $29 / Pro $59 / Enterprise $99).
+- Pricing de competidores verificado: `negocio/MARKET-RESEARCH-USA.md` (TeamSnap $9.99-13.99/team; SportsEngine $79-499/mo; Widdo Starter $99 / Pro $249 / Enterprise $499, por cantidad de jugadores).
 
 ### Secciones a construir (en inglés)
 1. **Hero:** promesa clara. Ej: *"Run your league or club without the ads, the fees, or the headaches."* Subtítulo con los 3 diferenciadores: **no ads even for paying families · ~50% cheaper · works in English & Spanish**. CTA primario: **"See the demo"** (link a demo online/Loom o Calendly); CTA secundario: "Talk to us".
 2. **Tabla de comparación** Widdo vs TeamSnap vs SportsEngine vs LeagueApps. Filas (basadas en las quejas reales):
    - Ads shown to paying families → Widdo: **Never** / otros: **Yes**
    - Price → Widdo simple/low; otros caro / per-team / setup fees
-   - Payment processing fee → Widdo bajo/claro; LeagueApps ~5%; SportsEngine fees altos
+   - Platform fee sobre los pagos → Widdo **0%** (el dinero va directo a la cuenta del club via Stripe); LeagueApps ~5% por transaccion; SportsEngine fees altos y poco claros
    - Support in English & Spanish → **Widdo only**
    - Ease of use (small clubs) → Widdo simple; SportsEngine "needs engineers/SQL"
    - Free data migration → **Widdo yes**

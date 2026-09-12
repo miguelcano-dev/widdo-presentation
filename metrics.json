@@ -1,6 +1,6 @@
 {
   "_comment": "Actualiza estos numeros y corre: node update-metrics.js",
-  "_updated": "2026-08-14",
+  "_updated": "2026-09-12",
   "_note": "Cifras VERIFICADAS en BD prod 28-jul-2026. REVENUE: 3 clubes CO en plan ANUAL, pagaron 1.290.000 COP/anio c/u (=107.500 COP/mes), cubiertos hasta 2027-04-01. MRR en USD a TRM 3.205,80 (el peso se revaluo 14,55% en 2026; a 4.000 el MRR seria $81). PIPELINE: 3 trials de julio (Leones, Lions Ibague, Atlanty) que pasan a Basico mensual 69.000 COP c/u = +$65/mes; NO contados en paying_clubs hasta el primer cobro. Politica anual vigente: paga 12, recibe 13. infra_cost=32 medido en DigitalOcean (droplet 1vCPU/2GB $12 + MySQL $15 + Spaces $5). cost_per_club incluye IA medida ($3,38/club/mes tras activar prompt caching el 28-jul, -86%).",
   "clubs": 9,
   "paying_clubs": 3,
@@ -23,13 +23,12 @@
   "orgs_usa": "300K+",
   "tam": "$10.2B",
   "sam": "$3.7B",
-  "som": "$180M",
+  "som": "$33.1M",
   "som_clubs": "15,000",
   "pricing_starter": 99,
-  "pricing_pro": 199,
-  "pricing_club_plus": 349,
-  "raising_amount": "200K",
-  "valuation_premoney": "$1.5M-2M",
+  "pricing_pro": 249,
+  "pricing_club_plus": 499,
+  "raising_amount": "350K",
   "equity_miguel": "70%",
   "equity_alwin": "30%",
   "esop_reserved": "10%",
@@ -50,5 +49,10 @@
   "active_users_30d": 305,
   "attendances_30d": 2315,
   "charges_created_30d": 559,
-  "ai_cost_per_club": 3.38
+  "ai_cost_per_club": 3.38,
+  "_som_note": "bottom-up: 15,000 clubs x $184 blended ARPC (60% Starter $99 / 30% Pro $249 / 10% Enterprise $499) x 12. Con precios viejos ($154) era $27.7M. El $180M anterior era un cero de mas.",
+  "_pricing_note": "2-sep-2026: Pro y Enterprise suben por feedback de Erica (mayo). Starter se queda en $99 como puerta de Florida. EJECUTADO al 12-sep-2026: migracion 2026_09_11_120000 aplicada en produccion, precios de Stripe creados con stripe:sync-prices, y la landing sirve 99/249/499 (verificado contra bas_subscription_plan_prices). Fuente de verdad: la BD de produccion.",
+  "raising_floor": "250K",
+  "valuation_cap": "$3M",
+  "_round_note": "2-sep-2026: raising $350K (primer cierre desde $250K), SAFE post-money YC standard, cap $3M (el mismo que vio la junta de Erica en marzo), MFN, sin descuento, pro-rata solo tickets >= $50K. Runway 18 meses con Miguel full-time a $6,400/mes."
 }

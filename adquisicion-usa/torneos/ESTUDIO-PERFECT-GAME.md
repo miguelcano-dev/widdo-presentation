@@ -43,8 +43,10 @@ PG no le vendió software a los torneos — **se convirtió en el torneo.** Para
 Ford ganó porque le habló a Iowa cuando nadie lo hacía. **La Iowa de Widdo = las ligas/torneos hispanos** que ni TeamSnap ni GotSport atienden en español. Mismo patrón, distinto nicho.
 
 ### 🥉 Diversificar ingresos en capas (no de golpe)
-- **Capa 1 (ahora):** suscripción SaaS ($29/$59/$99).
-- **Capa 2:** margen en **procesamiento de pagos** (las inscripciones ya pasan por ti).
+- **Capa 1 (ahora):** suscripción SaaS ($99/$249/$499, por cantidad de jugadores).
+- **Capa 2 — ⛔ DESCARTADA:** margen en procesamiento de pagos. Widdo promete **0% platform fee** en
+  widdo.co y en todo el outreach; cobrar un % de las inscripciones contradiría la propia cuña de
+  venta. Si alguna vez se retoma, sería solo para clubes nuevos, jamás retroactivo.
 - **Capa 3:** features premium (brackets avanzados, streaming del torneo, stats/rankings).
 - **Capa 4:** marketplace/sponsorship — conectar marcas locales con las ligas (como el sponsorship de PG a nivel local).
 

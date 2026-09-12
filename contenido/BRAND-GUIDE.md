@@ -79,10 +79,28 @@
 - **Resolución:** 2x (generar a 2160x2160 para nitidez)
 - **Formato:** PNG
 
-### LinkedIn banner
-- **Tamaño:** 1128x191px
-- **Resolución:** 2x
-- **Formato:** PNG
+### LinkedIn banner (portada de pagina de empresa)
+- **Lienzo:** 1128x191 px
+- **Exportar a 4x: 4512x764.** A 2x se ve pixelado: en pantalla Retina LinkedIn
+  muestra la portada a mas de 1128 px CSS, y el archivo se estira ~1,4x.
+- **Formato:** PNG (limite 8 MB). Si LinkedIn lo ensucia al recomprimir, subir el JPEG q96.
+- **Zona que tapa el logo:** de x 0 a x 190, desde y 95. Nada legible ahi — el texto arranca en x 232.
+- **Zona segura en movil:** de x 225 a x 902. Todo lo esencial vive dentro.
+- Fuente y generador: `contenido/linkedin/perfil/` (`node build.js` y luego `node export.js`).
+
+### Logo de LinkedIn — el recuadro blanco
+**LinkedIn convierte el logo a JPEG, y JPEG no tiene canal alfa.** Aplana contra blanco
+siempre, asi que subir un PNG transparente NO evita el recuadro blanco detras del logo.
+Solo hay dos salidas, y las dos estan resueltas en `contenido/linkedin/perfil/`:
+1. **Portada clara** (`...-light-*.png`): el recuadro blanco deja de contrastar. Sobre claro
+   el verde correcto es `#16A34A`, el mismo del logo.
+2. **Logo cuadrado a sangre** (`widdo-logo-square-800.png`): verde de borde a borde, sin
+   nada que aplanar. Permite conservar la portada oscura, a costa de cambiar el circulo
+   por un cuadrado.
+
+⚠️ **Fondo oscuro de los banners: `#0A1410`**, no `#0A0A0F`. Es un negro con tinte verde;
+sobre el, el `#00C853` no vibra como sobre un negro neutro. `#0A0A0F` se queda para las
+cards de post.
 
 ### Carousel (PDF)
 - **Tamaño por slide:** 1080x1080px

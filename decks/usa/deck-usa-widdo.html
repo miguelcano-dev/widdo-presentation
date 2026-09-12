@@ -8,26 +8,113 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* ============================================================
+           TEMA CLARO (por defecto) — slides de cuerpo sobre blanco.
+           Las tapas (portada, The Ask, cierre) usan .slide.dark, que
+           redefine estas mismas variables en oscuro. No se duplica CSS.
+           ============================================================ */
         :root {
-            --primary: #16a34a;
-            --primary-dark: #15803d;
-            --primary-light: #22c55e;
+            /* Marca */
+            --primary: #16a34a;          /* verde de marca: rellenos, bordes, numeros grandes */
+            --primary-dark: #15803d;     /* enfasis / hover */
+            --primary-light: #22c55e;    /* verde sobre superficies oscuras */
+            --text-green: #15803d;       /* verde legible para texto pequeno sobre blanco */
+
+            /* Superficies */
+            --bg-dark: #ffffff;          /* fondo del slide (nombre heredado) */
+            --bg-page: #e9e9ec;          /* fondo del navegador alrededor del slide */
+            --bg-card: #fafafa;
+            --card-bg: #fafafa;
+            --card-border: #e4e4e7;
+            --card-shadow: 0 1px 2px rgba(24,24,27,.04), 0 8px 24px rgba(24,24,27,.06);
+            --surface: #fafafa;          /* filas / paneles */
+            --surface-2: #f4f4f5;        /* pistas, chips neutros */
+            --tile-bg: #18181b;          /* tiles de metricas en oscuro */
+
+            /* Texto */
+            --text-white: #18181b;       /* texto principal (nombre heredado) */
+            --text-muted: #52525b;
+            --text-subtle: #71717a;
+            --text-chrome: #a1a1aa;      /* numero de slide / Confidential */
+
+            /* Bordes */
+            --border-subtle: #e4e4e7;
+            --border-faint: #f4f4f5;
+
+            /* Acentos semanticos (oscurecidos para contraste sobre blanco) */
+            --accent-blue: #2563eb;
+            --accent-purple: #7c3aed;
+            --accent-orange: #c2410c;
+            --accent-red: #dc2626;
+
+            /* Tintes de fondo */
+            --tint-green: #f0fdf4;
+            --tint-green-border: #bbf7d0;
+            --tint-blue: #eff6ff;
+            --tint-blue-border: #bfdbfe;
+            --tint-red: #fef2f2;
+            --tint-red-border: #fecaca;
+            --tint-orange: #fff7ed;
+            --tint-purple: #f5f3ff;
+
+            /* Chips / etiquetas */
+            --chip-bg: #18181b;
+            --chip-text: #fafafa;
+
+            /* Highlight (card-highlight, banners) */
+            --hl-bg: #f0fdf4;
+            --hl-border: #bbf7d0;
+
+            --dot-future-bg: #ffffff;
+        }
+
+        /* ---- Tapas oscuras: portada, The Ask, cierre ---- */
+        .slide.dark {
             --bg-dark: #18181b;
-            --bg-card: #27272a;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(250, 250, 250, 0.1);
+            --card-shadow: none;
+            --surface: rgba(255, 255, 255, 0.04);
+            --surface-2: rgba(255, 255, 255, 0.08);
+            --tile-bg: rgba(255, 255, 255, 0.04);
+
             --text-white: #fafafa;
             --text-muted: rgba(250, 250, 250, 0.7);
-            --text-subtle: rgba(250, 250, 250, 0.45);
+            --text-subtle: rgba(250, 250, 250, 0.55);
+            --text-chrome: rgba(250, 250, 250, 0.45);
+            --text-green: #22c55e;
+
             --border-subtle: rgba(250, 250, 250, 0.1);
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-orange: #f97316;
-            --accent-red: #ef4444;
+            --border-faint: rgba(255, 255, 255, 0.06);
+
+            --accent-blue: #60a5fa;
+            --accent-purple: #a78bfa;
+            --accent-orange: #fb923c;
+            --accent-red: #f87171;
+
+            --tint-green: rgba(22, 163, 74, 0.12);
+            --tint-green-border: rgba(22, 163, 74, 0.35);
+            --tint-blue: rgba(59, 130, 246, 0.1);
+            --tint-blue-border: rgba(59, 130, 246, 0.25);
+            --tint-red: rgba(239, 68, 68, 0.12);
+            --tint-red-border: rgba(239, 68, 68, 0.28);
+            --tint-orange: rgba(249, 115, 22, 0.12);
+            --tint-purple: rgba(139, 92, 246, 0.12);
+
+            --chip-bg: rgba(255, 255, 255, 0.1);
+            --chip-text: #fafafa;
+
+            --hl-bg: rgba(22, 163, 74, 0.07);
+            --hl-border: rgba(22, 163, 74, 0.32);
+
+            --dot-future-bg: rgba(255, 255, 255, 0.2);
         }
 
         body {
             font-family: 'Red Hat Display', sans-serif;
-            background: #09090b;
-            color: var(--text-white);
+            background: var(--bg-page);
+            color: #18181b;
             line-height: 1.5;
         }
 
@@ -38,10 +125,23 @@
             position: relative;
             overflow: hidden;
             background: var(--bg-dark);
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            color: var(--text-white);
+            box-shadow: 0 10px 40px rgba(24, 24, 27, 0.12);
             page-break-after: always;
         }
+        .slide.dark { box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5); }
 
+        /* Regla verde superior: firma discreta de cada slide claro */
+        .slide:not(.dark)::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            z-index: 30;
+        }
+
+        /* ---- Capas de fondo ---- */
         .bg-gradient { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22, 163, 74, 0.15) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%); }
         .bg-gradient-right { position: absolute; inset: 0; background: linear-gradient(225deg, rgba(22, 163, 74, 0.1) 0%, var(--bg-dark) 60%); }
         .bg-gradient-center { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(22, 163, 74, 0.08) 0%, var(--bg-dark) 70%); }
@@ -52,18 +152,37 @@
 
         .bg-grid { position: absolute; inset: 0; background-image: url('../grid-tile.png'); background-size: 80px 80px; background-repeat: repeat; }
 
+        /* En claro: un solo tinte verde muy tenue + trama gris casi invisible */
+        .slide:not(.dark) .bg-blur-1,
+        .slide:not(.dark) .bg-blur-2,
+        .slide:not(.dark) .bg-blur-3 { display: none; }
+        .slide:not(.dark) .bg-gradient,
+        .slide:not(.dark) .bg-gradient-right,
+        .slide:not(.dark) .bg-gradient-center {
+            background: radial-gradient(circle at 85% 10%, rgba(22, 163, 74, 0.07) 0%, transparent 45%);
+        }
+        .slide:not(.dark) .bg-grid {
+            background-image:
+                linear-gradient(to right, rgba(24, 24, 27, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(24, 24, 27, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.7;
+        }
+
         .content { position: relative; z-index: 10; padding: 60px 80px; height: 100%; display: flex; flex-direction: column; }
+        .slide.centered .content { justify-content: center; padding-top: 40px; padding-bottom: 56px; }
         .content-centered { justify-content: center; align-items: center; text-align: center; }
 
-        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: var(--text-subtle); z-index: 20; }
-        .confidential { position: absolute; bottom: 20px; left: 30px; font-size: 10px; color: var(--text-subtle); z-index: 20; letter-spacing: 2px; text-transform: uppercase; }
+        .slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: var(--text-chrome); z-index: 20; font-weight: 600; }
+        .confidential { position: absolute; bottom: 20px; left: 30px; font-size: 10px; color: var(--text-chrome); z-index: 20; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 
-        h1 { font-size: 48px; font-weight: 900; line-height: 1.1; }
-        h2 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
-        h3 { font-size: 24px; font-weight: 700; line-height: 1.3; }
-        h4 { font-size: 18px; font-weight: 700; }
+        h1 { font-size: 48px; font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; }
+        h2 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em; }
+        h3 { font-size: 24px; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; }
+        h4 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
 
-        .text-green { color: var(--primary); }
+        .text-green { color: var(--text-green); }
+        h1 .text-green, h2 .text-green, h3 .text-green, .price.text-green { color: var(--primary); }
         .text-muted { color: var(--text-muted); }
         .text-subtle { color: var(--text-subtle); }
         .text-sm { font-size: 14px; }
@@ -72,17 +191,19 @@
 
         .subtitle { font-size: 20px; color: var(--text-muted); font-weight: 400; line-height: 1.5; max-width: 800px; }
 
-        .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(22, 163, 74, 0.1); border: 1px solid rgba(22, 163, 74, 0.3); border-radius: 9999px; padding: 8px 20px; font-size: 13px; color: var(--primary); font-weight: 600; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--tint-green); border: 1px solid var(--tint-green-border); border-radius: 9999px; padding: 8px 20px; font-size: 13px; color: var(--text-green); font-weight: 700; }
+        .content:not(.content-centered) > .badge { align-self: flex-start; }
         .badge-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
-        .badge-neutral { background: rgba(255,255,255,0.05); border-color: var(--border-subtle); color: var(--text-muted); }
+        .badge-neutral { background: var(--surface-2); border-color: var(--border-subtle); color: var(--text-muted); }
 
-        .card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 24px; }
-        .card-highlight { border-color: rgba(22, 163, 74, 0.3); background: rgba(22, 163, 74, 0.05); }
+        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; box-shadow: var(--card-shadow); }
+        .card-highlight { border-color: var(--hl-border); background: var(--hl-bg); box-shadow: none; }
 
-        .metric-card { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 28px; text-align: center; }
-        .metric-value { font-size: 42px; font-weight: 900; color: var(--primary); line-height: 1; }
-        .metric-label { font-size: 13px; color: var(--text-muted); margin-top: 8px; font-weight: 500; }
-        .metric-delta { font-size: 12px; color: var(--primary-light); margin-top: 4px; font-weight: 600; }
+        .metric-card { background: var(--tile-bg); border: 1px solid var(--tile-bg); border-radius: 12px; padding: 26px 16px; text-align: center; box-shadow: var(--card-shadow); }
+        .metric-value { font-size: 42px; font-weight: 900; color: var(--primary-light); line-height: 1; }
+        .metric-label { font-size: 10px; color: rgba(255, 255, 255, 0.6); margin-top: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; line-height: 1.4; }
+        .metric-delta { font-size: 11px; color: rgba(255, 255, 255, 0.55); margin-top: 6px; font-weight: 500; }
+        .slide.dark .metric-card { border-color: var(--card-border); }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
@@ -104,51 +225,90 @@
         .flex-1 { flex: 1; }
 
         .bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 50px; display: flex; align-items: center; justify-content: center; gap: 40px; border-top: 1px solid var(--border-subtle); z-index: 20; }
-        .bottom-bar span { font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--text-subtle); text-transform: uppercase; }
+        .bottom-bar span { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--text-subtle); text-transform: uppercase; }
 
-        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-        .progress-fill { height: 100%; background: var(--primary); border-radius: 3px; }
+        .progress-bar { width: 100%; height: 6px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%); border-radius: 3px; }
+        .slide.dark .progress-bar { background: rgba(255, 255, 255, 0.1); }
 
         .table-simple { width: 100%; border-collapse: collapse; }
-        .table-simple th { text-align: left; font-size: 11px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); }
-        .table-simple td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .table-simple th { text-align: left; font-size: 11px; color: #fff; background: #18181b; text-transform: uppercase; letter-spacing: 1px; padding: 10px 12px; font-weight: 800; }
+        .table-simple th:first-child { border-radius: 8px 0 0 8px; }
+        .table-simple th:last-child { border-radius: 0 8px 8px 0; }
+        .table-simple td { padding: 10px 12px; font-size: 14px; border-bottom: 1px solid var(--border-faint); }
+        .table-simple tbody tr:nth-child(even) { background: var(--surface-2); }
+        .slide.dark .table-simple th { background: rgba(255, 255, 255, 0.06); color: var(--text-subtle); }
+        .slide.dark .table-simple tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.03); }
 
-        .pricing-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 32px 24px; text-align: center; }
-        .pricing-card.featured { border: 2px solid var(--primary); background: linear-gradient(135deg, #27272a 0%, #18181b 100%); position: relative; }
-        .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 4px 16px; border-radius: 9999px; font-size: 11px; font-weight: 700; white-space: nowrap; }
-        .price { font-size: 36px; font-weight: 900; }
+        .pricing-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 24px; text-align: center; box-shadow: var(--card-shadow); }
+        .pricing-card.featured { border: 2px solid var(--primary); background: linear-gradient(180deg, var(--tint-green) 0%, var(--bg-dark) 100%); position: relative; }
+        .slide.dark .pricing-card { background: #27272a; }
+        .slide.dark .pricing-card.featured { background: linear-gradient(135deg, #27272a 0%, #18181b 100%); }
+        .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; padding: 4px 16px; border-radius: 9999px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+        .price { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; }
         .price-period { font-size: 14px; color: var(--text-subtle); }
 
         .timeline-item { display: flex; gap: 16px; padding: 12px 0; }
+        .slide:not(.dark) .timeline-item { border-bottom: 1px solid var(--border-faint); }
+        .slide:not(.dark) .timeline-item:last-child { border-bottom: none; }
         .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--primary); margin-top: 4px; flex-shrink: 0; }
-        .timeline-dot.future { background: rgba(255,255,255,0.2); border: 2px solid var(--primary); }
-        .timeline-dot.current { background: var(--primary); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.25); }
+        .timeline-dot.future { background: var(--dot-future-bg); border: 2px solid var(--primary); }
+        .timeline-dot.current { background: var(--primary); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2); }
 
-        .icon-box { width: 48px; height: 48px; background: rgba(22, 163, 74, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .icon-box { width: 48px; height: 48px; background: var(--tint-green); border: 1px solid var(--tint-green-border); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .icon-box svg { width: 24px; height: 24px; stroke: var(--primary); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .icon-box-blue { background: rgba(59, 130, 246, 0.1); }
+        .icon-box-blue { background: var(--tint-blue); border-color: var(--tint-blue-border); }
         .icon-box-blue svg { stroke: var(--accent-blue); }
-        .icon-box-purple { background: rgba(139, 92, 246, 0.1); }
+        .icon-box-purple { background: var(--tint-purple); border-color: #ddd6fe; }
         .icon-box-purple svg { stroke: var(--accent-purple); }
-        .icon-box-orange { background: rgba(249, 115, 22, 0.1); }
+        .icon-box-orange { background: var(--tint-orange); border-color: #fed7aa; }
         .icon-box-orange svg { stroke: var(--accent-orange); }
+        .slide.dark .icon-box { border-color: transparent; }
 
         .divider { width: 60px; height: 3px; background: var(--primary); border-radius: 2px; }
 
         .bullet-list { list-style: none; }
-        .bullet-list li { padding: 6px 0; font-size: 15px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; }
-        .bullet-list li::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+        .bullet-list li { padding: 6px 0 6px 18px; font-size: 15px; color: var(--text-muted); position: relative; }
+        .bullet-list li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; }
+        .bullet-list-sm li::before { top: 11px; }
         .bullet-list-sm li { font-size: 13px; padding: 4px 0; }
+        .bullet-list li strong { color: var(--text-white); }
 
         .check-list { list-style: none; }
         .check-list li { padding: 5px 0; font-size: 14px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
         .check-icon { color: var(--primary); font-weight: 700; font-size: 16px; }
 
-        .funnel-step { display: flex; align-items: center; gap: 16px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 8px; }
+        .funnel-step { display: flex; align-items: center; gap: 16px; padding: 10px 16px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 10px; margin-bottom: 8px; }
         .funnel-number { font-size: 28px; font-weight: 900; color: var(--primary); width: 40px; }
+        .slide.dark .funnel-step { border-color: transparent; background: rgba(255, 255, 255, 0.03); }
 
-        .vs-label { background: var(--accent-red); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
-        .widdo-label { background: var(--primary); color: white; padding: 2px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+        /* Chip de categoria (stack tecnico): oscuro y neutro */
+        .chip { font-size: 10px; background: var(--chip-bg); color: var(--chip-text); padding: 4px 9px; border-radius: 5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; flex-shrink: 0; min-width: 88px; text-align: center; }
+
+        /* Fila de lista simple sobre superficie */
+        .row-surface { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 8px; }
+        .feature-row { display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 12px; box-shadow: var(--card-shadow); }
+        .feature-row.is-green { background: var(--tint-green); border-color: var(--tint-green-border); box-shadow: none; }
+        .slide.dark .row-surface, .slide.dark .feature-row { border-color: transparent; background: rgba(255, 255, 255, 0.03); box-shadow: none; }
+
+        /* Tile de stat oscuro (banda de cifras) */
+        .stat-strip { display: inline-flex; gap: 48px; background: #18181b; border-radius: 12px; padding: 16px 40px; box-shadow: 0 8px 24px rgba(24, 24, 27, 0.12); }
+        .stat-strip .num { font-size: 24px; font-weight: 900; color: var(--primary-light); line-height: 1.1; }
+        .stat-strip .lab { font-size: 11px; color: rgba(255, 255, 255, 0.6); font-weight: 600; }
+
+        /* Circulo de iniciales del equipo */
+        .avatar-initials { width: 70px; height: 70px; background: #18181b; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 26px; font-weight: 900; color: var(--primary-light); letter-spacing: 0.5px; }
+
+        /* Marco de captura de producto */
+        .shot-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); }
+        .shot-frame { height: 170px; background: linear-gradient(135deg, var(--tint-green) 0%, var(--surface-2) 100%); display: flex; align-items: center; justify-content: center; }
+        .slide.dark .shot-frame { background: linear-gradient(135deg, #1a2a1f, #18181b); }
+
+        .vs-label { background: var(--accent-red); color: #fff; padding: 3px 11px; border-radius: 9999px; font-size: 11px; font-weight: 800; }
+        .widdo-label { background: var(--primary); color: #fff; padding: 3px 11px; border-radius: 9999px; font-size: 11px; font-weight: 800; }
+
+        .pill-red { background: var(--tint-red); border: 1px solid var(--tint-red-border); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; }
+        .pill-green { background: #fff; border: 1px solid var(--tint-green-border); color: var(--text-green); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; }
 
         /* Print styles */
         @page {
@@ -179,7 +339,7 @@
 <!-- ============================================ -->
 <!-- SLIDE 1: COVER -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide dark">
     <div class="bg-gradient"></div>
     <div class="bg-blur-1"></div>
     <div class="bg-blur-2"></div>
@@ -190,13 +350,13 @@
         </div>
         <div class="badge" style="margin-bottom: 32px;">
             <span class="badge-dot"></span>
-            Pre-Seed &middot; May 2026
+            Pre-Seed &middot; September 2026
         </div>
         <h1 style="font-size: 56px; margin-bottom: 16px;">
             Widdo
         </h1>
         <p class="subtitle" style="font-size: 24px; max-width: 700px; margin-bottom: 32px;">
-            The Player-Centric Sports Platform.<br><span class="text-green" style="font-weight: 700;">Every sport. Every age. One platform.</span>
+            The AI-native OS for sports organizations.<br><span class="text-green" style="font-weight: 700;">Every sport. Every age. One platform.</span>
         </p>
         <p style="font-size: 16px; color: var(--text-subtle);">
             B2B SaaS &middot; Multi-sport &middot; Clubs &amp; Tournaments &middot; USA-first
@@ -216,7 +376,7 @@
 <!-- ============================================ -->
 <!-- SLIDE 2: PROBLEM (merged old 2+3+4) -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide centered">
     <div class="bg-gradient-right"></div>
     <div class="bg-grid"></div>
     <div class="content" style="padding: 50px 80px;">
@@ -243,7 +403,7 @@
         </div>
 
         <div class="grid-3" style="gap: 14px; margin-bottom: 16px;">
-            <div class="card" style="padding: 14px; border-color: rgba(59, 130, 246, 0.3);">
+            <div class="card" style="padding: 14px;">
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <p style="font-size: 20px;">🏀</p>
                     <div>
@@ -252,7 +412,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card" style="padding: 14px; border-color: rgba(22, 163, 74, 0.3);">
+            <div class="card" style="padding: 14px;">
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <p style="font-size: 20px;">⚽</p>
                     <div>
@@ -261,7 +421,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card" style="padding: 14px; border-color: rgba(249, 115, 22, 0.3);">
+            <div class="card" style="padding: 14px;">
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <p style="font-size: 20px;">🏈</p>
                     <div>
@@ -273,10 +433,10 @@
         </div>
 
         <div style="text-align: center;">
-            <div class="card-highlight card" style="display: inline-flex; gap: 40px; padding: 12px 40px;">
-                <div><span style="font-size: 22px; font-weight: 900; color: var(--accent-orange);">150M+</span><br><span class="text-xs text-muted">Athletes in organized sports</span></div>
-                <div><span style="font-size: 22px; font-weight: 900; color: var(--accent-red);">300K+</span><br><span class="text-xs text-muted">Sports organizations</span></div>
-                <div><span style="font-size: 22px; font-weight: 900; color: var(--accent-purple);">73%</span><br><span class="text-xs text-muted">Use no paid software</span></div>
+            <div class="stat-strip">
+                <div><span class="num">150M+</span><br><span class="lab">Athletes in organized sports</span></div>
+                <div><span class="num">300K+</span><br><span class="lab">Sports organizations</span></div>
+                <div><span class="num">73%</span><br><span class="lab">Use no paid software</span></div>
             </div>
         </div>
     </div>
@@ -294,10 +454,10 @@
     <div class="content">
         <div class="badge mb-24"><span class="badge-dot"></span> The Solution</div>
         <h2 style="font-size: 40px;">Player-centric platform for <span class="text-green">every sport,<br>every club, every family</span></h2>
-        <p class="text-muted mt-8 mb-24">The player is the center &mdash; not the club. Their profile, stats, and history live in Widdo forever. Multi-role: be owner, coach, player &amp; parent in different clubs. Multi-language (EN/ES, PT ready). AI assistant built-in.</p>
+        <p class="text-muted mt-8 mb-24">The player is the center &mdash; not the club. Their profile, stats, and history live in Widdo forever. Multi-role: be owner, coach, player &amp; parent in different clubs. Multi-language (EN/ES/PT). AI assistant built-in.</p>
 
         <div class="grid-2" style="gap: 16px;">
-            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+            <div class="feature-row">
                 <div class="icon-box">
                     <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
@@ -306,7 +466,7 @@
                     <p class="text-sm text-muted">Digital registration, documents, age groups, full history. Automatic compliance tracking.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+            <div class="feature-row">
                 <div class="icon-box icon-box-blue">
                     <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><rect x="2" y="2" width="20" height="20" rx="2"/></svg>
                 </div>
@@ -315,7 +475,7 @@
                     <p class="text-sm text-muted">Automated invoicing, family discounts, late payment reminders, real-time financial reports.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+            <div class="feature-row">
                 <div class="icon-box icon-box-purple">
                     <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 </div>
@@ -324,7 +484,7 @@
                     <p class="text-sm text-muted">Practices, games, meetings. Automatic invitations, RSVPs, and reminders for parents and coaches.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+            <div class="feature-row">
                 <div class="icon-box icon-box-orange">
                     <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                 </div>
@@ -333,7 +493,7 @@
                     <p class="text-sm text-muted">Digital check-in per session, attendance metrics per player, automatic absence alerts to parents.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(22,163,74,0.06); border-radius: 12px; border: 1px solid rgba(22,163,74,0.2);">
+            <div class="feature-row is-green">
                 <div class="icon-box">
                     <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
@@ -342,7 +502,7 @@
                     <p class="text-sm text-muted">A player's sports resume lives in Widdo. When they switch clubs or sports, their history, documents, and stats follow them.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+            <div class="feature-row">
                 <div class="icon-box icon-box-blue">
                     <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
                 </div>
@@ -360,7 +520,7 @@
 <!-- ============================================ -->
 <!-- SLIDE 4: ECOSYSTEM (2 verticals) -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide centered">
     <div class="bg-gradient-right"></div>
     <div class="bg-blur-2"></div>
     <div class="bg-grid"></div>
@@ -369,18 +529,18 @@
         <h2 style="font-size: 40px; margin-bottom: 32px;">One platform.<br><span class="text-green">Two verticals. One network.</span></h2>
 
         <div class="grid-2" style="gap: 32px; max-width: 800px;">
-            <div class="card" style="padding: 32px; text-align: center; border-color: rgba(22, 163, 74, 0.4);">
-                <div style="width: 56px; height: 56px; background: rgba(22, 163, 74, 0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏟️</div>
+            <div class="card" style="padding: 32px; text-align: center; border-color: var(--text-green);">
+                <div style="width: 56px; height: 56px; background: var(--tint-green); border: 1px solid var(--tint-green-border); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏟️</div>
                 <h3 style="font-size: 20px; margin-bottom: 4px;" class="text-green">Widdo Clubs</h3>
                 <p class="text-xs text-subtle mb-16">LIVE IN PRODUCTION</p>
                 <p class="text-sm text-muted">Complete club management: players, payments, attendance, families, coaches, AI assistant. Any sport.</p>
-                <p style="font-size: 12px; color: var(--primary); font-weight: 600; margin-top: 8px;">$99&ndash;$349/mo per club</p>
+                <p style="font-size: 12px; color: var(--text-green); font-weight: 600; margin-top: 8px;">$99&ndash;$499/mo per club</p>
             </div>
-            <div class="card" style="padding: 32px; text-align: center; border-color: rgba(59, 130, 246, 0.4);">
-                <div style="width: 56px; height: 56px; background: rgba(59, 130, 246, 0.15); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏆</div>
+            <div class="card" style="padding: 32px; text-align: center; border-color: var(--accent-blue);">
+                <div style="width: 56px; height: 56px; background: var(--tint-blue); border: 1px solid var(--tint-blue-border); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 28px;">🏆</div>
                 <h3 style="font-size: 20px; margin-bottom: 4px; color: var(--accent-blue);">Widdo Tournaments</h3>
                 <p class="text-xs text-subtle mb-16">LIVE &mdash; THE VIRAL ENGINE</p>
-                <p class="text-sm text-muted">AI brackets, live scoring, verified stats, public standings. 1 tournament = 2,000+ new users in a weekend.</p>
+                <p class="text-sm text-muted">AI brackets, live scoring, public standings and public pages. 1 tournament = 2,000+ new users in a weekend.</p>
                 <p style="font-size: 12px; color: var(--accent-blue); font-weight: 600; margin-top: 8px;">Free for organizers</p>
             </div>
         </div>
@@ -402,7 +562,7 @@
     <div class="bg-gradient"></div>
     <div class="bg-blur-1"></div>
     <div class="bg-grid"></div>
-    <div class="content">
+    <div class="content" style="padding: 54px 80px;">
         <div class="badge mb-16"><span class="badge-dot"></span> Widdo Tournaments &mdash; The Viral Engine</div>
         <h2 style="font-size: 36px; margin-bottom: 8px;">One tournament = <span class="text-green">2,000+ new users</span><br>in a single weekend</h2>
         <p class="text-muted text-sm mb-20">Tournaments are the growth engine. Every tournament exposes 30+ clubs to Widdo. Coaches see it, take it home, subscribe. Repeat.</p>
@@ -411,31 +571,31 @@
             <div>
                 <h4 class="mb-12">How it works</h4>
                 <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(59,130,246,0.06); border-radius: 8px; border: 1px solid rgba(59,130,246,0.15);">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: var(--tint-blue); border-radius: 8px; border: 1px solid var(--tint-blue-border);">
                         <span style="font-size: 20px; font-weight: 900; color: var(--accent-blue);">1</span>
                         <div>
                             <p class="text-sm" style="font-weight: 600;">Organizer creates tournament in Widdo</p>
                             <p class="text-xs text-muted">AI generates brackets, schedules, assigns courts/fields automatically.</p>
                         </div>
                     </div>
-                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(59,130,246,0.06); border-radius: 8px; border: 1px solid rgba(59,130,246,0.15);">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: var(--tint-blue); border-radius: 8px; border: 1px solid var(--tint-blue-border);">
                         <span style="font-size: 20px; font-weight: 900; color: var(--accent-blue);">2</span>
                         <div>
                             <p class="text-sm" style="font-weight: 600;">32 teams register &amp; pay through Widdo</p>
                             <p class="text-xs text-muted">800 players + 96 coaches + 1,200 parents = 2,100 new users create accounts.</p>
                         </div>
                     </div>
-                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(59,130,246,0.06); border-radius: 8px; border: 1px solid rgba(59,130,246,0.15);">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: var(--tint-blue); border-radius: 8px; border: 1px solid var(--tint-blue-border);">
                         <span style="font-size: 20px; font-weight: 900; color: var(--accent-blue);">3</span>
                         <div>
                             <p class="text-sm" style="font-weight: 600;">Live scoring &amp; verified stats during games</p>
-                            <p class="text-xs text-muted">Real-time standings, public brackets. Stats verified with timestamps &amp; Transparency Score.</p>
+                            <p class="text-xs text-muted">Real-time standings, public brackets. Verified stats &amp; Transparency Score arrive Q2 2027.</p>
                         </div>
                     </div>
-                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: rgba(22,163,74,0.08); border-radius: 8px; border: 1px solid rgba(22,163,74,0.2);">
+                    <div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; background: var(--tint-green); border-radius: 8px; border: 1px solid var(--tint-green-border);">
                         <span style="font-size: 20px; font-weight: 900; color: var(--primary);">4</span>
                         <div>
-                            <p class="text-sm" style="font-weight: 600; color: var(--primary);">5-10 clubs subscribe after the tournament</p>
+                            <p class="text-sm" style="font-weight: 600; color: var(--text-green);">5-10 clubs subscribe after the tournament</p>
                             <p class="text-xs text-muted">Coaches saw Widdo in action. "How much for my club?" Viral loop starts.</p>
                         </div>
                     </div>
@@ -465,7 +625,7 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <p class="text-sm" style="font-weight: 600;">New clubs converted per tournament</p>
-                            <p class="text-xs text-muted">Free to organize &mdash; Widdo earns only on payment processing</p>
+                            <p class="text-xs text-muted">Free to organize &mdash; Widdo takes 0% of tournament payments</p>
                         </div>
                         <span style="font-size: 22px; font-weight: 900; color: var(--primary);">5-10</span>
                     </div>
@@ -475,7 +635,7 @@
                     <h4 style="font-size: 14px;" class="text-green mb-8">Competitive advantage vs Exposure Events</h4>
                     <ul class="bullet-list bullet-list-sm" style="margin: 0;">
                         <li>AI-powered scheduling &amp; brackets (not manual)</li>
-                        <li>Verified stats with Transparency Score</li>
+                        <li>Verified stats with Transparency Score (Q2 2027)</li>
                         <li>Player profiles carry over (not one-time)</li>
                         <li>Multi-sport (not basketball only)</li>
                         <li>One centralized app &mdash; parents download once, not a new app per tournament</li>
@@ -491,7 +651,7 @@
 <!-- ============================================ -->
 <!-- SLIDE 6: MOBILE APP + ONE PLATFORM -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide centered">
     <div class="bg-gradient-right"></div>
     <div class="bg-blur-2"></div>
     <div class="bg-grid"></div>
@@ -503,34 +663,34 @@
         <div class="grid-2" style="gap: 32px;">
             <div>
                 <h4 class="mb-12" style="font-size: 16px;">The problem today</h4>
-                <div class="card mb-12" style="padding: 20px; border-color: rgba(239,68,68,0.3);">
+                <div class="card mb-12" style="padding: 20px; border-color: var(--tint-red-border);">
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
                         <span class="vs-label">Competitors</span>
                         <span class="text-sm text-muted">5 tournaments = 5 apps</span>
                     </div>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App A</span>
-                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App B</span>
-                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App C</span>
-                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App D</span>
-                        <span style="background: rgba(239,68,68,0.1); color: var(--accent-red); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 App E</span>
+                        <span class="pill-red">📱 App A</span>
+                        <span class="pill-red">📱 App B</span>
+                        <span class="pill-red">📱 App C</span>
+                        <span class="pill-red">📱 App D</span>
+                        <span class="pill-red">📱 App E</span>
                     </div>
                     <p class="text-xs text-muted">Different login for each. Stats don't carry over. Data lost after the event. Parents frustrated.</p>
                 </div>
                 <div class="card card-highlight" style="padding: 20px;">
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
                         <span class="widdo-label">Widdo</span>
-                        <span class="text-sm" style="font-weight: 600; color: var(--primary);">5 tournaments = 1 app</span>
+                        <span class="text-sm" style="font-weight: 600; color: var(--text-green);">5 tournaments = 1 app</span>
                     </div>
                     <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-                        <span style="background: rgba(22,163,74,0.15); color: var(--primary); padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600;">📱 Widdo</span>
+                        <span class="pill-green">📱 Widdo</span>
                     </div>
                     <p class="text-xs text-muted">One profile, one login, all stats verified and portable. Club management + tournaments in the same place.</p>
                 </div>
             </div>
             <div>
                 <h4 class="mb-12" style="font-size: 16px;">Mobile app &mdash; already in TestFlight</h4>
-                <div class="card mb-12" style="padding: 16px; border-color: rgba(22,163,74,0.3);">
+                <div class="card mb-12" style="padding: 16px; border-color: var(--tint-green-border);">
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <div style="font-size: 24px;">📱</div>
                         <div>
@@ -552,7 +712,7 @@
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <div style="font-size: 24px;">🌐</div>
                         <div>
-                            <h4 style="font-size: 14px;">Bilingual (EN/ES) natively</h4>
+                            <h4 style="font-size: 14px;">Native EN / ES / PT</h4>
                             <p class="text-xs text-muted mt-4">62M+ Hispanics in USA. 41M+ speak Spanish at home. No competitor supports both languages.</p>
                         </div>
                     </div>
@@ -579,20 +739,20 @@
         <h2 style="font-size: 36px; margin-bottom: 24px;">A <span class="text-green">$40B+</span> industry — all ages, all sports —<br>running on spreadsheets and group texts</h2>
 
         <div class="grid-3 mb-24" style="gap: 20px;">
-            <div class="card" style="text-align: center; border-color: rgba(139, 92, 246, 0.3); padding: 18px;">
+            <div class="card" style="text-align: center; border-color: #ddd6fe; padding: 18px;">
                 <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">TAM</p>
                 <div style="font-size: 36px; font-weight: 900; color: var(--accent-purple);">$10.2B</div>
-                <p class="text-xs text-muted mt-6">Global sports management software (2025). 11.3% CAGR to $17.5B by 2030.</p>
+                <p class="text-xs text-muted mt-6">Global sports management software (2025). 11.3% CAGR to $17.5B by 2030. Bottom-up: 300K orgs &times; $184 &times; 12 = $662M.</p>
             </div>
-            <div class="card" style="text-align: center; border-color: rgba(59, 130, 246, 0.3); padding: 18px;">
+            <div class="card" style="text-align: center; border-color: var(--tint-blue-border); padding: 18px;">
                 <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">SAM</p>
                 <div style="font-size: 36px; font-weight: 900; color: var(--accent-blue);">$3.7B</div>
-                <p class="text-xs text-muted mt-6">North America 36.2% share. 300K+ sports organizations across all ages and sports.</p>
+                <p class="text-xs text-muted mt-6">North America 36.2% share. 300K+ sports organizations. Bottom-up serviceable: 100K orgs &times; $184 &times; 12 = $221M.</p>
             </div>
-            <div class="card" style="text-align: center; border-color: rgba(22, 163, 74, 0.3); padding: 18px;">
+            <div class="card" style="text-align: center; border-color: var(--tint-green-border); padding: 18px;">
                 <p class="text-xs text-subtle" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">SOM</p>
-                <div style="font-size: 36px; font-weight: 900; color: var(--primary);">$27.7M</div>
-                <p class="text-xs text-muted mt-6">15,000 underserved clubs in USA (3&ndash;5 years) &times; $154/mo blended ARPC &times; 12.</p>
+                <div style="font-size: 36px; font-weight: 900; color: var(--primary);">$33.1M</div>
+                <p class="text-xs text-muted mt-6">15,000 underserved clubs in USA (3&ndash;5 years) &times; $184/mo blended ARPC &times; 12.</p>
             </div>
         </div>
 
@@ -604,7 +764,7 @@
                     <tr><td style="padding: 7px 12px;">Youth athletes (under 18)</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">60 million</td></tr>
                     <tr><td style="padding: 7px 12px;">Adult recreational leagues</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">55+ million</td></tr>
                     <tr><td style="padding: 7px 12px;">Community-based clubs</td><td style="text-align:right; font-weight: 700; padding: 7px 12px;">300K+</td></tr>
-                    <tr><td style="padding: 7px 12px;">Using no paid software</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 7px 12px;">73%</td></tr>
+                    <tr><td style="padding: 7px 12px;">Using no paid software</td><td style="text-align:right; font-weight: 700; color: var(--text-green); padding: 7px 12px;">73%</td></tr>
                     <tr><td style="padding: 7px 12px;">Cost increase since 2019</td><td style="text-align:right; font-weight: 700; color: var(--accent-red); padding: 7px 12px;">+46%</td></tr>
                 </table>
             </div>
@@ -656,42 +816,42 @@
                     <td style="padding: 7px 10px; font-size: 13px;">🏢 SportsEngine</td>
                     <td style="text-align: center; padding: 7px 10px; font-size: 13px;">$3,650+</td>
                     <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
-                    <td style="text-align: center; color: var(--text-subtle); padding: 7px 10px;">Partial</td>
+                    <td style="text-align: center; color: var(--text-muted); padding: 7px 10px;">Partial</td>
                     <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">Overkill for small clubs, weeks to setup</td>
                 </tr>
                 <tr>
                     <td style="padding: 7px 10px; font-size: 13px;">Crossbar</td>
                     <td style="text-align: center; padding: 7px 10px; font-size: 13px;">$995 + fees</td>
                     <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
-                    <td style="text-align: center; color: var(--primary); padding: 7px 10px;">&#10003;</td>
+                    <td style="text-align: center; color: var(--text-green); padding: 7px 10px;">&#10003;</td>
                     <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">+1.99%+$0.99/txn, no bilingual</td>
                 </tr>
                 <tr>
                     <td style="padding: 7px 10px; font-size: 13px;">LeagueApps</td>
                     <td style="text-align: center; padding: 7px 10px; font-size: 13px;">Custom</td>
                     <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
-                    <td style="text-align: center; color: var(--text-subtle); padding: 7px 10px;">Partial</td>
+                    <td style="text-align: center; color: var(--text-muted); padding: 7px 10px;">Partial</td>
                     <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">No attendance, no portability</td>
                 </tr>
                 <tr>
                     <td style="padding: 7px 10px; font-size: 13px;">Exposure Events</td>
                     <td style="text-align: center; padding: 7px 10px; font-size: 13px;">Per-event</td>
                     <td style="text-align: center; color: var(--accent-red); padding: 7px 10px;">&#10007;</td>
-                    <td style="text-align: center; color: var(--primary); padding: 7px 10px;">&#10003;</td>
+                    <td style="text-align: center; color: var(--text-green); padding: 7px 10px;">&#10003;</td>
                     <td style="text-align: center; font-size: 11px; color: var(--text-muted); padding: 7px 10px;">Basketball only, manual brackets, fragmented apps</td>
                 </tr>
-                <tr style="background: rgba(22, 163, 74, 0.08);">
+                <tr style="background: var(--tint-green);">
                     <td style="padding: 8px 10px; font-size: 13px;"><span class="widdo-label">Widdo</span></td>
-                    <td style="text-align: center; color: var(--primary); font-weight: 900; padding: 8px 10px; font-size: 13px;">$1,188</td>
-                    <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 8px 10px;">&#10003;</td>
-                    <td style="text-align: center; color: var(--primary); font-weight: 700; padding: 8px 10px;">&#10003;</td>
-                    <td style="text-align: center; font-size: 11px; color: var(--primary); font-weight: 600; padding: 8px 10px;">Full platform, all sports, one app</td>
+                    <td style="text-align: center; color: var(--text-green); font-weight: 900; padding: 8px 10px; font-size: 13px;">$2,988</td>
+                    <td style="text-align: center; color: var(--text-green); font-weight: 700; padding: 8px 10px;">&#10003;</td>
+                    <td style="text-align: center; color: var(--text-green); font-weight: 700; padding: 8px 10px;">&#10003;</td>
+                    <td style="text-align: center; font-size: 11px; color: var(--text-green); font-weight: 600; padding: 8px 10px;">Full platform, all sports, one app</td>
                 </tr>
             </tbody>
         </table>
 
         <div class="grid-2" style="gap: 16px; margin-bottom: 12px;">
-            <div class="card" style="padding: 14px; border-color: rgba(239, 68, 68, 0.2);">
+            <div class="card" style="padding: 14px; border-color: var(--tint-red-border);">
                 <h4 style="font-size: 14px; margin-bottom: 8px;">📢 TeamSnap: Ad-Driven, Expensive</h4>
                 <ul class="bullet-list bullet-list-sm" style="margin: 0;">
                     <li>Aggressive in-app ads even for paying customers</li>
@@ -699,7 +859,7 @@
                     <li>No player data portability between organizations</li>
                 </ul>
             </div>
-            <div class="card" style="padding: 14px; border-color: rgba(239, 68, 68, 0.2);">
+            <div class="card" style="padding: 14px; border-color: var(--tint-red-border);">
                 <h4 style="font-size: 14px; margin-bottom: 8px;">🏢 SportsEngine: Enterprise-Heavy</h4>
                 <ul class="bullet-list bullet-list-sm" style="margin: 0;">
                     <li>Built for large leagues, overkill for community clubs</li>
@@ -711,8 +871,8 @@
 
         <div class="grid-3" style="gap: 12px;">
             <div class="card card-highlight" style="text-align: center; padding: 14px;">
-                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">50-70%</p>
-                <p class="text-xs text-muted mt-4">Cheaper than incumbents</p>
+                <p style="font-size: 24px; font-weight: 900; color: var(--primary);">38%</p>
+                <p class="text-xs text-muted mt-4">Cheaper than TeamSnap ($4,800/yr)</p>
             </div>
             <div class="card card-highlight" style="text-align: center; padding: 14px;">
                 <p style="font-size: 24px; font-weight: 900; color: var(--primary);">&lt;24h</p>
@@ -736,7 +896,7 @@
     <div class="bg-blur-1"></div>
     <div class="bg-blur-2"></div>
     <div class="bg-grid"></div>
-    <div class="content">
+    <div class="content" style="padding: 50px 80px;">
         <div class="badge mb-24"><span class="badge-dot"></span> Traction &middot; All Organic, $0 Ad Spend</div>
         <h2 style="font-size: 40px; margin-bottom: 16px;"><span class="text-green">100% organic</span> growth. Zero marketing spend. <span class="text-green">USA-first.</span></h2>
         <p class="text-muted mb-24">9 active clubs across Colombia and the US &mdash; 1,476 users and 701 athletes &mdash; 3 paying annual subscriptions, a full year prepaid up front. First real revenue collected.</p>
@@ -758,9 +918,9 @@
                 <div class="metric-delta">100% word of mouth</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value" style="color: var(--accent-orange);">0%</div>
-                <div class="metric-label">Churn Rate</div>
-                <div class="metric-delta">No paying club has ever left</div>
+                <div class="metric-value">3</div>
+                <div class="metric-label">Languages Shipped</div>
+                <div class="metric-delta">EN &middot; ES &middot; PT</div>
             </div>
         </div>
 
@@ -771,8 +931,8 @@
                     <li><strong>CAC = $0</strong> &mdash; Every club came without ads or outbound sales</li>
                     <li><strong>Annual prepay</strong> &mdash; 3 clubs paid a full year up front: revenue in the bank before we asked for it</li>
                     <li><strong>Sticky by design</strong> &mdash; Once a club's players, payments and attendance history live in Widdo, migrating out is expensive</li>
-                    <li><strong>Already in the US</strong> &mdash; Sports academy in FL with active players</li>
-                    <li><strong>Payments live</strong> &mdash; C Corp created (Stripe Atlas, Delaware)</li>
+                    <li><strong>U.S. pilots</strong> &mdash; being selected for the January 2027 launch</li>
+                    <li><strong>Stripe integrated</strong> &mdash; single gateway. Widdo Inc, Delaware C-Corp</li>
                 </ul>
             </div>
             <div class="card card-highlight">
@@ -798,7 +958,7 @@
     <div class="bg-gradient"></div>
     <div class="bg-blur-3"></div>
     <div class="bg-grid"></div>
-    <div class="content">
+    <div class="content" style="padding: 46px 80px;">
         <div class="badge mb-24"><span class="badge-dot"></span> Business Model</div>
         <h2 style="font-size: 38px; margin-bottom: 24px;">SaaS subscription<br>with <span class="text-green">tournaments as growth engine</span></h2>
 
@@ -808,7 +968,7 @@
                 <div class="price">$99<span class="text-sm text-subtle"> USD</span></div>
                 <p class="text-xs text-subtle mb-16">/month</p>
                 <ul class="check-list" style="text-align: left;">
-                    <li><span class="check-icon">&#10003;</span> Up to 80 members</li>
+                    <li><span class="check-icon">&#10003;</span> Up to 80 athletes</li>
                     <li><span class="check-icon">&#10003;</span> 3 coaches</li>
                     <li><span class="check-icon">&#10003;</span> Attendance &amp; calendar</li>
                     <li><span class="check-icon">&#10003;</span> Billing &amp; payments</li>
@@ -817,10 +977,10 @@
             <div class="pricing-card featured">
                 <div class="pricing-badge">Most Popular</div>
                 <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Pro</p>
-                <div class="price text-green">$199<span class="text-sm text-subtle"> USD</span></div>
+                <div class="price text-green">$249<span class="text-sm text-subtle"> USD</span></div>
                 <p class="text-xs text-subtle mb-16">/month</p>
                 <ul class="check-list" style="text-align: left;">
-                    <li><span class="check-icon">&#10003;</span> Up to 200 members</li>
+                    <li><span class="check-icon">&#10003;</span> Up to 200 athletes</li>
                     <li><span class="check-icon">&#10003;</span> Advanced reports</li>
                     <li><span class="check-icon">&#10003;</span> Documents &amp; compliance</li>
                     <li><span class="check-icon">&#10003;</span> Priority support</li>
@@ -828,10 +988,10 @@
             </div>
             <div class="pricing-card">
                 <p class="text-sm text-subtle" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;">Enterprise</p>
-                <div class="price">$349<span class="text-sm text-subtle"> USD</span></div>
+                <div class="price">$499<span class="text-sm text-subtle"> USD</span></div>
                 <p class="text-xs text-subtle mb-16">/month</p>
                 <ul class="check-list" style="text-align: left;">
-                    <li><span class="check-icon">&#10003;</span> Unlimited members</li>
+                    <li><span class="check-icon">&#10003;</span> Up to 500 athletes</li>
                     <li><span class="check-icon">&#10003;</span> Tournaments &amp; leagues</li>
                     <li><span class="check-icon">&#10003;</span> Open API</li>
                     <li><span class="check-icon">&#10003;</span> Priority support</li>
@@ -843,19 +1003,13 @@
             <div class="card" style="text-align: center; padding: 18px;">
                 <p class="text-xs text-green" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Primary</p>
                 <h4 class="mt-8" style="font-size: 15px;">Club Subscriptions</h4>
-                <p class="text-xs text-muted mt-8">$99&ndash;$349/mo recurring. $0 platform fees &mdash; only Stripe 2.9%.</p>
+                <p class="text-xs text-muted mt-8">$99&ndash;$499/mo recurring &mdash; the only revenue stream. 0% platform fee: family payments go straight to the club. Annual: pay 12, get 13.</p>
             </div>
             <div class="card" style="text-align: center; padding: 18px;">
                 <p class="text-xs" style="text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--accent-blue);">Growth engine</p>
                 <h4 class="mt-8" style="font-size: 15px;">Tournaments (Free for Organizers)</h4>
                 <p class="text-xs text-muted mt-8">Free to organize. Each tournament brings 30+ new clubs into the ecosystem &rarr; converts to SaaS subscribers.</p>
             </div>
-        </div>
-        <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center;">
-            <span style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Premium Tournament Listing</span>
-            <span style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Scout Dashboard $99/mo</span>
-            <span style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Verified Player Profile</span>
-            <span style="background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: var(--text-muted);">Sponsor Placement</span>
         </div>
     </div>
     <span class="confidential">Confidential</span>
@@ -877,12 +1031,13 @@
                 <div class="card" style="padding: 16px; margin-bottom: 12px;">
                     <h4 class="mb-8" style="font-size: 15px;">Per-Club Metrics (current &mdash; Colombia)</h4>
                     <table class="table-simple">
-                        <tr><td style="padding: 6px 8px; font-size: 13px;">ARPC (Revenue per club/mo)</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">$34 USD</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">ARPC (Revenue per club/mo)</td><td style="text-align:right; font-weight: 700; color: var(--text-green); padding: 6px 8px; font-size: 13px;">$34 USD</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">U.S. list pricing (blended ARPC)</td><td style="text-align:right; font-weight: 700; color: var(--text-green); padding: 6px 8px; font-size: 13px;">$34 USD</td></tr>
                         <tr><td style="padding: 6px 8px; font-size: 13px;">Cost to serve 1 club</td><td style="text-align:right; padding: 6px 8px; font-size: 13px;">$4 USD</td></tr>
-                        <tr><td style="padding: 6px 8px; font-size: 13px;">Gross margin</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">88%</td></tr>
-                        <tr><td style="padding: 6px 8px; font-size: 13px;">CAC (current / projected)</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">$0 / $50</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">Gross margin</td><td style="text-align:right; font-weight: 700; color: var(--text-green); padding: 6px 8px; font-size: 13px;">88%</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">CAC (current / projected)</td><td style="text-align:right; font-weight: 700; color: var(--text-green); padding: 6px 8px; font-size: 13px;">$0 / $50</td></tr>
                         <tr><td style="padding: 6px 8px; font-size: 13px;">LTV (24 mo)</td><td style="text-align:right; font-weight: 700; padding: 6px 8px; font-size: 13px;">$816 USD</td></tr>
-                        <tr><td style="padding: 6px 8px; font-size: 13px;">LTV/CAC ratio</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 6px 8px; font-size: 13px;">16x</td></tr>
+                        <tr><td style="padding: 6px 8px; font-size: 13px;">LTV/CAC ratio</td><td style="text-align:right; font-weight: 700; color: var(--text-green); padding: 6px 8px; font-size: 13px;">16x</td></tr>
                     </table>
                 </div>
                 <div class="card" style="padding: 16px;">
@@ -890,7 +1045,7 @@
                     <table class="table-simple">
                         <tr><td style="padding: 5px 8px; font-size: 13px;">DigitalOcean + MySQL + Storage</td><td style="text-align:right; padding: 5px 8px; font-size: 13px;">$32/mo</td></tr>
                         <tr><td style="padding: 5px 8px; font-size: 13px;">Email (Resend)</td><td style="text-align:right; padding: 5px 8px; font-size: 13px;">$0/mo</td></tr>
-                        <tr><td style="padding: 5px 8px; font-size: 13px; font-weight: 700;">Total infra</td><td style="text-align:right; font-weight: 700; color: var(--primary); padding: 5px 8px; font-size: 13px;">$32/mo</td></tr>
+                        <tr><td style="padding: 5px 8px; font-size: 13px; font-weight: 700;">Total infra</td><td style="text-align:right; font-weight: 700; color: var(--text-green); padding: 5px 8px; font-size: 13px;">$32/mo</td></tr>
                     </table>
                 </div>
             </div>
@@ -954,8 +1109,8 @@
             </div>
         </div>
         <div class="grid-3" style="flex: 1; gap: 12px;">
-            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
-                <div style="height: 170px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+            <div class="shot-card">
+                <div class="shot-frame">
                     <img src="../assets/dashboard-propietario.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Director<br>Dashboard</div>'">
                 </div>
                 <div style="padding: 12px 16px;">
@@ -963,8 +1118,8 @@
                     <p class="text-xs text-muted">KPIs, billing, attendance, alerts</p>
                 </div>
             </div>
-            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
-                <div style="height: 170px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+            <div class="shot-card">
+                <div class="shot-frame">
                     <img src="../assets/gestion-jugadores.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Player<br>Management</div>'">
                 </div>
                 <div style="padding: 12px 16px;">
@@ -972,8 +1127,8 @@
                     <p class="text-xs text-muted">Full CRUD, filters, export</p>
                 </div>
             </div>
-            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
-                <div style="height: 170px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+            <div class="shot-card">
+                <div class="shot-frame">
                     <img src="../assets/gestion-pagos.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Payment<br>System</div>'">
                 </div>
                 <div style="padding: 12px 16px;">
@@ -981,8 +1136,8 @@
                     <p class="text-xs text-muted">Invoicing, discounts, reports</p>
                 </div>
             </div>
-            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
-                <div style="height: 170px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+            <div class="shot-card">
+                <div class="shot-frame">
                     <img src="../assets/calendario.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Calendar</div>'">
                 </div>
                 <div style="padding: 12px 16px;">
@@ -990,8 +1145,8 @@
                     <p class="text-xs text-muted">Practices, games, meetings</p>
                 </div>
             </div>
-            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
-                <div style="height: 170px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+            <div class="shot-card">
+                <div class="shot-frame">
                     <img src="../assets/control-asistencia.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Attendance<br>Tracking</div>'">
                 </div>
                 <div style="padding: 12px 16px;">
@@ -999,8 +1154,8 @@
                     <p class="text-xs text-muted">Per session, age group, player</p>
                 </div>
             </div>
-            <div style="background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle);">
-                <div style="height: 170px; background: linear-gradient(135deg, #1a2a1f, #18181b); display: flex; align-items: center; justify-content: center;">
+            <div class="shot-card">
+                <div class="shot-frame">
                     <img src="../assets/rol-padre.png" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:var(--text-subtle)\'>Parent<br>Portal</div>'">
                 </div>
                 <div style="padding: 12px 16px;">
@@ -1029,39 +1184,39 @@
             <div>
                 <h4 class="mb-12">Production stack</h4>
                 <div style="display: flex; flex-direction: column; gap: 6px;">
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                        <span style="font-size: 11px; background: rgba(59,130,246,0.2); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Backend</span>
+                    <div class="row-surface">
+                        <span class="chip">Backend</span>
                         <span class="text-sm">Laravel 12 + PHP 8.3 + MySQL</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                        <span style="font-size: 11px; background: rgba(22,163,74,0.2); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Frontend</span>
+                    <div class="row-surface">
+                        <span class="chip">Frontend</span>
                         <span class="text-sm">React 18 + Vite + Tailwind CSS</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                        <span style="font-size: 11px; background: rgba(139,92,246,0.2); color: var(--accent-purple); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Real-time</span>
+                    <div class="row-surface">
+                        <span class="chip">Real-time</span>
                         <span class="text-sm">Laravel Reverb (native WebSockets)</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                        <span style="font-size: 11px; background: rgba(249,115,22,0.2); color: var(--accent-orange); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Infra</span>
+                    <div class="row-surface">
+                        <span class="chip">Infra</span>
                         <span class="text-sm">DigitalOcean + CI/CD GitHub Actions</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                        <span style="font-size: 11px; background: rgba(249,115,22,0.2); color: var(--accent-orange); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Mobile</span>
-                        <span class="text-sm">Flutter (iOS + Android, en TestFlight)</span>
+                    <div class="row-surface">
+                        <span class="chip">Mobile</span>
+                        <span class="text-sm">Flutter (iOS + Android, in TestFlight)</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                        <span style="font-size: 11px; background: rgba(22,163,74,0.2); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Payments</span>
-                        <span class="text-sm">Stripe (USA) + multi-gateway architecture</span>
+                    <div class="row-surface">
+                        <span class="chip">Payments</span>
+                        <span class="text-sm">Stripe &mdash; single gateway (US, CA, MX)</span>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: rgba(255,255,255,0.03); border-radius: 8px;">
-                        <span style="font-size: 11px; background: rgba(59,130,246,0.2); color: var(--accent-blue); padding: 2px 8px; border-radius: 4px; font-weight: 600;">Testing</span>
+                    <div class="row-surface">
+                        <span class="chip">Testing</span>
                         <span class="text-sm">Playwright E2E + PHPUnit + Sentry</span>
                     </div>
                 </div>
             </div>
             <div>
                 <h4 class="mb-12">Moat (defensibility)</h4>
-                <div class="card mb-8" style="border-color: rgba(22,163,74,0.3); padding: 16px;">
+                <div class="card mb-8" style="border-color: var(--tint-green-border); padding: 16px;">
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <div style="font-size: 20px;">🏅</div>
                         <div>
@@ -1083,7 +1238,7 @@
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <div style="font-size: 20px;">🌐</div>
                         <div>
-                            <h4 style="font-size: 14px;">Multi-language (EN/ES, PT ready)</h4>
+                            <h4 style="font-size: 14px;">Multi-language (EN/ES/PT)</h4>
                             <p class="text-xs text-muted">No competitor is truly bilingual. Opens US, LATAM, Brazil &amp; global markets from day one.</p>
                         </div>
                     </div>
@@ -1092,7 +1247,7 @@
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <div style="font-size: 20px;">🤖</div>
                         <div>
-                            <h4 style="font-size: 14px;">AI assistant &mdash; 56 tools, production-ready</h4>
+                            <h4 style="font-size: 14px;">AI agent &mdash; 75+ tools, production-ready</h4>
                             <p class="text-xs text-muted">Built-in AI that answers questions, generates reports, and assists every role. Nobody else has this.</p>
                         </div>
                     </div>
@@ -1125,7 +1280,7 @@
 
         <div class="grid-2" style="gap: 32px;">
             <div>
-                <h4 class="mb-16">Phase 1: Beachhead (Q2-Q4 2026)</h4>
+                <h4 class="mb-16">Phase 1: Beachhead (Florida, 2027)</h4>
                 <div class="funnel-step">
                     <div class="funnel-number">1</div>
                     <div>
@@ -1172,7 +1327,7 @@
                             <h4 style="font-size: 14px;">Content marketing + SEO</h4>
                             <p class="text-xs text-muted">English blog, guides for club directors, YouTube tutorials.</p>
                         </div>
-                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">Q3 2026</span>
+                        <span class="badge-neutral badge" style="font-size: 11px; padding: 4px 12px;">Q1 2027</span>
                     </div>
                 </div>
                 <div class="card mb-12" style="padding: 16px;">
@@ -1195,7 +1350,7 @@
                 </div>
 
                 <div class="card card-highlight mt-16" style="padding: 16px;">
-                    <p class="text-sm"><strong class="text-green">Target:</strong> 100 USA clubs by end of 2026.</p>
+                    <p class="text-sm"><strong class="text-green">Target:</strong> the first 100 U.S. clubs within 18 months of the round.</p>
                 </div>
             </div>
         </div>
@@ -1207,7 +1362,7 @@
 <!-- ============================================ -->
 <!-- SLIDE 15: ROADMAP -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide centered">
     <div class="bg-gradient-right"></div>
     <div class="bg-blur-2"></div>
     <div class="bg-grid"></div>
@@ -1217,68 +1372,75 @@
 
         <div class="grid-2" style="gap: 32px;">
             <div>
-                <p class="text-xs text-subtle mb-12" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Completed &mdash; Q1 2026</p>
-                <div class="timeline-item">
+                <p class="text-xs text-subtle mb-12" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Completed &mdash; through Q3 2026</p>
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot current"></div>
                     <div>
-                        <h4>Widdo Clubs &mdash; Full Platform</h4>
-                        <p class="text-sm text-muted">124 models, 80+ tables, multi-tenant, multi-language (EN/ES), multi-gateway payments. Live with 17+ clubs.</p>
+                        <h4 style="font-size: 17px;">Widdo Clubs &mdash; Full Platform</h4>
+                        <p class="text-xs text-muted">124 models, 80+ tables, multi-tenant, EN/ES/PT, Stripe payments. Live with 9 clubs.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot current"></div>
                     <div>
-                        <h4>AI Assistant &mdash; Production</h4>
-                        <p class="text-sm text-muted">56 tools, 8 roles, conversational. "Show me players with attendance below 70%." Nobody else has this.</p>
+                        <h4 style="font-size: 17px;">AI Agent &mdash; Production</h4>
+                        <p class="text-xs text-muted">75+ tools. Autonomous collections, daily brief and club memory. Nobody else has this.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot current"></div>
                     <div>
-                        <h4>Widdo Tournaments &mdash; Live</h4>
-                        <p class="text-sm text-muted">AI-powered brackets, live scoring, verified stats, public standings. The viral engine is ready.</p>
+                        <h4 style="font-size: 17px;">Widdo Tournaments &mdash; Live</h4>
+                        <p class="text-xs text-muted">6 formats, live scoring, public pages, Stripe Connect. The viral engine is ready.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot current"></div>
                     <div>
-                        <h4>Full i18n &amp; USA Ready</h4>
-                        <p class="text-sm text-muted">Complete English interface. Stripe integration. C Corp Delaware created (Stripe Atlas).</p>
+                        <h4 style="font-size: 17px;">Communications &amp; Athlete Record</h4>
+                        <p class="text-xs text-muted">Club-wide messaging plus a lifetime athlete trajectory with verified achievements.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" style="padding: 8px 0;">
+                    <div class="timeline-dot current"></div>
+                    <div>
+                        <h4 style="font-size: 17px;">Native Mobile App &mdash; TestFlight</h4>
+                        <p class="text-xs text-muted">Flutter, iOS + Android from one codebase. In TestFlight, not published yet.</p>
                     </div>
                 </div>
             </div>
             <div>
-                <p class="text-xs text-subtle mb-12" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Next &mdash; Q2-Q4 2026</p>
-                <div class="timeline-item">
+                <p class="text-xs text-subtle mb-12" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Next &mdash; Q4 2026 to 2027</p>
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot future"></div>
                     <div>
-                        <p class="text-sm text-subtle">April 2026</p>
-                        <h4>Payments Go Live</h4>
-                        <p class="text-sm text-muted">Activate subscriptions in Colombia + USA. First revenue.</p>
+                        <p class="text-xs text-subtle">Q4 2026</p>
+                        <h4 style="font-size: 17px;">Stripe Live Keys + First U.S. Founding Clubs</h4>
+                        <p class="text-xs text-muted">Real payments switched on. App submitted to the App Store and Google Play.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot future"></div>
                     <div>
-                        <p class="text-sm text-subtle">Q2 2026</p>
-                        <h4>Mobile App Published (iOS + Android)</h4>
-                        <p class="text-sm text-muted">Flutter, native iOS + Android. Push notifications, offline-ready. One app for every club and tournament.</p>
+                        <p class="text-xs text-subtle">Q1 2027</p>
+                        <h4 style="font-size: 17px;">Florida Launch (January 2027)</h4>
+                        <p class="text-xs text-muted">Founder-led sales and referral partners across Florida.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot future"></div>
                     <div>
-                        <p class="text-sm text-subtle">Q3 2026</p>
-                        <h4>Verified Stats &amp; College-Ready Profile</h4>
-                        <p class="text-sm text-muted">Transparency Score, verified stats across 12+ sports. Free for athletes. Scout dashboard $99/mo.</p>
+                        <p class="text-xs text-subtle">Q2 2027</p>
+                        <h4 style="font-size: 17px;">Verified Stats + Transparency Score</h4>
+                        <p class="text-xs text-muted">Public athlete page turned on after legal review. Built already, gated on counsel.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" style="padding: 8px 0;">
                     <div class="timeline-dot future"></div>
                     <div>
-                        <p class="text-sm text-subtle">Q4 2026</p>
-                        <h4>Tournament Directory + SEO Programmatic Pages</h4>
-                        <p class="text-sm text-muted">Public tournament directory with automatic SEO pages. Organic growth engine for new users and clubs.</p>
+                        <p class="text-xs text-subtle">2027</p>
+                        <h4 style="font-size: 17px;">NIL Consent Log + Tournament Directory</h4>
+                        <p class="text-xs text-muted">Florida HB 981 consent log. Public tournament directory with programmatic SEO pages.</p>
                     </div>
                 </div>
             </div>
@@ -1299,16 +1461,16 @@
                     <p class="text-xs text-green mt-4" style="font-weight: 700;">LIVE</p>
                 </div>
                 <div style="text-align: center;">
-                    <p class="text-xs text-subtle">i18n EN/ES</p>
+                    <p class="text-xs text-subtle">i18n EN/ES/PT</p>
                     <p class="text-xs text-green mt-4" style="font-weight: 700;">LIVE</p>
                 </div>
                 <div style="text-align: center;">
                     <p class="text-xs text-subtle">Mobile App</p>
-                    <p class="text-xs" style="color: var(--accent-orange); font-weight: 700; margin-top: 4px;">Q2 2026</p>
+                    <p class="text-xs" style="color: var(--accent-orange); font-weight: 700; margin-top: 4px;">TestFlight</p>
                 </div>
                 <div style="text-align: center;">
                     <p class="text-xs text-subtle">Directory</p>
-                    <p class="text-xs" style="color: var(--accent-orange); font-weight: 700; margin-top: 4px;">Q4 2026</p>
+                    <p class="text-xs" style="color: var(--accent-orange); font-weight: 700; margin-top: 4px;">2027</p>
                 </div>
             </div>
         </div>
@@ -1320,7 +1482,7 @@
 <!-- ============================================ -->
 <!-- SLIDE 16: TEAM -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide centered">
     <div class="bg-gradient"></div>
     <div class="bg-blur-3"></div>
     <div class="bg-grid"></div>
@@ -1330,7 +1492,7 @@
 
         <div class="grid-2" style="gap: 32px; max-width: 1000px;">
             <div class="card" style="padding: 32px; text-align: center;">
-                <div style="width: 70px; height: 70px; background: rgba(22, 163, 74, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 28px; font-weight: 900; color: var(--primary);">
+                <div class="avatar-initials">
                     MC
                 </div>
                 <h3 style="margin-bottom: 2px;">Miguel Cano</h3>
@@ -1340,11 +1502,11 @@
                 </p>
             </div>
             <div class="card" style="padding: 32px; text-align: center;">
-                <div style="width: 70px; height: 70px; background: rgba(22, 163, 74, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 28px; font-weight: 900; color: var(--primary);">
+                <div class="avatar-initials">
                     AP
                 </div>
                 <h3 style="margin-bottom: 2px;">Alwin Perez</h3>
-                <p class="text-green text-sm" style="font-weight: 600; margin-bottom: 12px;">Co-founder &amp; Global Business Development</p>
+                <p class="text-green text-sm" style="font-weight: 600; margin-bottom: 12px;">Co-founder &amp; U.S. Business Development (Orlando, FL)</p>
                 <p class="text-muted text-sm" style="max-width: 380px; margin: 0 auto; text-align: left;">
                     International tattoo artist &amp; world event judge with direct access to pro athletes (NBA, MLB). Basketball player. Lived and built businesses across Argentina, Brazil, Germany &amp; the US. Previous tech ventures with Miguel. Based in Orlando, FL.
                 </p>
@@ -1364,57 +1526,65 @@
 <!-- ============================================ -->
 <!-- SLIDE 17: THE ASK -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide dark">
     <div class="bg-gradient-right"></div>
     <div class="bg-grid"></div>
     <div class="content">
         <div class="badge mb-24"><span class="badge-dot"></span> The Ask</div>
-        <h2 style="font-size: 40px; margin-bottom: 16px;">Raising <span class="text-green">$200K</span> Pre-Seed</h2>
-        <p class="text-muted mb-24">SAFE note (YC standard) at $1.5M&ndash;2M pre-money. Delaware C-Corp via Stripe Atlas. 18 months of runway to the first 100 US clubs.</p>
+        <h2 style="font-size: 40px; margin-bottom: 16px;">Raising <span class="text-green">$350K</span> Pre-Seed</h2>
+        <p class="text-muted mb-24">Post-money SAFE (YC standard) at a $3M valuation cap. First close from $250K; target close November 30, 2026. Widdo Inc, Delaware C-Corp. 18 months of runway to the first 100 U.S. clubs.</p>
 
         <div class="grid-2" style="gap: 32px;">
             <div>
                 <h4 class="mb-16">Use of funds</h4>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
                     <div>
                         <div class="flex-between mb-4">
-                            <span class="text-sm" style="font-weight: 600;">Sales hire (Florida)</span>
-                            <span class="text-sm text-green" style="font-weight: 700;">32.5% &middot; $65K</span>
+                            <span class="text-sm" style="font-weight: 600;">Founder salary (CEO/CTO, full-time)</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">33% &middot; $115K</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 32.5%;"></div></div>
-                        <p class="text-xs text-muted mt-4">$65K OTE ($40K base + $25K variable), starts month 4</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 33%;"></div></div>
+                        <p class="text-xs text-muted mt-4">$6,400/mo, replaces current outside income. Reviewed at month 12 against $5K MRR</p>
                     </div>
                     <div>
                         <div class="flex-between mb-4">
-                            <span class="text-sm" style="font-weight: 600;">Founder salary</span>
-                            <span class="text-sm text-green" style="font-weight: 700;">21% &middot; $42K</span>
+                            <span class="text-sm" style="font-weight: 600;">U.S. sales hire</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">19% &middot; $65K</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 21%;"></div></div>
-                        <p class="text-xs text-muted mt-4">$2,000/mo months 1&ndash;6, $2,500/mo after. Below market</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 19%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Base + commission, starts month 6, after founder-led sales validate the playbook</p>
                     </div>
                     <div>
                         <div class="flex-between mb-4">
-                            <span class="text-sm" style="font-weight: 600;">Growth &amp; marketing</span>
-                            <span class="text-sm text-green" style="font-weight: 700;">16% &middot; $32K</span>
+                            <span class="text-sm" style="font-weight: 600;">Growth &amp; marketing (Florida)</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">9% &middot; $32K</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 16%;"></div></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 9%;"></div></div>
                         <p class="text-xs text-muted mt-4">Paid ads in FL, content &amp; SEO (EN/ES), local leagues</p>
                     </div>
                     <div>
                         <div class="flex-between mb-4">
-                            <span class="text-sm" style="font-weight: 600;">Legal, accounting &amp; infra</span>
-                            <span class="text-sm text-green" style="font-weight: 700;">12.5% &middot; $25K</span>
+                            <span class="text-sm" style="font-weight: 600;">Co-founder part-time BD (Orlando)</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">5% &middot; $18K</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 12.5%;"></div></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 5%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Part-time business development on the ground in Florida</p>
+                    </div>
+                    <div>
+                        <div class="flex-between mb-4">
+                            <span class="text-sm" style="font-weight: 600;">Legal, accounting &amp; infra</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">7% &middot; $25K</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 7%;"></div></div>
                         <p class="text-xs text-muted mt-4">Servers, tools, US + CO accounting, startup counsel</p>
                     </div>
                     <div>
                         <div class="flex-between mb-4">
                             <span class="text-sm" style="font-weight: 600;">Reserve</span>
-                            <span class="text-sm text-green" style="font-weight: 700;">18% &middot; $36K</span>
+                            <span class="text-sm text-green" style="font-weight: 700;">27% &middot; $95K</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 18%;"></div></div>
-                        <p class="text-xs text-muted mt-4">Co-founder compensation (TBD) + contingency buffer</p>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 27%;"></div></div>
+                        <p class="text-xs text-muted mt-4">Contingency buffer &mdash; extends runway past 18 months if sales ramp slower</p>
                     </div>
                 </div>
             </div>
@@ -1470,7 +1640,7 @@
 <!-- ============================================ -->
 <!-- SLIDE 18: CLOSING -->
 <!-- ============================================ -->
-<div class="slide">
+<div class="slide dark">
     <div class="bg-gradient"></div>
     <div class="bg-blur-1"></div>
     <div class="bg-blur-2"></div>
@@ -1524,8 +1694,8 @@
                         <div style="font-size: 10px;" class="text-muted">CAC</div>
                     </div>
                     <div class="card card-highlight" style="padding: 10px 18px; text-align: center;">
-                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">0%</div>
-                        <div style="font-size: 10px;" class="text-muted">Churn</div>
+                        <div style="font-size: 22px; font-weight: 900; color: var(--primary);">88%</div>
+                        <div style="font-size: 10px;" class="text-muted">Gross margin</div>
                     </div>
                 </div>
             </div>
@@ -1596,7 +1766,7 @@
     function enterPresentation() {
         presentationMode = true;
         document.body.style.overflow = 'hidden';
-        document.body.style.background = '#000';
+        document.body.style.background = '#18181b';
         slides.forEach((s, i) => {
             s.style.display = i === current ? 'block' : 'none';
             s.style.margin = '0 auto';
@@ -1613,7 +1783,7 @@
     function exitPresentation() {
         presentationMode = false;
         document.body.style.overflow = '';
-        document.body.style.background = '#09090b';
+        document.body.style.background = '#e9e9ec';
         slides.forEach(s => {
             s.style.display = 'block';
             s.style.position = 'relative';
@@ -1621,7 +1791,7 @@
             s.style.left = '';
             s.style.transform = '';
             s.style.margin = '20px auto';
-            s.style.boxShadow = '0 25px 80px rgba(0,0,0,0.5)';
+            s.style.boxShadow = '0 10px 40px rgba(24,24,27,0.12)';
         });
         counter.style.display = 'none';
         if (document.fullscreenElement) document.exitFullscreen();

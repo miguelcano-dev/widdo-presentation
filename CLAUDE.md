@@ -7,6 +7,12 @@
   externo — son cifras falsas que quedaron archivadas en `_archivo-negocio/`.
 - **Pagos:** **Stripe es la unica pasarela** (USA, Canada, Mexico). Wompi y MercadoPago estan
   DESCARTADOS; si aparecen en un documento, ese documento esta desactualizado.
+- **Comision:** **Widdo cobra 0% platform fee.** El dinero de las familias va directo a la cuenta
+  Stripe del club; la suscripcion es la UNICA fuente de ingreso. Esta verificado en codigo
+  (`TournamentPaymentService` no envia `application_fee_amount`, y la rama de 3% de `StripeGateway`
+  solo se activa con un `connected_account_id` que nadie pasa) y publicado en el hero de widdo.co.
+  Cualquier documento que diga que Widdo se queda 2-3% de los pagos esta desactualizado: no lo
+  repitas en pitches, decks ni outreach.
 - **Foco:** **USA-only**. El onboarding de clubes en USA arranca en **enero 2027**. Colombia
   queda en mantenimiento y su revenue entra a cuenta personal.
 - **Entidades:** la empresa operativa es **Widdo Inc** (Delaware, EIN 35-2952499), equity

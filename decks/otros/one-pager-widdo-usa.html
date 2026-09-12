@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Widdo - One Pager 2026</title>
+    <title>Widdo — Investor One Pager</title>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        @page {
-            size: letter;
-            margin: 0;
-        }
+        @page { size: legal; margin: 0; }
 
         body {
             font-family: 'Red Hat Display', -apple-system, sans-serif;
@@ -24,886 +21,470 @@
 
         .page {
             width: 8.5in;
-            min-height: 11in;
-            max-height: 11in;
+            min-height: 14in;
+            max-height: 14in;
             margin: 0 auto;
             overflow: hidden;
             position: relative;
+            background: #fff;
         }
 
         /* ===== HEADER ===== */
         .header {
             background: #18181b;
             color: #fff;
-            padding: 14px 32px;
+            padding: 16px 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .header-logo {
-            width: 36px;
-            height: 36px;
-        }
-
-        .header-text h1 {
-            font-size: 22px;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-logo { width: 36px; height: 36px; }
+        .header-text h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
         .header-text p {
-            font-size: 9px;
-            color: rgba(255,255,255,0.55);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 600;
+            font-size: 9px; color: rgba(255,255,255,0.55);
+            letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
         }
+        .header-right { text-align: right; font-size: 10px; color: rgba(255,255,255,0.5); }
+        .header-right a { color: #22c55e; text-decoration: none; font-weight: 700; font-size: 12px; }
 
-        .header-right {
-            text-align: right;
-            font-size: 10px;
-            color: rgba(255,255,255,0.5);
-        }
+        .header.compact { padding: 11px 32px; }
+        .header.compact .header-logo { width: 28px; height: 28px; }
+        .header.compact .header-text h1 { font-size: 17px; }
 
-        .header-right a {
-            color: #22c55e;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 12px;
-        }
-
-        /* ===== TAGLINE BAR ===== */
         .tagline-bar {
-            background: #16a34a;
-            color: #fff;
-            text-align: center;
-            padding: 6px 32px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
+            background: #16a34a; color: #fff; text-align: center;
+            padding: 6px 32px; font-size: 12px; font-weight: 700; letter-spacing: 0.3px;
         }
 
-        /* ===== MAIN CONTENT ===== */
-        .main {
-            padding: 12px 32px 8px;
-        }
+        .main { padding: 22px 32px 0; }
 
-        /* ===== SECTION TITLES ===== */
         .section-title {
-            font-size: 9.5px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #16a34a;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 9.5px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 2px; color: #16a34a; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px;
         }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: #e4e4e7; }
 
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #e4e4e7;
+        .intro { font-size: 12px; color: #3f3f46; margin-bottom: 17px; }
+        .intro strong { color: #18181b; }
+
+        /* ===== CHANGELOG ===== */
+        .changelog { margin-bottom: 22px; }
+        .change {
+            display: grid; grid-template-columns: 62px 1fr; gap: 10px;
+            padding: 12px 0; border-bottom: 1px solid #f4f4f5; align-items: start;
         }
-
-        /* ===== PROBLEM + SOLUTION ===== */
-        .problem-solution {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 10px;
+        .change:last-child { border-bottom: none; }
+        .change .when {
+            font-size: 8.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px;
+            color: #16a34a; background: #f0fdf4; border: 1px solid #bbf7d0;
+            border-radius: 5px; padding: 3px 0; text-align: center; margin-top: 1px;
         }
+        .change .what { font-size: 10.5px; color: #52525b; line-height: 1.45; }
+        .change .what strong { color: #18181b; font-weight: 800; }
 
-        .ps-box {
-            padding: 8px 10px;
-            border-radius: 8px;
-            font-size: 10px;
-            line-height: 1.45;
+        /* ===== MODULES ===== */
+        .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 22px; }
+        .module { border: 1px solid #e4e4e7; border-radius: 8px; padding: 13px 14px; }
+        .module h4 { font-size: 10.5px; font-weight: 800; margin-bottom: 3px; }
+        .module p { font-size: 9.5px; color: #71717a; line-height: 1.35; }
+
+        /* ===== AI STRIP ===== */
+        .ai-strip {
+            background: #18181b; border-radius: 10px; padding: 17px 18px; margin-bottom: 22px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
         }
-
-        .ps-box.problem {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #991b1b;
+        .ai-strip .ai-head {
+            grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; margin-bottom: 2px;
         }
+        .ai-strip .ai-head h3 { color: #22c55e; font-size: 13px; font-weight: 900; letter-spacing: 0.3px; }
+        .ai-strip .ai-head span { color: rgba(255,255,255,0.55); font-size: 10px; font-weight: 600; }
+        .ai-item h4 { color: #fff; font-size: 10px; font-weight: 800; margin-bottom: 2px; }
+        .ai-item p { color: rgba(255,255,255,0.6); font-size: 9px; line-height: 1.35; }
 
-        .ps-box.solution {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #166534;
+        /* ===== NIL BLOCK ===== */
+        .nil {
+            border: 1.5px solid #bbf7d0; border-radius: 10px; overflow: hidden; margin-bottom: 4px;
         }
-
-        .ps-box h3 {
-            font-size: 10px;
-            font-weight: 800;
-            margin-bottom: 3px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .nil-head { background: #f0fdf4; padding: 14px 14px; border-bottom: 1.5px solid #bbf7d0; }
+        .nil-head h3 { font-size: 12.5px; font-weight: 900; color: #14532d; }
+        .nil-head p { font-size: 9.5px; color: #166534; font-weight: 600; margin-top: 2px; }
+        .nil-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+        .nil-col { padding: 15px 14px; border-right: 1px solid #e4e4e7; }
+        .nil-col:last-child { border-right: none; }
+        .nil-col .who {
+            font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px;
+            color: #18181b; margin-bottom: 5px; display: flex; align-items: center; gap: 6px;
         }
-
-        .ps-box ul {
-            margin: 0;
-            padding-left: 14px;
+        .tag {
+            font-size: 7.5px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase;
+            padding: 2px 5px; border-radius: 4px;
         }
-
-        .ps-box li {
-            margin-bottom: 1px;
+        .tag.live { background: #16a34a; color: #fff; }
+        .tag.built { background: #e4e4e7; color: #3f3f46; }
+        .nil-col p { font-size: 9.5px; color: #52525b; line-height: 1.4; }
+        .nil-roadmap {
+            border-top: 1px solid #e4e4e7; padding: 14px 14px; background: #fafafa;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
         }
-
-        /* ===== PLAYER CENTRIC BANNER ===== */
-        .player-banner {
-            background: #18181b;
-            color: #fff;
-            border-radius: 8px;
-            padding: 8px 14px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        .nil-roadmap div { font-size: 9px; color: #52525b; line-height: 1.4; }
+        .nil-roadmap strong { color: #18181b; font-weight: 800; display: block; font-size: 9.5px; }
+        .nil-close {
+            border-top: 1.5px solid #bbf7d0; background: #f0fdf4; padding: 13px 14px;
+            font-size: 10px; color: #166534; font-weight: 600;
         }
+        .nil-close strong { color: #14532d; }
+        .foot-note { font-size: 9px; color: #a1a1aa; line-height: 1.45; margin-top: 7px; margin-bottom: 0; }
 
-        .player-banner .icon {
-            font-size: 22px;
-            flex-shrink: 0;
+        /* ===== DIFFERENTIATORS ===== */
+        .diff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-bottom: 24px; }
+        .diff-chip {
+            border: 1px solid #e4e4e7; border-radius: 8px; padding: 12px 13px;
+            font-size: 10px; color: #3f3f46; line-height: 1.4;
         }
+        .diff-chip strong { display: block; font-size: 10px; color: #18181b; font-weight: 800; margin-bottom: 1px; }
 
-        .player-banner h3 {
-            font-size: 11px;
-            font-weight: 800;
-            color: #22c55e;
-            margin-bottom: 1px;
+        /* ===== STATS ===== */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+        .stat { background: #18181b; color: #fff; border-radius: 8px; padding: 15px 8px; text-align: center; }
+        .stat .num { font-size: 21px; font-weight: 900; color: #22c55e; }
+        .stat .label { font-size: 8.5px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.6); font-weight: 600; margin-top: 2px; }
+        .stat-note { font-size: 10.5px; color: #52525b; margin-top: 10px; margin-bottom: 24px; }
+        .stat-note strong { color: #18181b; font-weight: 800; }
+
+        /* ===== MARKET ===== */
+        .market { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 6px; }
+        .mkt { border: 1.5px solid #e4e4e7; border-radius: 8px; padding: 14px 13px; }
+        .mkt .k { font-size: 8.5px; font-weight: 800; letter-spacing: 1.4px; color: #71717a; text-transform: uppercase; }
+        .mkt .v { font-size: 18px; font-weight: 900; color: #16a34a; line-height: 1.2; }
+        .mkt .m { font-size: 9px; color: #71717a; line-height: 1.35; margin-top: 2px; }
+
+        /* ===== PRICING ===== */
+        .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 6px; }
+        .plan { border: 1.5px solid #e4e4e7; border-radius: 8px; padding: 14px 13px; position: relative; }
+        .plan.pop { border-color: #16a34a; background: #f0fdf4; }
+        .plan .n { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #71717a; }
+        .plan.pop .n { color: #16a34a; }
+        .plan .p { font-size: 20px; font-weight: 900; color: #18181b; }
+        .plan .p span { font-size: 10px; font-weight: 700; color: #71717a; }
+        .plan .r { font-size: 9.5px; color: #52525b; margin-top: 1px; }
+        .plan .badge {
+            position: absolute; top: 9px; right: 10px; font-size: 7.5px; font-weight: 800;
+            letter-spacing: 0.8px; text-transform: uppercase; background: #16a34a; color: #fff;
+            padding: 2px 5px; border-radius: 4px;
         }
+        .price-note { font-size: 10px; color: #52525b; margin-top: 9px; margin-bottom: 24px; }
+        .price-note strong { color: #18181b; font-weight: 800; }
 
-        .player-banner p {
-            font-size: 9px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.4;
+        /* ===== LISTS ===== */
+        .gtm { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 18px; margin-bottom: 24px; }
+        .list-item { display: flex; gap: 7px; font-size: 10.5px; color: #3f3f46; line-height: 1.45; padding: 2px 0; }
+        .list-item::before { content: '\2713'; color: #16a34a; font-weight: 900; flex-shrink: 0; }
+
+        /* ===== ASK ===== */
+        .ask {
+            background: #18181b; border-radius: 10px; padding: 17px 18px; margin-bottom: 9px; color: #fff;
         }
-
-        /* ===== ECOSYSTEM ===== */
-        .ecosystem-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 10px;
+        .ask h3 { color: #22c55e; font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+        .ask .terms { font-size: 10px; color: rgba(255,255,255,0.72); line-height: 1.45; }
+        .ask .terms strong { color: #fff; font-weight: 800; }
+        .use { margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 9px; }
+        .use-row {
+            display: flex; justify-content: space-between; align-items: baseline;
+            font-size: 10px; color: rgba(255,255,255,0.72); padding: 4.5px 0;
         }
-
-        .eco-card {
-            border: 1.5px solid #e4e4e7;
-            border-radius: 8px;
-            padding: 8px 10px;
-        }
-
-        .eco-card.active {
-            border-color: #16a34a;
-            background: rgba(22, 163, 74, 0.03);
-        }
-
-        .eco-top {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 3px;
-        }
-
-        .eco-icon {
-            font-size: 14px;
-        }
-
-        .eco-card h4 {
-            font-size: 11px;
-            font-weight: 800;
-        }
-
-        .eco-card p {
-            font-size: 8.5px;
-            color: #71717a;
-            line-height: 1.35;
-        }
-
-        .eco-card .revenue-line {
-            font-size: 8px;
-            color: #16a34a;
-            font-weight: 700;
-            margin-top: 3px;
-        }
-
-        .eco-badge {
-            display: inline-block;
-            font-size: 7px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 1px 5px;
-            border-radius: 3px;
-        }
-
-        .eco-badge.live { background: #dcfce7; color: #16a34a; }
-        .eco-badge.building { background: #fef3c7; color: #d97706; }
-
-        /* ===== TRACTION + MARKET SIDE BY SIDE ===== */
-        .traction-market {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 10px;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
-        }
-
-        .metric-box {
-            background: #18181b;
-            color: #fff;
-            border-radius: 6px;
-            padding: 6px 8px;
-            text-align: center;
-        }
-
-        .metric-box .value {
-            font-size: 18px;
-            font-weight: 900;
-            color: #22c55e;
-            line-height: 1;
-        }
-
-        .metric-box .value.orange {
-            color: #f97316;
-        }
-
-        .metric-box .label {
-            font-size: 7.5px;
-            color: rgba(255,255,255,0.55);
-            margin-top: 2px;
-            font-weight: 600;
-        }
-
-        .market-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-        }
-
-        .market-box {
-            border: 1.5px solid #e4e4e7;
-            border-radius: 6px;
-            padding: 6px 8px;
-            text-align: center;
-        }
-
-        .market-box .value {
-            font-size: 16px;
-            font-weight: 900;
-            color: #18181b;
-            line-height: 1.1;
-        }
-
-        .market-box .value.green {
-            color: #16a34a;
-        }
-
-        .market-box .label {
-            font-size: 7.5px;
-            color: #a1a1aa;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            font-weight: 700;
-            margin-top: 1px;
-        }
-
-        /* ===== COMPETITION + PRICING SIDE BY SIDE ===== */
-        .comp-pricing {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 10px;
-        }
-
-        .comp-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 9px;
-        }
-
-        .comp-table th {
-            text-align: left;
-            font-size: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #a1a1aa;
-            padding: 3px 5px;
-            border-bottom: 1.5px solid #e4e4e7;
-            font-weight: 700;
-        }
-
-        .comp-table td {
-            padding: 3.5px 5px;
-            border-bottom: 1px solid #f4f4f5;
-        }
-
-        .comp-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comp-table .widdo-row {
-            background: rgba(22, 163, 74, 0.06);
-            font-weight: 700;
-        }
-
-        .comp-table .widdo-row td {
-            color: #16a34a;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
-        }
-
-        .price-card {
-            border: 1.5px solid #e4e4e7;
-            border-radius: 8px;
-            padding: 8px 6px;
-            text-align: center;
-            position: relative;
-        }
-
-        .price-card.featured {
-            border-color: #16a34a;
-            background: rgba(22, 163, 74, 0.03);
-        }
-
-        .price-card .plan-name {
-            font-size: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #71717a;
-        }
-
-        .price-card .price {
-            font-size: 20px;
-            font-weight: 900;
-            color: #18181b;
-            line-height: 1.2;
-        }
-
-        .price-card .price span {
-            font-size: 9px;
-            font-weight: 500;
-            color: #a1a1aa;
-        }
-
-        .price-card .plan-desc {
-            font-size: 8px;
-            color: #71717a;
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -7px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #16a34a;
-            color: #fff;
-            font-size: 6.5px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            padding: 1.5px 8px;
-            border-radius: 99px;
-            white-space: nowrap;
-        }
-
-        .zero-fees {
-            text-align: center;
-            font-size: 8.5px;
-            color: #16a34a;
-            font-weight: 700;
-            margin-top: 4px;
-        }
-
-        /* ===== REVENUE MODEL ===== */
-        .revenue-strip {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 10px;
-            flex-wrap: wrap;
-        }
-
-        .rev-chip {
-            background: #f4f4f5;
-            border-radius: 4px;
-            padding: 3px 8px;
-            font-size: 8px;
-            font-weight: 600;
-            color: #3f3f46;
-        }
-
-        .rev-chip.primary {
-            background: #dcfce7;
-            color: #166534;
-        }
+        .use-row b { color: #fff; font-weight: 800; font-size: 10px; }
+        .use-row.total { border-top: 1px solid rgba(255,255,255,0.15); margin-top: 5px; padding-top: 6px; }
+        .use-row.total span { color: #fff; font-weight: 800; }
+        .use-row.total b { color: #22c55e; font-size: 12px; }
+        .ask-note { font-size: 10px; color: #71717a; margin-bottom: 24px; }
 
         /* ===== TEAM ===== */
-        .team-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 6px;
-        }
-
-        .team-card {
-            display: flex;
-            gap: 8px;
-            align-items: flex-start;
-        }
-
-        .team-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #18181b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 900;
-            color: #22c55e;
-            flex-shrink: 0;
-        }
-
-        .team-info h4 {
-            font-size: 10px;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .team-info .role {
-            font-size: 8px;
-            color: #16a34a;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .team-info p {
-            font-size: 8px;
-            color: #71717a;
-            line-height: 1.35;
-            margin-top: 1px;
-        }
-
-        /* ===== GTM ===== */
-        .gtm-row {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 8px;
-            align-items: stretch;
-        }
-
-        .gtm-step {
-            flex: 1;
-            background: #fafafa;
-            border: 1px solid #e4e4e7;
-            border-radius: 6px;
-            padding: 5px 8px;
-            text-align: center;
-            position: relative;
-        }
-
-        .gtm-step h5 {
-            font-size: 8px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #16a34a;
-            margin-bottom: 1px;
-        }
-
-        .gtm-step p {
-            font-size: 8px;
-            color: #52525b;
-            line-height: 1.3;
-        }
-
-        .gtm-arrow {
-            display: flex;
-            align-items: center;
-            color: #d4d4d8;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
+        .team { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .team-card { border: 1px solid #e4e4e7; border-radius: 8px; padding: 14px 14px; }
+        .team-card h4 { font-size: 11px; font-weight: 800; margin-bottom: 2px; }
+        .team-card p { font-size: 10px; color: #71717a; line-height: 1.45; }
 
         /* ===== FOOTER ===== */
         .footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #18181b;
-            color: #fff;
-            padding: 8px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: #18181b; color: rgba(255,255,255,0.7);
+            padding: 10px 32px; display: flex; justify-content: space-between; align-items: center;
+            font-size: 10px;
         }
-
-        .footer-left {
-            font-size: 9px;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .footer-left strong {
-            color: #22c55e;
-            font-weight: 700;
-        }
-
-        .footer-center {
-            text-align: center;
-        }
-
-        .footer-center a {
-            color: #22c55e;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 11px;
-        }
-
-        .footer-center p {
-            font-size: 9px;
-            color: rgba(255,255,255,0.4);
-        }
-
-        .footer-right {
-            text-align: right;
-            font-size: 8px;
-            color: rgba(255,255,255,0.35);
-        }
-
-        /* ===== PRINT ===== */
-        @media print {
-            body { margin: 0; padding: 0; }
-            .page { margin: 0; box-shadow: none; }
-        }
+        .footer strong { color: #fff; }
+        .footer a { color: #22c55e; text-decoration: none; font-weight: 700; }
     </style>
 </head>
 <body>
 
+<!-- ==================== PAGE 1 ==================== -->
 <div class="page">
 
-    <!-- HEADER -->
     <div class="header">
         <div class="header-left">
-            <img src="widdo-logo.svg" class="header-logo" alt="Widdo">
+            <img src="widdo-logo.svg" alt="Widdo" class="header-logo">
             <div class="header-text">
                 <h1>Widdo</h1>
-                <p>The Player-Centric Sports Platform</p>
+                <p>The AI-native OS for sports organizations · Pre-seed · September 2026</p>
             </div>
         </div>
         <div class="header-right">
             <a href="https://widdo.co">widdo.co</a><br>
-            <span>hey@widdo.co</span>
+            miguel@widdo.co
         </div>
     </div>
 
-    <!-- TAGLINE -->
-    <div class="tagline-bar">
-        The player's profile lives in Widdo forever &mdash; every sport, every age, every role, one platform.
-    </div>
+    <div class="tagline-bar">It chases the dues so you can coach.</div>
 
-    <!-- MAIN -->
     <div class="main">
 
-        <!-- PROBLEM + SOLUTION -->
-        <div class="problem-solution">
-            <div class="ps-box problem">
-                <h3>The Problem</h3>
-                <ul>
-                    <li>300K+ youth sports orgs in the US &mdash; <strong>73% use spreadsheets &amp; WhatsApp</strong></li>
-                    <li>Parents juggle 5+ apps and never know what's going on</li>
-                    <li>Player data disappears when they switch clubs</li>
-                    <li>No verified stats for college recruiting &mdash; NCSA charges families $4K/yr</li>
-                    <li>US camps cost $1,500&ndash;$5,000 &mdash; no centralized discovery or booking platform</li>
-                </ul>
+        <p class="intro">
+            <strong>Widdo is the AI-native operating system for sports organizations</strong> — any sport, any age.
+            One platform for payments, rosters, attendance, families, tournaments and communication, with AI doing the busywork.
+            Built by two basketball lifers. Live with clubs in Latin America; <strong>U.S. launch in Florida, January 2027</strong>,
+            U.S. pilots being selected now.
+        </p>
+
+        <div class="section-title">What changed since March</div>
+        <div class="changelog">
+            <div class="change">
+                <div class="when">Jul 2026</div>
+                <div class="what"><strong>Tournaments live.</strong> Six bracket formats — single and double elimination, round robin,
+                groups plus knockout, swiss, league — with live scoring, public tournament pages and online registration through
+                Stripe Connect. 0% platform fee.</div>
             </div>
-            <div class="ps-box solution">
-                <h3>Widdo Solves It</h3>
-                <ul>
-                    <li><strong>One platform</strong> for clubs, tournaments, payments &amp; families</li>
-                    <li>Player profile is <strong>permanent and portable</strong> across clubs</li>
-                    <li><strong>Multi-role:</strong> be owner, coach, player &amp; parent in different clubs</li>
-                    <li><strong>Verified Stats</strong> with Transparency Score &mdash; free for athletes</li>
-                    <li><strong>Multi-language</strong> (EN/ES, Portuguese ready) &mdash; built for global markets</li>
-                    <li><strong>AI assistant</strong> for coaches, owners &amp; parents &mdash; nobody else has this</li>
-                </ul>
+            <div class="change">
+                <div class="when">Aug 2026</div>
+                <div class="what"><strong>AI agent in production.</strong> Autonomous collections: it detects late payments and follows up
+                with families on its own. Daily brief for the owner. Ask-anything assistant with 75+ actions across every module,
+                and club memory so it learns how each club works.</div>
+            </div>
+            <div class="change">
+                <div class="when">Aug 2026</div>
+                <div class="what"><strong>Communications module.</strong> The club leaves WhatsApp. Team threads, announcements with
+                confirmations and direct chat, in English, Spanish and Portuguese. Parents reply; they never start loose threads.</div>
+            </div>
+            <div class="change">
+                <div class="when">Aug 2026</div>
+                <div class="what"><strong>Athlete record in production — your March request.</strong> Lifetime trajectory across clubs,
+                achievements verified by the club versus self-declared, tournament stats ingested automatically, cross-club consultation
+                with an audit trail. The public athlete page is built and switches on after legal review: under-13 blocked for COPPA,
+                13–17 by assent.</div>
+            </div>
+            <div class="change">
+                <div class="when">Aug 2026</div>
+                <div class="what"><strong>Native mobile app.</strong> iOS and Android, built in Flutter, in TestFlight. Stripe is the single
+                payment gateway. 14-day free trial and public registration links are live.</div>
             </div>
         </div>
 
-        <!-- PLAYER-CENTRIC BANNER -->
-        <div class="player-banner">
-            <div class="icon">&#9733;</div>
-            <div>
-                <h3>Player-Centric, Not Club-Centric</h3>
-                <p>Unlike TeamSnap or SportsEngine, the player is the center &mdash; not the club. A player's verified stats, history, and College-Ready Profile stay in Widdo forever. If they switch clubs, their data follows them. In the <strong>$1.17B NIL era</strong>, every stat builds an athlete's market value &mdash; and Widdo is the infrastructure layer. Think <strong>LinkedIn for athletes</strong>.</p>
+        <div class="section-title">The problem we solve</div>
+        <p class="intro" style="margin-bottom: 14px;">
+            Most sports organizations still run on forms, spreadsheets, group chats and chasing payments by hand — and the
+            people running them are coaches, not administrators. Widdo replaces that stack with one platform, and the AI does the
+            chasing, the reporting and the setup, so the owner can coach.
+        </p>
+
+        <div class="section-title">What Widdo does today</div>
+        <div class="modules">
+            <div class="module"><h4>Payments &amp; autonomous collections</h4><p>Stripe-powered billing; the platform chases late payments by itself, politely.</p></div>
+            <div class="module"><h4>Rosters, attendance &amp; families</h4><p>Players, categories, sessions, QR check-in, and team messaging that replaces the group chat.</p></div>
+            <div class="module"><h4>Tournaments</h4><p>Registrations, brackets in six formats, live scoring, online payments — 0% platform fee.</p></div>
+            <div class="module"><h4>Lifetime athlete record</h4><p>Stats, history and documents follow the athlete from club to club, for life.</p></div>
+            <div class="module"><h4>Public registration &amp; club sites</h4><p>Shareable enrollment links — no more forms and spreadsheets to reconcile by hand.</p></div>
+            <div class="module"><h4>Mobile app</h4><p>Native iOS and Android app for parents, players and coaches, in TestFlight now.</p></div>
+        </div>
+
+        <div class="ai-strip">
+            <div class="ai-head">
+                <h3>AI-native, not AI-added</h3>
+                <span>It isn't a chatbot bolted on — it's how the club gets run. You approve; it executes.</span>
+            </div>
+            <div class="ai-item">
+                <h4>Autonomous collections</h4>
+                <p>It detects late payments and follows up with families on its own — the biggest time sink for club owners, gone.</p>
+            </div>
+            <div class="ai-item">
+                <h4>Daily brief</h4>
+                <p>Every morning the owner gets a summary: cash collected, who's behind, attendance, what needs attention today.</p>
+            </div>
+            <div class="ai-item">
+                <h4>Ask-anything assistant</h4>
+                <p>"Who hasn't paid this month?" — answered from the club's real data, with 75+ actions across every module.</p>
+            </div>
+            <div class="ai-item">
+                <h4>AI onboarding</h4>
+                <p>A new club gets set up by chatting with the platform — categories, schedules and fees in one conversation.</p>
             </div>
         </div>
 
-        <!-- NIL & MARKET VALUE -->
-        <div style="display: flex; gap: 8px; margin-bottom: 10px;">
-            <div style="flex: 1; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 5px 10px; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 16px; font-weight: 900; color: #2563eb; flex-shrink: 0;">$1.17B+</span>
-                <span style="font-size: 8.5px; color: #1e40af; font-weight: 600; line-height: 1.3;">NIL market (2024). Every club stat, tournament result, and coach evaluation builds an athlete's <strong>market value</strong>.</span>
+        <div class="section-title">Built for the recruiting &amp; NIL era</div>
+        <div class="nil">
+            <div class="nil-head">
+                <h3>The verified athlete record</h3>
+                <p>What parents share, what coaches narrate, what scouts trust.</p>
             </div>
-            <div style="flex: 1; background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 6px; padding: 5px 10px; display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 16px; font-weight: 900; color: #7c3aed; flex-shrink: 0;">14-16</span>
-                <span style="font-size: 8.5px; color: #5b21b6; font-weight: 600; line-height: 1.3;">Age scouts start looking. Parents package data &rarr; coach creates narrative &rarr; scout evaluates. <strong>Widdo captures it all.</strong></span>
-            </div>
-        </div>
-
-        <!-- ECOSYSTEM -->
-        <div class="section-title">The Widdo Ecosystem &mdash; 2 Verticals, 1 Network</div>
-        <div class="ecosystem-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="eco-card active">
-                <div class="eco-top">
-                    <div class="eco-icon">&#127967;</div>
-                    <h4>Widdo Clubs</h4>
-                    <span class="eco-badge live">Live</span>
+            <div class="nil-cols">
+                <div class="nil-col">
+                    <div class="who">Parent <span class="tag live">Live</span></div>
+                    <p>Shares the record — trajectory across clubs, verified achievements, attendance, tournament stats — with
+                    college coaches, by link, with consent.</p>
                 </div>
-                <p>Complete club management: players, payments, attendance, families, coaches, categories, calendar, reports. Any sport, any age.</p>
-                <div class="revenue-line">$99&ndash;$349/mo per club</div>
-            </div>
-            <div class="eco-card active">
-                <div class="eco-top">
-                    <div class="eco-icon">&#127942;</div>
-                    <h4>Widdo Tournaments</h4>
-                    <span class="eco-badge live">Live</span>
+                <div class="nil-col">
+                    <div class="who">Coach <span class="tag live">Live</span></div>
+                    <p>Adds verified achievements within their scope and builds the narrative from real data, not from memory.</p>
                 </div>
-                <p>Tournament creation, AI-powered brackets &amp; scheduling, live scoring, public standings, verified stats. 1 tournament = 2,000+ new users.</p>
-                <div class="revenue-line">Free to organize &mdash; growth engine</div>
-            </div>
-        </div>
-
-        <!-- TRACTION + MARKET -->
-        <div class="traction-market">
-            <div>
-                <div class="section-title">Traction &mdash; All Organic, $0 Ad Spend</div>
-                <div class="metrics-grid">
-                    <div class="metric-box">
-                        <div class="value">9</div>
-                        <div class="label">Clubs (CO + US)</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="value">3</div>
-                        <div class="label">Paying Clubs (Annual)</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="value">1,476</div>
-                        <div class="label">Total Users</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="value" style="color: #f97316;">12 mo</div>
-                        <div class="label">Prepaid Up Front</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="value">$0</div>
-                        <div class="label">CAC</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="value">88%</div>
-                        <div class="label">Gross Margin</div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="section-title">Market Opportunity</div>
-                <div class="market-grid">
-                    <div class="market-box">
-                        <div class="value">$10.2B</div>
-                        <div class="label">TAM &mdash; US Youth Sports Software</div>
-                    </div>
-                    <div class="market-box">
-                        <div class="value">$3.7B</div>
-                        <div class="label">SAM &mdash; Clubs + Tournaments</div>
-                    </div>
-                    <div class="market-box">
-                        <div class="value green">300K+</div>
-                        <div class="label">Youth Sports Orgs in US</div>
-                    </div>
-                    <div class="market-box">
-                        <div class="value green">73%</div>
-                        <div class="label">No Paid Software Yet</div>
-                    </div>
+                <div class="nil-col">
+                    <div class="who">Scout / College <span class="tag built">Built · legal review</span></div>
+                    <p>Reads verified versus declared, side by side, plus an NCAA eligibility tracker.</p>
                 </div>
             </div>
-        </div>
-
-        <!-- COMPETITION + PRICING -->
-        <div class="comp-pricing">
-            <div>
-                <div class="section-title">vs. Competition (200 players, real cost/yr)</div>
-                <table class="comp-table">
-                    <thead>
-                        <tr>
-                            <th>Platform</th>
-                            <th>Real Cost/yr</th>
-                            <th>AI</th>
-                            <th>Tournaments</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>TeamSnap</td>
-                            <td><strong>$4,800+</strong></td>
-                            <td>&mdash;</td>
-                            <td>Basic</td>
-                        </tr>
-                        <tr>
-                            <td>SportsEngine</td>
-                            <td><strong>$3,650+</strong></td>
-                            <td>&mdash;</td>
-                            <td>Partial</td>
-                        </tr>
-                        <tr>
-                            <td>Jersey Watch</td>
-                            <td><strong>$3,650+</strong></td>
-                            <td>&mdash;</td>
-                            <td>&mdash;</td>
-                        </tr>
-                        <tr>
-                            <td>Crossbar</td>
-                            <td><strong>$995 + fees</strong></td>
-                            <td>&mdash;</td>
-                            <td>&#10003;</td>
-                        </tr>
-                        <tr class="widdo-row">
-                            <td><strong>Widdo</strong></td>
-                            <td><strong>$1,188 flat</strong></td>
-                            <td>&#10003;</td>
-                            <td>&#10003; Full</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="nil-roadmap">
+                <div><strong>Verified Stats + Transparency Score — Q2 2027</strong>
+                A 0–100 reliability score on every stat: live-recorded, certified official, video, rival-verified.</div>
+                <div><strong>NIL consent &amp; deal log — 2027</strong>
+                For Florida HB 981: high-school NIL with parental permission and no club marks.</div>
             </div>
-            <div>
-                <div class="section-title">Pricing (USA) &mdash; Flat, Zero Platform Fees</div>
-                <div class="pricing-grid">
-                    <div class="price-card">
-                        <div class="plan-name">Starter</div>
-                        <div class="price">$99<span>/mo</span></div>
-                        <div class="plan-desc">&lt;50 athletes</div>
-                    </div>
-                    <div class="price-card featured">
-                        <div class="popular-badge">Most Popular</div>
-                        <div class="plan-name">Pro</div>
-                        <div class="price">$199<span>/mo</span></div>
-                        <div class="plan-desc">50&ndash;200 athletes</div>
-                    </div>
-                    <div class="price-card">
-                        <div class="plan-name">Club+</div>
-                        <div class="price">$349<span>/mo</span></div>
-                        <div class="plan-desc">200+ / leagues</div>
-                    </div>
-                </div>
-                <div class="zero-fees">$0 platform fees &mdash; only Stripe processing (2.9%)</div>
+            <div class="nil-close">
+                <strong>Widdo is the source of truth, not the appraiser:</strong> verified, time-stamped data that brands, agents and
+                colleges can rely on. No made-up dollar values on a minor.
             </div>
         </div>
+        <p class="foot-note">NCAA House Settlement (2025-26): roster limits and partial scholarships across 40+ sports — coaches with guaranteed scholarships need reliable data.</p>
 
-        <!-- REVENUE MODEL -->
-        <div class="section-title">Revenue Streams</div>
-        <div style="margin-bottom: 8px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 6px;">
-                <div style="display: flex; justify-content: space-between; background: #dcfce7; border-radius: 4px; padding: 5px 10px; font-size: 9px;">
-                    <strong style="color: #166534;">Club Subscriptions</strong>
-                    <span style="color: #166534;">$99&ndash;$349/mo recurring (81% margin)</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; background: #f0fdf4; border-radius: 4px; padding: 5px 10px; font-size: 9px;">
-                    <strong style="color: #166534;">Tournaments (Growth Engine)</strong>
-                    <span style="color: #166534;">Free for organizers &mdash; drives club acquisition</span>
-                </div>
-            </div>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-                <span class="rev-chip primary">Payment Processing</span>
-                <span class="rev-chip primary">Premium Listing</span>
-                <span class="rev-chip primary">Scout $99/mo</span>
-                <span class="rev-chip primary">Verified Profile</span>
+    </div>
+
+    <div class="footer">
+        <div><strong>Widdo Inc</strong> · Delaware C-Corp · Orlando, FL &amp; Bogotá · Confidential</div>
+        <div>miguel@widdo.co · <a href="https://widdo.co">widdo.co</a></div>
+    </div>
+
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page">
+
+    <div class="header compact">
+        <div class="header-left">
+            <img src="widdo-logo.svg" alt="Widdo" class="header-logo">
+            <div class="header-text">
+                <h1>Widdo</h1>
+                <p>Traction · Market · Pricing · The Ask · September 2026</p>
             </div>
         </div>
+        <div class="header-right">
+            <a href="https://widdo.co">widdo.co</a><br>
+            miguel@widdo.co
+        </div>
+    </div>
 
-        <!-- GTM -->
-        <div class="section-title">Go-to-Market &mdash; USA First</div>
-        <div class="gtm-row">
-            <div class="gtm-step">
-                <h5>Sponsor Academies</h5>
-                <p>Free pilots at key academies in Orlando, FL</p>
-            </div>
-            <div class="gtm-arrow">&rarr;</div>
-            <div class="gtm-step">
-                <h5>Tournaments as Engine</h5>
-                <p>1 tournament = 30+ clubs exposed to Widdo = viral loop</p>
-            </div>
-            <div class="gtm-arrow">&rarr;</div>
-            <div class="gtm-step">
-                <h5>Network Effect</h5>
-                <p>Clubs &rarr; Tournaments &rarr; More clubs. Each feeds the other</p>
-            </div>
-            <div class="gtm-arrow">&rarr;</div>
-            <div class="gtm-step">
-                <h5>Expand from US</h5>
-                <p>Proven playbook in the US, then scale to new markets</p>
-            </div>
+    <div class="main">
+
+        <div class="section-title">Why clubs and families pick Widdo</div>
+        <div class="diff-grid">
+            <div class="diff-chip"><strong>No ads, ever</strong>Families aren't the product — no banners in the middle of your kid's schedule.</div>
+            <div class="diff-chip"><strong>Families don't pay fees</strong>The club pays one subscription; parents are never charged to use the app.</div>
+            <div class="diff-chip"><strong>0% tournament fee</strong>Registration money goes straight to the organizer through Stripe.</div>
+            <div class="diff-chip"><strong>One app, three languages</strong>Owner, coach and family in the same platform — EN/ES/PT out of the box.</div>
         </div>
 
-        <!-- TEAM -->
+        <div class="section-title">Where we are</div>
+        <div class="stats">
+            <div class="stat"><div class="num">9</div><div class="label">Clubs live</div></div>
+            <div class="stat"><div class="num">3</div><div class="label">Paying, annual prepaid</div></div>
+            <div class="stat"><div class="num">1,476</div><div class="label">Users</div></div>
+            <div class="stat"><div class="num">701</div><div class="label">Athletes</div></div>
+        </div>
+        <p class="stat-note"><strong>$0 CAC</strong> — every club came by word of mouth. Infrastructure runs at about $32 a month, and gross margin is 88%.</p>
+
+        <div class="section-title">Market — same top-down as March, SOM rebuilt bottom-up</div>
+        <div class="market">
+            <div class="mkt">
+                <div class="k">TAM</div>
+                <div class="v">$10.2B</div>
+                <div class="m">Global sports management software, 2025 (top-down). Bottom-up cross-check: 300K U.S. orgs × $184/mo × 12 = $662M.</div>
+            </div>
+            <div class="mkt">
+                <div class="k">SAM</div>
+                <div class="v">$3.7B</div>
+                <div class="m">North America, 36% share (top-down). Bottom-up: ~100K orgs in our profile (50–500 athletes) × $184 × 12 = $221M.</div>
+            </div>
+            <div class="mkt">
+                <div class="k">SOM — 3 to 5 years</div>
+                <div class="v">$33.1M ARR</div>
+                <div class="m">15,000 clubs × $184/mo × 12. Bottom-up, every number shown.</div>
+            </div>
+        </div>
+        <p class="foot-note" style="margin-bottom:24px;">$184 is the blended revenue per club at 60% Starter / 30% Pro / 10% Enterprise on the pricing below (on the previous list it was $154, SOM $27.7M). The March deck showed a $180M SOM — that was a decimal error we caught and corrected in August. $33.1M is the honest number.</p>
+
+        <div class="section-title">Pricing — USA, flat, priced by roster size, not by modules</div>
+        <div class="pricing">
+            <div class="plan">
+                <div class="n">Starter</div>
+                <div class="p">$99<span>/mo</span></div>
+                <div class="r">Up to 80 athletes</div>
+            </div>
+            <div class="plan pop">
+                <div class="badge">Most popular</div>
+                <div class="n">Pro</div>
+                <div class="p">$249<span>/mo</span></div>
+                <div class="r">Up to 200 athletes</div>
+            </div>
+            <div class="plan">
+                <div class="n">Enterprise</div>
+                <div class="p">$499<span>/mo</span></div>
+                <div class="r">Up to 500 athletes</div>
+            </div>
+        </div>
+        <p class="price-note"><strong>Annual: pay 12, get 13.</strong> <strong>Founding clubs:</strong> the first 25 Florida clubs lock their price for 12 months. The subscription is the only revenue line — Widdo takes 0% of what families pay.</p>
+
+        <div class="section-title">Go-to-market — Florida first, January 2027</div>
+        <div class="gtm">
+            <div class="list-item">Founder-led sales, Miguel and Alwin on the ground in Orlando, for the first 25 clubs.</div>
+            <div class="list-item">Referral partners — former coaches and tournament directors — on commission.</div>
+            <div class="list-item">Tournaments as the acquisition engine: one tournament puts us in front of 30+ clubs.</div>
+            <div class="list-item">Bilingual English and Spanish as a wedge in Florida, where the incumbents are English-only.</div>
+        </div>
+
+        <div class="section-title">The ask</div>
+        <div class="ask">
+            <h3>Raising $350K pre-seed · first close from $250K</h3>
+            <div class="terms">
+                <strong>Post-money SAFE, $3M valuation cap, MFN.</strong> Target close: November 30, 2026, ahead of the Florida launch. Eighteen months of runway to the first 100 U.S. clubs.
+            </div>
+            <div class="use">
+                <div class="use-row"><span>Founder salary — CEO/CTO, full-time, replaces current outside income</span><b>$115K</b></div>
+                <div class="use-row"><span>U.S. sales hire from month 6 — base plus commission</span><b>$65K</b></div>
+                <div class="use-row"><span>Growth &amp; marketing in Florida — ads, content EN/ES, local leagues</span><b>$32K</b></div>
+                <div class="use-row"><span>Co-founder — part-time business development, Orlando</span><b>$18K</b></div>
+                <div class="use-row"><span>Legal, accounting &amp; infrastructure</span><b>$25K</b></div>
+                <div class="use-row"><span>Reserve</span><b>$95K</b></div>
+                <div class="use-row total"><span>Total — 18 months</span><b>$350K</b></div>
+            </div>
+        </div>
+        <p class="ask-note">Founder salary is reviewed at month 12 against $5K in monthly recurring revenue — held or increased if the target is met.</p>
+
         <div class="section-title">Team</div>
-        <div class="team-section">
+        <div class="team">
             <div class="team-card">
-                <div class="team-avatar">MC</div>
-                <div class="team-info">
-                    <h4>Miguel Cano</h4>
-                    <div class="role">Founder &amp; CEO / CTO</div>
-                    <p>25+ years senior full-stack developer for major companies and startups in the US and worldwide. Professional basketball player in Colombia. Athletic scholarship recipient. Sports dad. Built the entire platform solo.</p>
-                </div>
+                <h4>Miguel Cano — Founder, CEO &amp; CTO</h4>
+                <p>Former professional basketball player. Senior full-stack engineer for U.S. companies for 25+ years, and built the
+                entire platform himself. Based in Colombia; the company is Widdo Inc, a Delaware C-Corp.</p>
             </div>
             <div class="team-card">
-                <div class="team-avatar">AP</div>
-                <div class="team-info">
-                    <h4>Alwin Perez</h4>
-                    <div class="role">Co-founder &amp; Global Business Development</div>
-                    <p>International tattoo artist &amp; world event judge. Basketball player. Lived and built businesses across Argentina, Brazil, Germany &amp; the US. Direct access to pro athletes (NBA, MLB). Previous tech ventures with Miguel.</p>
-                </div>
+                <h4>Alwin Perez — Co-founder, U.S. business development</h4>
+                <p>National-level basketball player in Colombia who knows the Latin America to U.S. player path first-hand.
+                Tattoo artist to several NBA players. Based in Orlando, FL, and leads U.S. relationships.</p>
             </div>
         </div>
 
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
-        <div class="footer-left">
-            <strong>Delaware C-Corp</strong> (Stripe Atlas) &middot; Orlando, FL<br>
-            Payments go live April 2026
-        </div>
-        <div class="footer-center">
-            <a href="https://widdo.co">widdo.co</a>
-            <p>hey@widdo.co &middot; May 2026 &middot; Confidential</p>
-        </div>
-        <div class="footer-right">
-            Enterprise-grade platform<br>
-            Laravel 12 + React &middot; AI-powered<br>
-            124 models &middot; 80+ tables &middot; Multi-tenant SaaS
-        </div>
+        <div><strong>Widdo Inc</strong> · Delaware C-Corp · Orlando, FL &amp; Bogotá · Confidential</div>
+        <div>Let's talk: <a href="mailto:miguel@widdo.co">miguel@widdo.co</a> · <a href="https://widdo.co">widdo.co</a></div>
     </div>
 
 </div>

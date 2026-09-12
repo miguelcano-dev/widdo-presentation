@@ -1,0 +1,102 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "1 - Just ask (oscuro)",
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Payments.dc.html",
+      "title": "2 - Payments (claro)",
+      "x": 1120,
+      "y": 0,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Mensajes.dc.html",
+      "title": "3 - 127 messages (oscuro)",
+      "x": 2240,
+      "y": 0,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Brief.dc.html",
+      "title": "4 - Morning brief (claro)",
+      "x": 0,
+      "y": 1120,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "GameDay.dc.html",
+      "title": "5 - Game day (oscuro)",
+      "x": 1120,
+      "y": 1120,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Stat.dc.html",
+      "title": "6 - 73% (claro)",
+      "x": 2240,
+      "y": 1120,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "MainL.dc.html",
+      "title": "1L - Just ask (claro)",
+      "x": 0,
+      "y": 2240,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "MensajesL.dc.html",
+      "title": "3L - 127 messages (claro)",
+      "x": 1120,
+      "y": 2240,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "GameDayL.dc.html",
+      "title": "5L - Game day (claro)",
+      "x": 2240,
+      "y": 2240,
+      "w": 1080,
+      "h": 1080
+    }
+  ],
+  "annotations": [
+    {
+      "id": "sistema",
+      "x": 3400,
+      "y": 0,
+      "w": 330,
+      "text": "Sistema AJEDREZ v3 — la IA es el protagonista.\n\nCada pieza muestra la conversacion completa: pregunta del dueno (burbuja verde) → respuesta de Widdo AI con datos reales (card) → accion ejecutada (pildora con check).\n\nDos superficies alternadas: oscuro #12140F / crema #F4F3EC. Verde vivo #5BE584 en oscuro, #16A34A en claro. Titular arriba (~80-96px), conversacion abajo."
+    },
+    {
+      "id": "reglas",
+      "x": 3400,
+      "y": 560,
+      "w": 330,
+      "text": "Reglas del sistema:\n- El componente estrella es la conversacion Widdo AI (pregunta → datos → accion hecha).\n- \"You approved\" aparece cuando la IA envia algo a familias.\n- EN, USD, 14U/12U. Sin WhatsApp, sin marcas de terceros.\n- Fotografia entra despues como tercera superficie (con derechos, sin menores identificables)."
+    },
+    {
+      "id": "fila-clara",
+      "x": 3400,
+      "y": 1120,
+      "w": 330,
+      "text": "Fila 3: las mismas piezas oscuras en version TODO CLARO.\n\nOpcion A (filas 1-2): ajedrez oscuro/claro.\nOpcion B (solo claras): todo el feed en crema, cero negro.\n\nDecide viendo las dos en esta pantalla."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

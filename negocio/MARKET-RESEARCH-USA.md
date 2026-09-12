@@ -107,7 +107,7 @@
 
 ### SOM (Serviceable Obtainable Market)
 - Cálculo propio: 15,000 clubs underserved × **$154/mo de ARPC de mezcla** × 12 meses = **$27.7M ARR**
-- El ARPC de mezcla sale de 60% Starter ($99) + 30% Pro ($199) + 10% Enterprise ($349) = $154/mes
+- El ARPC de mezcla sale de 60% Starter ($99) + 30% Pro ($249) + 10% Enterprise ($499) = $184/mes
 - Es una proyección a 3-5 años, no un dato externo
 - Defensible porque es 0,75% del SAM top-down ($3.7B) y ~15% de la SAM bottom-up ($185M)
 
@@ -149,13 +149,15 @@
 - Enfocado en leagues, no clubs individuales
 
 ### Widdo (para comparación)
-| Plan | Precio |
-|------|--------|
-| Starter | $29/mo |
-| Pro | $59/mo |
-| Enterprise | $99/mo |
+| Plan | Precio | Limite de jugadores |
+|------|--------|---------------------|
+| Starter | $99/mo | 80 |
+| Pro | $249/mo | 200 |
+| Enterprise | $499/mo | 500 |
 
-**Ventaja de precio: 50-70% más barato que incumbents**
+El precio va por **cantidad de jugadores**, no por modulos: todos los planes traen todos los
+modulos. Fuente: `SubscriptionPlansSeeder.php`. **Widdo se queda 0% de los pagos de las familias**
+(LeagueApps ~5% por transaccion; SportsEngine fees de procesamiento altos y poco claros).
 
 ---
 

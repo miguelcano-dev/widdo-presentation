@@ -66,7 +66,7 @@ Guion para presentar Widdo ante inversores. Total: **3-5 minutos**.
 
 > "The global sports management software market is $10.2 billion, growing 11% per year. North America alone is $3.7 billion.
 >
-> Our target: 15,000 clubs in the next three to five years. At a blended $154 a month across our three tiers, that's $27.7 million in annual recurring revenue — less than one percent of the North American market."
+> Our target: 15,000 clubs in the next three to five years. At a blended $184 a month across our three tiers, that's $33.1 million in annual recurring revenue — less than one percent of the North American market."
 
 **Tip:** Enfatizar que el SOM es conservador. Los inversores odian proyecciones infladas.
 
@@ -94,9 +94,9 @@ Guion para presentar Widdo ante inversores. Total: **3-5 minutos**.
 
 ### Slide 12: Business Model (20 segundos)
 
-> "Simple SaaS model. Three tiers: Starter at $99, Pro at $199, Club+ at $349 per month. In the US, we also earn 2-3% on every payment processed through the platform — that's a revenue stream that grows automatically with club size."
+> "Simple SaaS model. Three tiers: Starter at $99, Pro at $249, Club+ at $499 per month. We take zero percent of the money families pay — it goes straight to the club's own Stripe account. That's deliberate: taking a cut of every registration is the loudest complaint against LeagueApps and SportsEngine, so it's our way in."
 
-**Tip:** Mencionar que payment processing es como Stripe — los clubes no pagan extra, los padres pagan normalmente.
+**Tip:** NUNCA digas que Widdo se queda un 2-3% de los pagos. widdo.co promete "0% platform fee" en el hero y el codigo no cobra comision; decir lo contrario en una reunion te deja en contradiccion con tu propia web. La suscripcion es la unica fuente de ingreso hoy.
 
 ---
 
@@ -146,15 +146,31 @@ Guion para presentar Widdo ante inversores. Total: **3-5 minutos**.
 
 ### Slide 20: The Ask (30 segundos)
 
-> "We're raising $200K in pre-seed at a $1.5M-2M pre-money valuation. That's eighteen months of runway, and it goes to three things:
+> "We're raising $350K in pre-seed on a YC standard post-money SAFE with a $3 million cap. We're taking a first close from $250K, so nobody waits on anybody. MFN, no discount, pro-rata for checks of $50K and up.
 >
-> 1. A dedicated sales hire in Florida — $65K, the single biggest line. Right now I am the entire sales team, and that does not scale
-> 2. Marketing and growth — $32K in paid ads, content and local leagues, feeding that rep's pipeline
-> 3. My own salary and the operating basics — $42K for me at $2,500 a month, plus legal, accounting and infrastructure
+> That's eighteen months of runway. Here's where it goes:
 >
-> At 100 clubs, we're at $5K MRR and ready for a seed round."
+> 1. My salary — $115K, $6,400 a month. That replaces the outside income I live on today, so I'm 100% on Widdo, and it's reviewed at month 12 against $5K MRR
+> 2. A dedicated sales hire in Florida from month 6 — $65K on target. Until then, sales are founder-led plus referrals on commission
+> 3. Marketing and acquisition in Florida — $32K: paid ads, English and Spanish content, and local leagues and events
+> 4. Alwin part-time on business development in Orlando — $18K, still to be finalized
+> 5. Legal, accounting and infrastructure — $25K
+> 6. Reserve — $95K, which is six extra months of burn or pulling the sales hire forward
+>
+> Average burn is $14,200 a month with the rep on board, $10,600 without. At 100 clubs we're at $5K MRR and ready for a seed round."
 
 **Tip:** Ser especifico sobre el uso del dinero. Inversores odian "lo vamos a usar para crecer".
+
+**Sobre el salario:** decirlo sin rodeos y sin pedir disculpas. Es un tercio de la ronda y es la
+partida mas grande, asi que el inversor la va a ver. La frase es "it replaces the outside income
+I live on today, so I'm 100% on Widdo" — el inversor esta comprando 18 meses de atencion completa
+del fundador. Nunca decir "me pago poco" en tono de disculpa: $6.400/mes es un salario de CEO por
+debajo de mercado en USA para un fundador tecnico que construyo todo el producto.
+
+**Sobre el cap:** es un **cap post-money** — el techo de valoracion al que el SAFE convierte en
+la siguiente ronda de equity, y sobre el que se calcula la dilucion. $350K sobre un cap de $3M
+= 11,7% para los inversores. Es el mismo cap que vio nuestra primera inversora en marzo; no se
+bajo. Si preguntan por pre-money, corregir: "it's a post-money cap, not a pre-money valuation".
 
 ---
 

@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Red+Hat+Display:wght@400;500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #00C853; } a:hover { color: #16a34a; }
+  </style>
+</helmet>
+<div style="position: relative; width: 1080px; height: 1920px; overflow: hidden; background: linear-gradient(178deg, {{bgTop}} 0%, {{bgMid}} 52%, {{bgBot}} 100%); font-family: {{jakarta}}; padding: 96px 88px; box-sizing: border-box; display: flex; flex-direction: column; gap: 68px;">
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 26px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}};">Tipografía</div>
+      <div style="font-size: 34px; font-weight: 500; line-height: 1.35; color: {{ink2}};">Plus Jakarta Sans es la que aprobaste el 18-ago para la app. Red Hat Display es la que usa la landing hoy.</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+      <div style="display: flex; align-items: baseline; gap: 20px;">
+        <div style="font-size: 30px; font-weight: 700; color: {{ink}};">Plus Jakarta Sans</div>
+        <div style="font-size: 24px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}};">Recomendada</div>
+      </div>
+      <div style="font-family: {{jakarta}}; font-size: 88px; font-weight: 700; line-height: 1.02; letter-spacing: -0.045em; color: {{ink}};">Todo en un solo lugar</div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-family: {{jakarta}}; font-size: 52px; font-weight: 800; letter-spacing: -0.04em; color: {{ink}};">800 · una sola vez por pantalla</div>
+        <div style="font-family: {{jakarta}}; font-size: 52px; font-weight: 700; letter-spacing: -0.04em; color: {{ink}};">700 · titular</div>
+        <div style="font-family: {{jakarta}}; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; color: {{inkRow}};">600 · nombre de fila</div>
+        <div style="font-family: {{jakarta}}; font-size: 52px; font-weight: 500; letter-spacing: -0.01em; color: {{ink2}};">500 · secundario</div>
+      </div>
+    </div>
+
+    <div style="height: 1px; background: {{line}};"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 26px;">
+      <div style="font-size: 30px; font-weight: 700; color: {{ink}};">Red Hat Display</div>
+      <div style="font-family: {{redhat}}; font-size: 88px; font-weight: 700; line-height: 1.02; letter-spacing: -0.045em; color: {{ink}};">Todo en un solo lugar</div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-family: {{redhat}}; font-size: 52px; font-weight: 800; letter-spacing: -0.04em; color: {{ink}};">800 · una sola vez por pantalla</div>
+        <div style="font-family: {{redhat}}; font-size: 52px; font-weight: 700; letter-spacing: -0.04em; color: {{ink}};">700 · titular</div>
+        <div style="font-family: {{redhat}}; font-size: 52px; font-weight: 600; letter-spacing: -0.03em; color: {{inkRow}};">600 · nombre de fila</div>
+        <div style="font-family: {{redhat}}; font-size: 52px; font-weight: 500; letter-spacing: -0.01em; color: {{ink2}};">500 · secundario</div>
+      </div>
+    </div>
+
+    <div style="height: 1px; background: {{line}};"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 18px;">
+      <div style="font-size: 26px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}};">Escala del video</div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 30px; font-weight: 700; color: {{ink}};">Titular</div>
+          <div style="font-size: 28px; font-weight: 500; line-height: 1.4; color: {{ink2}};">112 px · peso 700<br>interletrado −.045</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 30px; font-weight: 700; color: {{ink}};">Apoyo</div>
+          <div style="font-size: 28px; font-weight: 500; line-height: 1.4; color: {{ink2}};">46 px · peso 500<br>interlínea 1,28</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 30px; font-weight: 700; color: {{ink}};">Etiqueta</div>
+          <div style="font-size: 28px; font-weight: 500; line-height: 1.4; color: {{ink2}};">38 px · peso 600<br>interletrado +.20</div>
+        </div>
+      </div>
+    </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1080,"height":1920},"palette":{"editor":"enum","default":"esmeralda","options":["bosque","grafito","esmeralda"],"section":"Paleta"}}'>
+class Component extends DCLogic {
+  palettes() {
+    return {
+      bosque: {
+        bgTop: '#1A2A22', bgMid: '#132019', bgBot: '#0C1611',
+        line: 'rgba(255,255,255,0.085)',
+        ink: '#EDF3EF', inkRow: '#C6D3CB', ink2: '#93A39A', accent: '#00C853'
+      },
+      grafito: {
+        bgTop: '#212227', bgMid: '#191A1E', bgBot: '#111215',
+        line: 'rgba(255,255,255,0.10)',
+        ink: '#F2F3F4', inkRow: '#CBCED3', ink2: '#9A9DA4', accent: '#00C853'
+      },
+      esmeralda: {
+        bgTop: '#20422F', bgMid: '#173323', bgBot: '#0E2118',
+        line: 'rgba(255,255,255,0.14)',
+        ink: '#F4FAF6', inkRow: '#CFE0D6', ink2: '#A6BFB2', accent: '#00E676'
+      }
+    };
+  }
+
+  renderVals() {
+    const p = this.palettes()[this.props.palette] || this.palettes().bosque;
+    return {
+      jakarta: "'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
+      redhat: "'Red Hat Display', system-ui, -apple-system, 'Segoe UI', sans-serif",
+      bgTop: p.bgTop, bgMid: p.bgMid, bgBot: p.bgBot,
+      line: p.line, ink: p.ink, inkRow: p.inkRow, ink2: p.ink2, accent: p.accent
+    };
+  }
+}
+</script>
+</body>
+</html>

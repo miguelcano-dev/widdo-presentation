@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widdo - One Pager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: legal; margin: 0; }
+
+        body {
+            font-family: 'Red Hat Display', -apple-system, sans-serif;
+            background: #fff;
+            color: #18181b;
+            line-height: 1.4;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 14in;
+            max-height: 14in;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: #18181b;
+            color: #fff;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-logo { width: 36px; height: 36px; }
+        .header-text h1 { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
+        .header-text p {
+            font-size: 9px; color: rgba(255,255,255,0.55);
+            letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;
+        }
+        .header-right { text-align: right; font-size: 10px; color: rgba(255,255,255,0.5); }
+        .header-right a { color: #22c55e; text-decoration: none; font-weight: 700; font-size: 12px; }
+
+        .tagline-bar {
+            background: #16a34a; color: #fff; text-align: center;
+            padding: 6px 32px; font-size: 12px; font-weight: 700; letter-spacing: 0.3px;
+        }
+
+        .main { padding: 16px 32px 0; }
+
+        .section-title {
+            font-size: 9.5px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 2px; color: #16a34a; margin-bottom: 7px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: #e4e4e7; }
+
+        .intro { font-size: 11.5px; color: #3f3f46; margin-bottom: 12px; }
+        .intro strong { color: #18181b; }
+
+        /* ===== FIT GRID ===== */
+        .fit-grid { display: grid; grid-template-columns: 1fr 44px 1fr; gap: 0; margin-bottom: 16px; align-items: stretch; }
+        .fit-card {
+            border: 1.5px solid #e4e4e7; border-radius: 10px; padding: 13px 15px; background: #fafafa;
+        }
+        .fit-card h3 { font-size: 13px; font-weight: 800; margin-bottom: 4px; }
+        .fit-card .role { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; color: #71717a; margin-bottom: 6px; }
+        .fit-card p { font-size: 10.5px; color: #52525b; }
+        .fit-arrow {
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #16a34a; font-weight: 900;
+        }
+        .fit-flywheel {
+            grid-column: 1 / -1; margin-top: 10px; background: #f0fdf4; border: 1.5px solid #bbf7d0;
+            border-radius: 10px; padding: 10px 14px; font-size: 11px; color: #166534; font-weight: 600;
+        }
+
+        /* ===== MODULES ===== */
+        .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+        .module {
+            border: 1px solid #e4e4e7; border-radius: 8px; padding: 10px 12px;
+        }
+        .module h4 { font-size: 10.5px; font-weight: 800; margin-bottom: 3px; }
+        .module p { font-size: 9.5px; color: #71717a; line-height: 1.35; }
+
+        /* ===== AI STRIP ===== */
+        .ai-strip {
+            background: #18181b; border-radius: 10px; padding: 14px 16px; margin-bottom: 16px;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+        }
+        .ai-strip .ai-head {
+            grid-column: 1 / -1; display: flex; align-items: baseline; gap: 10px; margin-bottom: 2px;
+        }
+        .ai-strip .ai-head h3 { color: #22c55e; font-size: 13px; font-weight: 900; letter-spacing: 0.3px; }
+        .ai-strip .ai-head span { color: rgba(255,255,255,0.55); font-size: 10px; font-weight: 600; }
+        .ai-item h4 { color: #fff; font-size: 10px; font-weight: 800; margin-bottom: 2px; }
+        .ai-item p { color: rgba(255,255,255,0.6); font-size: 9px; line-height: 1.35; }
+
+        /* ===== DIFFERENTIATORS ===== */
+        .diff-banner {
+            background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 10px;
+            padding: 11px 14px; margin-bottom: 8px; font-size: 11px; color: #166534;
+        }
+        .diff-banner strong { color: #14532d; }
+        .diff-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+        .diff-chip {
+            border: 1px solid #e4e4e7; border-radius: 8px; padding: 9px 11px;
+            font-size: 9.5px; color: #3f3f46; line-height: 1.35;
+        }
+        .diff-chip strong { display: block; font-size: 10px; color: #18181b; font-weight: 800; margin-bottom: 1px; }
+
+        /* ===== STATS ===== */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+        .stat {
+            background: #18181b; color: #fff; border-radius: 8px; padding: 11px 8px; text-align: center;
+        }
+        .stat .num { font-size: 19px; font-weight: 900; color: #22c55e; }
+        .stat .label { font-size: 8.5px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.6); font-weight: 600; margin-top: 2px; }
+
+        /* ===== TWO COL ===== */
+        .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; margin-bottom: 0; }
+        .list-item { display: flex; gap: 8px; margin-bottom: 7px; font-size: 10.5px; color: #3f3f46; }
+        .list-item::before { content: '✓'; color: #16a34a; font-weight: 900; flex-shrink: 0; }
+
+        .team-card { border: 1px solid #e4e4e7; border-radius: 8px; padding: 10px 12px; margin-bottom: 7px; }
+        .team-card h4 { font-size: 11px; font-weight: 800; }
+        .team-card p { font-size: 9.5px; color: #71717a; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: #18181b; color: rgba(255,255,255,0.7);
+            padding: 10px 32px; display: flex; justify-content: space-between; align-items: center;
+            font-size: 10px;
+        }
+        .footer strong { color: #fff; }
+        .footer a { color: #22c55e; text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="header">
+        <div class="header-left">
+            <img src="widdo-logo.svg" alt="Widdo" class="header-logo">
+            <div class="header-text">
+                <h1>Widdo</h1>
+                <p>The AI-native OS for sports organizations · September 2026</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://widdo.co">widdo.co</a><br>
+            miguel@widdo.co
+        </div>
+    </div>
+
+    <div class="tagline-bar">Payments, rosters, families, tournaments — one platform, AI at the core.</div>
+
+    <div class="main">
+
+        <p class="intro">
+            <strong>Widdo is the AI-native operating system for sports organizations</strong> — any sport, any age, from youth academies
+            to adult leagues. One platform that runs a club's
+            payments, rosters, attendance, families, tournaments and communication, with AI doing the busywork. Built by two basketball lifers — a former professional
+            player and a national-level player — live with clubs in Latin America, <strong>selecting U.S. pilot organizations now</strong>, and launching
+            <strong>across the United States</strong> for the 2027 season — every sport.
+        </p>
+
+        <div class="section-title">The problem we solve</div>
+        <p class="intro" style="margin-bottom: 14px;">
+            Most sports organizations still run on Google Forms, spreadsheets, group chats and chasing payments by hand — and the
+            people running them are coaches, not administrators. Widdo replaces that stack with one platform, and the AI does the
+            chasing, the reporting and the setup, so the owner can coach.
+        </p>
+
+        <div class="section-title">What Widdo does today</div>
+        <div class="modules">
+            <div class="module"><h4>Payments &amp; autonomous collections</h4><p>Stripe-powered billing; the platform chases late payments by itself, politely.</p></div>
+            <div class="module"><h4>Rosters, attendance &amp; families</h4><p>Players, categories, sessions, QR check-in, and team messaging that replaces the group chat — in EN/ES/PT.</p></div>
+            <div class="module"><h4>Tournaments</h4><p>Registrations, brackets (6 formats), live scoring, online payments — 0% platform fee.</p></div>
+            <div class="module"><h4>Lifetime athlete profile</h4><p>The player's sports résumé — stats, history, documents — follows them from club to club, for life.</p></div>
+            <div class="module"><h4>Public registration &amp; club sites</h4><p>Shareable enrollment links — no more Google Forms and spreadsheets.</p></div>
+            <div class="module"><h4>Mobile app</h4><p>Native app (iOS/Android) for parents, players and coaches, in TestFlight now.</p></div>
+        </div>
+
+        <div class="ai-strip">
+            <div class="ai-head">
+                <h3>AI-native, not AI-added</h3>
+                <span>The AI isn't a chatbot bolted on — it's how the club actually gets run.</span>
+            </div>
+            <div class="ai-item">
+                <h4>Autonomous collections</h4>
+                <p>The platform detects late payments and follows up with families on its own — the #1 time sink for club owners, gone.</p>
+            </div>
+            <div class="ai-item">
+                <h4>Daily brief</h4>
+                <p>Every morning the owner gets an AI summary: cash collected, who's behind, attendance, what needs attention today.</p>
+            </div>
+            <div class="ai-item">
+                <h4>Ask-anything assistant</h4>
+                <p>"Who hasn't paid this month?" — answered from the club's real data, with 75+ actions it can take across every module.</p>
+            </div>
+            <div class="ai-item">
+                <h4>AI onboarding</h4>
+                <p>A new club gets set up by chatting with the platform — categories, schedules and fees configured in one conversation.</p>
+            </div>
+        </div>
+
+        <div class="section-title">Why clubs and families pick Widdo</div>
+        <div class="diff-banner">
+            <strong>The athlete's story doesn't restart when they change clubs.</strong> Their sports résumé — games, stats,
+            attendance, documents — lives in Widdo for life and moves with the player wherever they go. No other club platform does this.
+            <div style="margin-top:6px; padding-top:6px; border-top:1px solid #bbf7d0;">
+                <strong>Built for the recruiting and NIL era:</strong> that verified, time-stamped history is what parents share with college
+                coaches, and what coaches turn into a narrative for scouts — and it travels with the athlete, not the club.
+            </div>
+        </div>
+        <div class="diff-grid">
+            <div class="diff-chip"><strong>No ads, ever</strong>Families aren't the product — no banners in the middle of your kid's schedule.</div>
+            <div class="diff-chip"><strong>Families don't pay fees</strong>The club pays one subscription; parents never get charged to use the app.</div>
+            <div class="diff-chip"><strong>0% tournament fee</strong>Registration money goes straight to the organizer via Stripe.</div>
+            <div class="diff-chip"><strong>One app, three languages</strong>Owner, coach and family in the same platform — EN/ES/PT out of the box.</div>
+        </div>
+
+        <div class="section-title">Where we are</div>
+        <div class="stats">
+            <div class="stat"><div class="num">9</div><div class="label">Clubs live</div></div>
+            <div class="stat"><div class="num">1,476</div><div class="label">Users on platform</div></div>
+            <div class="stat"><div class="num">701</div><div class="label">Athletes managed</div></div>
+            <div class="stat"><div class="num">3</div><div class="label">Languages (EN/ES/PT)</div></div>
+        </div>
+
+        <div class="section-title">Where GameUp fits</div>
+        <div class="fit-grid">
+            <div class="fit-card">
+                <h3>GameUp</h3>
+                <div class="role">Finding the right program</div>
+                <p>Families tell GameUp their kid's goals; its AI matches them with the right team, program or trainer.</p>
+            </div>
+            <div class="fit-arrow">⇄</div>
+            <div class="fit-card">
+                <h3>Widdo</h3>
+                <div class="role">Running the program</div>
+                <p>Those programs collect payments, track attendance, manage rosters and talk to parents on Widdo.</p>
+            </div>
+            <div class="fit-flywheel">
+                Complementary, not overlapping: GameUp helps families find the program; Widdo runs it.
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <div class="list-item">Programs found on GameUp could run on Widdo from day one.</div>
+                <div class="list-item">Clubs on Widdo could show up on GameUp with verified, always-current information.</div>
+                <div class="list-item">Families win on both ends: they find the program AND see attendance, payments and progress inside it.</div>
+                <div class="list-item">U.S. pilots are being selected right now — early partners shape the platform before the 2027 season.</div>
+            </div>
+            <div>
+                <div class="section-title">Team</div>
+                <div class="team-card">
+                    <h4>Miguel Cano — Founder &amp; CEO</h4>
+                    <p>Former professional basketball player. Built the entire platform. Based in Colombia, incorporated in Delaware (Widdo Inc).</p>
+                </div>
+                <div class="team-card">
+                    <h4>Alwin — Co-founder</h4>
+                    <p>Played national-level basketball in Colombia and knows first-hand the road players take from Latin America
+                    to the U.S. Tattoo artist to several NBA players. Based in Orlando, FL — leads U.S. relationships and go-to-market.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div><strong>Widdo Inc</strong> · Delaware C-Corp · Orlando, FL &amp; Bogotá</div>
+        <div>Let's talk: <a href="mailto:miguel@widdo.co">miguel@widdo.co</a> · <a href="https://widdo.co">widdo.co</a></div>
+    </div>
+
+</div>
+</body>
+</html>

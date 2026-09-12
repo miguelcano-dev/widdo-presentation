@@ -61,7 +61,7 @@ console.log(`  Clubs: ${metrics.clubs} activos (${payingClubs} pagando) | MRR: $
 console.log(`  ARPC: $${metrics.arpc} | Cost/club: $${metrics.cost_per_club} | Margin: ${metrics.gross_margin}`);
 console.log(`  LTV: $${metrics.ltv.toLocaleString()} | LTV/CAC: ${metrics.ltv_cac_ratio}`);
 console.log(`  Usuarios: ${metrics.users.toLocaleString()} | Jugadores: ${metrics.players.toLocaleString()} | Infra: $${metrics.infra_cost}/mes`);
-console.log(`  Raising: $${metrics.raising_amount} @ ${metrics.valuation_premoney} pre-money`);
+console.log(`  Raising: ${metrics.raising_amount} (first close from ${metrics.raising_floor}) @ ${metrics.valuation_cap} post-money cap`);
 console.log(`  PDF generation: ${generatePdfs ? 'YES' : 'NO (add --pdf to generate)'}`);
 console.log('');
 
@@ -92,8 +92,9 @@ const raisingProsePatterns = [
   { pattern: /Porque \$[\d.,]+K compran/g, replace: `Porque ${money(metrics.raising_amount)} compran` },
   { pattern: /(We're raising )[\d.,]+K\./g, replace: `$1${lit(metrics.raising_amount)}.` },
 ];
-const valuationPattern = { pattern: /\$[\d.,]+[KM]?(?:-\$?[\d.,]+[KM]?)? pre-money/gi, replace: `${lit(metrics.valuation_premoney)} pre-money` };
-const valuationLoosePattern = { pattern: /\$[\d.,]+[KM]?(?:-\$?[\d.,]+[KM]?)? valuation/gi, replace: `${lit(metrics.valuation_premoney)} valuation` };
+// Cap del SAFE. Acepta el texto viejo ("pre-money") y el nuevo ("post-money cap"); SIEMPRE escribe el nuevo.
+const valuationPattern = { pattern: /(?:undefined|\$[\d.,]+[KM]?(?:(?:-|&ndash;)\$?[\d.,]+[KM]?)?) (?:pre-money(?: cap)?|post-money cap)/gi, replace: `${lit(metrics.valuation_cap)} post-money cap` };
+const valuationLoosePattern = { pattern: /(?:undefined|\$[\d.,]+[KM]?(?:-\$?[\d.,]+[KM]?)?) valuation(?: cap)?/gi, replace: `${lit(metrics.valuation_cap)} valuation cap` };
 // Usuarios en prosa ("1,100+ users", "1,050 usuarios"). Minimo 3 digitos para no
 // pisar ejemplos del glosario del tipo "5 users".
 const usersPattern = { pattern: /\b\d[\d,]{2,}\+? (users|usuarios)\b/gi, replace: `${lit(metrics.users.toLocaleString())} $1` };
@@ -117,6 +118,33 @@ const traccionUSA = [
 ];
 
 // Reemplazos completos del deck USA (compartidos por variante dark y light)
+// Precios en las presentaciones ES/EN: no hay clase que anclar, las tarjetas son
+// <span style="font-size: 32px; font-weight: 900;">$NNN</span> y salen en orden
+// Starter, Pro, Enterprise. Se reemplaza por orden de aparicion, que es estable
+// porque las tres tarjetas viven en el mismo slide.
+const pricingByOrderPatterns = (() => {
+  const precios = [metrics.pricing_starter, metrics.pricing_pro, metrics.pricing_club_plus];
+  let i = 0;
+
+  return [{
+    pattern: /(font-weight: 900;">\$)\d+(<\/span>)/g,
+    replace: (_m, antes, despues) => `${antes}${precios[Math.min(i++, 2)]}${despues}`,
+  }];
+})();
+
+// La nota de cabecera de las presentaciones cita los tres precios en una linea.
+// Rango en prosa: "$99&ndash;$499/mo per club". Sin esto el rango envejece
+// aunque las tarjetas esten al dia, que es como quedo tras el cambio de sep.
+const pricingRangePattern = {
+  pattern: /\$\d+&ndash;\$\d+\/mo/g,
+  replace: `$${metrics.pricing_starter}&ndash;$${metrics.pricing_club_plus}/mo`,
+};
+
+const pricingNotePattern = {
+  pattern: /USD 99\/\d+\/\d+/g,
+  replace: `USD ${metrics.pricing_starter}/${metrics.pricing_pro}/${metrics.pricing_club_plus}`,
+};
+
 const deckUSAReplacements = [
   // Traction
   { pattern: /(\d+)\s*clubs\s*in\s*Colombia/gi, replace: `${metrics.clubs} clubs in Colombia` },
@@ -149,6 +177,7 @@ const deckUSAReplacements = [
   { pattern: /(>Starter<\/p>\s*<div class="price[^"]*">\$)\d+/g, replace: `$1${metrics.pricing_starter}` },
   { pattern: /(>Pro<\/p>\s*<div class="price[^"]*">\$)\d+/g, replace: `$1${metrics.pricing_pro}` },
   { pattern: /(>Enterprise<\/p>\s*<div class="price[^"]*">\$)\d+/g, replace: `$1${metrics.pricing_club_plus}` },
+  pricingRangePattern,
   // Header de la tabla (los valores son actuales de CO, no proyeccion USA)
   { pattern: /Per-Club Metrics \(USA projection\)/g, replace: 'Per-Club Metrics (current &mdash; Colombia)' },
   // Titular del slide The Ask
@@ -158,6 +187,8 @@ const deckUSAReplacements = [
 // ============================================================
 // ALL FILES AND THEIR REPLACEMENTS
 // ============================================================
+
+
 const updates = [
 
   // ===== 1. DECK USA =====
@@ -177,6 +208,22 @@ const updates = [
       { pattern: /(class="plan-name"[^>]*>BASIC<\/div>\s*<div class="plan-price">\$)\d+/g, replace: `$1${metrics.pricing_starter}` },
       { pattern: /(class="plan-name"[^>]*>PRO<\/div>\s*<div class="plan-price">\$)\d+/g, replace: `$1${metrics.pricing_pro}` },
       { pattern: /(class="plan-name"[^>]*>ENTERPRISE<\/div>\s*<div class="plan-price">\$)\d+/g, replace: `$1${metrics.pricing_club_plus}` },
+      // Los comentarios de la plantilla repiten los precios; si no se tocan,
+      // el siguiente que edite el deck copia el precio viejo.
+      { pattern: /(<!--\s+Basic\s+\$)\d+/g, replace: `$1${metrics.pricing_starter}` },
+      { pattern: /(<!--\s+Pro\s+\$)\d+/g, replace: `$1${metrics.pricing_pro}` },
+      { pattern: /(<!--\s+Enterprise\s+\$)\d+/g, replace: `$1${metrics.pricing_club_plus}` },
+    ]
+  },
+
+  // ===== 1c. ONE-PAGER CLUBS USA =====
+  // Las tarjetas son <div class="plan-n">NOMBRE</div> ... <div class="plan-p">$NNN
+  {
+    file: 'decks/clubes/one-pager-widdo-clubs-usa.html',
+    replacements: [
+      { pattern: /(<div class="plan-n">STARTER<\/div>\s*<div class="plan-p">\$)\d+/g, replace: `$1${metrics.pricing_starter}` },
+      { pattern: /(<div class="plan-n">PRO<\/div>\s*<div class="plan-p">\$)\d+/g, replace: `$1${metrics.pricing_pro}` },
+      { pattern: /(<div class="plan-n">ENTERPRISE<\/div>\s*<div class="plan-p">\$)\d+/g, replace: `$1${metrics.pricing_club_plus}` },
     ]
   },
 
@@ -199,11 +246,22 @@ const updates = [
     ]
   },
 
+  // ===== 3a. PRESENTACION ESPANOL =====
+  {
+    file: 'decks/espanol/presentacion-widdo.html',
+    replacements: [
+      ...pricingByOrderPatterns,
+      pricingNotePattern,
+    ]
+  },
+
   // ===== 3. PRESENTACION INGLES =====
   {
     file: 'decks/espanol/presentacion-widdo-en.html',
     replacements: [
       { pattern: /(>)\d+(% of sports clubs)/g, replace: `$187$2` },
+      ...pricingByOrderPatterns,
+      pricingNotePattern,
     ]
   },
 
@@ -213,6 +271,11 @@ const updates = [
     replacements: [
       { pattern: /MRR: \$[\d,]+ USD/g, replace: `MRR: ${money(metrics.mrr.toLocaleString())} USD` },
       usersPattern,
+      // Tarjetas de precio: <p ...>Pro</p> <div class="price ...">$NNN
+      { pattern: /(>(?:Starter|B\u00e1sico)<\/p>\s*<div class="price[^"]*">\$)\d+/g, replace: `$1${metrics.pricing_starter}` },
+      { pattern: /(>Pro<\/p>\s*<div class="price[^"]*">\$)\d+/g, replace: `$1${metrics.pricing_pro}` },
+      { pattern: /(>Enterprise<\/p>\s*<div class="price[^"]*">\$)\d+/g, replace: `$1${metrics.pricing_club_plus}` },
+      pricingRangePattern,
       askHeadlinePattern,
     ]
   },
@@ -221,13 +284,18 @@ const updates = [
   {
     file: 'decks/otros/one-pager-widdo-usa.html',
     replacements: [
-      { pattern: /(>)150M\+(<)/g, replace: `$1${metrics.athletes_usa}$2` },
-      { pattern: /(<div class="value">)\d+\+?(<\/div>\s*<div class="label">Clubs \(CO \+ US\))/g, replace: `$1${metrics.clubs}$2` },
-      { pattern: /(<div class="value">)\d+(<\/div>\s*<div class="label">Paying Clubs)/g, replace: `$1${payingClubs}$2` },
-      // La cifra vive en su propio <div>, sin la palabra "users" al lado: usersPattern
-      // no la ve, hay que anclarla a la etiqueta
-      { pattern: /(<div class="value">)[\d,]+\+?(<\/div>\s*<div class="label">Total Users)/g, replace: `$1${lit(metrics.users.toLocaleString())}$2` },
-      { pattern: /(<div class="value">)\d+%?(<\/div>\s*<div class="label">Gross Margin)/g, replace: `$1${metrics.gross_margin}$2` },
+      // Reescrito el 2-sep-2026 sobre la plantilla del one-pager GameUp: las stats viven en
+      // <div class="stat"><div class="num">N</div><div class="label">...</div></div>
+      { pattern: /(<div class="num">)\d+(<\/div><div class="label">Clubs live)/g, replace: `$1${metrics.clubs}$2` },
+      { pattern: /(<div class="num">)\d+(<\/div><div class="label">Paying)/g, replace: `$1${payingClubs}$2` },
+      { pattern: /(<div class="num">)[\d,]+(<\/div><div class="label">Users)/g, replace: `$1${lit(metrics.users.toLocaleString())}$2` },
+      { pattern: /(<div class="num">)[\d,]+(<\/div><div class="label">Athletes)/g, replace: `$1${lit(metrics.players.toLocaleString())}$2` },
+      { pattern: /(<div class="n">Starter<\/div>\s*<div class="p">\$)\d+/g, replace: `$1${metrics.pricing_starter}` },
+      { pattern: /(<div class="n">Pro<\/div>\s*<div class="p">\$)\d+/g, replace: `$1${metrics.pricing_pro}` },
+      { pattern: /(<div class="n">Enterprise<\/div>\s*<div class="p">\$)\d+/g, replace: `$1${metrics.pricing_club_plus}` },
+      { pattern: /(gross margin is )\d+%/g, replace: `$1${metrics.gross_margin}` },
+      preSeedPattern,
+      valuationPattern,
     ]
   },
 

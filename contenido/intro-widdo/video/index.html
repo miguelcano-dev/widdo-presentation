@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+@font-face{font-family:'Plus Jakarta Sans';src:url('fonts/PlusJakartaSans-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block;}
+@font-face{font-family:'Plus Jakarta Sans';src:url('fonts/PlusJakartaSans-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block;}
+@font-face{font-family:'Plus Jakarta Sans';src:url('fonts/PlusJakartaSans-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:block;}
+@font-face{font-family:'Plus Jakarta Sans';src:url('fonts/PlusJakartaSans-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:block;}
+@font-face{font-family:'Plus Jakarta Sans';src:url('fonts/PlusJakartaSans-800.woff2') format('woff2');font-weight:800;font-style:normal;font-display:block;}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:#173323; }
+body { font-family:"Plus Jakarta Sans", sans-serif; }
+
+#bg { position:absolute; inset:0;
+  background: radial-gradient(ellipse 130% 78% at 50% -4%, #20422F 0%, #173323 46%, #0E2118 100%); }
+#bloom { position:absolute; inset:0;
+  background: radial-gradient(ellipse 74% 34% at 50% 40%, rgba(0,230,118,0.10) 0%, rgba(0,230,118,0) 72%); }
+#vignette { position:absolute; inset:0; z-index:60; pointer-events:none;
+  background: radial-gradient(ellipse 78% 55% at 50% 50%, rgba(0,0,0,0) 44%, rgba(10,26,18,0.82) 100%); }
+#grain { position:absolute; inset:0; z-index:61; pointer-events:none; opacity:0.06; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  background-size:160px 160px; }
+
+.scene { position:absolute; inset:0; z-index:10; }
+#s2,#s3,#s4,#s5,#s6,#s7,#s8,#s9 { opacity:0; }
+
+.stack { position:absolute; left:0; right:0; display:flex; flex-direction:column;
+  align-items:center; gap:26px; padding:0 60px; }
+.cap { font-size:52px; font-weight:600; line-height:1.18; letter-spacing:-0.028em;
+  color:#F4FAF6; text-align:center; max-width:960px; }
+.hero { font-size:124px; font-weight:700; line-height:1.02; letter-spacing:-0.048em;
+  color:#F4FAF6; text-align:center; }
+.rule { width:88px; height:4px; border-radius:2px; background:#00E676; }
+
+/* --- escena 2: caos --- */
+#grid2 { position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size:90px 90px;
+  -webkit-mask-image:radial-gradient(ellipse 62% 44% at 50% 50%, #000 10%, transparent 72%);
+  mask-image:radial-gradient(ellipse 62% 44% at 50% 50%, #000 10%, transparent 72%); }
+.link { position:absolute; height:1px; transform-origin:0 0;
+  background:linear-gradient(90deg, rgba(0,230,118,0.16), rgba(255,255,255,0)); }
+.tile { position:absolute; border-radius:30px;
+  background:linear-gradient(158deg,#2F5C46 0%,#224134 100%);
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow:0 26px 60px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.07);
+  display:flex; align-items:center; justify-content:center; }
+.badge { position:absolute; top:-10px; right:-10px; width:34px; height:34px; border-radius:50%;
+  background:#FF6B60; border:4px solid #224134; }
+#dot { position:absolute; left:50%; top:50%; width:16px; height:16px; margin:-8px 0 0 -8px;
+  border-radius:50%; background:#00E676; opacity:0;
+  box-shadow:0 0 30px 7px rgba(0,230,118,0.62), 0 0 110px 30px rgba(0,230,118,0.2); }
+#logo { position:absolute; left:50%; top:50%; width:392px; height:392px; margin:-196px 0 0 -196px;
+  border-radius:50%; opacity:0;
+  box-shadow:0 0 0 3px rgba(255,255,255,0.14), 0 0 140px 34px rgba(0,230,118,0.30), 0 44px 96px rgba(0,0,0,0.5); }
+.ring { position:absolute; left:50%; top:50%; border-radius:50%;
+  border:2px solid rgba(0,230,118,0.42); transform:translate(-50%,-50%); opacity:0; }
+
+/* --- teléfono --- */
+#phone { position:absolute; left:150px; top:430px; width:780px; height:1092px;
+  border-radius:78px; background:#08120D; padding:14px;
+  box-shadow:0 60px 130px rgba(0,0,0,0.55), 0 0 0 2px rgba(255,255,255,0.10); }
+#screen { width:100%; height:100%; border-radius:64px; overflow:hidden; background:#F3F6F2;
+  padding:52px 36px 52px; display:flex; flex-direction:column; gap:28px; }
+.sc-eyebrow { font-size:32px; font-weight:500; color:#5B6B62; }
+.sc-title { font-size:58px; font-weight:700; line-height:1.08; letter-spacing:-0.032em; color:#14231C; }
+#briefcard { border-radius:45px; background:#fff; padding:18px 10px; display:flex; flex-direction:column; }
+.brow { border-radius:37px; padding:24px 26px; display:flex; align-items:center; gap:24px; }
+.blabel { font-size:33px; font-weight:500; letter-spacing:-0.02em; color:#1B2B24; flex-grow:1; }
+.bval { font-size:36px; font-weight:700; letter-spacing:-0.025em; }
+#suggest { border-radius:37px; background:#EAF0EA; padding:30px 32px; font-size:32px; font-weight:500;
+  line-height:1.3; letter-spacing:-0.018em; color:#1B2B24; }
+
+/* --- tarjetas flotantes --- */
+.card { position:absolute; left:140px; width:800px; border-radius:52px; background:#fff;
+  padding:48px 52px; box-shadow:0 50px 110px rgba(0,0,0,0.5);
+  display:flex; flex-direction:column; gap:30px; }
+.card.dark { background:linear-gradient(150deg,#0A3D2C 0%,#083123 100%); padding:52px 54px; }
+.kicker { font-size:34px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#87938C; }
+.bignum { font-size:182px; font-weight:800; line-height:0.92; letter-spacing:-0.05em; color:#14231C;
+  font-variant-numeric:tabular-nums; }
+.hr { height:1.5px; background:#EAF0EA; }
+.hr.dark { background:rgba(255,255,255,0.14); }
+.crow { display:flex; align-items:center; gap:24px; }
+.ctext { font-size:36px; font-weight:500; letter-spacing:-0.02em; color:#1B2B24; flex-grow:1; }
+.chip { padding:12px 24px; border-radius:999px; background:#FEF3C7; border:1.5px solid #FDE68A;
+  font-size:30px; font-weight:600; color:#92400E; }
+.clock { font-size:96px; font-weight:800; line-height:1; letter-spacing:-0.045em; color:#fff;
+  font-variant-numeric:tabular-nums; }
+.wtext { font-size:38px; font-weight:600; letter-spacing:-0.02em; color:#fff; flex-grow:1; }
+.wnote { font-size:32px; font-weight:500; line-height:1.34; color:rgba(255,255,255,0.66); }
+
+.prow { border-bottom:1.5px solid #EAF0EA; padding:22px 0; display:flex; align-items:center; gap:24px; }
+.prow.last { border-bottom:none; }
+.pmeta { display:flex; flex-direction:column; gap:6px; flex-grow:1; }
+.pname { font-size:36px; font-weight:600; letter-spacing:-0.02em; color:#1B2B24; }
+.pstate { font-size:32px; font-weight:500; }
+.tgwrap { display:flex; align-items:center; gap:16px; flex-shrink:0; }
+.track { width:100px; height:56px; border-radius:999px; display:flex; align-items:center; padding:0 6px; }
+.track.on { background:#15A44A; justify-content:flex-end; }
+.track.off { background:#EAF0EA; border:1.5px solid #E7ECE9; }
+.knob { width:44px; height:44px; border-radius:50%; background:#fff; box-shadow:0 2px 6px rgba(12,26,19,0.2); }
+
+.fee { font-size:340px; font-weight:800; line-height:0.86; letter-spacing:-0.06em; color:#00E676; }
+.feelabel { font-size:96px; font-weight:700; line-height:1; letter-spacing:-0.042em; color:#F4FAF6; }
+.sub { font-size:48px; font-weight:500; line-height:1.3; letter-spacing:-0.012em;
+  color:#A6BFB2; text-align:center; max-width:880px; }
+.cta { font-size:52px; font-weight:700; letter-spacing:-0.02em; color:#00E676; }
+.url { font-size:38px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#A6BFB2; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="45" data-width="1080" data-height="1920">
+
+<div id="bg"></div>
+<div id="bloom"></div>
+
+<div class="scene" id="s1" data-layout-allow-occlusion>
+  <div class="stack" style="top:700px; gap:0">
+    <div class="hero" id="s1a">Still chasing</div>
+    <div class="hero" id="s1b">parents for</div>
+    <div class="hero" id="s1c">money?</div>
+  </div>
+</div>
+
+<div class="scene" id="s2" data-layout-allow-occlusion>
+  <div id="grid2"></div>
+  <div class="link" style="left:197px;top:673px;width:447px;transform:rotate(40deg)"></div><div class="link" style="left:412px;top:868px;width:157px;transform:rotate(36deg)"></div><div class="link" style="left:176px;top:1076px;width:382px;transform:rotate(-18deg)"></div><div class="link" style="left:913px;top:1089px;width:394px;transform:rotate(-161deg)"></div><div class="link" style="left:714px;top:1334px;width:412px;transform:rotate(-115deg)"></div><div class="link" style="left:933px;top:577px;width:548px;transform:rotate(136deg)"></div><div class="link" style="left:862px;top:1386px;width:534px;transform:rotate(-127deg)"></div>
+  <div class="tile" id="t0" style="left:128px;top:604px;width:138px;height:138px;transform:rotate(-12deg)"><svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3z M3 9.3h18 M3 14.6h18 M9 4v16 M15 4v16"></path></svg></div><div class="tile" id="t1" style="left:634px;top:486px;width:122px;height:122px;transform:rotate(9deg)"><svg viewBox="0 0 24 24" width="53" height="53" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v11H10l-4 4v-4H3z M7.5 10.5h.01 M12 10.5h.01 M16.5 10.5h.01"></path></svg><div class="badge"></div></div><div class="tile" id="t2" style="left:336px;top:792px;width:152px;height:152px;transform:rotate(5deg)"><svg viewBox="0 0 24 24" width="66" height="66" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.6-2 1.6-2-1.6-2 1.6-2-1.6-2 1.6z M9 8.5h6 M9 12.5h6 M9 16.5h3"></path></svg></div><div class="tile" id="t3" style="left:786px;top:728px;width:116px;height:116px;transform:rotate(-7deg)"><svg viewBox="0 0 24 24" width="51" height="51" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z M3 7.2l9 6.2 9-6.2"></path></svg><div class="badge"></div></div><div class="tile" id="t4" style="left:112px;top:1012px;width:128px;height:128px;transform:rotate(14deg)"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 4H6a1 1 0 0 0-1 1v15a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2.5 M9 2.4h6v3.6H9z M9 11h6 M9 15h4"></path></svg></div><div class="tile" id="t5" style="left:524px;top:930px;width:144px;height:144px;transform:rotate(-4deg)"><svg viewBox="0 0 24 24" width="63" height="63" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18v16H3z M3 9.3h18 M3 14.6h18 M9 4v16 M15 4v16"></path></svg></div><div class="tile" id="t6" style="left:848px;top:1024px;width:130px;height:130px;transform:rotate(11deg)"><svg viewBox="0 0 24 24" width="57" height="57" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5h18V21H3z M3 11.4h18 M8 3v5 M16 3v5"></path></svg></div><div class="tile" id="t7" style="left:268px;top:1214px;width:118px;height:118px;transform:rotate(-10deg)"><svg viewBox="0 0 24 24" width="51" height="51" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h20v12H2z M12 9.6a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8 M5.2 9.2h.01 M18.8 14.8h.01"></path></svg><div class="badge"></div></div><div class="tile" id="t8" style="left:646px;top:1266px;width:136px;height:136px;transform:rotate(6deg)"><svg viewBox="0 0 24 24" width="59" height="59" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.6h4l2-2.2h6l2 2.2h4V20H3z M12 9.8a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2"></path></svg></div><div class="tile" id="t9" style="left:74px;top:800px;width:104px;height:104px;transform:rotate(3deg)"><svg viewBox="0 0 24 24" width="45" height="45" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v11H10l-4 4v-4H3z M7.5 10.5h.01 M12 10.5h.01 M16.5 10.5h.01"></path></svg></div><div class="tile" id="t10" style="left:878px;top:522px;width:110px;height:110px;transform:rotate(-14deg)"><svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6 M12 7.2v5l3.2 2"></path></svg></div><div class="tile" id="t11" style="left:430px;top:1348px;width:126px;height:126px;transform:rotate(8deg)"><svg viewBox="0 0 24 24" width="55" height="55" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2.4h10v19.2H7z M10.4 5.2h3.2"></path></svg><div class="badge"></div></div><div class="tile" id="t12" style="left:806px;top:1330px;width:112px;height:112px;transform:rotate(-6deg)"><svg viewBox="0 0 24 24" width="49" height="49" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.6-2 1.6-2-1.6-2 1.6-2-1.6-2 1.6z M9 8.5h6 M9 12.5h6 M9 16.5h3"></path></svg></div><div class="tile" id="t13" style="left:176px;top:1342px;width:120px;height:120px;transform:rotate(12deg)"><svg viewBox="0 0 24 24" width="52" height="52" fill="none" stroke="#B4CCBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z M3 7.2l9 6.2 9-6.2"></path></svg></div>
+  <div class="stack" style="top:300px; gap:8px">
+    <div class="cap" id="s2a">Spreadsheets. Group chats.</div>
+    <div class="cap" id="s2b">Screenshots of receipts.</div>
+  </div>
+  <div id="dot"></div>
+  <div class="ring" id="ring0" style="width:520px;height:520px"></div><div class="ring" id="ring1" style="width:720px;height:720px"></div><div class="ring" id="ring2" style="width:960px;height:960px"></div><div class="ring" id="ring3" style="width:1240px;height:1240px"></div>
+  <div id="logo"><svg viewBox="0 0 375 375" width="392" height="392" style="display:block"><circle cx="187.5" cy="187.5" r="176.72" fill="#16a34a"></circle><path fill="#fff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z M 265.171875 107.988281 "></path><path fill="#fff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z M 136.859375 175.390625 "></path><circle cx="306.8" cy="270.05" r="9.46" fill="#fff"></circle></svg></div>
+</div>
+
+<div class="scene" id="s3" data-layout-allow-occlusion>
+  <div class="stack" style="top:690px; gap:34px">
+    <div class="cap" id="s3a" style="font-size:60px;color:#A6BFB2">Widdo doesn&rsquo;t just</div>
+    <div class="cap" id="s3b" style="font-size:60px;color:#A6BFB2;margin-top:-26px">store your club.</div>
+    <div class="hero" id="s3c" style="font-size:148px">It runs it.</div>
+    <div class="rule" id="s3d"></div>
+  </div>
+</div>
+
+<div class="scene" id="s4" data-layout-allow-occlusion>
+  <div class="stack" style="top:270px; gap:6px">
+    <div class="cap" id="s4a">Open the app.</div>
+    <div class="cap" id="s4b">Widdo already knows what needs you.</div>
+  </div>
+  <div id="phone">
+    <div id="screen">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="sc-eyebrow" id="s4c">Tuesday, August 18</div>
+        <div class="sc-title" id="s4d">Good morning, Miguel</div>
+      </div>
+      <div id="briefcard"><div class="brow" style=""><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#5B6B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6 M12 7.2v5l3.2 2"></path></svg><span class="blabel">3 sessions today</span><span class="bval" style="color:#14231C">7:00 AM</span></div><div class="brow" style=""><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4L2.6 20h18.8z M12 10v4 M12 17.2h.01"></path></svg><span class="blabel">12 families overdue</span><span class="bval" style="color:#DC2626">$1,840</span></div><div class="brow" style="background:#FFFBEB;border:1.5px solid #FEF3C7;"><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.6-2 1.6-2-1.6-2 1.6-2-1.6-2 1.6z M9 8.5h6 M9 12.5h6 M9 16.5h3"></path></svg><span class="blabel">114 receipts waiting</span><span class="bval" style="color:#D97706">$8,400</span></div><div class="brow" style=""><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#5B6B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17.4l5.6-5.6 3.4 3.4L21 6.6 M15.6 6.6H21v5.4"></path></svg><span class="blabel">Attendance down</span><span class="bval" style="color:#14231C">18%</span></div><div class="brow" style=""><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#5B6B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16v-8H4z M4 13c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 M8 8V4.5 M12 8V4 M16 8V4.5"></path></svg><span class="blabel">2 birthdays</span><span class="bval" style="color:#14231C">Ana, Luis</span></div></div>
+      <div id="suggest">Start with the receipts &mdash; that queue is three months old.</div>
+    </div>
+  </div>
+</div>
+
+<div class="scene" id="s5" data-layout-allow-occlusion>
+  <div class="stack" style="top:300px; gap:6px">
+    <div class="cap" id="s5a">Widdo found $8,400.</div>
+    <div class="cap" id="s5b">Already paid. Receipts nobody opened.</div>
+  </div>
+  <div class="card" id="s5card" style="top:780px">
+    <div class="kicker" id="s5c">Waiting for review</div>
+    <div class="bignum" id="s5num">$0</div>
+    <div class="hr" id="s5d"></div>
+    <div class="crow" id="s5e"><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.6-2 1.6-2-1.6-2 1.6-2-1.6-2 1.6z M9 8.5h6 M9 12.5h6 M9 16.5h3"></path></svg><span class="ctext">114 receipts</span><span class="chip">oldest 3 months</span></div>
+  </div>
+</div>
+
+<div class="scene" id="s6" data-layout-allow-occlusion>
+  <div class="stack" style="top:300px; gap:6px">
+    <div class="cap" id="s6a">At 8pm it nudges whoever owes.</div>
+    <div class="cap" id="s6b">You didn&rsquo;t ask.</div>
+  </div>
+  <div class="card dark" id="s6card" style="top:790px">
+    <div class="crow" id="s6c" style="gap:28px"><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#5BE88B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6 M12 7.2v5l3.2 2"></path></svg><span class="clock">8:00 PM</span></div>
+    <div class="hr dark" id="s6d"></div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="crow" id="s6e"><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#5BE88B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.4h5.2l1.6 3.2h4.4l1.6-3.2H21 M5.6 4.6h12.8L21 13.4V19H3v-5.6z"></path></svg><span class="wtext">12 reminders waiting in-app</span></div>
+      <div class="wnote" id="s6f">Widdo waited until 8pm in your club&rsquo;s own timezone, skipped anyone nudged in the last 3 days, and logged every one.</div>
+    </div>
+  </div>
+</div>
+
+<div class="scene" id="s7" data-layout-allow-occlusion>
+  <div class="stack" style="top:300px; gap:6px">
+    <div class="cap" id="s7a">It never moves money without you.</div>
+    <div class="cap" id="s7b">Six of nine actions always ask first.</div>
+  </div>
+  <div class="card" id="s7card" style="top:640px">
+    <div class="kicker" id="s7c">What Widdo may do alone</div>
+    <div style="display:flex;flex-direction:column"><div class="prow"><div class="pmeta"><span class="pname">Payment reminders</span><span class="pstate" style="color:#15A44A">On its own</span></div><div class="track on"><div class="knob"></div></div></div><div class="prow"><div class="pmeta"><span class="pname">Notifications</span><span class="pstate" style="color:#15A44A">On its own</span></div><div class="track on"><div class="knob"></div></div></div><div class="prow"><div class="pmeta"><span class="pname">Finances</span><span class="pstate" style="color:#87938C">Ask me first</span></div><div class="tgwrap"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#87938C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10.5h12V21H6z M8.6 10.5V7.4a3.4 3.4 0 0 1 6.8 0v3.1"></path></svg><div class="track off"><div class="knob" id="s7-knob"></div></div></div></div><div class="prow last"><div class="pmeta"><span class="pname">Players</span><span class="pstate" style="color:#87938C">Ask me first</span></div><div class="tgwrap"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#87938C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10.5h12V21H6z M8.6 10.5V7.4a3.4 3.4 0 0 1 6.8 0v3.1"></path></svg><div class="track off"><div class="knob" ></div></div></div></div></div>
+  </div>
+</div>
+
+<div class="scene" id="s8" data-layout-allow-occlusion>
+  <div class="stack" style="top:596px; gap:40px">
+    <div class="fee" id="s8a">0%</div>
+    <div class="feelabel" id="s8b">platform fee.</div>
+    <div class="rule" id="s8c"></div>
+    <div class="sub" id="s8d">Their money goes to your Stripe account. Not ours.</div>
+  </div>
+</div>
+
+<div class="scene" id="s9" data-layout-allow-occlusion>
+  <div class="stack" style="top:466px; gap:64px">
+    <div id="s9logo" style="border-radius:50%; box-shadow:0 0 0 2px rgba(255,255,255,0.12), 0 0 90px 8px rgba(0,230,118,0.22)"><svg viewBox="0 0 375 375" width="172" height="172" style="display:block"><circle cx="187.5" cy="187.5" r="176.72" fill="#16a34a"></circle><path fill="#fff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z M 265.171875 107.988281 "></path><path fill="#fff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z M 136.859375 175.390625 "></path><circle cx="306.8" cy="270.05" r="9.46" fill="#fff"></circle></svg></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:34px">
+      <div class="hero" id="s9a" style="font-size:118px">From $99/mo</div>
+      <div class="rule" id="s9b"></div>
+      <div class="sub" id="s9c">Any sport. Any age.</div>
+    </div>
+  </div>
+  <div class="stack" style="top:1166px; gap:22px">
+    <div class="cta" id="s9d">Start free for 14 days</div>
+    <div class="url" id="s9e">widdo.co</div>
+  </div>
+</div>
+
+<div id="vignette" data-layout-ignore></div>
+<div id="grain" data-layout-ignore></div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+const COL = [[343,287],[-155,413],[128,92],[-304,174],[364,-116],[-56,-42],[-373,-129],[213,-313],[-174,-374],[414,108],[-393,383],[47,-451],[-322,-426],[304,-442]];
+
+/* ---------- transiciones ---------- */
+function blurX(oldSel, newSel, T) {
+  tl.to(oldSel, { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T);
+  tl.fromTo(newSel, { filter: "blur(10px)", scale: 0.97, opacity: 0 },
+    { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.5, ease: "power2.inOut" }, T + 0.1);
+}
+function dirBlur(oldSel, newSel, T) {
+  tl.to(oldSel, { filter: "blur(12px)", skewX: -8, x: -200, opacity: 0, duration: 0.4, ease: "power3.in" }, T);
+  tl.fromTo(newSel, { filter: "blur(12px)", skewX: 8, x: 200, opacity: 0 },
+    { filter: "blur(0px)", skewX: 0, x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, T + 0.15);
+}
+
+/* ---------- 1 · hook ---------- */
+tl.from("#s1a", { y: 60, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+tl.from("#s1b", { y: 50, opacity: 0, duration: 0.55, ease: "expo.out" }, 0.45);
+tl.from("#s1c", { scale: 0.86, opacity: 0, duration: 0.65, ease: "back.out(1.6)" }, 0.72);
+blurX("#s1", "#s2", 2.75);
+
+/* ---------- 2 · caos, colapso, vacío, logo ---------- */
+tl.from("#grid2", { opacity: 0, duration: 0.8, ease: "sine.out" }, 3.0);
+tl.from(".link", { scaleX: 0, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.1 }, 3.35);
+tl.from(".tile", { scale: 0.6, y: 40, opacity: 0, duration: 0.5, ease: "back.out(1.4)", stagger: 0.14 }, 3.05);
+tl.from("#s2a", { y: 30, opacity: 0, duration: 0.45, ease: "power3.out" }, 5.45);
+tl.from("#s2b", { y: 30, opacity: 0, duration: 0.45, ease: "power2.out" }, 5.68);
+
+tl.to("#s2a", { opacity: 0, duration: 0.28, ease: "power2.in" }, 6.22);
+tl.to("#s2b", { opacity: 0, duration: 0.28, ease: "power2.in" }, 6.28);
+tl.to("#grid2", { opacity: 0, duration: 0.35, ease: "power2.in" }, 6.3);
+tl.to(".link", { opacity: 0, duration: 0.3, ease: "power2.in" }, 6.3);
+for (let i = 0; i < COL.length; i++) {
+  tl.to("#t" + i, { x: COL[i][0], y: COL[i][1], scale: 0.28, opacity: 0,
+    filter: "blur(14px)", duration: 0.55, ease: "power4.in" }, 6.35 + i * 0.012);
+}
+tl.to("#dot", { opacity: 1, duration: 0.14, ease: "power2.out" }, 7.02);
+tl.to("#dot", { opacity: 0, duration: 0.12, ease: "power2.in" }, 7.6);
+tl.fromTo("#logo", { scale: 0.24, opacity: 0 },
+  { scale: 1, opacity: 1, duration: 0.78, ease: "back.out(1.3)" }, 7.58);
+tl.fromTo(".ring", { scale: 0.14, opacity: 0.9, xPercent: -50, yPercent: -50 },
+  { scale: 1, opacity: 0, duration: 1.0, ease: "power2.out", stagger: 0.09 }, 7.72);
+blurX("#s2", "#s3", 9.35);
+
+/* ---------- 3 · promesa ---------- */
+tl.from("#s3a", { y: 40, opacity: 0, duration: 0.5, ease: "power3.out" }, 9.75);
+tl.from("#s3b", { y: 40, opacity: 0, duration: 0.5, ease: "power2.out" }, 9.95);
+tl.from("#s3c", { scale: 0.88, opacity: 0, duration: 0.7, ease: "back.out(1.5)" }, 10.35);
+tl.from("#s3d", { scaleX: 0, duration: 0.45, ease: "expo.out" }, 10.92);
+dirBlur("#s3", "#s4", 12.15);
+
+/* ---------- 4 · el parte ---------- */
+tl.from("#s4a", { y: 30, opacity: 0, duration: 0.45, ease: "power3.out" }, 12.6);
+tl.from("#s4b", { y: 30, opacity: 0, duration: 0.45, ease: "power2.out" }, 12.82);
+tl.from("#phone", { y: 120, scale: 0.94, opacity: 0, duration: 0.8, ease: "power3.out" }, 13.1);
+tl.from("#s4c", { x: -30, opacity: 0, duration: 0.4, ease: "expo.out" }, 13.62);
+tl.from("#s4d", { y: 24, opacity: 0, duration: 0.45, ease: "power3.out" }, 13.78);
+tl.from(".brow", { x: 40, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.13 }, 14.1);
+tl.from("#suggest", { y: 26, opacity: 0, duration: 0.5, ease: "back.out(1.2)" }, 15.0);
+blurX("#s4", "#s5", 17.75);
+
+/* ---------- 5 · el hallazgo ---------- */
+tl.from("#s5a", { y: 30, opacity: 0, duration: 0.45, ease: "power3.out" }, 18.2);
+tl.from("#s5b", { y: 30, opacity: 0, duration: 0.45, ease: "power2.out" }, 18.42);
+tl.from("#s5card", { y: 70, scale: 0.95, opacity: 0, duration: 0.7, ease: "power3.out" }, 18.8);
+tl.from("#s5c", { x: -24, opacity: 0, duration: 0.4, ease: "expo.out" }, 19.22);
+tl.from("#s5num", { scale: 0.9, opacity: 0, duration: 0.45, ease: "back.out(1.4)" }, 19.3);
+const CTR = { v: 0 };
+const NUM = document.getElementById("s5num");
+tl.to(CTR, { v: 8400, duration: 1.6, ease: "power2.out",
+  onUpdate: function () { NUM.textContent = "$" + Math.round(CTR.v).toLocaleString("en-US"); } }, 19.4);
+tl.from("#s5d", { scaleX: 0, duration: 0.4, ease: "power2.out" }, 20.5);
+tl.from("#s5e", { y: 26, opacity: 0, duration: 0.45, ease: "back.out(1.2)" }, 20.68);
+blurX("#s5", "#s6", 23.75);
+
+/* ---------- 6 · de noche ---------- */
+tl.from("#s6a", { y: 30, opacity: 0, duration: 0.45, ease: "power3.out" }, 24.2);
+tl.from("#s6b", { y: 30, opacity: 0, duration: 0.45, ease: "power2.out" }, 24.42);
+tl.from("#s6card", { y: 70, scale: 0.95, opacity: 0, duration: 0.7, ease: "power3.out" }, 24.75);
+tl.from("#s6c", { x: -34, opacity: 0, duration: 0.5, ease: "expo.out" }, 25.2);
+tl.from("#s6d", { scaleX: 0, duration: 0.4, ease: "power2.out" }, 25.62);
+tl.from("#s6e", { y: 26, opacity: 0, duration: 0.45, ease: "back.out(1.2)" }, 25.8);
+tl.from("#s6f", { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" }, 26.15);
+dirBlur("#s6", "#s7", 29.25);
+
+/* ---------- 7 · el límite ---------- */
+tl.from("#s7a", { y: 30, opacity: 0, duration: 0.45, ease: "power3.out" }, 29.7);
+tl.from("#s7b", { y: 30, opacity: 0, duration: 0.45, ease: "power2.out" }, 29.92);
+tl.from("#s7card", { y: 70, scale: 0.95, opacity: 0, duration: 0.7, ease: "power3.out" }, 30.25);
+tl.from("#s7c", { x: -24, opacity: 0, duration: 0.4, ease: "expo.out" }, 30.7);
+tl.from(".prow", { x: 40, opacity: 0, duration: 0.45, ease: "power2.out", stagger: 0.15 }, 30.95);
+tl.to("#s7-knob", { x: 30, duration: 0.3, ease: "power2.out" }, 32.3);
+tl.to("#s7-knob", { x: 0, duration: 0.85, ease: "elastic.out(1, 0.45)" }, 32.62);
+blurX("#s7", "#s8", 34.75);
+
+/* ---------- 8 · 0% ---------- */
+tl.from("#s8a", { scale: 0.75, opacity: 0, duration: 0.8, ease: "back.out(1.5)" }, 35.2);
+tl.from("#s8b", { y: 40, opacity: 0, duration: 0.5, ease: "power3.out" }, 35.88);
+tl.from("#s8c", { scaleX: 0, duration: 0.45, ease: "expo.out" }, 36.22);
+tl.from("#s8d", { y: 26, opacity: 0, duration: 0.55, ease: "power2.out" }, 36.42);
+tl.to("#s8", { opacity: 0, duration: 0.6, ease: "power2.inOut" }, 39.25);
+tl.fromTo("#s9", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.inOut" }, 39.25);
+
+/* ---------- 9 · cierre ---------- */
+tl.from("#s9logo", { scale: 0.8, opacity: 0, duration: 0.6, ease: "back.out(1.4)" }, 39.78);
+tl.from("#s9a", { y: 44, opacity: 0, duration: 0.6, ease: "power3.out" }, 40.2);
+tl.from("#s9b", { scaleX: 0, duration: 0.45, ease: "expo.out" }, 40.62);
+tl.from("#s9c", { y: 26, opacity: 0, duration: 0.5, ease: "power2.out" }, 40.82);
+tl.from("#s9d", { y: 26, opacity: 0, duration: 0.5, ease: "expo.out" }, 41.2);
+tl.from("#s9e", { y: 20, opacity: 0, duration: 0.45, ease: "power2.out" }, 41.52);
+tl.to(["#s9", "#bloom"], { opacity: 0, duration: 0.85, ease: "power2.in" }, 44.15);
+
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

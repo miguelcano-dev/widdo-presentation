@@ -249,14 +249,28 @@ DECISIÓN IVA:  ________________  (confirmar con contadora)
 `finanzas/iva-pricing-internacional.html`) vs $69.000 COP/mes
 (`legal/colombia/guia-contadora-estructura.html`) vs $69.000 en el deck consumer ES.
 
-**USA:** $99/$199/$349 — consistente y ya vivo en la landing vía API.
+**USA: RESUELTO — verificado contra produccion el 18-ago-2026.**
+`GET https://api.widdo.co/api/public/subscription-plans?country=US` devuelve:
 
-**Precio piloto:** $59/mes vs $99/mes según el documento.
+| Slug | Nombre en produccion (EN) | Jugadores | Mensual | Anual | Trial |
+|------|---------------------------|-----------|---------|-------|-------|
+| `basico` | Starter | 80 | $99 | $1.188 ($91,38/mes eq.) | 14 d |
+| `pro` | Pro | 200 | $249 | $2.988 ($229,85/mes eq.) | 14 d |
+| `enterprise` | Enterprise | 500 | $499 | $5.988 ($460,62/mes eq.) | 30 d |
+
+El anual es **12 meses pagados, 13 de servicio** = **8%** de ahorro, NO 17%. Los precios no estan
+hardcodeados: viven en `bas_subscription_plan_prices` por pais (`SubscriptionPlansSeeder` +
+migracion `2026_07_14_000002_fix_yearly_prices_and_seed_usd`), y la landing los pide por API.
+
+**Precio piloto $59: NO EXISTE.** La entrada a USA es $99 con 14 dias de prueba. Cualquier
+documento que ofrezca un piloto a $59/mes esta desactualizado.
 
 ```
-DECISIÓN Básico CO:  $______ COP/mes
-DECISIÓN piloto USA: $______/mes
+DECISIÓN Básico CO:  $______ COP/mes   ← unica pendiente de esta seccion
 ```
+
+⚠️ **Discrepancia abierta de NOMBRE (no de precio):** produccion muestra **Enterprise**; el material
+de pitch dice **Club+**. Ver la nota al pie de esta seccion.
 
 ---
 

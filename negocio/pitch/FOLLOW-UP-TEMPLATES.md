@@ -17,7 +17,7 @@ As promised, I'm attaching our deck and one-pager for your review.
 Quick recap of where we are:
 - 9 active clubs, 3 paying annual up front
 - 88% gross margin, $34 ARPC
-- Raising $200K pre-seed at $1.5M-2M pre-money
+- Raising $350K pre-seed on a post-money SAFE, $3M cap (first close from $250K)
 
 I'd love to continue the conversation. Would [dia] or [dia] work for a
 follow-up call?
@@ -47,7 +47,7 @@ What we've built:
 - Full platform, live in production (not MVP)
 - 9 active clubs, 3 paying annual up front
 - 88% gross margin, LTV/CAC 16x
-- Raising $200K pre-seed at $1.5M-2M valuation
+- Raising $350K pre-seed on a post-money SAFE, $3M cap
 
 We're entering the US market starting in Florida, targeting the $3.7B
 sports management software opportunity.
@@ -98,7 +98,7 @@ Here's a short blurb you can forward:
 
 "Miguel is the founder of Widdo, an all-in-one SaaS platform for sports
 clubs. He built the entire product solo — it's live with 9 clubs, 3 of them
-paying a full year up front. He's raising a $200K pre-seed to enter the US market,
+paying a full year up front. He's raising a $350K pre-seed (post-money SAFE, $3M cap) to enter the US market,
 targeting the $3.7B sports management software space. Would love to connect."
 
 ---
@@ -156,6 +156,7 @@ Miguel
 
 ## REGLAS PARA EMAILS A INVERSORES
 
+0. **La ronda se escribe siempre igual** — "$350K pre-seed on a post-money SAFE, $3M cap". Nunca "pre-money", nunca una valuacion a secas. Si el inversor pregunta por el minimo: primer cierre desde $250K.
 1. **Subject line con datos** — Nunca "Startup buscando inversion". Si: "SaaS for sports clubs, live product, 88% gross margin"
    ⚠️ NUNCA usar churn como gancho: con 3 clubes pagando, "0% churn" / "zero churn" no es un dato defendible.
 2. **Maximo 150 palabras** — Inversores leen en el telefono

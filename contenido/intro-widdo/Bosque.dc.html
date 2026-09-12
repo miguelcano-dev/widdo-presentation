@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Red+Hat+Display:wght@400;500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #00C853; } a:hover { color: #16a34a; }
+    .grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+      background-size: 160px 160px;
+    }
+  </style>
+</helmet>
+<div style="position: relative; width: 1080px; height: 1920px; overflow: hidden; background: linear-gradient(178deg, {{bgTop}} 0%, {{bgMid}} 52%, {{bgBot}} 100%); font-family: {{font}};">
+
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 74% 30% at 50% 30%, {{bloom}} 0%, rgba(0,0,0,0) 72%);"></div>
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 90% 40% at 50% 104%, {{floor}} 0%, rgba(0,0,0,0) 70%);"></div>
+
+  <div style="position: absolute; left: 0; right: 0; top: 466px; display: flex; flex-direction: column; align-items: center; gap: 64px; padding: 0 104px;">
+
+    <div style="position: relative; width: 184px; height: 184px; border-radius: 50%; box-shadow: 0 0 0 2px {{ring}}, 0 0 90px 8px {{halo}}, 0 26px 60px rgba(0,0,0,0.45);">
+      <svg viewBox="0 0 375 375" width="184" height="184" style="display: block;">
+        <circle cx="187.5" cy="187.5" r="176.72" fill="{{mark}}"></circle>
+        <path fill="#ffffff" d="M 265.171875 107.988281 L 231.988281 189.648438 L 187.390625 103.898438 L 142.574219 189.648438 L 121.308594 230.339844 L 138.265625 271.09375 L 187.390625 177.582031 L 236.085938 271.09375 L 304.597656 107.988281 Z M 265.171875 107.988281 "></path>
+        <path fill="#ffffff" d="M 136.859375 175.390625 L 109.828125 107.988281 L 70.398438 107.988281 L 115.472656 216.3125 Z M 136.859375 175.390625 "></path>
+        <circle cx="306.8" cy="270.05" r="9.46" fill="#ffffff"></circle>
+      </svg>
+    </div>
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 34px;">
+      <div style="font-size: 118px; font-weight: 700; line-height: 1.02; letter-spacing: -0.045em; color: {{ink}}; text-align: center;">From $99/mo</div>
+      <div style="width: 88px; height: 4px; border-radius: 2px; background: {{accent}};"></div>
+      <div style="font-size: 46px; font-weight: 500; line-height: 1.28; letter-spacing: -0.008em; color: {{ink2}}; text-align: center; max-width: 760px;">Any sport. Any age.</div>
+    </div>
+
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; top: 1166px; display: flex; flex-direction: column; align-items: center; gap: 22px;">
+    <div style="font-size: 52px; font-weight: 700; letter-spacing: -0.02em; color: {{accent}};">Start free for 14 days</div>
+    <div style="font-size: 38px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: {{ink2}};">widdo.co</div>
+  </div>
+
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 78% 55% at 50% 50%, rgba(0,0,0,0) 44%, {{vignette}} 100%);"></div>
+  <div class="grain"></div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1080,"height":1920},"palette":{"editor":"enum","default":"bosque","options":["bosque","grafito","esmeralda"],"section":"Paleta"},"font":{"editor":"enum","default":"jakarta","options":["jakarta","redhat"],"section":"Tipografía"}}'>
+class Component extends DCLogic {
+  palettes() {
+    return {
+      bosque: {
+        bgTop: '#1A2A22', bgMid: '#132019', bgBot: '#0C1611',
+        vignette: 'rgba(9,17,13,0.86)',
+        ink: '#EDF3EF', ink2: '#93A39A',
+        accent: '#00C853', mark: '#16a34a'
+      },
+      grafito: {
+        bgTop: '#212227', bgMid: '#191A1E', bgBot: '#111215',
+        vignette: 'rgba(13,14,16,0.86)',
+        ink: '#F2F3F4', ink2: '#9A9DA4',
+        accent: '#00C853', mark: '#16a34a'
+      },
+      esmeralda: {
+        bgTop: '#20422F', bgMid: '#173323', bgBot: '#0E2118',
+        vignette: 'rgba(10,26,18,0.82)',
+        ink: '#F4FAF6', ink2: '#A6BFB2',
+        accent: '#00E676', mark: '#16a34a'
+      }
+    };
+  }
+
+  fonts() {
+    return {
+      jakarta: "'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
+      redhat: "'Red Hat Display', system-ui, -apple-system, 'Segoe UI', sans-serif"
+    };
+  }
+
+  hexA(hex, a) {
+    const h = String(hex || '#00C853').replace('#', '');
+    const s = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+    const n = parseInt(s, 16);
+    return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',' + a + ')';
+  }
+
+  renderVals() {
+    const p = this.palettes()[this.props.palette] || this.palettes().bosque;
+    const font = this.fonts()[this.props.font] || this.fonts().jakarta;
+    return {
+      font,
+      bgTop: p.bgTop, bgMid: p.bgMid, bgBot: p.bgBot,
+      ink: p.ink, ink2: p.ink2, accent: p.accent, mark: p.mark, vignette: p.vignette,
+      bloom: this.hexA(p.accent, 0.10),
+      floor: this.hexA(p.accent, 0.13),
+      halo: this.hexA(p.accent, 0.22),
+      ring: 'rgba(255,255,255,0.12)'
+    };
+  }
+}
+</script>
+</body>
+</html>
