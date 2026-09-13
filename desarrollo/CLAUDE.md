@@ -44,9 +44,11 @@ corre en push). El unico gate vivo es `api-contract.yml`. Push a `saas_sport/mai
 produccion**; push a `frontend/main` = **deploy a Netlify**. Corre la suite antes de pushear,
 porque despues ya es tarde. No propongas volver a gatear con CI: es una decision tomada.
 
-**2. Stripe sigue en sandbox en produccion.**
-Ningun cobro real entra hasta cerrar el **Gate 0** del lanzamiento USA (llaves live + webhooks).
-Cualquier cosa que dependa de facturar — Tournaments incluido — no es facturable todavia.
+**2. Stripe sigue en MODO DE PRUEBA en produccion** (verificado 12-sep-2026).
+Ningun cobro real entra hasta cerrar el **Gate 0** del lanzamiento USA. Ojo: la columna
+`environment` de `bas_country_payment_config` es un selector manual del admin, no se deduce de
+la llave, asi que no sirve como prueba por si sola. Estado punto por punto, y como saber si
+alguien intento pagar: `saas_sport/docs/PAYMENTS-STRIPE.md`.
 
 **3. Falta `REVERB_PUBLIC_HOST` en produccion.**
 Sin esa variable el cliente movil apaga el tiempo real. Pendiente conocido.
@@ -109,7 +111,7 @@ compose, `compose exec` resuelve a ÉL y ejecutarás contra el worktree y la BD 
 
 | Pasarela | Flujo | Paises | Estado |
 |----------|-------|--------|--------|
-| Stripe | Checkout (suscripciones) + Connect Express (torneos) | US, CA, MX | Integrada; **produccion en sandbox** hasta cerrar Gate 0 |
+| Stripe | Checkout (suscripciones) + Connect Express (torneos) | US, CA, MX | Integrada; **produccion en modo de prueba** (verificado 12-sep-2026) |
 | Wompi | — | — | ❌ Descartada (codigo legacy en el repo) |
 | MercadoPago | — | — | ❌ Descartada (codigo legacy en el repo) |
 
@@ -125,6 +127,12 @@ distinto por endpoint**. Todo el detalle en `saas_sport/docs/PAYMENTS-STRIPE.md`
 
 **Precios:** USD 99 / 199 / 349 al mes, por **cantidad de jugadores** (`max_members`: 80/200/500),
 NO por modulos. Fuente: `SubscriptionPlansSeeder.php`.
+
+**Comision: cero.** Widdo no se queda nada de los pagos de las familias. `config/stripe.php` trae
+`application_fee_percent` con default 3, pero es **codigo muerto**: `TournamentPaymentService` no
+envia `application_fee_amount`, y la rama de `StripeGateway.php:138` solo corre si alguien pasa
+`connected_account_id`, cosa que ningun llamador hace. No la "arregles" para que cobre: el hero de
+widdo.co promete `0% platform fee` y todo el outreach lo repite.
 
 ---
 
