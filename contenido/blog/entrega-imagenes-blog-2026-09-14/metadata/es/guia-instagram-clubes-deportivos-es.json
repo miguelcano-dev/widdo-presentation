@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:guia-instagram-clubes-deportivos",
+  "match_by": {
+    "locale": "es",
+    "slug": "guia-instagram-clubes-deportivos"
+  },
+  "post_id_observed": 20,
+  "post_title": "Guía Completa de Instagram para Clubes Deportivos: Del Cero al Engagement",
+  "post_url": "https://widdo.co/es/blog/guia-instagram-clubes-deportivos",
+  "locale": "es",
+  "post_slug": "guia-instagram-clubes-deportivos",
+  "image_file": "images/es/guia-instagram-clubes-deportivos-es-portada.webp",
+  "filename": "guia-instagram-clubes-deportivos-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 170052,
+  "sha256": "05dd37fae97a4a49b77e8178eb0493192b3cf307d08456d445a543fdaaed6d70",
+  "featured_image_alt": "Collage editorial de entrenamiento de básquet, un logro en natación y un testimonio familiar como ideas de contenido para Instagram.",
+  "visual_style": "instagram",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Collage editorial de entrenamiento de básquet, un logro en natación y un testimonio familiar como ideas de contenido para Instagram."
+  },
+  "metadata_file": "metadata/es/guia-instagram-clubes-deportivos-es.json"
+}

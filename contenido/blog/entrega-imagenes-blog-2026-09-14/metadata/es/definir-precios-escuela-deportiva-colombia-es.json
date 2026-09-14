@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:definir-precios-escuela-deportiva-colombia",
+  "match_by": {
+    "locale": "es",
+    "slug": "definir-precios-escuela-deportiva-colombia"
+  },
+  "post_id_observed": 29,
+  "post_title": "Cómo Definir los Precios de tu Escuela Deportiva (Sin Subvalorarte)",
+  "post_url": "https://widdo.co/es/blog/definir-precios-escuela-deportiva-colombia",
+  "locale": "es",
+  "post_slug": "definir-precios-escuela-deportiva-colombia",
+  "image_file": "images/es/definir-precios-escuela-deportiva-colombia-es-portada.webp",
+  "filename": "definir-precios-escuela-deportiva-colombia-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 184828,
+  "sha256": "0bcf545d1ef57ff8a6030ceacf8edfde576104009b6548fbe8118fb237a8261c",
+  "featured_image_alt": "Composición de cancha, entrenadores, material y margen que se reúnen para representar el cálculo de la cuota de una escuela de básquet.",
+  "visual_style": "pricing",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Composición de cancha, entrenadores, material y margen que se reúnen para representar el cálculo de la cuota de una escuela de básquet."
+  },
+  "metadata_file": "metadata/es/definir-precios-escuela-deportiva-colombia-es.json"
+}

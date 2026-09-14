@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:programa-referidos-duplicar-inscripciones",
+  "match_by": {
+    "locale": "es",
+    "slug": "programa-referidos-duplicar-inscripciones"
+  },
+  "post_id_observed": 24,
+  "post_title": "Cómo Crear un Programa de Referidos que Duplique tus Inscripciones",
+  "post_url": "https://widdo.co/es/blog/programa-referidos-duplicar-inscripciones",
+  "locale": "es",
+  "post_slug": "programa-referidos-duplicar-inscripciones",
+  "image_file": "images/es/programa-referidos-duplicar-inscripciones-es-portada.webp",
+  "filename": "programa-referidos-duplicar-inscripciones-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 186828,
+  "sha256": "f4903a1b7e89c2fbc993815edd8bfbfccdec37fb5b5c7f22beb75256dd258e92",
+  "featured_image_alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse.",
+  "visual_style": "referrals",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse."
+  },
+  "metadata_file": "metadata/es/programa-referidos-duplicar-inscripciones-es.json"
+}

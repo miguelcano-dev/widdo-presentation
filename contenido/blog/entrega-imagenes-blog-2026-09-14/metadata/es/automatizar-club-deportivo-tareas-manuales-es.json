@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:automatizar-club-deportivo-tareas-manuales",
+  "match_by": {
+    "locale": "es",
+    "slug": "automatizar-club-deportivo-tareas-manuales"
+  },
+  "post_id_observed": 31,
+  "post_title": "Automatiza tu Club: 5 Tareas que No Deberías Hacer Manualmente",
+  "post_url": "https://widdo.co/es/blog/automatizar-club-deportivo-tareas-manuales",
+  "locale": "es",
+  "post_slug": "automatizar-club-deportivo-tareas-manuales",
+  "image_file": "images/es/automatizar-club-deportivo-tareas-manuales-es-portada.webp",
+  "filename": "automatizar-club-deportivo-tareas-manuales-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 114162,
+  "sha256": "aafa27ac31267eb567f35be589f89496b176056499f782fc12db5f4dcdd42083",
+  "featured_image_alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet.",
+  "visual_style": "automation",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet."
+  },
+  "metadata_file": "metadata/es/automatizar-club-deportivo-tareas-manuales-es.json"
+}

@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:widdo-cuenta-multiples-roles-deportivos",
+  "match_by": {
+    "locale": "es",
+    "slug": "widdo-cuenta-multiples-roles-deportivos"
+  },
+  "post_id_observed": 27,
+  "post_title": "Una Cuenta, Múltiples Roles: Cómo Widdo Simplifica tu Vida Deportiva",
+  "post_url": "https://widdo.co/es/blog/widdo-cuenta-multiples-roles-deportivos",
+  "locale": "es",
+  "post_slug": "widdo-cuenta-multiples-roles-deportivos",
+  "image_file": "images/es/widdo-cuenta-multiples-roles-deportivos-es-portada.webp",
+  "filename": "widdo-cuenta-multiples-roles-deportivos-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 406750,
+  "sha256": "edb2df3c25df90644d7600a6708dfa1f034ffa0c9e1ecc72d0b1e5e9ad1955b6",
+  "featured_image_alt": "Un recorrido continuo conecta una sola cuenta con los roles de entrenador de básquet, familiar en natación y jugador de tenis.",
+  "visual_style": "roles-route",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Un recorrido continuo conecta una sola cuenta con los roles de entrenador de básquet, familiar en natación y jugador de tenis."
+  },
+  "metadata_file": "metadata/es/widdo-cuenta-multiples-roles-deportivos-es.json"
+}

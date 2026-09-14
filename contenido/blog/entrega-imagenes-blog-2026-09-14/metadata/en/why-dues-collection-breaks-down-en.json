@@ -1,0 +1,31 @@
+{
+  "asset_key": "en:why-dues-collection-breaks-down",
+  "match_by": {
+    "locale": "en",
+    "slug": "why-dues-collection-breaks-down"
+  },
+  "post_id_observed": 34,
+  "post_title": "Why Dues Collection Breaks Down in Youth Sports Clubs",
+  "post_url": "https://widdo.co/en/blog/why-dues-collection-breaks-down",
+  "locale": "en",
+  "post_slug": "why-dues-collection-breaks-down",
+  "image_file": "images/en/why-dues-collection-breaks-down-en-cover.webp",
+  "filename": "why-dues-collection-breaks-down-en-cover.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 197164,
+  "sha256": "061429318248d8e070cdc769d934325156a4886d5d23c1629321e12d3605d491",
+  "featured_image_alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status.",
+  "visual_style": "dues-en",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down.jpg",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status."
+  },
+  "metadata_file": "metadata/en/why-dues-collection-breaks-down-en.json"
+}

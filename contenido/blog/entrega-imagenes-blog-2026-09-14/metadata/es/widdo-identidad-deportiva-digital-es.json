@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:widdo-identidad-deportiva-digital",
+  "match_by": {
+    "locale": "es",
+    "slug": "widdo-identidad-deportiva-digital"
+  },
+  "post_id_observed": 17,
+  "post_title": "Widdo: Tu Identidad Deportiva Digital que Te Acompaña en Todos tus Roles",
+  "post_url": "https://widdo.co/es/blog/widdo-identidad-deportiva-digital",
+  "locale": "es",
+  "post_slug": "widdo-identidad-deportiva-digital",
+  "image_file": "images/es/widdo-identidad-deportiva-digital-es-portada.webp",
+  "filename": "widdo-identidad-deportiva-digital-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 291242,
+  "sha256": "145963aa85065329f89102e46bafb257e417c443faa03bced0197b5692547101",
+  "featured_image_alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis.",
+  "visual_style": "approved",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis."
+  },
+  "metadata_file": "metadata/es/widdo-identidad-deportiva-digital-es.json"
+}

@@ -1,0 +1,31 @@
+{
+  "asset_key": "pt:grupo-whatsapp-pais-escolinha",
+  "match_by": {
+    "locale": "pt",
+    "slug": "grupo-whatsapp-pais-escolinha"
+  },
+  "post_id_observed": 43,
+  "post_title": "Grupo de WhatsApp com os pais: como organizar sem enlouquecer",
+  "post_url": "https://widdo.co/pt/blog/grupo-whatsapp-pais-escolinha",
+  "locale": "pt",
+  "post_slug": "grupo-whatsapp-pais-escolinha",
+  "image_file": "images/pt/grupo-whatsapp-pais-escolinha-pt-capa.webp",
+  "filename": "grupo-whatsapp-pais-escolinha-pt-capa.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 172334,
+  "sha256": "5da87349e19084402a677872cd45dd9110a07364338f6b4695485e3e3dc28abe",
+  "featured_image_alt": "Conversas de responsáveis separadas dos avisos da turma, com um comunicado de treino e elementos de um dojo.",
+  "visual_style": "whatsapp-pt",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": null,
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Conversas de responsáveis separadas dos avisos da turma, com um comunicado de treino e elementos de um dojo."
+  },
+  "metadata_file": "metadata/pt/grupo-whatsapp-pais-escolinha-pt.json"
+}

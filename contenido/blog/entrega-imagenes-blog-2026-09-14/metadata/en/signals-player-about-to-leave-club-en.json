@@ -1,0 +1,31 @@
+{
+  "asset_key": "en:signals-player-about-to-leave-club",
+  "match_by": {
+    "locale": "en",
+    "slug": "signals-player-about-to-leave-club"
+  },
+  "post_id_observed": 36,
+  "post_title": "The Signals a Player Is About to Leave Your Club",
+  "post_url": "https://widdo.co/en/blog/signals-player-about-to-leave-club",
+  "locale": "en",
+  "post_slug": "signals-player-about-to-leave-club",
+  "image_file": "images/en/signals-player-about-to-leave-club-en-cover.webp",
+  "filename": "signals-player-about-to-leave-club-en-cover.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 143888,
+  "sha256": "c269dfd334a849b333f0f03902f3420419d6edaf501f30dcab77bdeed80454db",
+  "featured_image_alt": "An attendance timeline leads to a supportive conversation between a hockey coach, a player and a parent about early signs of disengagement.",
+  "visual_style": "retention-en",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club.jpg",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "An attendance timeline leads to a supportive conversation between a hockey coach, a player and a parent about early signs of disengagement."
+  },
+  "metadata_file": "metadata/en/signals-player-about-to-leave-club-en.json"
+}

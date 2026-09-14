@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:grupos-facebook-comunidades-deportivas",
+  "match_by": {
+    "locale": "es",
+    "slug": "grupos-facebook-comunidades-deportivas"
+  },
+  "post_id_observed": 30,
+  "post_title": "Grupos de Facebook: El Arma Secreta para Comunidades Deportivas",
+  "post_url": "https://widdo.co/es/blog/grupos-facebook-comunidades-deportivas",
+  "locale": "es",
+  "post_slug": "grupos-facebook-comunidades-deportivas",
+  "image_file": "images/es/grupos-facebook-comunidades-deportivas-es-portada.webp",
+  "filename": "grupos-facebook-comunidades-deportivas-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 150044,
+  "sha256": "ef00d5f071f302676cae65652ddd2f258a4580cc8ca6eec2f3fee48bfa8d7982",
+  "featured_image_alt": "Ilustración de familias de un club de natación conectadas mediante conversaciones y publicaciones de un grupo de Facebook.",
+  "visual_style": "community",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Ilustración de familias de un club de natación conectadas mediante conversaciones y publicaciones de un grupo de Facebook."
+  },
+  "metadata_file": "metadata/es/grupos-facebook-comunidades-deportivas-es.json"
+}

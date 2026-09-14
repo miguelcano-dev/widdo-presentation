@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:organizar-eventos-gratuitos-atraer-alumnos",
+  "match_by": {
+    "locale": "es",
+    "slug": "organizar-eventos-gratuitos-atraer-alumnos"
+  },
+  "post_id_observed": 28,
+  "post_title": "Cómo Organizar Eventos Gratuitos que Atraigan Nuevos Alumnos",
+  "post_url": "https://widdo.co/es/blog/organizar-eventos-gratuitos-atraer-alumnos",
+  "locale": "es",
+  "post_slug": "organizar-eventos-gratuitos-atraer-alumnos",
+  "image_file": "images/es/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp",
+  "filename": "organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 230258,
+  "sha256": "e4e64140c6b4cb32d643884dd8542d0a8ec06fa1fe581c85dc67766c67e645f0",
+  "featured_image_alt": "Ilustración de un entrenador recibiendo a una familia durante una clase de prueba con actividades de básquet y voleibol.",
+  "visual_style": "open-day",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Ilustración de un entrenador recibiendo a una familia durante una clase de prueba con actividades de básquet y voleibol."
+  },
+  "metadata_file": "metadata/es/organizar-eventos-gratuitos-atraer-alumnos-es.json"
+}

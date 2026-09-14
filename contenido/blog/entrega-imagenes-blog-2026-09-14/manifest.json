@@ -1,0 +1,883 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-09-14",
+  "inventory_observed_at": "2026-09-13",
+  "scope": "28 published posts from the audited inventory: 16 es, 6 en, 6 pt; excludes 10 local unpublished entries.",
+  "asset_policy": "One 1600x900 WebP cover per post; no separate hook or OG variants.",
+  "assignment_key": [
+    "locale",
+    "post_slug"
+  ],
+  "upload_status": "not_uploaded",
+  "items": [
+    {
+      "asset_key": "es:widdo-identidad-deportiva-digital",
+      "match_by": {
+        "locale": "es",
+        "slug": "widdo-identidad-deportiva-digital"
+      },
+      "post_id_observed": 17,
+      "post_title": "Widdo: Tu Identidad Deportiva Digital que Te Acompaña en Todos tus Roles",
+      "post_url": "https://widdo.co/es/blog/widdo-identidad-deportiva-digital",
+      "locale": "es",
+      "post_slug": "widdo-identidad-deportiva-digital",
+      "image_file": "images/es/widdo-identidad-deportiva-digital-es-portada.webp",
+      "filename": "widdo-identidad-deportiva-digital-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 291242,
+      "sha256": "145963aa85065329f89102e46bafb257e417c443faa03bced0197b5692547101",
+      "featured_image_alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis.",
+      "visual_style": "approved",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis."
+      },
+      "metadata_file": "metadata/es/widdo-identidad-deportiva-digital-es.json"
+    },
+    {
+      "asset_key": "es:tendencias-escuelas-deportivas-2026",
+      "match_by": {
+        "locale": "es",
+        "slug": "tendencias-escuelas-deportivas-2026"
+      },
+      "post_id_observed": 32,
+      "post_title": "Tendencias de Escuelas Deportivas para 2026: Lo que Viene",
+      "post_url": "https://widdo.co/es/blog/tendencias-escuelas-deportivas-2026",
+      "locale": "es",
+      "post_slug": "tendencias-escuelas-deportivas-2026",
+      "image_file": "images/es/tendencias-escuelas-deportivas-2026-es-portada.webp",
+      "filename": "tendencias-escuelas-deportivas-2026-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 235696,
+      "sha256": "99ddeac2db71491633d1110d1269077057d1d561a9da37c28bb88db8c80f1afc",
+      "featured_image_alt": "Ilustración de un entrenamiento juvenil de voleibol con seguimiento digital y familias, acompañada del año 2026.",
+      "visual_style": "sports-futures",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Ilustración de un entrenamiento juvenil de voleibol con seguimiento digital y familias, acompañada del año 2026."
+      },
+      "metadata_file": "metadata/es/tendencias-escuelas-deportivas-2026-es.json"
+    },
+    {
+      "asset_key": "es:automatizar-club-deportivo-tareas-manuales",
+      "match_by": {
+        "locale": "es",
+        "slug": "automatizar-club-deportivo-tareas-manuales"
+      },
+      "post_id_observed": 31,
+      "post_title": "Automatiza tu Club: 5 Tareas que No Deberías Hacer Manualmente",
+      "post_url": "https://widdo.co/es/blog/automatizar-club-deportivo-tareas-manuales",
+      "locale": "es",
+      "post_slug": "automatizar-club-deportivo-tareas-manuales",
+      "image_file": "images/es/automatizar-club-deportivo-tareas-manuales-es-portada.webp",
+      "filename": "automatizar-club-deportivo-tareas-manuales-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 114162,
+      "sha256": "aafa27ac31267eb567f35be589f89496b176056499f782fc12db5f4dcdd42083",
+      "featured_image_alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet.",
+      "visual_style": "automation",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet."
+      },
+      "metadata_file": "metadata/es/automatizar-club-deportivo-tareas-manuales-es.json"
+    },
+    {
+      "asset_key": "es:grupos-facebook-comunidades-deportivas",
+      "match_by": {
+        "locale": "es",
+        "slug": "grupos-facebook-comunidades-deportivas"
+      },
+      "post_id_observed": 30,
+      "post_title": "Grupos de Facebook: El Arma Secreta para Comunidades Deportivas",
+      "post_url": "https://widdo.co/es/blog/grupos-facebook-comunidades-deportivas",
+      "locale": "es",
+      "post_slug": "grupos-facebook-comunidades-deportivas",
+      "image_file": "images/es/grupos-facebook-comunidades-deportivas-es-portada.webp",
+      "filename": "grupos-facebook-comunidades-deportivas-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 150044,
+      "sha256": "ef00d5f071f302676cae65652ddd2f258a4580cc8ca6eec2f3fee48bfa8d7982",
+      "featured_image_alt": "Ilustración de familias de un club de natación conectadas mediante conversaciones y publicaciones de un grupo de Facebook.",
+      "visual_style": "community",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Ilustración de familias de un club de natación conectadas mediante conversaciones y publicaciones de un grupo de Facebook."
+      },
+      "metadata_file": "metadata/es/grupos-facebook-comunidades-deportivas-es.json"
+    },
+    {
+      "asset_key": "es:definir-precios-escuela-deportiva-colombia",
+      "match_by": {
+        "locale": "es",
+        "slug": "definir-precios-escuela-deportiva-colombia"
+      },
+      "post_id_observed": 29,
+      "post_title": "Cómo Definir los Precios de tu Escuela Deportiva (Sin Subvalorarte)",
+      "post_url": "https://widdo.co/es/blog/definir-precios-escuela-deportiva-colombia",
+      "locale": "es",
+      "post_slug": "definir-precios-escuela-deportiva-colombia",
+      "image_file": "images/es/definir-precios-escuela-deportiva-colombia-es-portada.webp",
+      "filename": "definir-precios-escuela-deportiva-colombia-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 184828,
+      "sha256": "0bcf545d1ef57ff8a6030ceacf8edfde576104009b6548fbe8118fb237a8261c",
+      "featured_image_alt": "Composición de cancha, entrenadores, material y margen que se reúnen para representar el cálculo de la cuota de una escuela de básquet.",
+      "visual_style": "pricing",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Composición de cancha, entrenadores, material y margen que se reúnen para representar el cálculo de la cuota de una escuela de básquet."
+      },
+      "metadata_file": "metadata/es/definir-precios-escuela-deportiva-colombia-es.json"
+    },
+    {
+      "asset_key": "es:organizar-eventos-gratuitos-atraer-alumnos",
+      "match_by": {
+        "locale": "es",
+        "slug": "organizar-eventos-gratuitos-atraer-alumnos"
+      },
+      "post_id_observed": 28,
+      "post_title": "Cómo Organizar Eventos Gratuitos que Atraigan Nuevos Alumnos",
+      "post_url": "https://widdo.co/es/blog/organizar-eventos-gratuitos-atraer-alumnos",
+      "locale": "es",
+      "post_slug": "organizar-eventos-gratuitos-atraer-alumnos",
+      "image_file": "images/es/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp",
+      "filename": "organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 230258,
+      "sha256": "e4e64140c6b4cb32d643884dd8542d0a8ec06fa1fe581c85dc67766c67e645f0",
+      "featured_image_alt": "Ilustración de un entrenador recibiendo a una familia durante una clase de prueba con actividades de básquet y voleibol.",
+      "visual_style": "open-day",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Ilustración de un entrenador recibiendo a una familia durante una clase de prueba con actividades de básquet y voleibol."
+      },
+      "metadata_file": "metadata/es/organizar-eventos-gratuitos-atraer-alumnos-es.json"
+    },
+    {
+      "asset_key": "es:widdo-cuenta-multiples-roles-deportivos",
+      "match_by": {
+        "locale": "es",
+        "slug": "widdo-cuenta-multiples-roles-deportivos"
+      },
+      "post_id_observed": 27,
+      "post_title": "Una Cuenta, Múltiples Roles: Cómo Widdo Simplifica tu Vida Deportiva",
+      "post_url": "https://widdo.co/es/blog/widdo-cuenta-multiples-roles-deportivos",
+      "locale": "es",
+      "post_slug": "widdo-cuenta-multiples-roles-deportivos",
+      "image_file": "images/es/widdo-cuenta-multiples-roles-deportivos-es-portada.webp",
+      "filename": "widdo-cuenta-multiples-roles-deportivos-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 406750,
+      "sha256": "edb2df3c25df90644d7600a6708dfa1f034ffa0c9e1ecc72d0b1e5e9ad1955b6",
+      "featured_image_alt": "Un recorrido continuo conecta una sola cuenta con los roles de entrenador de básquet, familiar en natación y jugador de tenis.",
+      "visual_style": "roles-route",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Un recorrido continuo conecta una sola cuenta con los roles de entrenador de básquet, familiar en natación y jugador de tenis."
+      },
+      "metadata_file": "metadata/es/widdo-cuenta-multiples-roles-deportivos-es.json"
+    },
+    {
+      "asset_key": "es:calendario-contenidos-clubes-deportivos",
+      "match_by": {
+        "locale": "es",
+        "slug": "calendario-contenidos-clubes-deportivos"
+      },
+      "post_id_observed": 26,
+      "post_title": "Calendario de Contenidos para Clubes: Qué Publicar Cada Mes del Año",
+      "post_url": "https://widdo.co/es/blog/calendario-contenidos-clubes-deportivos",
+      "locale": "es",
+      "post_slug": "calendario-contenidos-clubes-deportivos",
+      "image_file": "images/es/calendario-contenidos-clubes-deportivos-es-portada.webp",
+      "filename": "calendario-contenidos-clubes-deportivos-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 247282,
+      "sha256": "31d2bd15e2d5212ab6ea45d42df1b9708708ee04895fc8bfc58e46dd223f4243",
+      "featured_image_alt": "Calendario editorial con contenidos de entrenamiento, logros, inscripciones y comunidad para un club multideportivo.",
+      "visual_style": "content-calendar",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Calendario editorial con contenidos de entrenamiento, logros, inscripciones y comunidad para un club multideportivo."
+      },
+      "metadata_file": "metadata/es/calendario-contenidos-clubes-deportivos-es.json"
+    },
+    {
+      "asset_key": "es:transformar-padres-aliados-escuela-deportiva",
+      "match_by": {
+        "locale": "es",
+        "slug": "transformar-padres-aliados-escuela-deportiva"
+      },
+      "post_id_observed": 25,
+      "post_title": "Cómo Transformar Padres en Aliados (No en Clientes que Solo Pagan)",
+      "post_url": "https://widdo.co/es/blog/transformar-padres-aliados-escuela-deportiva",
+      "locale": "es",
+      "post_slug": "transformar-padres-aliados-escuela-deportiva",
+      "image_file": "images/es/transformar-padres-aliados-escuela-deportiva-es-portada.webp",
+      "filename": "transformar-padres-aliados-escuela-deportiva-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 150546,
+      "sha256": "48d30ee1387d4c957253cb56cf3d778618847d79e1086e9985eca670b9b8fe0c",
+      "featured_image_alt": "Ilustración de una entrenadora de gimnasia y una familia conversando junto a una niña que practica sobre una colchoneta.",
+      "visual_style": "family-allies",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Ilustración de una entrenadora de gimnasia y una familia conversando junto a una niña que practica sobre una colchoneta."
+      },
+      "metadata_file": "metadata/es/transformar-padres-aliados-escuela-deportiva-es.json"
+    },
+    {
+      "asset_key": "es:programa-referidos-duplicar-inscripciones",
+      "match_by": {
+        "locale": "es",
+        "slug": "programa-referidos-duplicar-inscripciones"
+      },
+      "post_id_observed": 24,
+      "post_title": "Cómo Crear un Programa de Referidos que Duplique tus Inscripciones",
+      "post_url": "https://widdo.co/es/blog/programa-referidos-duplicar-inscripciones",
+      "locale": "es",
+      "post_slug": "programa-referidos-duplicar-inscripciones",
+      "image_file": "images/es/programa-referidos-duplicar-inscripciones-es-portada.webp",
+      "filename": "programa-referidos-duplicar-inscripciones-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 186828,
+      "sha256": "f4903a1b7e89c2fbc993815edd8bfbfccdec37fb5b5c7f22beb75256dd258e92",
+      "featured_image_alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse.",
+      "visual_style": "referrals",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse."
+      },
+      "metadata_file": "metadata/es/programa-referidos-duplicar-inscripciones-es.json"
+    },
+    {
+      "asset_key": "es:tiktok-escuelas-deportivas-ideas-contenido",
+      "match_by": {
+        "locale": "es",
+        "slug": "tiktok-escuelas-deportivas-ideas-contenido"
+      },
+      "post_id_observed": 23,
+      "post_title": "TikTok para Escuelas Deportivas: Ideas de Contenido que Atraen Alumnos",
+      "post_url": "https://widdo.co/es/blog/tiktok-escuelas-deportivas-ideas-contenido",
+      "locale": "es",
+      "post_slug": "tiktok-escuelas-deportivas-ideas-contenido",
+      "image_file": "images/es/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp",
+      "filename": "tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 223344,
+      "sha256": "594c32357f99abf8c52970162e609de635afe0c3de7545a047641c1799b08732",
+      "featured_image_alt": "Composición editorial de un ejercicio de básquet grabado en formato vertical para contenido de TikTok.",
+      "visual_style": "short-video",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Composición editorial de un ejercicio de básquet grabado en formato vertical para contenido de TikTok."
+      },
+      "metadata_file": "metadata/es/tiktok-escuelas-deportivas-ideas-contenido-es.json"
+    },
+    {
+      "asset_key": "es:razones-abandono-alumnos-escuela-deportiva",
+      "match_by": {
+        "locale": "es",
+        "slug": "razones-abandono-alumnos-escuela-deportiva"
+      },
+      "post_id_observed": 22,
+      "post_title": "5 Razones por las que los Alumnos Abandonan tu Escuela (y Cómo Evitarlo)",
+      "post_url": "https://widdo.co/es/blog/razones-abandono-alumnos-escuela-deportiva",
+      "locale": "es",
+      "post_slug": "razones-abandono-alumnos-escuela-deportiva",
+      "image_file": "images/es/razones-abandono-alumnos-escuela-deportiva-es-portada.webp",
+      "filename": "razones-abandono-alumnos-escuela-deportiva-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 121494,
+      "sha256": "b83dcfcf17300cc72e9d6f279cea40f6ce70bca678ef11462ee2b9ee5d1c1168",
+      "featured_image_alt": "Un entrenador de voleibol escucha a un alumno junto a la cancha, con marcas de asistencia que sugieren seguimiento de sus ausencias.",
+      "visual_style": "retention-es",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Un entrenador de voleibol escucha a un alumno junto a la cancha, con marcas de asistencia que sugieren seguimiento de sus ausencias."
+      },
+      "metadata_file": "metadata/es/razones-abandono-alumnos-escuela-deportiva-es.json"
+    },
+    {
+      "asset_key": "es:reducir-morosidad-club-deportivo-cobros",
+      "match_by": {
+        "locale": "es",
+        "slug": "reducir-morosidad-club-deportivo-cobros"
+      },
+      "post_id_observed": 21,
+      "post_title": "Cómo Reducir la Morosidad en tu Club Deportivo: Guía Práctica de Cobros",
+      "post_url": "https://widdo.co/es/blog/reducir-morosidad-club-deportivo-cobros",
+      "locale": "es",
+      "post_slug": "reducir-morosidad-club-deportivo-cobros",
+      "image_file": "images/es/reducir-morosidad-club-deportivo-cobros-es-portada.webp",
+      "filename": "reducir-morosidad-club-deportivo-cobros-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 148538,
+      "sha256": "80cb0dcabaf5e610298b1a11a99591e60768dd09d579b1319fd9c2cdfbf83305",
+      "featured_image_alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación.",
+      "visual_style": "dues-es",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación."
+      },
+      "metadata_file": "metadata/es/reducir-morosidad-club-deportivo-cobros-es.json"
+    },
+    {
+      "asset_key": "es:guia-instagram-clubes-deportivos",
+      "match_by": {
+        "locale": "es",
+        "slug": "guia-instagram-clubes-deportivos"
+      },
+      "post_id_observed": 20,
+      "post_title": "Guía Completa de Instagram para Clubes Deportivos: Del Cero al Engagement",
+      "post_url": "https://widdo.co/es/blog/guia-instagram-clubes-deportivos",
+      "locale": "es",
+      "post_slug": "guia-instagram-clubes-deportivos",
+      "image_file": "images/es/guia-instagram-clubes-deportivos-es-portada.webp",
+      "filename": "guia-instagram-clubes-deportivos-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 170052,
+      "sha256": "05dd37fae97a4a49b77e8178eb0493192b3cf307d08456d445a543fdaaed6d70",
+      "featured_image_alt": "Collage editorial de entrenamiento de básquet, un logro en natación y un testimonio familiar como ideas de contenido para Instagram.",
+      "visual_style": "instagram",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Collage editorial de entrenamiento de básquet, un logro en natación y un testimonio familiar como ideas de contenido para Instagram."
+      },
+      "metadata_file": "metadata/es/guia-instagram-clubes-deportivos-es.json"
+    },
+    {
+      "asset_key": "es:estrategias-marketing-escuelas-futbol-colombia",
+      "match_by": {
+        "locale": "es",
+        "slug": "estrategias-marketing-escuelas-futbol-colombia"
+      },
+      "post_id_observed": 19,
+      "post_title": "7 Estrategias de Marketing que Funcionan para Escuelas de Fútbol en Colombia",
+      "post_url": "https://widdo.co/es/blog/estrategias-marketing-escuelas-futbol-colombia",
+      "locale": "es",
+      "post_slug": "estrategias-marketing-escuelas-futbol-colombia",
+      "image_file": "images/es/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp",
+      "filename": "estrategias-marketing-escuelas-futbol-colombia-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 280770,
+      "sha256": "91ed7887b1385c490fb577a148b9e9b757f62bfb6dad17c253a44b013691a933",
+      "featured_image_alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales.",
+      "visual_style": "soccer-colombia",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales."
+      },
+      "metadata_file": "metadata/es/estrategias-marketing-escuelas-futbol-colombia-es.json"
+    },
+    {
+      "asset_key": "es:adios-caos-whatsapp-escuela-deportiva",
+      "match_by": {
+        "locale": "es",
+        "slug": "adios-caos-whatsapp-escuela-deportiva"
+      },
+      "post_id_observed": 18,
+      "post_title": "Adiós al Caos del WhatsApp: Cómo Organizar la Comunicación de tu Escuela Deportiva",
+      "post_url": "https://widdo.co/es/blog/adios-caos-whatsapp-escuela-deportiva",
+      "locale": "es",
+      "post_slug": "adios-caos-whatsapp-escuela-deportiva",
+      "image_file": "images/es/adios-caos-whatsapp-escuela-deportiva-es-portada.webp",
+      "filename": "adios-caos-whatsapp-escuela-deportiva-es-portada.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 158762,
+      "sha256": "752d7209da31ea594f97f954c30a0106910b70dbdf7adf145cba8308b24199d2",
+      "featured_image_alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet.",
+      "visual_style": "whatsapp-es",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=400&fit=crop",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet."
+      },
+      "metadata_file": "metadata/es/adios-caos-whatsapp-escuela-deportiva-es.json"
+    },
+    {
+      "asset_key": "en:per-player-pricing-youth-sports-software",
+      "match_by": {
+        "locale": "en",
+        "slug": "per-player-pricing-youth-sports-software"
+      },
+      "post_id_observed": 33,
+      "post_title": "What Per-Player Pricing Actually Costs a Growing Club",
+      "post_url": "https://widdo.co/en/blog/per-player-pricing-youth-sports-software",
+      "locale": "en",
+      "post_slug": "per-player-pricing-youth-sports-software",
+      "image_file": "images/en/per-player-pricing-youth-sports-software-en-cover.webp",
+      "filename": "per-player-pricing-youth-sports-software-en-cover.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 117286,
+      "sha256": "e86ee04cfb8325805dabdfbe39ad8f353fe1d8b927f5d74429ed068f71d56f4d",
+      "featured_image_alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size.",
+      "visual_style": "per-player",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software.jpg",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size."
+      },
+      "metadata_file": "metadata/en/per-player-pricing-youth-sports-software-en.json"
+    },
+    {
+      "asset_key": "en:why-dues-collection-breaks-down",
+      "match_by": {
+        "locale": "en",
+        "slug": "why-dues-collection-breaks-down"
+      },
+      "post_id_observed": 34,
+      "post_title": "Why Dues Collection Breaks Down in Youth Sports Clubs",
+      "post_url": "https://widdo.co/en/blog/why-dues-collection-breaks-down",
+      "locale": "en",
+      "post_slug": "why-dues-collection-breaks-down",
+      "image_file": "images/en/why-dues-collection-breaks-down-en-cover.webp",
+      "filename": "why-dues-collection-breaks-down-en-cover.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 197164,
+      "sha256": "061429318248d8e070cdc769d934325156a4886d5d23c1629321e12d3605d491",
+      "featured_image_alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status.",
+      "visual_style": "dues-en",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down.jpg",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status."
+      },
+      "metadata_file": "metadata/en/why-dues-collection-breaks-down-en.json"
+    },
+    {
+      "asset_key": "en:attendance-tracking-youth-sports-clubs",
+      "match_by": {
+        "locale": "en",
+        "slug": "attendance-tracking-youth-sports-clubs"
+      },
+      "post_id_observed": 35,
+      "post_title": "Attendance Tracking Coaches Will Actually Use",
+      "post_url": "https://widdo.co/en/blog/attendance-tracking-youth-sports-clubs",
+      "locale": "en",
+      "post_slug": "attendance-tracking-youth-sports-clubs",
+      "image_file": "images/en/attendance-tracking-youth-sports-clubs-en-cover.webp",
+      "filename": "attendance-tracking-youth-sports-clubs-en-cover.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 141016,
+      "sha256": "bb4020ba562179583bbffee3e391f47838847a49b398b4cdf453d6a91662a5f4",
+      "featured_image_alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court.",
+      "visual_style": "attendance-en",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs.jpg",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court."
+      },
+      "metadata_file": "metadata/en/attendance-tracking-youth-sports-clubs-en.json"
+    },
+    {
+      "asset_key": "en:signals-player-about-to-leave-club",
+      "match_by": {
+        "locale": "en",
+        "slug": "signals-player-about-to-leave-club"
+      },
+      "post_id_observed": 36,
+      "post_title": "The Signals a Player Is About to Leave Your Club",
+      "post_url": "https://widdo.co/en/blog/signals-player-about-to-leave-club",
+      "locale": "en",
+      "post_slug": "signals-player-about-to-leave-club",
+      "image_file": "images/en/signals-player-about-to-leave-club-en-cover.webp",
+      "filename": "signals-player-about-to-leave-club-en-cover.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 143888,
+      "sha256": "c269dfd334a849b333f0f03902f3420419d6edaf501f30dcab77bdeed80454db",
+      "featured_image_alt": "An attendance timeline leads to a supportive conversation between a hockey coach, a player and a parent about early signs of disengagement.",
+      "visual_style": "retention-en",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club.jpg",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "An attendance timeline leads to a supportive conversation between a hockey coach, a player and a parent about early signs of disengagement."
+      },
+      "metadata_file": "metadata/en/signals-player-about-to-leave-club-en.json"
+    },
+    {
+      "asset_key": "en:registration-season-checklist-youth-sports",
+      "match_by": {
+        "locale": "en",
+        "slug": "registration-season-checklist-youth-sports"
+      },
+      "post_id_observed": 37,
+      "post_title": "The Registration Season Checklist for Youth Clubs",
+      "post_url": "https://widdo.co/en/blog/registration-season-checklist-youth-sports",
+      "locale": "en",
+      "post_slug": "registration-season-checklist-youth-sports",
+      "image_file": "images/en/registration-season-checklist-youth-sports-en-cover.webp",
+      "filename": "registration-season-checklist-youth-sports-en-cover.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 168822,
+      "sha256": "c186475b9be6d9dec8f467d80b2ded938ca6d6179bd83ae14f2b05ee7c8f30a5",
+      "featured_image_alt": "Softball equipment beside a season registration checklist organized into before, during and after phases.",
+      "visual_style": "registration-en",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports.jpg",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Softball equipment beside a season registration checklist organized into before, during and after phases."
+      },
+      "metadata_file": "metadata/en/registration-season-checklist-youth-sports-en.json"
+    },
+    {
+      "asset_key": "en:parent-communication-sports-club",
+      "match_by": {
+        "locale": "en",
+        "slug": "parent-communication-sports-club"
+      },
+      "post_id_observed": 38,
+      "post_title": "The Group Text Is Not a Communication System",
+      "post_url": "https://widdo.co/en/blog/parent-communication-sports-club",
+      "locale": "en",
+      "post_slug": "parent-communication-sports-club",
+      "image_file": "images/en/parent-communication-sports-club-en-cover.webp",
+      "filename": "parent-communication-sports-club-en-cover.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 221444,
+      "sha256": "4dea69e68174db597be43d746b5a130e4d0158a783feb8540156688f2641e9f1",
+      "featured_image_alt": "An important basketball practice update emerges from overlapping group messages, illustrating how announcements get buried.",
+      "visual_style": "group-text-en",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club.jpg",
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "An important basketball practice update emerges from overlapping group messages, illustrating how announcements get buried."
+      },
+      "metadata_file": "metadata/en/parent-communication-sports-club-en.json"
+    },
+    {
+      "asset_key": "pt:reduzir-inadimplencia-mensalidades-escolinha",
+      "match_by": {
+        "locale": "pt",
+        "slug": "reduzir-inadimplencia-mensalidades-escolinha"
+      },
+      "post_id_observed": 39,
+      "post_title": "Como reduzir a inadimplência de mensalidades na sua escolinha",
+      "post_url": "https://widdo.co/pt/blog/reduzir-inadimplencia-mensalidades-escolinha",
+      "locale": "pt",
+      "post_slug": "reduzir-inadimplencia-mensalidades-escolinha",
+      "image_file": "images/pt/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp",
+      "filename": "reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 157696,
+      "sha256": "9dd941ca4b6ccf5b7671a6875a5ce7150c4bb774028a90ccfcc903cccb979eba",
+      "featured_image_alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago.",
+      "visual_style": "dues-pt",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": null,
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago."
+      },
+      "metadata_file": "metadata/pt/reduzir-inadimplencia-mensalidades-escolinha-pt.json"
+    },
+    {
+      "asset_key": "pt:pix-boleto-cartao-mensalidades-clube-esportivo",
+      "match_by": {
+        "locale": "pt",
+        "slug": "pix-boleto-cartao-mensalidades-clube-esportivo"
+      },
+      "post_id_observed": 40,
+      "post_title": "Pix, boleto ou cartão: como receber as mensalidades do clube",
+      "post_url": "https://widdo.co/pt/blog/pix-boleto-cartao-mensalidades-clube-esportivo",
+      "locale": "pt",
+      "post_slug": "pix-boleto-cartao-mensalidades-clube-esportivo",
+      "image_file": "images/pt/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp",
+      "filename": "pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 172410,
+      "sha256": "ded5b432ef3d1612683aa12ab9fc580f3865110ace33a5ea6e1496ed6b9b6c01",
+      "featured_image_alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo.",
+      "visual_style": "payment-pt",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": null,
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo."
+      },
+      "editorial_note": "Comparação editorial de meios de pagamento. A imagem não afirma que a Widdo integra Pix ou boleto.",
+      "metadata_file": "metadata/pt/pix-boleto-cartao-mensalidades-clube-esportivo-pt.json"
+    },
+    {
+      "asset_key": "pt:evasao-de-alunos-escolinha-sinais",
+      "match_by": {
+        "locale": "pt",
+        "slug": "evasao-de-alunos-escolinha-sinais"
+      },
+      "post_id_observed": 41,
+      "post_title": "Evasão de alunos: os sinais que aparecem semanas antes da desistência",
+      "post_url": "https://widdo.co/pt/blog/evasao-de-alunos-escolinha-sinais",
+      "locale": "pt",
+      "post_slug": "evasao-de-alunos-escolinha-sinais",
+      "image_file": "images/pt/evasao-de-alunos-escolinha-sinais-pt-capa.webp",
+      "filename": "evasao-de-alunos-escolinha-sinais-pt-capa.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 158720,
+      "sha256": "abf380d985979b5a0fb1508c3b308d6efd2fb626026d603b90d6dc587649648c",
+      "featured_image_alt": "Calendário com redução de presença e participação conduz a uma conversa entre professor e família em uma escolinha de vôlei.",
+      "visual_style": "retention-pt",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": null,
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Calendário com redução de presença e participação conduz a uma conversa entre professor e família em uma escolinha de vôlei."
+      },
+      "metadata_file": "metadata/pt/evasao-de-alunos-escolinha-sinais-pt.json"
+    },
+    {
+      "asset_key": "pt:captar-novos-alunos-escolinha-futebol",
+      "match_by": {
+        "locale": "pt",
+        "slug": "captar-novos-alunos-escolinha-futebol"
+      },
+      "post_id_observed": 42,
+      "post_title": "Como captar novos alunos para a escolinha sem depender só da indicação",
+      "post_url": "https://widdo.co/pt/blog/captar-novos-alunos-escolinha-futebol",
+      "locale": "pt",
+      "post_slug": "captar-novos-alunos-escolinha-futebol",
+      "image_file": "images/pt/captar-novos-alunos-escolinha-futebol-pt-capa.webp",
+      "filename": "captar-novos-alunos-escolinha-futebol-pt-capa.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 232244,
+      "sha256": "0243a8ab303bbadf211681a88033cbd060d8ea35c21b323b76c4501fd6ef6060",
+      "featured_image_alt": "Mapa de bairro conectado a uma aula experimental de futebol, mostrando o caminho de conhecer a escolinha até a matrícula.",
+      "visual_style": "recruitment-pt",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": null,
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Mapa de bairro conectado a uma aula experimental de futebol, mostrando o caminho de conhecer a escolinha até a matrícula."
+      },
+      "metadata_file": "metadata/pt/captar-novos-alunos-escolinha-futebol-pt.json"
+    },
+    {
+      "asset_key": "pt:grupo-whatsapp-pais-escolinha",
+      "match_by": {
+        "locale": "pt",
+        "slug": "grupo-whatsapp-pais-escolinha"
+      },
+      "post_id_observed": 43,
+      "post_title": "Grupo de WhatsApp com os pais: como organizar sem enlouquecer",
+      "post_url": "https://widdo.co/pt/blog/grupo-whatsapp-pais-escolinha",
+      "locale": "pt",
+      "post_slug": "grupo-whatsapp-pais-escolinha",
+      "image_file": "images/pt/grupo-whatsapp-pais-escolinha-pt-capa.webp",
+      "filename": "grupo-whatsapp-pais-escolinha-pt-capa.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 172334,
+      "sha256": "5da87349e19084402a677872cd45dd9110a07364338f6b4695485e3e3dc28abe",
+      "featured_image_alt": "Conversas de responsáveis separadas dos avisos da turma, com um comunicado de treino e elementos de um dojo.",
+      "visual_style": "whatsapp-pt",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": null,
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Conversas de responsáveis separadas dos avisos da turma, com um comunicado de treino e elementos de um dojo."
+      },
+      "metadata_file": "metadata/pt/grupo-whatsapp-pais-escolinha-pt.json"
+    },
+    {
+      "asset_key": "pt:gestao-categorias-de-base-documentacao",
+      "match_by": {
+        "locale": "pt",
+        "slug": "gestao-categorias-de-base-documentacao"
+      },
+      "post_id_observed": 44,
+      "post_title": "Categorias de base: chamada, atestado e documentação em dia",
+      "post_url": "https://widdo.co/pt/blog/gestao-categorias-de-base-documentacao",
+      "locale": "pt",
+      "post_slug": "gestao-categorias-de-base-documentacao",
+      "image_file": "images/pt/gestao-categorias-de-base-documentacao-pt-capa.webp",
+      "filename": "gestao-categorias-de-base-documentacao-pt-capa.webp",
+      "mime_type": "image/webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 173362,
+      "sha256": "139e397526a7d8960b903c5d6170e1f17e8e3c4d39b87d2e24f8892103e99153",
+      "featured_image_alt": "Pasta de um aluno de basquete organizada com chamada, atestado, autorização e contato de emergência, usando documentos ilustrativos.",
+      "visual_style": "documentation-pt",
+      "image_role": "featured_image",
+      "generation_status": "generated",
+      "assignment_status": "not_uploaded",
+      "featured_image_previous_snapshot": null,
+      "content_type": "AI-generated editorial illustration; not a product screenshot",
+      "cms_fields": {
+        "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+        "featured_image_alt": "Pasta de um aluno de basquete organizada com chamada, atestado, autorização e contato de emergência, usando documentos ilustrativos."
+      },
+      "metadata_file": "metadata/pt/gestao-categorias-de-base-documentacao-pt.json"
+    }
+  ]
+}

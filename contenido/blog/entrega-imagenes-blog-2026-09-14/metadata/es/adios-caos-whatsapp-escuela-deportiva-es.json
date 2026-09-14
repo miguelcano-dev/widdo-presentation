@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:adios-caos-whatsapp-escuela-deportiva",
+  "match_by": {
+    "locale": "es",
+    "slug": "adios-caos-whatsapp-escuela-deportiva"
+  },
+  "post_id_observed": 18,
+  "post_title": "Adiós al Caos del WhatsApp: Cómo Organizar la Comunicación de tu Escuela Deportiva",
+  "post_url": "https://widdo.co/es/blog/adios-caos-whatsapp-escuela-deportiva",
+  "locale": "es",
+  "post_slug": "adios-caos-whatsapp-escuela-deportiva",
+  "image_file": "images/es/adios-caos-whatsapp-escuela-deportiva-es-portada.webp",
+  "filename": "adios-caos-whatsapp-escuela-deportiva-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 158762,
+  "sha256": "752d7209da31ea594f97f954c30a0106910b70dbdf7adf145cba8308b24199d2",
+  "featured_image_alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet.",
+  "visual_style": "whatsapp-es",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet."
+  },
+  "metadata_file": "metadata/es/adios-caos-whatsapp-escuela-deportiva-es.json"
+}

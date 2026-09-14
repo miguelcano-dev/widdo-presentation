@@ -1,0 +1,17 @@
+[
+  {
+    "asset_key": "es:automatizar-club-deportivo-tareas-manuales",
+    "prompt": "Make only these precise corrections to this existing Spanish editorial cover. 1) Remove the euro symbol from the circular coin beside 'Cobros': replace it with a simple neutral check mark, no currency symbol. 2) Remove the small crown above the bottom-right Widdo wordmark. 3) Remove the invented crowned W from the back gym wall, leaving a plain naturally lit wall. Preserve the headline 'Menos tareas. Más deporte.', every task label, layout, all people, color, lighting, and high quality. No additional text or logos.",
+    "source": "/Users/miguelcano/.codex/generated_images/01a09dc1-b76e-7df1-ba73-c784313f3e8c/exec-12169b9e-9f80-4304-8621-5a7ef6b14956.png"
+  },
+  {
+    "asset_key": "es:grupos-facebook-comunidades-deportivas",
+    "prompt": "Make a precise Spanish typography correction and minor cleanup to this existing image. The main headline MUST read exactly 'Un grupo que sí une'. The word 'que' must have NO accent; 'sí' MUST retain its accent. Keep same headline placement, type and colors. Remove the decorative extra slogans on the left and right background walls and the backpack (MÁS QUE DEPORTE, PERSONAS CLUB HISTORIAS SIEMPRE, EL CLUB TAMBIÉN ES FAMILIA), replacing them with natural plain surfaces and keeping the pool environment. Keep Facebook, Widdo, the three community message illustrations, families and all other composition unchanged. No invented text.",
+    "source": "/Users/miguelcano/.codex/generated_images/01a09dc1-b76e-7df1-ba73-c784313f3e8c/exec-ca0a42b6-ec26-469c-bc50-281adacf97df.png"
+  },
+  {
+    "asset_key": "en:registration-season-checklist-youth-sports",
+    "prompt": "Make ONE precise text correction to this existing English blog cover. Remove the two-line small subtitle 'AMERICAN SOFTBALL SEASON EDITORIAL CHECKLIST' under the main headline and replace it with the exact phrase 'Registration checklist', in the same light warm color and appropriately sized refined sans-serif. It must not say editorial, American, or softball in the subtitle. Preserve the main headline 'Ready before the first practice.', three stages Before / During / After, all illustrations, paper documents, sports equipment, Widdo, background, lighting and layout. No other changes.",
+    "source": "/Users/miguelcano/.codex/generated_images/01a09dc1-b76e-7df1-ba73-c784313f3e8c/exec-8ea3beda-22f4-421f-9e4c-c56a01876917.png"
+  }
+]

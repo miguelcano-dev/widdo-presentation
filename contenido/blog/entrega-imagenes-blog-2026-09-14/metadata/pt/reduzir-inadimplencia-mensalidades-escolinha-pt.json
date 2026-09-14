@@ -1,0 +1,31 @@
+{
+  "asset_key": "pt:reduzir-inadimplencia-mensalidades-escolinha",
+  "match_by": {
+    "locale": "pt",
+    "slug": "reduzir-inadimplencia-mensalidades-escolinha"
+  },
+  "post_id_observed": 39,
+  "post_title": "Como reduzir a inadimplência de mensalidades na sua escolinha",
+  "post_url": "https://widdo.co/pt/blog/reduzir-inadimplencia-mensalidades-escolinha",
+  "locale": "pt",
+  "post_slug": "reduzir-inadimplencia-mensalidades-escolinha",
+  "image_file": "images/pt/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp",
+  "filename": "reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 157696,
+  "sha256": "9dd941ca4b6ccf5b7671a6875a5ce7150c4bb774028a90ccfcc903cccb979eba",
+  "featured_image_alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago.",
+  "visual_style": "dues-pt",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": null,
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago."
+  },
+  "metadata_file": "metadata/pt/reduzir-inadimplencia-mensalidades-escolinha-pt.json"
+}

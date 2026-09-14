@@ -1,0 +1,31 @@
+{
+  "asset_key": "pt:gestao-categorias-de-base-documentacao",
+  "match_by": {
+    "locale": "pt",
+    "slug": "gestao-categorias-de-base-documentacao"
+  },
+  "post_id_observed": 44,
+  "post_title": "Categorias de base: chamada, atestado e documentação em dia",
+  "post_url": "https://widdo.co/pt/blog/gestao-categorias-de-base-documentacao",
+  "locale": "pt",
+  "post_slug": "gestao-categorias-de-base-documentacao",
+  "image_file": "images/pt/gestao-categorias-de-base-documentacao-pt-capa.webp",
+  "filename": "gestao-categorias-de-base-documentacao-pt-capa.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 173362,
+  "sha256": "139e397526a7d8960b903c5d6170e1f17e8e3c4d39b87d2e24f8892103e99153",
+  "featured_image_alt": "Pasta de um aluno de basquete organizada com chamada, atestado, autorização e contato de emergência, usando documentos ilustrativos.",
+  "visual_style": "documentation-pt",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": null,
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Pasta de um aluno de basquete organizada com chamada, atestado, autorização e contato de emergência, usando documentos ilustrativos."
+  },
+  "metadata_file": "metadata/pt/gestao-categorias-de-base-documentacao-pt.json"
+}

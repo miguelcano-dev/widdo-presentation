@@ -1,0 +1,32 @@
+{
+  "asset_key": "pt:pix-boleto-cartao-mensalidades-clube-esportivo",
+  "match_by": {
+    "locale": "pt",
+    "slug": "pix-boleto-cartao-mensalidades-clube-esportivo"
+  },
+  "post_id_observed": 40,
+  "post_title": "Pix, boleto ou cartão: como receber as mensalidades do clube",
+  "post_url": "https://widdo.co/pt/blog/pix-boleto-cartao-mensalidades-clube-esportivo",
+  "locale": "pt",
+  "post_slug": "pix-boleto-cartao-mensalidades-clube-esportivo",
+  "image_file": "images/pt/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp",
+  "filename": "pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 172410,
+  "sha256": "ded5b432ef3d1612683aa12ab9fc580f3865110ace33a5ea6e1496ed6b9b6c01",
+  "featured_image_alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo.",
+  "visual_style": "payment-pt",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": null,
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo."
+  },
+  "editorial_note": "Comparação editorial de meios de pagamento. A imagem não afirma que a Widdo integra Pix ou boleto.",
+  "metadata_file": "metadata/pt/pix-boleto-cartao-mensalidades-clube-esportivo-pt.json"
+}

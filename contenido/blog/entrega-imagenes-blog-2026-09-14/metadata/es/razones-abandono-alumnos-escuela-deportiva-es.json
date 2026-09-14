@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:razones-abandono-alumnos-escuela-deportiva",
+  "match_by": {
+    "locale": "es",
+    "slug": "razones-abandono-alumnos-escuela-deportiva"
+  },
+  "post_id_observed": 22,
+  "post_title": "5 Razones por las que los Alumnos Abandonan tu Escuela (y Cómo Evitarlo)",
+  "post_url": "https://widdo.co/es/blog/razones-abandono-alumnos-escuela-deportiva",
+  "locale": "es",
+  "post_slug": "razones-abandono-alumnos-escuela-deportiva",
+  "image_file": "images/es/razones-abandono-alumnos-escuela-deportiva-es-portada.webp",
+  "filename": "razones-abandono-alumnos-escuela-deportiva-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 121494,
+  "sha256": "b83dcfcf17300cc72e9d6f279cea40f6ce70bca678ef11462ee2b9ee5d1c1168",
+  "featured_image_alt": "Un entrenador de voleibol escucha a un alumno junto a la cancha, con marcas de asistencia que sugieren seguimiento de sus ausencias.",
+  "visual_style": "retention-es",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Un entrenador de voleibol escucha a un alumno junto a la cancha, con marcas de asistencia que sugieren seguimiento de sus ausencias."
+  },
+  "metadata_file": "metadata/es/razones-abandono-alumnos-escuela-deportiva-es.json"
+}

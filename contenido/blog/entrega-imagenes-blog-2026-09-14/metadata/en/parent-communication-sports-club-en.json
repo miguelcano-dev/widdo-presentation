@@ -1,0 +1,31 @@
+{
+  "asset_key": "en:parent-communication-sports-club",
+  "match_by": {
+    "locale": "en",
+    "slug": "parent-communication-sports-club"
+  },
+  "post_id_observed": 38,
+  "post_title": "The Group Text Is Not a Communication System",
+  "post_url": "https://widdo.co/en/blog/parent-communication-sports-club",
+  "locale": "en",
+  "post_slug": "parent-communication-sports-club",
+  "image_file": "images/en/parent-communication-sports-club-en-cover.webp",
+  "filename": "parent-communication-sports-club-en-cover.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 221444,
+  "sha256": "4dea69e68174db597be43d746b5a130e4d0158a783feb8540156688f2641e9f1",
+  "featured_image_alt": "An important basketball practice update emerges from overlapping group messages, illustrating how announcements get buried.",
+  "visual_style": "group-text-en",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club.jpg",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "An important basketball practice update emerges from overlapping group messages, illustrating how announcements get buried."
+  },
+  "metadata_file": "metadata/en/parent-communication-sports-club-en.json"
+}

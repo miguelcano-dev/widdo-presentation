@@ -1,0 +1,16 @@
+{
+  "technical_checks": [
+    "All 28 files exist; unique locale+slug and paths.",
+    "All files verified RIFF/WEBP and decoded dimensions 1600x900.",
+    "Language counts: es=16, en=6, pt=6.",
+    "All 28 metadata files and manifest paths checked.",
+    "All image SHA-256 values recorded.",
+    "No upload or CMS mutation performed."
+  ],
+  "image_count": 28,
+  "total_image_bytes": 5356982,
+  "width": 1600,
+  "height": 900,
+  "format": "webp",
+  "visual_review": "Images inspected during generation for subject relevance and readable primary text; not a live-site QA audit."
+}

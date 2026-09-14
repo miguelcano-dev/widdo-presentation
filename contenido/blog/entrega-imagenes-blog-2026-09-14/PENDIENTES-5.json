@@ -1,0 +1,101 @@
+{
+ "motivo": "Los 4 posts creados el 13-sep y el EN de automatizar (published_at futuro) no estaban en el inventario publico del que partio la entrega del 14-sep.",
+ "como_asignar": "Generar las imagenes con los prompts de prompts/<idioma>/, dejarlas en images/<idioma>/ con el filename indicado, y volver a correr /tmp/asignar-portadas.php apuntando a este JSON.",
+ "items": [
+  {
+   "asset_key": "en:what-to-automate-first-youth-sports-club",
+   "match_by": {
+    "locale": "en",
+    "slug": "what-to-automate-first-youth-sports-club"
+   },
+   "post_id_observed": null,
+   "post_title": "What to Automate First in a Youth Sports Club",
+   "post_url": "https://widdo.co/en/blog/what-to-automate-first-youth-sports-club",
+   "locale": "en",
+   "post_slug": "what-to-automate-first-youth-sports-club",
+   "image_file": "images/en/what-to-automate-first-youth-sports-club-en-cover.webp",
+   "filename": "what-to-automate-first-youth-sports-club-en-cover.webp",
+   "mime_type": "image/webp",
+   "width": 1600,
+   "height": 900,
+   "featured_image_alt": "Ilustración editorial de cuatro tarjetas numeradas en orden ascendente, la primera iluminada, junto a una quinta apartada y apagada marcada como humana.",
+   "estado": "PENDIENTE_DE_GENERAR"
+  },
+  {
+   "asset_key": "es:control-de-asistencia-clubes-deportivos-que-si-se-usa",
+   "match_by": {
+    "locale": "es",
+    "slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa"
+   },
+   "post_id_observed": null,
+   "post_title": "Control de asistencia que los entrenadores sí van a usar",
+   "post_url": "https://widdo.co/es/blog/control-de-asistencia-clubes-deportivos-que-si-se-usa",
+   "locale": "es",
+   "post_slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa",
+   "image_file": "images/es/control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+   "filename": "control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+   "mime_type": "image/webp",
+   "width": 1600,
+   "height": 900,
+   "featured_image_alt": "Ilustración editorial que contrasta un montón de planillas en papel con una sola ficha de asistencia marcada en quince segundos.",
+   "estado": "PENDIENTE_DE_GENERAR"
+  },
+  {
+   "asset_key": "es:lista-de-inscripcion-temporada-club-deportivo",
+   "match_by": {
+    "locale": "es",
+    "slug": "lista-de-inscripcion-temporada-club-deportivo"
+   },
+   "post_id_observed": null,
+   "post_title": "La lista de inscripción de temporada para clubes juveniles",
+   "post_url": "https://widdo.co/es/blog/lista-de-inscripcion-temporada-club-deportivo",
+   "locale": "es",
+   "post_slug": "lista-de-inscripcion-temporada-club-deportivo",
+   "image_file": "images/es/lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+   "filename": "lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+   "mime_type": "image/webp",
+   "width": 1600,
+   "height": 900,
+   "featured_image_alt": "Ilustración editorial de una lista de inscripción impresa con tres puntos marcados y uno pendiente, sobre una mesa de matrícula al atardecer.",
+   "estado": "PENDIENTE_DE_GENERAR"
+  },
+  {
+   "asset_key": "pt:checklist-de-matricula-temporada-clube-esportivo",
+   "match_by": {
+    "locale": "pt",
+    "slug": "checklist-de-matricula-temporada-clube-esportivo"
+   },
+   "post_id_observed": null,
+   "post_title": "O checklist de matrícula de temporada para clubes de base",
+   "post_url": "https://widdo.co/pt/blog/checklist-de-matricula-temporada-clube-esportivo",
+   "locale": "pt",
+   "post_slug": "checklist-de-matricula-temporada-clube-esportivo",
+   "image_file": "images/pt/checklist-de-matricula-temporada-clube-esportivo-pt-capa.webp",
+   "filename": "checklist-de-matricula-temporada-clube-esportivo-pt-capa.webp",
+   "mime_type": "image/webp",
+   "width": 1600,
+   "height": 900,
+   "featured_image_alt": "Ilustração editorial de um checklist de matrícula impresso com três itens marcados e um pendente, sobre uma mesa ao entardecer.",
+   "estado": "PENDIENTE_DE_GENERAR"
+  },
+  {
+   "asset_key": "pt:o-que-automatizar-primeiro-no-clube-esportivo",
+   "match_by": {
+    "locale": "pt",
+    "slug": "o-que-automatizar-primeiro-no-clube-esportivo"
+   },
+   "post_id_observed": null,
+   "post_title": "O que automatizar primeiro num clube esportivo",
+   "post_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+   "locale": "pt",
+   "post_slug": "o-que-automatizar-primeiro-no-clube-esportivo",
+   "image_file": "images/pt/o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+   "filename": "o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+   "mime_type": "image/webp",
+   "width": 1600,
+   "height": 900,
+   "featured_image_alt": "Ilustração editorial de quatro cartões numerados em ordem crescente, o primeiro iluminado, ao lado de um quinto apartado e apagado marcado como humano.",
+   "estado": "PENDIENTE_DE_GENERAR"
+  }
+ ]
+}

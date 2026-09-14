@@ -1,0 +1,31 @@
+{
+  "asset_key": "pt:captar-novos-alunos-escolinha-futebol",
+  "match_by": {
+    "locale": "pt",
+    "slug": "captar-novos-alunos-escolinha-futebol"
+  },
+  "post_id_observed": 42,
+  "post_title": "Como captar novos alunos para a escolinha sem depender só da indicação",
+  "post_url": "https://widdo.co/pt/blog/captar-novos-alunos-escolinha-futebol",
+  "locale": "pt",
+  "post_slug": "captar-novos-alunos-escolinha-futebol",
+  "image_file": "images/pt/captar-novos-alunos-escolinha-futebol-pt-capa.webp",
+  "filename": "captar-novos-alunos-escolinha-futebol-pt-capa.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 232244,
+  "sha256": "0243a8ab303bbadf211681a88033cbd060d8ea35c21b323b76c4501fd6ef6060",
+  "featured_image_alt": "Mapa de bairro conectado a uma aula experimental de futebol, mostrando o caminho de conhecer a escolinha até a matrícula.",
+  "visual_style": "recruitment-pt",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": null,
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Mapa de bairro conectado a uma aula experimental de futebol, mostrando o caminho de conhecer a escolinha até a matrícula."
+  },
+  "metadata_file": "metadata/pt/captar-novos-alunos-escolinha-futebol-pt.json"
+}

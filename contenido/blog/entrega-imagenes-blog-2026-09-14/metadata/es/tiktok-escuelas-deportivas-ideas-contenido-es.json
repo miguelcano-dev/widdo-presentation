@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:tiktok-escuelas-deportivas-ideas-contenido",
+  "match_by": {
+    "locale": "es",
+    "slug": "tiktok-escuelas-deportivas-ideas-contenido"
+  },
+  "post_id_observed": 23,
+  "post_title": "TikTok para Escuelas Deportivas: Ideas de Contenido que Atraen Alumnos",
+  "post_url": "https://widdo.co/es/blog/tiktok-escuelas-deportivas-ideas-contenido",
+  "locale": "es",
+  "post_slug": "tiktok-escuelas-deportivas-ideas-contenido",
+  "image_file": "images/es/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp",
+  "filename": "tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 223344,
+  "sha256": "594c32357f99abf8c52970162e609de635afe0c3de7545a047641c1799b08732",
+  "featured_image_alt": "Composición editorial de un ejercicio de básquet grabado en formato vertical para contenido de TikTok.",
+  "visual_style": "short-video",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Composición editorial de un ejercicio de básquet grabado en formato vertical para contenido de TikTok."
+  },
+  "metadata_file": "metadata/es/tiktok-escuelas-deportivas-ideas-contenido-es.json"
+}

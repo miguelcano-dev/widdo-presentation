@@ -1,75 +1,98 @@
-# Estado de las imágenes del blog — 13-sep-2026
+# Estado de las imágenes del blog
 
-Esta carpeta la produjo una sesión distinta a la que rehízo las portadas y el
-contenido el mismo día. Se cruzan, así que conviene leer esto antes de usar
-cualquiera de las dos cosas.
+**Última actualización: 14-sep-2026, después de subir la entrega fotográfica.**
 
-## Hay dos direcciones de arte, y son incompatibles
+## Lo que está publicado ahora
 
-**La que está publicada ahora mismo:** 23 tarjetas tipográficas sobre fondo
-oscuro, una por post y por idioma, cada una con su esquema (filas de cobro,
-burbujas, una línea que cae, barras, escalones, checklist). Se generan con
-`../blog-seo/posts/generate-covers.js` y están en producción en los 33 posts.
+**28 de los 33 posts** llevan las portadas fotográficas de
+`entrega-imagenes-blog-2026-09-14/`: WebP de 1600×900, una por post y por
+idioma, con texto en el idioma del artículo y su propio texto alternativo.
+Asignadas por coincidencia exacta de `locale` + `slug`, sin ambigüedades.
 
-**La que propone esta carpeta:** fotografía real con producto dentro, distinta
-por post, con el gancho escrito en la imagen. Hay **una sola generada** como
-muestra (`imagenes/es/adios-caos-whatsapp-…-v1.png`) y **28 prompts** listos
-para el resto.
+**Los 5 restantes conservan la tarjeta tipográfica oscura anterior**, así que
+ahora mismo la rejilla mezcla dos direcciones de arte. Cuáles y por qué, más
+abajo.
 
-La muestra es mejor para lo que se pidió — una imagen, no un fondo con texto.
-Pero solo existe una de 28, y las dos direcciones no pueden convivir: media
-rejilla oscura y media clara se ve peor que cualquiera de las dos entera.
+| Dónde | Qué se ve |
+|---|---|
+| `/es/blog` | 16 fotográficas + 2 tarjetas oscuras |
+| `/en/blog` | 6 fotográficas (la 7ª tiene fecha futura, no sale) |
+| `/pt/blog` | 6 fotográficas + 2 tarjetas oscuras |
 
-**Decisión pendiente de Miguel:** generar las 28 y sustituir, o quedarse con las
-tarjetas. No es una decisión técnica.
+Revertir es un comando: `respaldo-anterior.json` guarda el valor de
+`featured_image`, `og_image` y `featured_image_alt` de los 33 posts antes de
+tocarlos.
 
-## El paquete va desfasado respecto al blog
+## Los 5 sin portada de la entrega
 
-El manifiesto se construyó sobre una foto del blog de **28 posts** (16 ES, 6 EN,
-6 PT). Ese mismo día el blog pasó a **33** y cuatro posts en español cambiaron
-de contenido. Concretamente:
+La entrega se construyó sobre una foto del blog de **28 posts**. Ese mismo día
+el blog pasó a 33.
 
-### Cinco posts sin prompt
+| Post | Por qué faltaba |
+|---|---|
+| `en/what-to-automate-first-youth-sports-club` | Existía, pero con `published_at` el 22-sep: no salía en el inventario público |
+| `es/control-de-asistencia-clubes-deportivos-que-si-se-usa` | Creado el 13-sep |
+| `es/lista-de-inscripcion-temporada-club-deportivo` | Creado el 13-sep |
+| `pt/checklist-de-matricula-temporada-clube-esportivo` | Creado el 13-sep |
+| `pt/o-que-automatizar-primeiro-no-clube-esportivo` | Creado el 13-sep |
 
-- `control-de-asistencia-clubes-deportivos-que-si-se-usa` (ES, nuevo)
-- `lista-de-inscripcion-temporada-club-deportivo` (ES, nuevo)
-- `checklist-de-matricula-temporada-clube-esportivo` (PT, nuevo)
-- `o-que-automatizar-primeiro-no-clube-esportivo` (PT, nuevo)
-- `what-to-automate-first-youth-sports-club` (EN, existía pero con
-  `published_at` el 22-sep, así que no salía en el inventario público)
+**Ya tienen prompt escrito** en `entrega-imagenes-blog-2026-09-14/prompts/`,
+con la misma cabecera y dirección de arte que los otros 28, y su ficha en
+`PENDIENTES-5.json`. Generar las imágenes, dejarlas en `images/<idioma>/` con
+el nombre que indica la ficha, y volver a correr `asignar-portadas.php`.
 
-### Un prompt que ya no describe su post
+## La ausencia de verde es deliberada
 
-`automatizar-club-deportivo-tareas-manuales` lleva el gancho *«Menos tareas.
-Más deporte»* y un alt de «cinco procesos administrativos organizados». Eso
-describía el post viejo, *«5 errores / 5 tareas que no deberías hacer
-manualmente»*. El contenido de hoy trata de **en qué orden** automatizar, y
-dedica un apartado entero a lo que **no** se debe automatizar. Hay que
-reescribir el prompt antes de generar esa imagen.
+Se midió: **las 28 tienen esencialmente cero verde de marca** (ninguna llega al
+0,2 % de píxeles en el rango verde). La paleta es azul marino, coral, granate y
+ámbar.
 
-Los otros tres reemplazados (`adios-caos-whatsapp…`, `reducir-morosidad…`,
-`razones-abandono…`) siguen encajando; se comprobaron uno a uno.
+No es un descuido. El prompt maestro de la entrega lo pide explícitamente:
+*«rejects white backgrounds, black headlines, generic AI stock people,
+**excessive green**»*.
 
-## Detalles del paquete que no se ven abriendo la carpeta
+Lo que sí choca es `../BRAND-GUIDE.md`, que para marketing oscuro fija fondo
+`#0A1410` y acento `#00C853`. Son dos criterios en conflicto y gana el que
+decida Miguel; queda escrito aquí para que no se descubra por sorpresa cuando
+alguien compare el blog con los decks.
 
-- `pendientes-locales.json` lista 10 posts de `BlogSEOPostsSeeder.php` que **no
-  existen en producción**. Están marcados `auto_generate: false` a propósito: no
-  hay que generarles nada mientras no se publiquen.
-- `alt_status: must_verify_against_generated_image` en cada item significa lo
-  que dice — el texto alternativo es una propuesta escrita **antes** de ver la
-  imagen. Hay que confirmarlo contra la imagen real, o el alt describirá algo
-  que no está.
-- La auditoría propone maestros de 1600×900 WebP. Las portadas publicadas son
-  2400×1260 JPEG. La landing recorta a 16:9 con `object-cover`, así que las
-  actuales pierden algo arriba y abajo.
-- **El `.zip` no está versionado**: es el mismo contenido que `prompts/`, y un
-  binario en git no se puede diferenciar. Si hace falta para un traspaso, se
-  regenera comprimiendo esa carpeta.
+## Un prompt que ya no describe su post
 
-## Si se elige la dirección fotográfica
+`automatizar-club-deportivo-tareas-manuales` (ES) tiene el gancho *«Menos
+tareas. Más deporte»* y cinco tarjetas de proceso. Eso describía el post
+**viejo**, *«5 tareas que no deberías hacer manualmente»*. El contenido actual
+trata de **en qué orden** automatizar y dedica un apartado entero a lo que
+**no** se debe automatizar. La imagen está publicada y no miente sobre el
+producto, pero no es la idea del artículo. Si se regenera, el prompt nuevo
+del post equivalente en inglés y portugués (`…-en.txt`, `…-pt.txt`) ya tiene la
+dirección correcta: secuencia numerada con una tarjeta apartada y apagada.
 
-Los prompts de esta carpeta mandan sobre `../blog-seo/posts/PROMPTS-PORTADAS.md`,
-que se escribió antes y es más genérico (nueve prompts de fondo, sin producto
-dentro ni gancho por post). El requisito que sigue valiendo de aquel documento
-es el único que se incumple siempre: **la mitad donde va el texto tiene que
-quedar limpia**, o el titular no se lee.
+Los otros tres posts reemplazados el 13-sep (`adios-caos-whatsapp…`,
+`reducir-morosidad…`, `razones-abandono…`) se comprobaron uno a uno: sus
+imágenes siguen encajando con el contenido nuevo.
+
+## Detalles de implementación que ahorran re-diagnóstico
+
+- **La landing ignora `og_image`.** Usa `featured_image` para la tarjeta, el
+  artículo, Open Graph, Twitter y el schema `BlogPosting`
+  (`landing/src/app/[locale]/blog/[slug]/page.tsx:70,77,80`). Se subió igual un
+  gemelo JPEG de cada portada y se guardó en `og_image`, porque **WhatsApp y
+  algunos rastreadores de LinkedIn no renderizan WebP en la vista previa**. El
+  arreglo es un cambio de dos líneas en la landing para preferir `og_image`
+  cuando exista; hasta entonces el JPEG está subido pero no se usa.
+- **Las URLs llevan `?v3`.** Cloudflare cachea `/storage` con `immutable` siete
+  días: sobrescribir el fichero no cambia lo que ve nadie. Al cambiar una
+  portada hay que subir el número. La `v2` fue la de las tarjetas oscuras.
+- **La landing revalida cada 300 s, y por página.** El español apareció primero
+  y el inglés y el portugués varios minutos después. No es un fallo.
+- `alt_status: must_verify_against_generated_image` en el manifiesto significa
+  lo que dice: los textos alternativos se escribieron antes de ver la imagen.
+  Se guardaron tal cual; conviene repasarlos contra la imagen real.
+- `pendientes-locales.json` del paquete anterior lista 10 posts de seeders que
+  **no existen en producción**. Van marcados `auto_generate: false` a propósito.
+
+## Las tarjetas tipográficas siguen disponibles
+
+`../blog-seo/posts/generate-covers.js` genera las 23 tarjetas oscuras por post
+e idioma, y acepta una foto de fondo en `fondos/<slug>.jpg`. Si se vuelve a esa
+dirección, es un comando. No se ha borrado nada.

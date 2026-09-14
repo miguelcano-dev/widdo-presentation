@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:transformar-padres-aliados-escuela-deportiva",
+  "match_by": {
+    "locale": "es",
+    "slug": "transformar-padres-aliados-escuela-deportiva"
+  },
+  "post_id_observed": 25,
+  "post_title": "Cómo Transformar Padres en Aliados (No en Clientes que Solo Pagan)",
+  "post_url": "https://widdo.co/es/blog/transformar-padres-aliados-escuela-deportiva",
+  "locale": "es",
+  "post_slug": "transformar-padres-aliados-escuela-deportiva",
+  "image_file": "images/es/transformar-padres-aliados-escuela-deportiva-es-portada.webp",
+  "filename": "transformar-padres-aliados-escuela-deportiva-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 150546,
+  "sha256": "48d30ee1387d4c957253cb56cf3d778618847d79e1086e9985eca670b9b8fe0c",
+  "featured_image_alt": "Ilustración de una entrenadora de gimnasia y una familia conversando junto a una niña que practica sobre una colchoneta.",
+  "visual_style": "family-allies",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Ilustración de una entrenadora de gimnasia y una familia conversando junto a una niña que practica sobre una colchoneta."
+  },
+  "metadata_file": "metadata/es/transformar-padres-aliados-escuela-deportiva-es.json"
+}

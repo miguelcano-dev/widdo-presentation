@@ -1,0 +1,31 @@
+{
+  "asset_key": "pt:evasao-de-alunos-escolinha-sinais",
+  "match_by": {
+    "locale": "pt",
+    "slug": "evasao-de-alunos-escolinha-sinais"
+  },
+  "post_id_observed": 41,
+  "post_title": "Evasão de alunos: os sinais que aparecem semanas antes da desistência",
+  "post_url": "https://widdo.co/pt/blog/evasao-de-alunos-escolinha-sinais",
+  "locale": "pt",
+  "post_slug": "evasao-de-alunos-escolinha-sinais",
+  "image_file": "images/pt/evasao-de-alunos-escolinha-sinais-pt-capa.webp",
+  "filename": "evasao-de-alunos-escolinha-sinais-pt-capa.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 158720,
+  "sha256": "abf380d985979b5a0fb1508c3b308d6efd2fb626026d603b90d6dc587649648c",
+  "featured_image_alt": "Calendário com redução de presença e participação conduz a uma conversa entre professor e família em uma escolinha de vôlei.",
+  "visual_style": "retention-pt",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": null,
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Calendário com redução de presença e participação conduz a uma conversa entre professor e família em uma escolinha de vôlei."
+  },
+  "metadata_file": "metadata/pt/evasao-de-alunos-escolinha-sinais-pt.json"
+}

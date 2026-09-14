@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:estrategias-marketing-escuelas-futbol-colombia",
+  "match_by": {
+    "locale": "es",
+    "slug": "estrategias-marketing-escuelas-futbol-colombia"
+  },
+  "post_id_observed": 19,
+  "post_title": "7 Estrategias de Marketing que Funcionan para Escuelas de Fútbol en Colombia",
+  "post_url": "https://widdo.co/es/blog/estrategias-marketing-escuelas-futbol-colombia",
+  "locale": "es",
+  "post_slug": "estrategias-marketing-escuelas-futbol-colombia",
+  "image_file": "images/es/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp",
+  "filename": "estrategias-marketing-escuelas-futbol-colombia-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 280770,
+  "sha256": "91ed7887b1385c490fb577a148b9e9b757f62bfb6dad17c253a44b013691a933",
+  "featured_image_alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales.",
+  "visual_style": "soccer-colombia",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales."
+  },
+  "metadata_file": "metadata/es/estrategias-marketing-escuelas-futbol-colombia-es.json"
+}

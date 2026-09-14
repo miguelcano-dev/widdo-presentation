@@ -1,0 +1,31 @@
+{
+  "asset_key": "en:per-player-pricing-youth-sports-software",
+  "match_by": {
+    "locale": "en",
+    "slug": "per-player-pricing-youth-sports-software"
+  },
+  "post_id_observed": 33,
+  "post_title": "What Per-Player Pricing Actually Costs a Growing Club",
+  "post_url": "https://widdo.co/en/blog/per-player-pricing-youth-sports-software",
+  "locale": "en",
+  "post_slug": "per-player-pricing-youth-sports-software",
+  "image_file": "images/en/per-player-pricing-youth-sports-software-en-cover.webp",
+  "filename": "per-player-pricing-youth-sports-software-en-cover.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 117286,
+  "sha256": "e86ee04cfb8325805dabdfbe39ad8f353fe1d8b927f5d74429ed068f71d56f4d",
+  "featured_image_alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size.",
+  "visual_style": "per-player",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software.jpg",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size."
+  },
+  "metadata_file": "metadata/en/per-player-pricing-youth-sports-software-en.json"
+}

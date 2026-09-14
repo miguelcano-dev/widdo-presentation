@@ -1,0 +1,31 @@
+{
+  "asset_key": "en:attendance-tracking-youth-sports-clubs",
+  "match_by": {
+    "locale": "en",
+    "slug": "attendance-tracking-youth-sports-clubs"
+  },
+  "post_id_observed": 35,
+  "post_title": "Attendance Tracking Coaches Will Actually Use",
+  "post_url": "https://widdo.co/en/blog/attendance-tracking-youth-sports-clubs",
+  "locale": "en",
+  "post_slug": "attendance-tracking-youth-sports-clubs",
+  "image_file": "images/en/attendance-tracking-youth-sports-clubs-en-cover.webp",
+  "filename": "attendance-tracking-youth-sports-clubs-en-cover.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 141016,
+  "sha256": "bb4020ba562179583bbffee3e391f47838847a49b398b4cdf453d6a91662a5f4",
+  "featured_image_alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court.",
+  "visual_style": "attendance-en",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs.jpg",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court."
+  },
+  "metadata_file": "metadata/en/attendance-tracking-youth-sports-clubs-en.json"
+}

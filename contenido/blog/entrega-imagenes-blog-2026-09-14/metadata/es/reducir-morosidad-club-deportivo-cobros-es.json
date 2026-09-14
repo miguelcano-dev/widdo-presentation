@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:reducir-morosidad-club-deportivo-cobros",
+  "match_by": {
+    "locale": "es",
+    "slug": "reducir-morosidad-club-deportivo-cobros"
+  },
+  "post_id_observed": 21,
+  "post_title": "Cómo Reducir la Morosidad en tu Club Deportivo: Guía Práctica de Cobros",
+  "post_url": "https://widdo.co/es/blog/reducir-morosidad-club-deportivo-cobros",
+  "locale": "es",
+  "post_slug": "reducir-morosidad-club-deportivo-cobros",
+  "image_file": "images/es/reducir-morosidad-club-deportivo-cobros-es-portada.webp",
+  "filename": "reducir-morosidad-club-deportivo-cobros-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 148538,
+  "sha256": "80cb0dcabaf5e610298b1a11a99591e60768dd09d579b1319fd9c2cdfbf83305",
+  "featured_image_alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación.",
+  "visual_style": "dues-es",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación."
+  },
+  "metadata_file": "metadata/es/reducir-morosidad-club-deportivo-cobros-es.json"
+}

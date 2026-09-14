@@ -1,0 +1,31 @@
+{
+  "asset_key": "es:calendario-contenidos-clubes-deportivos",
+  "match_by": {
+    "locale": "es",
+    "slug": "calendario-contenidos-clubes-deportivos"
+  },
+  "post_id_observed": 26,
+  "post_title": "Calendario de Contenidos para Clubes: Qué Publicar Cada Mes del Año",
+  "post_url": "https://widdo.co/es/blog/calendario-contenidos-clubes-deportivos",
+  "locale": "es",
+  "post_slug": "calendario-contenidos-clubes-deportivos",
+  "image_file": "images/es/calendario-contenidos-clubes-deportivos-es-portada.webp",
+  "filename": "calendario-contenidos-clubes-deportivos-es-portada.webp",
+  "mime_type": "image/webp",
+  "width": 1600,
+  "height": 900,
+  "bytes": 247282,
+  "sha256": "31d2bd15e2d5212ab6ea45d42df1b9708708ee04895fc8bfc58e46dd223f4243",
+  "featured_image_alt": "Calendario editorial con contenidos de entrenamiento, logros, inscripciones y comunidad para un club multideportivo.",
+  "visual_style": "content-calendar",
+  "image_role": "featured_image",
+  "generation_status": "generated",
+  "assignment_status": "not_uploaded",
+  "featured_image_previous_snapshot": "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=400&fit=crop",
+  "content_type": "AI-generated editorial illustration; not a product screenshot",
+  "cms_fields": {
+    "featured_image": "REPLACE_WITH_RETURNED_UPLOAD_URL",
+    "featured_image_alt": "Calendario editorial con contenidos de entrenamiento, logros, inscripciones y comunidad para un club multideportivo."
+  },
+  "metadata_file": "metadata/es/calendario-contenidos-clubes-deportivos-es.json"
+}
