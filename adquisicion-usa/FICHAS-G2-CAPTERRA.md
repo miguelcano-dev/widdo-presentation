@@ -11,16 +11,68 @@ algo no está aquí, es que no está verificado y no se publica.
 
 ---
 
-## Antes de empezar: reclamar, no crear
+## Comprobado el 14-sep-2026
 
-**G2 y Capterra casi siempre ya tienen un perfil vacío de tu producto**,
-generado de directorios públicos. Crear uno nuevo encima produce un duplicado
-que después hay que fusionar con soporte, y mientras tanto las reseñas se
-reparten entre los dos.
+**Widdo no existe en ninguno de los dos.** Se buscó: no hay perfil, ni
+reclamado ni sin reclamar. Así que es alta nueva, no reclamación — lo contrario
+de lo que decía la primera versión de este documento.
 
-1. Busca `Widdo` en g2.com y en capterra.com.
-2. Si aparece: **Claim your profile**, con `hey@widdo.co`.
-3. Si no aparece: entonces sí, alta nueva.
+**G2 compró Capterra, GetApp y Software Advice a Gartner** (acuerdo de
+29-ene-2026). Eso cambia el orden en que conviene hacerlo, por una razón muy
+concreta:
+
+> Una reseña publicada en **cualquiera** de los tres —Capterra, GetApp o
+> Software Advice— aparece automáticamente en los tres.
+
+Con tres clubes pagando, ese multiplicador decide la estrategia.
+
+---
+
+## El orden importa: Capterra primero, G2 después
+
+**G2 recomienda tener al menos 15 clientes de pago antes de enviar.** Widdo
+tiene 3. No es un requisito duro y no rechazan por ello, pero una ficha de G2
+con cero o dos reseñas no aparece en ninguna comparativa: es una página que
+existe y no la ve nadie.
+
+Capterra no pone ese listón, y sus reseñas se replican a GetApp y Software
+Advice. Tres reseñas honestas ahí valen más que tres en G2.
+
+| Paso | Dónde | Cuándo |
+|---|---|---|
+| 1 | Capterra (llega a GetApp y Software Advice) | **ahora** |
+| 2 | Pedir reseña a los 3 clubes que pagan | tras el primer mes cobrado entero |
+| 3 | G2 | cuando haya 5+ reseñas y más clubes de pago |
+
+---
+
+## Los dos requisitos que bloquean si no los tienes a mano
+
+**Correo en tu propio dominio.** `hey@widdo.co` sirve. **Gmail, Outlook e
+iCloud los rechazan** — así que `heywiddo@gmail.com` y `weddoapp@gmail.com` no
+valen para esto. El correo de @widdo.co está montado en Brevo desde el 19-ago y
+funciona.
+
+**Un teléfono que reciba SMS internacional**, con su prefijo de país. Verifican
+por ahí.
+
+Aprobación: de tres a cinco días hábiles.
+
+---
+
+## Dónde se envía
+
+- **Capterra / GetApp / Software Advice:** se gestionan desde el panel común
+  `app.g2digitalmarkets.com`. Cada uno se reclama por separado aunque el dueño
+  sea el mismo.
+- **G2:** `sell.g2.com/create-a-profile`. En el formulario hay una casilla
+  *«I would like to serve as admin for this profile»* — **márcala**. Sin ella,
+  el perfil se aprueba sin dueño y hay que reclamarlo después, que son otros
+  uno a tres días.
+
+Un aviso del formulario de G2: el nombre tiene que ser el real del producto,
+**sin lenguaje de marketing**. «Widdo», no «Widdo — AI-native operating
+system».
 
 ---
 
@@ -177,11 +229,13 @@ difuminar. Son menores de edad.
 Una ficha sin reseñas no aparece en ninguna comparativa. Es la parte que no se
 puede escribir aquí.
 
-- G2 y Capterra permiten **invitar** a clientes a reseñar, y ambos dan tarjetas
-  regalo de 10–25 USD por reseña verificada. Es su programa oficial, no una
-  irregularidad.
-- Hoy hay **3 clubes pagando**. Tres reseñas honestas bastan para salir del
-  vacío; diez te ponen en la comparativa.
+- Los dos permiten **invitar** a clientes a reseñar desde el panel. Los
+  incentivos (tarjeta regalo) los gestiona el propio directorio en sus
+  campañas, no el proveedor: **no ofrezcas tú un regalo a cambio de una
+  reseña**. Capterra lo prohíbe expresamente en sus normas de comunidad de
+  mayo-2026, y una reseña incentivada por el vendedor se retira.
+- Hoy hay **3 clubes pagando**. Publicadas en Capterra, esas tres aparecen
+  también en GetApp y Software Advice: tres reseñas, tres directorios.
 - Pedirlas después de un momento bueno — el primer mes cobrado entero, el
   primer torneo cerrado — funciona mucho mejor que un correo suelto.
 
