@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-09-14",
+  "scope": "Four supplemental covers only: 2 es, 2 pt. Complements the earlier 28-cover package.",
+  "generation_tool": "Built-in image_gen; cwebp for WebP export.",
+  "assignment_key": [
+    "locale",
+    "post_slug"
+  ],
+  "items": [
+    {
+      "asset_key": "es:lista-de-inscripcion-temporada-club-deportivo",
+      "match_by": {
+        "locale": "es",
+        "slug": "lista-de-inscripcion-temporada-club-deportivo"
+      },
+      "locale": "es",
+      "post_slug": "lista-de-inscripcion-temporada-club-deportivo",
+      "post_id_observed": 47,
+      "post_title": "La lista de inscripción de temporada para clubes juveniles",
+      "post_url": "https://widdo.co/es/blog/lista-de-inscripcion-temporada-club-deportivo",
+      "image_file": "images/es/lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+      "filename": "lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+      "featured_image_alt": "Ilustración de una lista de preparación de inscripciones junto a una cancha de básquet, con tarifas, autorizaciones, pagos y categorías.",
+      "hook_text": "Todo listo para empezar.",
+      "width": 1600,
+      "height": 900,
+      "mime_type": "image/webp",
+      "bytes": 130714,
+      "sha256": "809514bbb93e95b185a21be9344619ee178829464e4e16e799431df695b7c11f",
+      "previous_image_at_audit": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+      "generation_status": "generated",
+      "upload_status": "not_uploaded",
+      "cms_fields": {
+        "featured_image": "USE_THE_URL_RETURNED_BY_UPLOAD",
+        "featured_image_alt": "Ilustración de una lista de preparación de inscripciones junto a una cancha de básquet, con tarifas, autorizaciones, pagos y categorías."
+      }
+    },
+    {
+      "asset_key": "es:control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "match_by": {
+        "locale": "es",
+        "slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa"
+      },
+      "locale": "es",
+      "post_slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "post_id_observed": 46,
+      "post_title": "Control de asistencia que los entrenadores sí van a usar",
+      "post_url": "https://widdo.co/es/blog/control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "image_file": "images/es/control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+      "filename": "control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+      "featured_image_alt": "Entrenadora de voleibol registra la asistencia en un móvil junto a la cancha mientras el equipo continúa entrenando.",
+      "hook_text": "Asistencia sin frenar el entrenamiento.",
+      "width": 1600,
+      "height": 900,
+      "mime_type": "image/webp",
+      "bytes": 186850,
+      "sha256": "10a19a4a6f3e15d24b07924bd278f220bc99b29018c018f785824adb65bff13c",
+      "previous_image_at_audit": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+      "generation_status": "generated",
+      "upload_status": "not_uploaded",
+      "cms_fields": {
+        "featured_image": "USE_THE_URL_RETURNED_BY_UPLOAD",
+        "featured_image_alt": "Entrenadora de voleibol registra la asistencia en un móvil junto a la cancha mientras el equipo continúa entrenando."
+      }
+    },
+    {
+      "asset_key": "pt:checklist-de-matricula-temporada-clube-esportivo",
+      "match_by": {
+        "locale": "pt",
+        "slug": "checklist-de-matricula-temporada-clube-esportivo"
+      },
+      "locale": "pt",
+      "post_slug": "checklist-de-matricula-temporada-clube-esportivo",
+      "post_id_observed": 48,
+      "post_title": "O checklist de matrícula de temporada para clubes de base",
+      "post_url": "https://widdo.co/pt/blog/checklist-de-matricula-temporada-clube-esportivo",
+      "image_file": "images/pt/checklist-de-matricula-temporada-clube-esportivo-pt-capa.webp",
+      "filename": "checklist-de-matricula-temporada-clube-esportivo-pt-capa.webp",
+      "featured_image_alt": "Composição editorial de uma lista de matrícula com valores, termos, pagamentos e categorias, ao lado de equipamentos de vôlei.",
+      "hook_text": "Matrícula pronta. Temporada organizada.",
+      "width": 1600,
+      "height": 900,
+      "mime_type": "image/webp",
+      "bytes": 145972,
+      "sha256": "c9e910ab09596af024321d20258f8e41a92af90af6dedc3030f0dd92bb135d53",
+      "previous_image_at_audit": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+      "generation_status": "generated",
+      "upload_status": "not_uploaded",
+      "cms_fields": {
+        "featured_image": "USE_THE_URL_RETURNED_BY_UPLOAD",
+        "featured_image_alt": "Composição editorial de uma lista de matrícula com valores, termos, pagamentos e categorias, ao lado de equipamentos de vôlei."
+      }
+    },
+    {
+      "asset_key": "pt:o-que-automatizar-primeiro-no-clube-esportivo",
+      "match_by": {
+        "locale": "pt",
+        "slug": "o-que-automatizar-primeiro-no-clube-esportivo"
+      },
+      "locale": "pt",
+      "post_slug": "o-que-automatizar-primeiro-no-clube-esportivo",
+      "post_id_observed": 49,
+      "post_title": "O que automatizar primeiro num clube esportivo",
+      "post_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+      "image_file": "images/pt/o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+      "filename": "o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+      "featured_image_alt": "Sequência de automação de cobrança, presença, matrícula e resumo diário, com uma indicação de que as decisões continuam humanas.",
+      "hook_text": "Automatize nesta ordem.",
+      "width": 1600,
+      "height": 900,
+      "mime_type": "image/webp",
+      "bytes": 205090,
+      "sha256": "f9b0c42efa862382dede6d58dc4e8290b4a53496d815aa073977bac61467aded",
+      "previous_image_at_audit": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+      "generation_status": "generated",
+      "upload_status": "not_uploaded",
+      "cms_fields": {
+        "featured_image": "USE_THE_URL_RETURNED_BY_UPLOAD",
+        "featured_image_alt": "Sequência de automação de cobrança, presença, matrícula e resumo diário, com uma indicação de que as decisões continuam humanas."
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "match_by": {
+        "locale": "es",
+        "slug": "lista-de-inscripcion-temporada-club-deportivo"
+      },
+      "post_id_observed": 47,
+      "post_title": "La lista de inscripción de temporada para clubes juveniles",
+      "post_url": "https://widdo.co/es/blog/lista-de-inscripcion-temporada-club-deportivo",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+      "suggested_new_filename": "lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit"
+    },
+    {
+      "match_by": {
+        "locale": "es",
+        "slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa"
+      },
+      "post_id_observed": 46,
+      "post_title": "Control de asistencia que los entrenadores sí van a usar",
+      "post_url": "https://widdo.co/es/blog/control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+      "suggested_new_filename": "control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit"
+    },
+    {
+      "match_by": {
+        "locale": "pt",
+        "slug": "checklist-de-matricula-temporada-clube-esportivo"
+      },
+      "post_id_observed": 48,
+      "post_title": "O checklist de matrícula de temporada para clubes de base",
+      "post_url": "https://widdo.co/pt/blog/checklist-de-matricula-temporada-clube-esportivo",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+      "suggested_new_filename": "checklist-de-matricula-temporada-clube-esportivo-pt-capa.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit"
+    },
+    {
+      "match_by": {
+        "locale": "pt",
+        "slug": "o-que-automatizar-primeiro-no-clube-esportivo"
+      },
+      "post_id_observed": 49,
+      "post_title": "O que automatizar primeiro num clube esportivo",
+      "post_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+      "suggested_new_filename": "o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit"
+    }
+  ]
+}

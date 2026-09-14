@@ -1,0 +1,28 @@
+{
+  "asset_key": "es:lista-de-inscripcion-temporada-club-deportivo",
+  "match_by": {
+    "locale": "es",
+    "slug": "lista-de-inscripcion-temporada-club-deportivo"
+  },
+  "locale": "es",
+  "post_slug": "lista-de-inscripcion-temporada-club-deportivo",
+  "post_id_observed": 47,
+  "post_title": "La lista de inscripción de temporada para clubes juveniles",
+  "post_url": "https://widdo.co/es/blog/lista-de-inscripcion-temporada-club-deportivo",
+  "image_file": "images/es/lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+  "filename": "lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+  "featured_image_alt": "Ilustración de una lista de preparación de inscripciones junto a una cancha de básquet, con tarifas, autorizaciones, pagos y categorías.",
+  "hook_text": "Todo listo para empezar.",
+  "width": 1600,
+  "height": 900,
+  "mime_type": "image/webp",
+  "bytes": 130714,
+  "sha256": "809514bbb93e95b185a21be9344619ee178829464e4e16e799431df695b7c11f",
+  "previous_image_at_audit": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+  "generation_status": "generated",
+  "upload_status": "not_uploaded",
+  "cms_fields": {
+    "featured_image": "USE_THE_URL_RETURNED_BY_UPLOAD",
+    "featured_image_alt": "Ilustración de una lista de preparación de inscripciones junto a una cancha de básquet, con tarifas, autorizaciones, pagos y categorías."
+  }
+}

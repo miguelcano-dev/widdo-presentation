@@ -1,0 +1,2101 @@
+{
+  "observed_at_utc": "2026-09-14T13:08:47.596532+00:00",
+  "rows": [
+    {
+      "asset_key": "es:widdo-identidad-deportiva-digital",
+      "post": {
+        "id": 17,
+        "title": "Widdo: Tu Identidad Deportiva Digital que Te Acompaña en Todos tus Roles",
+        "slug": "widdo-identidad-deportiva-digital",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+        "featured_image_alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis.",
+        "og_image": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T13:04:30.000000Z",
+        "published_at": "2025-11-03T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/widdo-identidad-deportiva-digital",
+      "in_delivery": true,
+      "expected_image_file": "images/es/widdo-identidad-deportiva-digital-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:10 GMT",
+          "etag": "\"6aa7edbe-471aa\"",
+          "age": "967",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 291242,
+        "sha256": "145963aa85065329f89102e46bafb257e417c443faa03bced0197b5692547101",
+        "matches_delivered_asset": "es:widdo-identidad-deportiva-digital"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:33 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+        "alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+          "alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/widdo-identidad-deportiva-digital"
+        },
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+          "alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/widdo-identidad-deportiva-digital"
+        },
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+          "alt": "Ilustración editorial de una persona conectada con sus roles de entrenador, familiar, jugador y director, entre escenas de básquet, natación y tenis.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/widdo-identidad-deportiva-digital"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:lista-de-inscripcion-temporada-club-deportivo",
+      "post": {
+        "id": 47,
+        "title": "La lista de inscripción de temporada para clubes juveniles",
+        "slug": "lista-de-inscripcion-temporada-club-deportivo",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+        "featured_image_alt": "Widdo — la lista de inscripción de temporada",
+        "og_image": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+        "updated_at": "2026-09-14T13:04:31.000000Z",
+        "published_at": "2026-09-14T02:56:04.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/lista-de-inscripcion-temporada-club-deportivo",
+      "in_delivery": false,
+      "expected_image_file": null,
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+          "content-type": "image/jpeg",
+          "last-modified": "Mon, 14 Sep 2026 02:53:50 GMT",
+          "etag": "\"6aa761be-21096\"",
+          "cache-control": "public, max-age=604800, immutable",
+          "age": "972",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 135318,
+        "sha256": "6f6d23e842b9c9d4f0a7a2b17f646f8dcdd0b9b83397fc1ff21bbbc3b68876d4",
+        "matches_delivered_asset": null
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:33 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+        "alt": "Widdo — la lista de inscripción de temporada",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+          "alt": "Widdo — la lista de inscripción de temporada",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/lista-de-inscripcion-temporada-club-deportivo"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+      "expected_alt_matches_api": null,
+      "api_status": "FUERA_DEL_PAQUETE",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "post": {
+        "id": 46,
+        "title": "Control de asistencia que los entrenadores sí van a usar",
+        "slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+        "featured_image_alt": "Widdo — control de asistencia que los entrenadores sí usan",
+        "og_image": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+        "updated_at": "2026-09-14T13:04:32.000000Z",
+        "published_at": "2026-09-14T02:56:04.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "in_delivery": false,
+      "expected_image_file": null,
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+          "content-type": "image/jpeg",
+          "last-modified": "Mon, 14 Sep 2026 02:53:48 GMT",
+          "etag": "\"6aa761bc-1be6c\"",
+          "cache-control": "public, max-age=604800, immutable",
+          "age": "972",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 114284,
+        "sha256": "5490ab17ca5abc914bbccc0ed9456c32ada4e85cd79535f2dabdfef3e6c075d7",
+        "matches_delivered_asset": null
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:34 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+        "alt": "Widdo — control de asistencia que los entrenadores sí usan",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+          "alt": "Widdo — control de asistencia que los entrenadores sí usan",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/control-de-asistencia-clubes-deportivos-que-si-se-usa"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+      "expected_alt_matches_api": null,
+      "api_status": "FUERA_DEL_PAQUETE",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:tendencias-escuelas-deportivas-2026",
+      "post": {
+        "id": 32,
+        "title": "Tendencias de Escuelas Deportivas para 2026: Lo que Viene",
+        "slug": "tendencias-escuelas-deportivas-2026",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3",
+        "featured_image_alt": "Ilustración de un entrenamiento juvenil de voleibol con seguimiento digital y familias, acompañada del año 2026.",
+        "og_image": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T13:04:32.000000Z",
+        "published_at": "2025-12-26T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/tendencias-escuelas-deportivas-2026",
+      "in_delivery": true,
+      "expected_image_file": "images/es/tendencias-escuelas-deportivas-2026-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:08 GMT",
+          "etag": "\"6aa7edbc-398b0\"",
+          "age": "972",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 235696,
+        "sha256": "99ddeac2db71491633d1110d1269077057d1d561a9da37c28bb88db8c80f1afc",
+        "matches_delivered_asset": "es:tendencias-escuelas-deportivas-2026"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:33 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3",
+        "alt": "Ilustración de un entrenamiento juvenil de voleibol con seguimiento digital y familias, acompañada del año 2026.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3",
+          "alt": "Ilustración de un entrenamiento juvenil de voleibol con seguimiento digital y familias, acompañada del año 2026.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/tendencias-escuelas-deportivas-2026"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:automatizar-club-deportivo-tareas-manuales",
+      "post": {
+        "id": 31,
+        "title": "Qué automatizar primero en un club deportivo",
+        "slug": "automatizar-club-deportivo-tareas-manuales",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+        "featured_image_alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet.",
+        "og_image": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-12-23T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/automatizar-club-deportivo-tareas-manuales",
+      "in_delivery": true,
+      "expected_image_file": "images/es/automatizar-club-deportivo-tareas-manuales-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:02 GMT",
+          "etag": "\"6aa7edb6-1bdf2\"",
+          "age": "972",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 114162,
+        "sha256": "aafa27ac31267eb567f35be589f89496b176056499f782fc12db5f4dcdd42083",
+        "matches_delivered_asset": "es:automatizar-club-deportivo-tareas-manuales"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:34 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+        "alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+          "alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/automatizar-club-deportivo-tareas-manuales"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:grupos-facebook-comunidades-deportivas",
+      "post": {
+        "id": 30,
+        "title": "Grupos de Facebook: El Arma Secreta para Comunidades Deportivas",
+        "slug": "grupos-facebook-comunidades-deportivas",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3",
+        "featured_image_alt": "Ilustración de familias de un club de natación conectadas mediante conversaciones y publicaciones de un grupo de Facebook.",
+        "og_image": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-12-19T16:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/grupos-facebook-comunidades-deportivas",
+      "in_delivery": true,
+      "expected_image_file": "images/es/grupos-facebook-comunidades-deportivas-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:04 GMT",
+          "etag": "\"6aa7edb8-24a1c\"",
+          "age": "971",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 150044,
+        "sha256": "ef00d5f071f302676cae65652ddd2f258a4580cc8ca6eec2f3fee48bfa8d7982",
+        "matches_delivered_asset": "es:grupos-facebook-comunidades-deportivas"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:34 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3",
+        "alt": "Ilustración de familias de un club de natación conectadas mediante conversaciones y publicaciones de un grupo de Facebook.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3",
+          "alt": "Ilustración de familias de un club de natación conectadas mediante conversaciones y publicaciones de un grupo de Facebook.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/grupos-facebook-comunidades-deportivas"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:definir-precios-escuela-deportiva-colombia",
+      "post": {
+        "id": 29,
+        "title": "Cómo Definir los Precios de tu Escuela Deportiva (Sin Subvalorarte)",
+        "slug": "definir-precios-escuela-deportiva-colombia",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3",
+        "featured_image_alt": "Composición de cancha, entrenadores, material y margen que se reúnen para representar el cálculo de la cuota de una escuela de básquet.",
+        "og_image": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-12-16T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/definir-precios-escuela-deportiva-colombia",
+      "in_delivery": true,
+      "expected_image_file": "images/es/definir-precios-escuela-deportiva-colombia-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:03 GMT",
+          "etag": "\"6aa7edb7-2d1fc\"",
+          "age": "970",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 184828,
+        "sha256": "0bcf545d1ef57ff8a6030ceacf8edfde576104009b6548fbe8118fb237a8261c",
+        "matches_delivered_asset": "es:definir-precios-escuela-deportiva-colombia"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:34 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3",
+        "alt": "Composición de cancha, entrenadores, material y margen que se reúnen para representar el cálculo de la cuota de una escuela de básquet.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3",
+          "alt": "Composición de cancha, entrenadores, material y margen que se reúnen para representar el cálculo de la cuota de una escuela de básquet.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/definir-precios-escuela-deportiva-colombia"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:organizar-eventos-gratuitos-atraer-alumnos",
+      "post": {
+        "id": 28,
+        "title": "Cómo Organizar Eventos Gratuitos que Atraigan Nuevos Alumnos",
+        "slug": "organizar-eventos-gratuitos-atraer-alumnos",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3",
+        "featured_image_alt": "Ilustración de un entrenador recibiendo a una familia durante una clase de prueba con actividades de básquet y voleibol.",
+        "og_image": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-12-12T14:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/organizar-eventos-gratuitos-atraer-alumnos",
+      "in_delivery": true,
+      "expected_image_file": "images/es/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:05 GMT",
+          "etag": "\"6aa7edb9-38372\"",
+          "age": "966",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 230258,
+        "sha256": "e4e64140c6b4cb32d643884dd8542d0a8ec06fa1fe581c85dc67766c67e645f0",
+        "matches_delivered_asset": "es:organizar-eventos-gratuitos-atraer-alumnos"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:34 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3",
+        "alt": "Ilustración de un entrenador recibiendo a una familia durante una clase de prueba con actividades de básquet y voleibol.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3",
+          "alt": "Ilustración de un entrenador recibiendo a una familia durante una clase de prueba con actividades de básquet y voleibol.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/organizar-eventos-gratuitos-atraer-alumnos"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:widdo-cuenta-multiples-roles-deportivos",
+      "post": {
+        "id": 27,
+        "title": "Una Cuenta, Múltiples Roles: Cómo Widdo Simplifica tu Vida Deportiva",
+        "slug": "widdo-cuenta-multiples-roles-deportivos",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3",
+        "featured_image_alt": "Un recorrido continuo conecta una sola cuenta con los roles de entrenador de básquet, familiar en natación y jugador de tenis.",
+        "og_image": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-12-09T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/widdo-cuenta-multiples-roles-deportivos",
+      "in_delivery": true,
+      "expected_image_file": "images/es/widdo-cuenta-multiples-roles-deportivos-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:09 GMT",
+          "etag": "\"6aa7edbd-634de\"",
+          "age": "965",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 406750,
+        "sha256": "edb2df3c25df90644d7600a6708dfa1f034ffa0c9e1ecc72d0b1e5e9ad1955b6",
+        "matches_delivered_asset": "es:widdo-cuenta-multiples-roles-deportivos"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3",
+        "alt": "Un recorrido continuo conecta una sola cuenta con los roles de entrenador de básquet, familiar en natación y jugador de tenis.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3",
+          "alt": "Un recorrido continuo conecta una sola cuenta con los roles de entrenador de básquet, familiar en natación y jugador de tenis.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/widdo-cuenta-multiples-roles-deportivos"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:calendario-contenidos-clubes-deportivos",
+      "post": {
+        "id": 26,
+        "title": "Calendario de Contenidos para Clubes: Qué Publicar Cada Mes del Año",
+        "slug": "calendario-contenidos-clubes-deportivos",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3",
+        "featured_image_alt": "Calendario editorial con contenidos de entrenamiento, logros, inscripciones y comunidad para un club multideportivo.",
+        "og_image": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-12-05T16:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/calendario-contenidos-clubes-deportivos",
+      "in_delivery": true,
+      "expected_image_file": "images/es/calendario-contenidos-clubes-deportivos-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:03 GMT",
+          "etag": "\"6aa7edb7-3c5f2\"",
+          "age": "970",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 247282,
+        "sha256": "31d2bd15e2d5212ab6ea45d42df1b9708708ee04895fc8bfc58e46dd223f4243",
+        "matches_delivered_asset": "es:calendario-contenidos-clubes-deportivos"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3",
+        "alt": "Calendario editorial con contenidos de entrenamiento, logros, inscripciones y comunidad para un club multideportivo.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3",
+          "alt": "Calendario editorial con contenidos de entrenamiento, logros, inscripciones y comunidad para un club multideportivo.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/calendario-contenidos-clubes-deportivos"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:transformar-padres-aliados-escuela-deportiva",
+      "post": {
+        "id": 25,
+        "title": "Cómo Transformar Padres en Aliados (No en Clientes que Solo Pagan)",
+        "slug": "transformar-padres-aliados-escuela-deportiva",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3",
+        "featured_image_alt": "Ilustración de una entrenadora de gimnasia y una familia conversando junto a una niña que practica sobre una colchoneta.",
+        "og_image": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-12-02T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/transformar-padres-aliados-escuela-deportiva",
+      "in_delivery": true,
+      "expected_image_file": "images/es/transformar-padres-aliados-escuela-deportiva-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:09 GMT",
+          "etag": "\"6aa7edbd-24c12\"",
+          "age": "966",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 150546,
+        "sha256": "48d30ee1387d4c957253cb56cf3d778618847d79e1086e9985eca670b9b8fe0c",
+        "matches_delivered_asset": "es:transformar-padres-aliados-escuela-deportiva"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3",
+        "alt": "Ilustración de una entrenadora de gimnasia y una familia conversando junto a una niña que practica sobre una colchoneta.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3",
+          "alt": "Ilustración de una entrenadora de gimnasia y una familia conversando junto a una niña que practica sobre una colchoneta.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/transformar-padres-aliados-escuela-deportiva"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:programa-referidos-duplicar-inscripciones",
+      "post": {
+        "id": 24,
+        "title": "Cómo Crear un Programa de Referidos que Duplique tus Inscripciones",
+        "slug": "programa-referidos-duplicar-inscripciones",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+        "featured_image_alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse.",
+        "og_image": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T13:04:30.000000Z",
+        "published_at": "2025-11-28T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/programa-referidos-duplicar-inscripciones",
+      "in_delivery": true,
+      "expected_image_file": "images/es/programa-referidos-duplicar-inscripciones-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:06 GMT",
+          "etag": "\"6aa7edba-2d9cc\"",
+          "age": "968",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 186828,
+        "sha256": "f4903a1b7e89c2fbc993815edd8bfbfccdec37fb5b5c7f22beb75256dd258e92",
+        "matches_delivered_asset": "es:programa-referidos-duplicar-inscripciones"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+        "alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+          "alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/programa-referidos-duplicar-inscripciones"
+        },
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+          "alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/programa-referidos-duplicar-inscripciones"
+        },
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+          "alt": "Una familia presenta a otra al instructor de un dojo, junto a la secuencia invitar, probar e inscribirse.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/programa-referidos-duplicar-inscripciones"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:tiktok-escuelas-deportivas-ideas-contenido",
+      "post": {
+        "id": 23,
+        "title": "TikTok para Escuelas Deportivas: Ideas de Contenido que Atraen Alumnos",
+        "slug": "tiktok-escuelas-deportivas-ideas-contenido",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3",
+        "featured_image_alt": "Composición editorial de un ejercicio de básquet grabado en formato vertical para contenido de TikTok.",
+        "og_image": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-11-25T16:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/tiktok-escuelas-deportivas-ideas-contenido",
+      "in_delivery": true,
+      "expected_image_file": "images/es/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:08 GMT",
+          "etag": "\"6aa7edbc-36870\"",
+          "age": "933",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 223344,
+        "sha256": "594c32357f99abf8c52970162e609de635afe0c3de7545a047641c1799b08732",
+        "matches_delivered_asset": "es:tiktok-escuelas-deportivas-ideas-contenido"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3",
+        "alt": "Composición editorial de un ejercicio de básquet grabado en formato vertical para contenido de TikTok.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3",
+          "alt": "Composición editorial de un ejercicio de básquet grabado en formato vertical para contenido de TikTok.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/tiktok-escuelas-deportivas-ideas-contenido"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:razones-abandono-alumnos-escuela-deportiva",
+      "post": {
+        "id": 22,
+        "title": "Las señales de que un jugador está a punto de dejar tu club",
+        "slug": "razones-abandono-alumnos-escuela-deportiva",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3",
+        "featured_image_alt": "Un entrenador de voleibol escucha a un alumno junto a la cancha, con marcas de asistencia que sugieren seguimiento de sus ausencias.",
+        "og_image": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-11-21T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/razones-abandono-alumnos-escuela-deportiva",
+      "in_delivery": true,
+      "expected_image_file": "images/es/razones-abandono-alumnos-escuela-deportiva-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:06 GMT",
+          "etag": "\"6aa7edba-1da96\"",
+          "age": "933",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 121494,
+        "sha256": "b83dcfcf17300cc72e9d6f279cea40f6ce70bca678ef11462ee2b9ee5d1c1168",
+        "matches_delivered_asset": "es:razones-abandono-alumnos-escuela-deportiva"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3",
+        "alt": "Un entrenador de voleibol escucha a un alumno junto a la cancha, con marcas de asistencia que sugieren seguimiento de sus ausencias.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3",
+          "alt": "Un entrenador de voleibol escucha a un alumno junto a la cancha, con marcas de asistencia que sugieren seguimiento de sus ausencias.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/razones-abandono-alumnos-escuela-deportiva"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:reducir-morosidad-club-deportivo-cobros",
+      "post": {
+        "id": 21,
+        "title": "Por qué falla el cobro de mensualidades en los clubes deportivos",
+        "slug": "reducir-morosidad-club-deportivo-cobros",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3",
+        "featured_image_alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación.",
+        "og_image": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-11-18T14:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/reducir-morosidad-club-deportivo-cobros",
+      "in_delivery": true,
+      "expected_image_file": "images/es/reducir-morosidad-club-deportivo-cobros-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:07 GMT",
+          "etag": "\"6aa7edbb-2443a\"",
+          "age": "939",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 148538,
+        "sha256": "80cb0dcabaf5e610298b1a11a99591e60768dd09d579b1319fd9c2cdfbf83305",
+        "matches_delivered_asset": "es:reducir-morosidad-club-deportivo-cobros"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
+        "alt": "Cómo Reducir la Morosidad en tu Club Deportivo: Guía Práctica de Cobros",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3",
+          "alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/reducir-morosidad-club-deportivo-cobros"
+        }
+      ],
+      "og_image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
+      "twitter_image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": false,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:guia-instagram-clubes-deportivos",
+      "post": {
+        "id": 20,
+        "title": "Guía Completa de Instagram para Clubes Deportivos: Del Cero al Engagement",
+        "slug": "guia-instagram-clubes-deportivos",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3",
+        "featured_image_alt": "Collage editorial de entrenamiento de básquet, un logro en natación y un testimonio familiar como ideas de contenido para Instagram.",
+        "og_image": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-11-14T15:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/guia-instagram-clubes-deportivos",
+      "in_delivery": true,
+      "expected_image_file": "images/es/guia-instagram-clubes-deportivos-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:05 GMT",
+          "etag": "\"6aa7edb9-29844\"",
+          "age": "935",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 170052,
+        "sha256": "05dd37fae97a4a49b77e8178eb0493192b3cf307d08456d445a543fdaaed6d70",
+        "matches_delivered_asset": "es:guia-instagram-clubes-deportivos"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:35 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3",
+        "alt": "Collage editorial de entrenamiento de básquet, un logro en natación y un testimonio familiar como ideas de contenido para Instagram.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3",
+          "alt": "Collage editorial de entrenamiento de básquet, un logro en natación y un testimonio familiar como ideas de contenido para Instagram.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/guia-instagram-clubes-deportivos"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:estrategias-marketing-escuelas-futbol-colombia",
+      "post": {
+        "id": 19,
+        "title": "7 Estrategias de Marketing que Funcionan para Escuelas de Fútbol en Colombia",
+        "slug": "estrategias-marketing-escuelas-futbol-colombia",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+        "featured_image_alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales.",
+        "og_image": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T13:04:31.000000Z",
+        "published_at": "2025-11-11T16:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/estrategias-marketing-escuelas-futbol-colombia",
+      "in_delivery": true,
+      "expected_image_file": "images/es/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:04 GMT",
+          "etag": "\"6aa7edb8-448c2\"",
+          "age": "937",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 280770,
+        "sha256": "91ed7887b1385c490fb577a148b9e9b757f62bfb6dad17c253a44b013691a933",
+        "matches_delivered_asset": "es:estrategias-marketing-escuelas-futbol-colombia"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+        "alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog",
+          "src": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+          "alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/estrategias-marketing-escuelas-futbol-colombia"
+        },
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+          "alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/estrategias-marketing-escuelas-futbol-colombia"
+        },
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+          "alt": "Ilustración de una escuela de fútbol de barrio en Colombia conectada con familias, un colegio y canales de comunicación locales.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/estrategias-marketing-escuelas-futbol-colombia"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "es:adios-caos-whatsapp-escuela-deportiva",
+      "post": {
+        "id": 18,
+        "title": "Adiós al caos del WhatsApp: el grupo no es un sistema de comunicación",
+        "slug": "adios-caos-whatsapp-escuela-deportiva",
+        "locale": "es",
+        "featured_image": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3",
+        "featured_image_alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet.",
+        "og_image": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.jpg?v3",
+        "updated_at": "2026-09-14T12:52:07.000000Z",
+        "published_at": "2025-11-07T14:00:00.000000Z"
+      },
+      "post_url": "https://widdo.co/es/blog/adios-caos-whatsapp-escuela-deportiva",
+      "in_delivery": true,
+      "expected_image_file": "images/es/adios-caos-whatsapp-escuela-deportiva-es-portada.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:01 GMT",
+          "etag": "\"6aa7edb5-26c2a\"",
+          "age": "984",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 158762,
+        "sha256": "752d7209da31ea594f97f954c30a0106910b70dbdf7adf145cba8308b24199d2",
+        "matches_delivered_asset": "es:adios-caos-whatsapp-escuela-deportiva"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva.jpg?v=2",
+        "alt": "Widdo — el grupo de WhatsApp no es un sistema de comunicación",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/es/blog?page=2",
+          "src": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3",
+          "alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/es/blog/adios-caos-whatsapp-escuela-deportiva"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva.jpg?v=2",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva.jpg?v=2",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": false,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "en:per-player-pricing-youth-sports-software",
+      "post": {
+        "id": 33,
+        "title": "What Per-Player Pricing Actually Costs a Growing Club",
+        "slug": "per-player-pricing-youth-sports-software",
+        "locale": "en",
+        "featured_image": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+        "featured_image_alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size.",
+        "og_image": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.jpg?v3",
+        "updated_at": "2026-09-14T13:04:20.000000Z",
+        "published_at": "2026-07-25T10:07:22.000000Z"
+      },
+      "post_url": "https://widdo.co/en/blog/per-player-pricing-youth-sports-software",
+      "in_delivery": true,
+      "expected_image_file": "images/en/per-player-pricing-youth-sports-software-en-cover.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:50:59 GMT",
+          "etag": "\"6aa7edb3-1ca26\"",
+          "age": "963",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 117286,
+        "sha256": "e86ee04cfb8325805dabdfbe39ad8f353fe1d8b927f5d74429ed068f71d56f4d",
+        "matches_delivered_asset": "en:per-player-pricing-youth-sports-software"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+        "alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+          "alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/per-player-pricing-youth-sports-software"
+        },
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+          "alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/per-player-pricing-youth-sports-software"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "en:why-dues-collection-breaks-down",
+      "post": {
+        "id": 34,
+        "title": "Why Dues Collection Breaks Down in Youth Sports Clubs",
+        "slug": "why-dues-collection-breaks-down",
+        "locale": "en",
+        "featured_image": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+        "featured_image_alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status.",
+        "og_image": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.jpg?v3",
+        "updated_at": "2026-09-14T13:04:20.000000Z",
+        "published_at": "2026-07-19T10:07:22.000000Z"
+      },
+      "post_url": "https://widdo.co/en/blog/why-dues-collection-breaks-down",
+      "in_delivery": true,
+      "expected_image_file": "images/en/why-dues-collection-breaks-down-en-cover.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:01 GMT",
+          "etag": "\"6aa7edb5-3022c\"",
+          "age": "987",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 197164,
+        "sha256": "061429318248d8e070cdc769d934325156a4886d5d23c1629321e12d3605d491",
+        "matches_delivered_asset": "en:why-dues-collection-breaks-down"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+        "alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+          "alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/why-dues-collection-breaks-down"
+        },
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+          "alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/why-dues-collection-breaks-down"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "en:attendance-tracking-youth-sports-clubs",
+      "post": {
+        "id": 35,
+        "title": "Attendance Tracking Coaches Will Actually Use",
+        "slug": "attendance-tracking-youth-sports-clubs",
+        "locale": "en",
+        "featured_image": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+        "featured_image_alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court.",
+        "og_image": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.jpg?v3",
+        "updated_at": "2026-09-14T13:04:19.000000Z",
+        "published_at": "2026-07-13T10:07:22.000000Z"
+      },
+      "post_url": "https://widdo.co/en/blog/attendance-tracking-youth-sports-clubs",
+      "in_delivery": true,
+      "expected_image_file": "images/en/attendance-tracking-youth-sports-clubs-en-cover.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:50:58 GMT",
+          "etag": "\"6aa7edb2-226d8\"",
+          "age": "961",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 141016,
+        "sha256": "bb4020ba562179583bbffee3e391f47838847a49b398b4cdf453d6a91662a5f4",
+        "matches_delivered_asset": "en:attendance-tracking-youth-sports-clubs"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+        "alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+          "alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/attendance-tracking-youth-sports-clubs"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "en:signals-player-about-to-leave-club",
+      "post": {
+        "id": 36,
+        "title": "The Signals a Player Is About to Leave Your Club",
+        "slug": "signals-player-about-to-leave-club",
+        "locale": "en",
+        "featured_image": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3",
+        "featured_image_alt": "An attendance timeline leads to a supportive conversation between a hockey coach, a player and a parent about early signs of disengagement.",
+        "og_image": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.jpg?v3",
+        "updated_at": "2026-09-14T13:04:19.000000Z",
+        "published_at": "2026-07-07T10:07:22.000000Z"
+      },
+      "post_url": "https://widdo.co/en/blog/signals-player-about-to-leave-club",
+      "in_delivery": true,
+      "expected_image_file": "images/en/signals-player-about-to-leave-club-en-cover.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:00 GMT",
+          "etag": "\"6aa7edb4-23210\"",
+          "age": "967",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 143888,
+        "sha256": "c269dfd334a849b333f0f03902f3420419d6edaf501f30dcab77bdeed80454db",
+        "matches_delivered_asset": "en:signals-player-about-to-leave-club"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3",
+        "alt": "An attendance timeline leads to a supportive conversation between a hockey coach, a player and a parent about early signs of disengagement.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3",
+          "alt": "An attendance timeline leads to a supportive conversation between a hockey coach, a player and a parent about early signs of disengagement.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/signals-player-about-to-leave-club"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "en:registration-season-checklist-youth-sports",
+      "post": {
+        "id": 37,
+        "title": "The Registration Season Checklist for Youth Clubs",
+        "slug": "registration-season-checklist-youth-sports",
+        "locale": "en",
+        "featured_image": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3",
+        "featured_image_alt": "Softball equipment beside a season registration checklist organized into before, during and after phases.",
+        "og_image": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.jpg?v3",
+        "updated_at": "2026-09-14T13:04:20.000000Z",
+        "published_at": "2026-07-01T10:07:22.000000Z"
+      },
+      "post_url": "https://widdo.co/en/blog/registration-season-checklist-youth-sports",
+      "in_delivery": true,
+      "expected_image_file": "images/en/registration-season-checklist-youth-sports-en-cover.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:00 GMT",
+          "etag": "\"6aa7edb4-29376\"",
+          "age": "962",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 168822,
+        "sha256": "c186475b9be6d9dec8f467d80b2ded938ca6d6179bd83ae14f2b05ee7c8f30a5",
+        "matches_delivered_asset": "en:registration-season-checklist-youth-sports"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3",
+        "alt": "Softball equipment beside a season registration checklist organized into before, during and after phases.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3",
+          "alt": "Softball equipment beside a season registration checklist organized into before, during and after phases.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/registration-season-checklist-youth-sports"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "en:parent-communication-sports-club",
+      "post": {
+        "id": 38,
+        "title": "The Group Text Is Not a Communication System",
+        "slug": "parent-communication-sports-club",
+        "locale": "en",
+        "featured_image": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3",
+        "featured_image_alt": "An important basketball practice update emerges from overlapping group messages, illustrating how announcements get buried.",
+        "og_image": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.jpg?v3",
+        "updated_at": "2026-09-14T13:04:19.000000Z",
+        "published_at": "2026-06-24T10:07:22.000000Z"
+      },
+      "post_url": "https://widdo.co/en/blog/parent-communication-sports-club",
+      "in_delivery": true,
+      "expected_image_file": "images/en/parent-communication-sports-club-en-cover.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:50:59 GMT",
+          "etag": "\"6aa7edb3-36104\"",
+          "age": "966",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 221444,
+        "sha256": "4dea69e68174db597be43d746b5a130e4d0158a783feb8540156688f2641e9f1",
+        "matches_delivered_asset": "en:parent-communication-sports-club"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:36 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3",
+        "alt": "An important basketball practice update emerges from overlapping group messages, illustrating how announcements get buried.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/en/blog",
+          "src": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3",
+          "alt": "An important basketball practice update emerges from overlapping group messages, illustrating how announcements get buried.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/en/blog/parent-communication-sports-club"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:checklist-de-matricula-temporada-clube-esportivo",
+      "post": {
+        "id": 48,
+        "title": "O checklist de matrícula de temporada para clubes de base",
+        "slug": "checklist-de-matricula-temporada-clube-esportivo",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+        "featured_image_alt": "Widdo — o checklist de matrícula de temporada",
+        "og_image": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+        "updated_at": "2026-09-14T13:04:37.000000Z",
+        "published_at": "2026-09-14T02:56:04.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/checklist-de-matricula-temporada-clube-esportivo",
+      "in_delivery": false,
+      "expected_image_file": null,
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+          "content-type": "image/jpeg",
+          "last-modified": "Mon, 14 Sep 2026 02:53:47 GMT",
+          "etag": "\"6aa761bb-21845\"",
+          "cache-control": "public, max-age=604800, immutable",
+          "age": "964",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 137285,
+        "sha256": "67ec0a5dccadc5f16e5db5eda82315554c4d1b862f7711340e40210ee6b7749a",
+        "matches_delivered_asset": null
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:37 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+        "alt": "Widdo — o checklist de matrícula de temporada",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+          "alt": "Widdo — o checklist de matrícula de temporada",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/checklist-de-matricula-temporada-clube-esportivo"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+      "expected_alt_matches_api": null,
+      "api_status": "FUERA_DEL_PAQUETE",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:o-que-automatizar-primeiro-no-clube-esportivo",
+      "post": {
+        "id": 49,
+        "title": "O que automatizar primeiro num clube esportivo",
+        "slug": "o-que-automatizar-primeiro-no-clube-esportivo",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+        "featured_image_alt": "Widdo — o que automatizar primeiro no seu clube",
+        "og_image": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+        "updated_at": "2026-09-14T13:04:37.000000Z",
+        "published_at": "2026-09-14T02:56:04.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+      "in_delivery": false,
+      "expected_image_file": null,
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+          "content-type": "image/jpeg",
+          "last-modified": "Mon, 14 Sep 2026 02:53:51 GMT",
+          "etag": "\"6aa761bf-1f5a4\"",
+          "cache-control": "public, max-age=604800, immutable",
+          "age": "966",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 128420,
+        "sha256": "d88cc6da3d75d0d62465ddbd5a0409546998ab09f62c78e807e465209e58309e",
+        "matches_delivered_asset": null
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:37 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+        "alt": "Widdo — o que automatizar primeiro no seu clube",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+          "alt": "Widdo — o que automatizar primeiro no seu clube",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+      "expected_alt_matches_api": null,
+      "api_status": "FUERA_DEL_PAQUETE",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:reduzir-inadimplencia-mensalidades-escolinha",
+      "post": {
+        "id": 39,
+        "title": "Como reduzir a inadimplência de mensalidades na sua escolinha",
+        "slug": "reduzir-inadimplencia-mensalidades-escolinha",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+        "featured_image_alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago.",
+        "og_image": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.jpg?v3",
+        "updated_at": "2026-09-14T13:04:36.000000Z",
+        "published_at": "2026-07-26T18:42:17.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/reduzir-inadimplencia-mensalidades-escolinha",
+      "in_delivery": true,
+      "expected_image_file": "images/pt/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:13 GMT",
+          "etag": "\"6aa7edc1-26800\"",
+          "age": "965",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 157696,
+        "sha256": "9dd941ca4b6ccf5b7671a6875a5ce7150c4bb774028a90ccfcc903cccb979eba",
+        "matches_delivered_asset": "pt:reduzir-inadimplencia-mensalidades-escolinha"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:37 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+        "alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+          "alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/reduzir-inadimplencia-mensalidades-escolinha"
+        },
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+          "alt": "Registro de mensalidade de uma escolinha de natação com vencimento, lembrete e estados em aberto e pago.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/reduzir-inadimplencia-mensalidades-escolinha"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:pix-boleto-cartao-mensalidades-clube-esportivo",
+      "post": {
+        "id": 40,
+        "title": "Pix, boleto ou cartão: como receber as mensalidades do clube",
+        "slug": "pix-boleto-cartao-mensalidades-clube-esportivo",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+        "featured_image_alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo.",
+        "og_image": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.jpg?v3",
+        "updated_at": "2026-09-14T13:04:36.000000Z",
+        "published_at": "2026-07-20T18:42:17.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/pix-boleto-cartao-mensalidades-clube-esportivo",
+      "in_delivery": true,
+      "expected_image_file": "images/pt/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:13 GMT",
+          "etag": "\"6aa7edc1-2a17a\"",
+          "age": "985",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 172410,
+        "sha256": "ded5b432ef3d1612683aa12ab9fc580f3865110ace33a5ea6e1496ed6b9b6c01",
+        "matches_delivered_asset": "pt:pix-boleto-cartao-mensalidades-clube-esportivo"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:37 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+        "alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+          "alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/pix-boleto-cartao-mensalidades-clube-esportivo"
+        },
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+          "alt": "Comparação editorial de Pix, boleto e cartão representados por símbolos ilustrativos, sem indicar integrações disponíveis na Widdo.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/pix-boleto-cartao-mensalidades-clube-esportivo"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:evasao-de-alunos-escolinha-sinais",
+      "post": {
+        "id": 41,
+        "title": "Evasão de alunos: os sinais que aparecem semanas antes da desistência",
+        "slug": "evasao-de-alunos-escolinha-sinais",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3",
+        "featured_image_alt": "Calendário com redução de presença e participação conduz a uma conversa entre professor e família em uma escolinha de vôlei.",
+        "og_image": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.jpg?v3",
+        "updated_at": "2026-09-14T13:04:38.000000Z",
+        "published_at": "2026-07-14T18:42:17.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/evasao-de-alunos-escolinha-sinais",
+      "in_delivery": true,
+      "expected_image_file": "images/pt/evasao-de-alunos-escolinha-sinais-pt-capa.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:11 GMT",
+          "etag": "\"6aa7edbf-26c00\"",
+          "age": "966",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 158720,
+        "sha256": "abf380d985979b5a0fb1508c3b308d6efd2fb626026d603b90d6dc587649648c",
+        "matches_delivered_asset": "pt:evasao-de-alunos-escolinha-sinais"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:37 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3",
+        "alt": "Calendário com redução de presença e participação conduz a uma conversa entre professor e família em uma escolinha de vôlei.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3",
+          "alt": "Calendário com redução de presença e participação conduz a uma conversa entre professor e família em uma escolinha de vôlei.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/evasao-de-alunos-escolinha-sinais"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:captar-novos-alunos-escolinha-futebol",
+      "post": {
+        "id": 42,
+        "title": "Como captar novos alunos para a escolinha sem depender só da indicação",
+        "slug": "captar-novos-alunos-escolinha-futebol",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3",
+        "featured_image_alt": "Mapa de bairro conectado a uma aula experimental de futebol, mostrando o caminho de conhecer a escolinha até a matrícula.",
+        "og_image": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.jpg?v3",
+        "updated_at": "2026-09-14T13:04:38.000000Z",
+        "published_at": "2026-07-08T18:42:17.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/captar-novos-alunos-escolinha-futebol",
+      "in_delivery": true,
+      "expected_image_file": "images/pt/captar-novos-alunos-escolinha-futebol-pt-capa.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:11 GMT",
+          "etag": "\"6aa7edbf-38b34\"",
+          "age": "964",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 232244,
+        "sha256": "0243a8ab303bbadf211681a88033cbd060d8ea35c21b323b76c4501fd6ef6060",
+        "matches_delivered_asset": "pt:captar-novos-alunos-escolinha-futebol"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:37 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3",
+        "alt": "Mapa de bairro conectado a uma aula experimental de futebol, mostrando o caminho de conhecer a escolinha até a matrícula.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3",
+          "alt": "Mapa de bairro conectado a uma aula experimental de futebol, mostrando o caminho de conhecer a escolinha até a matrícula.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/captar-novos-alunos-escolinha-futebol"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:grupo-whatsapp-pais-escolinha",
+      "post": {
+        "id": 43,
+        "title": "Grupo de WhatsApp com os pais: como organizar sem enlouquecer",
+        "slug": "grupo-whatsapp-pais-escolinha",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3",
+        "featured_image_alt": "Conversas de responsáveis separadas dos avisos da turma, com um comunicado de treino e elementos de um dojo.",
+        "og_image": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.jpg?v3",
+        "updated_at": "2026-09-14T13:04:39.000000Z",
+        "published_at": "2026-07-02T18:42:17.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/grupo-whatsapp-pais-escolinha",
+      "in_delivery": true,
+      "expected_image_file": "images/pt/grupo-whatsapp-pais-escolinha-pt-capa.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:12 GMT",
+          "etag": "\"6aa7edc0-2a12e\"",
+          "age": "961",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 172334,
+        "sha256": "5da87349e19084402a677872cd45dd9110a07364338f6b4695485e3e3dc28abe",
+        "matches_delivered_asset": "pt:grupo-whatsapp-pais-escolinha"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:37 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3",
+        "alt": "Conversas de responsáveis separadas dos avisos da turma, com um comunicado de treino e elementos de um dojo.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3",
+          "alt": "Conversas de responsáveis separadas dos avisos da turma, com um comunicado de treino e elementos de um dojo.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/grupo-whatsapp-pais-escolinha"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    },
+    {
+      "asset_key": "pt:gestao-categorias-de-base-documentacao",
+      "post": {
+        "id": 44,
+        "title": "Categorias de base: chamada, atestado e documentação em dia",
+        "slug": "gestao-categorias-de-base-documentacao",
+        "locale": "pt",
+        "featured_image": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3",
+        "featured_image_alt": "Pasta de um aluno de basquete organizada com chamada, atestado, autorização e contato de emergência, usando documentos ilustrativos.",
+        "og_image": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.jpg?v3",
+        "updated_at": "2026-09-14T13:04:39.000000Z",
+        "published_at": "2026-06-25T18:42:17.000000Z"
+      },
+      "post_url": "https://widdo.co/pt/blog/gestao-categorias-de-base-documentacao",
+      "in_delivery": true,
+      "expected_image_file": "images/pt/gestao-categorias-de-base-documentacao-pt-capa.webp",
+      "api_image_check": {
+        "url": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3",
+        "status": 200,
+        "headers": {
+          "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+          "content-type": "image/webp",
+          "last-modified": "Mon, 14 Sep 2026 12:51:12 GMT",
+          "etag": "\"6aa7edc0-2a532\"",
+          "age": "962",
+          "cache-control": "max-age=14400",
+          "cf-cache-status": "HIT"
+        },
+        "bytes": 173362,
+        "sha256": "139e397526a7d8960b903c5d6170e1f17e8e3c4d39b87d2e24f8892103e99153",
+        "matches_delivered_asset": "pt:gestao-categorias-de-base-documentacao"
+      },
+      "page_status": 200,
+      "page_headers": {
+        "age": "0",
+        "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 14 Sep 2026 13:08:38 GMT",
+        "x-vercel-cache": "MISS"
+      },
+      "hero": {
+        "src": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3",
+        "alt": "Pasta de um aluno de basquete organizada com chamada, atestado, autorização e contato de emergência, usando documentos ilustrativos.",
+        "class": "w-full h-full object-cover",
+        "parent_link": null
+      },
+      "cards": [
+        {
+          "page_url": "https://widdo.co/pt/blog",
+          "src": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3",
+          "alt": "Pasta de um aluno de basquete organizada com chamada, atestado, autorização e contato de emergência, usando documentos ilustrativos.",
+          "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+          "loading": "lazy",
+          "parent_link": "/pt/blog/gestao-categorias-de-base-documentacao"
+        }
+      ],
+      "og_image": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3",
+      "twitter_image": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3",
+      "expected_alt_matches_api": true,
+      "api_status": "ENTREGADA_CORRECTA",
+      "hero_matches_api": true,
+      "cards_match_api": true
+    }
+  ]
+}

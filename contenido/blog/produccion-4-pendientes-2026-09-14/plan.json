@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "match_by": {
+        "locale": "es",
+        "slug": "lista-de-inscripcion-temporada-club-deportivo"
+      },
+      "post_id_observed": 47,
+      "post_title": "La lista de inscripción de temporada para clubes juveniles",
+      "post_url": "https://widdo.co/es/blog/lista-de-inscripcion-temporada-club-deportivo",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+      "suggested_new_filename": "lista-de-inscripcion-temporada-club-deportivo-es-portada.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit",
+      "asset_key": "es:lista-de-inscripcion-temporada-club-deportivo",
+      "hook_text": "Todo listo para empezar.",
+      "featured_image_alt": "Ilustración de una lista de preparación de inscripciones junto a una cancha de básquet, con tarifas, autorizaciones, pagos y categorías.",
+      "prompt": "Use case: ads-marketing. Create ONE finished premium sports editorial blog cover for Widdo, landscape 16:9, ideally 1600x900 at high quality. Expert editorial art direction: rich dark full-bleed backdrop, warm light typography, restrained textured ink and tactility, compelling topic-specific composition, excellent hierarchy at thumbnail size. No white background, no generic green template, no excessive green, no posed stock photography, no plastic people, no fake app screenshots, no brand claims or invented product features. Only the exact listed text may appear; no paragraph, no subtitle copied from instructions, no extra wall slogans. Widdo appears once as a plain wordmark, no crown or invented symbol. Keep all text inside safe 5% margins. Render flawless Spanish or Brazilian Portuguese as specified, with correct accents.\nLanguage: SPANISH. Topic: preparing youth club registration before the first practice; organizing fees, guardian authorizations, payment arrangements and age groups.\nArt direction: dramatic architectural cut-paper editorial illustration. Deep plum and midnight blue background, amber light flowing through an open gym doorway. A large elegant registration preparation sheet is foreground hero, physically integrated with a clipboard on a reception desk rather than floating. Behind it, a cropped basketball half-court with a ball and sports bag suggests season about to begin, no people needed. Four bold well-spaced checked sections on the sheet. Strong diagonal depth, tactile paper, sophisticated shadows, clean unbranded objects. Balance headline in upper left with checklist lower right; not a simple flat UI grid.\nExact text only: headline “Todo listo para empezar.”; sheet title “Inscripciones”; four labels “Tarifas”, “Autorizaciones”, “Pagos”, “Categorías”; small “Widdo”. Use a powerful contemporary editorial sans-serif, ivory title with a restrained amber emphasis. No prices, signatures, dates or made-up names."
+    },
+    {
+      "match_by": {
+        "locale": "es",
+        "slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa"
+      },
+      "post_id_observed": 46,
+      "post_title": "Control de asistencia que los entrenadores sí van a usar",
+      "post_url": "https://widdo.co/es/blog/control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+      "suggested_new_filename": "control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit",
+      "asset_key": "es:control-de-asistencia-clubes-deportivos-que-si-se-usa",
+      "hook_text": "Asistencia sin frenar el entrenamiento.",
+      "featured_image_alt": "Entrenadora de voleibol registra la asistencia en un móvil junto a la cancha mientras el equipo continúa entrenando.",
+      "prompt": "Use case: ads-marketing. Create ONE finished premium sports editorial blog cover for Widdo, landscape 16:9, ideally 1600x900 at high quality. Expert editorial art direction: rich dark full-bleed backdrop, warm light typography, restrained textured ink and tactility, compelling topic-specific composition, excellent hierarchy at thumbnail size. No white background, no generic green template, no excessive green, no posed stock photography, no plastic people, no fake app screenshots, no brand claims or invented product features. Only the exact listed text may appear; no paragraph, no subtitle copied from instructions, no extra wall slogans. Widdo appears once as a plain wordmark, no crown or invented symbol. Keep all text inside safe 5% margins. Render flawless Spanish or Brazilian Portuguese as specified, with correct accents.\nLanguage: SPANISH. Topic: capturing attendance courtside with minimal interruption; short exception-based list instead of paperwork.\nArt direction: vivid sports magazine illustration, expressive ink drawing and selective screenprint shading. Deep teal-blue indoor volleyball court with muted coral uniforms and warm ivory typography. An adult female coach drawn naturally in athletic clothing, seen over the shoulder in foreground, uses one phone with a minimal symbolic attendance list: three simple player silhouettes, two check marks and one empty mark. This is an editorial illustration, no real app interface. Athletic teenagers practice volleyball in middle distance with correct net, court and equipment. Avoid clipboard, stopwatches or claims of guaranteed seconds. Keep coach hand anatomy precise, modest realistic grip, no redundant phone. Dynamic court lines lead the eye from training activity to the quick attendance action. Main headline at left occupying only clean dark space, illustration right.\nExact text only: “Asistencia sin frenar el entrenamiento.”; small label “Asistencia” on the phone; “Widdo”. Strong condensed athletic sans-serif, ivory with a single coral accent, easy reading; no other visible text, names, numbers or uniforms branding."
+    },
+    {
+      "match_by": {
+        "locale": "pt",
+        "slug": "checklist-de-matricula-temporada-clube-esportivo"
+      },
+      "post_id_observed": 48,
+      "post_title": "O checklist de matrícula de temporada para clubes de base",
+      "post_url": "https://widdo.co/pt/blog/checklist-de-matricula-temporada-clube-esportivo",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+      "suggested_new_filename": "checklist-de-matricula-temporada-clube-esportivo-pt-capa.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit",
+      "asset_key": "pt:checklist-de-matricula-temporada-clube-esportivo",
+      "hook_text": "Matrícula pronta. Temporada organizada.",
+      "featured_image_alt": "Composição editorial de uma lista de matrícula com valores, termos, pagamentos e categorias, ao lado de equipamentos de vôlei.",
+      "prompt": "Use case: ads-marketing. Create ONE finished premium sports editorial blog cover for Widdo, landscape 16:9, ideally 1600x900 at high quality. Expert editorial art direction: rich dark full-bleed backdrop, warm light typography, restrained textured ink and tactility, compelling topic-specific composition, excellent hierarchy at thumbnail size. No white background, no generic green template, no excessive green, no posed stock photography, no plastic people, no fake app screenshots, no brand claims or invented product features. Only the exact listed text may appear; no paragraph, no subtitle copied from instructions, no extra wall slogans. Widdo appears once as a plain wordmark, no crown or invented symbol. Keep all text inside safe 5% margins. Render flawless Spanish or Brazilian Portuguese as specified, with correct accents.\nLanguage: BRAZILIAN PORTUGUESE, never Spanish or English. Topic: registration readiness, reliable season data, fees, guardian documents, payments and categories.\nArt direction: premium overhead editorial still life with beautifully crafted paper sculpture and graphic ink, dark merlot desk transitioning into a deep blue volleyball court surface. An open seasonal preparation folder and a long checkmarked sheet form one sweeping composition; a volleyball, folded neutral athletic shirt, whistle and gym bag corner establish youth club context. Strong large object scale, directional amber light, tactile shadows, no humans, no generic spreadsheet or fake software. Headline at upper left, registration document placed diagonally in lower-right. Distinct from the Spanish doorway composition, yet same level of quality. Use only four spacious clear rows.\nExact text only: headline “Matrícula pronta.” then “Temporada organizada.”; four row labels “Valores”, “Termos”, “Pagamentos”, “Categorias”; “Widdo”. Contemporary elegant sturdy sans-serif in warm ivory, restrained coral emphasis. Correct acute accent in Matrícula. No dates, names, signatures or money values."
+    },
+    {
+      "match_by": {
+        "locale": "pt",
+        "slug": "o-que-automatizar-primeiro-no-clube-esportivo"
+      },
+      "post_id_observed": 49,
+      "post_title": "O que automatizar primeiro num clube esportivo",
+      "post_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+      "current_featured_image": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+      "suggested_new_filename": "o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+      "action_required": "Generar portada editorial localizada 1600x900 WebP y asignarla a este post; no existe en el ZIP original de 28 portadas.",
+      "generation_status": "pending",
+      "upload_status": "not_changed_by_audit",
+      "asset_key": "pt:o-que-automatizar-primeiro-no-clube-esportivo",
+      "hook_text": "Automatize nesta ordem.",
+      "featured_image_alt": "Sequência de automação de cobrança, presença, matrícula e resumo diário, com uma indicação de que as decisões continuam humanas.",
+      "prompt": "Use case: ads-marketing. Create ONE finished premium sports editorial blog cover for Widdo, landscape 16:9, ideally 1600x900 at high quality. Expert editorial art direction: rich dark full-bleed backdrop, warm light typography, restrained textured ink and tactility, compelling topic-specific composition, excellent hierarchy at thumbnail size. No white background, no generic green template, no excessive green, no posed stock photography, no plastic people, no fake app screenshots, no brand claims or invented product features. Only the exact listed text may appear; no paragraph, no subtitle copied from instructions, no extra wall slogans. Widdo appears once as a plain wordmark, no crown or invented symbol. Keep all text inside safe 5% margins. Render flawless Spanish or Brazilian Portuguese as specified, with correct accents.\nLanguage: BRAZILIAN PORTUGUESE, never Spanish or English. Topic: prioritize club automation in order: payment reminders, attendance capture, enrollment data, daily summary, while human approval and judgment remain with director.\nArt direction: sophisticated conceptual graphic sports editorial, deep midnight navy and charcoal, warm amber first stage, muted pool blue later stages. One broad continuous numbered paper route winds through FOUR clearly connected stations in a diagonal, tiered composition. First station is largest and illuminated: reminder envelope and modest payment ledger icon. Second a short checked attendance list. Third a registration document. Fourth a daily summary sheet. Stations integrated into one sculptural folded-paper route, not isolated app cards or a generic feature grid. A small separate hand-drawn human hand with an approval check in the lower right anchors the idea that people decide. Cropped basketball court markings and a half-visible ball give sporting context with restraint. Avoid robots, gears, holograms or unsupported app interfaces. Refined printed texture and purposeful visual depth.\nExact visible text only: large headline “Automatize nesta ordem.”; stage labels “1 Cobrança”, “2 Presença”, “3 Matrícula”, “4 Resumo diário”; small separate phrase “Você decide.”; “Widdo”. Large highly readable ivory sans-serif, preserve ç, ã, í, ê accents. No extra text."
+    }
+  ]
+}

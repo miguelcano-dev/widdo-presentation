@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "reducir-morosidad-club-deportivo-cobros",
+    "api_detail": {
+      "id": 21,
+      "slug": "reducir-morosidad-club-deportivo-cobros",
+      "locale": "es",
+      "featured_image": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3",
+      "featured_image_alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación.",
+      "updated_at": "2026-09-14T13:08:35.000000Z"
+    },
+    "page_og": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3",
+    "images": [
+      {
+        "src": "/logo.svg",
+        "width": "34",
+        "height": "34",
+        "alt": ""
+      },
+      {
+        "src": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3",
+        "alt": "Registro de mensualidades con estados pagado, pendiente y vencido junto a un recordatorio de pago en la recepción de un club de natación.",
+        "class": "w-full h-full object-cover"
+      },
+      {
+        "src": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+        "alt": "Baseball club dues notes organized into a clear sequence of amount, due date, reminder and payment status.",
+        "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+        "alt": "Editorial illustration of a growing youth basketball roster beside an expanding invoice, showing how per-player charges scale with club size.",
+        "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+        "loading": "lazy"
+      },
+      {
+        "src": "/logo.svg",
+        "alt": "",
+        "class": "w-8 h-8",
+        "width": "32",
+        "height": "32",
+        "loading": "lazy"
+      }
+    ]
+  },
+  {
+    "slug": "adios-caos-whatsapp-escuela-deportiva",
+    "api_detail": {
+      "id": 18,
+      "slug": "adios-caos-whatsapp-escuela-deportiva",
+      "locale": "es",
+      "featured_image": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3",
+      "featured_image_alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet.",
+      "updated_at": "2026-09-14T13:08:36.000000Z"
+    },
+    "page_og": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3",
+    "images": [
+      {
+        "src": "/logo.svg",
+        "width": "34",
+        "height": "34",
+        "alt": ""
+      },
+      {
+        "src": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3",
+        "alt": "Mensajes y audios dispersos se ordenan en un único aviso de entrenamiento para un equipo juvenil de básquet.",
+        "class": "w-full h-full object-cover"
+      },
+      {
+        "src": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+        "alt": "Composición de cinco tareas administrativas —cobros, avisos, asistencia, inscripciones y reportes— organizadas alrededor de una cancha de básquet.",
+        "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+        "loading": "lazy"
+      },
+      {
+        "src": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+        "alt": "Illustrated volleyball coach marking a simple attendance list on a phone beside an indoor court.",
+        "class": "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
+        "loading": "lazy"
+      },
+      {
+        "src": "/logo.svg",
+        "alt": "",
+        "class": "w-8 h-8",
+        "width": "32",
+        "height": "32",
+        "loading": "lazy"
+      }
+    ]
+  }
+]

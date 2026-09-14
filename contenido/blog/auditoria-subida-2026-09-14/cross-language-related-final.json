@@ -1,0 +1,146 @@
+[
+  {
+    "page_url": "https://widdo.co/es/blog/automatizar-club-deportivo-tareas-manuales",
+    "page_locale": "es",
+    "target_slug": "attendance-tracking-youth-sports-clubs",
+    "target_locale": "en",
+    "rendered_link": "/es/blog/attendance-tracking-youth-sports-clubs",
+    "image_url": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/es/blog/reducir-morosidad-club-deportivo-cobros",
+    "page_locale": "es",
+    "target_slug": "why-dues-collection-breaks-down",
+    "target_locale": "en",
+    "rendered_link": "/es/blog/why-dues-collection-breaks-down",
+    "image_url": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/es/blog/reducir-morosidad-club-deportivo-cobros",
+    "page_locale": "es",
+    "target_slug": "per-player-pricing-youth-sports-software",
+    "target_locale": "en",
+    "rendered_link": "/es/blog/per-player-pricing-youth-sports-software",
+    "image_url": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/es/blog/razones-abandono-alumnos-escuela-deportiva",
+    "page_locale": "es",
+    "target_slug": "signals-player-about-to-leave-club",
+    "target_locale": "en",
+    "rendered_link": "/es/blog/signals-player-about-to-leave-club",
+    "image_url": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/es/blog/adios-caos-whatsapp-escuela-deportiva",
+    "page_locale": "es",
+    "target_slug": "attendance-tracking-youth-sports-clubs",
+    "target_locale": "en",
+    "rendered_link": "/es/blog/attendance-tracking-youth-sports-clubs",
+    "image_url": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/per-player-pricing-youth-sports-software",
+    "page_locale": "en",
+    "target_slug": "reducir-morosidad-club-deportivo-cobros",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/reducir-morosidad-club-deportivo-cobros",
+    "image_url": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/why-dues-collection-breaks-down",
+    "page_locale": "en",
+    "target_slug": "reducir-morosidad-club-deportivo-cobros",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/reducir-morosidad-club-deportivo-cobros",
+    "image_url": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/attendance-tracking-youth-sports-clubs",
+    "page_locale": "en",
+    "target_slug": "adios-caos-whatsapp-escuela-deportiva",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/adios-caos-whatsapp-escuela-deportiva",
+    "image_url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/attendance-tracking-youth-sports-clubs",
+    "page_locale": "en",
+    "target_slug": "automatizar-club-deportivo-tareas-manuales",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/automatizar-club-deportivo-tareas-manuales",
+    "image_url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/signals-player-about-to-leave-club",
+    "page_locale": "en",
+    "target_slug": "razones-abandono-alumnos-escuela-deportiva",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/razones-abandono-alumnos-escuela-deportiva",
+    "image_url": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/registration-season-checklist-youth-sports",
+    "page_locale": "en",
+    "target_slug": "adios-caos-whatsapp-escuela-deportiva",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/adios-caos-whatsapp-escuela-deportiva",
+    "image_url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/registration-season-checklist-youth-sports",
+    "page_locale": "en",
+    "target_slug": "automatizar-club-deportivo-tareas-manuales",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/automatizar-club-deportivo-tareas-manuales",
+    "image_url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/parent-communication-sports-club",
+    "page_locale": "en",
+    "target_slug": "adios-caos-whatsapp-escuela-deportiva",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/adios-caos-whatsapp-escuela-deportiva",
+    "image_url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/en/blog/parent-communication-sports-club",
+    "page_locale": "en",
+    "target_slug": "automatizar-club-deportivo-tareas-manuales",
+    "target_locale": "es",
+    "rendered_link": "/en/blog/automatizar-club-deportivo-tareas-manuales",
+    "image_url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+    "page_locale": "pt",
+    "target_slug": "adios-caos-whatsapp-escuela-deportiva",
+    "target_locale": "es",
+    "rendered_link": "/pt/blog/adios-caos-whatsapp-escuela-deportiva",
+    "image_url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+    "page_locale": "pt",
+    "target_slug": "automatizar-club-deportivo-tareas-manuales",
+    "target_locale": "es",
+    "rendered_link": "/pt/blog/automatizar-club-deportivo-tareas-manuales",
+    "image_url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/pt/blog/checklist-de-matricula-temporada-clube-esportivo",
+    "page_locale": "pt",
+    "target_slug": "adios-caos-whatsapp-escuela-deportiva",
+    "target_locale": "es",
+    "rendered_link": "/pt/blog/adios-caos-whatsapp-escuela-deportiva",
+    "image_url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3"
+  },
+  {
+    "page_url": "https://widdo.co/pt/blog/checklist-de-matricula-temporada-clube-esportivo",
+    "page_locale": "pt",
+    "target_slug": "automatizar-club-deportivo-tareas-manuales",
+    "target_locale": "es",
+    "rendered_link": "/pt/blog/automatizar-club-deportivo-tareas-manuales",
+    "image_url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "asset_key": "pt:o-que-automatizar-primeiro-no-clube-esportivo",
+  "match_by": {
+    "locale": "pt",
+    "slug": "o-que-automatizar-primeiro-no-clube-esportivo"
+  },
+  "locale": "pt",
+  "post_slug": "o-que-automatizar-primeiro-no-clube-esportivo",
+  "post_id_observed": 49,
+  "post_title": "O que automatizar primeiro num clube esportivo",
+  "post_url": "https://widdo.co/pt/blog/o-que-automatizar-primeiro-no-clube-esportivo",
+  "image_file": "images/pt/o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+  "filename": "o-que-automatizar-primeiro-no-clube-esportivo-pt-capa.webp",
+  "featured_image_alt": "Sequência de automação de cobrança, presença, matrícula e resumo diário, com uma indicação de que as decisões continuam humanas.",
+  "hook_text": "Automatize nesta ordem.",
+  "width": 1600,
+  "height": 900,
+  "mime_type": "image/webp",
+  "bytes": 205090,
+  "sha256": "f9b0c42efa862382dede6d58dc4e8290b4a53496d815aa073977bac61467aded",
+  "previous_image_at_audit": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+  "generation_status": "generated",
+  "upload_status": "not_uploaded",
+  "cms_fields": {
+    "featured_image": "USE_THE_URL_RETURNED_BY_UPLOAD",
+    "featured_image_alt": "Sequência de automação de cobrança, presença, matrícula e resumo diário, com uma indicação de que as decisões continuam humanas."
+  }
+}

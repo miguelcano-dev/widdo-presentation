@@ -1,0 +1,1038 @@
+{
+  "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:05 GMT",
+      "etag": "\"6aa7edb9-29844\"",
+      "age": "935",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 170052,
+    "sha256": "05dd37fae97a4a49b77e8178eb0493192b3cf307d08456d445a543fdaaed6d70",
+    "matches_delivered_asset": "es:guia-instagram-clubes-deportivos"
+  },
+  "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:50:58 GMT",
+      "etag": "\"6aa7edb2-226d8\"",
+      "age": "961",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 141016,
+    "sha256": "bb4020ba562179583bbffee3e391f47838847a49b398b4cdf453d6a91662a5f4",
+    "matches_delivered_asset": "en:attendance-tracking-youth-sports-clubs"
+  },
+  "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:19 GMT",
+      "etag": "\"6aa7edc7-35bed\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 220141,
+    "sha256": "dc0a5af378687a19d0811c018a0279ead3e4c93fa2cf091249a57c4c0cbd6703",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:28 GMT",
+      "etag": "\"6aa7edd0-310cc\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 200908,
+    "sha256": "a79e3daea42915f1071248d49fa4b03adad2020e52b4c83fd7e93c561a728e42",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:06 GMT",
+      "etag": "\"6aa7edba-1da96\"",
+      "age": "933",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 121494,
+    "sha256": "b83dcfcf17300cc72e9d6f279cea40f6ce70bca678ef11462ee2b9ee5d1c1168",
+    "matches_delivered_asset": "es:razones-abandono-alumnos-escuela-deportiva"
+  },
+  "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:39 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:17 GMT",
+      "etag": "\"6aa7edc5-2aa4c\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 174668,
+    "sha256": "2dfb43f65dfcd26b885bcaf186e0d8a6e43d95e020f299287259865effacaca0",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/razones-abandono-alumnos-escuela-deportiva-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:26 GMT",
+      "etag": "\"6aa7edce-2bf70\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 180080,
+    "sha256": "4a3cfc04bd0c0cf76f46bfb96ea06c98863a1f32fb762e3c1a6c3c6d4e973e1d",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:27 GMT",
+      "etag": "\"6aa7edcf-31e73\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 204403,
+    "sha256": "ecf4d86a1e8840cc052128f4018bab3b6bbd524e01d883d738bc255c76e3b060",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs-en-cover.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:17 GMT",
+      "etag": "\"6aa7edc5-32164\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 205156,
+    "sha256": "af8785675c9835d7e7683153c48e78a489d5f5af382aa5498f3fb7b8619d0fab",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:31 GMT",
+      "etag": "\"6aa7edd3-313d8\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 201688,
+    "sha256": "6dffd09cb71811a5113f93625a23a4c39b608ad1b6dcb8374bf4f2861fac1009",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:04 GMT",
+      "etag": "\"6aa7edb8-448c2\"",
+      "age": "937",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 280770,
+    "sha256": "91ed7887b1385c490fb577a148b9e9b757f62bfb6dad17c253a44b013691a933",
+    "matches_delivered_asset": "es:estrategias-marketing-escuelas-futbol-colombia"
+  },
+  "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:08 GMT",
+      "etag": "\"6aa7edbc-36870\"",
+      "age": "933",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 223344,
+    "sha256": "594c32357f99abf8c52970162e609de635afe0c3de7545a047641c1799b08732",
+    "matches_delivered_asset": "es:tiktok-escuelas-deportivas-ideas-contenido"
+  },
+  "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:22 GMT",
+      "etag": "\"6aa7edca-338ec\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 211180,
+    "sha256": "5d071742ebe81e82dab3c2568af3770fd282b65003170bb34e9fe964b069c0a2",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:00 GMT",
+      "etag": "\"6aa7edb4-29376\"",
+      "age": "962",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 168822,
+    "sha256": "c186475b9be6d9dec8f467d80b2ded938ca6d6179bd83ae14f2b05ee7c8f30a5",
+    "matches_delivered_asset": "en:registration-season-checklist-youth-sports"
+  },
+  "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:40 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:10 GMT",
+      "etag": "\"6aa7edbe-471aa\"",
+      "age": "967",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 291242,
+    "sha256": "145963aa85065329f89102e46bafb257e417c443faa03bced0197b5692547101",
+    "matches_delivered_asset": "es:widdo-identidad-deportiva-digital"
+  },
+  "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:24 GMT",
+      "etag": "\"6aa7edcc-2a351\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 172881,
+    "sha256": "846c29e3dbe8d497a48bdd18024de7aea542a175bf4dc9cf7d7c03ac6c9ad02e",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/estrategias-marketing-escuelas-futbol-colombia-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:20 GMT",
+      "etag": "\"6aa7edc8-4dff0\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 319472,
+    "sha256": "b1c7dfeaed517cade21d99f29b461aaccc27a3cf5ef00786f71f12094acf82f4",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/per-player-pricing-youth-sports-software-en-cover.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:50:59 GMT",
+      "etag": "\"6aa7edb3-1ca26\"",
+      "age": "963",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 117286,
+    "sha256": "e86ee04cfb8325805dabdfbe39ad8f353fe1d8b927f5d74429ed068f71d56f4d",
+    "matches_delivered_asset": "en:per-player-pricing-youth-sports-software"
+  },
+  "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:25 GMT",
+      "etag": "\"6aa7edcd-3338f\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 209807,
+    "sha256": "82f0123f65c84a63467579e73476c0b316391b55acbd0c69eb79a3019acba2b9",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/widdo-cuenta-multiples-roles-deportivos-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:09 GMT",
+      "etag": "\"6aa7edbd-634de\"",
+      "age": "965",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 406750,
+    "sha256": "edb2df3c25df90644d7600a6708dfa1f034ffa0c9e1ecc72d0b1e5e9ad1955b6",
+    "matches_delivered_asset": "es:widdo-cuenta-multiples-roles-deportivos"
+  },
+  "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:25 GMT",
+      "etag": "\"6aa7edcd-3b30f\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 242447,
+    "sha256": "f6db9b8b7862bc2be76c4b17dc7e2fb77fb89e404571a022d5b515d0e8b1bafd",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/registration-season-checklist-youth-sports-en-cover.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:41 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:27 GMT",
+      "etag": "\"6aa7edcf-376f1\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 227057,
+    "sha256": "0f21e9d335e25302c72f5b3f35dfcd59fb2934bae6a0ccfdf94152d9ec240bd7",
+    "matches_delivered_asset": null
+  },
+  "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop": {
+    "url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
+    "status": 200,
+    "headers": {
+      "cache-control": "public, max-age=31536000",
+      "last-modified": "Mon, 31 Aug 2026 22:46:28 GMT",
+      "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+      "age": "1174934",
+      "content-type": "image/jpeg"
+    },
+    "bytes": 55214,
+    "sha256": "c5a9a0d350dd541c029fdfe52c23d808483c88c79c18d35ac761e078a1078998",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:16 GMT",
+      "etag": "\"6aa7edc4-35f02\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 220930,
+    "sha256": "661546235adc5ca2e4b03e7d3551642cb735ddc7eb21aff8ae5a9ec0abd77bf2",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:01 GMT",
+      "etag": "\"6aa7edb5-26c2a\"",
+      "age": "984",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 158762,
+    "sha256": "752d7209da31ea594f97f954c30a0106910b70dbdf7adf145cba8308b24199d2",
+    "matches_delivered_asset": "es:adios-caos-whatsapp-escuela-deportiva"
+  },
+  "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva.jpg?v=2": {
+    "url": "https://api.widdo.co/storage/blog/images/adios-caos-whatsapp-escuela-deportiva.jpg?v=2",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 02:53:44 GMT",
+      "etag": "\"6aa761b8-21665\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 136805,
+    "sha256": "51e692ad0349de0cd335bf00e4bebf010d66db7f171fd81a10ff309428dc967c",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:24 GMT",
+      "etag": "\"6aa7edcc-3fb72\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 260978,
+    "sha256": "7688df359c886d1c210b9eaa83ece5f54e2601671d968a041935dc7aacc4c93e",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:05 GMT",
+      "etag": "\"6aa7edb9-38372\"",
+      "age": "966",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 230258,
+    "sha256": "e4e64140c6b4cb32d643884dd8542d0a8ec06fa1fe581c85dc67766c67e645f0",
+    "matches_delivered_asset": "es:organizar-eventos-gratuitos-atraer-alumnos"
+  },
+  "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs.jpg?v=2": {
+    "url": "https://api.widdo.co/storage/blog/images/attendance-tracking-youth-sports-clubs.jpg?v=2",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:42 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 02:53:46 GMT",
+      "etag": "\"6aa761ba-1d302\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "age": "1307",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 119554,
+    "sha256": "faff5853a1298774e32953ba2e024a071843cb72ae8410690c4375ff243eb8f8",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:21 GMT",
+      "etag": "\"6aa7edc9-3518f\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 217487,
+    "sha256": "702828aa097eb63e4eca3f84d24c778d157b2c60f0f587bf241f2d9b4573d0fe",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:09 GMT",
+      "etag": "\"6aa7edbd-24c12\"",
+      "age": "966",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 150546,
+    "sha256": "48d30ee1387d4c957253cb56cf3d778618847d79e1086e9985eca670b9b8fe0c",
+    "matches_delivered_asset": "es:transformar-padres-aliados-escuela-deportiva"
+  },
+  "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/tiktok-escuelas-deportivas-ideas-contenido-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:29 GMT",
+      "etag": "\"6aa7edd1-43938\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 276792,
+    "sha256": "21ee8e3a932f4796cd784f33fe07181924aafd2fa5849825390d688791ff7ff2",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:12 GMT",
+      "etag": "\"6aa7edc0-2a12e\"",
+      "age": "961",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 172334,
+    "sha256": "5da87349e19084402a677872cd45dd9110a07364338f6b4695485e3e3dc28abe",
+    "matches_delivered_asset": "pt:grupo-whatsapp-pais-escolinha"
+  },
+  "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=400&fit=crop": {
+    "url": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&h=400&fit=crop",
+    "status": 200,
+    "headers": {
+      "cache-control": "public, max-age=31536000",
+      "last-modified": "Fri, 28 Aug 2026 17:03:12 GMT",
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "age": "1454731",
+      "content-type": "image/jpeg"
+    },
+    "bytes": 145691,
+    "sha256": "053b6fd36cdb7785c5a65db8a7522f81b2f3d88dc53b61e710099ca0c98865c5",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:20 GMT",
+      "etag": "\"6aa7edc8-35941\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 219457,
+    "sha256": "22727573a7dd9cc9c364305f1f8b78974c33d16d5894144d0e513bd17daab4df",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/guia-instagram-clubes-deportivos-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:22 GMT",
+      "etag": "\"6aa7edca-35c92\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 220306,
+    "sha256": "81d273cdaa78a347dad4faae5d4cd80c60e93a10f82c59e1c7ba3b382519a964",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:18 GMT",
+      "etag": "\"6aa7edc6-463a2\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 287650,
+    "sha256": "70e6df61046cac0035ab00b7f152d6269c56365a67fc14b7f42e33be91d6f905",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:43 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:30 GMT",
+      "etag": "\"6aa7edd2-3b58a\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 243082,
+    "sha256": "91d3d7bad6aede2a7cf522cdfac586f4827f2f49967bcb83eef802b5efc987d6",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/gestao-categorias-de-base-documentacao-pt-capa.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:12 GMT",
+      "etag": "\"6aa7edc0-2a532\"",
+      "age": "962",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 173362,
+    "sha256": "139e397526a7d8960b903c5d6170e1f17e8e3c4d39b87d2e24f8892103e99153",
+    "matches_delivered_asset": "pt:gestao-categorias-de-base-documentacao"
+  },
+  "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2": {
+    "url": "https://api.widdo.co/storage/blog/images/checklist-de-matricula-temporada-clube-esportivo.jpg?v=2",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 02:53:47 GMT",
+      "etag": "\"6aa761bb-21845\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "age": "964",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 137285,
+    "sha256": "67ec0a5dccadc5f16e5db5eda82315554c4d1b862f7711340e40210ee6b7749a",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/grupo-whatsapp-pais-escolinha-pt-capa.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:21 GMT",
+      "etag": "\"6aa7edc9-35e43\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 220739,
+    "sha256": "17c49836f08ce9f6c67dce2420a5403af2c27548ea7c7e5a96464db14f2befe3",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/widdo-identidad-deportiva-digital-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:31 GMT",
+      "etag": "\"6aa7edd3-4c46b\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 312427,
+    "sha256": "722f177da56ce2f6f97745b2af716252135b3443542f9797a91720e401a1063c",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/pix-boleto-cartao-mensalidades-clube-esportivo-pt-capa.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:13 GMT",
+      "etag": "\"6aa7edc1-2a17a\"",
+      "age": "985",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 172410,
+    "sha256": "ded5b432ef3d1612683aa12ab9fc580f3865110ace33a5ea6e1496ed6b9b6c01",
+    "matches_delivered_asset": "pt:pix-boleto-cartao-mensalidades-clube-esportivo"
+  },
+  "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:44 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:26 GMT",
+      "etag": "\"6aa7edce-31d80\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 204160,
+    "sha256": "6f390054c04cc75389266a1945491a8eaa6dd94dc0c2c08df9d3f670fae7ff08",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/organizar-eventos-gratuitos-atraer-alumnos-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:23 GMT",
+      "etag": "\"6aa7edcb-449f2\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 281074,
+    "sha256": "ede1dc0ca5cc8d7734667b0d77217bf24f403756be0dc8a246601888f03c48b0",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/transformar-padres-aliados-escuela-deportiva-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:30 GMT",
+      "etag": "\"6aa7edd2-30d69\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 200041,
+    "sha256": "b90291a07f5c0c0e8e712d101865d68a8616feee209280132f546e5193e25f3a",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/programa-referidos-duplicar-inscripciones-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:06 GMT",
+      "etag": "\"6aa7edba-2d9cc\"",
+      "age": "968",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 186828,
+    "sha256": "f4903a1b7e89c2fbc993815edd8bfbfccdec37fb5b5c7f22beb75256dd258e92",
+    "matches_delivered_asset": "es:programa-referidos-duplicar-inscripciones"
+  },
+  "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:11 GMT",
+      "etag": "\"6aa7edbf-38b34\"",
+      "age": "964",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 232244,
+    "sha256": "0243a8ab303bbadf211681a88033cbd060d8ea35c21b323b76c4501fd6ef6060",
+    "matches_delivered_asset": "pt:captar-novos-alunos-escolinha-futebol"
+  },
+  "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/parent-communication-sports-club-en-cover.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:50:59 GMT",
+      "etag": "\"6aa7edb3-36104\"",
+      "age": "966",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 221444,
+    "sha256": "4dea69e68174db597be43d746b5a130e4d0158a783feb8540156688f2641e9f1",
+    "matches_delivered_asset": "en:parent-communication-sports-club"
+  },
+  "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/signals-player-about-to-leave-club-en-cover.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:00 GMT",
+      "etag": "\"6aa7edb4-23210\"",
+      "age": "967",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 143888,
+    "sha256": "c269dfd334a849b333f0f03902f3420419d6edaf501f30dcab77bdeed80454db",
+    "matches_delivered_asset": "en:signals-player-about-to-leave-club"
+  },
+  "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/reduzir-inadimplencia-mensalidades-escolinha-pt-capa.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:13 GMT",
+      "etag": "\"6aa7edc1-26800\"",
+      "age": "965",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 157696,
+    "sha256": "9dd941ca4b6ccf5b7671a6875a5ce7150c4bb774028a90ccfcc903cccb979eba",
+    "matches_delivered_asset": "pt:reduzir-inadimplencia-mensalidades-escolinha"
+  },
+  "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&h=400&fit=crop": {
+    "url": "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&h=400&fit=crop",
+    "status": 200,
+    "headers": {
+      "cache-control": "public, max-age=31536000",
+      "last-modified": "Sat, 22 Aug 2026 07:04:03 GMT",
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "age": "2009082",
+      "content-type": "image/jpeg"
+    },
+    "bytes": 68107,
+    "sha256": "b045b759e947ca14eac9f904499968a0ef3efb7d6786e17e316fb1cb05367faa",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/why-dues-collection-breaks-down-en-cover.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:45 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:01 GMT",
+      "etag": "\"6aa7edb5-3022c\"",
+      "age": "987",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 197164,
+    "sha256": "061429318248d8e070cdc769d934325156a4886d5d23c1629321e12d3605d491",
+    "matches_delivered_asset": "en:why-dues-collection-breaks-down"
+  },
+  "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/reducir-morosidad-club-deportivo-cobros-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:07 GMT",
+      "etag": "\"6aa7edbb-2443a\"",
+      "age": "939",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 148538,
+    "sha256": "80cb0dcabaf5e610298b1a11a99591e60768dd09d579b1319fd9c2cdfbf83305",
+    "matches_delivered_asset": "es:reducir-morosidad-club-deportivo-cobros"
+  },
+  "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/definir-precios-escuela-deportiva-colombia-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:03 GMT",
+      "etag": "\"6aa7edb7-2d1fc\"",
+      "age": "970",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 184828,
+    "sha256": "0bcf545d1ef57ff8a6030ceacf8edfde576104009b6548fbe8118fb237a8261c",
+    "matches_delivered_asset": "es:definir-precios-escuela-deportiva-colombia"
+  },
+  "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2": {
+    "url": "https://api.widdo.co/storage/blog/images/lista-de-inscripcion-temporada-club-deportivo.jpg?v=2",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 02:53:50 GMT",
+      "etag": "\"6aa761be-21096\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "age": "972",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 135318,
+    "sha256": "6f6d23e842b9c9d4f0a7a2b17f646f8dcdd0b9b83397fc1ff21bbbc3b68876d4",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales.jpg?v=2": {
+    "url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales.jpg?v=2",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 02:53:46 GMT",
+      "etag": "\"6aa761ba-1fc35\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 130101,
+    "sha256": "7451f766adadd823d9e945e3e28cd6573c92538bd258a23b00744fdd3a7ef50c",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2": {
+    "url": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 02:53:48 GMT",
+      "etag": "\"6aa761bc-1be6c\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "age": "972",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 114284,
+    "sha256": "5490ab17ca5abc914bbccc0ed9456c32ada4e85cd79535f2dabdfef3e6c075d7",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/grupos-facebook-comunidades-deportivas-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:04 GMT",
+      "etag": "\"6aa7edb8-24a1c\"",
+      "age": "971",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 150044,
+    "sha256": "ef00d5f071f302676cae65652ddd2f258a4580cc8ca6eec2f3fee48bfa8d7982",
+    "matches_delivered_asset": "es:grupos-facebook-comunidades-deportivas"
+  },
+  "https://widdo.co/og-image.png": {
+    "url": "https://widdo.co/og-image.png",
+    "status": 200,
+    "headers": {
+      "age": "0",
+      "cache-control": "public, max-age=31536000, immutable",
+      "content-type": "image/png",
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "etag": "\"d8fd17570f2f7dc7afcc785cd26f7450\"",
+      "last-modified": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "x-vercel-cache": "MISS"
+    },
+    "bytes": 125479,
+    "sha256": "23884c80c1d8d233e0c47fe6cf6f1217e6840cfaf3a9bc514224617aa3e4a51e",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2": {
+    "url": "https://api.widdo.co/storage/blog/images/o-que-automatizar-primeiro-no-clube-esportivo.jpg?v=2",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:46 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 02:53:51 GMT",
+      "etag": "\"6aa761bf-1f5a4\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "age": "966",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 128420,
+    "sha256": "d88cc6da3d75d0d62465ddbd5a0409546998ab09f62c78e807e465209e58309e",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/automatizar-club-deportivo-tareas-manuales-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:02 GMT",
+      "etag": "\"6aa7edb6-1bdf2\"",
+      "age": "972",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 114162,
+    "sha256": "aafa27ac31267eb567f35be589f89496b176056499f782fc12db5f4dcdd42083",
+    "matches_delivered_asset": "es:automatizar-club-deportivo-tareas-manuales"
+  },
+  "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:08 GMT",
+      "etag": "\"6aa7edbc-398b0\"",
+      "age": "972",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 235696,
+    "sha256": "99ddeac2db71491633d1110d1269077057d1d561a9da37c28bb88db8c80f1afc",
+    "matches_delivered_asset": "es:tendencias-escuelas-deportivas-2026"
+  },
+  "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/captar-novos-alunos-escolinha-futebol-pt-capa.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:19 GMT",
+      "etag": "\"6aa7edc7-4486b\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 280683,
+    "sha256": "0ca042556cb34e066ac2063215924e8fddd9db97e6d1a1d142dc9e457cf9896d",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.jpg?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/tendencias-escuelas-deportivas-2026-es-portada.jpg?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+      "content-type": "image/jpeg",
+      "last-modified": "Mon, 14 Sep 2026 12:51:29 GMT",
+      "etag": "\"6aa7edd1-43ddc\"",
+      "cache-control": "public, max-age=604800, immutable",
+      "cf-cache-status": "MISS"
+    },
+    "bytes": 277980,
+    "sha256": "30523d63ed96f7f5cd6a9fa7f4198316d6ff613509a226acc9a73f507bbeedcb",
+    "matches_delivered_asset": null
+  },
+  "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/calendario-contenidos-clubes-deportivos-es-portada.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:03 GMT",
+      "etag": "\"6aa7edb7-3c5f2\"",
+      "age": "970",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 247282,
+    "sha256": "31d2bd15e2d5212ab6ea45d42df1b9708708ee04895fc8bfc58e46dd223f4243",
+    "matches_delivered_asset": "es:calendario-contenidos-clubes-deportivos"
+  },
+  "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3": {
+    "url": "https://api.widdo.co/storage/blog/images/evasao-de-alunos-escolinha-sinais-pt-capa.webp?v3",
+    "status": 200,
+    "headers": {
+      "date": "Mon, 14 Sep 2026 13:08:47 GMT",
+      "content-type": "image/webp",
+      "last-modified": "Mon, 14 Sep 2026 12:51:11 GMT",
+      "etag": "\"6aa7edbf-26c00\"",
+      "age": "966",
+      "cache-control": "max-age=14400",
+      "cf-cache-status": "HIT"
+    },
+    "bytes": 158720,
+    "sha256": "abf380d985979b5a0fb1508c3b308d6efd2fb626026d603b90d6dc587649648c",
+    "matches_delivered_asset": "pt:evasao-de-alunos-escolinha-sinais"
+  }
+}

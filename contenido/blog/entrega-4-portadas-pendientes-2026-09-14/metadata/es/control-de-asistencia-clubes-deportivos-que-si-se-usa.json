@@ -1,0 +1,28 @@
+{
+  "asset_key": "es:control-de-asistencia-clubes-deportivos-que-si-se-usa",
+  "match_by": {
+    "locale": "es",
+    "slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa"
+  },
+  "locale": "es",
+  "post_slug": "control-de-asistencia-clubes-deportivos-que-si-se-usa",
+  "post_id_observed": 46,
+  "post_title": "Control de asistencia que los entrenadores sí van a usar",
+  "post_url": "https://widdo.co/es/blog/control-de-asistencia-clubes-deportivos-que-si-se-usa",
+  "image_file": "images/es/control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+  "filename": "control-de-asistencia-clubes-deportivos-que-si-se-usa-es-portada.webp",
+  "featured_image_alt": "Entrenadora de voleibol registra la asistencia en un móvil junto a la cancha mientras el equipo continúa entrenando.",
+  "hook_text": "Asistencia sin frenar el entrenamiento.",
+  "width": 1600,
+  "height": 900,
+  "mime_type": "image/webp",
+  "bytes": 186850,
+  "sha256": "10a19a4a6f3e15d24b07924bd278f220bc99b29018c018f785824adb65bff13c",
+  "previous_image_at_audit": "https://api.widdo.co/storage/blog/images/control-de-asistencia-clubes-deportivos-que-si-se-usa.jpg?v=2",
+  "generation_status": "generated",
+  "upload_status": "not_uploaded",
+  "cms_fields": {
+    "featured_image": "USE_THE_URL_RETURNED_BY_UPLOAD",
+    "featured_image_alt": "Entrenadora de voleibol registra la asistencia en un móvil junto a la cancha mientras el equipo continúa entrenando."
+  }
+}
