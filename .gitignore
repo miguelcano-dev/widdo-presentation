@@ -28,3 +28,4 @@ graphify-out/
 # vive en otro sitio, y sus ramas y commits siguen en `frontend/` y
 # `saas_sport/`. Se comprobo uno por uno antes de quitarlos.
 desarrollo/.worktrees/
+desarrollo/wt-*/
