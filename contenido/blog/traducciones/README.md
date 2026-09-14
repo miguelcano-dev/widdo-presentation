@@ -48,7 +48,7 @@ añádela a `$temas` en `aplicar.php` o nacerá desconectada de sus hermanas.
 
 ## Las portadas van aparte
 
-Se generan con `../posts/generate-covers.js` y se suben por `scp` a
+Se generan con `../portadas/generadores/tarjetas-tipograficas.js` y se suben por `scp` a
 `/var/www/widdo/storage/app/public/blog/images/`. La URL lleva `?v=N` porque
 Cloudflare cachea `/storage` con `immutable` siete días: sobrescribir el archivo
 no cambia lo que ve nadie. Al cambiar una portada hay que subir el número.

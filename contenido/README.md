@@ -36,7 +36,7 @@ contenido/
 ├── MESSAGING.md        ← Messaging House: claims verificados, voz, prohibiciones
 ├── BRAND-GUIDE.md      ← Colores, tipografía, formatos. Vale para TODOS los canales
 ├── assets/             ← Manifiesto de assets canónicos
-├── blog-seo/           ← Comparison SEO (única excepción al no-nombrar competidores)
+├── blog/               ← El blog: textos, traducciones y portadas (ver su README)
 ├── linkedin/
 │   ├── README.md       ← Estrategia, reglas de publicación, pilares de contenido
 │   ├── calendar.md     ← Calendario de publicación

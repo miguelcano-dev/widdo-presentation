@@ -5,7 +5,7 @@ imagen (Codex / Midjourney / Firefly / el que uses). Yo no tengo generador en
 la sesión de Claude Code, así que este archivo es el encargo listo para pasar.
 
 **Qué hacer con el resultado:** dejar los 9 archivos en
-`contenido/blog-seo/posts/fondos/<slug>.jpg` y avisar. El script de portadas
+`contenido/blog/portadas/generadores/fondos/<slug>.jpg` y avisar. El script de portadas
 los compone con la franja de marca (logo + tagline + titular) y saca el JPEG
 final 2400x1260. Sin esa franja son fotos sueltas y no se reconocen como Widdo.
 

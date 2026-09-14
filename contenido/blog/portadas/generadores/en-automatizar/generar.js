@@ -18,7 +18,7 @@
  * plantillas genericas no decian: hay un ORDEN, el primer paso es el que se
  * paga solo, y hay trabajo que NO se automatiza.
  *
- *   node contenido/blog/portada-en-automatizar/generar.js
+ *   node contenido/blog/portadas/generadores/en-automatizar/generar.js
  */
 const puppeteer = require('puppeteer');
 const fs = require('fs');

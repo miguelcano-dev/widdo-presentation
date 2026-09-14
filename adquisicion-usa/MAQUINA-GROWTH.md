@@ -40,7 +40,7 @@ Likes, seguidores y views: señales, jamás objetivos.
 
 ### Capa 2 — CAPTURA DE INTENCIÓN (inbound perpetuo) · semanas 2-8
 - **Comparison SEO**: una página por keyword ("TeamSnap alternative", "GotSport
-  alternative"…). Brief listo en `BRIEF-LANDING.md`; carpeta `contenido/blog-seo/`.
+  alternative"…). Brief listo en `BRIEF-LANDING.md`; carpeta `contenido/blog/`.
   Única excepción a no-nombrar competidores. Cada página rankea por años.
 - **Reddit evergreen**: 1 h/semana, comentarios útiles en hilos que ya rankean en Google.
 - 📏 Métrica: leads inbound/mes (form fills, clicks a demo). Posiciones = secundaria.

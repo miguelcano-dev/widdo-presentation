@@ -15,9 +15,9 @@
  * de imágenes. Son composiciones HTML->WebP hechas para encajar en esa
  * familia, con la misma paleta medida sobre las entregadas (casi negro
  * azulado, ámbar cálido, papel crema) y el mismo 1600x900. Comparten lenguaje
- * con la portada inglesa de `portada-en-automatizar/`.
+ * con la portada inglesa de `../en-automatizar/`.
  *
- *   node contenido/blog/portadas-listas-inscripcion/generar.js
+ *   node contenido/blog/portadas/generadores/listas-inscripcion/generar.js
  */
 const puppeteer = require('puppeteer');
 const fs = require('fs');

@@ -37,15 +37,15 @@
  * sin cabeza bloquea el acceso a ficheros locales desde una pagina cargada con
  * setContent, y la portada saldria con el hueco vacio sin dar error.
  *
- * Prompts para generar esas fotos: PROMPTS-PORTADAS.md (mismo directorio).
+ * Prompts para generar esas fotos: ../../textos/PROMPTS-PORTADAS.md.
  *
- *   node contenido/blog-seo/posts/generate-covers.js
+ *   node contenido/blog/portadas/generadores/tarjetas-tipograficas.js
  */
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 
-const SALIDA = path.join(__dirname, 'covers');
+const SALIDA = path.join(__dirname, 'tarjetas-tipograficas-salida');
 const FONDOS = path.join(__dirname, 'fondos');
 
 /**

@@ -57,7 +57,7 @@ contenido/
 ├── assets/              ← manifiesto de assets canónicos (ver su README)
 ├── linkedin/            ← 🟢 activo: perfil/, posts/, images/, calendar.md, BRIEF-POSTS-IA.md
 ├── instagram/ facebook/ tiktok/   ← ⚪ sin abrir, a propósito
-├── blog-seo/            ← comparison SEO (playbook #4) — briefs y borradores
+├── blog/                ← el blog entero: textos, traducciones y portadas
 ├── intro-widdo/         ← video de introducción (composición + guion)
 └── post widdo/          ← imágenes sueltas heredadas (absorber a linkedin/images/ al usarlas)
 ```
