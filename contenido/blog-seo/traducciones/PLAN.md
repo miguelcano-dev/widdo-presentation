@@ -43,3 +43,30 @@ Ya están bien (769-859 palabras). Solo falta:
   palabras: no posicionan en inglés. El ángulo de captación (referidos,
   eventos de puertas abiertas, grupos de Facebook) SÍ vale para USA, pero
   como posts nuevos escritos largos, no como traducción.
+
+
+---
+
+## Corrección posterior: las metas en portugués
+
+Al verificar la paridad se vio que inglés y español coincidían en los seis
+temas, pero **portugués divergía en cuatro**: esos posts ya existían y solo se
+les había puesto el grupo y la portada.
+
+Tres eran solo redacción y se alinearon (`metas-pt.php`). El del WhatsApp era
+el peor: su meta prometía *«como organizar o grupo»* cuando inglés y español
+dicen *«el grupo no es un sistema, sustitúyelo»* — consejo opuesto. El
+contenido sí sostenía la tesis correcta (su primer apartado es «O erro central:
+um canal para duas funções»), así que lo desalineado era solo la promesa del
+resultado de búsqueda.
+
+El cuarto no se tocó, y es la decisión que importa:
+**`gestao-categorias-de-base-documentacao` se sacó del grupo de asistencia.**
+Cubre presencia *más* certificado médico, documentación y calendario anual; el
+post en inglés es solo presencia. El hreflang afirma «esta es la misma página
+en otro idioma», y no lo es: declararlo manda a un lector portugués a un
+artículo con otro alcance y le da a Google una equivalencia falsa. Forzar la
+meta para que encajara la habría hecho mentir sobre el artículo.
+
+Queda sin grupo hasta que exista una versión portuguesa del artículo de
+asistencia — que hoy canibalizaría a éste.
