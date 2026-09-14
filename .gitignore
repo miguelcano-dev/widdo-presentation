@@ -17,3 +17,14 @@ negocio/datos do.txt
 
 # Salidas de graphify (grafo de conocimiento, regenerable)
 graphify-out/
+
+# Worktrees de git. NUNCA deben entrar al repo padre.
+#
+# Se colaron como gitlinks y dejaban 31 entradas fantasma: directorios ya
+# borrados que el indice seguia registrando, y que ensuciaban `git status` en
+# cada sesion hasta el punto de ocultar los cambios de verdad.
+#
+# Quitarlos del indice no pierde nada: un worktree es una vista de un repo que
+# vive en otro sitio, y sus ramas y commits siguen en `frontend/` y
+# `saas_sport/`. Se comprobo uno por uno antes de quitarlos.
+desarrollo/.worktrees/
